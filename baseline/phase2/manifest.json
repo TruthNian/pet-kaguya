@@ -1,0 +1,11 @@
+{
+  "archivedOn": "2026-10-08",
+  "source": "local usable Phase 2 pet",
+  "atlasSha256": "71F7E36AD459D99C9DE1AC6033A968CDF4C125EB742FFD5FF19B8E81BBA56EF7",
+  "atlasBytes": 2013616,
+  "atlasSize": [1536, 2288],
+  "cellSize": [192, 208],
+  "pixelFormat": "RGBA",
+  "encoding": "lossless WebP",
+  "nativeLivePlaybackVerified": false
+}
