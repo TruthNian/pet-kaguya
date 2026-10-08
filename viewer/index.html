@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kaguya · 本地动画验收</title>
+<link rel="stylesheet" href="style.css">
+<main>
+  <header><span class="eyebrow">PET KAGUYA / ANIMATION LAB</span>
+    <h1>轻一点，也鲜活一点。</h1>
+    <p>左侧是原样基准，右侧是候选图集。宿主规则模拟，不是已安装应用的实机截图。</p>
+  </header>
+  <section class="controls" aria-label="验收参数">
+    <label>状态 <select id="state">
+      <option value="idle">闲置 · idle</option><option value="run_right">向右跑</option>
+      <option value="run_left">向左跑</option><option value="waving">招手</option>
+      <option value="jumping">轻跃</option><option value="failed">失败 · 低头</option>
+      <option value="waiting">等待</option><option value="running">处理中</option>
+      <option value="review">审阅</option>
+    </select></label>
+    <label>宽度 <select id="size"><option>80</option><option selected>113</option><option>192</option><option>224</option></select> px</label>
+    <label>背景 <select id="background"><option value="dark">深色</option><option value="light">浅色</option><option value="grid">透明网格</option></select></label>
+    <label><input id="loop" type="checkbox">持续循环（实验）</label>
+    <label><input id="look" type="checkbox">鼠标方向覆盖</label>
+    <label><input id="reduced" type="checkbox">减少动态</label>
+    <label><input id="smooth" type="checkbox">平滑采样（实验）</label>
+    <button id="pause">暂停</button><button id="restart">重播</button>
+  </section>
+  <section id="stage" class="stage dark">
+    <article><h2>Phase 2 基准</h2><canvas id="old" aria-label="基准动画"></canvas></article>
+    <article><h2>温柔动作候选</h2><canvas id="new" aria-label="候选动画"></canvas></article>
+  </section>
+  <output id="status" aria-live="off">正在解码图集…</output>
+  <footer>
+    <p>默认使用真实慢 idle 时长；其他动作播放三轮后回 idle。开启鼠标覆盖可复现部分动画不播放的规则。</p>
+    <p>图集仍是 192 × 208 px/帧；没有改变原生帧率或分辨率。平滑采样和持续循环只用于实验。</p>
+    <p><a href="../docs/PLAN.zh-CN.md">设计原则与已撤回的判断</a> · <a href="../qa/comparison.json">可复核指标</a></p>
+  </footer>
+</main>
+<script type="module" src="app.mjs"></script>
+</html>

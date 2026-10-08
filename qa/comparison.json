@@ -1,0 +1,1407 @@
+{
+  "baseline": {
+    "sha256": "71F7E36AD459D99C9DE1AC6033A968CDF4C125EB742FFD5FF19B8E81BBA56EF7",
+    "bytes": 2013616,
+    "size": [
+      1536,
+      2288
+    ],
+    "decodedRgbaBytes": 14057472,
+    "transparentRgbResidue": 0,
+    "missing": [],
+    "unexpected": [],
+    "borderContacts": [],
+    "sequences": {
+      "idle": {
+        "uniqueFrames": 6,
+        "durationsMs": [
+          1680,
+          660,
+          660,
+          840,
+          840,
+          1920
+        ],
+        "cycleMs": 6600,
+        "nominalPoseUpdatesPerSecond": 0.9091,
+        "maxChangedPixelPct": 6.0046,
+        "meanChangedPixelPct": 5.7726,
+        "maxCentroidShiftPx": 0.0,
+        "allSilhouettesExactlyEqual": true,
+        "pairs": [
+          {
+            "changedPixelPct": 5.9495,
+            "premultipliedRgbMae": 2.0207,
+            "silhouetteXorPct": 0.0,
+            "centroidShiftPx": 0.0,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 6.0046,
+            "premultipliedRgbMae": 2.4504,
+            "silhouetteXorPct": 0.0,
+            "centroidShiftPx": 0.0,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 5.6816,
+            "premultipliedRgbMae": 1.6778,
+            "silhouetteXorPct": 0.0,
+            "centroidShiftPx": 0.0,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 5.6065,
+            "premultipliedRgbMae": 1.6253,
+            "silhouetteXorPct": 0.0,
+            "centroidShiftPx": 0.0,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 5.8444,
+            "premultipliedRgbMae": 1.9812,
+            "silhouetteXorPct": 0.0,
+            "centroidShiftPx": 0.0,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 5.5489,
+            "premultipliedRgbMae": 0.6614,
+            "silhouetteXorPct": 0.0,
+            "centroidShiftPx": 0.0,
+            "exactlyEqual": false
+          }
+        ]
+      },
+      "run_right": {
+        "uniqueFrames": 8,
+        "durationsMs": [
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          220
+        ],
+        "cycleMs": 1060,
+        "nominalPoseUpdatesPerSecond": 7.5472,
+        "maxChangedPixelPct": 52.0307,
+        "meanChangedPixelPct": 50.4573,
+        "maxCentroidShiftPx": 6.8749,
+        "allSilhouettesExactlyEqual": false,
+        "pairs": [
+          {
+            "changedPixelPct": 49.1887,
+            "premultipliedRgbMae": 28.1126,
+            "silhouetteXorPct": 17.3192,
+            "centroidShiftPx": 3.2195,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 51.277,
+            "premultipliedRgbMae": 32.9952,
+            "silhouetteXorPct": 22.8602,
+            "centroidShiftPx": 4.6519,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 52.0307,
+            "premultipliedRgbMae": 35.7745,
+            "silhouetteXorPct": 23.8464,
+            "centroidShiftPx": 6.8749,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 49.717,
+            "premultipliedRgbMae": 25.3819,
+            "silhouetteXorPct": 21.4488,
+            "centroidShiftPx": 2.2773,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 51.6301,
+            "premultipliedRgbMae": 31.1262,
+            "silhouetteXorPct": 27.3922,
+            "centroidShiftPx": 4.0181,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 51.6276,
+            "premultipliedRgbMae": 36.1024,
+            "silhouetteXorPct": 28.01,
+            "centroidShiftPx": 1.1283,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 48.8682,
+            "premultipliedRgbMae": 28.56,
+            "silhouetteXorPct": 22.8969,
+            "centroidShiftPx": 2.9227,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 49.3189,
+            "premultipliedRgbMae": 31.5796,
+            "silhouetteXorPct": 20.5934,
+            "centroidShiftPx": 2.9312,
+            "exactlyEqual": false
+          }
+        ]
+      },
+      "run_left": {
+        "uniqueFrames": 8,
+        "durationsMs": [
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          220
+        ],
+        "cycleMs": 1060,
+        "nominalPoseUpdatesPerSecond": 7.5472,
+        "maxChangedPixelPct": 53.3679,
+        "meanChangedPixelPct": 50.1434,
+        "maxCentroidShiftPx": 9.9201,
+        "allSilhouettesExactlyEqual": false,
+        "pairs": [
+          {
+            "changedPixelPct": 50.8589,
+            "premultipliedRgbMae": 30.6901,
+            "silhouetteXorPct": 19.374,
+            "centroidShiftPx": 4.2049,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 51.0367,
+            "premultipliedRgbMae": 31.1565,
+            "silhouetteXorPct": 20.8455,
+            "centroidShiftPx": 3.7069,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 52.1985,
+            "premultipliedRgbMae": 32.4675,
+            "silhouetteXorPct": 18.5019,
+            "centroidShiftPx": 6.5255,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 50.2579,
+            "premultipliedRgbMae": 29.6268,
+            "silhouetteXorPct": 17.9098,
+            "centroidShiftPx": 5.9998,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 49.2388,
+            "premultipliedRgbMae": 30.259,
+            "silhouetteXorPct": 25.2676,
+            "centroidShiftPx": 6.8871,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 46.0537,
+            "premultipliedRgbMae": 24.0047,
+            "silhouetteXorPct": 15.5564,
+            "centroidShiftPx": 1.3861,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 48.1345,
+            "premultipliedRgbMae": 32.0314,
+            "silhouetteXorPct": 24.0848,
+            "centroidShiftPx": 2.7022,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 53.3679,
+            "premultipliedRgbMae": 40.5172,
+            "silhouetteXorPct": 32.7062,
+            "centroidShiftPx": 9.9201,
+            "exactlyEqual": false
+          }
+        ]
+      },
+      "waving": {
+        "uniqueFrames": 4,
+        "durationsMs": [
+          140,
+          140,
+          140,
+          280
+        ],
+        "cycleMs": 700,
+        "nominalPoseUpdatesPerSecond": 5.7143,
+        "maxChangedPixelPct": 52.2211,
+        "meanChangedPixelPct": 49.1105,
+        "maxCentroidShiftPx": 1.6604,
+        "allSilhouettesExactlyEqual": false,
+        "pairs": [
+          {
+            "changedPixelPct": 46.6672,
+            "premultipliedRgbMae": 9.995,
+            "silhouetteXorPct": 3.3499,
+            "centroidShiftPx": 1.6511,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 52.0558,
+            "premultipliedRgbMae": 29.029,
+            "silhouetteXorPct": 12.9155,
+            "centroidShiftPx": 1.4224,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 52.2211,
+            "premultipliedRgbMae": 30.1403,
+            "silhouetteXorPct": 13.4337,
+            "centroidShiftPx": 1.6604,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 45.4978,
+            "premultipliedRgbMae": 7.4947,
+            "silhouetteXorPct": 1.2222,
+            "centroidShiftPx": 0.1855,
+            "exactlyEqual": false
+          }
+        ]
+      },
+      "jumping": {
+        "uniqueFrames": 5,
+        "durationsMs": [
+          140,
+          140,
+          140,
+          140,
+          280
+        ],
+        "cycleMs": 840,
+        "nominalPoseUpdatesPerSecond": 5.9524,
+        "maxChangedPixelPct": 66.7693,
+        "meanChangedPixelPct": 65.1232,
+        "maxCentroidShiftPx": 6.0204,
+        "allSilhouettesExactlyEqual": false,
+        "pairs": [
+          {
+            "changedPixelPct": 66.7693,
+            "premultipliedRgbMae": 46.375,
+            "silhouetteXorPct": 18.8147,
+            "centroidShiftPx": 6.0204,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 64.4531,
+            "premultipliedRgbMae": 42.8894,
+            "silhouetteXorPct": 23.6594,
+            "centroidShiftPx": 5.8547,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 62.4349,
+            "premultipliedRgbMae": 39.8958,
+            "silhouetteXorPct": 20.7927,
+            "centroidShiftPx": 4.8003,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 66.3336,
+            "premultipliedRgbMae": 43.3344,
+            "silhouetteXorPct": 23.1919,
+            "centroidShiftPx": 3.7528,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 65.625,
+            "premultipliedRgbMae": 44.8832,
+            "silhouetteXorPct": 18.5412,
+            "centroidShiftPx": 3.3234,
+            "exactlyEqual": false
+          }
+        ]
+      },
+      "failed": {
+        "uniqueFrames": 3,
+        "durationsMs": [
+          140,
+          140,
+          140,
+          140,
+          140,
+          140,
+          140,
+          240
+        ],
+        "cycleMs": 1220,
+        "nominalPoseUpdatesPerSecond": 6.5574,
+        "maxChangedPixelPct": 67.3553,
+        "meanChangedPixelPct": 30.2109,
+        "maxCentroidShiftPx": 0.8078,
+        "allSilhouettesExactlyEqual": false,
+        "pairs": [
+          {
+            "changedPixelPct": 53.4881,
+            "premultipliedRgbMae": 24.9423,
+            "silhouetteXorPct": 7.1284,
+            "centroidShiftPx": 0.8078,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 67.3553,
+            "premultipliedRgbMae": 51.1226,
+            "silhouetteXorPct": 24.6925,
+            "centroidShiftPx": 0.2514,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 0.0,
+            "premultipliedRgbMae": 0.0,
+            "silhouetteXorPct": 0.0,
+            "centroidShiftPx": 0.0,
+            "exactlyEqual": true
+          },
+          {
+            "changedPixelPct": 0.0,
+            "premultipliedRgbMae": 0.0,
+            "silhouetteXorPct": 0.0,
+            "centroidShiftPx": 0.0,
+            "exactlyEqual": true
+          },
+          {
+            "changedPixelPct": 0.0,
+            "premultipliedRgbMae": 0.0,
+            "silhouetteXorPct": 0.0,
+            "centroidShiftPx": 0.0,
+            "exactlyEqual": true
+          },
+          {
+            "changedPixelPct": 67.3553,
+            "premultipliedRgbMae": 51.1226,
+            "silhouetteXorPct": 24.6925,
+            "centroidShiftPx": 0.2514,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 53.4881,
+            "premultipliedRgbMae": 24.9423,
+            "silhouetteXorPct": 7.1284,
+            "centroidShiftPx": 0.8078,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 0.0,
+            "premultipliedRgbMae": 0.0,
+            "silhouetteXorPct": 0.0,
+            "centroidShiftPx": 0.0,
+            "exactlyEqual": true
+          }
+        ]
+      },
+      "waiting": {
+        "uniqueFrames": 6,
+        "durationsMs": [
+          150,
+          150,
+          150,
+          150,
+          150,
+          260
+        ],
+        "cycleMs": 1010,
+        "nominalPoseUpdatesPerSecond": 5.9406,
+        "maxChangedPixelPct": 5.9095,
+        "meanChangedPixelPct": 5.7529,
+        "maxCentroidShiftPx": 0.0,
+        "allSilhouettesExactlyEqual": true,
+        "pairs": [
+          {
+            "changedPixelPct": 5.9095,
+            "premultipliedRgbMae": 1.7243,
+            "silhouetteXorPct": 0.0,
+            "centroidShiftPx": 0.0,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 5.8268,
+            "premultipliedRgbMae": 1.7311,
+            "silhouetteXorPct": 0.0,
+            "centroidShiftPx": 0.0,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 5.7692,
+            "premultipliedRgbMae": 1.7909,
+            "silhouetteXorPct": 0.0,
+            "centroidShiftPx": 0.0,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 5.5839,
+            "premultipliedRgbMae": 0.839,
+            "silhouetteXorPct": 0.0,
+            "centroidShiftPx": 0.0,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 5.7868,
+            "premultipliedRgbMae": 1.3025,
+            "silhouetteXorPct": 0.0,
+            "centroidShiftPx": 0.0,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 5.6415,
+            "premultipliedRgbMae": 0.7533,
+            "silhouetteXorPct": 0.0,
+            "centroidShiftPx": 0.0,
+            "exactlyEqual": false
+          }
+        ]
+      },
+      "running": {
+        "uniqueFrames": 6,
+        "durationsMs": [
+          120,
+          120,
+          120,
+          120,
+          120,
+          220
+        ],
+        "cycleMs": 820,
+        "nominalPoseUpdatesPerSecond": 7.3171,
+        "maxChangedPixelPct": 6.9286,
+        "meanChangedPixelPct": 2.8763,
+        "maxCentroidShiftPx": 0.0,
+        "allSilhouettesExactlyEqual": true,
+        "pairs": [
+          {
+            "changedPixelPct": 0.8489,
+            "premultipliedRgbMae": 0.0595,
+            "silhouetteXorPct": 0.0,
+            "centroidShiftPx": 0.0,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 6.9286,
+            "premultipliedRgbMae": 2.7346,
+            "silhouetteXorPct": 0.0,
+            "centroidShiftPx": 0.0,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 0.8489,
+            "premultipliedRgbMae": 0.0642,
+            "silhouetteXorPct": 0.0,
+            "centroidShiftPx": 0.0,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 6.9261,
+            "premultipliedRgbMae": 2.7349,
+            "silhouetteXorPct": 0.0,
+            "centroidShiftPx": 0.0,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 0.8564,
+            "premultipliedRgbMae": 0.0868,
+            "silhouetteXorPct": 0.0,
+            "centroidShiftPx": 0.0,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 0.8489,
+            "premultipliedRgbMae": 0.0366,
+            "silhouetteXorPct": 0.0,
+            "centroidShiftPx": 0.0,
+            "exactlyEqual": false
+          }
+        ]
+      },
+      "review": {
+        "uniqueFrames": 6,
+        "durationsMs": [
+          150,
+          150,
+          150,
+          150,
+          150,
+          280
+        ],
+        "cycleMs": 1030,
+        "nominalPoseUpdatesPerSecond": 5.8252,
+        "maxChangedPixelPct": 56.1924,
+        "meanChangedPixelPct": 54.3115,
+        "maxCentroidShiftPx": 2.5482,
+        "allSilhouettesExactlyEqual": false,
+        "pairs": [
+          {
+            "changedPixelPct": 54.6524,
+            "premultipliedRgbMae": 30.8694,
+            "silhouetteXorPct": 15.6782,
+            "centroidShiftPx": 2.5482,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 54.4747,
+            "premultipliedRgbMae": 31.0989,
+            "silhouetteXorPct": 16.558,
+            "centroidShiftPx": 2.5165,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 54.0289,
+            "premultipliedRgbMae": 28.6437,
+            "silhouetteXorPct": 10.191,
+            "centroidShiftPx": 1.3208,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 56.1924,
+            "premultipliedRgbMae": 34.6687,
+            "silhouetteXorPct": 16.4037,
+            "centroidShiftPx": 1.7478,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 54.7451,
+            "premultipliedRgbMae": 32.6727,
+            "silhouetteXorPct": 16.5783,
+            "centroidShiftPx": 1.7158,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 51.7753,
+            "premultipliedRgbMae": 20.5579,
+            "silhouetteXorPct": 7.4208,
+            "centroidShiftPx": 0.4549,
+            "exactlyEqual": false
+          }
+        ]
+      }
+    },
+    "directions": [
+      {
+        "changedPixelPct": 56.1674,
+        "premultipliedRgbMae": 30.2038,
+        "silhouetteXorPct": 11.5666,
+        "centroidShiftPx": 0.3317,
+        "exactlyEqual": false
+      },
+      {
+        "changedPixelPct": 53.6884,
+        "premultipliedRgbMae": 28.5876,
+        "silhouetteXorPct": 11.5482,
+        "centroidShiftPx": 2.0634,
+        "exactlyEqual": false
+      },
+      {
+        "changedPixelPct": 49.2713,
+        "premultipliedRgbMae": 13.783,
+        "silhouetteXorPct": 4.2076,
+        "centroidShiftPx": 0.7337,
+        "exactlyEqual": false
+      },
+      {
+        "changedPixelPct": 50.3581,
+        "premultipliedRgbMae": 31.7311,
+        "silhouetteXorPct": 19.595,
+        "centroidShiftPx": 1.8214,
+        "exactlyEqual": false
+      },
+      {
+        "changedPixelPct": 49.6945,
+        "premultipliedRgbMae": 31.7009,
+        "silhouetteXorPct": 18.9517,
+        "centroidShiftPx": 2.0871,
+        "exactlyEqual": false
+      },
+      {
+        "changedPixelPct": 52.6843,
+        "premultipliedRgbMae": 33.3943,
+        "silhouetteXorPct": 15.046,
+        "centroidShiftPx": 1.6419,
+        "exactlyEqual": false
+      },
+      {
+        "changedPixelPct": 53.1901,
+        "premultipliedRgbMae": 33.7393,
+        "silhouetteXorPct": 17.5738,
+        "centroidShiftPx": 4.2118,
+        "exactlyEqual": false
+      },
+      {
+        "changedPixelPct": 56.1548,
+        "premultipliedRgbMae": 39.95,
+        "silhouetteXorPct": 22.5449,
+        "centroidShiftPx": 7.9555,
+        "exactlyEqual": false
+      },
+      {
+        "changedPixelPct": 54.4822,
+        "premultipliedRgbMae": 36.8164,
+        "silhouetteXorPct": 19.593,
+        "centroidShiftPx": 2.9396,
+        "exactlyEqual": false
+      },
+      {
+        "changedPixelPct": 47.2331,
+        "premultipliedRgbMae": 17.4609,
+        "silhouetteXorPct": 5.1707,
+        "centroidShiftPx": 1.1089,
+        "exactlyEqual": false
+      },
+      {
+        "changedPixelPct": 46.9802,
+        "premultipliedRgbMae": 22.1888,
+        "silhouetteXorPct": 8.8285,
+        "centroidShiftPx": 0.1678,
+        "exactlyEqual": false
+      },
+      {
+        "changedPixelPct": 46.1313,
+        "premultipliedRgbMae": 33.9342,
+        "silhouetteXorPct": 25.4081,
+        "centroidShiftPx": 3.0996,
+        "exactlyEqual": false
+      },
+      {
+        "changedPixelPct": 46.264,
+        "premultipliedRgbMae": 33.9037,
+        "silhouetteXorPct": 25.3746,
+        "centroidShiftPx": 2.0312,
+        "exactlyEqual": false
+      },
+      {
+        "changedPixelPct": 47.3207,
+        "premultipliedRgbMae": 23.8084,
+        "silhouetteXorPct": 9.0516,
+        "centroidShiftPx": 0.9023,
+        "exactlyEqual": false
+      },
+      {
+        "changedPixelPct": 49.7145,
+        "premultipliedRgbMae": 24.9601,
+        "silhouetteXorPct": 10.9732,
+        "centroidShiftPx": 0.7021,
+        "exactlyEqual": false
+      },
+      {
+        "changedPixelPct": 56.6256,
+        "premultipliedRgbMae": 38.0542,
+        "silhouetteXorPct": 18.9417,
+        "centroidShiftPx": 0.5666,
+        "exactlyEqual": false
+      }
+    ]
+  },
+  "candidate": {
+    "sha256": "238C9ECEC64AB39B6F9CE04B9795E107996C1F97E06BA20B5E5A723EC940E3F1",
+    "bytes": 2035254,
+    "size": [
+      1536,
+      2288
+    ],
+    "decodedRgbaBytes": 14057472,
+    "transparentRgbResidue": 0,
+    "missing": [],
+    "unexpected": [],
+    "borderContacts": [],
+    "sequences": {
+      "idle": {
+        "uniqueFrames": 6,
+        "durationsMs": [
+          1680,
+          660,
+          660,
+          840,
+          840,
+          1920
+        ],
+        "cycleMs": 6600,
+        "nominalPoseUpdatesPerSecond": 0.9091,
+        "maxChangedPixelPct": 43.3544,
+        "meanChangedPixelPct": 38.3417,
+        "maxCentroidShiftPx": 0.7122,
+        "allSilhouettesExactlyEqual": false,
+        "pairs": [
+          {
+            "changedPixelPct": 43.3544,
+            "premultipliedRgbMae": 7.1349,
+            "silhouetteXorPct": 2.7488,
+            "centroidShiftPx": 0.7122,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 30.8343,
+            "premultipliedRgbMae": 1.572,
+            "silhouetteXorPct": 0.6324,
+            "centroidShiftPx": 0.0216,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 35.8273,
+            "premultipliedRgbMae": 2.937,
+            "silhouetteXorPct": 0.7316,
+            "centroidShiftPx": 0.188,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 40.7527,
+            "premultipliedRgbMae": 4.8821,
+            "silhouetteXorPct": 1.6404,
+            "centroidShiftPx": 0.3822,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 37.9006,
+            "premultipliedRgbMae": 3.7398,
+            "silhouetteXorPct": 1.3622,
+            "centroidShiftPx": 0.3708,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 41.3812,
+            "premultipliedRgbMae": 5.4392,
+            "silhouetteXorPct": 1.5618,
+            "centroidShiftPx": 0.2396,
+            "exactlyEqual": false
+          }
+        ]
+      },
+      "run_right": {
+        "uniqueFrames": 8,
+        "durationsMs": [
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          220
+        ],
+        "cycleMs": 1060,
+        "nominalPoseUpdatesPerSecond": 7.5472,
+        "maxChangedPixelPct": 44.4611,
+        "meanChangedPixelPct": 39.3645,
+        "maxCentroidShiftPx": 1.8779,
+        "allSilhouettesExactlyEqual": false,
+        "pairs": [
+          {
+            "changedPixelPct": 38.6143,
+            "premultipliedRgbMae": 6.5272,
+            "silhouetteXorPct": 3.4779,
+            "centroidShiftPx": 0.7775,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 39.6885,
+            "premultipliedRgbMae": 7.2256,
+            "silhouetteXorPct": 3.3709,
+            "centroidShiftPx": 0.346,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 35.5995,
+            "premultipliedRgbMae": 3.8468,
+            "silhouetteXorPct": 1.9,
+            "centroidShiftPx": 0.2991,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 39.8813,
+            "premultipliedRgbMae": 7.6162,
+            "silhouetteXorPct": 3.5742,
+            "centroidShiftPx": 0.2575,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 42.2125,
+            "premultipliedRgbMae": 10.1581,
+            "silhouetteXorPct": 4.5865,
+            "centroidShiftPx": 0.685,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 43.8777,
+            "premultipliedRgbMae": 16.9538,
+            "silhouetteXorPct": 7.5572,
+            "centroidShiftPx": 1.6999,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 30.5814,
+            "premultipliedRgbMae": 2.529,
+            "silhouetteXorPct": 1.4585,
+            "centroidShiftPx": 0.3194,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 44.4611,
+            "premultipliedRgbMae": 18.5177,
+            "silhouetteXorPct": 9.4883,
+            "centroidShiftPx": 1.8779,
+            "exactlyEqual": false
+          }
+        ]
+      },
+      "run_left": {
+        "uniqueFrames": 8,
+        "durationsMs": [
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          220
+        ],
+        "cycleMs": 1060,
+        "nominalPoseUpdatesPerSecond": 7.5472,
+        "maxChangedPixelPct": 44.694,
+        "meanChangedPixelPct": 41.1775,
+        "maxCentroidShiftPx": 1.1624,
+        "allSilhouettesExactlyEqual": false,
+        "pairs": [
+          {
+            "changedPixelPct": 44.6239,
+            "premultipliedRgbMae": 13.0015,
+            "silhouetteXorPct": 5.1941,
+            "centroidShiftPx": 0.6263,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 44.1582,
+            "premultipliedRgbMae": 13.1518,
+            "silhouetteXorPct": 4.9923,
+            "centroidShiftPx": 1.1624,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 43.7976,
+            "premultipliedRgbMae": 11.6676,
+            "silhouetteXorPct": 4.6972,
+            "centroidShiftPx": 1.1578,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 44.694,
+            "premultipliedRgbMae": 14.0892,
+            "silhouetteXorPct": 5.6437,
+            "centroidShiftPx": 0.8037,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 43.3118,
+            "premultipliedRgbMae": 9.5145,
+            "silhouetteXorPct": 4.04,
+            "centroidShiftPx": 0.4868,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 42.9087,
+            "premultipliedRgbMae": 8.9639,
+            "silhouetteXorPct": 4.1253,
+            "centroidShiftPx": 0.8724,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 32.9452,
+            "premultipliedRgbMae": 2.8328,
+            "silhouetteXorPct": 1.4108,
+            "centroidShiftPx": 0.3949,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 32.9803,
+            "premultipliedRgbMae": 4.7017,
+            "silhouetteXorPct": 3.3458,
+            "centroidShiftPx": 0.2997,
+            "exactlyEqual": false
+          }
+        ]
+      },
+      "waving": {
+        "uniqueFrames": 4,
+        "durationsMs": [
+          140,
+          140,
+          140,
+          280
+        ],
+        "cycleMs": 700,
+        "nominalPoseUpdatesPerSecond": 5.7143,
+        "maxChangedPixelPct": 38.0334,
+        "meanChangedPixelPct": 34.9434,
+        "maxCentroidShiftPx": 0.6272,
+        "allSilhouettesExactlyEqual": false,
+        "pairs": [
+          {
+            "changedPixelPct": 37.2571,
+            "premultipliedRgbMae": 6.7053,
+            "silhouetteXorPct": 2.233,
+            "centroidShiftPx": 0.6272,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 30.6015,
+            "premultipliedRgbMae": 2.774,
+            "silhouetteXorPct": 0.7541,
+            "centroidShiftPx": 0.0863,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 38.0334,
+            "premultipliedRgbMae": 7.5498,
+            "silhouetteXorPct": 2.3795,
+            "centroidShiftPx": 0.5719,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 33.8817,
+            "premultipliedRgbMae": 4.2314,
+            "silhouetteXorPct": 1.1097,
+            "centroidShiftPx": 0.0399,
+            "exactlyEqual": false
+          }
+        ]
+      },
+      "jumping": {
+        "uniqueFrames": 5,
+        "durationsMs": [
+          140,
+          140,
+          140,
+          140,
+          280
+        ],
+        "cycleMs": 840,
+        "nominalPoseUpdatesPerSecond": 5.9524,
+        "maxChangedPixelPct": 56.1599,
+        "meanChangedPixelPct": 45.8033,
+        "maxCentroidShiftPx": 7.8522,
+        "allSilhouettesExactlyEqual": false,
+        "pairs": [
+          {
+            "changedPixelPct": 40.1542,
+            "premultipliedRgbMae": 5.3298,
+            "silhouetteXorPct": 2.2571,
+            "centroidShiftPx": 0.4024,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 56.1599,
+            "premultipliedRgbMae": 32.8101,
+            "silhouetteXorPct": 17.9403,
+            "centroidShiftPx": 7.8522,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 53.9939,
+            "premultipliedRgbMae": 22.7472,
+            "silhouetteXorPct": 10.3993,
+            "centroidShiftPx": 4.0627,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 53.6008,
+            "premultipliedRgbMae": 22.1202,
+            "silhouetteXorPct": 9.5775,
+            "centroidShiftPx": 3.6493,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 25.1077,
+            "premultipliedRgbMae": 0.8447,
+            "silhouetteXorPct": 0.3204,
+            "centroidShiftPx": 0.1168,
+            "exactlyEqual": false
+          }
+        ]
+      },
+      "failed": {
+        "uniqueFrames": 8,
+        "durationsMs": [
+          140,
+          140,
+          140,
+          140,
+          140,
+          140,
+          140,
+          240
+        ],
+        "cycleMs": 1220,
+        "nominalPoseUpdatesPerSecond": 6.5574,
+        "maxChangedPixelPct": 38.116,
+        "meanChangedPixelPct": 34.2004,
+        "maxCentroidShiftPx": 0.6285,
+        "allSilhouettesExactlyEqual": false,
+        "pairs": [
+          {
+            "changedPixelPct": 34.405,
+            "premultipliedRgbMae": 2.4101,
+            "silhouetteXorPct": 0.7407,
+            "centroidShiftPx": 0.1742,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 34.4777,
+            "premultipliedRgbMae": 3.2013,
+            "silhouetteXorPct": 1.0685,
+            "centroidShiftPx": 0.3061,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 33.6063,
+            "premultipliedRgbMae": 3.5684,
+            "silhouetteXorPct": 1.0667,
+            "centroidShiftPx": 0.4641,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 34.3725,
+            "premultipliedRgbMae": 3.3695,
+            "silhouetteXorPct": 0.882,
+            "centroidShiftPx": 0.4015,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 34.6079,
+            "premultipliedRgbMae": 2.5694,
+            "silhouetteXorPct": 0.7202,
+            "centroidShiftPx": 0.1355,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 33.7916,
+            "premultipliedRgbMae": 2.7626,
+            "silhouetteXorPct": 1.0317,
+            "centroidShiftPx": 0.3675,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 30.2259,
+            "premultipliedRgbMae": 3.4875,
+            "silhouetteXorPct": 1.1127,
+            "centroidShiftPx": 0.2886,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 38.116,
+            "premultipliedRgbMae": 5.363,
+            "silhouetteXorPct": 1.3823,
+            "centroidShiftPx": 0.6285,
+            "exactlyEqual": false
+          }
+        ]
+      },
+      "waiting": {
+        "uniqueFrames": 6,
+        "durationsMs": [
+          150,
+          150,
+          150,
+          150,
+          150,
+          260
+        ],
+        "cycleMs": 1010,
+        "nominalPoseUpdatesPerSecond": 5.9406,
+        "maxChangedPixelPct": 41.9096,
+        "meanChangedPixelPct": 38.9169,
+        "maxCentroidShiftPx": 0.6635,
+        "allSilhouettesExactlyEqual": false,
+        "pairs": [
+          {
+            "changedPixelPct": 41.6441,
+            "premultipliedRgbMae": 5.6484,
+            "silhouetteXorPct": 2.2097,
+            "centroidShiftPx": 0.6635,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 32.0463,
+            "premultipliedRgbMae": 2.3185,
+            "silhouetteXorPct": 1.164,
+            "centroidShiftPx": 0.1658,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 38.2487,
+            "premultipliedRgbMae": 3.7224,
+            "silhouetteXorPct": 0.7302,
+            "centroidShiftPx": 0.2357,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 41.9096,
+            "premultipliedRgbMae": 5.759,
+            "silhouetteXorPct": 1.9332,
+            "centroidShiftPx": 0.4272,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 38.439,
+            "premultipliedRgbMae": 3.9891,
+            "silhouetteXorPct": 1.6746,
+            "centroidShiftPx": 0.5302,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 41.2134,
+            "premultipliedRgbMae": 5.6157,
+            "silhouetteXorPct": 1.2385,
+            "centroidShiftPx": 0.3025,
+            "exactlyEqual": false
+          }
+        ]
+      },
+      "running": {
+        "uniqueFrames": 6,
+        "durationsMs": [
+          120,
+          120,
+          120,
+          120,
+          120,
+          220
+        ],
+        "cycleMs": 820,
+        "nominalPoseUpdatesPerSecond": 7.3171,
+        "maxChangedPixelPct": 43.2192,
+        "meanChangedPixelPct": 40.1488,
+        "maxCentroidShiftPx": 0.515,
+        "allSilhouettesExactlyEqual": false,
+        "pairs": [
+          {
+            "changedPixelPct": 43.0689,
+            "premultipliedRgbMae": 5.8409,
+            "silhouetteXorPct": 1.9336,
+            "centroidShiftPx": 0.4911,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 33.1155,
+            "premultipliedRgbMae": 2.2101,
+            "silhouetteXorPct": 1.0136,
+            "centroidShiftPx": 0.2102,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 39.0625,
+            "premultipliedRgbMae": 3.8502,
+            "silhouetteXorPct": 0.7978,
+            "centroidShiftPx": 0.1743,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 43.2192,
+            "premultipliedRgbMae": 5.9938,
+            "silhouetteXorPct": 1.9488,
+            "centroidShiftPx": 0.515,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 39.7536,
+            "premultipliedRgbMae": 4.1582,
+            "silhouetteXorPct": 1.4481,
+            "centroidShiftPx": 0.4329,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 42.6733,
+            "premultipliedRgbMae": 6.1619,
+            "silhouetteXorPct": 1.3635,
+            "centroidShiftPx": 0.356,
+            "exactlyEqual": false
+          }
+        ]
+      },
+      "review": {
+        "uniqueFrames": 6,
+        "durationsMs": [
+          150,
+          150,
+          150,
+          150,
+          150,
+          280
+        ],
+        "cycleMs": 1030,
+        "nominalPoseUpdatesPerSecond": 5.8252,
+        "maxChangedPixelPct": 40.317,
+        "meanChangedPixelPct": 37.7132,
+        "maxCentroidShiftPx": 0.4572,
+        "allSilhouettesExactlyEqual": false,
+        "pairs": [
+          {
+            "changedPixelPct": 40.2519,
+            "premultipliedRgbMae": 5.0032,
+            "silhouetteXorPct": 1.7499,
+            "centroidShiftPx": 0.4572,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 31.4603,
+            "premultipliedRgbMae": 1.9713,
+            "silhouetteXorPct": 0.809,
+            "centroidShiftPx": 0.1714,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 36.894,
+            "premultipliedRgbMae": 3.3203,
+            "silhouetteXorPct": 1.0528,
+            "centroidShiftPx": 0.1615,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 40.317,
+            "premultipliedRgbMae": 5.159,
+            "silhouetteXorPct": 1.5104,
+            "centroidShiftPx": 0.3334,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 37.4149,
+            "premultipliedRgbMae": 3.6789,
+            "silhouetteXorPct": 1.3973,
+            "centroidShiftPx": 0.4225,
+            "exactlyEqual": false
+          },
+          {
+            "changedPixelPct": 39.9414,
+            "premultipliedRgbMae": 5.2466,
+            "silhouetteXorPct": 1.4067,
+            "centroidShiftPx": 0.3092,
+            "exactlyEqual": false
+          }
+        ]
+      }
+    },
+    "directions": [
+      {
+        "changedPixelPct": 27.206,
+        "premultipliedRgbMae": 3.0446,
+        "silhouetteXorPct": 0.7581,
+        "centroidShiftPx": 0.1855,
+        "exactlyEqual": false
+      },
+      {
+        "changedPixelPct": 26.3922,
+        "premultipliedRgbMae": 2.7473,
+        "silhouetteXorPct": 0.6191,
+        "centroidShiftPx": 0.226,
+        "exactlyEqual": false
+      },
+      {
+        "changedPixelPct": 24.5192,
+        "premultipliedRgbMae": 2.1354,
+        "silhouetteXorPct": 0.5602,
+        "centroidShiftPx": 0.1971,
+        "exactlyEqual": false
+      },
+      {
+        "changedPixelPct": 20.5454,
+        "premultipliedRgbMae": 1.3039,
+        "silhouetteXorPct": 0.3034,
+        "centroidShiftPx": 0.13,
+        "exactlyEqual": false
+      },
+      {
+        "changedPixelPct": 20.6355,
+        "premultipliedRgbMae": 1.2438,
+        "silhouetteXorPct": 0.2392,
+        "centroidShiftPx": 0.1268,
+        "exactlyEqual": false
+      },
+      {
+        "changedPixelPct": 24.5643,
+        "premultipliedRgbMae": 1.9586,
+        "silhouetteXorPct": 0.4337,
+        "centroidShiftPx": 0.1064,
+        "exactlyEqual": false
+      },
+      {
+        "changedPixelPct": 26.0567,
+        "premultipliedRgbMae": 2.6097,
+        "silhouetteXorPct": 0.7324,
+        "centroidShiftPx": 0.2421,
+        "exactlyEqual": false
+      },
+      {
+        "changedPixelPct": 26.6551,
+        "premultipliedRgbMae": 2.9444,
+        "silhouetteXorPct": 0.7731,
+        "centroidShiftPx": 0.2024,
+        "exactlyEqual": false
+      },
+      {
+        "changedPixelPct": 26.903,
+        "premultipliedRgbMae": 2.9916,
+        "silhouetteXorPct": 0.679,
+        "centroidShiftPx": 0.2551,
+        "exactlyEqual": false
+      },
+      {
+        "changedPixelPct": 26.0467,
+        "premultipliedRgbMae": 2.6666,
+        "silhouetteXorPct": 0.629,
+        "centroidShiftPx": 0.2049,
+        "exactlyEqual": false
+      },
+      {
+        "changedPixelPct": 24.3765,
+        "premultipliedRgbMae": 1.9921,
+        "silhouetteXorPct": 0.4843,
+        "centroidShiftPx": 0.1392,
+        "exactlyEqual": false
+      },
+      {
+        "changedPixelPct": 20.2774,
+        "premultipliedRgbMae": 1.2742,
+        "silhouetteXorPct": 0.2945,
+        "centroidShiftPx": 0.1184,
+        "exactlyEqual": false
+      },
+      {
+        "changedPixelPct": 20.4878,
+        "premultipliedRgbMae": 1.2622,
+        "silhouetteXorPct": 0.3586,
+        "centroidShiftPx": 0.1354,
+        "exactlyEqual": false
+      },
+      {
+        "changedPixelPct": 24.6194,
+        "premultipliedRgbMae": 1.9972,
+        "silhouetteXorPct": 0.4871,
+        "centroidShiftPx": 0.2065,
+        "exactlyEqual": false
+      },
+      {
+        "changedPixelPct": 26.58,
+        "premultipliedRgbMae": 2.6967,
+        "silhouetteXorPct": 0.6497,
+        "centroidShiftPx": 0.2067,
+        "exactlyEqual": false
+      },
+      {
+        "changedPixelPct": 27.1259,
+        "premultipliedRgbMae": 3.049,
+        "silhouetteXorPct": 0.7733,
+        "centroidShiftPx": 0.2722,
+        "exactlyEqual": false
+      }
+    ]
+  },
+  "note": "Image differences are diagnostics, not naturalness scores. All previews are simulations, not native application screenshots."
+}

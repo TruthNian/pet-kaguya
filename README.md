@@ -2,6 +2,45 @@
 
 Local Kaguya sprite assets, reproducible animation tools, and an honest quality audit.
 
+## Gentle-motion candidate
+
+`pet/` contains the compatible candidate. All nine animated states and sixteen look directions have been rebuilt from locked original-pixel poses. No generated replacement character, host patch, or claimed native FPS/resolution upgrade.
+
+The complete usable baseline is tagged **`baseline-phase2-complete-20261008`**. The earlier tag `baseline-phase2-20261008` contains only metadata due to an initial copy-path error; it is not an installable baseline.
+
+- [First principles and five-step plan (中文)](docs/PLAN.zh-CN.md)
+- [Real problems, fixes, remaining limitations (中文)](docs/ISSUES.zh-CN.md)
+- [Validation and uncertainty (中文)](docs/VALIDATION.zh-CN.md)
+- [Reproducible before/after metrics](qa/comparison.json)
+
+![113 px nearest-neighbour simulation, old above / candidate below](qa/comparison-113px.png)
+
+### Build / test / preview
+
+Requires Python 3.12 and Node 22+:
+
+```sh
+python -m pip install -r requirements.txt
+python tools/build.py
+python tools/audit.py
+python -m unittest discover -s tests -v
+node --test tests/clock.test.mjs
+python -m http.server 8767 --bind 127.0.0.1
+```
+
+Open `http://127.0.0.1:8767/viewer/`. It uses native frame durations and three-loop fallback by default. Smooth sampling and persistent looping are labelled experiments, not native app improvements.
+
+### Windows install / rollback
+
+```powershell
+./tools/install.ps1 -WhatIf
+./tools/install.ps1
+# Restore baseline only after checking the currently installed atlas hash:
+./tools/install.ps1 -Baseline -ExpectedCurrentHash '<current atlas SHA-256>'
+```
+
+The installer backs up the two local pet files, rejects unexpected current hashes, and does not change app settings or binaries. Reselect/reload the local pet manually if the host caches it. A file install does not confirm that the live overlay is displaying it.
+
 ## Baseline
 
 `baseline/phase2/` is the exact usable local version archived on 2026-10-08, **not** a claim that its animation is finished.
