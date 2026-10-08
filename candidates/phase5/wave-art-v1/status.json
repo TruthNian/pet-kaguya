@@ -1,0 +1,8 @@
+{
+  "role": "rejected low-wave placement experiment",
+  "acceptedAsWaveKeyPose": false,
+  "reason": "The palm/fingertips were drawn at about y=450..540 instead of the requested y>=595 low shoulder-side gesture. Do not crop off the fingers or silently expand the permitted edit region to accept this result.",
+  "fullRedrawAccepted": false,
+  "installed": false,
+  "installableFullAtlas": false
+}

@@ -1,0 +1,16 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "faceShapeLocked": true,
+  "nativeRow": 3,
+  "durationsMs": [140,140,140,280],
+  "sequence": ["middle","peak","middle","relaxed"],
+  "repeatBeforeIdle": 3,
+  "nativeInterpolation": false,
+  "visualMotionApproval": "pending",
+  "limitations": [
+    "Three authored held cels, not a complete articulated arm rig or continuously interpolated motion.",
+    "The two raised-arm cels require visual checking for hand volume, cloth folds and backing seams; bounded pixels do not establish aesthetic quality.",
+    "Every native 700 ms cycle repeats raise/lower and a 280 ms rest; the atlas cannot defer lowering until the third cycle.",
+    "Rest is the exact canonical cel; this is an intentional action exit, not proof of a foreground matte that reconstructs the neutral arm."
+  ]
+}

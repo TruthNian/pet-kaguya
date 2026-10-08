@@ -1,0 +1,42 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "generatedSha256": "FD46154D7C426B74E0F1F02EC0A0783F2B9398D71BB534634506783D18FB6955",
+  "role": "lower transition arm cel candidate from a face-free fixed crop; not a geometric halfway pose",
+  "boundedChangedPixels": 63557,
+  "boundedChangedPixelsOutsidePatch": 0,
+  "rawChangedPixelsOutsidePatch": 84647,
+  "poseRGBAHash": "28F03C98CCF9A03F8E1C45069B8E452714E83BEC95D8C01FBF3A7D6CA23403F7",
+  "frameRGBAHash": "D4B92531FFB5559FD99A006816D011601E83C56E2E15F2465FED768C7F0E6789",
+  "sameSourceCoordinateCamera": true,
+  "camera": {
+    "scale": 0.15833333333333333,
+    "x": 0.36666666666667425,
+    "y": 7.883333333333354,
+    "visibleBBox": [
+      142,
+      26,
+      1066,
+      1226
+    ],
+    "floor": 202,
+    "topReserve": 12,
+    "cell": [
+      192,
+      208
+    ]
+  },
+  "facialGeometryRepair": false,
+  "sourceCapeAndForegroundLockPreserved": true,
+  "fullRedrawAccepted": false,
+  "articulatedArmBuilt": false,
+  "animationBuilt": false,
+  "visualAcceptance": "pending",
+  "installableFullAtlas": false,
+  "installed": false,
+  "cropProjection": "uniform width-derived scale, fixed source rectangle, no object bounds fitting; tiny extra raw height clipped",
+  "rawCanvas": [
+    971,
+    1619
+  ],
+  "placementLimitation": "Hand lowered and turned toward relaxation, closer to relaxed height than the requested halfway position. This is a lower transition cel, not an exact midpoint. Crop output is enlarged and differs slightly in aspect ratio; only the fixed uniform crop projection is adopted. Cloth folds, hand volume and discrete motion rhythm still need visual acceptance."
+}

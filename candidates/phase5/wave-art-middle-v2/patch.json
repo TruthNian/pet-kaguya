@@ -1,0 +1,18 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "generatedSha256": "FD46154D7C426B74E0F1F02EC0A0783F2B9398D71BB534634506783D18FB6955",
+  "canvas": [1205,1306],
+  "role": "lower transition arm cel candidate from a face-free fixed crop; not a geometric halfway pose",
+  "rawCanvas": [971,1619],
+  "sourceCrop": [250,500,550,1000],
+  "cropProjection": "uniform width-derived scale, fixed source rectangle, no object bounds fitting; tiny extra raw height clipped",
+  "foregroundPolygon": [[399,574],[443,576],[482,577],[491,598],[502,625],[512,628],[503,663],[481,709],[454,758],[422,803],[393,827],[364,830],[346,817],[338,791],[339,773],[324,773],[316,762],[318,747],[300,755],[290,753],[287,742],[294,731],[284,735],[275,732],[274,722],[281,714],[294,708],[282,710],[276,704],[275,695],[283,690],[312,688],[333,681],[346,675],[342,670],[327,679],[312,670],[305,665],[313,650],[333,625],[365,598]],
+  "editBudget": [270,560,525,835],
+  "edgeFeatherSourcePx": 1.5,
+  "fullRedrawAccepted": false,
+  "newFaceGeometryAllowed": false,
+  "visualAcceptance": "pending",
+  "placementLimitation": "Hand lowered and turned toward relaxation, closer to relaxed height than the requested halfway position. This is a lower transition cel, not an exact midpoint. Crop output is enlarged and differs slightly in aspect ratio; only the fixed uniform crop projection is adopted. Cloth folds, hand volume and discrete motion rhythm still need visual acceptance.",
+  "installableFullAtlas": false,
+  "installed": false
+}

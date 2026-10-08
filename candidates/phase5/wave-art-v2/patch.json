@@ -1,0 +1,15 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "generatedSha256": "0EF5AB97408BA1822AE62BF7532E04F7890D2DB51DE5E1EE5CDA229245D3886C",
+  "canvas": [1205, 1306],
+  "role": "low greeting peak cel candidate, not a full redraw or articulated rig",
+  "foregroundPolygon": [[414,569],[449,574],[482,577],[492,596],[501,621],[511,623],[508,657],[489,696],[461,743],[431,779],[403,809],[379,821],[354,821],[335,802],[323,780],[319,742],[320,705],[327,655],[313,649],[300,638],[300,620],[311,609],[307,594],[311,580],[322,572],[339,582],[351,596],[354,574],[363,552],[377,550],[386,560],[396,592],[411,589],[424,599],[424,614],[414,635],[407,651]],
+  "editBudget": [295, 545, 525, 835],
+  "edgeFeatherSourcePx": 1.5,
+  "fullRedrawAccepted": false,
+  "newFaceGeometryAllowed": false,
+  "visualAcceptance": "pending",
+  "placementLimitation": "The generated fingertips are near y=560, not the requested y=600. They are below the chin but partly above the cape bottom. Guide agreement is approximate, not exact.",
+  "installableFullAtlas": false,
+  "installed": false
+}
