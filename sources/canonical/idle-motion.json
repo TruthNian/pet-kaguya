@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "state": "idle",
+  "durationsMs": [1680, 660, 660, 840, 840, 1920],
+  "reason": "quiet held pose plus a small inhale/exhale; no prolonged closed-eye frame",
+  "units": {"bodyY": "output cell pixels", "earAngle": "degrees", "hairAngle": "degrees"},
+  "keyframes": [
+    {"bodyY": 0.00, "earAngle": 0.00, "hairAngle": 0.00},
+    {"bodyY": -0.30, "earAngle": -0.10, "hairAngle": -0.02},
+    {"bodyY": -0.50, "earAngle": 0.16, "hairAngle": 0.04},
+    {"bodyY": -0.25, "earAngle": 0.20, "hairAngle": 0.12},
+    {"bodyY": 0.10, "earAngle": 0.08, "hairAngle": 0.15},
+    {"bodyY": 0.00, "earAngle": 0.00, "hairAngle": 0.00}
+  ],
+  "faceShapeLocked": true,
+  "closedEyeFrames": 0,
+  "shortBlinkCapability": "not available in the native slow-idle durations",
+  "duplicateHeldFramesAllowed": true,
+  "otherStatesBuilt": false,
+  "visualMotionApproval": "pending"
+}

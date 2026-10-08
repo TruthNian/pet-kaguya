@@ -1,0 +1,65 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "source": "sources/canonical/artwork.png",
+  "state": "idle",
+  "generatedFromRejectedSources": false,
+  "facialGeometryRepair": false,
+  "closedEyeFrames": 0,
+  "durationsMs": [
+    1680,
+    660,
+    660,
+    840,
+    840,
+    1920
+  ],
+  "totalDurationMs": 6600,
+  "method": "authored native holds; rigid face/upper-body breath, local non-face ear/hair fields",
+  "sampling": "3x coverage integration from high-resolution source, one terminal Lanczos downsample",
+  "camera": {
+    "scale": 0.15833333333333333,
+    "x": 0.36666666666667425,
+    "y": 7.883333333333354,
+    "visibleBBox": [
+      142,
+      26,
+      1066,
+      1226
+    ],
+    "floor": 202,
+    "topReserve": 12,
+    "cell": [
+      192,
+      208
+    ]
+  },
+  "alphaCleanup": {
+    "distantVeryFaintPixelsRemoved": 4177,
+    "removedOpacitySum": 4971,
+    "maximumRemovedAlpha": 8,
+    "retainedFringeRadius": 4,
+    "paintedPixelsAboveAlpha8PreservedExactly": true,
+    "transparentRGBPixelsCleared": 859,
+    "sourceFileModified": false,
+    "faceShapeModified": false
+  },
+  "visualMotionApproval": "pending",
+  "otherStatesBuilt": false,
+  "installableFullAtlas": false,
+  "installed": false,
+  "frameHashes": [
+    "E049C9010F4C3C2B2FD686620DCC1BF3FD97B4A97A5FE2913B69E4EA1924C6A8",
+    "409CACA82EFCCA7B445357D75A791F7AA1F831405BE852351DADBE3DC923D00D",
+    "27ECB0159235D3C250B17BFD3ED030AC809A14417698CE3E3415D053B37EBF32",
+    "77371B54FC0DA770B8D25309B0E2407655442A7C4CE969A5DF9E0BC5B1E75572",
+    "BDEE408A5CF0939715AB4B02F9BCEF9A46FDC896768BBDE3A932F82287B46F48",
+    "E049C9010F4C3C2B2FD686620DCC1BF3FD97B4A97A5FE2913B69E4EA1924C6A8"
+  ],
+  "missingArtwork": [
+    "background beneath lifted arms/sleeves",
+    "complete articulated arms",
+    "side-view body projections",
+    "hidden cloth folds",
+    "hand-to-chin pose"
+  ]
+}

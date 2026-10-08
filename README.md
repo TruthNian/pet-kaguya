@@ -4,6 +4,8 @@ Local Kaguya sprite assets, reproducible animation tools, and an honest quality 
 
 ## Current work: identity repair before motion
 
+Phase 5 now has an **idle-only motion candidate** in `candidates/phase5/idle/`, rebuilt exclusively from the selected v3 mother pose. It preserves face geometry as a rigid translation, fixes entire shoes, and uses actual six-pose/6600 ms native holds. The viewer compares fixed pose vs motion at real sizes. This is not a full atlas or installable pet; other states and 16 directions are still incomplete. [Current progress and limits (中文)](docs/PHASE5.zh-CN.md).
+
 The user has now selected **the earlier gently tapered AI-generated mother pose, v3**. The authoritative immutable source is `sources/canonical/artwork.png` with its decision/hash in `sources/canonical/manifest.json`. Its face shape is locked; no fallback to rejected face composites or procedural facial-geometry repairs. The development viewer defaults to this selected pose. Animation is **not built or approved yet**, and the installed atlas remains untouched.
 
 `candidates/phase4/static/` preserves a **rejected static prototype**, not an installable animation or approved foundation. The user agreed on the intended original front-idle proportions, restrained closed smile, mild failed expression, and chin-touching waiting gesture, but subsequently reported that many rendered images looked very bad. Direction agreement is not result approval.
@@ -40,12 +42,14 @@ python -m pip install -r requirements.txt
 python tools/build.py --out work/historical-rebuild
 python tools/identity.py
 python tools/review_jaw.py
+python tools/build_idle.py
+python tools/verify_review_rebuild.py
 python -m unittest discover -s tests -v
-node --test tests/clock.test.mjs tests/review.test.mjs
+node --test tests/clock.test.mjs tests/review.test.mjs tests/idle-clock.test.mjs
 python -m http.server 8767 --bind 127.0.0.1
 ```
 
-Open `http://127.0.0.1:8767/viewer/`. The top section displays only the selected v3 complete mother pose and its 113 px sampling simulation. Rejected historical states are collapsed by default and decode only when explicitly opened. The old-animation option uses native frame durations and three-loop fallback. Smooth sampling and persistent looping are experiments, not native improvements. Collapsed historical review schedules no animation callback.
+Open `http://127.0.0.1:8767/viewer/`. The top section compares the new idle candidate at the real 6.6 s period, with pause, single-pose inspection, and reduced motion. The accepted mother pose is shown below it. Rejected historical states are collapsed by default and decode only when explicitly opened. The old-animation option uses native frame durations and three-loop fallback. Smooth sampling and persistent looping are experiments, not native improvements. Collapsed historical review schedules no animation callback.
 
 ### Windows install / rollback
 
