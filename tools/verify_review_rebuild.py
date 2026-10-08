@@ -44,6 +44,14 @@ def main():
     load_canonical()  # Re-check the immutable selected source after all builds.
     changed = [key for key in before.keys() | after.keys() if before.get(key) != after.get(key)]
     if changed:
+        for key in sorted(changed):
+            if key.endswith('.json') and key in before and key in after:
+                # Preserve exact comparison, but identify the divergent field
+                # before fixing it. Do not mask raster or numeric differences.
+                a,b = before[key],after[key]
+                fields = {field:dict(saved=a.get(field),rebuilt=b.get(field))
+                          for field in a.keys() | b.keys() if a.get(field)!=b.get(field)}
+                print(json.dumps(dict(artifact=key,changedFields=fields),indent=2))
         raise SystemExit('Rebuilt content changed: '+', '.join(sorted(changed)))
     byte_changes = [key for key in encoded_before if encoded_before[key] != encoded_after[key]]
     print(json.dumps(dict(checkedLogicalArtifacts=len(before), decodedPixelsAndMetadataMatch=True,
