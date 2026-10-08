@@ -1,0 +1,139 @@
+{
+  "artworkSha256": "EB19AE7035F2777E61FFDDD095CDA70B3CC02B70019D3255B99AC877FC9CAA8C",
+  "targetV2Sha256": "A627FC599B76025E767682991027AAA3A0E96DF26465C86BD5E077E65A39394A",
+  "generationMode": "built-in image_gen edit: v2 target + original proportion reference",
+  "requestedScope": "more noticeable lower-cheek convergence, soft short chin",
+  "actualScope": "small full-figure redraw; requested further cheek convergence not visibly achieved",
+  "userFeedbackV2": "Looks okay, but is the face too round? (tentative, not final approval)",
+  "adoptedForAnimation": false,
+  "animationBuilt": false,
+  "installed": false,
+  "nativeResolutionChanged": false,
+  "sharedPreviewTransform": {
+    "framingAlphaThreshold": 8,
+    "referenceBBox": [
+      22,
+      5,
+      169,
+      203
+    ],
+    "v2VisibleBBox": [
+      142,
+      25,
+      1062,
+      1223
+    ],
+    "commonInputCanvas": [
+      1205,
+      1306
+    ],
+    "uniformScale": 0.1652754590984975,
+    "paste": [
+      -4,
+      1
+    ],
+    "resizedSize": [
+      199,
+      216
+    ],
+    "independentSubjectOrFaceFitting": false,
+    "artworkAlphaModified": false
+  },
+  "editDiagnostics": {
+    "inputCanvasSizes": [
+      [
+        1205,
+        1305
+      ],
+      [
+        1205,
+        1306
+      ]
+    ],
+    "sameCanvasSize": false,
+    "jawDiagnosticROI": [
+      395,
+      360,
+      815,
+      465
+    ],
+    "outsideROIAlphaThreshold": 64,
+    "outsideROICheckedPixels": 751683,
+    "outsideROIChangedPixels": 749241,
+    "outsideROIChangedFraction": 0.9967512901050044,
+    "outsideROIMeanAbsoluteRGBA": 11.062098983214998,
+    "exactlyJawOnly": false,
+    "interpretation": "strict non-jaw preservation failed; not an aesthetic quality score",
+    "v2": {
+      "alphaBBoxes": {
+        "0": [
+          0,
+          19,
+          1169,
+          1273
+        ],
+        "8": [
+          142,
+          25,
+          1062,
+          1223
+        ],
+        "64": [
+          143,
+          26,
+          1062,
+          1222
+        ],
+        "128": [
+          144,
+          26,
+          1061,
+          1222
+        ],
+        "240": [
+          144,
+          27,
+          1061,
+          1221
+        ]
+      },
+      "veryFaintAlphaPixels": 46453
+    },
+    "v3": {
+      "alphaBBoxes": {
+        "0": [
+          33,
+          9,
+          1153,
+          1306
+        ],
+        "8": [
+          140,
+          24,
+          1067,
+          1225
+        ],
+        "64": [
+          141,
+          25,
+          1066,
+          1225
+        ],
+        "128": [
+          141,
+          25,
+          1066,
+          1224
+        ],
+        "240": [
+          142,
+          26,
+          1065,
+          1224
+        ]
+      },
+      "veryFaintAlphaPixels": 37690
+    }
+  },
+  "userApprovalV4": "generated-artwork direction accepted; exact file clarification pending"
+}

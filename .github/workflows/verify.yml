@@ -15,7 +15,15 @@ jobs:
           node-version: '22'
       - run: python -m pip install -r requirements.txt
       - run: python -m unittest discover -s tests -v
-      - run: node --test tests/clock.test.mjs
+      - run: node --test tests/clock.test.mjs tests/review.test.mjs
+      - name: Rebuild static identity review candidates
+        run: |
+          python tools/identity.py
+          git diff --exit-code -- candidates/phase4/static
+      - name: Rebuild shared-coordinate mother-pose review
+        run: |
+          python tools/review_jaw.py
+          git diff --exit-code -- candidates/phase4/canonical-v3
       - name: Rebuild and compare decoded pixels
         run: |
           python tools/build.py --out work/rebuild

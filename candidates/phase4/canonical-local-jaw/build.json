@@ -1,0 +1,31 @@
+{
+  "sourceSha256": "A627FC599B76025E767682991027AAA3A0E96DF26465C86BD5E077E65A39394A",
+  "canvasSize": [
+    1205,
+    1305
+  ],
+  "authoredSupport": [
+    455,
+    388,
+    775,
+    460
+  ],
+  "inverseHorizontalExpansion": 0.08,
+  "verticalDisplacement": 0,
+  "protectedCentralBand": [
+    550,
+    680
+  ],
+  "minimumSampledHorizontalJacobian": 0.32793359718255033,
+  "maxHorizontalSampleDisplacement": 10.829168640000034,
+  "method": "same v2 pixels, bounded smooth horizontal inverse map, premultiplied bilinear interpolation",
+  "requestedScope": "reduce lower-cheek fullness; preserve soft short chin, eyes, mouth and costume",
+  "actualScope": "lower face sides and immediately adjacent hair boundary only",
+  "generatedArtwork": false,
+  "donorCompositing": false,
+  "globallyResampled": false,
+  "visualApproval": "rejected: user chose the generated illustration and stopped programmatic face correction",
+  "rejectionReason": "local fields kinked hair boundaries; positive Jacobian did not imply visual correctness",
+  "adoptedForAnimation": false,
+  "installed": false
+}

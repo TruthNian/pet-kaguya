@@ -1,0 +1,363 @@
+{
+  "sourceSha256": "71F7E36AD459D99C9DE1AC6033A968CDF4C125EB742FFD5FF19B8E81BBA56EF7",
+  "outputSha256": "238C9ECEC64AB39B6F9CE04B9795E107996C1F97E06BA20B5E5A723EC940E3F1",
+  "outputBytes": 2035254,
+  "atlasSize": [
+    1536,
+    2288
+  ],
+  "cellSize": [
+    192,
+    208
+  ],
+  "frames": [
+    {
+      "row": 0,
+      "col": 0,
+      "phase": 0.0,
+      "durationMs": 1680
+    },
+    {
+      "row": 0,
+      "col": 1,
+      "phase": 0.2545454545454545,
+      "durationMs": 660
+    },
+    {
+      "row": 0,
+      "col": 2,
+      "phase": 0.35454545454545455,
+      "durationMs": 660
+    },
+    {
+      "row": 0,
+      "col": 3,
+      "phase": 0.45454545454545453,
+      "durationMs": 840
+    },
+    {
+      "row": 0,
+      "col": 4,
+      "phase": 0.5818181818181818,
+      "durationMs": 840
+    },
+    {
+      "row": 0,
+      "col": 5,
+      "phase": 0.7090909090909091,
+      "durationMs": 1920
+    },
+    {
+      "row": 1,
+      "col": 0,
+      "phase": 0.0,
+      "durationMs": 120
+    },
+    {
+      "row": 1,
+      "col": 1,
+      "phase": 0.11320754716981132,
+      "durationMs": 120
+    },
+    {
+      "row": 1,
+      "col": 2,
+      "phase": 0.22641509433962265,
+      "durationMs": 120
+    },
+    {
+      "row": 1,
+      "col": 3,
+      "phase": 0.33962264150943394,
+      "durationMs": 120
+    },
+    {
+      "row": 1,
+      "col": 4,
+      "phase": 0.4528301886792453,
+      "durationMs": 120
+    },
+    {
+      "row": 1,
+      "col": 5,
+      "phase": 0.5660377358490566,
+      "durationMs": 120
+    },
+    {
+      "row": 1,
+      "col": 6,
+      "phase": 0.6792452830188679,
+      "durationMs": 120
+    },
+    {
+      "row": 1,
+      "col": 7,
+      "phase": 0.7924528301886793,
+      "durationMs": 220
+    },
+    {
+      "row": 2,
+      "col": 0,
+      "phase": 0.0,
+      "durationMs": 120
+    },
+    {
+      "row": 2,
+      "col": 1,
+      "phase": 0.11320754716981132,
+      "durationMs": 120
+    },
+    {
+      "row": 2,
+      "col": 2,
+      "phase": 0.22641509433962265,
+      "durationMs": 120
+    },
+    {
+      "row": 2,
+      "col": 3,
+      "phase": 0.33962264150943394,
+      "durationMs": 120
+    },
+    {
+      "row": 2,
+      "col": 4,
+      "phase": 0.4528301886792453,
+      "durationMs": 120
+    },
+    {
+      "row": 2,
+      "col": 5,
+      "phase": 0.5660377358490566,
+      "durationMs": 120
+    },
+    {
+      "row": 2,
+      "col": 6,
+      "phase": 0.6792452830188679,
+      "durationMs": 120
+    },
+    {
+      "row": 2,
+      "col": 7,
+      "phase": 0.7924528301886793,
+      "durationMs": 220
+    },
+    {
+      "row": 3,
+      "col": 0,
+      "phase": 0.0,
+      "durationMs": 140
+    },
+    {
+      "row": 3,
+      "col": 1,
+      "phase": 0.2,
+      "durationMs": 140
+    },
+    {
+      "row": 3,
+      "col": 2,
+      "phase": 0.4,
+      "durationMs": 140
+    },
+    {
+      "row": 3,
+      "col": 3,
+      "phase": 0.6,
+      "durationMs": 280
+    },
+    {
+      "row": 4,
+      "col": 0,
+      "phase": 0.0,
+      "durationMs": 140
+    },
+    {
+      "row": 4,
+      "col": 1,
+      "phase": 0.16666666666666666,
+      "durationMs": 140
+    },
+    {
+      "row": 4,
+      "col": 2,
+      "phase": 0.3333333333333333,
+      "durationMs": 140
+    },
+    {
+      "row": 4,
+      "col": 3,
+      "phase": 0.5,
+      "durationMs": 140
+    },
+    {
+      "row": 4,
+      "col": 4,
+      "phase": 0.6666666666666666,
+      "durationMs": 280
+    },
+    {
+      "row": 5,
+      "col": 0,
+      "phase": 0.0,
+      "durationMs": 140
+    },
+    {
+      "row": 5,
+      "col": 1,
+      "phase": 0.11475409836065574,
+      "durationMs": 140
+    },
+    {
+      "row": 5,
+      "col": 2,
+      "phase": 0.22950819672131148,
+      "durationMs": 140
+    },
+    {
+      "row": 5,
+      "col": 3,
+      "phase": 0.3442622950819672,
+      "durationMs": 140
+    },
+    {
+      "row": 5,
+      "col": 4,
+      "phase": 0.45901639344262296,
+      "durationMs": 140
+    },
+    {
+      "row": 5,
+      "col": 5,
+      "phase": 0.5737704918032787,
+      "durationMs": 140
+    },
+    {
+      "row": 5,
+      "col": 6,
+      "phase": 0.6885245901639344,
+      "durationMs": 140
+    },
+    {
+      "row": 5,
+      "col": 7,
+      "phase": 0.8032786885245902,
+      "durationMs": 240
+    },
+    {
+      "row": 6,
+      "col": 0,
+      "phase": 0.0,
+      "durationMs": 150
+    },
+    {
+      "row": 6,
+      "col": 1,
+      "phase": 0.1485148514851485,
+      "durationMs": 150
+    },
+    {
+      "row": 6,
+      "col": 2,
+      "phase": 0.297029702970297,
+      "durationMs": 150
+    },
+    {
+      "row": 6,
+      "col": 3,
+      "phase": 0.44554455445544555,
+      "durationMs": 150
+    },
+    {
+      "row": 6,
+      "col": 4,
+      "phase": 0.594059405940594,
+      "durationMs": 150
+    },
+    {
+      "row": 6,
+      "col": 5,
+      "phase": 0.7425742574257426,
+      "durationMs": 260
+    },
+    {
+      "row": 7,
+      "col": 0,
+      "phase": 0.0,
+      "durationMs": 120
+    },
+    {
+      "row": 7,
+      "col": 1,
+      "phase": 0.14634146341463414,
+      "durationMs": 120
+    },
+    {
+      "row": 7,
+      "col": 2,
+      "phase": 0.2926829268292683,
+      "durationMs": 120
+    },
+    {
+      "row": 7,
+      "col": 3,
+      "phase": 0.43902439024390244,
+      "durationMs": 120
+    },
+    {
+      "row": 7,
+      "col": 4,
+      "phase": 0.5853658536585366,
+      "durationMs": 120
+    },
+    {
+      "row": 7,
+      "col": 5,
+      "phase": 0.7317073170731707,
+      "durationMs": 220
+    },
+    {
+      "row": 8,
+      "col": 0,
+      "phase": 0.0,
+      "durationMs": 150
+    },
+    {
+      "row": 8,
+      "col": 1,
+      "phase": 0.14563106796116504,
+      "durationMs": 150
+    },
+    {
+      "row": 8,
+      "col": 2,
+      "phase": 0.2912621359223301,
+      "durationMs": 150
+    },
+    {
+      "row": 8,
+      "col": 3,
+      "phase": 0.4368932038834951,
+      "durationMs": 150
+    },
+    {
+      "row": 8,
+      "col": 4,
+      "phase": 0.5825242718446602,
+      "durationMs": 150
+    },
+    {
+      "row": 8,
+      "col": 5,
+      "phase": 0.7281553398058253,
+      "durationMs": 280
+    }
+  ],
+  "method": "locked original-pixel poses and continuous 2-D deformation fields",
+  "generatedArtwork": false,
+  "globalFramingScale": 0.97,
+  "rgbQuantizationStep": 4,
+  "nativeTimingChanged": false,
+  "nativeFrameCountChanged": false
+}

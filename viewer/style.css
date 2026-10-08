@@ -8,4 +8,7 @@ select,button{font:inherit;color:inherit;background:#252b30;border:1px solid #46
 .stage article+article{border-left:1px solid #394245}.stage h2{position:absolute;top:16px;left:24px;font-size:13px;font-weight:400;color:#939f9f}
 .dark{background:#20252b}.light{background:#f0eee9}.light h2{color:#605b54}.grid{background:repeating-conic-gradient(#41474b 0 25%,#343a3e 0 50%) 0/20px 20px}
 canvas{display:block}output{display:block;min-height:44px;font-size:12px;font-variant-numeric:tabular-nums;color:#baae9f;padding:16px 0}footer{border-top:1px solid #343a3b;margin-top:8px;padding-top:12px}footer p{font-size:12px}a{color:#d4b286}
+.notice{border-left:3px solid #c79876;padding:8px 12px;background:#302621;color:#e3c4ac}button:disabled,input:disabled{opacity:.45;cursor:default}
+.mother-review{border:1px solid #394245;border-radius:14px;padding:20px;margin:24px 0 36px}.mother-review h2,.history-heading{font-size:18px;font-weight:500}.mother-review figure{margin:20px 0}.mother-review img{display:block;max-width:100%;height:auto}.mother-review figcaption{font-size:12px;color:#a3aaad;margin-top:8px}.native-comparison{image-rendering:pixelated}
+.mother-poses{display:flex;align-items:center;justify-content:space-around;gap:24px;flex-wrap:wrap}.mother-poses figure{max-width:100%}summary{cursor:pointer;font-size:13px;color:#a3aaad}
 @media(max-width:640px){main{padding:24px 16px}h1{font-size:26px}.controls{gap:12px}.stage article{padding:60px 8px 20px;min-height:325px}.stage h2{left:12px;font-size:12px}.stage{min-height:325px}}

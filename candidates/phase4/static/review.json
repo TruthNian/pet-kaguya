@@ -1,0 +1,45 @@
+{
+  "sourceSha256": "9A56A238A4D8656E11D30D5183735A5A4CEBF5854E22B53879520E6BF222146D",
+  "phase": "static identity review; animation not rebuilt",
+  "frontHeadSource": [
+    0,
+    0
+  ],
+  "frontBodySources": {
+    "waiting": [
+      7,
+      1
+    ],
+    "running": [
+      7,
+      0
+    ],
+    "waving": [
+      3,
+      1
+    ],
+    "review": [
+      8,
+      2
+    ]
+  },
+  "expressionMethod": "bounded same-face skin bridge and procedural mouth/brow lines; eyes unchanged",
+  "donorFaceCompositing": false,
+  "globalFramingScale": 1.0,
+  "rgbQuantizationStep": null,
+  "automaticChecksDoNotProveBeauty": true,
+  "userDirectionAgreement": "original front idle proportions; closed smile; mild failed; chin-touching waiting",
+  "userVisualApproval": "rejected: user reports bad Phase 4 faces and clothing; Phase 3 has different problems",
+  "approvedForAnimation": false,
+  "frameHashes": {
+    "idle": "EBE7ABA7817EF8B85A4C4198EBA45E2D71FEA05BE3EE47CE68B409A0935D02E4",
+    "run_right": "437A437DA2B696F95D7617462D39BE73C256BCC3676A5EED0BD3C6BBE0DF9773",
+    "run_left": "3676F4139EDAFF6C03BC2B2DAA4A7E7D5FE6A9026803F3C21500C7F19CE1DFE4",
+    "waving": "26A953397EF3B6F7183BACEED435E5574E1450828731442EA64ADD295E92675D",
+    "jumping": "EBE7ABA7817EF8B85A4C4198EBA45E2D71FEA05BE3EE47CE68B409A0935D02E4",
+    "failed": "E991DDF0CA12A844DCCFCBEEC5D8A103D0CEC2C647AAEEA739691AC1EDF5E755",
+    "waiting": "779091818064D0673A55F4CD24C085324A624F351969B2BAAB808CB32FBA144D",
+    "running": "CDE2F70465E000BE2AE098A727D403ABDAF1BC35DDDF6603FE0DA1D089A5FC0D",
+    "review": "FF54DE94B2ED9D59E27D604A947D2CDC17EB3D7CF0865ADDED1A51B1AC4BABB9"
+  }
+}

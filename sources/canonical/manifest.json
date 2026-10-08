@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "role": "accepted complete mother-pose; not an animation atlas",
+  "artwork": "sources/canonical/artwork.png",
+  "sha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "dimensions": [1205, 1306],
+  "candidate": "canonical-v3",
+  "provenance": "built-in image_gen edit: v2 target, original local front pose as proportion reference",
+  "prompt": "candidates/phase4/canonical-v3/prompt.txt",
+  "userChoice": "前一张轻收下颌的 AI 生成立绘",
+  "approvedAsMotherPose": true,
+  "faceShapeLocked": true,
+  "facialGeometryRepairAllowed": false,
+  "fallbackToRejectedCandidatesAllowed": false,
+  "rejectedAsProductionSources": ["phase3 face composites", "phase4/static", "canonical-local-jaw"],
+  "originalPixelIdentityPreserved": false,
+  "allAnimationStatesApproved": false,
+  "nativeResolutionChanged": false,
+  "installed": false
+}

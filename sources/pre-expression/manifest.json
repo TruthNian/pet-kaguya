@@ -1,0 +1,8 @@
+{
+  "sha256": "9A56A238A4D8656E11D30D5183735A5A4CEBF5854E22B53879520E6BF222146D",
+  "bytes": 3663586,
+  "description": "Earlier local atlas before Phase 2 expression compositing and RGB quantization. One chromatic outlier at atlas (420,514), r2c2 local (36,98), was already corrected from (69,212,41) to (87,153,26). This is a source archive, not an anatomically validated model.",
+  "atlasSize": [1536, 2288],
+  "cellSize": [192, 208],
+  "generatedArtwork": false
+}

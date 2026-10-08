@@ -1,0 +1,140 @@
+{
+  "artworkSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "targetV2Sha256": "A627FC599B76025E767682991027AAA3A0E96DF26465C86BD5E077E65A39394A",
+  "generationMode": "built-in image_gen edit: v2 target + original proportion reference",
+  "requestedScope": "lower cheeks/jaw only, all other content unchanged",
+  "actualScope": "small full-figure redraw/resampling; strict non-jaw invariants failed",
+  "userFeedbackV2": "Looks okay, but is the face too round? (tentative, not final approval)",
+  "userApprovalV3": "accepted as mother-pose; face shape locked by explicit user choice",
+  "adoptedForAnimation": true,
+  "animationBuilt": false,
+  "installed": false,
+  "nativeResolutionChanged": false,
+  "sharedPreviewTransform": {
+    "framingAlphaThreshold": 8,
+    "referenceBBox": [
+      22,
+      5,
+      169,
+      203
+    ],
+    "v2VisibleBBox": [
+      142,
+      25,
+      1062,
+      1223
+    ],
+    "commonInputCanvas": [
+      1205,
+      1306
+    ],
+    "uniformScale": 0.1652754590984975,
+    "paste": [
+      -4,
+      1
+    ],
+    "resizedSize": [
+      199,
+      216
+    ],
+    "independentSubjectOrFaceFitting": false,
+    "artworkAlphaModified": false
+  },
+  "editDiagnostics": {
+    "inputCanvasSizes": [
+      [
+        1205,
+        1305
+      ],
+      [
+        1205,
+        1306
+      ]
+    ],
+    "sameCanvasSize": false,
+    "jawDiagnosticROI": [
+      395,
+      360,
+      815,
+      465
+    ],
+    "outsideROIAlphaThreshold": 64,
+    "outsideROICheckedPixels": 748373,
+    "outsideROIChangedPixels": 747890,
+    "outsideROIChangedFraction": 0.999354599912076,
+    "outsideROIMeanAbsoluteRGBA": 10.921865834283171,
+    "exactlyJawOnly": false,
+    "interpretation": "strict non-jaw preservation failed; not an aesthetic quality score",
+    "v2": {
+      "alphaBBoxes": {
+        "0": [
+          0,
+          19,
+          1169,
+          1273
+        ],
+        "8": [
+          142,
+          25,
+          1062,
+          1223
+        ],
+        "64": [
+          143,
+          26,
+          1062,
+          1222
+        ],
+        "128": [
+          144,
+          26,
+          1061,
+          1222
+        ],
+        "240": [
+          144,
+          27,
+          1061,
+          1221
+        ]
+      },
+      "veryFaintAlphaPixels": 46453
+    },
+    "v3": {
+      "alphaBBoxes": {
+        "0": [
+          0,
+          23,
+          1167,
+          1306
+        ],
+        "8": [
+          142,
+          26,
+          1066,
+          1226
+        ],
+        "64": [
+          142,
+          26,
+          1065,
+          1225
+        ],
+        "128": [
+          143,
+          27,
+          1065,
+          1225
+        ],
+        "240": [
+          144,
+          28,
+          1064,
+          1224
+        ]
+      },
+      "veryFaintAlphaPixels": 24018
+    }
+  },
+  "approvalDoesNotMeanCompletedAnimation": true
+}

@@ -2,9 +2,24 @@
 
 Local Kaguya sprite assets, reproducible animation tools, and an honest quality audit.
 
-## Gentle-motion candidate
+## Current work: identity repair before motion
 
-`pet/` contains the compatible candidate. All nine animated states and sixteen look directions have been rebuilt from locked original-pixel poses. No generated replacement character, host patch, or claimed native FPS/resolution upgrade.
+The user has now selected **the earlier gently tapered AI-generated mother pose, v3**. The authoritative immutable source is `sources/canonical/artwork.png` with its decision/hash in `sources/canonical/manifest.json`. Its face shape is locked; no fallback to rejected face composites or procedural facial-geometry repairs. The development viewer defaults to this selected pose. Animation is **not built or approved yet**, and the installed atlas remains untouched.
+
+`candidates/phase4/static/` preserves a **rejected static prototype**, not an installable animation or approved foundation. The user agreed on the intended original front-idle proportions, restrained closed smile, mild failed expression, and chin-touching waiting gesture, but subsequently reported that many rendered images looked very bad. Direction agreement is not result approval.
+
+The prototype mechanically shares a head/ears/ornament plate and restores foreground hands. This passes bounded pixel checks, **not** whole-character, head/neck, costume, seam, or aesthetic acceptance. It is not to be animated or promoted. A coherent complete-character source/layer model is still needed; copying a common head onto independent bodies is insufficient.
+
+`baseline/phase3/` preserves the previous candidate, including its confirmed failed/waiting defects. **`pet/` is still that old Phase 3 candidate; do not mistake it for the Phase 4 repair.** The installed pet has not been replaced during this stage.
+
+- [Full scope and outstanding acceptance gates (中文)](docs/REQUIREMENTS.zh-CN.md)
+- [Static structure review and rejected experiments (中文)](docs/STATIC-REVIEW.zh-CN.md)
+
+`candidates/phase4/canonical-v2/`, `canonical-v3/`, and `canonical-v4/` preserve generated mother-pose iterations and prompts, not animation atlases. These edits changed non-jaw pixels: they are not exact local edits or lossless upscales. The user subsequently chose v3 as the complete mother pose. `canonical-local-jaw/` is a rejected procedural experiment: its local fields kinked hair. It must not be used in production. `tools/review_jaw.py` preserves strict-edit diagnostics using a shared transform, not independent face fitting.
+
+## Previous gentle-motion candidate (not visually accepted)
+
+`pet/` contains the compatible old candidate. All nine animated states and sixteen look directions were rebuilt from per-row poses, but this did NOT establish cross-state identity or correct face compositing. No host patch or claimed native FPS/resolution upgrade.
 
 The complete usable baseline is tagged **`baseline-phase2-complete-20261008`**. The earlier tag `baseline-phase2-20261008` contains only metadata due to an initial copy-path error; it is not an installable baseline.
 
@@ -21,16 +36,20 @@ Requires Python 3.12 and Node 22+:
 
 ```sh
 python -m pip install -r requirements.txt
-python tools/build.py
-python tools/audit.py
+# Historical Phase 3 regression only; never promote it as the selected source:
+python tools/build.py --out work/historical-rebuild
+python tools/identity.py
+python tools/review_jaw.py
 python -m unittest discover -s tests -v
-node --test tests/clock.test.mjs
+node --test tests/clock.test.mjs tests/review.test.mjs
 python -m http.server 8767 --bind 127.0.0.1
 ```
 
-Open `http://127.0.0.1:8767/viewer/`. It uses native frame durations and three-loop fallback by default. Smooth sampling and persistent looping are labelled experiments, not native app improvements.
+Open `http://127.0.0.1:8767/viewer/`. The top section displays only the selected v3 complete mother pose and its 113 px sampling simulation. Rejected historical states are collapsed by default and decode only when explicitly opened. The old-animation option uses native frame durations and three-loop fallback. Smooth sampling and persistent looping are experiments, not native improvements. Collapsed historical review schedules no animation callback.
 
 ### Windows install / rollback
+
+The commands below still install/restore historical atlases. Phase 4 is intentionally not promoted until its static, temporal, and actual-size gates have passed.
 
 ```powershell
 ./tools/install.ps1 -WhatIf

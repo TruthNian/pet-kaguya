@@ -7,13 +7,26 @@
 <main>
   <header><span class="eyebrow">PET KAGUYA / ANIMATION LAB</span>
     <h1>轻一点，也鲜活一点。</h1>
-    <p>左侧是原样基准，右侧是候选图集。宿主规则模拟，不是已安装应用的实机截图。</p>
+    <p>完整形象已经选定：前一张轻收下颌的 AI 生成立绘（v3）。锁定脸型，接下来制作轻柔动作。</p>
+    <p class="notice" role="status">不再采用拼接试作或程序变形脸。当前确认的是母版，不是完成的动作图集；已安装资产尚未替换。</p>
   </header>
+  <section class="mother-review" aria-labelledby="mother-heading">
+    <h2 id="mother-heading">已锁定母版 · 不再改脸型</h2>
+    <p>采用你明确选择的“前一张轻收下颌的 AI 生成立绘”。完整头脸、耳饰、衣服与兔鞋均以这一张为依据，不回退到已否决试作。</p>
+    <div class="mother-poses">
+      <figure><img src="../sources/canonical/artwork.png" width="288" height="312" alt="用户选定的完整 Kaguya 母版 v3"><figcaption>选定的完整生成立绘；仅缩放展示，未做脸型变形。</figcaption></figure>
+      <figure><img class="native-comparison" src="../candidates/phase4/canonical-v3/front.png" width="113" height="122" alt="选定母版的113像素原生尺寸采样模拟"><figcaption>113 px 采样模拟，不是实机性能证明。</figcaption></figure>
+    </div>
+    <p>下一步：同一母版的可信分层、轻柔动画与实际时序验收。宿主仍使用 192 × 208 px/帧；静态确认不代表动作完成。</p>
+  </section>
+  <details id="history-review"><summary>历史失败记录（默认收起，仅用于复核，不用于制作）</summary>
   <section class="controls" aria-label="验收参数">
-    <label>状态 <select id="state">
+    <label>左侧 <select id="baseline"><option value="phase3" selected>Phase 3 旧候选</option><option value="phase2">Phase 2 可用基准</option><option value="source">未拼接源图</option></select></label>
+    <label>右侧 <select id="candidate"><option value="static4" selected>Phase 4 静态试作（已否决）</option><option value="phase3">Phase 3 动画（旧）</option></select></label>
+    <label>状态 <select id="state" aria-label="状态">
       <option value="idle">闲置 · idle</option><option value="run_right">向右跑</option>
       <option value="run_left">向左跑</option><option value="waving">招手</option>
-      <option value="jumping">轻跃</option><option value="failed">失败 · 低头</option>
+      <option value="jumping">轻跃</option><option value="failed">失败 · 轻微失落</option>
       <option value="waiting">等待</option><option value="running">处理中</option>
       <option value="review">审阅</option>
     </select></label>
@@ -26,15 +39,17 @@
     <button id="pause">暂停</button><button id="restart">重播</button>
   </section>
   <section id="stage" class="stage dark">
-    <article><h2>Phase 2 基准</h2><canvas id="old" aria-label="基准动画"></canvas></article>
-    <article><h2>温柔动作候选</h2><canvas id="new" aria-label="候选动画"></canvas></article>
+    <article><h2 id="baseline-title">Phase 3 旧候选</h2><canvas id="old" aria-label="基准图"></canvas></article>
+    <article><h2 id="candidate-title">Phase 4 静态试作 · 已否决</h2><canvas id="new" aria-label="候选图"></canvas></article>
   </section>
   <output id="status" aria-live="off">正在解码图集…</output>
   <footer>
+    <p>静态模式：两侧都使用所选状态的静态姿势，不播放动画、不模拟三轮回退或鼠标方向；可以切换源图核对。静态图通过不等于动作通过。</p>
     <p>默认使用真实慢 idle 时长；其他动作播放三轮后回 idle。开启鼠标覆盖可复现部分动画不播放的规则。</p>
     <p>图集仍是 192 × 208 px/帧；没有改变原生帧率或分辨率。平滑采样和持续循环只用于实验。</p>
     <p><a href="../docs/PLAN.zh-CN.md">设计原则与已撤回的判断</a> · <a href="../qa/comparison.json">可复核指标</a></p>
   </footer>
+  </details>
 </main>
 <script type="module" src="app.mjs"></script>
 </html>

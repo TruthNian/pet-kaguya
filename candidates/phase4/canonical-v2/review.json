@@ -1,0 +1,44 @@
+{
+  "artworkSha256": "A627FC599B76025E767682991027AAA3A0E96DF26465C86BD5E077E65A39394A",
+  "artworkSize": [
+    1205,
+    1305
+  ],
+  "previewSha256": "1461945851E243D0BBC9D45CDC31C612D8ED1CA57A63252FFAC9DD986BCBD531",
+  "generationMode": "built-in image_gen edit with original r0c0 reference",
+  "requestedScope": "mouth only",
+  "actualScope": "whole-character redraw; mouth-only invariant failed",
+  "generatedArtwork": true,
+  "originalClothingPixelsPreserved": false,
+  "editedOnlyMouth": false,
+  "nativeResolutionChanged": false,
+  "previewCellSize": [
+    192,
+    208
+  ],
+  "animationBuilt": false,
+  "userAdoptionAgreement": "pending",
+  "transform": {
+    "inputAlphaBbox": [
+      0,
+      19,
+      1169,
+      1273
+    ],
+    "referenceAlphaBbox": [
+      22,
+      5,
+      169,
+      203
+    ],
+    "uniformScale": 0.15789473684210525,
+    "paste": [
+      3,
+      5
+    ],
+    "resizedSize": [
+      185,
+      198
+    ]
+  }
+}

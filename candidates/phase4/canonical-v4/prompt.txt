@@ -1,0 +1,10 @@
+Use case: precise-object-edit.
+Asset: ONE transparent full-body Kaguya mother-pose illustration for a small animated pet.
+Image 1 is the EDIT TARGET (v2 artwork). Image 2 is ONLY the original local character facial-proportion reference; do not copy its open mouth.
+
+User feedback: the target looks acceptable overall, but the face is too full/round. A previous tiny jaw edit was insufficient. The user specifically requests MORE NOTICEABLE convergence of the LOWER FACE, retaining a SOFT SHORT CHIN.
+
+Edit only the LOWER CHEEKS AND LOWER JAW of Image 1. Reduce the cheek puffiness under the eyes and beside the mouth; move the lower cheek-to-jaw corners inward moderately (roughly 6–8% of lower-face width, as an artistic guide, not a global head scaling). Make the descent from cheeks into jaw more gently tapered and less circular. Keep a SHORT SOFT FLATTISH rounded chin, not a sharp point or V, no long adult face. Make this correction visible, not another nearly identical version. Match the quieter, more tapered lower-face character of the original while retaining the target's closed gentle smile.
+
+Freeze Image 1's upper head/forehead, eye shapes and positions/spacing, irises/highlights, brow shapes, smile and mouth position, nose, hair/fringe, ears, moon ornament, neck/body proportions/pose, ALL clothing details and colors, beads, hands, legs and rabbit shoes. Do not resize the entire head, shift eyes, lower or elongate the chin, redraw the body, or change facial expression. Only cheek/jaw contour and immediately adjacent skin/hair boundary may change. Keep original target framing/canvas aspect ratio and subject scale. The original reference is not a new target.
+Preserve genuinely transparent background. No shadows, text, checkerboard, added figures or panels. Same hand-painted stroke and clean silhouette as the target. Produce only the single corrected complete illustration.
