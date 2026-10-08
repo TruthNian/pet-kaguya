@@ -1,0 +1,8 @@
+Use case: precise-object-edit
+Asset type: hidden sclera backing for a small 2D eye-gaze rig; technical material, NOT a new visible pet face
+Input images: Image 1 is the sole edit target, the approved canonical-v3 full-body Kaguya.
+Primary request: Remove ONLY both colored irises, dark pupils, and the highlights painted on those irises. Fill those two vacated interiors with the natural pale-white sclera that continues the existing white of each eye, including the very faint cool shadow beneath the upper eyelid. This intentionally irisless image is only a hidden animation backing. Do not add new irises, pupils, catchlights, or an expression.
+Edit scope: viewer-left eye interior is approximately x=475..576, y=292..387; viewer-right eye interior approximately x=646..750, y=277..372 on the 1205x1306 source canvas. Replace colored iris interiors only, retaining the precise existing outer eye contours.
+Constraints: Preserve the original eye openings, lash line, dark/red eyelashes, lower lid edge, brows, skin, blush, mouth, jaw and chin exactly. Preserve every other part of the character, pose, body, ears, moon ornament, hair, clothes, sleeves, hands, legs and rabbit shoes unchanged. Same canvas, full-body camera, position, proportions, scale, line weights and original coloring. No face redraw, no eye resizing, no symmetry correction, no head/body fitting. Keep the genuinely transparent background.
+Style/medium: continue the existing clean anime/chibi painted sclera, not a flat white sticker and not a new style.
+Avoid: closed eyes, black empty sockets, changed lashes, additional white spots outside the eye openings, new expression, face reshaping, labels, text, panels, watermark, backdrop or floor shadow.

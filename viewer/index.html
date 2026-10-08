@@ -28,6 +28,21 @@
     <output id="idle-status" aria-live="off">正在解码 idle 候选…</output>
     <p>idle 周期 6.6 秒；failed 周期 1.22 秒、jumping 周期 0.84 秒，均三轮后回 idle。jumping 有蓄力、上升、最高点、下降与落地五格，离地时整只角色上移，最高 8 px；只有着地格鞋部固定，没有连续轨迹或槽内补间。waiting 目前只有托腮静态关键姿势，没有抬手/放手动画。脸型不变；这些候选不代表所有状态已完成或视觉通过。</p>
   </section>
+  <details id="gaze-review" class="idle-review"><summary>Phase 5 · 十六个视线方向候选（点开验收）</summary>
+    <p>同一 v3 母版，只平移原虹膜；眼眶、睫毛、眉、嘴、下颌、衣服、鞋与月饰固定。两眼原有差异保留，不做对称修正。最大位移源图 12×7 px，原生约 1.9×1.1 px；小尺寸辨认仍待验收。眼白底图是隐藏素材，不采用整张重画。</p>
+    <div class="controls">
+      <label>视线 <select id="gaze-direction"><option value="neutral">中性 · 原图</option><option value="0">0 · 上</option><option value="1">1 · 上偏右</option><option value="2">2 · 右上</option><option value="3">3 · 右偏上</option><option value="4">4 · 右</option><option value="5">5 · 右偏下</option><option value="6">6 · 右下</option><option value="7">7 · 下偏右</option><option value="8">8 · 下</option><option value="9">9 · 下偏左</option><option value="10">10 · 左下</option><option value="11">11 · 左偏下</option><option value="12">12 · 左</option><option value="13">13 · 左偏上</option><option value="14">14 · 左上</option><option value="15">15 · 上偏左</option></select></label>
+      <label>宽度 <select id="gaze-size"><option>80</option><option selected>113</option><option>192</option><option>224</option></select> px</label>
+      <label>背景 <select id="gaze-background"><option value="dark">深色</option><option value="light">浅色</option><option value="grid">透明网格</option></select></label>
+      <label><input id="gaze-pointer" type="checkbox">跟随指针（仅此验收区）</label>
+    </div>
+    <div id="gaze-stage" class="stage dark">
+      <article><h2>v3 · 原图中性视线</h2><canvas id="gaze-reference" width="192" height="208" aria-label="原图中性视线"></canvas></article>
+      <article><h2>同一母版 · 视线候选</h2><canvas id="gaze-pet" width="192" height="208" aria-label="十六方向视线候选"></canvas></article>
+    </div>
+    <output id="gaze-status" aria-live="off">展开后按需解码；无循环计时器。</output>
+    <p>中性位置由同一分层合成，完整 RGBA 精确还原母版，不是特判返回源图。虹膜 matte 仍是从可见像素估计的边界，并非作者原始分层；人工视觉接受尚未确认。指针预览没有改变宿主优先级或原生帧率。</p>
+  </details>
   <details id="arm-material-review"><summary>制作素材：左手臂后方隐藏底图（不是宠物姿势）</summary>
     <p>仅替换旧手和长袖遮挡区域，肩披、前发与脸保留母版像素。这里刻意没有左手/长袖，是后续动作的底层素材；不是要安装缺手版本，也不代表已完成关节或干净前景层。</p>
     <img loading="lazy" src="../candidates/phase5/arm-backing-v1/contact-224px.png" width="732" height="542" alt="左为锁定母版，中间为不采用的整张生成输出，右为有界隐藏底图；仅用于素材制作">
@@ -76,4 +91,5 @@
 </main>
 <script type="module" src="app.mjs"></script>
 <script type="module" src="candidate.mjs"></script>
+<script type="module" src="gaze.mjs"></script>
 </html>

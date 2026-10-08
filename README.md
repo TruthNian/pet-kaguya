@@ -4,7 +4,7 @@ Local Kaguya sprite assets, reproducible animation tools, and an honest quality 
 
 ## Current work: locked mother pose and bounded action candidates
 
-Phase 5 has **idle, failed and jumping motion candidates**, plus a **static waiting key pose**. All share the selected v3 mother, locked face geometry and camera. New art is limited to bounded expression/arm regions and technical hidden arm backing; whole generated redraws are not adopted. Failed uses eight real holds; jumping uses five real holds with grounded/flight contact and no head/body resizing. Both repeat three times then idle. Waiting arm entry/exit remains missing. The hidden backing is deliberately missing one arm: a production material, NOT a pet pose or a complete arm rig. This is not a full atlas or installable pet; other states and 16 directions are incomplete, and visual acceptance is pending. [Current state progress and limits (中文)](docs/PHASE5-STATES.zh-CN.md), [idle/source work](docs/PHASE5.zh-CN.md).
+Phase 5 has **idle, failed and jumping motion candidates**, a **static waiting key pose**, and **16 eye-only gaze candidates**. All share the selected v3 mother, locked face geometry and camera. Additional generated art is limited to bounded expression/arm regions and technical hidden arm/eye backing; its whole redraws are not adopted. Failed uses eight real holds; jumping uses five real holds with grounded/flight contact and no head/body resizing. Both repeat three times then idle. Waiting arm entry/exit remains missing. Gaze translates original iris material, keeping the eye openings, lashes, face, body and ornaments fixed; its same physical layers reconstruct neutral RGBA exactly. That does not prove a perfect iris matte or natural gaze. Hidden backing is a production material, NOT a pet pose or a complete rig. This is not a full atlas or installable pet; other states are incomplete, and visual acceptance is pending. [Current state progress and limits (中文)](docs/PHASE5-STATES.zh-CN.md), [idle/source work](docs/PHASE5.zh-CN.md).
 
 The user has now selected **the earlier gently tapered AI-generated mother pose, v3**. The authoritative immutable source is `sources/canonical/artwork.png` with its decision/hash in `sources/canonical/manifest.json`. Its face shape is locked; no fallback to rejected face composites or procedural facial-geometry repairs. The development viewer defaults to this source's idle and offers failed, jumping and static waiting candidates. Visual acceptance is pending, and the installed atlas remains untouched.
 
@@ -48,13 +48,14 @@ python tools/review_failed.py
 python tools/build_failed.py
 python tools/review_arm_backing.py
 python tools/build_jumping.py
+python tools/build_gaze.py
 python tools/verify_review_rebuild.py
 python -m unittest discover -s tests -v
-node --test tests/clock.test.mjs tests/review.test.mjs tests/idle-clock.test.mjs tests/candidate-clock.test.mjs
+node --test tests/clock.test.mjs tests/review.test.mjs tests/idle-clock.test.mjs tests/candidate-clock.test.mjs tests/gaze-frame.test.mjs
 python -m http.server 8767 --bind 127.0.0.1
 ```
 
-Open `http://127.0.0.1:8767/viewer/`. The top section offers idle at 6.6 s, failed at 1.22 s × 3, jumping at 0.84 s × 3, and static waiting (no fabricated animation). Actions return to idle. Pause, single-pose inspection and reduced motion are available; selected candidates decode on demand. Technical arm backing is separately labelled and collapsed. The accepted mother pose is shown below. Rejected history is collapsed and decodes only when opened. Smooth sampling and persistent looping there are experiments, not native improvements. Collapsed historical review schedules no animation callback.
+Open `http://127.0.0.1:8767/viewer/`. The top section offers idle at 6.6 s, failed at 1.22 s × 3, jumping at 0.84 s × 3, and static waiting (no fabricated animation). Actions return to idle. Pause, single-pose inspection and reduced motion are available; selected candidates decode on demand. The collapsed gaze section compares neutral with all 16 cells at four sizes and optionally follows the pointer only inside its review area. It has no animation timer and does not change native pointer priority. Its inferred matte and small-scale legibility remain pending. Technical arm backing is separately labelled and collapsed. The accepted mother pose is shown below. Rejected history is collapsed and decodes only when opened. Smooth sampling and persistent looping there are experiments, not native improvements. Collapsed historical review schedules no animation callback.
 
 ### Windows install / rollback
 
