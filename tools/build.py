@@ -1,4 +1,4 @@
-"""One resample per frame from locked source poses; no generative redraws.
+"""HISTORICAL Phase 3 regression, never the selected v3 production source.
 
 Small, continuous inverse displacement fields avoid cut-out seams. This is a
 2-D deformation rig, not a true 3-D skeleton; its limits are documented.
@@ -213,10 +213,26 @@ def render(master,row,phase,direction=None):
     return Image.fromarray(a)
 
 
+def historical_arguments(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--historical-phase3', action='store_true',
+                        help='Explicitly opt in to rejected historical regression only')
+    parser.add_argument('--out', type=Path,
+                        help='Required isolated output subdirectory under repository work/')
+    args = parser.parse_args(argv)
+    if not args.historical_phase3 or args.out is None:
+        parser.error('Historical tool only. Use --historical-phase3 and --out work/<regression>; '
+                     'the selected v3 source is built by tools/build_idle.py, not this tool.')
+    args.out = args.out.resolve()
+    work = (ROOT/'work').resolve()
+    if args.out == work or not args.out.is_relative_to(work):
+        parser.error('Historical output must be an isolated subdirectory under repository work/; '
+                     'pet/, sources/, candidates/ and installed pets cannot be overwritten.')
+    return args
+
+
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--out',type=Path,default=ROOT/'pet')
-    args = parser.parse_args()
+    args = historical_arguments()
     source = ROOT/'baseline/phase2/spritesheet.webp'
     digest = hashlib.sha256(source.read_bytes()).hexdigest().upper()
     if digest != SOURCE_HASH:

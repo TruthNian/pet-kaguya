@@ -6,7 +6,7 @@ Local Kaguya sprite assets, reproducible animation tools, and an honest quality 
 
 Phase 5 now has an **idle-only motion candidate** in `candidates/phase5/idle/`, rebuilt exclusively from the selected v3 mother pose. It preserves face geometry as a rigid translation, fixes entire shoes, and uses actual six-pose/6600 ms native holds. The viewer compares fixed pose vs motion at real sizes. This is not a full atlas or installable pet; other states and 16 directions are still incomplete. [Current progress and limits (中文)](docs/PHASE5.zh-CN.md).
 
-The user has now selected **the earlier gently tapered AI-generated mother pose, v3**. The authoritative immutable source is `sources/canonical/artwork.png` with its decision/hash in `sources/canonical/manifest.json`. Its face shape is locked; no fallback to rejected face composites or procedural facial-geometry repairs. The development viewer defaults to this selected pose. Animation is **not built or approved yet**, and the installed atlas remains untouched.
+The user has now selected **the earlier gently tapered AI-generated mother pose, v3**. The authoritative immutable source is `sources/canonical/artwork.png` with its decision/hash in `sources/canonical/manifest.json`. Its face shape is locked; no fallback to rejected face composites or procedural facial-geometry repairs. The development viewer defaults to this selected pose. Only idle is built, visual motion acceptance is pending, and the installed atlas remains untouched.
 
 `candidates/phase4/static/` preserves a **rejected static prototype**, not an installable animation or approved foundation. The user agreed on the intended original front-idle proportions, restrained closed smile, mild failed expression, and chin-touching waiting gesture, but subsequently reported that many rendered images looked very bad. Direction agreement is not result approval.
 
@@ -39,7 +39,7 @@ Requires Python 3.12 and Node 22+:
 ```sh
 python -m pip install -r requirements.txt
 # Historical Phase 3 regression only; never promote it as the selected source:
-python tools/build.py --out work/historical-rebuild
+python tools/build.py --historical-phase3 --out work/historical-rebuild
 python tools/identity.py
 python tools/review_jaw.py
 python tools/build_idle.py
@@ -53,11 +53,11 @@ Open `http://127.0.0.1:8767/viewer/`. The top section compares the new idle cand
 
 ### Windows install / rollback
 
-The commands below still install/restore historical atlases. Phase 4 is intentionally not promoted until its static, temporal, and actual-size gates have passed.
+**Normal installation is disabled:** there is no approved complete v3 atlas yet. `install.ps1` refuses to substitute the old Phase 3 atlas or a partial idle strip. The historical builder likewise requires explicit opt-in and can write only under repository `work/`. `tools/test_install.ps1` tests historical backup/recovery only in an isolated fixture, never the installed pet.
+
+Explicit baseline recovery remains available if the user deliberately needs the archived baseline; it is not the new animation candidate:
 
 ```powershell
-./tools/install.ps1 -WhatIf
-./tools/install.ps1
 # Restore baseline only after checking the currently installed atlas hash:
 ./tools/install.ps1 -Baseline -ExpectedCurrentHash '<current atlas SHA-256>'
 ```

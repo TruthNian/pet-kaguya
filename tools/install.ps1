@@ -3,10 +3,42 @@ param(
     [string]$PetDirectory = (Join-Path $env:USERPROFILE '.codex\pets\kaguya'),
     [string]$ExpectedCurrentHash = '71F7E36AD459D99C9DE1AC6033A968CDF4C125EB742FFD5FF19B8E81BBA56EF7',
     [string]$BackupRoot = (Join-Path $env:USERPROFILE '.codex\backups\pets'),
-    [switch]$Baseline
+    [switch]$Baseline,
+    [switch]$HistoricalRegression
 )
 $ErrorActionPreference = 'Stop'
 $repoRoot = Split-Path -Parent $PSScriptRoot
+if ($Baseline -and $HistoricalRegression) { throw 'Choose baseline recovery or isolated historical regression, not both.' }
+if (-not $Baseline -and -not $HistoricalRegression) {
+    throw 'No approved complete v3 atlas exists yet. Refusing to install the rejected Phase 3 pet or an idle-only strip. Use the viewer for the current candidate.'
+}
+if ($HistoricalRegression) {
+    if (-not $PSBoundParameters.ContainsKey('PetDirectory') -or -not $PSBoundParameters.ContainsKey('BackupRoot')) {
+        throw 'Historical regression requires explicit isolated PetDirectory and BackupRoot under repository work/.'
+    }
+    $workPrefix = [IO.Path]::GetFullPath((Join-Path $repoRoot 'work')).TrimEnd([char[]]'\/') + [IO.Path]::DirectorySeparatorChar
+    foreach ($testPath in @($PetDirectory, $BackupRoot)) {
+        $fullTestPath = [IO.Path]::GetFullPath($testPath)
+        if (-not $fullTestPath.StartsWith($workPrefix, [StringComparison]::OrdinalIgnoreCase)) {
+            throw 'Historical regression cannot target real installed pets; use repository work/ only.'
+        }
+        # Reject redirects on every existing ancestor, not merely the leaf.
+        $ancestor = $fullTestPath
+        while ($ancestor -and $ancestor.StartsWith($workPrefix, [StringComparison]::OrdinalIgnoreCase)) {
+            if (Test-Path -LiteralPath $ancestor) {
+                if ((Get-Item -LiteralPath $ancestor).Attributes -band [IO.FileAttributes]::ReparsePoint) {
+                    throw 'Historical regression cannot use redirected paths.'
+                }
+            }
+            $ancestor = Split-Path -Parent $ancestor
+        }
+        if (Test-Path -LiteralPath $workPrefix) {
+            if ((Get-Item -LiteralPath $workPrefix).Attributes -band [IO.FileAttributes]::ReparsePoint) {
+                throw 'Historical regression cannot use a redirected work root.'
+            }
+        }
+    }
+}
 $sourceDir = if ($Baseline) { Join-Path $repoRoot 'baseline\phase2' } else { Join-Path $repoRoot 'pet' }
 $atlasSource = Join-Path $sourceDir 'spritesheet.webp'
 $configSource = Join-Path $sourceDir 'pet.json'

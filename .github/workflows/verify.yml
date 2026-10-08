@@ -20,7 +20,7 @@ jobs:
         run: python tools/verify_review_rebuild.py
       - name: Rebuild and compare decoded pixels
         run: |
-          python tools/build.py --out work/rebuild
+          python tools/build.py --historical-phase3 --out work/rebuild
           python -c "from PIL import Image,ImageChops; a=Image.open('pet/spritesheet.webp').convert('RGBA'); b=Image.open('work/rebuild/spritesheet.webp').convert('RGBA'); assert a.tobytes()==b.tobytes()"
   installer:
     runs-on: windows-latest
