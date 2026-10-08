@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "generatedSha256": "C11EE42731513A83A3C8B479FC0B2AF1B38895D2244A1115F4D617E33279B70B",
+  "canvas": [1205, 1306],
+  "policy": "mouth and visible eyebrow art only; no facial displacement or whole-face replacement",
+  "expressionPolygons": [[[582,393],[591,393],[591,383],[650,383],[650,419],[582,419]],[[505,226],[569,226],[569,268],[505,268]],[[648,207],[745,207],[745,253],[648,253]]],
+  "eyeProtectedRects": [[430,275,590,393],[640,255,783,383]],
+  "edgeFeatherSourcePx": 1.5,
+  "fullRedrawAccepted": false,
+  "newFaceGeometryAllowed": false,
+  "visualAcceptance": "pending",
+  "installed": false
+}

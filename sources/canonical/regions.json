@@ -13,7 +13,7 @@
     {"name": "hair_left", "pivot": [277, 852], "ramp": [35, 260], "polygon": [[143,858],[254,813],[394,956],[433,1040],[424,1166],[363,1243],[206,1243],[137,1111],[130,974]]},
     {"name": "hair_right", "pivot": [922, 824], "ramp": [40, 250], "polygon": [[933,810],[1080,843],[1080,972],[1038,1073],[927,1140],[788,1115],[784,1032],[824,925]]}
   ],
-  "missingArtwork": ["background beneath lifted arms/sleeves", "complete articulated arms", "side-view body projections", "hidden cloth folds", "hand-to-chin pose"],
-  "mayBeUsedFor": ["gentle idle breathing", "small ear-tip motion", "small hair-tip follow-through"],
+  "missingArtwork": ["background beneath other lifted arms/sleeves", "complete articulated arms", "side-view body projections", "hidden cloth folds", "hand-to-chin entry/exit and articulated sleeve layers"],
+  "mayBeUsedFor": ["gentle idle breathing", "restrained rigid failed upper-body settling", "small ear-tip motion", "small hair-tip follow-through"],
   "notProofOf": ["natural walking gait", "valid waving/waiting poses", "complete nine-state animation"]
 }

@@ -14,6 +14,7 @@ from PIL import Image, ImageDraw, ImageFilter
 
 from canonical import ROOT, ACCEPTED_SHA, load_canonical, clean_cutout, camera
 from protocol import DURATIONS, WIDTH, HEIGHT
+from animation_output import write_animation
 
 OUT = ROOT/'candidates/phase5/idle'
 SUPERSAMPLE = 3
@@ -105,49 +106,20 @@ def render(image, pose, transform, regions, masks):
     return Image.fromarray(rgba)
 
 
-def contact_sheet(frames, out):
-    for width in (80, 113, 192, 224):
-        height = round(width*HEIGHT/WIDTH)
-        board = Image.new('RGB', (6*(width+12), 2*(height+28)), '#23252b')
-        draw = ImageDraw.Draw(board)
-        for row, background in enumerate(('#23252b', '#f1f0ee')):
-            for i, frame in enumerate(frames):
-                tile = Image.new('RGBA', frame.size, background)
-                tile.alpha_composite(frame)
-                x, y = i*(width+12), row*(height+28)
-                board.paste(tile.resize((width, height), Image.Resampling.NEAREST).convert('RGB'), (x+6, y+24))
-                draw.text((x+3, y+3), f'{i}: {DURATIONS[0][i]} ms', fill='white')
-        board.save(out/f'contact-{width}px.png')
-
-
 def main():
     image, cleanup = clean_cutout(load_canonical())
     regions, motion = specification()
     transform = camera(image)
     masks = region_masks(regions)
     frames = [render(image, pose, transform, regions, masks) for pose in motion['keyframes']]
-    OUT.mkdir(parents=True, exist_ok=True)
-    strip = Image.new('RGBA', (WIDTH*8, HEIGHT))
-    for i, frame in enumerate(frames):
-        frame.save(OUT/f'frame-{i}.png')
-        strip.paste(frame, (i*WIDTH, 0))
-    strip.paste(frames[0], (6*WIDTH, 0))  # Protocol's legacy extra idle cell.
-    strip.save(OUT/'strip.webp', lossless=True, exact=True, method=6)
-    contact_sheet(frames, OUT)
-    display_frames = []
-    for frame in frames:
-        tile = Image.new('RGBA', frame.size, '#23252b')
-        tile.alpha_composite(frame)
-        display_frames.append(tile.convert('RGB'))
-    display_frames[0].save(OUT/'native-timing.gif', save_all=True, append_images=display_frames[1:],
-                           duration=DURATIONS[0], loop=0, disposal=2)
+    write_animation(OUT, frames, DURATIONS[0], {6: 0})  # Native legacy extra idle cell.
     metadata = dict(sourceSha256=ACCEPTED_SHA, source='sources/canonical/artwork.png',
         state='idle', generatedFromRejectedSources=False, facialGeometryRepair=False,
         closedEyeFrames=0, durationsMs=DURATIONS[0], totalDurationMs=sum(DURATIONS[0]),
         method='authored native holds; rigid face/upper-body breath, local non-face ear/hair fields',
         sampling='3x coverage integration from high-resolution source, one terminal Lanczos downsample',
         camera=transform, alphaCleanup=cleanup, visualMotionApproval='pending',
-        otherStatesBuilt=False, installableFullAtlas=False, installed=False,
+        statesInThisArtifact=['idle'], installableFullAtlas=False, installed=False,
         frameHashes=[hashlib.sha256(frame.tobytes()).hexdigest().upper() for frame in frames],
         missingArtwork=regions['missingArtwork'])
     (OUT/'build.json').write_text(json.dumps(metadata, indent=2)+'\n', encoding='utf-8')

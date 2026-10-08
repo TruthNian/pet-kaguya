@@ -1,0 +1,30 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {candidateSlot,candidatePoseOffset} from '../viewer/candidate-clock.mjs';
+import {durations,cycles,frameAt} from '../viewer/clock.mjs';
+
+test('failed candidate uses all real holds and exactly three loops before idle',()=>{
+  for(let round=0;round<3;round++)for(let index=0;index<8;index++){
+    const offset=round*cycles[5]+candidatePoseOffset('failed',index);
+    for(const time of [offset,offset+durations[5][index]-.001]){
+      const actual=candidateSlot('failed',time),expected=frameAt('failed',time);
+      assert.equal(actual.state,'failed');assert.equal(actual.index,expected.col);
+      assert.equal(actual.completedAction,false);assert.ok(actual.untilNext>0);
+    }
+  }
+  for(const time of [3660,3660+1680,3660+6600,3660+6600*100+.5]){
+    const actual=candidateSlot('failed',time),expected=frameAt('failed',time);
+    assert.equal(actual.state,'idle');assert.equal(actual.index,expected.col);assert.equal(actual.completedAction,true);
+  }
+});
+test('idle clock and waiting static never invent an animated waiting row',()=>{
+  for(let time=0;time<40000;time+=37.5)assert.equal(candidateSlot('idle',time).index,frameAt('idle',time).col);
+  assert.deepEqual(candidateSlot('waiting',999999),{state:'waiting',index:0,static:true,completedAction:false});
+  assert.equal(candidatePoseOffset('waiting',0),0);
+});
+test('invalid states, manual frames and elapsed values fail closed',()=>{
+  for(const mode of ['phase3','running','none'])assert.throws(()=>candidateSlot(mode,0));
+  for(const time of [NaN,Infinity,-Infinity])assert.throws(()=>candidateSlot('failed',time));
+  for(const [mode,index] of [['failed',8],['idle',6],['waiting',1],['idle',.5],['failed',-1]])assert.throws(()=>candidatePoseOffset(mode,index));
+  assert.equal(candidateSlot('failed',-1).index,0);
+});

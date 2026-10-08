@@ -11,21 +11,22 @@
     <p class="notice" role="status">不再采用拼接试作或程序变形脸。当前确认的是母版，不是完成的动作图集；已安装资产尚未替换。</p>
   </header>
   <section class="idle-review" aria-labelledby="idle-heading">
-    <h2 id="idle-heading">Phase 5 · 轻柔 idle 动画候选</h2>
-    <p>只使用选定 v3 母版。左侧固定第 1 帧，右侧按真实 6.6 秒周期播放六帧；没有快放、补间或换脸。只是 idle，不是完整九状态宠物。</p>
+    <h2 id="idle-heading">Phase 5 · 同一母版的局部动作候选</h2>
+    <p>左侧固定 v3；右侧可选 idle、failed 或 waiting 静态姿势。所有候选共用相机与脸型；新增像素只用于失落口眉或托腮手臂。按真实时长展示，没有快放或补间。不是完整九状态宠物。</p>
     <div class="controls">
-      <label>Idle 宽度 <select id="idle-size"><option>80</option><option selected>113</option><option>192</option><option>224</option></select> px</label>
-      <label>Idle 背景 <select id="idle-background"><option value="dark">深色</option><option value="light">浅色</option><option value="grid">透明网格</option></select></label>
-      <label><input id="idle-reduced" type="checkbox">Idle 减少动态</label>
-      <button id="idle-pause">暂停 idle</button><button id="idle-restart">重播 idle</button>
-      <label>Idle 单帧检查 <input id="idle-frame" type="range" min="0" max="5" value="0" step="1"></label>
+      <label>候选 <select id="idle-action"><option value="idle">idle · 微呼吸</option><option value="failed">failed · 三轮后回 idle</option><option value="waiting">waiting · 仅静态托腮</option></select></label>
+      <label>宽度 <select id="idle-size"><option>80</option><option selected>113</option><option>192</option><option>224</option></select> px</label>
+      <label>背景 <select id="idle-background"><option value="dark">深色</option><option value="light">浅色</option><option value="grid">透明网格</option></select></label>
+      <label><input id="idle-reduced" type="checkbox">减少动态</label>
+      <button id="idle-pause">暂停候选</button><button id="idle-restart">重播候选</button>
+      <label>单帧检查 <input id="idle-frame" type="range" min="0" max="5" value="0" step="1"></label>
     </div>
     <div id="idle-stage" class="stage dark">
       <article><h2>同一母版 · 固定第 1 帧</h2><canvas id="idle-reference" width="192" height="208" aria-label="Idle 固定参考"></canvas></article>
-      <article><h2>同一母版 · 六帧微呼吸</h2><canvas id="idle-animated" width="192" height="208" aria-label="Idle 动画候选"></canvas></article>
+      <article><h2 id="current-candidate-title">同一母版 · 六帧微呼吸</h2><canvas id="idle-animated" width="192" height="208" aria-label="当前动作候选"></canvas></article>
     </div>
     <output id="idle-status" aria-live="off">正在解码 idle 候选…</output>
-    <p>鞋部固定；脸与上身只作微小整体平移，不改变脸型。后续状态将共用取景比例，预留头顶空间。脚步、托腮、招手等仍需补齐真实分层/姿势。</p>
+    <p>idle 周期 6.6 秒；failed 周期 1.22 秒，三轮后回 idle。waiting 目前只有托腮静态关键姿势，没有抬手/放手动画。鞋部固定、脸型不变；口眉与手部遮挡是有界新画，不代表所有状态已完成或视觉通过。</p>
   </section>
   <section class="mother-review" aria-labelledby="mother-heading">
     <h2 id="mother-heading">已锁定母版 · 不再改脸型</h2>
@@ -69,5 +70,5 @@
   </details>
 </main>
 <script type="module" src="app.mjs"></script>
-<script type="module" src="idle.mjs"></script>
+<script type="module" src="candidate.mjs"></script>
 </html>

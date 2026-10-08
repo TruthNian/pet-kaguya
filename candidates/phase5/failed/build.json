@@ -1,0 +1,75 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "expressionGeneratedSha256": "C11EE42731513A83A3C8B479FC0B2AF1B38895D2244A1115F4D617E33279B70B",
+  "source": "sources/canonical/artwork.png",
+  "expressionPatch": "candidates/phase5/failed-art-v1/patch.json",
+  "state": "failed",
+  "nativeRow": 5,
+  "statesInThisArtifact": [
+    "failed"
+  ],
+  "generatedFromRejectedSources": false,
+  "facialGeometryRepair": false,
+  "closedEyeFrames": 0,
+  "durationsMs": [
+    140,
+    140,
+    140,
+    140,
+    140,
+    140,
+    140,
+    240
+  ],
+  "totalDurationMs": 1220,
+  "repeatBeforeIdle": 3,
+  "actionDurationMs": 3660,
+  "camera": {
+    "scale": 0.15833333333333333,
+    "x": 0.36666666666667425,
+    "y": 7.883333333333354,
+    "visibleBBox": [
+      142,
+      26,
+      1066,
+      1226
+    ],
+    "floor": 202,
+    "topReserve": 12,
+    "cell": [
+      192,
+      208
+    ]
+  },
+  "alphaCleanup": {
+    "distantVeryFaintPixelsRemoved": 4177,
+    "removedOpacitySum": 4971,
+    "maximumRemovedAlpha": 8,
+    "retainedFringeRadius": 4,
+    "paintedPixelsAboveAlpha8PreservedExactly": true,
+    "transparentRGBPixelsCleared": 859,
+    "sourceFileModified": false,
+    "faceShapeModified": false
+  },
+  "method": "bounded mouth/brow art; authored native poses with rigid face/upper-body settling and pinned shoes",
+  "sampling": "3x coverage integration from high-resolution source, one terminal Lanczos downsample",
+  "visualMotionApproval": "pending",
+  "installableFullAtlas": false,
+  "installed": false,
+  "frameHashes": [
+    "2D0B74400BBB3426FCD4B717E4BC73BEEEDC600C64F0B33379DA1B96B0E3F33C",
+    "D18657BA39F4277B3064AC9E862763D1097FA9A825214C35E56F5058BF47420D",
+    "C4BBF031498772CFC895343210E6EE4200EA2AB293AC02E38116C735C1C8DAF1",
+    "27BAC200BBFD7C2395BAA18E99600C493B097B924CB1773FA7C7E3C0DB7DEB47",
+    "2C3F0E11167DC449C4AD167C1F955C8EA5126381A0164F5A42E6DCC59E54B8FF",
+    "FFA57A08CF240978CB2B8897E2C4095D5E9C3B37DA378824CB4ADC46E8B6C116",
+    "03D2D45766A46F41E79B0667BF987CEEDD4C960755B83C798D1D54BF4436499A",
+    "ED153210E07106117706A2C4DD55C5922B439D8AA92356183D8726BD8543E128"
+  ],
+  "unresolved": [
+    "subjective expression/motion acceptance",
+    "waiting arm entry/exit artwork",
+    "remaining states and look directions",
+    "native-host loading/performance"
+  ]
+}

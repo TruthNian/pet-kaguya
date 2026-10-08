@@ -73,7 +73,7 @@ class Idle(unittest.TestCase):
         self.assertNotEqual(self.frames[0].tobytes(), self.frames[2].tobytes())
         self.assertEqual(self.metadata['visualMotionApproval'], 'pending')
         self.assertFalse(self.metadata['installableFullAtlas'])
-        self.assertFalse(self.metadata['otherStatesBuilt'])
+        self.assertEqual(self.metadata['statesInThisArtifact'], ['idle'])
         with Image.open(ROOT/'candidates/phase5/idle/strip.webp') as strip:
             for i, frame in enumerate(self.frames):
                 with Image.open(ROOT/f'candidates/phase5/idle/frame-{i}.png') as png:

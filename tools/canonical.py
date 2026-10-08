@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 
 import numpy as np
-from PIL import Image, ImageFilter
+from PIL import Image, ImageDraw, ImageFilter
 
 ROOT = Path(__file__).resolve().parents[1]
 ACCEPTED_SHA = '65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A'
@@ -60,6 +60,40 @@ def camera(image):
     return dict(scale=scale, x=96-(box[0]+box[2])*scale/2,
                 y=202-box[3]*scale, visibleBBox=box, floor=202,
                 topReserve=12, cell=[192, 208])
+
+
+def bounded_masks(size, polygons, feather):
+    """Inward-only art-patch feather; never move source image geometry."""
+    components = []
+    for polygon in polygons:
+        binary = Image.new('L', size)
+        ImageDraw.Draw(binary).polygon(polygon, fill=255)
+        hard = np.asarray(binary) > 0
+        weight = np.asarray(binary.filter(ImageFilter.GaussianBlur(feather)), dtype=float)/255
+        components.append((hard, weight*hard))
+    allowed = np.logical_or.reduce([part[0] for part in components])
+    weight = np.maximum.reduce([part[1] for part in components])
+    return allowed, weight, components
+
+
+def bounded_artwork(source, generated, polygons, feather):
+    """Copy only authored missing art, preserving all outside RGBA exactly.
+
+    Same-size/same-coordinate canvas is necessary but not aesthetic proof.
+    Shape/identity invariants and semantic occlusions need separate checks.
+    """
+    if source.size != generated.size:
+        raise ValueError('Art patch must share the mother canvas; no independent face fitting')
+    allowed, weight, components = bounded_masks(source.size, polygons, feather)
+    a, b = np.asarray(source).copy(), np.asarray(generated)
+    af, bf = a.astype(float), b.astype(float)
+    af[..., :3] *= af[..., 3:4]/255
+    bf[..., :3] *= bf[..., 3:4]/255
+    mixed = af*(1-weight[..., None])+bf*weight[..., None]
+    np.divide(mixed[..., :3]*255, mixed[..., 3:4], out=mixed[..., :3], where=mixed[..., 3:4] > 0)
+    mixed[mixed[..., 3] == 0, :3] = 0
+    a[allowed] = np.clip(np.rint(mixed[allowed]), 0, 255).astype(np.uint8)
+    return Image.fromarray(a), allowed, components
 
 
 def static_frame(image, transform=None):

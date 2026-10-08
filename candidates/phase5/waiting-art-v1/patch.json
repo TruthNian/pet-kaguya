@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "generatedSha256": "39165C8A937747F6B38CDCC3A2F8CA9CC11787C03EA46856D0E25F69CD111BD2",
+  "canvas": [1205, 1306],
+  "policy": "missing arm/sleeve and newly exposed backing only; same source-coordinate camera",
+  "armAndBackingPolygon": [[505,473],[524,478],[525,489],[558,503],[568,549],[570,599],[559,650],[545,685],[505,742],[480,796],[448,841],[463,886],[493,906],[489,957],[430,1000],[317,1000],[274,961],[253,832],[252,791],[264,775],[248,756],[247,721],[263,703],[281,664],[354,566],[418,514],[476,483]],
+  "foregroundHandPolygon": [[523,429],[544,429],[562,434],[578,443],[588,459],[588,481],[578,493],[562,499],[559,523],[538,556],[526,566],[509,539],[505,500],[505,466],[515,439]],
+  "edgeFeatherSourcePx": 1.5,
+  "fullRedrawAccepted": false,
+  "newFaceGeometryAllowed": false,
+  "facialChangesAllowedOnlyAsForegroundHandOcclusion": true,
+  "visualAcceptance": "pending",
+  "animationBuilt": false,
+  "installed": false
+}

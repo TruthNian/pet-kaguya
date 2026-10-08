@@ -44,7 +44,9 @@
     "faceShapeModified": false
   },
   "visualMotionApproval": "pending",
-  "otherStatesBuilt": false,
+  "statesInThisArtifact": [
+    "idle"
+  ],
   "installableFullAtlas": false,
   "installed": false,
   "frameHashes": [
@@ -56,10 +58,10 @@
     "E049C9010F4C3C2B2FD686620DCC1BF3FD97B4A97A5FE2913B69E4EA1924C6A8"
   ],
   "missingArtwork": [
-    "background beneath lifted arms/sleeves",
+    "background beneath other lifted arms/sleeves",
     "complete articulated arms",
     "side-view body projections",
     "hidden cloth folds",
-    "hand-to-chin pose"
+    "hand-to-chin entry/exit and articulated sleeve layers"
   ]
 }

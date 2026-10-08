@@ -1,5 +1,7 @@
 # Phase 5：选定母版后的真实进度
 
+本文保留最初 idle/source 工作记录。最新已增加 failed 八帧与 waiting 静态补片，详见 [状态素材与当前缺口](PHASE5-STATES.zh-CN.md)，仍非完整动画/已安装版本。
+
 ## 已实现：可见区域绑定与六帧 idle 候选
 
 唯一源为用户选定 v3 完整立绘，哈希在 `sources/canonical/manifest.json`。生产入口 `tools/canonical.py` 校验该决定、哈希及脸型锁定；源不存在或改变时直接失败，不从历史候选补位。

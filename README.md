@@ -2,11 +2,11 @@
 
 Local Kaguya sprite assets, reproducible animation tools, and an honest quality audit.
 
-## Current work: identity repair before motion
+## Current work: locked mother pose and bounded action candidates
 
-Phase 5 now has an **idle-only motion candidate** in `candidates/phase5/idle/`, rebuilt exclusively from the selected v3 mother pose. It preserves face geometry as a rigid translation, fixes entire shoes, and uses actual six-pose/6600 ms native holds. The viewer compares fixed pose vs motion at real sizes. This is not a full atlas or installable pet; other states and 16 directions are still incomplete. [Current progress and limits (中文)](docs/PHASE5.zh-CN.md).
+Phase 5 has **idle and failed motion candidates**, plus a **static waiting key pose**. All share the selected v3 mother, locked face geometry and camera. New art is limited to failed mouth/brow lines and waiting arm/sleeve/exposed backing; whole generated redraws are not adopted. Failed uses eight real holds, three loops, then idle. Waiting arm entry/exit remains missing. This is not a full atlas or installable pet; other states and 16 directions are incomplete, and visual acceptance is pending. [Current state progress and limits (中文)](docs/PHASE5-STATES.zh-CN.md), [idle/source work](docs/PHASE5.zh-CN.md).
 
-The user has now selected **the earlier gently tapered AI-generated mother pose, v3**. The authoritative immutable source is `sources/canonical/artwork.png` with its decision/hash in `sources/canonical/manifest.json`. Its face shape is locked; no fallback to rejected face composites or procedural facial-geometry repairs. The development viewer defaults to this selected pose. Only idle is built, visual motion acceptance is pending, and the installed atlas remains untouched.
+The user has now selected **the earlier gently tapered AI-generated mother pose, v3**. The authoritative immutable source is `sources/canonical/artwork.png` with its decision/hash in `sources/canonical/manifest.json`. Its face shape is locked; no fallback to rejected face composites or procedural facial-geometry repairs. The development viewer defaults to this source's idle and offers failed plus static waiting candidates. Visual acceptance is pending, and the installed atlas remains untouched.
 
 `candidates/phase4/static/` preserves a **rejected static prototype**, not an installable animation or approved foundation. The user agreed on the intended original front-idle proportions, restrained closed smile, mild failed expression, and chin-touching waiting gesture, but subsequently reported that many rendered images looked very bad. Direction agreement is not result approval.
 
@@ -43,13 +43,16 @@ python tools/build.py --historical-phase3 --out work/historical-rebuild
 python tools/identity.py
 python tools/review_jaw.py
 python tools/build_idle.py
+python tools/review_waiting.py
+python tools/review_failed.py
+python tools/build_failed.py
 python tools/verify_review_rebuild.py
 python -m unittest discover -s tests -v
-node --test tests/clock.test.mjs tests/review.test.mjs tests/idle-clock.test.mjs
+node --test tests/clock.test.mjs tests/review.test.mjs tests/idle-clock.test.mjs tests/candidate-clock.test.mjs
 python -m http.server 8767 --bind 127.0.0.1
 ```
 
-Open `http://127.0.0.1:8767/viewer/`. The top section compares the new idle candidate at the real 6.6 s period, with pause, single-pose inspection, and reduced motion. The accepted mother pose is shown below it. Rejected historical states are collapsed by default and decode only when explicitly opened. The old-animation option uses native frame durations and three-loop fallback. Smooth sampling and persistent looping are experiments, not native improvements. Collapsed historical review schedules no animation callback.
+Open `http://127.0.0.1:8767/viewer/`. The top section offers idle at 6.6 s, failed at 1.22 s × 3 then idle, and static waiting (no fabricated animation). Pause, single-pose inspection and reduced motion are available; selected candidates decode on demand. The accepted mother pose is shown below. Rejected history is collapsed and decodes only when opened. Smooth sampling and persistent looping there are experiments, not native improvements. Collapsed historical review schedules no animation callback.
 
 ### Windows install / rollback
 

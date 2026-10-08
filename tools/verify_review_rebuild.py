@@ -9,7 +9,8 @@ from PIL import Image
 from canonical import load_canonical
 
 ROOT = Path(__file__).resolve().parents[1]
-FOLDERS = ['candidates/phase4/static', 'candidates/phase4/canonical-v3', 'candidates/phase5/idle']
+FOLDERS = ['candidates/phase4/static', 'candidates/phase4/canonical-v3', 'candidates/phase5/idle',
+           'candidates/phase5/waiting-art-v1', 'candidates/phase5/failed-art-v1', 'candidates/phase5/failed']
 
 
 def snapshot():
@@ -34,7 +35,7 @@ def snapshot():
 
 def main():
     before, encoded_before = snapshot()
-    for script in ['identity.py', 'review_jaw.py', 'build_idle.py']:
+    for script in ['identity.py', 'review_jaw.py', 'review_waiting.py', 'review_failed.py', 'build_idle.py', 'build_failed.py']:
         subprocess.run([sys.executable, str(ROOT/'tools'/script)], cwd=ROOT, check=True, capture_output=True)
     after, encoded_after = snapshot()
     load_canonical()  # Re-check the immutable selected source after all builds.
