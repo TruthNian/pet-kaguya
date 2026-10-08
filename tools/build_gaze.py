@@ -30,7 +30,7 @@ def specification():
 def validate_rig(spec):
     if (spec['sourceSha256'] != ACCEPTED_SHA or spec['canvas'] != [1205,1306]
             or not spec['faceShapeLocked'] or spec['irisShapeWarpAllowed']
-            or spec['bodyRotationAllowed'] or spec['directions'] != 16
+            or spec['bodyRotationAllowed'] or spec['directions'] != 16 or spec['offsetDecimalPlaces'] != 12
             or spec['installableFullAtlas'] or spec['visualAcceptance'] != 'pending'):
         raise ValueError('Gaze violates locked mother/eye shape/candidate boundary')
     if (len(spec['maximumDisplacementSourcePx'])!=2
@@ -181,7 +181,13 @@ def offsets(index, spec):
         raise ValueError('Gaze index must be 0..15')
     theta = index*math.tau/16
     x,y = spec['maximumDisplacementSourcePx']
-    return x*math.sin(theta),-y*math.cos(theta)
+    if index%4==0:
+        return [(0,-y),(x,0),(0,y),(-x,0)][index//4]
+    # Windows/Python 3.13 and Linux/Python 3.12 differed by one final bit in
+    # sin(pi/4). Define the actual rendering coordinates, not just metadata,
+    # at an explicit source-space precision. Exact rebuild checks stay intact.
+    return tuple(round(v,spec['offsetDecimalPlaces']) for v in
+                 (x*math.sin(theta),-y*math.cos(theta)))
 
 
 def pose(source, eye_layers, dx, dy):
@@ -295,6 +301,7 @@ def main():
     (ART/'build.json').write_text(json.dumps(art_metadata,indent=2)+'\n',encoding='utf-8')
     metadata = dict(sourceSha256=ACCEPTED_SHA,eyeBackingGeneratedSha256=GENERATED_SHA,
         state='look',directionCount=16,nativeRows=[9,10],directionZero='up',clockwiseStepDegrees=22.5,
+        sourceOffsetDecimalPlaces=spec['offsetDecimalPlaces'],
         sourceOffsetsPx=[offsets(index,spec) for index in range(16)],camera=transform,
         bodyRotated=False,artMirrored=False,irisShapeWarp=False,eyeOutlineFixed=True,
         facialGeometryRepair=False,neutralReconstructionRGBAExact=True,originalSourceModified=False,

@@ -84,6 +84,17 @@ class Gaze(unittest.TestCase):
             for x,y in [(534,336),(693,322)]:
                 np.testing.assert_array_equal(np.asarray(self.poses[index])[y+round(dy),x+round(dx),:3],np.asarray(self.source)[y,x,:3])
 
+    def test_portable_offsets_have_defined_precision_not_runtime_trig_tail_bits(self):
+        expected = [(0,-7),(4.592201188381,-6.467156727579),(8.485281374239,-4.949747468306),
+            (11.086554390135,-2.678784026556),(12,0),(11.086554390135,2.678784026556),
+            (8.485281374239,4.949747468306),(4.592201188381,6.467156727579),(0,7),
+            (-4.592201188381,6.467156727579),(-8.485281374239,4.949747468306),
+            (-11.086554390135,2.678784026556),(-12,0),(-11.086554390135,-2.678784026556),
+            (-8.485281374239,-4.949747468306),(-4.592201188381,-6.467156727579)]
+        self.assertEqual([gaze.offsets(i,self.spec) for i in range(16)],expected)
+        self.assertEqual(self.meta['sourceOffsetsPx'],[list(p) for p in expected])
+        self.assertEqual(self.meta['sourceOffsetDecimalPlaces'],12)
+
     def test_saved_sixteen_frames_rows_and_neutral_are_exactly_rebuildable(self):
         with Image.open(gaze.OUT/'neutral.png') as image:
             self.assertEqual(image.convert('RGBA').tobytes(),self.neutral.tobytes())
