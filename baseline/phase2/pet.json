@@ -1,0 +1,8 @@
+{
+  "id": "kaguya",
+  "displayName": "Kaguya",
+  "description": "A tiny chibi Cosmic Princess Kaguya companion with moon-rabbit details and bright festival robes.",
+  "spriteVersionNumber": 2,
+  "spritesheetPath": "spritesheet.webp",
+  "kind": "person"
+}
