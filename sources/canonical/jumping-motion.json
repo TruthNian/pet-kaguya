@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "state": "jumping",
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "faceShapeLocked": true,
+  "closedEyeFrames": 0,
+  "durationsMs": [140,140,140,140,280],
+  "flightModel": {
+    "airtimeMs": 420,
+    "apexOutputPx": 8,
+    "sampleAt": "midpoint of each of the three native flight holds",
+    "trajectory": "height = 4 * apex * u * (1-u), u = time / airtime",
+    "nativeInterpolation": false
+  },
+  "keyframes": [
+    {"phase":"anticipation","grounded":true,"actorY":0,"bodyY":0.8,"earAngle":0.08,"hairAngle":0},
+    {"phase":"ascent","grounded":false,"flightTimeMs":70,"bodyY":0,"earAngle":-0.12,"hairAngle":0.05},
+    {"phase":"apex","grounded":false,"flightTimeMs":210,"bodyY":0,"earAngle":-0.2,"hairAngle":0.08},
+    {"phase":"descent","grounded":false,"flightTimeMs":350,"bodyY":0,"earAngle":0.1,"hairAngle":-0.03},
+    {"phase":"landing","grounded":true,"actorY":0,"bodyY":0.25,"earAngle":0.04,"hairAngle":-0.02}
+  ],
+  "visualMotionApproval": "pending",
+  "limitations": [
+    "Only five held poses; this is not continuous ballistic playback or a native FPS improvement.",
+    "Grounded legs accommodate less than one output pixel; no newly painted knee or arm articulation.",
+    "Native action repeats three times; landing has one held pose, not a within-slot recovery animation.",
+    "Naturalness and restrained character remain subject to actual-size visual review."
+  ]
+}

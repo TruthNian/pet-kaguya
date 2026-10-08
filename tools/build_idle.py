@@ -92,7 +92,9 @@ def render(image, pose, transform, regions, masks):
     # grid then one shared terminal downsample, never low-res frame recycling.
     yy, xx = np.mgrid[:HEIGHT*SUPERSAMPLE, :WIDTH*SUPERSAMPLE].astype(float)
     x = ((xx+.5)/SUPERSAMPLE-transform['x'])/transform['scale']-.5
-    y = ((yy+.5)/SUPERSAMPLE-transform['y'])/transform['scale']-.5
+    # Actor displacement is distinct from camera fitting. Grounded idle/failed
+    # omit actorY; a hop translates the entire source, including both shoes.
+    y = ((yy+.5)/SUPERSAMPLE-transform['y']-pose.get('actorY', 0))/transform['scale']-.5
     sx, sy = coordinates(x, y, pose, transform, regions, masks)
     pixels = np.asarray(image, dtype=float)
     pixels[..., :3] *= pixels[..., 3:4]/255

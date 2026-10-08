@@ -7,8 +7,8 @@ const canvases=[el('idle-reference'),el('idle-animated')];
 const contexts=canvases.map(canvas=>canvas.getContext('2d',{alpha:true}));
 const media=matchMedia('(prefers-reduced-motion: reduce)');
 el('idle-reduced').checked=media.matches;
-const sources={idle:'idle',failed:'failed',waiting:'waiting-art-v1'};
-const rows={idle:0,failed:5};
+const sources={idle:'idle',failed:'failed',jumping:'jumping',waiting:'waiting-art-v1'};
+const rows={idle:0,failed:5,jumping:4};
 const cache=new Map();
 let mode='idle',ready=false,timer=null,baseElapsed=0,startedAt=null,paused=false,manualIndex=null,lastKey='',paintCount=0,request=0;
 const reduced=()=>el('idle-reduced').checked;
@@ -62,11 +62,13 @@ async function draw(){
     context.drawImage(image,selected.index*192,0,192,208,0,0,192,208);
     lastKey=key;paintCount++;
   }
+  el('idle-frame').max=selected.state==='waiting'?'0':String(durations[rows[selected.state]].length-1);
   el('idle-frame').value=String(selected.index);
   el('idle-frame').disabled=mode==='waiting';
   el('idle-pause').disabled=reduced()||mode==='waiting';
   el('idle-pause').textContent=paused?'播放候选':'暂停候选';
-  const label=selected.state==='waiting'?'waiting · 仅静态托腮候选':selected.state==='failed'?'failed · 八帧轻微失落':'idle · 六帧微呼吸';
+  const labels={waiting:'waiting · 仅静态托腮候选',failed:'failed · 八帧轻微失落',jumping:'jumping · 五帧轻跃候选',idle:'idle · 六帧微呼吸'};
+  const label=labels[selected.state];
   el('current-candidate-title').textContent=label;
   const status=selected.static?'仅静态，动作未制作':manualIndex!==null?'单帧检查':reduced()?'减少动态':paused?'已暂停':selected.completedAction?'三轮已结束，已回 idle':'实际时长播放';
   const timing=selected.static?'':` · 第 ${selected.index+1}/${durations[rows[selected.state]].length} 帧 · 停留 ${selected.holdMs} ms · 周期 ${selected.cycleMs} ms`;
@@ -82,7 +84,7 @@ async function selectMode(){
   const thisRequest=++request;
   stopClock();ready=false;mode=el('idle-action').value;baseElapsed=0;manualIndex=null;paused=false;lastKey='';
   el('idle-status').textContent=`正在解码 ${mode} 候选…`;
-  el('idle-frame').max=mode==='failed'?'7':mode==='waiting'?'0':'5';
+  el('idle-frame').max=mode==='waiting'?'0':String(durations[rows[mode]]?.length-1);
   el('idle-frame').value='0';el('idle-pause').disabled=true;
   try{
     if(!(mode in sources))throw new Error('unsupported candidate');
@@ -95,7 +97,14 @@ async function selectMode(){
 el('idle-action').addEventListener('change',selectMode);
 el('idle-pause').addEventListener('click',async()=>{stopClock();paused=!paused;manualIndex=null;await draw();schedule();});
 el('idle-restart').addEventListener('click',async()=>{stopClock();baseElapsed=0;manualIndex=null;paused=false;await draw();schedule();});
-el('idle-frame').addEventListener('input',async()=>{stopClock();paused=true;manualIndex=Number(el('idle-frame').value);baseElapsed=candidatePoseOffset(mode,manualIndex);await draw();});
+el('idle-frame').addEventListener('input',async()=>{
+  // After action fallback the displayed frames belong to idle, not the
+  // shorter hop row. Inspect the displayed state; restart still replays the
+  // selected action until the user deliberately starts manual inspection.
+  const inspectState=slot().state,index=Number(el('idle-frame').value);
+  stopClock();mode=inspectState;el('idle-action').value=mode;
+  paused=true;manualIndex=index;baseElapsed=candidatePoseOffset(mode,index);await draw();
+});
 el('idle-size').addEventListener('change',size);
 el('idle-background').addEventListener('change',()=>{el('idle-stage').className=`stage ${el('idle-background').value}`;});
 el('idle-reduced').addEventListener('change',async()=>{stopClock();manualIndex=null;await draw();schedule();});

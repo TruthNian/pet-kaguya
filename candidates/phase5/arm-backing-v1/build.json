@@ -1,0 +1,37 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "generatedSha256": "9798CEAFF8B61630A94DCCE0E8533AB87F11BBD2D24936481C94620557ED2B2F",
+  "role": "technical viewer-left lowered-arm backing, not a pet pose",
+  "camera": {
+    "scale": 0.15833333333333333,
+    "x": 0.36666666666667425,
+    "y": 7.883333333333354,
+    "visibleBBox": [
+      142,
+      26,
+      1066,
+      1226
+    ],
+    "floor": 202,
+    "topReserve": 12,
+    "cell": [
+      192,
+      208
+    ]
+  },
+  "sameSourceCoordinateCamera": true,
+  "rawChangedPixelsOutsidePatch": 762343,
+  "boundedChangedPixels": 62266,
+  "boundedChangedPixelsOutsidePatch": 0,
+  "backingRGBAHash": "4DE304A9B59227FFC8BFF3CCC85C91BE0C3A686BCF69095DA60DBE26E53BF9C5",
+  "frameRGBAHash": "10A9D1BD6885D8A6824CEA2392A60841FAB5A5E0CE2FBE3D6BFFA36CE913C25D",
+  "fullRedrawAccepted": false,
+  "facialGeometryRepair": false,
+  "sourceCapeAndForegroundLockPreserved": true,
+  "articulatedArmBuilt": false,
+  "animationBuilt": false,
+  "visualAcceptance": "pending",
+  "installableFullAtlas": false,
+  "installed": false,
+  "limitation": "A hidden-background plate only; no clean foreground matte, elbow/wrist layers or neutral reconstruction proof yet."
+}

@@ -1,0 +1,111 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "source": "sources/canonical/artwork.png",
+  "state": "jumping",
+  "nativeRow": 4,
+  "statesInThisArtifact": [
+    "jumping"
+  ],
+  "generatedFromRejectedSources": false,
+  "facialGeometryRepair": false,
+  "closedEyeFrames": 0,
+  "durationsMs": [
+    140,
+    140,
+    140,
+    140,
+    280
+  ],
+  "totalDurationMs": 840,
+  "repeatBeforeIdle": 3,
+  "actionDurationMs": 2520,
+  "camera": {
+    "scale": 0.15833333333333333,
+    "x": 0.36666666666667425,
+    "y": 7.883333333333354,
+    "visibleBBox": [
+      142,
+      26,
+      1066,
+      1226
+    ],
+    "floor": 202,
+    "topReserve": 12,
+    "cell": [
+      192,
+      208
+    ]
+  },
+  "alphaCleanup": {
+    "distantVeryFaintPixelsRemoved": 4177,
+    "removedOpacitySum": 4971,
+    "maximumRemovedAlpha": 8,
+    "retainedFringeRadius": 4,
+    "paintedPixelsAboveAlpha8PreservedExactly": true,
+    "transparentRGBPixelsCleared": 859,
+    "sourceFileModified": false,
+    "faceShapeModified": false
+  },
+  "actorOffsetsPx": [
+    0,
+    -4.444444444444445,
+    -8.0,
+    -4.444444444444444,
+    0
+  ],
+  "groundedFrames": [
+    0,
+    4
+  ],
+  "visibleBoundsAlphaAbove8": [
+    [
+      22,
+      12,
+      170,
+      202
+    ],
+    [
+      22,
+      7,
+      169,
+      198
+    ],
+    [
+      22,
+      4,
+      169,
+      194
+    ],
+    [
+      22,
+      7,
+      170,
+      198
+    ],
+    [
+      22,
+      12,
+      170,
+      202
+    ]
+  ],
+  "nativeInterpolation": false,
+  "method": "pinned grounded shoes; rigid actor flight from a parabolic model sampled at real hold midpoints; no head/body resizing",
+  "sampling": "3x coverage integration from high-resolution source, one terminal Lanczos downsample",
+  "visualMotionApproval": "pending",
+  "installableFullAtlas": false,
+  "installed": false,
+  "frameHashes": [
+    "0B5CCEF2078370D89BA917C9ACC6EA1613D0EA0531B52003A1340B77ADC66706",
+    "F66213D8143F5F4FC35502F1B9318E8FC2AF347F21285F4476AE00A9F513E039",
+    "687145828FFC7050E6B6FC08FD0CD7E7EE1491240A5FD824F914430F263E010C",
+    "2F2BEFF1B30A51F51E0A398E38EABA41372DD40A034EB7468E640C598EC55C58",
+    "0060B645699BE3F637BA21DF0ABE84167B7E5D0326152572F836815FB074AE0F"
+  ],
+  "unresolved": [
+    "Only five held poses; this is not continuous ballistic playback or a native FPS improvement.",
+    "Grounded legs accommodate less than one output pixel; no newly painted knee or arm articulation.",
+    "Native action repeats three times; landing has one held pose, not a within-slot recovery animation.",
+    "Naturalness and restrained character remain subject to actual-size visual review."
+  ]
+}
