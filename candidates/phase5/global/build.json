@@ -122,12 +122,12 @@
       "state": "review",
       "nativeRow": 8,
       "frameCount": 6,
-      "sourceRowRGBAHash": "3F26515C889C5424E543E3300538D35C26A69C7A064CF31425192C8551C28D46",
+      "sourceRowRGBAHash": "C5DCDD18BA98F3B2D620DF9EE65ADB74AFD7B98F82CD987387CA8B33C4FA8537",
       "representativeFrame": 3,
       "visualMotionApproval": "pending"
     }
   ],
-  "atlasRGBAHash": "D8D10C9E82F61CFB34390F7154C2E6F6F4D1067BA637582C859ECDBBF1EBD9E1",
+  "atlasRGBAHash": "CE348F46366126F2DAA0013FD145DA3D465D0A40FBF0683ACD04C819120341D9",
   "construction": "exact paste of verified decoded v3 candidate strips; no new geometry or sampling",
   "visualAcceptance": "pending",
   "allStateTransitionsAccepted": false,

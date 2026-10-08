@@ -12,7 +12,7 @@ from PIL import Image
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT/'tools'))
 import build_review as review
-import review_review as art
+import review_review_v2 as art
 import build_gaze as gaze
 from arm_material import project_fixed_crop
 from build_idle import coordinates
@@ -32,9 +32,11 @@ class Review(unittest.TestCase):
         before, after = np.asarray(data['base']), np.asarray(data['armPose'])
         np.testing.assert_array_equal(after[~data['armAllowed']], before[~data['armAllowed']])
         np.testing.assert_array_equal(after[data['preserved']], before[data['preserved']])
-        self.assertEqual(int(np.any(before!=after,axis=2).sum()),69679)
+        self.assertEqual(int(np.any(before!=after,axis=2).sum()),81760)
+        self.assertEqual(self.art_meta['boundedRightArmChangedPixels'],81760)
+        self.assertEqual(self.art_meta['changedPixelsFromV1'],16636)
         self.assertEqual(self.art_meta['boundedRightArmChangedPixelsOutsidePatch'],0)
-        self.assertGreater(self.art_meta['rawMappedCropChangedPixelsOutsidePatch'],180000)
+        self.assertEqual(self.art_meta['rawMappedCropChangedPixelsOutsidePatch'],177351)
 
     def test_unmodified_head_face_and_shoes_are_actual_source_rgba(self):
         source, pose = np.asarray(self.data['mother']), np.asarray(self.data['armPose'])
@@ -65,7 +67,7 @@ class Review(unittest.TestCase):
             self.assertEqual(raw.getpixel((x,y)),base.getpixel((x,y)))
         with self.assertRaises(ValueError):
             project_fixed_crop(base,Image.new('RGBA',(1266,1000)),[1266,1000],spec['sourceCrop'])
-        self.assertEqual(hashlib.sha256((art.OUT/'generated.png').read_bytes()).hexdigest().upper(),art.GENERATED_SHA)
+        self.assertEqual(hashlib.sha256((ROOT/spec['generatedSource']).read_bytes()).hexdigest().upper(),art.GENERATED_SHA)
 
     def test_saved_static_pose_and_native_frame_are_exactly_rebuilt(self):
         with Image.open(art.OUT/'pose.png') as image:
@@ -75,7 +77,7 @@ class Review(unittest.TestCase):
             self.assertEqual(hashlib.sha256(image.convert('RGBA').tobytes()).hexdigest().upper(),self.art_meta['frameRGBAHash'])
         self.assertFalse(self.art_meta['animationBuilt'])
         self.assertEqual(self.art_meta['visualAcceptance'],'pending')
-        self.assertIn('pixel plates',self.art_meta['placementLimitation'])
+        self.assertIn('pixel-plate',self.art_meta['placementLimitation'])
 
     def test_downward_gaze_changes_only_original_eye_openings_and_keeps_alpha(self):
         data = self.data
@@ -182,6 +184,8 @@ class Review(unittest.TestCase):
                     'articulatedArmBuilt','nativeInterpolation','bodyPulse','ornamentFlash'):
             self.assertFalse(self.meta[key])
         self.assertTrue(self.meta['animationBuilt'])
+        self.assertEqual(self.meta['rightArmCompositionVersion'],'review-art-v2')
+        self.assertFalse(self.meta['newArtworkGenerated'])
         self.assertEqual(self.meta['strategyUserApproval'],'pending')
         self.assertEqual(self.meta['visualMotionApproval'],'pending')
         self.assertGreaterEqual(len(self.meta['unresolved']),6)

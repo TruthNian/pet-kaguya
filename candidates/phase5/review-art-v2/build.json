@@ -1,0 +1,54 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "generatedSha256": "0E6AD86D64E5FB6B6E85B50953E2C4E717506F4340B8ECA2EC8E7A77FA151452",
+  "generatedSource": "candidates/phase5/review-art-v1/generated.png",
+  "leftArmGeneratedSha256": "6BEEFEBA2456425C2B3648AEED8B3668F46A768D489A7A41D4F6016BD36FCDB3",
+  "role": "local compositing repair of the incomplete old right-sleeve removal; unchanged v1 hand gesture",
+  "rawCanvas": [
+    1266,
+    1242
+  ],
+  "sourceCrop": [
+    450,
+    500,
+    970,
+    1010
+  ],
+  "cropProjection": "uniform width-derived fixed source crop; tiny excess height clipped, no object-bounds or face fitting",
+  "newArtworkGenerated": false,
+  "boundedRightArmChangedPixels": 81760,
+  "boundedRightArmChangedPixelsOutsidePatch": 0,
+  "rawMappedCropChangedPixelsOutsidePatch": 177351,
+  "changedPixelsFromV1": 16636,
+  "originalHeadFaceRGBAExact": true,
+  "sourceForegroundPlatesPreserved": true,
+  "poseRGBAHash": "8618A3A73301ED7A3B29D63983878159C7B35D39BA33E465186584C539E32570",
+  "frameRGBAHash": "06F989CB89F2302E14E7B77F5860A62A5727835A6502A6728FFA1BDFAFF2B7CB",
+  "camera": {
+    "scale": 0.15833333333333333,
+    "x": 0.36666666666667425,
+    "y": 7.883333333333354,
+    "visibleBBox": [
+      142,
+      26,
+      1066,
+      1226
+    ],
+    "floor": 202,
+    "topReserve": 12,
+    "cell": [
+      192,
+      208
+    ]
+  },
+  "sameSourceCoordinateCamera": true,
+  "fullRedrawAccepted": false,
+  "facialGeometryRepair": false,
+  "articulatedArmBuilt": false,
+  "animationBuilt": false,
+  "visualAcceptance": "pending",
+  "strategyUserApproval": "pending",
+  "placementLimitation": "Only the compositing footprint is repaired. Right/left hand volumes, angular sleeve folds, reconstructed hidden hair, foreground pixel-plate seams and state-entry/exit still require visual review. No hand redraw or clean-layer recovery is claimed.",
+  "installableFullAtlas": false,
+  "installed": false
+}

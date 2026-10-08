@@ -6,7 +6,7 @@ Local Kaguya sprite assets, reproducible animation tools, and an honest quality 
 
 Phase 5 has **nine motion candidates and sixteen eye-only gaze cells**, sharing the locked v3 mother and camera. `candidates/phase5/global/` combines their exact decoded rows into a complete-coverage development atlas, **not an approved or installable release**. No `pet.json` or installer target is created. Left/right candidates propose small frontal alternating steps using estimated source leg/shoe mattes; shoes translate rigidly, with independently pinned support feet. They are drag feedback, not autonomous locomotion: host pointer displacement is independent of the sprite schedule, and drag release can interrupt any cel and restore the underlying state, not necessarily idle. No world-foot no-slip, velocity synchronization, side-face redraw or artwork mirroring is claimed. The frontal strategy is still awaiting user confirmation. Neutral leg reconstruction is measurably non-lossless; edge alpha/adjacent hair fringe remain uncertain. Body weight transfer is not built and 80 px cues are weak.
 
-All action aesthetics remain pending. Held waiting/review hand strategies also await confirmation. Their entry/idle fallback lacks arm transitions; review's palm volumes and angular sleeve folds still need review. Whole generated redraws are not adopted, and backing plates are technical materials, never finished poses. This is not a complete arm/3-D rig or continuous native interpolation. Gaze's exact neutral reconstruction does not prove a perfect matte. [Current progress, failures and limits (中文)](docs/PHASE5-STATES.zh-CN.md), [idle/source work](docs/PHASE5.zh-CN.md).
+All action aesthetics remain pending. Held waiting/review hand strategies also await confirmation. Their entry/idle fallback lacks arm transitions; review's palm volumes and angular sleeve folds still need review. Current review uses `review-art-v2`, a compositing-footprint correction using the unchanged v1 raw artwork: the original sleeve/hand footprint was incompletely retired in v1. Its defects remain reproducible as evidence. Hidden-hair seams remain visible at enlargement; no hand/clothing redesign or clean-layer recovery is claimed. Whole generated redraws are not adopted, and backing plates are technical materials, never finished poses. This is not a complete arm/3-D rig or continuous native interpolation. Gaze's exact neutral reconstruction does not prove a perfect matte. [Current progress, failures and limits (中文)](docs/PHASE5-STATES.zh-CN.md), [idle/source work](docs/PHASE5.zh-CN.md).
 
 The user selected **the earlier gently tapered AI-generated mother pose, v3**. The immutable source is `sources/canonical/artwork.png` with decision/hash in `sources/canonical/manifest.json`. Its face shape is locked; no fallback to rejected composites or procedural facial-geometry repairs. The viewer defaults to this source's idle and offers all nine current candidates and a global comparison. Motion acceptance is pending; the installed atlas remains untouched.
 
@@ -61,6 +61,7 @@ python tools/build_processing.py
 python tools/build_waiting.py
 python tools/guide_review.py
 python tools/review_review.py
+python tools/review_review_v2.py
 python tools/build_review.py
 python tools/guide_legs.py
 python tools/leg_material.py

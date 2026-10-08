@@ -27,10 +27,15 @@
     </div>
     <output id="idle-status" aria-live="off">正在解码 idle 候选…</output>
     <p>idle 周期 6.6 秒；failed 1.22 秒、jumping 0.84 秒、waving 0.7 秒、processing 0.82 秒、waiting 1.01 秒、review 1.03 秒，动作均三轮后回 idle。jumping 最高离地 8 px，仅着地格鞋部固定。waving 末格为原图放松，停留 280 ms；过渡偏向放松。processing 对应宿主 running 行。waiting/review 身体与手势保持，只做微小耳发响应；review 仅在原眼开口内移虹膜，不改眼眶或脸型。短周期不做快呼吸或胸饰闪烁。静态关键姿势不等于完整手臂骨骼：托腮/合手的入场和回 idle 仍缺过渡，80 px 状态差异弱，review 右手更展开、袖褶偏硬、前景保护多边形不是干净图层。所有动作的可爱感、接缝和节奏仍待视觉认可。</p>
-    <p><a href="../candidates/phase5/review-art-v1/contact-224px.png">review 固定相机明暗对照</a> · <a href="../candidates/phase5/review-art-v1/prompt.txt">局部素材实际生成提示词</a> · <a href="../docs/PHASE5-STATES.zh-CN.md">具体限制与缺陷</a></p>
+    <p>review 当前采用 v2 合成修正：完整移除旧右手/长袖残影，不重画新手或脸。原 v1 缺陷对照保留，隐藏发丝接缝和手袖造型仍未通过视觉验收。</p>
+    <p><a href="../candidates/phase5/review-art-v2/contact-224px.png">review 母版 / v1缺陷 / v2修正明暗对照</a> · <a href="../candidates/phase5/review-art-v1/prompt.txt">沿用局部素材的实际生成提示词</a> · <a href="../docs/PHASE5-STATES.zh-CN.md">具体限制与缺陷</a></p>
     <p>左右小步为八格、1060 ms一轮。此处模拟状态未被打断时的三轮3180 ms后回 idle；真实宿主的左右跑是拖拽反馈，松手可中断任意格并回到底层任务状态，不一定 idle，也不会等待脚落地。图集没有速度输入，不能保证鼠标拖动中的屏幕地面防滑。抬脚约1.19原生像素，80 px提示弱；拆层不是无损中立重建，衣边/发丝遮罩残影与克制感仍需验收，不把支撑脚坐标固定等同于真实跑步完成。</p>
     <p><a href="../candidates/phase5/locomotion-inspection/contact-224px.png">原母版/中立拆层/左右抬脚对照</a> · <a href="../candidates/phase5/run_right/native-timing.gif">向右小步真实停留GIF</a> · <a href="../candidates/phase5/leg-backing-v1/prompt.txt">无脸隐藏底图实际生成提示词</a></p>
   </section>
+  <details id="review-composition" class="idle-review"><summary>review · 旧袖残影修正前后（不代表造型通过）</summary>
+    <p>每排依次为锁定 v3、旧 v1 合成、当前 v2。修正的是旧袖/手轮廓漏移除；脸型、手势、取景和原生分辨率没有变化。右侧背景发丝仍有接缝，左右手形、袖褶和状态过渡仍待优化。</p>
+    <img loading="lazy" src="../candidates/phase5/review-art-v2/contact-192px.png" width="636" height="480" alt="同一母版、旧袖残影缺陷、修正后的review，深浅背景对照">
+  </details>
   <details id="global-review" class="idle-review"><summary>Phase 5 · 九状态全局结构对照（开发验收，不可安装）</summary>
     <p>九状态代表姿势，以113 px实际采样模拟展示，依次为 idle、左右小步、wave、jump、failed、waiting、processing、review；上三排深色、下三排浅色。它用于找脸身、衣袖、姿势的退步，不是视觉通过证明。完整开发图集为1536×2288，原生格192×208，解码RGBA仍14,057,472字节。</p>
     <img loading="lazy" src="../candidates/phase5/global/contact-113px.png" width="375" height="900" alt="九状态113像素明暗全局结构对照，所有动作人工接受待确认">
