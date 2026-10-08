@@ -1,0 +1,54 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "generatedSha256": "F4DB57340CF910C3F5A773BEFF3345823C42FBCFFEBD44C12F7E00990EACD93A",
+  "sourceCrop": [
+    400,
+    850,
+    820,
+    1260
+  ],
+  "rawCanvas": [
+    1269,
+    1239
+  ],
+  "editBudget": [
+    425,
+    936,
+    810,
+    1240
+  ],
+  "cropProjection": "uniform width-derived scale; fixed source crop, no object-bounds fit",
+  "inferredMatte": true,
+  "losslessNeutralDecomposition": false,
+  "originalHeadFaceAndDressAbove936RGBAExact": true,
+  "neutralChangedPixels": 20961,
+  "neutralChangedPixelsOutsideBackingPermission": 0,
+  "neutralLowerBudgetMeanAbsoluteRGBAError": 0.171629357,
+  "neutralLowerBudgetMaximumRGBAError": 127,
+  "neutralLowerBudgetMaximumAlphaError": 64,
+  "neutralLowerBudgetMeanAbsolutePremultRGBAError": 0.254325352,
+  "neutralLowerBudgetMaximumPremultRGBAError": 64.0,
+  "neutralLowerBudgetPremultRGBAError99Percentile": [
+    2.082352941,
+    1.874509804,
+    1.078431373,
+    2.0
+  ],
+  "neutralNativeMeanAbsolutePremultRGBAError": 0.025188512,
+  "neutralNativeMaximumPremultRGBAError": 17.0,
+  "neutralNativeChangedPixels": 618,
+  "errorStatisticsDecimalPlaces": 9,
+  "fullRedrawAccepted": false,
+  "facialGeometryRepair": false,
+  "visualAcceptance": "pending",
+  "installableFullAtlas": false,
+  "installed": false,
+  "limitations": [
+    "hand-traced silhouette can include or omit hair/antialias at the cut edge",
+    "nonopaque flattened source cannot be declared losslessly recovered into author layers",
+    "background generated crop was redrawn; only bounded old-leg regions adopted",
+    "three-source-pixel foreground margin includes original outlines but may carry adjacent hair fringe",
+    "backing uses only full estimated foreground coverage; residual boundary pixels are not a clean matte",
+    "puppet joint locations and frontal projection are hypotheses, not source anatomy"
+  ]
+}

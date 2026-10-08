@@ -1,0 +1,146 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "source": "sources/canonical/artwork.png",
+  "atlasCoverageComplete": true,
+  "states": [
+    "idle",
+    "run_right",
+    "run_left",
+    "waving",
+    "jumping",
+    "failed",
+    "waiting",
+    "processing",
+    "review"
+  ],
+  "nativeRows": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "directionCount": 16,
+  "atlasSize": [
+    1536,
+    2288
+  ],
+  "cell": [
+    192,
+    208
+  ],
+  "camera": {
+    "scale": 0.15833333333333333,
+    "x": 0.36666666666667425,
+    "y": 7.883333333333354,
+    "visibleBBox": [
+      142,
+      26,
+      1066,
+      1226
+    ],
+    "floor": 202,
+    "topReserve": 12,
+    "cell": [
+      192,
+      208
+    ]
+  },
+  "decodedTextureBytes": 14057472,
+  "actionRows": [
+    {
+      "state": "idle",
+      "nativeRow": 0,
+      "frameCount": 6,
+      "sourceRowRGBAHash": "1C48DD804C7DC60E645B05AD9BE515F41BB12FB84CE5B4912A8C696F8BCD5D9F",
+      "representativeFrame": 0,
+      "visualMotionApproval": "pending"
+    },
+    {
+      "state": "run_right",
+      "nativeRow": 1,
+      "frameCount": 8,
+      "sourceRowRGBAHash": "F678B08DE3AF788E8158AD72F4C2A67D343080E7AFCCE199AF81D0621217A351",
+      "representativeFrame": 2,
+      "visualMotionApproval": "pending"
+    },
+    {
+      "state": "run_left",
+      "nativeRow": 2,
+      "frameCount": 8,
+      "sourceRowRGBAHash": "C685C4FE01523F648AB811B5E003E0C23D6C6E69B8051B43F7C779E45B5C4F19",
+      "representativeFrame": 6,
+      "visualMotionApproval": "pending"
+    },
+    {
+      "state": "waving",
+      "nativeRow": 3,
+      "frameCount": 4,
+      "sourceRowRGBAHash": "CE9A9AEA160CD24CCAE659AF50913BF886A6AFCF4EB80002705E626C690A7D4B",
+      "representativeFrame": 1,
+      "visualMotionApproval": "pending"
+    },
+    {
+      "state": "jumping",
+      "nativeRow": 4,
+      "frameCount": 5,
+      "sourceRowRGBAHash": "FAAF7DF04E02B65B30FF62E0B853F3147A16B7ECEBE55BA356265F4AD90E7286",
+      "representativeFrame": 2,
+      "visualMotionApproval": "pending"
+    },
+    {
+      "state": "failed",
+      "nativeRow": 5,
+      "frameCount": 8,
+      "sourceRowRGBAHash": "27E8262C2FDC46D190B77C6DA836337218982FBB5C1FFA08C1BE1D5F3DB699A4",
+      "representativeFrame": 3,
+      "visualMotionApproval": "pending"
+    },
+    {
+      "state": "waiting",
+      "nativeRow": 6,
+      "frameCount": 6,
+      "sourceRowRGBAHash": "DB809527A36511FEAB4FE2008A90757E1565AC9FDD0D54944CE6A8C0813B03BA",
+      "representativeFrame": 3,
+      "visualMotionApproval": "pending"
+    },
+    {
+      "state": "processing",
+      "nativeRow": 7,
+      "frameCount": 6,
+      "sourceRowRGBAHash": "4E1947737CED70885AAB993B66F5992437274CAC2F4E7E5AD248E05DDC4F4254",
+      "representativeFrame": 3,
+      "visualMotionApproval": "pending"
+    },
+    {
+      "state": "review",
+      "nativeRow": 8,
+      "frameCount": 6,
+      "sourceRowRGBAHash": "3F26515C889C5424E543E3300538D35C26A69C7A064CF31425192C8551C28D46",
+      "representativeFrame": 3,
+      "visualMotionApproval": "pending"
+    }
+  ],
+  "atlasRGBAHash": "D8D10C9E82F61CFB34390F7154C2E6F6F4D1067BA637582C859ECDBBF1EBD9E1",
+  "construction": "exact paste of verified decoded v3 candidate strips; no new geometry or sampling",
+  "visualAcceptance": "pending",
+  "allStateTransitionsAccepted": false,
+  "hostIntegrationVerified": false,
+  "facialGeometryRepair": false,
+  "generatedFromRejectedSources": false,
+  "installableFullAtlas": false,
+  "installed": false,
+  "limitations": [
+    "Complete cell coverage is NOT complete/approved animation quality or release authority.",
+    "Waiting/review/locomotion strategies and all action/gaze aesthetics remain pending.",
+    "Global state changes, weak 80px cues, pose connections and arbitrary drag exits remain under review.",
+    "Fixed native resolution/timing/priority and decoded texture size are unchanged.",
+    "No pet.json or installer target is produced; this is a development QA artifact."
+  ]
+}

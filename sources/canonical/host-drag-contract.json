@@ -1,0 +1,23 @@
+{
+  "verifiedDateLocal": "2026-10-09",
+  "method": "read-only local installed asar member inspection; no installed app write or live drag recording",
+  "package": "OpenAI.Codex_26.1002.7124.0_x64__2p2nqsd0c76g0",
+  "member": "webview/assets/avatar-overlay-native-page-2de8ca8bb031.js",
+  "memberBytes": 330813,
+  "memberSha256": "0CFCC8B3294BC924FAEC0A22F751C462A6209F55981C97A5F213CDE14F2295E0",
+  "facts": {
+    "runStatePurpose": "horizontal pointer drag feedback when not using orb physics",
+    "smallMoveIgnoredWhenBothAbsoluteDeltasBelowPx": 4,
+    "rightSelectionHorizontalDeltaAtLeastPx": 4,
+    "leftSelectionHorizontalDeltaAtMostPx": -4,
+    "outerPosition": "pointerScreenX and pointerScreenY dispatched independently of animation cels",
+    "dragStart": "clear mascotDragState override",
+    "dragEnd": "clear mascotDragState override immediately; base task/mascot state remains independently selected",
+    "spriteVelocityInput": false,
+    "runDurationsMs": [120,120,120,120,120,120,120,220],
+    "genericFallback": "three cycles then idle only if row/state remains selected without interruption",
+    "dragEndAlwaysIdle": false,
+    "dragEndWaitsForLandingCel": false
+  },
+  "limitations": ["Version alone was not used as proof: the actual member bytes were inspected.","Source inspection is not an actual installed-overlay visual or performance test.","No proprietary application source is included in this public repository."]
+}

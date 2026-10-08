@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {candidateSlot,candidatePoseOffset} from '../viewer/candidate-clock.mjs';
+import {candidateSlot,candidatePoseOffset,candidateCelKey} from '../viewer/candidate-clock.mjs';
 import {durations,cycles,frameAt} from '../viewer/clock.mjs';
 
 test('failed candidate uses all real holds and exactly three loops before idle',()=>{
@@ -115,4 +115,43 @@ test('wave uses four real holds with a 280 ms rest, exactly three cycles then id
     assert.equal(actual.state,'idle');assert.equal(actual.index,expected.col);
     assert.equal(actual.completedAction,true);
   }
+});
+
+test('left/right drag-feedback rows use real eight holds only while the row is uninterrupted',()=>{
+  for(const [mode,row] of [['run_right',1],['run_left',2]]){
+    assert.deepEqual(durations[row],[120,120,120,120,120,120,120,220]);
+    assert.equal(cycles[row],1060);
+    for(let round=0;round<3;round++)for(let index=0;index<8;index++){
+      const start=round*1060+candidatePoseOffset(mode,index);
+      for(const time of [start,start+durations[row][index]-.001]){
+        const actual=candidateSlot(mode,time),expected=frameAt(mode,time);
+        assert.equal(actual.state,mode);assert.equal(actual.index,expected.col);
+        assert.equal(actual.completedAction,false);assert.ok(actual.untilNext>0);
+      }
+    }
+    for(const time of [3180,3180+1680,3180+6600,999999]){
+      const actual=candidateSlot(mode,time),expected=frameAt(mode,time);
+      assert.equal(actual.state,'idle');assert.equal(actual.index,expected.col);
+      assert.equal(actual.completedAction,true);
+    }
+    assert.throws(()=>candidatePoseOffset(mode,8));
+  }
+  // This pure row clock has no live drag input/velocity. These assertions
+  // intentionally do NOT certify arbitrary host drag-release transitions.
+});
+
+test('identical cels still advance native time slots but do not require another canvas paint',()=>{
+  const [a,b,c,d,e]=['A','B','C','D','E'].map(value=>value.repeat(64));
+  const hashes=[a,b,c,a,a,d,e,a];
+  let previous=null,paints=0;
+  for(let index=0;index<8;index++){
+    const key=candidateCelKey(hashes,index);
+    if(key!==previous)paints++;
+    previous=key;
+    assert.equal(candidateSlot('run_right',candidatePoseOffset('run_right',index)).index,index);
+  }
+  assert.equal(paints,7); // Only consecutive identical display content is skipped, not necessary repeated poses.
+  assert.throws(()=>candidateCelKey(['bad'],0));
+  assert.throws(()=>candidateCelKey([a],1));assert.throws(()=>candidateCelKey([a],.5));
+  assert.throws(()=>candidateCelKey(null,0));
 });

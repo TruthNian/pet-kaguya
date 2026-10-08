@@ -1,13 +1,13 @@
 // Current v3-only development candidates. Historical preview is separate.
 import {durations} from './clock.mjs';
-import {candidateRows as rows,candidateSlot,candidatePoseOffset} from './candidate-clock.mjs';
+import {candidateRows as rows,candidateSlot,candidatePoseOffset,candidateCelKey} from './candidate-clock.mjs';
 
 const el=id=>document.getElementById(id);
 const canvases=[el('idle-reference'),el('idle-animated')];
 const contexts=canvases.map(canvas=>canvas.getContext('2d',{alpha:true}));
 const media=matchMedia('(prefers-reduced-motion: reduce)');
 el('idle-reduced').checked=media.matches;
-const sources={idle:'idle',failed:'failed',jumping:'jumping',waving:'waving',processing:'processing',waiting:'waiting',review:'review'};
+const sources={idle:'idle',run_right:'run_right',run_left:'run_left',failed:'failed',jumping:'jumping',waving:'waving',processing:'processing',waiting:'waiting',review:'review'};
 const cache=new Map();
 let mode='idle',ready=false,timer=null,baseElapsed=0,startedAt=null,paused=false,manualIndex=null,lastKey='',paintCount=0,request=0;
 const reduced=()=>el('idle-reduced').checked;
@@ -26,6 +26,9 @@ async function asset(state){
     if(JSON.stringify(metadata.durationsMs)!==JSON.stringify(durations[rows[state]])){
       throw new Error(`${state} native schedule mismatch`);
     }
+    if(!Array.isArray(metadata.frameHashes)||metadata.frameHashes.length!==durations[rows[state]].length)
+      throw new Error(`${state} cel hash count mismatch`);
+    metadata.frameHashes.forEach((_,index)=>candidateCelKey(metadata.frameHashes,index));
     if(state==='waiting'&&(metadata.animationBuilt!==true||metadata.nativeRow!==6
         ||metadata.handStrategy!=='held-chin-contact'||metadata.strategyUserApproval!=='pending'
         ||metadata.closedEyeFrames!==0||metadata.bodyPulse!==false||metadata.repeatBeforeIdle!==3))
@@ -39,6 +42,11 @@ async function asset(state){
         ||metadata.closedEyeFrames!==0||metadata.bodyPulse!==false||metadata.ornamentFlash!==false
         ||metadata.repeatBeforeIdle!==3||metadata.visualMotionApproval!=='pending'))
       throw new Error('review state or unapproved-motion boundary mismatch');
+    if(['run_right','run_left'].includes(state)&&(metadata.animationBuilt!==true||metadata.nativeRow!==rows[state]
+        ||metadata.projection!=='front-held-alternating-small-steps'||metadata.strategyUserApproval!=='pending'
+        ||metadata.artMirrored!==false||metadata.hostVelocitySynchronization!==false||metadata.screenWorldNoSlipProven!==false
+        ||metadata.actualDragReleaseCanInterruptAnyCel!==true||metadata.visualMotionApproval!=='pending'))
+      throw new Error('drag-feedback candidate boundary mismatch');
     const image=new Image();image.src=`${root}/strip.webp`;await image.decode();
     if(image.naturalWidth!==1536||image.naturalHeight!==208)throw new Error(`${state} dimensions mismatch`);
     return {image,metadata};
@@ -64,25 +72,27 @@ function slot(){
 async function draw(){
   if(!ready)return;
   const selected=slot(),key=`${selected.state}:${selected.index}`;
-  const {image}=await cache.get(selected.state);
+  const {image,metadata}=await cache.get(selected.state);
   const current=slot();
   if(!ready||key!==`${current.state}:${current.index}`)return;
-  if(key!==lastKey){
+  const paintKey=candidateCelKey(metadata.frameHashes,selected.index);
+  if(paintKey!==lastKey){
     const context=contexts[1];context.clearRect(0,0,192,208);context.imageSmoothingEnabled=false;
     context.drawImage(image,selected.index*192,0,192,208,0,0,192,208);
-    lastKey=key;paintCount++;
+    lastKey=paintKey;paintCount++;
   }
   el('idle-frame').max=String(durations[rows[selected.state]].length-1);
   el('idle-frame').value=String(selected.index);
   el('idle-frame').disabled=false;
   el('idle-pause').disabled=reduced();
   el('idle-pause').textContent=paused?'播放候选':'暂停候选';
-  const labels={review:'review · 六格低手下视候选',waiting:'waiting · 六格托腮保持候选',failed:'failed · 八帧轻微失落',jumping:'jumping · 五帧轻跃候选',waving:'waving · 四格招手候选',processing:'processing · 清醒专注候选',idle:'idle · 六帧微呼吸'};
+  const labels={run_right:'run_right · 正面向右小步原型',run_left:'run_left · 正面向左小步原型',review:'review · 六格低手下视候选',waiting:'waiting · 六格托腮保持候选',failed:'failed · 八帧轻微失落',jumping:'jumping · 五帧轻跃候选',waving:'waving · 四格招手候选',processing:'processing · 清醒专注候选',idle:'idle · 六帧微呼吸'};
   const label=labels[selected.state];
   el('current-candidate-title').textContent=label;
   const status=manualIndex!==null?'单帧检查':reduced()?'减少动态':paused?'已暂停':selected.completedAction?'三轮已结束，已回 idle':'实际时长播放';
   const timing=` · 第 ${selected.index+1}/${durations[rows[selected.state]].length} 帧 · 停留 ${selected.holdMs} ms · 周期 ${selected.cycleMs} ms`;
-  el('idle-status').textContent=`${label} · ${status}${timing} · ${paintCount} 次候选绘制 · 未经完整视觉验收，非完整宠物，未安装`;
+  const dragBoundary=['run_right','run_left'].includes(mode)?' · 此处仅行内时钟；真实拖拽可随时中断/恢复底层状态，无速度同步':'';
+  el('idle-status').textContent=`${label} · ${status}${timing}${dragBoundary} · ${paintCount} 次候选绘制 · 未经完整视觉验收，非完成宠物，未安装`;
 }
 function schedule(){
   if(!canRun())return;

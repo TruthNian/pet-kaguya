@@ -1,0 +1,286 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "source": "sources/canonical/artwork.png",
+  "legBackingGeneratedSha256": "F4DB57340CF910C3F5A773BEFF3345823C42FBCFFEBD44C12F7E00990EACD93A",
+  "eyeBackingGeneratedSha256": "684BA98301B8BD4F204581E77CDE1586528D0EC7B1804C5CFC4ADB5E1EF2B61A",
+  "state": "run_right",
+  "nativeState": "running-right",
+  "nativeRow": 1,
+  "animationBuilt": true,
+  "projection": "front-held-alternating-small-steps",
+  "strategyUserApproval": "pending",
+  "visualMotionApproval": "pending",
+  "durationsMs": [
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    220
+  ],
+  "totalDurationMs": 1060,
+  "repeatBeforeIdle": 3,
+  "uninterruptedRowDurationMs": 3180,
+  "actualDragReleaseCanInterruptAnyCel": true,
+  "dragEndTargetIsUnderlyingStateNotNecessarilyIdle": true,
+  "hostVelocitySynchronization": false,
+  "screenWorldNoSlipProven": false,
+  "supportFeet": [
+    [
+      "left",
+      "right"
+    ],
+    [
+      "right"
+    ],
+    [
+      "right"
+    ],
+    [
+      "left",
+      "right"
+    ],
+    [
+      "left",
+      "right"
+    ],
+    [
+      "left"
+    ],
+    [
+      "left"
+    ],
+    [
+      "left",
+      "right"
+    ]
+  ],
+  "footOffsetsSourcePx": [
+    {
+      "left": [
+        0,
+        0
+      ],
+      "right": [
+        0,
+        0
+      ]
+    },
+    {
+      "left": [
+        2.5,
+        -3.75
+      ],
+      "right": [
+        0,
+        0
+      ]
+    },
+    {
+      "left": [
+        5,
+        -7.5
+      ],
+      "right": [
+        0,
+        0
+      ]
+    },
+    {
+      "left": [
+        0,
+        0
+      ],
+      "right": [
+        0,
+        0
+      ]
+    },
+    {
+      "left": [
+        0,
+        0
+      ],
+      "right": [
+        0,
+        0
+      ]
+    },
+    {
+      "left": [
+        0,
+        0
+      ],
+      "right": [
+        2.5,
+        -3.75
+      ]
+    },
+    {
+      "left": [
+        0,
+        0
+      ],
+      "right": [
+        5,
+        -7.5
+      ]
+    },
+    {
+      "left": [
+        0,
+        0
+      ],
+      "right": [
+        0,
+        0
+      ]
+    }
+  ],
+  "targetKneesSourcePx": [
+    [
+      [
+        525.0,
+        978.0
+      ],
+      [
+        683.0,
+        979.0
+      ]
+    ],
+    [
+      [
+        515.850511388261,
+        974.694923257565
+      ],
+      [
+        683.0,
+        979.0
+      ]
+    ],
+    [
+      [
+        511.867155153955,
+        972.453689653159
+      ],
+      [
+        683.0,
+        979.0
+      ]
+    ],
+    [
+      [
+        525.0,
+        978.0
+      ],
+      [
+        683.0,
+        979.0
+      ]
+    ],
+    [
+      [
+        525.0,
+        978.0
+      ],
+      [
+        683.0,
+        979.0
+      ]
+    ],
+    [
+      [
+        525.0,
+        978.0
+      ],
+      [
+        694.315482871447,
+        974.952293330431
+      ]
+    ],
+    [
+      [
+        525.0,
+        978.0
+      ],
+      [
+        699.897340281035,
+        971.487008416719
+      ]
+    ],
+    [
+      [
+        525.0,
+        978.0
+      ],
+      [
+        683.0,
+        979.0
+      ]
+    ]
+  ],
+  "maximumFootLiftOutputPx": 1.1875,
+  "wholeCuffAndShoeRigidlyTranslated": true,
+  "bodyTranslationPx": 0,
+  "bodyPulse": false,
+  "ornamentFlash": false,
+  "focusOffsetSourcePx": [
+    6,
+    0
+  ],
+  "artMirrored": false,
+  "camera": {
+    "scale": 0.15833333333333333,
+    "x": 0.36666666666667425,
+    "y": 7.883333333333354,
+    "visibleBBox": [
+      142,
+      26,
+      1066,
+      1226
+    ],
+    "floor": 202,
+    "topReserve": 12,
+    "cell": [
+      192,
+      208
+    ]
+  },
+  "sameSourceCoordinateCamera": true,
+  "facialGeometryRepair": false,
+  "sourceFaceExceptEyeAperturesFixed": true,
+  "closedEyeFrames": 0,
+  "nativeInterpolation": false,
+  "loopSeamRGBAExact": true,
+  "uniqueCels": 5,
+  "frameHashes": [
+    "44042F51B6E7C26145C2A91507870D6ED4D546F70A89747ED6FD6E6487BB4677",
+    "6CE8F7F409B54962E72C9E45DE117275B28B42969E03178325CEE755C7D3C533",
+    "E69BA6514B38778129771FC5B79B26DFA0A15B5CCCE433A18D701009AEA76271",
+    "44042F51B6E7C26145C2A91507870D6ED4D546F70A89747ED6FD6E6487BB4677",
+    "44042F51B6E7C26145C2A91507870D6ED4D546F70A89747ED6FD6E6487BB4677",
+    "12276F60CA24DF48162CA810369BBCD1D73313B7D7CA40E050A1E4025E8D3594",
+    "680A07B429EED114EC294D8B1EF4301361111AE44D28E95B366421B7F4F16522",
+    "44042F51B6E7C26145C2A91507870D6ED4D546F70A89747ED6FD6E6487BB4677"
+  ],
+  "method": "source leg/shoe estimated mattes; 2-D joint hypothesis with C1 ring displacement; fixed face and original iris shift",
+  "losslessNeutralDecomposition": false,
+  "inferredMatte": true,
+  "fullRedrawAccepted": false,
+  "generatedFromRejectedSources": false,
+  "installableFullAtlas": false,
+  "installed": false,
+  "unresolved": [
+    "Frontal small steps preserve the locked face and ornament sides; this strategy is proposed, not user-approved side-view running.",
+    "The host uses run states as drag feedback; pointer screen displacement is independent of the fixed sprite schedule. No screen-world no-slip claim.",
+    "Drag release or direction/state change can interrupt any cel and restore the underlying task state; three loops then idle is only the uninterrupted-row schedule.",
+    "Leg joints and smooth frontal projection are a 2-D puppet hypothesis, not recovered anatomy or a full 3-D rig.",
+    "Foreground outlines are estimated from flattened source pixels; adjacent hair fringe and residual boundary ghosts remain possible.",
+    "Neutral source-over reconstruction is not lossless; edge alpha differs even when source leg RGB material is retained.",
+    "At 80 px the approximately 1.2-native-pixel foot lift and gaze cue are weak; naturalness and left/right legibility are pending.",
+    "Body is intentionally held; this is not a completed physically balanced running or weight-transfer animation.",
+    "Native eight discrete holds, irregular rest duration and arbitrary exit have no new interpolation or transition cels."
+  ]
+}

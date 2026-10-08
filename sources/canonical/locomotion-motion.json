@@ -1,0 +1,37 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "states": [{"state":"run_right","nativeState":"running-right","nativeRow":1,"direction":1},{"state":"run_left","nativeState":"running-left","nativeRow":2,"direction":-1}],
+  "durationsMs": [120,120,120,120,120,120,120,220],
+  "repeatBeforeIdleIfStateRemainsSelected": 3,
+  "projection": "front-held-alternating-small-steps",
+  "strategyUserApproval": "pending",
+  "visualMotionApproval": "pending",
+  "faceShapeLocked": true,
+  "artMirrored": false,
+  "bodyTranslationPx": 0,
+  "closedEyeFrames": 0,
+  "nativeInterpolation": false,
+  "hostVelocitySynchronization": false,
+  "focusOffsetSourcePx": [6,0],
+  "keyframes": [
+    {"left":[0,0],"right":[0,0],"support":["left","right"]},
+    {"left":[2.5,-3.75],"right":[0,0],"support":["right"]},
+    {"left":[5,-7.5],"right":[0,0],"support":["right"]},
+    {"left":[0,0],"right":[0,0],"support":["left","right"]},
+    {"left":[0,0],"right":[0,0],"support":["left","right"]},
+    {"left":[0,0],"right":[2.5,-3.75],"support":["left"]},
+    {"left":[0,0],"right":[5,-7.5],"support":["left"]},
+    {"left":[0,0],"right":[0,0],"support":["left","right"]}
+  ],
+  "limitations": [
+    "Frontal small steps preserve the locked face and ornament sides; this strategy is proposed, not user-approved side-view running.",
+    "The host uses run states as drag feedback; pointer screen displacement is independent of the fixed sprite schedule. No screen-world no-slip claim.",
+    "Drag release or direction/state change can interrupt any cel and restore the underlying task state; three loops then idle is only the uninterrupted-row schedule.",
+    "Leg joints and smooth frontal projection are a 2-D puppet hypothesis, not recovered anatomy or a full 3-D rig.",
+    "Foreground outlines are estimated from flattened source pixels; adjacent hair fringe and residual boundary ghosts remain possible.",
+    "Neutral source-over reconstruction is not lossless; edge alpha differs even when source leg RGB material is retained.",
+    "At 80 px the approximately 1.2-native-pixel foot lift and gaze cue are weak; naturalness and left/right legibility are pending.",
+    "Body is intentionally held; this is not a completed physically balanced running or weight-transfer animation.",
+    "Native eight discrete holds, irregular rest duration and arbitrary exit have no new interpolation or transition cels."
+  ]
+}
