@@ -7,12 +7,12 @@ const canvases=[el('idle-reference'),el('idle-animated')];
 const contexts=canvases.map(canvas=>canvas.getContext('2d',{alpha:true}));
 const media=matchMedia('(prefers-reduced-motion: reduce)');
 el('idle-reduced').checked=media.matches;
-const sources={idle:'idle',failed:'failed',jumping:'jumping',waving:'waving',processing:'processing',waiting:'waiting-art-v1'};
+const sources={idle:'idle',failed:'failed',jumping:'jumping',waving:'waving',processing:'processing',waiting:'waiting',review:'review'};
 const cache=new Map();
 let mode='idle',ready=false,timer=null,baseElapsed=0,startedAt=null,paused=false,manualIndex=null,lastKey='',paintCount=0,request=0;
 const reduced=()=>el('idle-reduced').checked;
 const elapsed=()=>baseElapsed+(startedAt===null?0:performance.now()-startedAt);
-const canRun=()=>ready&&mode!=='waiting'&&!paused&&!reduced()&&!document.hidden;
+const canRun=()=>ready&&!paused&&!reduced()&&!document.hidden;
 
 async function asset(state){
   if(!cache.has(state))cache.set(state,(async()=>{
@@ -23,17 +23,24 @@ async function asset(state){
     if(metadata.sourceSha256!=='65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A'
         ||metadata.facialGeometryRepair!==false||metadata.installableFullAtlas!==false||metadata.installed!==false)
       throw new Error(`${state} source or candidate boundary mismatch`);
-    if(state==='waiting'){
-      if(metadata.animationBuilt!==false||metadata.fullRedrawAccepted!==false)throw new Error('waiting is static only');
-    }else if(JSON.stringify(metadata.durationsMs)!==JSON.stringify(durations[rows[state]])){
+    if(JSON.stringify(metadata.durationsMs)!==JSON.stringify(durations[rows[state]])){
       throw new Error(`${state} native schedule mismatch`);
     }
+    if(state==='waiting'&&(metadata.animationBuilt!==true||metadata.nativeRow!==6
+        ||metadata.handStrategy!=='held-chin-contact'||metadata.strategyUserApproval!=='pending'
+        ||metadata.closedEyeFrames!==0||metadata.bodyPulse!==false||metadata.repeatBeforeIdle!==3))
+      throw new Error('waiting held-contact candidate boundary mismatch');
     if(state==='processing'&&(metadata.nativeState!=='running'||metadata.nativeRow!==7
         ||metadata.closedEyeFrames!==0||metadata.bodyPulse!==false||metadata.ornamentFlash!==false
         ||metadata.repeatBeforeIdle!==3||metadata.visualMotionApproval!=='pending'))
       throw new Error('processing state or restrained-motion boundary mismatch');
-    const image=new Image();image.src=`${root}/${state==='waiting'?'frame.png':'strip.webp'}`;await image.decode();
-    if(image.naturalWidth!==(state==='waiting'?192:1536)||image.naturalHeight!==208)throw new Error(`${state} dimensions mismatch`);
+    if(state==='review'&&(metadata.animationBuilt!==true||metadata.nativeRow!==8
+        ||metadata.handStrategy!=='two-low-hands-held'||metadata.strategyUserApproval!=='pending'
+        ||metadata.closedEyeFrames!==0||metadata.bodyPulse!==false||metadata.ornamentFlash!==false
+        ||metadata.repeatBeforeIdle!==3||metadata.visualMotionApproval!=='pending'))
+      throw new Error('review state or unapproved-motion boundary mismatch');
+    const image=new Image();image.src=`${root}/strip.webp`;await image.decode();
+    if(image.naturalWidth!==1536||image.naturalHeight!==208)throw new Error(`${state} dimensions mismatch`);
     return {image,metadata};
   })().catch(error=>{cache.delete(state);throw error;}));
   return cache.get(state);
@@ -49,7 +56,7 @@ function size(){
 function slot(){
   if(manualIndex!==null||reduced()){
     const index=manualIndex??0;
-    return {state:mode,index,static:mode==='waiting',completedAction:false,
+    return {state:mode,index,static:false,completedAction:false,
             holdMs:durations[rows[mode]]?.[index],cycleMs:durations[rows[mode]]?.reduce((a,b)=>a+b,0)};
   }
   return candidateSlot(mode,elapsed());
@@ -65,16 +72,16 @@ async function draw(){
     context.drawImage(image,selected.index*192,0,192,208,0,0,192,208);
     lastKey=key;paintCount++;
   }
-  el('idle-frame').max=selected.state==='waiting'?'0':String(durations[rows[selected.state]].length-1);
+  el('idle-frame').max=String(durations[rows[selected.state]].length-1);
   el('idle-frame').value=String(selected.index);
-  el('idle-frame').disabled=mode==='waiting';
-  el('idle-pause').disabled=reduced()||mode==='waiting';
+  el('idle-frame').disabled=false;
+  el('idle-pause').disabled=reduced();
   el('idle-pause').textContent=paused?'播放候选':'暂停候选';
-  const labels={waiting:'waiting · 仅静态托腮候选',failed:'failed · 八帧轻微失落',jumping:'jumping · 五帧轻跃候选',waving:'waving · 四格招手候选',processing:'processing · 清醒专注候选',idle:'idle · 六帧微呼吸'};
+  const labels={review:'review · 六格低手下视候选',waiting:'waiting · 六格托腮保持候选',failed:'failed · 八帧轻微失落',jumping:'jumping · 五帧轻跃候选',waving:'waving · 四格招手候选',processing:'processing · 清醒专注候选',idle:'idle · 六帧微呼吸'};
   const label=labels[selected.state];
   el('current-candidate-title').textContent=label;
-  const status=selected.static?'仅静态，动作未制作':manualIndex!==null?'单帧检查':reduced()?'减少动态':paused?'已暂停':selected.completedAction?'三轮已结束，已回 idle':'实际时长播放';
-  const timing=selected.static?'':` · 第 ${selected.index+1}/${durations[rows[selected.state]].length} 帧 · 停留 ${selected.holdMs} ms · 周期 ${selected.cycleMs} ms`;
+  const status=manualIndex!==null?'单帧检查':reduced()?'减少动态':paused?'已暂停':selected.completedAction?'三轮已结束，已回 idle':'实际时长播放';
+  const timing=` · 第 ${selected.index+1}/${durations[rows[selected.state]].length} 帧 · 停留 ${selected.holdMs} ms · 周期 ${selected.cycleMs} ms`;
   el('idle-status').textContent=`${label} · ${status}${timing} · ${paintCount} 次候选绘制 · 未经完整视觉验收，非完整宠物，未安装`;
 }
 function schedule(){
@@ -87,7 +94,7 @@ async function selectMode(){
   const thisRequest=++request;
   stopClock();ready=false;mode=el('idle-action').value;baseElapsed=0;manualIndex=null;paused=false;lastKey='';
   el('idle-status').textContent=`正在解码 ${mode} 候选…`;
-  el('idle-frame').max=mode==='waiting'?'0':String(durations[rows[mode]]?.length-1);
+  el('idle-frame').max=String(durations[rows[mode]]?.length-1);
   el('idle-frame').value='0';el('idle-pause').disabled=true;
   try{
     if(!(mode in sources))throw new Error('unsupported candidate');

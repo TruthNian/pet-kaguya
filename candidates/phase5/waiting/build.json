@@ -1,0 +1,73 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "source": "sources/canonical/artwork.png",
+  "handGeneratedSha256": "39165C8A937747F6B38CDCC3A2F8CA9CC11787C03EA46856D0E25F69CD111BD2",
+  "state": "waiting",
+  "nativeRow": 6,
+  "statesInThisArtifact": [
+    "waiting"
+  ],
+  "durationsMs": [
+    150,
+    150,
+    150,
+    150,
+    150,
+    260
+  ],
+  "totalDurationMs": 1010,
+  "repeatBeforeIdle": 3,
+  "actionDurationMs": 3030,
+  "closedEyeFrames": 0,
+  "bodyPulse": false,
+  "bodyTranslationPx": 0,
+  "camera": {
+    "scale": 0.15833333333333333,
+    "x": 0.36666666666667425,
+    "y": 7.883333333333354,
+    "visibleBBox": [
+      142,
+      26,
+      1066,
+      1226
+    ],
+    "floor": 202,
+    "topReserve": 12,
+    "cell": [
+      192,
+      208
+    ]
+  },
+  "sameSourceCoordinateCamera": true,
+  "handStrategy": "held-chin-contact",
+  "strategyUserApproval": "pending",
+  "cheekHandContactFixed": true,
+  "sourceFaceOutsideHandOcclusionFixed": true,
+  "loopSeamRGBAExact": true,
+  "uniqueCels": 4,
+  "frameHashes": [
+    "29329FDD03E87A258271336DFA3888F852A8A888FABBBF3818E9708D3CE84E90",
+    "C0668714EB4236302C8A00D304882C091365E40D72156405FF1CF039E1B5AB3F",
+    "94FEE900F03FC968CA95B25A33A9F1B1690C5E2D424397EE737DB284F0D87FE8",
+    "A2896BB7F08C4499BE25C1373A41B028963AFC309501644116FE5B46848719BC",
+    "C0668714EB4236302C8A00D304882C091365E40D72156405FF1CF039E1B5AB3F",
+    "29329FDD03E87A258271336DFA3888F852A8A888FABBBF3818E9708D3CE84E90"
+  ],
+  "method": "bounded original waiting key pose held with small non-face ear/hair response; no entry/exit simulation",
+  "sampling": "same canonical camera, 3x coverage from high-resolution pose and one terminal Lanczos downsample",
+  "facialGeometryRepair": false,
+  "fullRedrawAccepted": false,
+  "articulatedArmBuilt": false,
+  "animationBuilt": true,
+  "nativeInterpolation": false,
+  "visualMotionApproval": "pending",
+  "installableFullAtlas": false,
+  "installed": false,
+  "unresolved": [
+    "Held chin contact is a candidate while the earlier timing question remains unanswered, not an agreed or approved motion strategy.",
+    "The native 1010 ms repeating row cannot encode first-cycle-only raising and third-cycle-only lowering; entry and return-to-idle hand jumps remain.",
+    "Body is deliberately held, not a claim that every frozen-body issue is repaired; no rapid breath or blink is inserted into each short cycle.",
+    "The new arm, sleeve and hidden background are bounded authored approximations, not a complete articulated arm rig or ground-truth matte.",
+    "Hand-cheek contact, costume seams, small-size expression and three-cycle rhythm require visual acceptance."
+  ]
+}

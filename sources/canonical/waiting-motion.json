@@ -1,0 +1,29 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "state": "waiting",
+  "nativeRow": 6,
+  "durationsMs": [150,150,150,150,150,260],
+  "repeatBeforeIdle": 3,
+  "faceShapeLocked": true,
+  "closedEyeFrames": 0,
+  "bodyPulse": false,
+  "nativeInterpolation": false,
+  "handStrategy": "held-chin-contact",
+  "strategyUserApproval": "pending",
+  "keyframes": [
+    {"bodyY":0,"earAngle":0,"hairAngle":0},
+    {"bodyY":0,"earAngle":0.06,"hairAngle":0},
+    {"bodyY":0,"earAngle":0.15,"hairAngle":0.01},
+    {"bodyY":0,"earAngle":0.15,"hairAngle":0.02},
+    {"bodyY":0,"earAngle":0.06,"hairAngle":0},
+    {"bodyY":0,"earAngle":0,"hairAngle":0}
+  ],
+  "visualMotionApproval": "pending",
+  "limitations": [
+    "Held chin contact is a candidate while the earlier timing question remains unanswered, not an agreed or approved motion strategy.",
+    "The native 1010 ms repeating row cannot encode first-cycle-only raising and third-cycle-only lowering; entry and return-to-idle hand jumps remain.",
+    "Body is deliberately held, not a claim that every frozen-body issue is repaired; no rapid breath or blink is inserted into each short cycle.",
+    "The new arm, sleeve and hidden background are bounded authored approximations, not a complete articulated arm rig or ground-truth matte.",
+    "Hand-cheek contact, costume seams, small-size expression and three-cycle rhythm require visual acceptance."
+  ]
+}

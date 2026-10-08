@@ -17,10 +17,8 @@ test('failed candidate uses all real holds and exactly three loops before idle',
     assert.equal(actual.state,'idle');assert.equal(actual.index,expected.col);assert.equal(actual.completedAction,true);
   }
 });
-test('idle clock and waiting static never invent an animated waiting row',()=>{
+test('idle candidate clock agrees with native idle over long playback',()=>{
   for(let time=0;time<40000;time+=37.5)assert.equal(candidateSlot('idle',time).index,frameAt('idle',time).col);
-  assert.deepEqual(candidateSlot('waiting',999999),{state:'waiting',index:0,static:true,completedAction:false});
-  assert.equal(candidatePoseOffset('waiting',0),0);
 });
 test('hop uses five real holds and three loops, then returns to the actual idle clock',()=>{
   for(let round=0;round<3;round++)for(let index=0;index<5;index++){
@@ -39,8 +37,46 @@ test('hop uses five real holds and three loops, then returns to the actual idle 
 test('invalid states, manual frames and elapsed values fail closed',()=>{
   for(const mode of ['phase3','running','none'])assert.throws(()=>candidateSlot(mode,0));
   for(const time of [NaN,Infinity,-Infinity])assert.throws(()=>candidateSlot('failed',time));
-  for(const [mode,index] of [['failed',8],['jumping',5],['waving',4],['processing',6],['idle',6],['waiting',1],['idle',.5],['failed',-1]])assert.throws(()=>candidatePoseOffset(mode,index));
+  for(const [mode,index] of [['failed',8],['jumping',5],['waving',4],['processing',6],['review',6],['idle',6],['waiting',6],['idle',.5],['failed',-1]])assert.throws(()=>candidatePoseOffset(mode,index));
   assert.equal(candidateSlot('failed',-1).index,0);
+});
+
+test('built waiting row uses six real holds and three cycles, never stays static by accident',()=>{
+  assert.deepEqual(durations[6],[150,150,150,150,150,260]);
+  assert.equal(cycles[6],1010);
+  for(let round=0;round<3;round++)for(let index=0;index<6;index++){
+    const offset=round*1010+candidatePoseOffset('waiting',index);
+    for(const time of [offset,offset+durations[6][index]-.001]){
+      const actual=candidateSlot('waiting',time),expected=frameAt('waiting',time);
+      assert.equal(actual.state,'waiting');assert.equal(actual.index,expected.col);
+      assert.equal(actual.static,false);assert.equal(actual.completedAction,false);
+      assert.equal(actual.holdMs,durations[6][index]);assert.ok(actual.untilNext>0);
+    }
+  }
+  for(const time of [3030,3030+1680,3030+6600,999999]){
+    const actual=candidateSlot('waiting',time),expected=frameAt('waiting',time);
+    assert.equal(actual.state,'idle');assert.equal(actual.index,expected.col);
+    assert.equal(actual.completedAction,true);
+  }
+});
+
+test('review uses row eight native holds and falls back after exactly 3090 ms',()=>{
+  assert.deepEqual(durations[8],[150,150,150,150,150,280]);
+  assert.equal(cycles[8],1030);
+  for(let round=0;round<3;round++)for(let index=0;index<6;index++){
+    const offset=round*1030+candidatePoseOffset('review',index);
+    for(const time of [offset,offset+durations[8][index]-.001]){
+      const actual=candidateSlot('review',time),expected=frameAt('review',time);
+      assert.equal(actual.state,'review');assert.equal(actual.index,expected.col);
+      assert.equal(actual.static,false);assert.equal(actual.completedAction,false);
+      assert.equal(actual.holdMs,durations[8][index]);assert.ok(actual.untilNext>0);
+    }
+  }
+  for(const time of [3090,3090+1680,3090+6600,999999]){
+    const actual=candidateSlot('review',time),expected=frameAt('review',time);
+    assert.equal(actual.state,'idle');assert.equal(actual.index,expected.col);
+    assert.equal(actual.completedAction,true);
+  }
 });
 
 test('processing means native running row, six real holds and three cycles then idle',()=>{

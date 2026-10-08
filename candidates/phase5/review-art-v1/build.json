@@ -1,0 +1,51 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "generatedSha256": "0E6AD86D64E5FB6B6E85B50953E2C4E717506F4340B8ECA2EC8E7A77FA151452",
+  "leftArmGeneratedSha256": "6BEEFEBA2456425C2B3648AEED8B3668F46A768D489A7A41D4F6016BD36FCDB3",
+  "role": "two low hands review key pose candidate; no face/head redraw",
+  "rawCanvas": [
+    1266,
+    1242
+  ],
+  "sourceCrop": [
+    450,
+    500,
+    970,
+    1010
+  ],
+  "cropProjection": "uniform width-derived fixed source crop; tiny excess height clipped, no object-bounds or face fitting",
+  "boundedRightArmChangedPixels": 69679,
+  "boundedRightArmChangedPixelsOutsidePatch": 0,
+  "rawMappedCropChangedPixelsOutsidePatch": 189432,
+  "originalHeadFaceRGBAExact": true,
+  "sourceForegroundPlatesPreserved": true,
+  "poseRGBAHash": "D3836861357B060EEA4A16597684AC0C0C37669C118F9FC444C9CEDD94EF2C5D",
+  "frameRGBAHash": "C989B620F92A836E61A47C9E063D45CEDE723F7803D760DD148D7F9652325F5C",
+  "camera": {
+    "scale": 0.15833333333333333,
+    "x": 0.36666666666667425,
+    "y": 7.883333333333354,
+    "visibleBBox": [
+      142,
+      26,
+      1066,
+      1226
+    ],
+    "floor": 202,
+    "topReserve": 12,
+    "cell": [
+      192,
+      208
+    ]
+  },
+  "sameSourceCoordinateCamera": true,
+  "fullRedrawAccepted": false,
+  "facialGeometryRepair": false,
+  "articulatedArmBuilt": false,
+  "animationBuilt": false,
+  "visualAcceptance": "pending",
+  "strategyUserApproval": "pending",
+  "placementLimitation": "New right hand is more spread than the existing softly curled left; contact, hand volume and sleeve/cord occlusion require visual acceptance. Source foreground polygons are bounded pixel plates, not recovered clean RGBA layers. Moon belt ornament may be legitimately partly occluded by the new hand, not repainted as a new ornament.",
+  "installableFullAtlas": false,
+  "installed": false
+}

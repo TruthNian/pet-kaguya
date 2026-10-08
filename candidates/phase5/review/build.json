@@ -1,0 +1,83 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "source": "sources/canonical/artwork.png",
+  "rightHandGeneratedSha256": "0E6AD86D64E5FB6B6E85B50953E2C4E717506F4340B8ECA2EC8E7A77FA151452",
+  "leftHandGeneratedSha256": "6BEEFEBA2456425C2B3648AEED8B3668F46A768D489A7A41D4F6016BD36FCDB3",
+  "eyeBackingGeneratedSha256": "684BA98301B8BD4F204581E77CDE1586528D0EC7B1804C5CFC4ADB5E1EF2B61A",
+  "state": "review",
+  "nativeRow": 8,
+  "statesInThisArtifact": [
+    "review"
+  ],
+  "durationsMs": [
+    150,
+    150,
+    150,
+    150,
+    150,
+    280
+  ],
+  "totalDurationMs": 1030,
+  "repeatBeforeIdle": 3,
+  "actionDurationMs": 3090,
+  "closedEyeFrames": 0,
+  "bodyPulse": false,
+  "ornamentFlash": false,
+  "bodyTranslationPx": 0,
+  "handStrategy": "two-low-hands-held",
+  "strategyUserApproval": "pending",
+  "focusOffsetSourcePx": [
+    0,
+    5
+  ],
+  "camera": {
+    "scale": 0.15833333333333333,
+    "x": 0.36666666666667425,
+    "y": 7.883333333333354,
+    "visibleBBox": [
+      142,
+      26,
+      1066,
+      1226
+    ],
+    "floor": 202,
+    "topReserve": 12,
+    "cell": [
+      192,
+      208
+    ]
+  },
+  "sameSourceCoordinateCamera": true,
+  "focusedEyeAlphaPreservedExactly": true,
+  "sourceFaceExceptEyeAperturesFixed": true,
+  "sourceForegroundPlatesPreserved": true,
+  "loopSeamRGBAExact": true,
+  "uniqueCels": 4,
+  "frameHashes": [
+    "8910B47D51E893A52E7DA5CD709399DEFA7CEF31617F57CA65FFA28DCDDEB2C7",
+    "84A1F3838BC369071CB8682677F6EC264746F6C24B29B56896E5547FA951CC21",
+    "95B41BB65939ECE37E82BDFDA9A974DFBF97CD23927D32053DB3CF8647566772",
+    "9635F30AA8D596975A26F3C3A69FB3681CD46023BDCF3337CBDA3A5B00553783",
+    "84A1F3838BC369071CB8682677F6EC264746F6C24B29B56896E5547FA951CC21",
+    "8910B47D51E893A52E7DA5CD709399DEFA7CEF31617F57CA65FFA28DCDDEB2C7"
+  ],
+  "method": "bounded two-low-hands cel, downward original iris translation and very small ear/hair fields; body held",
+  "sampling": "new right/left arm each first uses fixed-crop source projection; shared canonical camera, 3x coverage and terminal Lanczos downsample",
+  "fullRedrawAccepted": false,
+  "articulatedArmBuilt": false,
+  "facialGeometryRepair": false,
+  "animationBuilt": true,
+  "generatedFromRejectedSources": false,
+  "nativeInterpolation": false,
+  "visualMotionApproval": "pending",
+  "installableFullAtlas": false,
+  "installed": false,
+  "unresolved": [
+    "Two low hands are a candidate, not an approved user strategy; no book, tool or effects were added.",
+    "The newly drawn right palm is more open than the softly curled left; contact and hand volume require visual acceptance.",
+    "The green sleeve has angular folds; source foreground polygons preserve pixel plates, not clean recovered mattes.",
+    "All three cycles hold the hands; first-only raising and last-only lowering cannot be encoded in one repeating native row. Entry and idle fallback have no arm transition.",
+    "A 1030 ms cycle is not used for a forced fast breath; the body is held, not a claim that all frozen-body problems are solved.",
+    "Downward gaze, small-scale state legibility, sleeve seams and naturalness are unapproved; original host resolution, durations and pointer priority are unchanged."
+  ]
+}

@@ -40,11 +40,26 @@ def grid(image, box):
 
 def specification():
     spec = json.loads((OUT/'patch.json').read_text(encoding='utf-8'))
+    validate_specification(spec)
+    return spec
+
+
+def validate_specification(spec):
     if (spec['sourceSha256'] != ACCEPTED_SHA or spec['generatedSha256'] != GENERATED_SHA
             or spec['canvas'] != [1205, 1306] or spec['fullRedrawAccepted']
-            or spec['newFaceGeometryAllowed']):
+            or spec['newFaceGeometryAllowed'] or not spec['facialChangesAllowedOnlyAsForegroundHandOcclusion']
+            or spec['visualAcceptance'] != 'pending' or spec['animationBuilt'] or spec['installed']):
         raise ValueError('Waiting patch violates the locked mother-pose decision')
-    return spec
+    # Face occlusion is a specific lower-cheek hand, not permission to repaint
+    # eyes, mouth or the whole head under the label "foreground hand".
+    for name,budget in [('armAndBackingPolygon',(247,473,570,1000)),
+                        ('foregroundHandPolygon',(505,429,588,566))]:
+        points = np.asarray(spec[name])
+        x0,y0,x1,y1 = budget
+        if (points.ndim != 2 or points.shape[1] != 2 or len(points)<3
+                or not np.isfinite(points).all() or np.any(points[:,0]<x0)
+                or np.any(points[:,0]>x1) or np.any(points[:,1]<y0) or np.any(points[:,1]>y1)):
+            raise ValueError('Waiting arm/hand permission exceeds its inspected region')
 
 
 def masks(spec):
@@ -54,8 +69,16 @@ def masks(spec):
 
 
 def localized_pose(source, generated, spec):
+    validate_specification(spec)
     image, allowed, components = bounded_artwork(source, generated,
         [spec['armAndBackingPolygon'], spec['foregroundHandPolygon']], spec['edgeFeatherSourcePx'])
+    regions,_ = idle_specification()
+    face = np.zeros(allowed.shape,dtype=bool)
+    x0,y0,x1,y1 = regions['protectedFace']
+    face[y0:y1,x0:x1] = True
+    changed = np.any(np.asarray(source)!=np.asarray(image),axis=2)
+    if np.any(changed & face & ~components[1][0]):
+        raise ValueError('Waiting changed a face pixel outside the foreground hand')
     return image, allowed, components[1][0]
 
 
