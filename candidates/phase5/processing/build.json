@@ -1,0 +1,79 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "source": "sources/canonical/artwork.png",
+  "handGeneratedSha256": "6BEEFEBA2456425C2B3648AEED8B3668F46A768D489A7A41D4F6016BD36FCDB3",
+  "eyeBackingGeneratedSha256": "684BA98301B8BD4F204581E77CDE1586528D0EC7B1804C5CFC4ADB5E1EF2B61A",
+  "state": "processing",
+  "nativeState": "running",
+  "nativeRow": 7,
+  "statesInThisArtifact": [
+    "processing"
+  ],
+  "durationsMs": [
+    120,
+    120,
+    120,
+    120,
+    120,
+    220
+  ],
+  "totalDurationMs": 820,
+  "repeatBeforeIdle": 3,
+  "actionDurationMs": 2460,
+  "closedEyeFrames": 0,
+  "bodyPulse": false,
+  "ornamentFlash": false,
+  "bodyTranslationPx": 0,
+  "focusOffsetSourcePx": [
+    -6,
+    3.5
+  ],
+  "camera": {
+    "scale": 0.15833333333333333,
+    "x": 0.36666666666667425,
+    "y": 7.883333333333354,
+    "visibleBBox": [
+      142,
+      26,
+      1066,
+      1226
+    ],
+    "floor": 202,
+    "topReserve": 12,
+    "cell": [
+      192,
+      208
+    ]
+  },
+  "sameSourceCoordinateCamera": true,
+  "focusedEyeAlphaPreservedExactly": true,
+  "sourceFaceExceptEyeAperturesFixed": true,
+  "sourceCapeAndForegroundLockPreserved": true,
+  "loopSeamRGBAExact": true,
+  "uniqueCels": 4,
+  "frameHashes": [
+    "48644E9BA135281A27D4FFE604F66DA04E63E092757143AECD1557ED5B745C22",
+    "48644E9BA135281A27D4FFE604F66DA04E63E092757143AECD1557ED5B745C22",
+    "BF07358A0EE8C566EEFF3635AB52C1D6DB124814D2EACC17496D1643D938AD40",
+    "477B4252467427956D87974E277E7CFE3CCEA88187CE824A8F33B55D01E148F9",
+    "9E430FF9B84F9173D1181E1145A084EF21C7D2B6ED30C233A687B1A8077F47DF",
+    "48644E9BA135281A27D4FFE604F66DA04E63E092757143AECD1557ED5B745C22"
+  ],
+  "method": "bounded gathered-hand cel, original iris translation and very small ear/hair fields; body held",
+  "sampling": "new arm first uses fixed-crop uniform source projection; shared canonical camera, 3x coverage and terminal Lanczos downsample",
+  "fullRedrawAccepted": false,
+  "articulatedArmBuilt": false,
+  "facialGeometryRepair": false,
+  "generatedFromRejectedSources": false,
+  "nativeInterpolation": false,
+  "visualMotionApproval": "pending",
+  "installableFullAtlas": false,
+  "installed": false,
+  "unresolved": [
+    "Hand posture and focused gaze express attention; deliberately held body is not a claim that every formerly frozen body is now animated.",
+    "The 820 ms native cycle is too short for an unhurried breath; only a very small ear response is authored, not a rapid body pulse.",
+    "Hand/sleeve cels and hidden backing are bounded approximations, not a complete arm rig or ground-truth matte.",
+    "All three native cycles hold the attentive hand; first-only raising and last-only lowering cannot be encoded in the same repeating row.",
+    "Focused iris edges, small-scale state legibility and naturalness require visual acceptance; pointer priority remains unchanged."
+  ]
+}

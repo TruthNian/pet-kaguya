@@ -1,14 +1,13 @@
 // Current v3-only development candidates. Historical preview is separate.
 import {durations} from './clock.mjs';
-import {candidateSlot,candidatePoseOffset} from './candidate-clock.mjs';
+import {candidateRows as rows,candidateSlot,candidatePoseOffset} from './candidate-clock.mjs';
 
 const el=id=>document.getElementById(id);
 const canvases=[el('idle-reference'),el('idle-animated')];
 const contexts=canvases.map(canvas=>canvas.getContext('2d',{alpha:true}));
 const media=matchMedia('(prefers-reduced-motion: reduce)');
 el('idle-reduced').checked=media.matches;
-const sources={idle:'idle',failed:'failed',jumping:'jumping',waving:'waving',waiting:'waiting-art-v1'};
-const rows={idle:0,failed:5,jumping:4,waving:3};
+const sources={idle:'idle',failed:'failed',jumping:'jumping',waving:'waving',processing:'processing',waiting:'waiting-art-v1'};
 const cache=new Map();
 let mode='idle',ready=false,timer=null,baseElapsed=0,startedAt=null,paused=false,manualIndex=null,lastKey='',paintCount=0,request=0;
 const reduced=()=>el('idle-reduced').checked;
@@ -29,6 +28,10 @@ async function asset(state){
     }else if(JSON.stringify(metadata.durationsMs)!==JSON.stringify(durations[rows[state]])){
       throw new Error(`${state} native schedule mismatch`);
     }
+    if(state==='processing'&&(metadata.nativeState!=='running'||metadata.nativeRow!==7
+        ||metadata.closedEyeFrames!==0||metadata.bodyPulse!==false||metadata.ornamentFlash!==false
+        ||metadata.repeatBeforeIdle!==3||metadata.visualMotionApproval!=='pending'))
+      throw new Error('processing state or restrained-motion boundary mismatch');
     const image=new Image();image.src=`${root}/${state==='waiting'?'frame.png':'strip.webp'}`;await image.decode();
     if(image.naturalWidth!==(state==='waiting'?192:1536)||image.naturalHeight!==208)throw new Error(`${state} dimensions mismatch`);
     return {image,metadata};
@@ -67,7 +70,7 @@ async function draw(){
   el('idle-frame').disabled=mode==='waiting';
   el('idle-pause').disabled=reduced()||mode==='waiting';
   el('idle-pause').textContent=paused?'播放候选':'暂停候选';
-  const labels={waiting:'waiting · 仅静态托腮候选',failed:'failed · 八帧轻微失落',jumping:'jumping · 五帧轻跃候选',waving:'waving · 四格招手候选',idle:'idle · 六帧微呼吸'};
+  const labels={waiting:'waiting · 仅静态托腮候选',failed:'failed · 八帧轻微失落',jumping:'jumping · 五帧轻跃候选',waving:'waving · 四格招手候选',processing:'processing · 清醒专注候选',idle:'idle · 六帧微呼吸'};
   const label=labels[selected.state];
   el('current-candidate-title').textContent=label;
   const status=selected.static?'仅静态，动作未制作':manualIndex!==null?'单帧检查':reduced()?'减少动态':paused?'已暂停':selected.completedAction?'三轮已结束，已回 idle':'实际时长播放';

@@ -12,9 +12,9 @@
   </header>
   <section class="idle-review" aria-labelledby="idle-heading">
     <h2 id="idle-heading">Phase 5 · 同一母版的局部动作候选</h2>
-    <p>左侧固定 v3；右侧可选 idle、failed、jumping、waving 或 waiting 静态姿势。所有候选共用相机与脸型；新增像素只用于失落口眉或手臂/袖与隐藏底图。轻跃整体离地，招手仅换局部手臂，不缩放头身。按真实时长展示，没有快放或补间。不是完整九状态宠物。</p>
+    <p>左侧固定 v3；右侧可选 idle、failed、jumping、waving、processing 或 waiting 静态姿势。所有候选共用相机与脸型；新增像素只用于失落口眉或手臂/袖与隐藏底图。轻跃整体离地；processing 保持清醒视线、收手专注，不闪饰品或快速起伏身体。按真实时长展示，没有快放或补间。不是完整九状态宠物。</p>
     <div class="controls">
-      <label>候选 <select id="idle-action"><option value="idle">idle · 微呼吸</option><option value="failed">failed · 三轮后回 idle</option><option value="jumping">jumping · 五帧，三轮后回 idle</option><option value="waving">waving · 四格，三轮后回 idle</option><option value="waiting">waiting · 仅静态托腮</option></select></label>
+      <label>候选 <select id="idle-action"><option value="idle">idle · 微呼吸</option><option value="failed">failed · 三轮后回 idle</option><option value="jumping">jumping · 五帧，三轮后回 idle</option><option value="waving">waving · 四格，三轮后回 idle</option><option value="processing">processing · 六格专注，三轮后回 idle</option><option value="waiting">waiting · 仅静态托腮</option></select></label>
       <label>宽度 <select id="idle-size"><option>80</option><option selected>113</option><option>192</option><option>224</option></select> px</label>
       <label>背景 <select id="idle-background"><option value="dark">深色</option><option value="light">浅色</option><option value="grid">透明网格</option></select></label>
       <label><input id="idle-reduced" type="checkbox">减少动态</label>
@@ -26,7 +26,7 @@
       <article><h2 id="current-candidate-title">同一母版 · 六帧微呼吸</h2><canvas id="idle-animated" width="192" height="208" aria-label="当前动作候选"></canvas></article>
     </div>
     <output id="idle-status" aria-live="off">正在解码 idle 候选…</output>
-    <p>idle 周期 6.6 秒；failed 周期 1.22 秒、jumping 周期 0.84 秒、waving 周期 0.7 秒，均三轮后回 idle。jumping 最高离地 8 px，只有着地格鞋部固定。waving 为低位过渡、招呼、同一过渡、原图放松四格，最后停留 280 ms，脸/肩披/鞋不动；过渡更靠近放松位置，不是等距中间姿势。局部画帧不是完整手臂骨骼或连续补间，衣褶、接缝与节奏仍待视觉认可。waiting 目前仅静态托腮，没有抬手/放手动画。这些候选不是完整宠物或视觉通过证明。</p>
+    <p>idle 周期 6.6 秒；failed 周期 1.22 秒、jumping 周期 0.84 秒、waving 周期 0.7 秒、processing 周期 0.82 秒，均三轮后回 idle。jumping 最高离地 8 px，只有着地格鞋部固定。waving 为低位过渡、招呼、同一过渡、原图放松四格，末格停留 280 ms；过渡偏向放松，不是等距中间姿势。processing 对应宿主 running 行，六个时间槽用四张姿势，首尾相同，身体/饰品固定、眼眶不变；每轮都保持收手，2460 ms 回 idle 时仍缺放手过渡，80 px 状态差异弱。局部画帧不是完整手臂骨骼或连续补间，衣褶、接缝与节奏仍待视觉认可。waiting 目前仅静态托腮，没有抬手/放手动画。这些候选不是完整宠物或视觉通过证明。</p>
   </section>
   <details id="gaze-review" class="idle-review"><summary>Phase 5 · 十六个视线方向候选（点开验收）</summary>
     <p>同一 v3 母版，只平移原虹膜；眼眶、睫毛、眉、嘴、下颌、衣服、鞋与月饰固定。两眼原有差异保留，不做对称修正。最大位移源图 12×7 px，原生约 1.9×1.1 px；小尺寸辨认仍待验收。眼白底图是隐藏素材，不采用整张重画。</p>

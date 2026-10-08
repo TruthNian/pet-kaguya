@@ -6,7 +6,9 @@
 
 ## 当前修正（必须先读）
 
-用户现已选择完整 AI 生成母版 canonical-v3 并锁定脸型；程序修脸因发丝弯折失败而停止，不再回用。原始输出、选择理由和哈希在 `sources/canonical/manifest.json`。此决定只解决制作源的选择，不能将未制作的 failed/waiting、其他动作或性能问题标成已修复。
+用户现已选择完整 AI 生成母版 canonical-v3 并锁定脸型；程序修脸因发丝弯折失败而停止，不再回用。原始输出、选择理由和哈希在 `sources/canonical/manifest.json`。此决定只解决制作源的选择；之后已制作 idle/failed/jumping/waving/processing 动作候选、waiting 静态与 16 视线，仍不能把待视觉接受、完整状态切换或性能问题标成已修复。
+
+processing 的新候选保持原眼开口、向手边移原虹膜、胸腰旁收手，没有半闭眼、胸饰闪色或快速身体脉冲。四张姿势占六个真实停留格、820 ms×3 后回 idle；80 px 手势/视线很弱，回 idle 的放手过渡仍缺，不宣称“困倦/状态表达/身体冻结全部修复”。详见 `PHASE5-STATES.zh-CN.md` 的否定证据与当前限制。
 
 完整范围见 `REQUIREMENTS.zh-CN.md`。下面表格记录 Phase 3 发布时判断，部分结论已被实际视觉证据推翻，不代表现在通过：failed 供体皮肤/下颌拼接有错，waiting 继承旧拼接；“每帧不同”和“alpha 不同”不证明自然。Phase 4 静态头部拼接试作又被用户否决，不能作为动画基础，详情见 `STATIC-REVIEW.zh-CN.md`。安装目录未被本轮更换。
 

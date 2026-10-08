@@ -1,0 +1,18 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "generatedSha256": "6BEEFEBA2456425C2B3648AEED8B3668F46A768D489A7A41D4F6016BD36FCDB3",
+  "canvas": [1205,1306],
+  "rawCanvas": [971,1619],
+  "sourceCrop": [250,500,550,1000],
+  "role": "gathered viewer-left hand/sleeve candidate for attentive processing",
+  "foregroundPolygon": [[400,574],[442,577],[482,581],[491,600],[501,622],[518,639],[523,652],[523,666],[520,680],[520,694],[513,702],[508,715],[499,723],[490,715],[476,720],[458,727],[451,741],[441,762],[426,790],[411,817],[397,845],[390,869],[377,867],[367,850],[364,832],[348,818],[332,790],[321,762],[308,724],[303,703],[305,688],[321,661],[342,631],[370,602]],
+  "editBudget": [295,570,525,885],
+  "edgeFeatherSourcePx": 1.5,
+  "fullRedrawAccepted": false,
+  "newFaceGeometryAllowed": false,
+  "visualAcceptance": "pending",
+  "placementLimitation": "The painted hand is softly curled rather than the requested loosely cupped palm. It is a candidate, not exact prompt compliance. Cloth folds, hand volume and state legibility require visual acceptance.",
+  "cropProjection": "uniform width-derived projection to fixed source rectangle; no object bounds fitting or nonuniform resize",
+  "installableFullAtlas": false,
+  "installed": false
+}

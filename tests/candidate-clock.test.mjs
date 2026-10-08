@@ -39,8 +39,27 @@ test('hop uses five real holds and three loops, then returns to the actual idle 
 test('invalid states, manual frames and elapsed values fail closed',()=>{
   for(const mode of ['phase3','running','none'])assert.throws(()=>candidateSlot(mode,0));
   for(const time of [NaN,Infinity,-Infinity])assert.throws(()=>candidateSlot('failed',time));
-  for(const [mode,index] of [['failed',8],['jumping',5],['waving',4],['idle',6],['waiting',1],['idle',.5],['failed',-1]])assert.throws(()=>candidatePoseOffset(mode,index));
+  for(const [mode,index] of [['failed',8],['jumping',5],['waving',4],['processing',6],['idle',6],['waiting',1],['idle',.5],['failed',-1]])assert.throws(()=>candidatePoseOffset(mode,index));
   assert.equal(candidateSlot('failed',-1).index,0);
+});
+
+test('processing means native running row, six real holds and three cycles then idle',()=>{
+  assert.deepEqual(durations[7],[120,120,120,120,120,220]);
+  assert.equal(cycles[7],820);
+  for(let round=0;round<3;round++)for(let index=0;index<6;index++){
+    const offset=round*820+candidatePoseOffset('processing',index);
+    for(const time of [offset,offset+durations[7][index]-.001]){
+      const actual=candidateSlot('processing',time),expected=frameAt('running',time);
+      assert.equal(actual.state,'processing');assert.equal(actual.index,expected.col);
+      assert.equal(actual.completedAction,false);assert.equal(actual.holdMs,durations[7][index]);
+      assert.ok(actual.untilNext>0);
+    }
+  }
+  for(const time of [2460,2460+1680,2460+6600,2460+6600*100+.5]){
+    const actual=candidateSlot('processing',time),expected=frameAt('running',time);
+    assert.equal(actual.state,'idle');assert.equal(actual.index,expected.col);
+    assert.equal(actual.completedAction,true);
+  }
 });
 
 test('wave uses four real holds with a 280 ms rest, exactly three cycles then idle',()=>{

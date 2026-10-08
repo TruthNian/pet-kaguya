@@ -15,7 +15,8 @@ FOLDERS = ['candidates/phase4/static', 'candidates/phase4/canonical-v3', 'candid
            'candidates/phase5/eye-backing-v1','candidates/phase5/look',
            'candidates/phase5/wave-art-v1','candidates/phase5/wave-art-v2',
            'candidates/phase5/wave-art-middle-v1','candidates/phase5/wave-art-middle-v2',
-           'candidates/phase5/waving']
+           'candidates/phase5/waving','candidates/phase5/processing-art-v1',
+           'candidates/phase5/processing']
 
 
 def snapshot():
@@ -42,7 +43,8 @@ def main():
     before, encoded_before = snapshot()
     for script in ['identity.py', 'review_jaw.py', 'review_waiting.py', 'review_failed.py', 'review_arm_backing.py',
                    'build_idle.py', 'build_failed.py', 'build_jumping.py','build_gaze.py',
-                   'guide_wave.py','review_wave.py','guide_wave_middle.py','build_waving.py']:
+                   'guide_wave.py','review_wave.py','guide_wave_middle.py','build_waving.py',
+                   'guide_processing.py','review_processing.py','build_processing.py']:
         subprocess.run([sys.executable, str(ROOT/'tools'/script)], cwd=ROOT, check=True, capture_output=True)
     after, encoded_after = snapshot()
     load_canonical()  # Re-check the immutable selected source after all builds.

@@ -1,0 +1,30 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "nativeState": "running",
+  "state": "processing",
+  "nativeRow": 7,
+  "durationsMs": [120,120,120,120,120,220],
+  "repeatBeforeIdle": 3,
+  "faceShapeLocked": true,
+  "closedEyeFrames": 0,
+  "bodyPulse": false,
+  "ornamentFlash": false,
+  "focusOffsetSourcePx": [-6,3.5],
+  "keyframes": [
+    {"bodyY":0,"earAngle":0,"hairAngle":0},
+    {"bodyY":0,"earAngle":0,"hairAngle":0},
+    {"bodyY":0,"earAngle":0.10,"hairAngle":0},
+    {"bodyY":0,"earAngle":0.20,"hairAngle":0.02},
+    {"bodyY":0,"earAngle":0.10,"hairAngle":0.02},
+    {"bodyY":0,"earAngle":0,"hairAngle":0}
+  ],
+  "nativeInterpolation": false,
+  "visualMotionApproval": "pending",
+  "limitations": [
+    "Hand posture and focused gaze express attention; deliberately held body is not a claim that every formerly frozen body is now animated.",
+    "The 820 ms native cycle is too short for an unhurried breath; only a very small ear response is authored, not a rapid body pulse.",
+    "Hand/sleeve cels and hidden backing are bounded approximations, not a complete arm rig or ground-truth matte.",
+    "All three native cycles hold the attentive hand; first-only raising and last-only lowering cannot be encoded in the same repeating row.",
+    "Focused iris edges, small-scale state legibility and naturalness require visual acceptance; pointer priority remains unchanged."
+  ]
+}

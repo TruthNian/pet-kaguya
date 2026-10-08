@@ -3,10 +3,10 @@ import hashlib
 import json
 
 import numpy as np
-from PIL import Image, ImageDraw
+from PIL import Image
 
-from canonical import ROOT, ACCEPTED_SHA, load_canonical, bounded_artwork, clean_cutout, camera
-from review_arm_backing import localized_backing, load_generated as backing_art, specification as backing_spec
+from canonical import ROOT, ACCEPTED_SHA, load_canonical, clean_cutout, camera
+from arm_material import localized_arm_pose,project_fixed_crop
 from review_waiting import comparison, grid
 from build_idle import specification as idle_specification, region_masks, render
 
@@ -45,36 +45,14 @@ def inputs(kind):
         # The generator enlarged the crop. Width and height use the SAME
         # inverse scale; the extra 0.206 source px at its bottom is clipped.
         # Premultiplied bilinear avoids invented transparent-edge RGB.
-        ratio=971/300
-        crop=generated.convert('RGBa').transform((300,500),Image.Transform.AFFINE,
-            (ratio,0,0,0,ratio,0),Image.Resampling.BILINEAR).convert('RGBA')
-        mapped=load_canonical()
-        mapped.paste(crop,(250,500))
-        generated=mapped
+        generated=project_fixed_crop(load_canonical(),generated,spec['rawCanvas'],spec['sourceCrop'])
     elif generated.size != (1205,1306):
         raise ValueError('Wave cel uses another camera; no refitting allowed')
     return out,spec,generated
 
 
 def localized_pose(mother, generated, spec):
-    backing_definition = backing_spec()
-    backing, backing_allowed = localized_backing(mother,backing_art(),backing_definition)
-    pose, foreground_allowed, _ = bounded_artwork(backing,generated,
-        [spec['foregroundPolygon']],spec['edgeFeatherSourcePx'])
-    foreground = Image.new('L',mother.size)
-    for polygon in backing_definition['preservedForegroundPolygons']:
-        ImageDraw.Draw(foreground).polygon(polygon,fill=255)
-    protected = np.asarray(foreground)>0
-    original,pixels = np.asarray(mother),np.asarray(pose).copy()
-    pixels[protected] = original[protected]
-    allowed = (backing_allowed|foreground_allowed)&~protected
-    changed = np.any(original!=pixels,axis=2)
-    if np.any(changed&~allowed):
-        raise ValueError('Wave repainted outside bounded old/new arm regions')
-    for x0,y0,x1,y1 in backing_definition['protectedRects']:
-        if np.any(changed[y0:y1,x0:x1]):
-            raise ValueError('Wave touched protected face/cape/body/shoes')
-    return Image.fromarray(pixels),allowed
+    return localized_arm_pose(mother,generated,spec)
 
 
 def native_frame(pose):

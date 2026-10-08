@@ -1,0 +1,48 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "generatedSha256": "6BEEFEBA2456425C2B3648AEED8B3668F46A768D489A7A41D4F6016BD36FCDB3",
+  "role": "gathered viewer-left hand/sleeve candidate for attentive processing",
+  "boundedChangedPixels": 64291,
+  "boundedChangedPixelsOutsidePatch": 0,
+  "rawMappedCropChangedPixelsOutsidePatch": 83869,
+  "poseRGBAHash": "3FCEE4E4EB55B119CA1BD126E56BCAC7610027E1A5A4D9507A8CA4B9275432A3",
+  "frameRGBAHash": "AF9277C9D254F3A779CD7B36FB48C2D0E96933919501EF5CDF6859C5F97F6CE4",
+  "rawCanvas": [
+    971,
+    1619
+  ],
+  "sourceCrop": [
+    250,
+    500,
+    550,
+    1000
+  ],
+  "cropProjection": "uniform width-derived projection to fixed source rectangle; no object bounds fitting or nonuniform resize",
+  "camera": {
+    "scale": 0.15833333333333333,
+    "x": 0.36666666666667425,
+    "y": 7.883333333333354,
+    "visibleBBox": [
+      142,
+      26,
+      1066,
+      1226
+    ],
+    "floor": 202,
+    "topReserve": 12,
+    "cell": [
+      192,
+      208
+    ]
+  },
+  "sameSourceCoordinateCamera": true,
+  "sourceCapeAndForegroundLockPreserved": true,
+  "fullRedrawAccepted": false,
+  "facialGeometryRepair": false,
+  "articulatedArmBuilt": false,
+  "animationBuilt": false,
+  "visualAcceptance": "pending",
+  "placementLimitation": "The painted hand is softly curled rather than the requested loosely cupped palm. It is a candidate, not exact prompt compliance. Cloth folds, hand volume and state legibility require visual acceptance.",
+  "installableFullAtlas": false,
+  "installed": false
+}
