@@ -1,6 +1,7 @@
 """Aggregate v3 development atlas for global QA, never installation authority."""
 import hashlib
 import json
+import io
 
 from PIL import Image,ImageDraw
 
@@ -10,6 +11,20 @@ from protocol import WIDTH,HEIGHT,ATLAS_SIZE,DURATIONS
 OUT = ROOT/'candidates/phase5/global'
 STATES = ['idle','run_right','run_left','waving','jumping','failed','waiting','processing','review']
 REPRESENTATIVE = [0,2,6,1,2,3,3,3,3]
+ENCODING = dict(lossless=True,exact=True,method=6,quality=100)
+
+
+def encode_atlas(atlas):
+    """Offline aggregate only; verify actual decoded pixels including hidden RGB."""
+    if atlas.size!=ATLAS_SIZE or atlas.mode!='RGBA':
+        raise ValueError('Encoding cannot change the native global canvas or mode')
+    stream=io.BytesIO()
+    atlas.save(stream,format='WEBP',**ENCODING)
+    encoded=stream.getvalue()
+    with Image.open(io.BytesIO(encoded)) as image:
+        if image.convert('RGBA').tobytes()!=atlas.tobytes():
+            raise ValueError('Encoded global atlas changed actual RGBA')
+    return encoded
 
 
 def assemble():
@@ -76,13 +91,17 @@ def contact(frames,width):
 def main():
     atlas,summaries,frames,transform = assemble()
     OUT.mkdir(parents=True,exist_ok=True)
-    atlas.save(OUT/'spritesheet.webp',lossless=True,exact=True,method=6)
+    # Aggregate once at higher offline effort. Do not slow each action's
+    # iteration loop or call smaller encoded bytes a FPS/memory improvement.
+    (OUT/'spritesheet.webp').write_bytes(encode_atlas(atlas))
     for width in (80,113,192,224):
         contact(frames,width).save(OUT/f'contact-{width}px.png')
     metadata = dict(sourceSha256=ACCEPTED_SHA,source='sources/canonical/artwork.png',
         atlasCoverageComplete=True,states=STATES,nativeRows=list(range(11)),directionCount=16,
         atlasSize=list(ATLAS_SIZE),cell=[WIDTH,HEIGHT],camera=transform,
         decodedTextureBytes=ATLAS_SIZE[0]*ATLAS_SIZE[1]*4,
+        encoding=dict(format='webp',**ENCODING,
+                      scope='offline global aggregate only; action/gaze strips retain existing encoding'),
         actionRows=summaries,atlasRGBAHash=hashlib.sha256(atlas.tobytes()).hexdigest().upper(),
         construction='exact paste of verified decoded v3 candidate strips; no new geometry or sampling',
         visualAcceptance='pending',allStateTransitionsAccepted=False,hostIntegrationVerified=False,

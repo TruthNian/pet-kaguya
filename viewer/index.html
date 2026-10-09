@@ -42,9 +42,9 @@
     <p>这是估计的正面二维骨架，不是实测力学、干净画师分层或完整自然度证明；隐藏头发、边缘与衣物柔性仍有局限。鞋的几何目标固定，不等于周围头发与混色边缘RGBA不变。只保留五格，落地没有格内恢复，周期与退出仍待。<a href="../candidates/phase5/jumping/contact-comparison-113px.png">113px明暗对照</a> · <a href="../candidates/phase5/jumping/contact-proof.json">实际对照契约</a></p>
   </details>
   <section id="held-structure-review" class="idle-review" aria-labelledby="held-structure-heading">
-    <h2 id="held-structure-heading">当前托腮 / 合手 · 静态结构复核</h2>
-    <p>左为当前idle，中为waiting托腮，右为review合手下视。每张都直接来自当前动作条的第1格，224px明暗背景；不是下面的新头发试验。保持时序已暂时接受，但实际脸、手与衣袖关系仍需确认。腰间白色月纹在母版就存在，不是旧手残留。</p>
-    <img loading="lazy" src="../candidates/phase5/review-hair-boundary-v1/current-held-structure-224px.png" width="732" height="550" alt="当前idle、waiting托腮、review合手的真实第1格，224像素明暗结构对照">
+    <h2 id="held-structure-heading">当前托腮 / 低位双手 · 静态结构复核</h2>
+    <p>左为当前idle，中为waiting托腮，右为review低位双手下视；目前两手未真正相合，不把它称为完成的合手动作。每张都直接来自当前动作条的第1格，224px明暗背景；不是下面的新头发试验。保持时序已暂时接受，但实际脸、手与衣袖关系仍需确认。腰间白色月纹在母版就存在，不是旧手残留或多余袖口。</p>
+    <img loading="lazy" src="../candidates/phase5/review-hair-boundary-v1/current-held-structure-224px.png" width="732" height="550" alt="当前idle、waiting托腮、review低位双手的真实第1格，224像素明暗结构对照">
   </section>
   <details id="waiting-cloth-current" class="idle-review"><summary>当前改进 · waiting 抬袖与垂袖（开发合成 v2，待视觉认可）</summary>
     <p>左为此前waiting，右为当前开发版。固定腕口与手位，收束红袖鼓包，让垂袖沿同一布面下垂；53,583个源RGBA像素变化，其中12,314处alpha变化。只采用受限衣料与轮廓旁遮挡底图，手、脸、肩披、腰饰、另一侧身体及鞋不动。阴影仍偏硬，不声称布料力学或全部造型通过。</p>
@@ -72,6 +72,11 @@
     <p>左为此前v5，右为当前v6。先用无脸固定裁片生成同姿势衣料，再只采用连续绿袖内部：26,025个源RGB像素变化，alpha与外部完全不变。原始生成结果还重画了322,704个权限外像素，均未采用。不是把几块颜色补丁拼在不对齐的褶线上，也不是完整衣物模拟。</p>
     <img loading="lazy" src="../candidates/phase5/review-sleeves-v2/detail.png" width="1320" height="575" alt="此前v5与当前v6同坐标袖面比较，手与轮廓未改">
     <p><a href="../candidates/phase5/review-sleeves-v2/contact-224px.png">224px明暗对照</a> · <a href="../candidates/phase5/review-sleeves-v2/contact-80px.png">80px实际对照</a> · <a href="../sources/editor/review-sleeves-v2/kaguya-review-sleeves.xcf" download>当前GIMP图层工程</a> · <a href="../candidates/phase5/review-sleeves-v2/build.json">实际范围及限制</a>。已接入顶部review六格及开发图集；未安装、未获完整造型/动作批准。</p>
+  </details>
+  <details id="review-hands-pair-rejected" class="idle-review"><summary>未采用的双手裁片 · 撤回月纹误诊，不替换当前动作</summary>
+    <p>下图从左到右为实际母版、当前review v6、未采用的新裁片。浅色片是原腰间月纹被手遮挡后露出的部分，不是多余袖口。此前我没有先核对已有来源，错误地要求整理它；该指令撤回，原提示词保留。新的线条/明暗没有证明掌背、指节与腕口关系更好，也不能根据看不见拇指就断言缺指。</p>
+    <img loading="lazy" src="../candidates/phase5/review-hands-pair-v1/detail.png" width="825" height="245" alt="原母版腰间月纹、当前双手和未采用AI双手裁片同坐标对照，不是当前新动作">
+    <p>无脸固定方画布编辑，未接入任何动作或安装文件；当前review仍为v6。<a href="../candidates/phase5/review-hands-pair-v1/prompt.txt">含已撤回指令的实际提示词</a> · <a href="../candidates/phase5/review-hands-pair-v1/build.json">来源、实际投影与未采用理由</a></p>
   </details>
   <details id="review-sleeves-study" class="idle-review"><summary>此前试验 · 连续袖面与GIMP工程（v1尚未采用）</summary>
     <p>下图左为当前合成v4，中为此前整张未采用的素材，右为本次连续袖面候选。手、脸、饰品及原alpha保持；只处理绿袖，未采用整张重绘，也未改上方动画。母版本来就有直线和三角阴影，不能把“有棱角”一概诊断为错误；此次主要避免补片边界截断褶线。</p>
@@ -101,7 +106,8 @@
   <details id="global-review" class="idle-review"><summary>Phase 5 · 九状态全局结构对照（开发验收，不可安装）</summary>
     <p>九状态代表姿势，以113 px实际采样模拟展示，依次为 idle、左右小步、wave、jump、failed、waiting、processing、review；上三排深色、下三排浅色。它用于找脸身、衣袖、姿势的退步，不是视觉通过证明。完整开发图集为1536×2288，原生格192×208，解码RGBA仍14,057,472字节。</p>
     <img loading="lazy" src="../candidates/phase5/global/contact-113px.png" width="375" height="900" alt="九状态113像素明暗全局结构对照，所有动作人工接受待确认">
-    <p><a href="../candidates/phase5/global/spritesheet.webp">完整开发验收图集</a> · <a href="../candidates/phase5/global/build.json">覆盖范围、未完成条件与逐行像素哈希</a></p>
+    <p>本机无损汇总编码为1,017,692字节，比上一提交1,098,260少7.34%；每个RGBA像素（含透明隐藏RGB）不变。仅离线汇总花更多编码时间，动作条设置不变；不代表视觉、纹理内存或帧率改善，其他编解码器的文件字节可能不同。</p>
+    <p><a href="../candidates/phase5/global/spritesheet.webp">完整开发验收图集</a> · <a href="../candidates/phase5/global/build.json">覆盖范围、未完成条件与逐行像素哈希</a> · <a href="../qa/lossless-encoding-20261010.json">冻结本机实测及代价</a></p>
   </details>
   <details id="gaze-review" class="idle-review"><summary>Phase 5 · 十六个视线方向候选（点开验收）</summary>
     <p>同一 v3 母版，只平移原虹膜；眼眶、睫毛、眉、嘴、下颌、衣服、鞋与月饰固定。两眼原有差异保留，不做对称修正。最大位移源图 12×7 px，原生约 1.9×1.1 px；小尺寸辨认仍待验收。眼白底图是隐藏素材，不采用整张重画。</p>

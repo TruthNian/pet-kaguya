@@ -53,6 +53,14 @@
     ]
   },
   "decodedTextureBytes": 14057472,
+  "encoding": {
+    "format": "webp",
+    "lossless": true,
+    "exact": true,
+    "method": 6,
+    "quality": 100,
+    "scope": "offline global aggregate only; action/gaze strips retain existing encoding"
+  },
   "actionRows": [
     {
       "state": "idle",

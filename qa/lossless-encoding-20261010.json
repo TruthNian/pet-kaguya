@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-10",
+  "sourceCommit": "5ca991b162020b7fe61a012c8afad52675232e30",
+  "platform": "Windows, Python 3.13.15, Pillow 12.3.0, libwebp 1.6.0",
+  "scope": "Frozen local measurements; elapsed encoding times are single runs, not controlled repeated benchmarks. No runtime decode, network, FPS or texture-memory improvement is inferred.",
+  "lossless": true,
+  "exact": true,
+  "measurementColumns": ["method", "quality", "encodedBytes", "encodeSeconds"],
+  "global": {
+    "asset": "candidates/phase5/global/spritesheet.webp",
+    "size": [1536, 2288],
+    "decodedTextureBytes": 14057472,
+    "rgbaHash": "89D096DF28D82B7F9DBC103D6A840D0A2D805E02461A308AFA2C7D7B01E4AE42",
+    "baselineEncodedSHA256": "833A0071435F9352A0B8842AE4ED74163AFECB93B65ABFA04014405E4DC12A5B",
+    "baseline": [6, 80, 1098260, 18.896897],
+    "measurements": [
+      [6, 0, 1709348, 25.382010],
+      [6, 50, 1674978, 30.192226],
+      [6, 75, 1170388, 30.544439],
+      [6, 90, 1095558, 32.941152],
+      [6, 100, 1017692, 86.249643],
+      [4, 100, 1410002, 24.166151]
+    ],
+    "allDecodedRGBAExact": true,
+    "chosenMethod": 6,
+    "chosenQuality": 100,
+    "chosenEncodedSHA256": "C4A5F7540C750817903558FF961EBDDEC7C4DAFD858E3CA6A946AACB06950762",
+    "savedEncodedBytes": 80568,
+    "adoption": "Global offline aggregate only; dimensions, pixels, frame timing and action/gaze strips unchanged. Encoded bytes can differ with codec/platform."
+  },
+  "waiting": {
+    "asset": "candidates/phase5/waiting/strip.webp",
+    "baseline": [6, 80, 72326, 2.327823],
+    "measurements": [
+      [6, 0, 71900, 4.303995],
+      [6, 50, 71808, 4.415810],
+      [6, 75, 72316, 4.437101],
+      [6, 90, 72384, 4.193267],
+      [6, 100, 72310, 12.682365],
+      [4, 100, 75786, 3.882210]
+    ],
+    "allDecodedRGBAExact": true,
+    "adoption": "None. Quality 100 saved only 16 bytes; preserve action iteration speed. No blanket quality change."
+  },
+  "reproduce": "python tools/measure_lossless_encoding.py; python tools/measure_lossless_encoding.py --baseline. Reads current decoded pixels, writes only work/. Reproduction elapsed times and codec-specific bytes may differ.",
+  "installedChanged": false,
+  "visualImprovementClaimed": false,
+  "hostPerformanceMeasured": false
+}
