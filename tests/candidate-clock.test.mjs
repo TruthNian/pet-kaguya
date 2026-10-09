@@ -3,6 +3,21 @@ import assert from 'node:assert/strict';
 import {candidateSlot,candidatePoseOffset,candidateCelKey} from '../viewer/candidate-clock.mjs';
 import {durations,cycles,frameAt} from '../viewer/clock.mjs';
 
+test('source-arm preview is only a row-three variant with real holds and native three-cycle fallback',()=>{
+  for(let round=0;round<3;round++)for(let index=0;index<4;index++){
+    const offset=round*700+candidatePoseOffset('waving_source',index);
+    for(const time of [offset,offset+durations[3][index]-.001]){
+      const actual=candidateSlot('waving_source',time),expected=frameAt('waving',time);
+      assert.equal(actual.state,'waving_source');assert.equal(actual.index,expected.col);
+      assert.equal(actual.holdMs,durations[3][index]);assert.ok(actual.untilNext>0);
+    }
+  }
+  assert.equal(candidateSlot('waving_source',2100).state,'idle');
+  assert.equal(candidateSlot('waving_source',2100).index,0);
+  assert.equal(candidateSlot('waving_source',2100+1680).index,1);
+  assert.throws(()=>candidatePoseOffset('waving_source',4));
+});
+
 test('failed candidate uses all real holds and exactly three loops before idle',()=>{
   for(let round=0;round<3;round++)for(let index=0;index<8;index++){
     const offset=round*cycles[5]+candidatePoseOffset('failed',index);

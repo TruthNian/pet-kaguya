@@ -7,7 +7,7 @@ const canvases=[el('idle-reference'),el('idle-animated')];
 const contexts=canvases.map(canvas=>canvas.getContext('2d',{alpha:true}));
 const media=matchMedia('(prefers-reduced-motion: reduce)');
 el('idle-reduced').checked=media.matches;
-const sources={idle:'idle',run_right:'run_right',run_left:'run_left',failed:'failed',jumping:'jumping',waving:'waving',processing:'processing',waiting:'waiting',review:'review'};
+const sources={idle:'idle',run_right:'run_right',run_left:'run_left',failed:'failed',jumping:'jumping',waving:'waving',waving_source:'wave-source-rig-v3',processing:'processing',waiting:'waiting',review:'review'};
 const cache=new Map();
 let mode='idle',ready=false,timer=null,baseElapsed=0,startedAt=null,paused=false,manualIndex=null,lastKey='',paintCount=0,request=0;
 const reduced=()=>el('idle-reduced').checked;
@@ -29,6 +29,13 @@ async function asset(state){
     if(!Array.isArray(metadata.frameHashes)||metadata.frameHashes.length!==durations[rows[state]].length)
       throw new Error(`${state} cel hash count mismatch`);
     metadata.frameHashes.forEach((_,index)=>candidateCelKey(metadata.frameHashes,index));
+    if(state==='waving_source'&&(metadata.state!=='waving'||metadata.nativeRow!==3
+        ||metadata.originalConnectedSleeveEdgeFollowed!==true||metadata.foregroundMatteStillEstimated!==true
+        ||metadata.newArtworkGenerated!==false||metadata.inferredBoundaryIsNotSourceObservation!==true
+        ||metadata.cleanLayerRecoveryClaimed!==false||metadata.articulatedArmBuilt!==false
+        ||metadata.nativeInterpolation!==false||metadata.adopted!==false||metadata.activeAtlasChanged!==false
+        ||metadata.strategyUserApproval!=='pending'||metadata.visualMotionApproval!=='pending'
+        ||metadata.repeatBeforeIdle!==3))throw new Error('source-arm experimental preview boundary mismatch');
     if(state==='waiting'&&(metadata.animationBuilt!==true||metadata.nativeRow!==6
         ||metadata.handStrategy!=='held-chin-contact'||metadata.strategyUserApproval!=='pending'
         ||metadata.closedEyeFrames!==0||metadata.bodyPulse!==false||metadata.repeatBeforeIdle!==3))
@@ -90,6 +97,7 @@ async function draw(){
   el('idle-pause').disabled=reduced();
   el('idle-pause').textContent=paused?'播放候选':'暂停候选';
   const labels={run_right:'run_right · 正面向右小步原型',run_left:'run_left · 正面向左小步原型',review:'review · 六格低手下视候选',waiting:'waiting · 六格托腮保持候选',failed:'failed · 八帧轻微失落',jumping:'jumping · 五帧轻跃候选',waving:'waving · 四格招手候选',processing:'processing · 清醒专注候选',idle:'idle · 六帧微呼吸'};
+  labels.waving_source='waving · 原像素低位试验，未采用';
   const label=labels[selected.state];
   el('current-candidate-title').textContent=label;
   const status=manualIndex!==null?'单帧检查':reduced()?'减少动态':paused?'已暂停':selected.completedAction?'三轮已结束，已回 idle':'实际时长播放';

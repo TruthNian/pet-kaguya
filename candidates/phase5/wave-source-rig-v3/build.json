@@ -1,0 +1,137 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "parent": "wave-source-rig-v2",
+  "roi": [
+    250,
+    565,
+    527,
+    1001
+  ],
+  "state": "waving",
+  "nativeRow": 3,
+  "durationsMs": [
+    140,
+    140,
+    140,
+    280
+  ],
+  "totalDurationMs": 700,
+  "repeatBeforeIdle": 3,
+  "method": "gradient-guided hidden RGB with visible-hair constraints and inferred gentle boundary slopes",
+  "knownBackgroundConstraintEdges": 1202,
+  "solverRelativeTolerance": 1e-08,
+  "solverMaxIterations": 1600,
+  "solverConvergedBelowTolerance": true,
+  "inferredBoundaryPixels": 771,
+  "clippedInferredChannels": 8,
+  "slopeSolveConvergedBelowTolerance": true,
+  "colorSolveClippedChannels": 534,
+  "slopeSolveClippedChannels": 737,
+  "inferredBoundaryIsNotSourceObservation": true,
+  "sourceAlphaPreserved": true,
+  "foregroundMaterialDomainPreserved": false,
+  "originalConnectedSleeveEdgeFollowed": true,
+  "newlyIncludedMaterialPixels": 221,
+  "retiredOriginalGreenBoundaryPoints": [
+    [
+      427,
+      903
+    ],
+    [
+      426,
+      905
+    ],
+    [
+      425,
+      908
+    ],
+    [
+      423,
+      913
+    ],
+    [
+      422,
+      915
+    ]
+  ],
+  "foregroundMatteStillEstimated": true,
+  "newArtworkGenerated": false,
+  "facialGeometryRepair": false,
+  "cleanLayerRecoveryClaimed": false,
+  "articulatedArmBuilt": false,
+  "nativeInterpolation": false,
+  "neutralFromSameMaterialNotSourceShortcut": true,
+  "neutralRestRGBAExact": true,
+  "measurements": [
+    {
+      "angleDegrees": 0.0,
+      "wristSourcePx": [
+        356.0,
+        743.0
+      ],
+      "forearmLengthSourcePx": 101.23734489,
+      "minimumForwardJacobian": 1.0,
+      "maximumInverseErrorSourcePx": 0.0,
+      "changedPixels": 0,
+      "changedOutsidePermission": 0,
+      "poseRGBAHash": "7C41805C11ADB3AE9191B3BE20D230371DA4AD754E26618A97AAC6FE1DDF3911"
+    },
+    {
+      "angleDegrees": 6.0,
+      "wristSourcePx": [
+        352.3283252,
+        733.05972873
+      ],
+      "forearmLengthSourcePx": 101.23734489,
+      "minimumForwardJacobian": 0.90986261,
+      "maximumInverseErrorSourcePx": 0.0,
+      "changedPixels": 48348,
+      "changedOutsidePermission": 0,
+      "poseRGBAHash": "02D41D4C116AE43A4CA6491DDB51669B5FF84ED6EAD3F60017B3E1BD787A76A2"
+    },
+    {
+      "angleDegrees": -3.0,
+      "wristSourcePx": [
+        358.22089152,
+        747.81242532
+      ],
+      "forearmLengthSourcePx": 101.23734489,
+      "minimumForwardJacobian": 0.92501381,
+      "maximumInverseErrorSourcePx": 0.0,
+      "changedPixels": 45240,
+      "changedOutsidePermission": 0,
+      "poseRGBAHash": "687EE202CF2583BEE9C2CC92C29A1F338AA897E4683E0B647F2EE1660F834B8A"
+    },
+    {
+      "angleDegrees": 0.0,
+      "wristSourcePx": [
+        356.0,
+        743.0
+      ],
+      "forearmLengthSourcePx": 101.23734489,
+      "minimumForwardJacobian": 1.0,
+      "maximumInverseErrorSourcePx": 0.0,
+      "changedPixels": 0,
+      "changedOutsidePermission": 0,
+      "poseRGBAHash": "7C41805C11ADB3AE9191B3BE20D230371DA4AD754E26618A97AAC6FE1DDF3911"
+    }
+  ],
+  "frameHashes": [
+    "E049C9010F4C3C2B2FD686620DCC1BF3FD97B4A97A5FE2913B69E4EA1924C6A8",
+    "B0485250740C42A39E0048CF53AEE3C4F64836948CE687F41FB95C02CD4768B7",
+    "4F110690C9A773E5BB62C9BB59E10F58CD91CAC7D47CE374E2EDD62C9B8C7078",
+    "E049C9010F4C3C2B2FD686620DCC1BF3FD97B4A97A5FE2913B69E4EA1924C6A8"
+  ],
+  "backgroundRGBAHash": "F1B888598817CC269B67F3062467C18B6C904288D8BCEF8FBC1DBE89A0DD6ADC",
+  "visualMotionApproval": "pending",
+  "strategyUserApproval": "pending",
+  "adopted": false,
+  "activeAtlasChanged": false,
+  "installableFullAtlas": false,
+  "installed": false,
+  "unresolved": [
+    "No guarantee that generated strand paths match the original.",
+    "Estimated foreground may carry visible hair along with the hand.",
+    "Upper cuff is not wholly rigid; gesture and native discrete entry/exit remain unapproved."
+  ]
+}

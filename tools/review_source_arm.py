@@ -47,7 +47,7 @@ def rgba_hash(image):
     return hashlib.sha256(image.tobytes()).hexdigest().upper()
 
 
-def materials(semantic=True, background_override=None):
+def materials(semantic=True, background_override=None, follow_cloth_edges=False):
     mother = load_canonical()
     definition = specification()
     if background_override is None:
@@ -84,6 +84,16 @@ def materials(semantic=True, background_override=None):
         for binary,seeds in classes:
             for sx,sy in seeds:
                 selected |= component(binary&local_budget,(sx-x0,sy-y0))
+        if follow_cloth_edges:
+            # The rough ARM envelope excluded actual sleeve pixels at
+            # (427,903)..(422,915). Follow the connected original green cloth
+            # within the unchanged ROI/protection, not that guessed contour.
+            cloth = np.zeros(selected.shape,dtype=bool)
+            for sx,sy in [(435,688),(341,881)]:
+                cloth |= component(classes[0][0]&allowed[y0:y1,x0:x1],(sx-x0,sy-y0))
+            selected |= cloth
+            cloth_neighborhood=np.asarray(Image.fromarray(cloth.astype(np.uint8)*255).filter(ImageFilter.MaxFilter(17)))>0
+            local_budget |= cloth_neighborhood&allowed[y0:y1,x0:x1]
         # Finger shading and ink can disconnect individual skin islands from
         # the palm; a single color seed omitted the original thumb. All skin
         # islands in this hand-only rectangle participate, not body/face skin.

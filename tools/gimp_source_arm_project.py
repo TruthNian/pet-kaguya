@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'tools'))
 from gimp_review_project import Gimp, Gegl, file, load_layer, save, export, set_mask
 
-SOURCE = ROOT/'candidates/phase5/wave-source-rig-v2'
+SOURCE = Path(globals().get('MATERIAL_INPUT',ROOT/'candidates/phase5/wave-source-rig-v2')).resolve()
 OUT = Path(globals().get('PROJECT_OUTPUT',ROOT/'work/gimp-source-arm-v1')).resolve()
 
 
@@ -27,7 +27,7 @@ def floats(path, expected_sha, length):
 
 
 def main():
-    if ROOT not in OUT.parents:
+    if ROOT not in OUT.parents or ROOT not in SOURCE.parents:
         raise ValueError('Use a fresh repository subdirectory')
     OUT.mkdir(parents=True,exist_ok=True)
     xcf = OUT/'kaguya-source-arm.xcf'

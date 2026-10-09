@@ -14,7 +14,7 @@
     <h2 id="idle-heading">Phase 5 · 同一母版的局部动作候选</h2>
     <p>左侧固定 v3；右侧可选九个动作候选。所有候选共用相机与脸型；新增像素只用于局部缺画与隐藏底图。左右小步保持正面、不镜像饰品，腿与兔鞋材料来自母版，方案及视觉待确认。waiting 保持托腮；review 双手低处轻合、视线向下，手势/节奏同样待确认。九状态和16视线已组成开发验收图集，但不是已通过的完整宠物，也未安装。</p>
     <div class="controls">
-      <label>候选 <select id="idle-action"><option value="idle">idle · 微呼吸</option><option value="run_right">run_right · 正面向右小步原型</option><option value="run_left">run_left · 正面向左小步原型</option><option value="failed">failed · 三轮后回 idle</option><option value="jumping">jumping · 五帧，三轮后回 idle</option><option value="waving">waving · 四格，三轮后回 idle</option><option value="processing">processing · 六格专注，三轮后回 idle</option><option value="waiting">waiting · 六格保持托腮，待确认</option><option value="review">review · 六格低手下视，待确认</option></select></label>
+      <label>候选 <select id="idle-action"><option value="idle">idle · 微呼吸</option><option value="run_right">run_right · 正面向右小步原型</option><option value="run_left">run_left · 正面向左小步原型</option><option value="failed">failed · 三轮后回 idle</option><option value="jumping">jumping · 五帧，三轮后回 idle</option><option value="waving">waving · 四格，三轮后回 idle</option><option value="waving_source">waving · 原像素低位试验（未采用）</option><option value="processing">processing · 六格专注，三轮后回 idle</option><option value="waiting">waiting · 六格保持托腮，待确认</option><option value="review">review · 六格低手下视，待确认</option></select></label>
       <label>宽度 <select id="idle-size"><option>80</option><option selected>113</option><option>192</option><option>224</option></select> px</label>
       <label>背景 <select id="idle-background"><option value="dark">深色</option><option value="light">浅色</option><option value="grid">透明网格</option></select></label>
       <label><input id="idle-reduced" type="checkbox">减少动态</label>
@@ -32,11 +32,12 @@
     <p>左右小步为八格、1060 ms一轮。此处模拟状态未被打断时的三轮3180 ms后回 idle；真实宿主的左右跑是拖拽反馈，松手可中断任意格并回到底层任务状态，不一定 idle，也不会等待脚落地。图集没有速度输入，不能保证鼠标拖动中的屏幕地面防滑。抬脚约1.19原生像素，80 px提示弱；拆层不是无损中立重建，衣边/发丝遮罩残影与克制感仍需验收，不把支撑脚坐标固定等同于真实跑步完成。</p>
     <p><a href="../candidates/phase5/locomotion-inspection/contact-224px.png">原母版/中立拆层/左右抬脚对照</a> · <a href="../candidates/phase5/run_right/native-timing.gif">向右小步真实停留GIF</a> · <a href="../candidates/phase5/leg-backing-v1/prompt.txt">无脸隐藏底图实际生成提示词</a></p>
   </section>
-  <details id="source-arm-study" class="idle-review" open><summary>原像素手袖运动试验 · GIMP工程已验证，但残影未解决</summary>
-    <p>四格均使用锁定母版的原手、原袖像素；新生成素材只补袖后缺失头发。下图依次为0°、+6°、−3°、0°，真实停留140/140/140/280 ms。静止由同一材料合成精确还原，不特判返回源图；脸型、原alpha、另一侧身体和鞋不变。上方现用候选和完整开发图集没有替换。</p>
-    <img loading="lazy" src="../candidates/phase5/wave-source-rig-v2/detail.png" width="1000" height="460" alt="原像素手袖四格试验；抬动帧仍有下摆残影和头发接缝，尚未采用">
-    <p>当前仍可见下摆残影、发丝明暗接缝；袖口上缘不是与手掌完全刚性共转。低位小动作也未证明能表达招手。中性精确、合法颜色和坐标检查不能证明干净分层或动作好看；这不是已接受的新姿势，更不是完成的关节动画。</p>
-    <p><a href="../sources/editor/source-arm/kaguya-source-arm.xcf" download>真实GIMP图层/蒙版工程</a> · <a href="../sources/editor/source-arm/gimp-reopened-export.png">实际重开导出</a> · <a href="../candidates/phase5/wave-source-rig-v2/native-timing.gif">真实停留GIF（QA无限循环，不模拟宿主三轮回退）</a> · <a href="../candidates/phase5/wave-source-rig-v2/contact-113px.png">113px明暗对照</a> · <a href="../docs/SOURCE-ARM-STUDY.zh-CN.md">证据、否定结果和限制</a></p>
+  <details id="source-arm-study" class="idle-review" open><summary>原像素手袖运动试验 · 修正漏选袖边与头发约束，尚未采用</summary>
+    <p>下图依次为上轮+6°、本轮+6°、上轮底图、本轮底图。补回221个漏选的原袖面/描边材料像素，排除把绿色衣服当作头发的错误约束；只用可见头发校正隐藏底图，并对部分平缓边缘估计梯度延长。没有新生成脸、手或袖子。</p>
+    <img loading="lazy" src="../candidates/phase5/wave-source-rig-v3/detail.png" width="1000" height="460" alt="旧袖边残影及底图拼接与本轮修正对照，动作和造型仍未获接受">
+    <p>上方候选菜单新增“原像素低位试验”，按真实140/140/140/280 ms四格、700 ms×3后回idle播放；它是招手行的独立试验，不是第十个宿主状态，也没有替换现用招手或完整开发图集。静止由同一材料精确还原；脸型、原alpha、另一侧身体和鞋不变。</p>
+    <p>块状接缝与旧绿色袖边已减轻，但细发丝/下摆浅弧仍待，袖口上缘不是完全刚性共转；低位动作的招手表达、小尺寸清晰度和自然度未获接受。部分边界色是推断且发生通道裁切，不伪称完整原始分层或全部梯度连续。GIMP链接仍为上轮v2归档工程；最新v3材料已另存本地work工程并真实保存/重开验证，不能把旧公开XCF冒充新版本。</p>
+    <p><a href="../sources/editor/source-arm/kaguya-source-arm.xcf" download>上轮真实GIMP工程（v2材料）</a> · <a href="../candidates/phase5/wave-source-rig-v3/native-timing.gif">本轮真实停留GIF（QA无限循环）</a> · <a href="../candidates/phase5/wave-source-rig-v3/contact-113px.png">113px明暗对照</a> · <a href="../docs/SOURCE-ARM-STUDY.zh-CN.md">证据、否定结果和限制</a></p>
   </details>
   <details id="review-sleeves-study" class="idle-review"><summary>新候选 · 连续袖面与GIMP工程（尚未采用）</summary>
     <p>下图左为当前合成v4，中为此前整张未采用的素材，右为本次连续袖面候选。手、脸、饰品及原alpha保持；只处理绿袖，未采用整张重绘，也未改上方动画。母版本来就有直线和三角阴影，不能把“有棱角”一概诊断为错误；此次主要避免补片边界截断褶线。</p>

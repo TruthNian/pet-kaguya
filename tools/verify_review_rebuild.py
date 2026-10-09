@@ -22,7 +22,7 @@ FOLDERS = ['candidates/phase4/static', 'candidates/phase4/canonical-v3', 'candid
            'candidates/phase5/review-structure-v1','candidates/phase5/review-hand-v1','candidates/phase5/review-hand-v2',
            'candidates/phase5/review-hand-outline-v1','candidates/phase5/review-art-v4','candidates/phase5/review-sleeves-v1',
            'candidates/phase5/source-arm-backing-v2','candidates/phase5/wave-source-rig-v1',
-           'candidates/phase5/wave-source-rig-v2',
+           'candidates/phase5/wave-source-rig-v2','candidates/phase5/wave-source-rig-v3',
            'candidates/phase5/leg-backing-v1','candidates/phase5/locomotion-inspection',
            'candidates/phase5/run_right','candidates/phase5/run_left','candidates/phase5/global']
 
@@ -63,6 +63,8 @@ def main():
                    'review_source_backing.py','review_source_arm.py']:
         subprocess.run([sys.executable, str(ROOT/'tools'/script)], cwd=ROOT, check=True, capture_output=True)
     subprocess.run([sys.executable,str(ROOT/'tools/review_source_arm.py'),'--backing-v2'],
+                   cwd=ROOT,check=True,capture_output=True)
+    subprocess.run([sys.executable,str(ROOT/'tools/refine_source_arm.py')],
                    cwd=ROOT,check=True,capture_output=True)
     after, encoded_after = snapshot()
     load_canonical()  # Re-check the immutable selected source after all builds.
