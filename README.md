@@ -4,9 +4,9 @@ Local Kaguya sprite assets, reproducible animation tools, and an honest quality 
 
 ## Current work: locked mother pose and bounded action candidates
 
-The latest isolated [hair-boundary study](candidates/phase5/review-hair-boundary-v1/detail.png) removes unobserved sleeve/old-patch colors from the hidden-hair constraint graph. It retains current v4 hands/sleeves/face/alpha and known mother pixels exactly; two unanchored pixel islands remain unchanged. Numerical observation isolation is verified, but clipping, bright flecks and missing strand topology remain. **Not adopted:** no active row, global atlas or installed pet is replaced. The viewer separately shows [actual current idle/waiting/review cels](candidates/phase5/review-hair-boundary-v1/current-held-structure-224px.png) for a scoped static-structure decision; it is not the new hair candidate.
+The preceding isolated [hair-boundary study](candidates/phase5/review-hair-boundary-v1/detail.png) retains the recorded v4 hands/sleeves/face/alpha and known mother pixels exactly while removing unobserved boundary constraints. Two unanchored pixel islands remain unchanged. **Not adopted:** numerical observation isolation does not repair clipping, flecks or missing strand topology. It does not replace an active row/global atlas/installed pet. The viewer separately shows [actual current idle/waiting/review cels](candidates/phase5/review-hair-boundary-v1/current-held-structure-224px.png); this contact is not the rejected hair candidate.
 
-Current review uses composition **v4**, not a new mother drawing. A same-coordinate inspection showed that part of the bad fingertip shape was caused by an inward-clipping mask, not the original drawing. v4 restores that recorded source contour without scaling the hand, retaining the previous v3 hair repair. The row and development atlas are synchronized; all pose/motion aesthetics remain pending. The preceding sleeve/compact-hand studies remain **not adopted**. [Concrete correction, failed studies and remaining constraints](docs/PHASE5-STATES.zh-CN.md).
+Current review uses composition **v5**, not a new mother drawing. The v4 fingertip repair is retained. Twelve actually visible mother-hair pixels were omitted because the patch's alpha was 239, below the old 240 gate. v5 [restores their original RGBA](candidates/phase5/review-art-v5/detail.png) without blurring/painting; every other source-space pixel, including face/hands/sleeves, is unchanged from v4. Each native review cel changes only two pixels (maximum channel delta 3): a small defect fix, not a major clarity/performance claim. The row/development atlas are synchronized; pose/motion aesthetics remain pending and the installed pet is unchanged. Earlier sleeve/compact-hand/RGB-boundary studies remain **not adopted**. [Correction and remaining constraints](docs/PHASE5-STATES.zh-CN.md).
 
 GIMP 3.2.6 was actually used through its official batch API to create, save, reopen and export an [editable XCF project](sources/editor/review-hand/kaguya-review-hand.xcf). Its visible RGBA matches the controlled contour repair exactly; 859 fully transparent hidden RGB values are normalized, not a full-byte identity claim. The first normal-over alpha-stacking error was rejected. Editable masks need float base-mask compensation to avoid repeating that error. This is not desktop brush painting or a clean character rig; CI checks the archive hash and saved export evidence, not a live GIMP replay. Cross-platform animation rebuilds do not require GIMP. Hidden strand topology, sleeve/hand aesthetics and state transitions remain unresolved.
 
@@ -71,6 +71,7 @@ python tools/review_review_v2.py
 python tools/review_review_v3.py
 python tools/repair_review_hand_outline.py
 python tools/review_review_v4.py
+python tools/review_review_v5.py
 python tools/build_review.py
 python tools/review_hair_boundary.py
 python tools/guide_legs.py

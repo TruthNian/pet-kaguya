@@ -145,9 +145,9 @@ class HairStudy(unittest.TestCase):
         failed = json.loads((ROOT/'candidates/phase5/review-hair-v1/decision.json').read_text())
         self.assertFalse(failed['adopted'])
         self.assertNotEqual(failed['generatedSha256'],hair.GENERATED_SHA)
-        self.assertEqual(build_review.art_inputs.__module__,'review_review_v4')
+        self.assertEqual(build_review.art_inputs.__module__,'review_review_v5')
         active = json.loads((build_review.OUT/'build.json').read_text())
-        self.assertEqual(active['rightArmCompositionVersion'],'review-art-v4')
+        self.assertEqual(active['rightArmCompositionVersion'],'review-art-v5')
         self.assertFalse(active['newArtworkGenerated'])
         self.assertEqual(self.meta['activeCompositionVersionAtExperiment'],'review-art-v2')
 

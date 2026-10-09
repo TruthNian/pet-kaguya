@@ -3,6 +3,7 @@ import {durations} from './clock.mjs';
 import {candidateRows as rows,candidateSlot,candidatePoseOffset,candidateCelKey} from './candidate-clock.mjs';
 import {paintCel} from './cel-painter.mjs';
 import {comparisonReference,validateRigidReference} from './comparison-reference.mjs';
+import {validateReviewMetadata} from './review-contract.mjs';
 
 const el=id=>document.getElementById(id);
 const canvases=[el('idle-reference'),el('idle-animated')];
@@ -21,7 +22,7 @@ const canRun=()=>ready&&!paused&&!reduced()&&!document.hidden;
 async function asset(state){
   if(!cache.has(state))cache.set(state,(async()=>{
     const root=`../candidates/phase5/${sources[state]}`;
-    const response=await fetch(`${root}/build.json`);
+    const response=await fetch(`${root}/build.json`,{cache:'no-cache'});
     if(!response.ok)throw new Error(`${state} metadata unavailable`);
     const metadata=await response.json();
     if(metadata.sourceSha256!=='65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A'
@@ -48,14 +49,7 @@ async function asset(state){
         ||metadata.closedEyeFrames!==0||metadata.bodyPulse!==false||metadata.ornamentFlash!==false
         ||metadata.repeatBeforeIdle!==3||metadata.visualMotionApproval!=='pending'))
       throw new Error('processing state or restrained-motion boundary mismatch');
-    if(state==='review'&&(metadata.animationBuilt!==true||metadata.nativeRow!==8
-        ||metadata.rightArmCompositionVersion!=='review-art-v4'||metadata.newArtworkGenerated!==false
-        ||metadata.originalLowerHandContourRestored!==true||metadata.handScaled!==false
-        ||metadata.knownSourceHairRGBAExact!==true||metadata.paintedHairAlphaContinuityEstimated!==true
-        ||metadata.handStrategy!=='two-low-hands-held'||metadata.strategyUserApproval!=='pending'
-        ||metadata.closedEyeFrames!==0||metadata.bodyPulse!==false||metadata.ornamentFlash!==false
-        ||metadata.repeatBeforeIdle!==3||metadata.visualMotionApproval!=='pending'))
-      throw new Error('review state or unapproved-motion boundary mismatch');
+    if(state==='review')validateReviewMetadata(metadata);
     if(['run_right','run_left'].includes(state)&&(metadata.animationBuilt!==true||metadata.nativeRow!==rows[state]
         ||metadata.projection!=='front-held-alternating-small-steps'||metadata.strategyUserApproval!=='approved'
         ||metadata.strategyApprovalScope!=='front-held-small-steps-only'
@@ -79,7 +73,9 @@ async function asset(state){
         ||metadata.continuousSecondaryMotionProven!==false
         ||metadata.sourceAlphaAndOcclusionSeparated!==true||metadata.artistLayerRecoveryClaimed!==false))
       throw new Error('conditioned leg composition boundary mismatch');
-    const image=new Image();image.src=`${root}/strip.webp`;await image.decode();
+    // Tie the decoded strip to the metadata's actual cels. A newly built
+    // metadata file must not be paired with a previously cached bitmap.
+    const image=new Image();image.src=`${root}/strip.webp?v=${metadata.frameHashes.join('')}`;await image.decode();
     if(image.naturalWidth!==1536||image.naturalHeight!==208)throw new Error(`${state} dimensions mismatch`);
     return {image,metadata};
   })().catch(error=>{cache.delete(state);throw error;}));
