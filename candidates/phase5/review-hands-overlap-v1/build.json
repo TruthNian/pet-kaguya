@@ -1,0 +1,228 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "parentPoseRGBAHash": "3701641146B3CDF39C71F43A1EF9648511AB6D8565751C31C1BB205CC87664FE",
+  "generatedSha256": "4ACA513583BF6BD69B642D5A656E97386E3B890CD2BBD861A96B6A4A98AAB6EE",
+  "rawCanvas": [
+    1254,
+    1254
+  ],
+  "sourceCrop": [
+    385,
+    575,
+    695,
+    825
+  ],
+  "fixedSquareProjection": true,
+  "objectBoundsFit": false,
+  "allowedPolygons": [
+    [
+      [
+        440,
+        632
+      ],
+      [
+        516,
+        632
+      ],
+      [
+        532,
+        660
+      ],
+      [
+        610,
+        660
+      ],
+      [
+        627,
+        688
+      ],
+      [
+        644,
+        733
+      ],
+      [
+        645,
+        784
+      ],
+      [
+        625,
+        797
+      ],
+      [
+        603,
+        774
+      ],
+      [
+        573,
+        763
+      ],
+      [
+        492,
+        764
+      ],
+      [
+        467,
+        778
+      ],
+      [
+        443,
+        804
+      ],
+      [
+        420,
+        819
+      ],
+      [
+        395,
+        819
+      ],
+      [
+        404,
+        793
+      ],
+      [
+        416,
+        766
+      ],
+      [
+        429,
+        736
+      ],
+      [
+        436,
+        710
+      ],
+      [
+        439,
+        682
+      ]
+    ]
+  ],
+  "protectedPolygons": [
+    [
+      [
+        521,
+        575
+      ],
+      [
+        695,
+        575
+      ],
+      [
+        695,
+        655
+      ],
+      [
+        526,
+        662
+      ]
+    ],
+    [
+      [
+        640,
+        660
+      ],
+      [
+        695,
+        660
+      ],
+      [
+        695,
+        825
+      ],
+      [
+        644,
+        825
+      ],
+      [
+        642,
+        744
+      ],
+      [
+        624,
+        736
+      ],
+      [
+        614,
+        727
+      ],
+      [
+        607,
+        716
+      ],
+      [
+        605,
+        704
+      ],
+      [
+        612,
+        690
+      ],
+      [
+        625,
+        679
+      ]
+    ],
+    [
+      [
+        385,
+        575
+      ],
+      [
+        452,
+        575
+      ],
+      [
+        450,
+        609
+      ],
+      [
+        479,
+        610
+      ],
+      [
+        480,
+        634
+      ],
+      [
+        453,
+        642
+      ],
+      [
+        440,
+        629
+      ]
+    ]
+  ],
+  "edgeFeatherSourcePx": 1.5,
+  "allowedSourcePixels": 25469,
+  "changedSourcePixels": 25459,
+  "changedAlphaPixels": 0,
+  "changedOutsideAllowed": 0,
+  "rawChangesRejectedOutsideAllowed": 52020,
+  "composition": "interior RGB texture repaint; complete parent alpha unchanged",
+  "parentAlphaMinInsidePermission": 246,
+  "rawAlphaMinInsidePermission": 241,
+  "generatedRGBAFilePreserved": true,
+  "completeParentAlphaPreserved": true,
+  "firstFailurePoseRGBAHash": "C92586E3B68041F6590447847150D79A1065777930E6FD8A2CFF36CEBC687DE1",
+  "firstFailureAlphaChangedPixels": 20747,
+  "firstFailure": "The initial bow protection included part of the cream cuff and clipped it. Copying generated alpha also changed opacity inside a locked costume silhouette.",
+  "secondFailurePoseRGBAHash": "BDEB711C0596C45F00706248B10C55BF7809D69B9026AF0198A5BA2EDCC91CE4",
+  "secondFailure": "An undersized union still clipped the full cuff/moon, and included alpha=35 crop-edge fragments. Current permission covers whole local objects and stops before transparent padding; alpha>=240 is a material-support guard, not an anatomical matte.",
+  "poseRGBAHash": "F4A43E5B7A3DFC23D89206E148C073CDA38317303CCDDEB17BC3CB49061B09F0",
+  "frameRGBAHash": "55DA96DBB8DAA8EB3D2FE316D9F49CD5C0C7D861FDA7224363374C17DDE57BDB",
+  "faceIncluded": false,
+  "facialGeometryRepair": false,
+  "handScaled": false,
+  "originalMoonMotifRemovalAllowed": false,
+  "specificPoseUserApproval": "pending",
+  "heldTimingChangeAllowed": false,
+  "adopted": false,
+  "activeAtlasChanged": false,
+  "animationBuilt": false,
+  "installed": false,
+  "installableFullAtlas": false,
+  "visualAcceptance": "pending",
+  "limitation": "Static same-camera hand/cuff study, without focused-eye motion. Outer garment integration, hand anatomy, small-size cues and full aesthetics require visual review. Bounded feathering is not an artist foreground layer or proof that seam lines connect."
+}

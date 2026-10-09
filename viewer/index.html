@@ -46,6 +46,14 @@
     <p>左为当前idle，中为waiting托腮，右为review低位双手下视；目前两手未真正相合，不把它称为完成的合手动作。每张都直接来自当前动作条的第1格，224px明暗背景；不是下面的新头发试验。保持时序已暂时接受，但实际脸、手与衣袖关系仍需确认。腰间白色月纹在母版就存在，不是旧手残留或多余袖口。</p>
     <img loading="lazy" src="../candidates/phase5/review-hair-boundary-v1/current-held-structure-224px.png" width="732" height="550" alt="当前idle、waiting托腮、review低位双手的真实第1格，224像素明暗结构对照">
   </section>
+  <details id="review-overlap-study" class="idle-review"><summary>新静态候选 · 腰前轻柔相叠（未接入动画）</summary>
+    <p>这次改变的是两手的接触关系：上方手轻放在另一手上，各自连接自己的袖口，不交叉握紧。下图依次为当前v6、整裁片原输出（未整块采用）、有界静态候选。保持同一源坐标、相机与锁定脸型；只改25,459个内部RGB像素，全身alpha与范围外像素不变。不是单独缩放手，也不是新脸或新状态。</p>
+    <img loading="lazy" src="../candidates/phase5/review-hands-overlap-v1/detail.png" width="930" height="275" alt="当前分开双手、原AI相叠裁片和有界静态候选的同坐标局部对照">
+    <img loading="lazy" src="../candidates/phase5/review-hands-overlap-v1/contact-224px.png" width="732" height="550" alt="当前v6、原裁片和相叠静态候选，224像素深浅背景全身比较，脸型不变">
+    <p>这三列是静态源姿势，不包含下视或耳发动作；主播放器的review仍为v6，保持时序与安装文件未改。腕口角度随新手势局部调整，不声称腕位逐像素固定。相叠造型、拇指/掌背体积、袖子接边与整体可爱感仍待判断；80px变化很小，不能说状态已经清楚可辨。</p>
+    <p><a href="../candidates/phase5/review-hands-overlap-v1/contact-113px.png">113px实际对照</a> · <a href="../candidates/phase5/review-hands-overlap-v1/contact-80px.png">80px实际对照</a> · <a href="../sources/editor/review-overlap/kaguya-review-overlap.xcf" download>新静态候选的GIMP工程</a> · <a href="../candidates/phase5/review-hands-overlap-v1/prompt.txt">实际无脸编辑提示词</a> · <a href="../candidates/phase5/review-hands-overlap-v1/build.json">范围及限制</a>。工程通过GIMP批处理真正保存/重开，不冒称桌面画笔绘制或干净原画分层；修改权重需重算底层补偿。</p>
+    <p>保留失败证据：<a href="../candidates/phase5/review-hands-overlap-v1/failed-first-mask.png">首版错误红结保护与内部透明度变化</a>、<a href="../candidates/phase5/review-hands-overlap-v1/failed-second-mask.png">第二版未覆盖完整袖口/月纹并夹入透明裁片边缘</a>。原月纹不是袖口，保留在新手没有遮挡的区域；生成RGBA原文件不改。</p>
+  </details>
   <details id="waiting-cloth-current" class="idle-review"><summary>当前改进 · waiting 抬袖与垂袖（开发合成 v2，待视觉认可）</summary>
     <p>左为此前waiting，右为当前开发版。固定腕口与手位，收束红袖鼓包，让垂袖沿同一布面下垂；53,583个源RGBA像素变化，其中12,314处alpha变化。只采用受限衣料与轮廓旁遮挡底图，手、脸、肩披、腰饰、另一侧身体及鞋不动。阴影仍偏硬，不声称布料力学或全部造型通过。</p>
     <img loading="lazy" src="../candidates/phase5/waiting-sleeve-v1/detail.png" width="680" height="525" alt="此前与当前waiting袖子同坐标比较，原托腮手位与脸未变">

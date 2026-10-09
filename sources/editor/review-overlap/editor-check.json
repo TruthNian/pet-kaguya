@@ -1,0 +1,45 @@
+{
+  "editor": "GIMP",
+  "editorVersion": "3.2.6",
+  "canvas": [
+    1205,
+    1306
+  ],
+  "project": "kaguya-review-overlap.xcf",
+  "projectSha256": "2B4611508C3D078C8273C2618B405E819D5B6CCDF83AE72BB6658EAD147F3BE2",
+  "projectReopened": true,
+  "parentCompositionVersion": "review-art-v6",
+  "layers": [
+    {
+      "name": "GUIDE ONLY - protected foreground",
+      "visible": false,
+      "locked": true,
+      "hasMask": false
+    },
+    {
+      "name": "REFERENCE ONLY - canonical v3, never replace",
+      "visible": false,
+      "locked": true,
+      "hasMask": false
+    },
+    {
+      "name": "02 Low relaxed overlapping hands - RGB repaint on parent alpha",
+      "visible": true,
+      "locked": false,
+      "hasMask": true
+    },
+    {
+      "name": "01 Locked review v6 - original body alpha, face, hair and costume",
+      "visible": true,
+      "locked": true,
+      "hasMask": true
+    }
+  ],
+  "composition": "normal-over with float base-mask compensation; nonlinear RGB",
+  "maskEditingRequiresBaseCompensationRebuild": true,
+  "nativeDesktopPaintingClaimed": false,
+  "cleanRigClaimed": false,
+  "userVisualApproval": "pending",
+  "activeAtlasChanged": false,
+  "installedPetChanged": false
+}

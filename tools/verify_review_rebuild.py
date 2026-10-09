@@ -28,7 +28,7 @@ FOLDERS = ['candidates/phase4/static', 'candidates/phase4/canonical-v3', 'candid
            'candidates/phase5/review-hair-boundary-v1','candidates/phase5/review-art-v5',
            'candidates/phase5/review-sleeves-v2','candidates/phase5/review-art-v6',
            'candidates/phase5/waiting-sleeve-v1','candidates/phase5/waiting-art-v2',
-           'candidates/phase5/review-hands-pair-v1']
+           'candidates/phase5/review-hands-pair-v1','candidates/phase5/review-hands-overlap-v1']
 
 
 def snapshot():
@@ -63,7 +63,8 @@ def main():
                    'guide_review.py','review_review.py','review_review_v2.py','review_review_v3.py',
                    'repair_review_hand_outline.py','review_review_v4.py','review_review_v5.py',
                    'guide_review_cloth.py','review_cloth_v2.py','review_review_v6.py',
-                   'guide_review_hands_pair.py','inspect_review_hands_pair.py','build_review.py','review_hair_boundary.py',
+                   'guide_review_hands_pair.py','inspect_review_hands_pair.py',
+                   'guide_review_overlap.py','review_overlap.py','build_review.py','review_hair_boundary.py',
                    'guide_review_hair.py','review_hair.py',
                    'guide_review_structure.py','review_structure.py','review_sleeves.py','guide_review_hand.py','review_hand.py','review_hand_v2.py',
                    'guide_legs.py','leg_material.py','refine_leg_composition.py','review_locomotion.py','build_locomotion.py','build_global_review.py',

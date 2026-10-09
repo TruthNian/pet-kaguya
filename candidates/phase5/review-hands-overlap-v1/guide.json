@@ -1,0 +1,32 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "parentPoseRGBAHash": "3701641146B3CDF39C71F43A1EF9648511AB6D8565751C31C1BB205CC87664FE",
+  "parentCompositionVersion": "review-art-v6",
+  "sourceCrop": [
+    385,
+    575,
+    695,
+    825
+  ],
+  "guideCanvas": [
+    310,
+    310
+  ],
+  "transparentPaddingBottomSourcePx": 60,
+  "faceIncluded": false,
+  "inputRoles": [
+    "edit target: current cuff, camera, scale and local costume",
+    "costume reference: actual original waist crescent, not an arm pose"
+  ],
+  "studyDirection": "one relaxed hand lightly resting over the other at the waist",
+  "specificPoseUserApproval": "pending",
+  "directionIsNotAnApprovedResult": true,
+  "originalMoonMotifRemovalAllowed": false,
+  "faceGeometryChangeAllowed": false,
+  "wholeCharacterRedrawAccepted": false,
+  "heldTimingChangeAllowed": false,
+  "adopted": false,
+  "activeAtlasChanged": false,
+  "installed": false,
+  "visualAcceptance": "pending"
+}

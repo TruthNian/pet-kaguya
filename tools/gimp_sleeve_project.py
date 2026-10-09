@@ -21,9 +21,9 @@ PROJECT_NAME = globals().get('PROJECT_NAME','kaguya-review-sleeves.xcf')
 
 def main():
     if (ROOT not in OUT.parents or ROOT not in SOURCE.parents
-            or VERSION not in ('review-art-v4','review-art-v5','waiting-art-v1')
+            or VERSION not in ('review-art-v4','review-art-v5','review-art-v6','waiting-art-v1')
             or MATERIAL_NAME not in ('mapped-cloth.png','mapped-material.png')
-            or PROJECT_NAME not in ('kaguya-review-sleeves.xcf','kaguya-waiting-sleeve.xcf')):
+            or PROJECT_NAME not in ('kaguya-review-sleeves.xcf','kaguya-waiting-sleeve.xcf','kaguya-review-overlap.xcf')):
         raise ValueError('Project must stay in a fresh repository subdirectory')
     OUT.mkdir(parents=True,exist_ok=True)
     xcf = OUT/PROJECT_NAME
