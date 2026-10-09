@@ -11,6 +11,7 @@ from refine_leg_composition import inputs as material_inputs,strategy_decision,D
 import locomotion_render as renderer
 from locomotion_landing import reference as landing_reference
 import build_gaze as gaze
+import locomotion_follow as follow
 from animation_output import write_animation
 from protocol import DURATIONS
 
@@ -28,7 +29,7 @@ def validate_motion(motion):
             or not motion['faceShapeLocked'] or motion['artMirrored']
             or motion['rootMotion']!='rigid-actor-translation-in-source-coordinates'
             or motion['maximumRootTranslationSourcePx']!=[12,1.5]
-            or motion['secondaryMotion']!='rigid-follow-only; delayed ear/hair response remains missing'
+            or motion['secondaryMotion']!=follow.METHOD
             or motion['closedEyeFrames'] != 0 or motion['nativeInterpolation']
             or motion['hostVelocitySynchronization'] or motion['focusOffsetSourcePx'] != [6,0]):
         raise ValueError('Locomotion violates locked front view, native timing or candidate boundary')
@@ -67,6 +68,7 @@ def validate_motion(motion):
         for direction in (-1,1):
             for leg,offset in zip(legs,renderer.relative_offsets(pose,direction)):
                 inverse_kinematics(leg,*offset)
+    follow.profile(motion)
 
 
 def inputs():
@@ -76,23 +78,30 @@ def inputs():
     source = data['mother']
     eye_layers = gaze.layers(source,gaze.load_generated(),gaze.specification())
     transform = camera(clean_cutout(source)[0])
+    regions=json.loads((ROOT/'sources/canonical/regions.json').read_text(encoding='utf-8'))
+    if regions['sourceSha256']!=ACCEPTED_SHA or regions['canvas']!=[1205,1306]:
+        raise ValueError('Tip regions must belong to the locked mother')
+    response=follow.profile(motion)
+    follow_fields=follow.fields(regions,motion['followThrough'])
+    render_keys=[dict(key,followSourcePx={name:part['offsetsSourcePx'][index] for name,part in response.items()})
+                 for index,key in enumerate(motion['keyframes'])]
     results = {}
     for state in motion['states']:
         direction = state['direction']
         original_gaze=gaze.pose(source,eye_layers,motion['focusOffsetSourcePx'][0]*direction,0)
-        material=renderer.prepare(data,original_gaze)
+        material=renderer.prepare(data,original_gaze,follow_fields)
         rendered,frames,joints = {},[],[]
-        for key in motion['keyframes']:
+        for key in render_keys:
             offsets = renderer.relative_offsets(key,direction)
-            signature = tuple(key['rootSourcePx']),tuple(offsets)
+            signature = tuple(key['rootSourcePx']),tuple(offsets),tuple(key['followSourcePx'].items())
             if signature not in rendered:
                 rendered[signature] = renderer.render(material,key,direction,transform)
             frames.append(rendered[signature])
             joints.append([np.round(inverse_kinematics(leg,*offset)[1]+key['rootSourcePx'],12).tolist()
                            for leg,offset in zip(data['spec']['legs'],offsets)])
         results[state['state']] = dict(state=state,frames=frames,targetKnees=joints,
-                                      sourceWithGaze=original_gaze,material=material)
-    data.update(motion=motion,transform=transform,
+                                      sourceWithGaze=original_gaze,material=material,renderKeys=render_keys)
+    data.update(motion=motion,transform=transform,followResponse=response,
                 eyeAllowed=gaze.aperture_union(source,eye_layers),results=results)
     return data
 
@@ -112,7 +121,7 @@ def main():
                 raise ValueError('Locomotion touches a cell edge')
         write_animation(out,frames,DURATIONS[result['state']['nativeRow']])
         for index,pose_name in ((2,'left-lifted-pose.png'),(6,'right-lifted-pose.png')):
-            renderer.diagnostic_pose(result['material'],motion['keyframes'][index],result['state']['direction']).save(out/pose_name)
+            renderer.diagnostic_pose(result['material'],result['renderKeys'][index],result['state']['direction']).save(out/pose_name)
         neutral=renderer.neutral_evidence(result['material'],result['sourceWithGaze'],data['transform'])
         if not neutral['directSamplerNeutralPremultMatchesWithinTolerance'] or not neutral['directSamplerNeutralRGBAExact']:
             raise ValueError('Direct source filtering must retain the neutral reference')
@@ -147,6 +156,12 @@ def main():
             wholeArtworkSingleSamplingPass=False,
             normalizedKnownBacking=True,diagnosticPosesAreNotFrameInputs=True,
             measuredMassCentre=False,physicalBalanceProven=False,secondaryMotion=motion['secondaryMotion'],
+            followThrough=motion['followThrough'],followResponse=data['followResponse'],
+            tipOffsetsSourcePx=[key['followSourcePx'] for key in result['renderKeys']],
+            maximumTipOffsetOutputPx={name:max(abs(v) for v in part['offsetsSourcePx'])*data['transform']['scale']
+                                     for name,part in data['followResponse'].items()},
+            secondaryGeometryCombinedBeforeBackingSampling=True,cleanTipLayersRecovered=False,
+            liveDragLagInitialization=False,continuousSecondaryMotionProven=False,
             landingApproachAdded=True,landingReferenceIsNotHostInterpolation=True,continuousLandingProven=False,
             risingPoseAdded=True,continuousTakeoffProven=False,
             landingReference=landing_reference(motion['landingReference'],motion['durationsMs']),

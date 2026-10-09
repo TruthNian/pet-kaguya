@@ -11,9 +11,10 @@ from canonical import clean_cutout
 from leg_material import premult, leg_coordinates
 from occlusion_material import over
 from protocol import WIDTH, HEIGHT
+import locomotion_follow as follow
 
 
-def prepare(data, source):
+def prepare(data, source, follow_fields=None):
     """Keep known backing separate from the hidden-backing estimate.
 
     A separately bilinear-filtered P, beta and B does not in general retain
@@ -42,7 +43,8 @@ def prepare(data, source):
         raise ValueError('Original leg occlusions must be disjoint')
     visibility[y0:y1,x0:x1] = np.maximum(0,1-beta)
     return dict(data=data, backing=backing, visibility=visibility,
-                visibleBacking=backing*visibility[...,None],source=source_pixels)
+                visibleBacking=backing*visibility[...,None],source=source_pixels,
+                followFields=follow_fields)
 
 
 def relative_offsets(key, direction):
@@ -67,10 +69,12 @@ def evaluate(material, x, y, key, direction, *, normalized_backing=True, rebase_
     """
     data=material['data']; x0,y0,_,_=data['box']
     qx,qy=source_coordinates(x,y,key)
-    backing=sample(material['backing'],qx,qy)
+    bx,by = (follow.coordinates(qx,qy,key,material['followFields'])
+             if material['followFields'] is not None else (qx,qy))
+    backing=sample(material['backing'],bx,by)
     if normalized_backing:
-        visible=sample(material['visibility'],qx,qy)
-        known=sample(material['visibleBacking'],qx,qy)
+        visible=sample(material['visibility'],bx,by)
+        known=sample(material['visibleBacking'],bx,by)
         np.divide(known,visible[...,None],out=backing,where=visible[...,None]>1e-12)
     result=backing
     for leg,paint,beta,offset in zip(data['spec']['legs'],data['layers'],data['occlusions'],
@@ -85,7 +89,7 @@ def evaluate(material, x, y, key, direction, *, normalized_backing=True, rebase_
         # Integer channel rounding is discontinuous at exact half levels.
         # Canonicalize only composite roundoff at every pose/coordinate,
         # never return a neutral source raster or skip material evaluation.
-        reference=sample(material['source'],qx,qy)
+        reference=sample(material['source'],bx,by)
         same=np.max(np.abs(result-reference),axis=-1)<1e-10
         result=np.where(same[...,None],reference,result)
     return result

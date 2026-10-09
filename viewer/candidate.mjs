@@ -70,6 +70,10 @@ async function asset(state){
         ||metadata.continuousLandingProven!==false||metadata.risingPoseAdded!==true
         ||metadata.continuousTakeoffProven!==false||metadata.loopSeamContactAtNextCycle!==true
         ||metadata.loopSeamContinuousProven!==false||metadata.loopSeamRGBAExact!==false
+        ||metadata.secondaryMotion!=='periodic-first-order-root-lag; visible-tip-fields-only'
+        ||metadata.secondaryGeometryCombinedBeforeBackingSampling!==true
+        ||metadata.cleanTipLayersRecovered!==false||metadata.liveDragLagInitialization!==false
+        ||metadata.continuousSecondaryMotionProven!==false
         ||metadata.sourceAlphaAndOcclusionSeparated!==true||metadata.artistLayerRecoveryClaimed!==false))
       throw new Error('conditioned leg composition boundary mismatch');
     const image=new Image();image.src=`${root}/strip.webp`;await image.decode();
@@ -116,8 +120,9 @@ async function draw(){
   el('current-candidate-title').textContent=label;
   const status=manualIndex!==null?'单帧检查':reduced()?'减少动态':paused?'已暂停':selected.completedAction?'三轮已结束，已回 idle':'实际时长播放';
   const timing=` · 第 ${selected.index+1}/${durations[rows[selected.state]].length} 帧 · 停留 ${selected.holdMs} ms · 周期 ${selected.cycleMs} ms`;
+  const followHint=['run_right','run_left'].includes(selected.state)?' · 耳发按身体运动轻微滞后，非实时物理':'';
   const dragBoundary=['run_right','run_left'].includes(mode)?' · 此处仅行内时钟；真实拖拽可随时中断/恢复底层状态，无速度同步':'';
-  el('idle-status').textContent=`${label} · ${status}${timing}${dragBoundary} · ${paintCount} 次候选绘制 · 未经完整视觉验收，非完成宠物，未安装`;
+  el('idle-status').textContent=`${label} · ${status}${timing}${followHint}${dragBoundary} · ${paintCount} 次候选绘制 · 未经完整视觉验收，非完成宠物，未安装`;
 }
 function schedule(){
   if(!canRun())return;

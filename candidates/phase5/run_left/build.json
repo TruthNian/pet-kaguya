@@ -297,16 +297,16 @@
   "loopSeamRGBAExact": false,
   "loopSeamContactAtNextCycle": true,
   "loopSeamContinuousProven": false,
-  "uniqueCels": 6,
+  "uniqueCels": 8,
   "frameHashes": [
-    "FB10851B84EB34681EEDB19A468804C4E767695F0516FE757DAE56331E4113B1",
-    "0327E4853BB005858DE5F263CAC208DC21E282BCA99B4961EF944D638648E541",
-    "04F13E2D33323F710B459BC497869B9FF8D0554152903F4F747ACAB96D0687C7",
-    "0327E4853BB005858DE5F263CAC208DC21E282BCA99B4961EF944D638648E541",
-    "FB10851B84EB34681EEDB19A468804C4E767695F0516FE757DAE56331E4113B1",
-    "A656B1740F4D90B7EFAF872C7CF0306D3CB59EDE8B9CCD45680B15714D19AD4F",
-    "E95451BBFAB039460D3F1BF4C5C807C4DD297F0B62F152A9B8DBFE7FA6879265",
-    "482417E30788C78B949071D7D76AFF8F3DD0C3D74C26387FB485BB0D443B4BD6"
+    "A4EEC1DBC8408DB94C9D17449E8DE60E8A8F3DE3593E20B195967DB03AB0D53A",
+    "696526D3293E744D0631FAA655BB4A173E9441D4FDFC6A6FD108669F875BC195",
+    "32393D69A982E9E7A2D47B6867929CB80BBD97E6EA3027A8DF6EF5F99F526A1F",
+    "6F11DBF63A2A03CAB63C9AD6E7189601C47715AD6D75B3039F722E9A335A8E77",
+    "94C65921F1519B0CFAF07C1E504CB0642F66A6CBE483F616B2DE08AD153A7A09",
+    "27C573C6859FAE8CE406B9F080B978B1E98B95EE02883D496044C418F7E3D9A1",
+    "5BA28BE85878ECB71063448E0611CD8E536F7AD77E88A600B3F89E58C7D8EBAE",
+    "C873FA268DB54196F9C56F6F9C80D90408A3308B339B3D679A4828582544281A"
   ],
   "method": "direct source-material sampling; rigid root towards support and cancelling planted-shoe displacement; coverage-normalized known backing",
   "legSampling": "original leg paint and occlusion sampled directly on 3x native integration grid; one terminal Lanczos downsample; no posed leg raster input",
@@ -317,7 +317,114 @@
   "diagnosticPosesAreNotFrameInputs": true,
   "measuredMassCentre": false,
   "physicalBalanceProven": false,
-  "secondaryMotion": "rigid-follow-only; delayed ear/hair response remains missing",
+  "secondaryMotion": "periodic-first-order-root-lag; visible-tip-fields-only",
+  "followThrough": {
+    "input": "held-root-horizontal-source-px",
+    "sample": "native-hold-midpoint",
+    "boundary": "periodic-steady-state",
+    "maximumTipOffsetSourcePx": 2.1,
+    "protectedHeadRect": [
+      275,
+      20,
+      955,
+      485
+    ],
+    "protectedFrontRect": [
+      290,
+      450,
+      950,
+      1040
+    ],
+    "protectedLegRect": [
+      425,
+      936,
+      810,
+      1240
+    ],
+    "protectionFadeSourcePx": 32,
+    "parts": {
+      "ear": {
+        "timeConstantMs": 90,
+        "gain": 0.15
+      },
+      "hair": {
+        "timeConstantMs": 160,
+        "gain": 0.25
+      }
+    }
+  },
+  "followResponse": {
+    "ear": {
+      "initialStateSourcePx": -8.193715508468,
+      "endStateSourcePx": -8.193715508468,
+      "offsetsSourcePx": [
+        -0.63101907158,
+        -0.782435364204,
+        -0.514297994184,
+        0.172482792014,
+        0.661566513188,
+        0.790487582389,
+        0.516420535853,
+        -0.098641579244
+      ]
+    },
+    "hair": {
+      "initialStateSourcePx": -7.875456270709,
+      "endStateSourcePx": -7.875456270709,
+      "offsetsSourcePx": [
+        -1.353179165111,
+        -2.013775135047,
+        -1.638529297328,
+        -0.086697156953,
+        1.333625720419,
+        2.004538741783,
+        1.634166334083,
+        0.061921195261
+      ]
+    }
+  },
+  "tipOffsetsSourcePx": [
+    {
+      "ear": -0.63101907158,
+      "hair": -1.353179165111
+    },
+    {
+      "ear": -0.782435364204,
+      "hair": -2.013775135047
+    },
+    {
+      "ear": -0.514297994184,
+      "hair": -1.638529297328
+    },
+    {
+      "ear": 0.172482792014,
+      "hair": -0.086697156953
+    },
+    {
+      "ear": 0.661566513188,
+      "hair": 1.333625720419
+    },
+    {
+      "ear": 0.790487582389,
+      "hair": 2.004538741783
+    },
+    {
+      "ear": 0.516420535853,
+      "hair": 1.634166334083
+    },
+    {
+      "ear": -0.098641579244,
+      "hair": 0.061921195261
+    }
+  ],
+  "maximumTipOffsetOutputPx": {
+    "ear": 0.12516053387825832,
+    "hair": 0.318847729715775
+  },
+  "secondaryGeometryCombinedBeforeBackingSampling": true,
+  "cleanTipLayersRecovered": false,
+  "liveDragLagInitialization": false,
+  "continuousSecondaryMotionProven": false,
   "landingApproachAdded": true,
   "landingReferenceIsNotHostInterpolation": true,
   "continuousLandingProven": false,
@@ -429,7 +536,8 @@
     "The old flat source-over neutral failure is preserved. Current conditioned occlusion reconstructs neutral RGBA exactly, without proving clean artist layers or nonzero edge ownership.",
     "At 80 px the approximately 1.2-native-pixel foot lift and gaze cue are weak; naturalness and left/right legibility are pending.",
     "The root shifts toward the supporting foot, not the travel direction. Its motion is a restrained 2-D design, not a measured mass centre or proven physical balance.",
-    "Clothes/head/hair follow the root rigidly; delayed soft follow-through and full entry/exit remain missing.",
+    "Visible ear/hair tips use a bounded root-driven lag; face, front clothes, hands and legs remain outside its field. Estimated visible-region ownership is not a clean layered rig, cloth simulation or recovered mass.",
+    "The lag is sampled from a periodic steady cycle, not initialized from each live drag or integrated by the host. Discrete cels, entry/release transients and full state transitions remain unresolved.",
     "Direct material sampling uses a coverage-normalized backing convention. Only composite roundoff below 1e-10 premultiplied units is canonicalized at every pose, not a neutral-raster shortcut; full neutral native RGBA matches the original sampler.",
     "Each swing shows rising, peak and approach poses; left contact occurs at slot 4, right contact at the next cycle's slot 0. First/last pixels are intentionally not equal. Reference curves select poses only, not native interpolation or measured endpoint velocity.",
     "The 220 ms final hold makes the right approach asymmetric and more elevated than the left. Cyclic/root and fallback jumps remain discrete; continuous takeoff/landing, impact/follow-through and arbitrary exit remain unproven."

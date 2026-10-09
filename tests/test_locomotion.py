@@ -122,13 +122,15 @@ class Locomotion(unittest.TestCase):
             np.testing.assert_array_equal(source[~data['eyeAllowed']],original[~data['eyeAllowed']])
             np.testing.assert_array_equal(source[...,3],original[...,3])
             expected=renderer.sample(result['material']['source'],x,y)
-            for key in data['motion']['keyframes']:
+            for key in result['renderKeys']:
                 rx,ry=key['rootSourcePx']
                 sx,sy=renderer.source_coordinates(x+rx,y+ry,key)
                 np.testing.assert_array_equal(sx,x);np.testing.assert_array_equal(sy,y)
                 actual=renderer.evaluate(result['material'],x+rx,y+ry,key,result['state']['direction'])
                 np.testing.assert_array_equal(actual,expected)
-            self.assertEqual(result['frames'][0].tobytes(),result['frames'][4].tobytes())
+            # Equal grounded root/feet do not imply equal trailing tips:
+            # their causal history differs across the 220 ms final hold.
+            self.assertEqual(data['motion']['keyframes'][0],data['motion']['keyframes'][4])
             # Seam is an actual near-floor pose -> contact transition, not
             # a requirement to spend two slots on identical endpoint art.
             self.assertNotEqual(result['frames'][0].tobytes(),result['frames'][-1].tobytes())
@@ -171,6 +173,12 @@ class Locomotion(unittest.TestCase):
             self.assertTrue(meta['rootAndLegGeometryCombinedBeforeSampling'])
             self.assertTrue(meta['gazeRemainsSourceSpacePrecomposition'])
             self.assertFalse(meta['wholeArtworkSingleSamplingPass'])
+            self.assertTrue(meta['secondaryGeometryCombinedBeforeBackingSampling'])
+            self.assertFalse(meta['cleanTipLayersRecovered'])
+            self.assertFalse(meta['liveDragLagInitialization'])
+            self.assertFalse(meta['continuousSecondaryMotionProven'])
+            self.assertEqual(meta['followResponse'],self.data['followResponse'])
+            self.assertEqual(meta['tipOffsetsSourcePx'],[key['followSourcePx'] for key in result['renderKeys']])
             self.assertFalse(meta['loopSeamRGBAExact'])
             self.assertTrue(meta['loopSeamContactAtNextCycle'])
             self.assertFalse(meta['loopSeamContinuousProven'])
@@ -186,6 +194,25 @@ class Locomotion(unittest.TestCase):
             for key in ('visualMotionApproved','sideViewAuthorized','faceGeometryChangeAuthorized','installedHostChangeAuthorized'):
                 self.assertFalse(decision[key])
             self.assertEqual(meta['visualMotionApproval'],'pending')
+
+    def test_actual_native_tip_sampling_changes_pixels_but_not_protected_front_or_legs(self):
+        result=self.data['results']['run_right']; key=result['renderKeys'][1]
+        rigid=dict(key,followSourcePx={'ear':0,'hair':0})
+        baseline=np.asarray(renderer.render(result['material'],rigid,1,self.data['transform']))
+        current=np.asarray(result['frames'][1])
+        difference=np.any(current!=baseline,axis=-1)
+        self.assertGreater(int(difference.sum()),100)
+        yy,xx=np.mgrid[:HEIGHT,:WIDTH].astype(float);t=self.data['transform']
+        # Native filter footprint is excluded at rectangle edges. Source
+        # coordinates also test exact exclusions independently in follow tests.
+        sx=(xx+.5-t['x'])/t['scale']-.5-key['rootSourcePx'][0]
+        sy=(yy+.5-t['y'])/t['scale']-.5-key['rootSourcePx'][1]
+        rects=[self.data['motion']['followThrough']['protectedHeadRect'],self.data['motion']['followThrough']['protectedFrontRect'],
+               self.data['motion']['followThrough']['protectedLegRect']]
+        for x0,y0,x1,y1 in rects:
+            inner=(sx>x0+24)&(sx<x1-24)&(sy>y0+24)&(sy<y1-24)
+            self.assertGreater(int(inner.sum()),100)
+            np.testing.assert_array_equal(current[inner],baseline[inner])
 
     def test_invalid_motion_no_support_foot_sliding_side_face_or_authority_overclaim(self):
         for key,value in [('sourceSha256','bad'),('durationsMs',[100]*8),('artMirrored',True),
