@@ -17,14 +17,21 @@
   "nativeInterpolation": false,
   "hostVelocitySynchronization": false,
   "focusOffsetSourcePx": [6,0],
+  "landingReference": {
+    "curve": "cubic-zero-endpoint-slope",
+    "sampleTimes": "peak midpoint; approach midpoint; contact start",
+    "peakOffsetSourcePx": [5,-7.5],
+    "offsetDecimalPlaces": 12,
+    "steps": [{"foot":"left","peak":1,"approach":2,"contact":3},{"foot":"right","peak":5,"approach":6,"contact":7}]
+  },
   "keyframes": [
     {"left":[0,0],"right":[0,0],"rootSourcePx":[0,0],"support":["left","right"]},
-    {"left":[2.5,-3.75],"right":[0,0],"rootSourcePx":[8,1],"support":["right"]},
-    {"left":[5,-7.5],"right":[0,0],"rootSourcePx":[12,1.5],"support":["right"]},
+    {"left":[5,-7.5],"right":[0,0],"rootSourcePx":[8,1],"support":["right"]},
+    {"left":[1.296296296296,-1.944444444444],"right":[0,0],"rootSourcePx":[12,1.5],"support":["right"]},
     {"left":[0,0],"right":[0,0],"rootSourcePx":[6,1.5],"support":["left","right"]},
     {"left":[0,0],"right":[0,0],"rootSourcePx":[-6,1.5],"support":["left","right"]},
-    {"left":[0,0],"right":[2.5,-3.75],"rootSourcePx":[-8,1],"support":["left"]},
-    {"left":[0,0],"right":[5,-7.5],"rootSourcePx":[-12,1.5],"support":["left"]},
+    {"left":[0,0],"right":[5,-7.5],"rootSourcePx":[-8,1],"support":["left"]},
+    {"left":[0,0],"right":[1.296296296296,-1.944444444444],"rootSourcePx":[-12,1.5],"support":["left"]},
     {"left":[0,0],"right":[0,0],"rootSourcePx":[0,0],"support":["left","right"]}
   ],
   "limitations": [
@@ -38,6 +45,7 @@
     "The root shifts toward the supporting foot, not the travel direction. Its motion is a restrained 2-D design, not a measured mass centre or proven physical balance.",
     "Clothes/head/hair follow the root rigidly; delayed soft follow-through and full entry/exit remain missing.",
     "Direct material sampling uses a coverage-normalized backing convention. Only composite roundoff below 1e-10 premultiplied units is canonicalized at every pose, not a neutral-raster shortcut; full neutral native RGBA matches the original sampler.",
-    "Native eight discrete holds, irregular rest duration and arbitrary exit have no new interpolation or transition cels."
+    "Each swing now shows high lift, lower approach, then contact. The cubic is only a pose-selection reference; actual holds do not become continuous or have measured endpoint velocity.",
+    "Earlier high lift improves the final approach but removes the separate rising pose. Takeoff ramp, impact/follow-through, irregular rest duration and arbitrary exit remain discrete/missing."
   ]
 }

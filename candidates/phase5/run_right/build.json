@@ -72,16 +72,6 @@
     },
     {
       "left": [
-        2.5,
-        -3.75
-      ],
-      "right": [
-        0,
-        0
-      ]
-    },
-    {
-      "left": [
         5,
         -7.5
       ],
@@ -92,8 +82,8 @@
     },
     {
       "left": [
-        0,
-        0
+        1.296296296296,
+        -1.944444444444
       ],
       "right": [
         0,
@@ -116,8 +106,8 @@
         0
       ],
       "right": [
-        2.5,
-        -3.75
+        0,
+        0
       ]
     },
     {
@@ -128,6 +118,16 @@
       "right": [
         5,
         -7.5
+      ]
+    },
+    {
+      "left": [
+        0,
+        0
+      ],
+      "right": [
+        1.296296296296,
+        -1.944444444444
       ]
     },
     {
@@ -154,8 +154,8 @@
     ],
     [
       [
-        521.000300346254,
-        974.14852911146
+        516.700996780064,
+        971.239778469461
       ],
       [
         694.917955554466,
@@ -164,8 +164,8 @@
     ],
     [
       [
-        519.491007519724,
-        970.775446394003
+        527.891715272239,
+        976.215287093896
       ],
       [
         698.569952447696,
@@ -198,8 +198,8 @@
         978.290007971522
       ],
       [
-        688.055904799018,
-        974.993908241936
+        693.673935148878,
+        971.119690991796
       ]
     ],
     [
@@ -208,8 +208,8 @@
         978.921131463356
       ],
       [
-        690.087067975156,
-        971.280417590062
+        678.816088608956,
+        978.085947862478
       ]
     ],
     [
@@ -300,12 +300,12 @@
   "uniqueCels": 7,
   "frameHashes": [
     "3A2611D212F34B9B1C1A16E069E100EE1197E25611650E4FC1F3F66225916DD4",
-    "41B4A7D0B327EED9592BCB4A8F5A01939026DAEFDEB704915B2B1A5C19BB1846",
-    "300100B88C26EAB4E5A9D0FE870E03AD6DE9D2D8824DAA80CA5C6FFA7E1E1905",
+    "5AD740A4193D329DC4AA53017A48B1DED714147678B63AFD8732E1D6DEE7A402",
+    "4BB3FD741BB9A9AEE7A70850248F751B58027596839BCE305AD5607E46C36D9E",
     "7454F52B461660941B2E0DFD34EA641165C18B911335253AD1BA50E34BC54D6D",
     "936CFFC96F3FF549398911137F1B6B145B6C8F55C86DA7910A080F5A0401D12A",
-    "C56BB113D6A33090720D547F07BD6EC028FE0BD24BFD3A4F921FFB61BCE6CAE6",
-    "435BA4B66D2C72E0FA23FC79ECAB4624CCF1180C2F583A97785B8AD04AA6E1F4",
+    "838C1385A8626979D240237EFF063D261AD68AA236506D407129326FCE6B6E44",
+    "CE92ED0EFF629D9F163C134BCB8942A043C0A6D68B0FBF9EADB07067B348228A",
     "3A2611D212F34B9B1C1A16E069E100EE1197E25611650E4FC1F3F66225916DD4"
   ],
   "method": "direct source-material sampling; rigid root towards support and cancelling planted-shoe displacement; coverage-normalized known backing",
@@ -318,6 +318,66 @@
   "measuredMassCentre": false,
   "physicalBalanceProven": false,
   "secondaryMotion": "rigid-follow-only; delayed ear/hair response remains missing",
+  "landingApproachAdded": true,
+  "landingReferenceIsNotHostInterpolation": true,
+  "continuousLandingProven": false,
+  "takeoffRampMissing": true,
+  "landingReference": [
+    {
+      "foot": "left",
+      "peak": 1,
+      "approach": 2,
+      "contact": 3,
+      "peakReferenceMs": 180.0,
+      "approachReferenceMs": 300.0,
+      "contactReferenceMs": 360.0,
+      "approachWeightFraction": [
+        7,
+        27
+      ],
+      "peakOffsetSourcePx": [
+        5,
+        -7.5
+      ],
+      "approachOffsetSourcePx": [
+        1.296296296296,
+        -1.944444444444
+      ],
+      "contactOffsetSourcePx": [
+        0,
+        0
+      ]
+    },
+    {
+      "foot": "right",
+      "peak": 5,
+      "approach": 6,
+      "contact": 7,
+      "peakReferenceMs": 660.0,
+      "approachReferenceMs": 780.0,
+      "contactReferenceMs": 840.0,
+      "approachWeightFraction": [
+        7,
+        27
+      ],
+      "peakOffsetSourcePx": [
+        5,
+        -7.5
+      ],
+      "approachOffsetSourcePx": [
+        1.296296296296,
+        -1.944444444444
+      ],
+      "contactOffsetSourcePx": [
+        0,
+        0
+      ]
+    }
+  ],
+  "lastVerticalLandingStepSourcePx": [
+    1.944444444444,
+    1.944444444444
+  ],
   "legCompositionVersion": "leg-material-v2",
   "integerSourceMaterialNeutralRGBAExact": true,
   "directSamplerNeutralPremultErrorTolerance": 1e-10,
@@ -344,6 +404,7 @@
     "The root shifts toward the supporting foot, not the travel direction. Its motion is a restrained 2-D design, not a measured mass centre or proven physical balance.",
     "Clothes/head/hair follow the root rigidly; delayed soft follow-through and full entry/exit remain missing.",
     "Direct material sampling uses a coverage-normalized backing convention. Only composite roundoff below 1e-10 premultiplied units is canonicalized at every pose, not a neutral-raster shortcut; full neutral native RGBA matches the original sampler.",
-    "Native eight discrete holds, irregular rest duration and arbitrary exit have no new interpolation or transition cels."
+    "Each swing now shows high lift, lower approach, then contact. The cubic is only a pose-selection reference; actual holds do not become continuous or have measured endpoint velocity.",
+    "Earlier high lift improves the final approach but removes the separate rising pose. Takeoff ramp, impact/follow-through, irregular rest duration and arbitrary exit remain discrete/missing."
   ]
 }

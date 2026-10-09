@@ -65,6 +65,8 @@ async function asset(state){
         ||metadata.rootShiftFollowsSupportNotTravelDirection!==true||metadata.faceGeometryRigidRootTranslation!==true
         ||metadata.normalizedKnownBacking!==true||metadata.diagnosticPosesAreNotFrameInputs!==true
         ||metadata.measuredMassCentre!==false||metadata.physicalBalanceProven!==false
+        ||metadata.landingApproachAdded!==true||metadata.landingReferenceIsNotHostInterpolation!==true
+        ||metadata.continuousLandingProven!==false||metadata.takeoffRampMissing!==true
         ||metadata.sourceAlphaAndOcclusionSeparated!==true||metadata.artistLayerRecoveryClaimed!==false))
       throw new Error('conditioned leg composition boundary mismatch');
     const image=new Image();image.src=`${root}/strip.webp`;await image.decode();

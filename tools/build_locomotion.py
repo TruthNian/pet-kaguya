@@ -9,6 +9,7 @@ from canonical import ROOT, ACCEPTED_SHA,clean_cutout,camera
 from leg_material import inverse_kinematics,GENERATED_SHA
 from refine_leg_composition import inputs as material_inputs,strategy_decision,DECISION
 import locomotion_render as renderer
+from locomotion_landing import reference as landing_reference
 import build_gaze as gaze
 from animation_output import write_animation
 from protocol import DURATIONS
@@ -57,6 +58,10 @@ def validate_motion(motion):
     # Test relative leg targets after cancelling the actor root, not merely
     # world foot offsets: a planted leg can otherwise overextend.
     legs=json.loads((ROOT/'sources/canonical/leg-material.json').read_text(encoding='utf-8'))['legs']
+    for step in landing_reference(motion['landingReference'],motion['durationsMs']):
+        for phase,key in (('peak','peakOffsetSourcePx'),('approach','approachOffsetSourcePx'),('contact','contactOffsetSourcePx')):
+            if poses[step[phase]][step['foot']]!=step[key]:
+                raise ValueError('Swing must approach the floor before contact using the native reference times')
     for pose in poses:
         for direction in (-1,1):
             for leg,offset in zip(legs,renderer.relative_offsets(pose,direction)):
@@ -105,7 +110,7 @@ def main():
             if rgba[0,:,3].any() or rgba[-1,:,3].any() or rgba[:,0,3].any() or rgba[:,-1,3].any():
                 raise ValueError('Locomotion touches a cell edge')
         write_animation(out,frames,DURATIONS[result['state']['nativeRow']])
-        for index,pose_name in ((2,'left-lifted-pose.png'),(6,'right-lifted-pose.png')):
+        for index,pose_name in ((1,'left-lifted-pose.png'),(5,'right-lifted-pose.png')):
             renderer.diagnostic_pose(result['material'],motion['keyframes'][index],result['state']['direction']).save(out/pose_name)
         neutral=renderer.neutral_evidence(result['material'],result['sourceWithGaze'],data['transform'])
         if not neutral['directSamplerNeutralPremultMatchesWithinTolerance'] or not neutral['directSamplerNeutralRGBAExact']:
@@ -140,6 +145,9 @@ def main():
             wholeArtworkSingleSamplingPass=False,
             normalizedKnownBacking=True,diagnosticPosesAreNotFrameInputs=True,
             measuredMassCentre=False,physicalBalanceProven=False,secondaryMotion=motion['secondaryMotion'],
+            landingApproachAdded=True,landingReferenceIsNotHostInterpolation=True,continuousLandingProven=False,
+            takeoffRampMissing=True,landingReference=landing_reference(motion['landingReference'],motion['durationsMs']),
+            lastVerticalLandingStepSourcePx=[-motion['keyframes'][2]['left'][1],-motion['keyframes'][6]['right'][1]],
             legCompositionVersion='leg-material-v2',integerSourceMaterialNeutralRGBAExact=True,
             **neutral,roundoffCanonicalizationPremultTolerance=1e-10,
             sourceAlphaAndOcclusionSeparated=True,
