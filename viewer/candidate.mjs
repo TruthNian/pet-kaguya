@@ -1,6 +1,7 @@
 // Current v3-only development candidates. Historical preview is separate.
 import {durations} from './clock.mjs';
 import {candidateRows as rows,candidateSlot,candidatePoseOffset,candidateCelKey} from './candidate-clock.mjs';
+import {paintCel} from './cel-painter.mjs';
 
 const el=id=>document.getElementById(id);
 const canvases=[el('idle-reference'),el('idle-animated')];
@@ -101,8 +102,7 @@ async function draw(){
   if(!ready||key!==`${current.state}:${current.index}`)return;
   const paintKey=candidateCelKey(metadata.frameHashes,selected.index);
   if(paintKey!==lastKey){
-    const context=contexts[1];context.clearRect(0,0,192,208);context.imageSmoothingEnabled=false;
-    context.drawImage(image,selected.index*192,0,192,208,0,0,192,208);
+    paintCel(contexts[1],image,selected.index);
     lastKey=paintKey;paintCount++;
   }
   el('idle-frame').max=String(durations[rows[selected.state]].length-1);
@@ -135,7 +135,7 @@ async function selectMode(){
     if(!(mode in sources))throw new Error('unsupported candidate');
     const [{image}]=await Promise.all([asset('idle'),asset(mode)]);
     if(thisRequest!==request)return;
-    contexts[0].imageSmoothingEnabled=false;contexts[0].drawImage(image,0,0,192,208,0,0,192,208);
+    paintCel(contexts[0],image,0);
     ready=true;size();await draw();schedule();
   }catch(error){if(thisRequest===request)el('idle-status').textContent=`候选加载失败：${error.message}`;console.error(error);}
 }

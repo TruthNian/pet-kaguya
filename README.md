@@ -77,7 +77,7 @@ python tools/build_locomotion.py
 python tools/build_global_review.py
 python tools/verify_review_rebuild.py
 python -m unittest discover -s tests -v
-node --test tests/clock.test.mjs tests/review.test.mjs tests/idle-clock.test.mjs tests/candidate-clock.test.mjs tests/gaze-frame.test.mjs
+node --test tests/clock.test.mjs tests/review.test.mjs tests/idle-clock.test.mjs tests/candidate-clock.test.mjs tests/gaze-frame.test.mjs tests/cel-painter.test.mjs
 python -m http.server 8767 --bind 127.0.0.1
 ```
 
