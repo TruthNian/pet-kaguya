@@ -33,13 +33,14 @@ def validate_motion(motion):
             or motion['hostVelocitySynchronization'] or motion['focusOffsetSourcePx'] != [6,0]):
         raise ValueError('Locomotion violates locked front view, native timing or candidate boundary')
     poses = motion['keyframes']
-    if (len(poses) != 8 or poses[0] != poses[-1]
-            or poses[0]!=dict(left=[0,0],right=[0,0],rootSourcePx=[0,0],support=['left','right'])):
-        raise ValueError('Locomotion requires eight real holds and an exact looping seam')
+    if (len(poses) != 8
+            or poses[0]!=dict(left=[0,0],right=[0,0],rootSourcePx=[0,0],support=['left','right'])
+            or poses[4]!=poses[0]):
+        raise ValueError('Locomotion requires eight real holds with alternating neutral contacts')
     for index,pose in enumerate(poses):
         if set(pose) != {'left','right','rootSourcePx','support'} or not pose['support']:
             raise ValueError('Locomotion must explicitly retain a support foot')
-        expected_support = ['right'] if index in (1,2) else ['left'] if index in (5,6) else ['left','right']
+        expected_support = ['right'] if index in (1,2,3) else ['left'] if index in (5,6,7) else ['left','right']
         if pose['support'] != expected_support:
             raise ValueError('Locomotion support sequence changed')
         root=pose['rootSourcePx']
@@ -59,7 +60,7 @@ def validate_motion(motion):
     # world foot offsets: a planted leg can otherwise overextend.
     legs=json.loads((ROOT/'sources/canonical/leg-material.json').read_text(encoding='utf-8'))['legs']
     for step in landing_reference(motion['landingReference'],motion['durationsMs']):
-        for phase,key in (('peak','peakOffsetSourcePx'),('approach','approachOffsetSourcePx'),('contact','contactOffsetSourcePx')):
+        for phase,key in (('rise','riseOffsetSourcePx'),('peak','peakOffsetSourcePx'),('approach','approachOffsetSourcePx'),('contact','contactOffsetSourcePx')):
             if poses[step[phase]][step['foot']]!=step[key]:
                 raise ValueError('Swing must approach the floor before contact using the native reference times')
     for pose in poses:
@@ -110,7 +111,7 @@ def main():
             if rgba[0,:,3].any() or rgba[-1,:,3].any() or rgba[:,0,3].any() or rgba[:,-1,3].any():
                 raise ValueError('Locomotion touches a cell edge')
         write_animation(out,frames,DURATIONS[result['state']['nativeRow']])
-        for index,pose_name in ((1,'left-lifted-pose.png'),(5,'right-lifted-pose.png')):
+        for index,pose_name in ((2,'left-lifted-pose.png'),(6,'right-lifted-pose.png')):
             renderer.diagnostic_pose(result['material'],motion['keyframes'][index],result['state']['direction']).save(out/pose_name)
         neutral=renderer.neutral_evidence(result['material'],result['sourceWithGaze'],data['transform'])
         if not neutral['directSamplerNeutralPremultMatchesWithinTolerance'] or not neutral['directSamplerNeutralRGBAExact']:
@@ -137,6 +138,7 @@ def main():
             sourceFaceExceptEyeAperturesFixed=True,faceGeometryRigidRootTranslation=True,
             sourceArtworkChangedOutsideEyeApertures=False,closedEyeFrames=0,nativeInterpolation=False,
             loopSeamRGBAExact=frames[0].tobytes()==frames[-1].tobytes(),
+            loopSeamContactAtNextCycle=True,loopSeamContinuousProven=False,
             uniqueCels=len(set(frame.tobytes() for frame in frames)),
             frameHashes=[hashlib.sha256(frame.tobytes()).hexdigest().upper() for frame in frames],
             method='direct source-material sampling; rigid root towards support and cancelling planted-shoe displacement; coverage-normalized known backing',
@@ -146,8 +148,9 @@ def main():
             normalizedKnownBacking=True,diagnosticPosesAreNotFrameInputs=True,
             measuredMassCentre=False,physicalBalanceProven=False,secondaryMotion=motion['secondaryMotion'],
             landingApproachAdded=True,landingReferenceIsNotHostInterpolation=True,continuousLandingProven=False,
-            takeoffRampMissing=True,landingReference=landing_reference(motion['landingReference'],motion['durationsMs']),
-            lastVerticalLandingStepSourcePx=[-motion['keyframes'][2]['left'][1],-motion['keyframes'][6]['right'][1]],
+            risingPoseAdded=True,continuousTakeoffProven=False,
+            landingReference=landing_reference(motion['landingReference'],motion['durationsMs']),
+            lastVerticalLandingStepSourcePx=[-motion['keyframes'][3]['left'][1],-motion['keyframes'][7]['right'][1]],
             legCompositionVersion='leg-material-v2',integerSourceMaterialNeutralRGBAExact=True,
             **neutral,roundoffCanonicalizationPremultTolerance=1e-10,
             sourceAlphaAndOcclusionSeparated=True,

@@ -128,8 +128,10 @@ class Locomotion(unittest.TestCase):
                 np.testing.assert_array_equal(sx,x);np.testing.assert_array_equal(sy,y)
                 actual=renderer.evaluate(result['material'],x+rx,y+ry,key,result['state']['direction'])
                 np.testing.assert_array_equal(actual,expected)
-            self.assertEqual(result['frames'][0].tobytes(),result['frames'][-1].tobytes())
-            self.assertEqual(len(set(frame.tobytes() for frame in result['frames'])),7)
+            self.assertEqual(result['frames'][0].tobytes(),result['frames'][4].tobytes())
+            # Seam is an actual near-floor pose -> contact transition, not
+            # a requirement to spend two slots on identical endpoint art.
+            self.assertNotEqual(result['frames'][0].tobytes(),result['frames'][-1].tobytes())
         self.assertFalse(np.array_equal(np.asarray(data['results']['run_right']['sourceWithGaze']),
                                        np.asarray(data['results']['run_left']['sourceWithGaze'])))
 
@@ -169,6 +171,10 @@ class Locomotion(unittest.TestCase):
             self.assertTrue(meta['rootAndLegGeometryCombinedBeforeSampling'])
             self.assertTrue(meta['gazeRemainsSourceSpacePrecomposition'])
             self.assertFalse(meta['wholeArtworkSingleSamplingPass'])
+            self.assertFalse(meta['loopSeamRGBAExact'])
+            self.assertTrue(meta['loopSeamContactAtNextCycle'])
+            self.assertFalse(meta['loopSeamContinuousProven'])
+            self.assertEqual(meta['uniqueCels'],len(set(f.tobytes() for f in result['frames'])))
             self.assertFalse(meta['measuredMassCentre']);self.assertFalse(meta['physicalBalanceProven'])
             self.assertTrue(meta['sourceAlphaAndOcclusionSeparated'])
             self.assertEqual(meta['legCompositionVersion'],'leg-material-v2')

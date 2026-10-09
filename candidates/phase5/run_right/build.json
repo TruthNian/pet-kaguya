@@ -41,7 +41,6 @@
       "right"
     ],
     [
-      "left",
       "right"
     ],
     [
@@ -55,8 +54,7 @@
       "left"
     ],
     [
-      "left",
-      "right"
+      "left"
     ]
   ],
   "footOffsetsSourcePx": [
@@ -72,6 +70,16 @@
     },
     {
       "left": [
+        1.296296296296,
+        -1.944444444444
+      ],
+      "right": [
+        0,
+        0
+      ]
+    },
+    {
+      "left": [
         5,
         -7.5
       ],
@@ -106,8 +114,8 @@
         0
       ],
       "right": [
-        0,
-        0
+        1.296296296296,
+        -1.944444444444
       ]
     },
     {
@@ -126,18 +134,8 @@
         0
       ],
       "right": [
-        1.296296296296,
-        -1.944444444444
-      ]
-    },
-    {
-      "left": [
-        0,
-        0
-      ],
-      "right": [
-        0,
-        0
+        1.708728134111,
+        -2.563092201166
       ]
     }
   ],
@@ -154,8 +152,8 @@
     ],
     [
       [
-        516.700996780064,
-        971.239778469461
+        524.338217444597,
+        975.932478367744
       ],
       [
         694.917955554466,
@@ -164,8 +162,8 @@
     ],
     [
       [
-        527.891715272239,
-        976.215287093896
+        519.491007519724,
+        970.775446394003
       ],
       [
         698.569952447696,
@@ -174,42 +172,12 @@
     ],
     [
       [
-        526.427453699212,
-        978.140385016771
+        524.338217444597,
+        975.932478367744
       ],
       [
-        694.566218794769,
-        978.946655715786
-      ]
-    ],
-    [
-      [
-        514.721400869068,
-        978.244589909068
-      ],
-      [
-        682.015084237827,
-        979.136251197804
-      ]
-    ],
-    [
-      [
-        514.385118244247,
-        978.290007971522
-      ],
-      [
-        693.673935148878,
-        971.119690991796
-      ]
-    ],
-    [
-      [
-        510.822567253506,
-        978.921131463356
-      ],
-      [
-        678.816088608956,
-        978.085947862478
+        694.917955554466,
+        978.989599001334
       ]
     ],
     [
@@ -220,6 +188,36 @@
       [
         683.0,
         979.0
+      ]
+    ],
+    [
+      [
+        514.385118244247,
+        978.290007971522
+      ],
+      [
+        683.938112909994,
+        977.102669552392
+      ]
+    ],
+    [
+      [
+        510.822567253506,
+        978.921131463356
+      ],
+      [
+        690.087067975156,
+        971.280417590062
+      ]
+    ],
+    [
+      [
+        514.385118244247,
+        978.290007971522
+      ],
+      [
+        685.562666584299,
+        976.335760779621
       ]
     ]
   ],
@@ -240,12 +238,12 @@
       1.5
     ],
     [
-      6,
-      1.5
+      8,
+      1
     ],
     [
-      -6,
-      1.5
+      0,
+      0
     ],
     [
       -8,
@@ -256,8 +254,8 @@
       1.5
     ],
     [
-      0,
-      0
+      -8,
+      1
     ]
   ],
   "maximumRootTranslationOutputPx": [
@@ -296,17 +294,19 @@
   "sourceArtworkChangedOutsideEyeApertures": false,
   "closedEyeFrames": 0,
   "nativeInterpolation": false,
-  "loopSeamRGBAExact": true,
-  "uniqueCels": 7,
+  "loopSeamRGBAExact": false,
+  "loopSeamContactAtNextCycle": true,
+  "loopSeamContinuousProven": false,
+  "uniqueCels": 6,
   "frameHashes": [
     "3A2611D212F34B9B1C1A16E069E100EE1197E25611650E4FC1F3F66225916DD4",
-    "5AD740A4193D329DC4AA53017A48B1DED714147678B63AFD8732E1D6DEE7A402",
-    "4BB3FD741BB9A9AEE7A70850248F751B58027596839BCE305AD5607E46C36D9E",
-    "7454F52B461660941B2E0DFD34EA641165C18B911335253AD1BA50E34BC54D6D",
-    "936CFFC96F3FF549398911137F1B6B145B6C8F55C86DA7910A080F5A0401D12A",
-    "838C1385A8626979D240237EFF063D261AD68AA236506D407129326FCE6B6E44",
-    "CE92ED0EFF629D9F163C134BCB8942A043C0A6D68B0FBF9EADB07067B348228A",
-    "3A2611D212F34B9B1C1A16E069E100EE1197E25611650E4FC1F3F66225916DD4"
+    "5409A2F982861B22D1677354EE132C6FEE04FEE0CB48C10B3AB13CC71DD8AE1E",
+    "300100B88C26EAB4E5A9D0FE870E03AD6DE9D2D8824DAA80CA5C6FFA7E1E1905",
+    "5409A2F982861B22D1677354EE132C6FEE04FEE0CB48C10B3AB13CC71DD8AE1E",
+    "3A2611D212F34B9B1C1A16E069E100EE1197E25611650E4FC1F3F66225916DD4",
+    "6EEDD5BD2B156A23950C0BDEFFE3B582D83D4A8DA7F61F06C0AB74A2587B1A13",
+    "435BA4B66D2C72E0FA23FC79ECAB4624CCF1180C2F583A97785B8AD04AA6E1F4",
+    "55CB9B6FA059C47DB936F8D4B7B30B5BEAE919CBB9BD95CB01D5A61AC5AC78BF"
   ],
   "method": "direct source-material sampling; rigid root towards support and cancelling planted-shoe displacement; coverage-normalized known backing",
   "legSampling": "original leg paint and occlusion sampled directly on 3x native integration grid; one terminal Lanczos downsample; no posed leg raster input",
@@ -321,19 +321,33 @@
   "landingApproachAdded": true,
   "landingReferenceIsNotHostInterpolation": true,
   "continuousLandingProven": false,
-  "takeoffRampMissing": true,
+  "risingPoseAdded": true,
+  "continuousTakeoffProven": false,
   "landingReference": [
     {
       "foot": "left",
-      "peak": 1,
-      "approach": 2,
-      "contact": 3,
-      "peakReferenceMs": 180.0,
-      "approachReferenceMs": 300.0,
-      "contactReferenceMs": 360.0,
+      "takeoff": 0,
+      "rise": 1,
+      "peak": 2,
+      "approach": 3,
+      "contact": 4,
+      "contactCycle": 0,
+      "takeoffReferenceMs": 120.0,
+      "riseReferenceMs": 180.0,
+      "peakReferenceMs": 300.0,
+      "riseWeightFraction": [
+        7,
+        27
+      ],
+      "approachReferenceMs": 420.0,
+      "contactReferenceMs": 480.0,
       "approachWeightFraction": [
         7,
         27
+      ],
+      "riseOffsetSourcePx": [
+        1.296296296296,
+        -1.944444444444
       ],
       "peakOffsetSourcePx": [
         5,
@@ -350,23 +364,36 @@
     },
     {
       "foot": "right",
-      "peak": 5,
-      "approach": 6,
-      "contact": 7,
-      "peakReferenceMs": 660.0,
-      "approachReferenceMs": 780.0,
-      "contactReferenceMs": 840.0,
-      "approachWeightFraction": [
+      "takeoff": 4,
+      "rise": 5,
+      "peak": 6,
+      "approach": 7,
+      "contact": 0,
+      "contactCycle": 1,
+      "takeoffReferenceMs": 600.0,
+      "riseReferenceMs": 660.0,
+      "peakReferenceMs": 780.0,
+      "riseWeightFraction": [
         7,
         27
+      ],
+      "approachReferenceMs": 950.0,
+      "contactReferenceMs": 1060.0,
+      "approachWeightFraction": [
+        3751,
+        10976
+      ],
+      "riseOffsetSourcePx": [
+        1.296296296296,
+        -1.944444444444
       ],
       "peakOffsetSourcePx": [
         5,
         -7.5
       ],
       "approachOffsetSourcePx": [
-        1.296296296296,
-        -1.944444444444
+        1.708728134111,
+        -2.563092201166
       ],
       "contactOffsetSourcePx": [
         0,
@@ -376,7 +403,7 @@
   ],
   "lastVerticalLandingStepSourcePx": [
     1.944444444444,
-    1.944444444444
+    2.563092201166
   ],
   "legCompositionVersion": "leg-material-v2",
   "integerSourceMaterialNeutralRGBAExact": true,
@@ -404,7 +431,7 @@
     "The root shifts toward the supporting foot, not the travel direction. Its motion is a restrained 2-D design, not a measured mass centre or proven physical balance.",
     "Clothes/head/hair follow the root rigidly; delayed soft follow-through and full entry/exit remain missing.",
     "Direct material sampling uses a coverage-normalized backing convention. Only composite roundoff below 1e-10 premultiplied units is canonicalized at every pose, not a neutral-raster shortcut; full neutral native RGBA matches the original sampler.",
-    "Each swing now shows high lift, lower approach, then contact. The cubic is only a pose-selection reference; actual holds do not become continuous or have measured endpoint velocity.",
-    "Earlier high lift improves the final approach but removes the separate rising pose. Takeoff ramp, impact/follow-through, irregular rest duration and arbitrary exit remain discrete/missing."
+    "Each swing shows rising, peak and approach poses; left contact occurs at slot 4, right contact at the next cycle's slot 0. First/last pixels are intentionally not equal. Reference curves select poses only, not native interpolation or measured endpoint velocity.",
+    "The 220 ms final hold makes the right approach asymmetric and more elevated than the left. Cyclic/root and fallback jumps remain discrete; continuous takeoff/landing, impact/follow-through and arbitrary exit remain unproven."
   ]
 }
