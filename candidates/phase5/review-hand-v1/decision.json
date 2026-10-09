@@ -1,0 +1,10 @@
+{
+  "generationAttempt": "The built-in tool rejected the hand-only edit at output moderation; no generated image was returned. The cause is unknown, and no alternate API or CLI was used.",
+  "programmaticSourcePixelsAuthorizedByUser": true,
+  "adopted": false,
+  "activeAtlasChanged": false,
+  "neutralMaximumRGBAError": 61,
+  "observedFailure": "Naive estimated hand plate double-composites already blended edge pixels; compact pose leaves old dark edge fragments.",
+  "nextConstraint": "Reconstruct foreground premultiplication from the same known background, validate neutral reconstruction, then separately judge hand contour and contact.",
+  "installed": false
+}

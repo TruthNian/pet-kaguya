@@ -1,0 +1,209 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "parentPoseRGBAHash": "29B889E8F9EC0BADF3762B1D9EE0C78F4CA752E95A9071F8AD77119562F748C5",
+  "parentCompositionVersion": "review-art-v3",
+  "method": "same existing hand pixels, anisotropic local affine about a fixed wrist, existing pre-hand body plate",
+  "handPolygon": [
+    [
+      512,
+      682
+    ],
+    [
+      531,
+      675
+    ],
+    [
+      552,
+      678
+    ],
+    [
+      573,
+      688
+    ],
+    [
+      591,
+      700
+    ],
+    [
+      597,
+      711
+    ],
+    [
+      603,
+      724
+    ],
+    [
+      590,
+      728
+    ],
+    [
+      575,
+      730
+    ],
+    [
+      559,
+      727
+    ],
+    [
+      549,
+      727
+    ],
+    [
+      542,
+      723
+    ],
+    [
+      534,
+      728
+    ],
+    [
+      526,
+      726
+    ],
+    [
+      521,
+      720
+    ],
+    [
+      516,
+      720
+    ],
+    [
+      510,
+      713
+    ],
+    [
+      510,
+      707
+    ],
+    [
+      505,
+      709
+    ],
+    [
+      501,
+      705
+    ],
+    [
+      500,
+      700
+    ],
+    [
+      498,
+      696
+    ],
+    [
+      501,
+      689
+    ]
+  ],
+  "permissionPolygon": [
+    [
+      511,
+      677
+    ],
+    [
+      531,
+      670
+    ],
+    [
+      556,
+      673
+    ],
+    [
+      579,
+      685
+    ],
+    [
+      596,
+      698
+    ],
+    [
+      602,
+      712
+    ],
+    [
+      608,
+      728
+    ],
+    [
+      590,
+      735
+    ],
+    [
+      557,
+      732
+    ],
+    [
+      543,
+      733
+    ],
+    [
+      531,
+      735
+    ],
+    [
+      520,
+      730
+    ],
+    [
+      511,
+      724
+    ],
+    [
+      505,
+      716
+    ],
+    [
+      502,
+      714
+    ],
+    [
+      494,
+      704
+    ],
+    [
+      494,
+      693
+    ],
+    [
+      501,
+      682
+    ]
+  ],
+  "wristSourcePx": [
+    603.0,
+    721.0
+  ],
+  "longAxisScale": 0.85,
+  "crossAxisScale": 1.08,
+  "affineMatrix": [
+    [
+      0.8591963214714115,
+      -0.045061975209916054
+    ],
+    [
+      -0.04506197520991609,
+      1.0708036785285888
+    ]
+  ],
+  "sourceMatteEstimated": true,
+  "neutralChangedPixels": 3841,
+  "neutralMaximumRGBAError": 61,
+  "changedPixels": 4404,
+  "changedPixelsOutsidePermission": 0,
+  "poseRGBAHash": "2FFA990888D319CDE61BED80036F877EF32E9A3EF8F899758CBE47EEE6B4E90C",
+  "parentAlphaPreserved": true,
+  "newArtworkGenerated": false,
+  "facialGeometryRepair": false,
+  "fullRedrawAccepted": false,
+  "articulatedArmBuilt": false,
+  "visualAcceptance": "pending",
+  "strategyUserApproval": "pending",
+  "adopted": false,
+  "activeAtlasChanged": false,
+  "animationBuilt": false,
+  "installableFullAtlas": false,
+  "installed": false,
+  "limitation": "A 2-D hand proportion study, not a new anatomical view or clean matte. Existing body plate is restored only under the removed hand. Neutral reconstruction, crease continuity and visual volume must be inspected."
+}

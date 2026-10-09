@@ -1,0 +1,37 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "parentCompositionVersion": "review-art-v3",
+  "parentPoseRGBAHash": "29B889E8F9EC0BADF3762B1D9EE0C78F4CA752E95A9071F8AD77119562F748C5",
+  "generatedSha256": "87FA2A01EA75F082F81E1D0BDC9C932DAB1C710A2F5E3F925016B8008BD4ACDF",
+  "sourceCrop": [
+    300,
+    500,
+    960,
+    1040
+  ],
+  "rawCanvas": [
+    1387,
+    1134
+  ],
+  "role": "independent face-free hand-volume and sleeve-surface repair study",
+  "newArtworkGenerated": true,
+  "changedPixels": 36907,
+  "changedPixelsOutsidePermission": 0,
+  "rawMappedChangedPixelsOutsidePermission": 312345,
+  "poseRGBAHash": "AE75DCC8E53FE43E5FB254779B238923673B9AD3F385657B8C8E65D7529754FF",
+  "frameRGBAHash": "363F79C6BB73FF6F44019C84D4E8E4E4766A01217C8C29C8BFE4510E69A3C987",
+  "parentAlphaPreserved": true,
+  "protectedForegroundRGBAExact": true,
+  "fullRedrawAccepted": false,
+  "cleanLayerRecoveryClaimed": false,
+  "facialGeometryRepair": false,
+  "animationBuilt": false,
+  "articulatedArmBuilt": false,
+  "visualAcceptance": "pending",
+  "strategyUserApproval": "pending",
+  "adopted": false,
+  "activeAtlasChanged": false,
+  "installableFullAtlas": false,
+  "installed": false,
+  "limitation": "Sparse source-space repair envelopes, not clean semantic mattes. Raw crop redraw is not adopted. Rounded cloth shading alone does not establish hand scale, arm volume, seam or motion acceptance."
+}

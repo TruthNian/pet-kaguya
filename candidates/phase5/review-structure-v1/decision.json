@@ -1,0 +1,9 @@
+{
+  "adopted": false,
+  "activeAtlasChanged": false,
+  "visualAcceptance": "not accepted for active use",
+  "observedImprovement": "Raw sleeve folds are rounder than the current angular facets.",
+  "observedFailure": "Right palm is not clearly compacted. Raw redraw changes protected costume/background pixels. Interior-only sleeve envelopes cut across crease paths, leaving old/new fold discontinuities.",
+  "nextConstraint": "Treat crease paths as continuous structural curves with shoulder, elbow, cuff and hem constraints; do not promote surface smoothness to cloth volume.",
+  "installed": false
+}

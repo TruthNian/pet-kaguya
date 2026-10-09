@@ -1,0 +1,10 @@
+{
+  "adopted": false,
+  "activeAtlasChanged": false,
+  "neutralRGBAExact": true,
+  "observedImprovement": "Measured neutral reconstruction is bit-exact, and detached dark crumbs from the naive mask are reduced. The lower hand is more compact without moving the cuff or upper hand.",
+  "observedLimitation": "A shortening affine cannot resolve finger/thumb articulation. The contour and spacing between hands are still awkward at enlargement. Exact neutral algebra does not prove a clean anatomical matte or a natural gesture.",
+  "nextConstraint": "Jointly constrain wrist continuity, fingertip/thumb contour and the relationship to the other hand; do not change unrelated costume or face geometry.",
+  "visualAcceptance": "not accepted for active use",
+  "installed": false
+}

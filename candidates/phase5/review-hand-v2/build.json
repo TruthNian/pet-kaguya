@@ -1,0 +1,49 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "parentPoseRGBAHash": "29B889E8F9EC0BADF3762B1D9EE0C78F4CA752E95A9071F8AD77119562F748C5",
+  "parentCompositionVersion": "review-art-v3",
+  "backgroundRGBAHash": "3FCEE4E4EB55B119CA1BD126E56BCAC7610027E1A5A4D9507A8CA4B9275432A3",
+  "method": "background-conditioned floating premultiplied hand material, fixed-wrist local affine",
+  "roi": [
+    492,
+    670,
+    612,
+    741
+  ],
+  "wristSourcePx": [
+    603.0,
+    721.0
+  ],
+  "longAxisScale": 0.85,
+  "crossAxisScale": 1.08,
+  "affineMatrix": [
+    [
+      0.8591963214714115,
+      -0.045061975209916054
+    ],
+    [
+      -0.04506197520991609,
+      1.0708036785285888
+    ]
+  ],
+  "sourceMatteEstimated": true,
+  "neutralChangedPixels": 0,
+  "neutralMaximumRGBAError": 0,
+  "changedPixels": 5140,
+  "changedPixelsOutsidePermission": 0,
+  "protectedRGBAExact": true,
+  "parentAlphaPreserved": true,
+  "poseRGBAHash": "45507E62494F6D8F608F927D75848690CFE1DB7BAB3EE373B4379B78C845F498",
+  "newArtworkGenerated": false,
+  "facialGeometryRepair": false,
+  "fullRedrawAccepted": false,
+  "articulatedArmBuilt": false,
+  "animationBuilt": false,
+  "visualAcceptance": "pending",
+  "strategyUserApproval": "pending",
+  "adopted": false,
+  "activeAtlasChanged": false,
+  "installableFullAtlas": false,
+  "installed": false,
+  "limitation": "Exact neutral algebra would not prove a clean matte or natural hand anatomy. Background-conditioned edge colors and the fixed cuff/upper-hand protection remain an estimated local material; all visual and motion gates remain pending."
+}

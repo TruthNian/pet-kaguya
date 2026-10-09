@@ -1,0 +1,33 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "parentPoseRGBAHash": "29B889E8F9EC0BADF3762B1D9EE0C78F4CA752E95A9071F8AD77119562F748C5",
+  "parentCompositionVersion": "review-art-v3",
+  "generatedSha256": "87FA2A01EA75F082F81E1D0BDC9C932DAB1C710A2F5E3F925016B8008BD4ACDF",
+  "canvas": [1205,1306],
+  "rawCanvas": [1387,1134],
+  "sourceCrop": [300,500,960,1040],
+  "editBudget": [321,625,840,875],
+  "role": "independent face-free hand-volume and sleeve-surface repair study",
+  "handPolygons": [
+    [[442,642],[474,630],[498,633],[519,648],[524,669],[519,692],[508,707],[483,718],[455,729],[438,718],[438,696]],
+    [[514,678],[547,673],[579,686],[602,701],[614,728],[594,735],[566,734],[548,730],[529,731],[513,724],[498,707],[499,694]]
+  ],
+  "sleeveSurfacePolygons": [
+    [[329,692],[344,675],[364,665],[405,649],[435,631],[443,639],[437,656],[432,679],[429,708],[419,749],[405,788],[391,824],[379,816],[363,787],[345,750],[330,715]],
+    [[740,650],[759,650],[777,664],[789,683],[797,704],[801,732],[809,757],[820,792],[831,821],[838,845],[835,851],[793,827],[763,810],[733,788],[706,769],[685,754],[702,727],[713,694]]
+  ],
+  "edgeFeatherSourcePx": 2.0,
+  "currentOuterSleeveOutlineChanged": false,
+  "backgroundHairChanged": false,
+  "sourceAccessoriesChanged": false,
+  "newFaceGeometryAllowed": false,
+  "fullRedrawAccepted": false,
+  "cleanLayerRecoveryClaimed": false,
+  "articulatedArmBuilt": false,
+  "animationBuilt": false,
+  "adopted": false,
+  "visualAcceptance": "pending",
+  "strategyUserApproval": "pending",
+  "installableFullAtlas": false,
+  "installed": false
+}
