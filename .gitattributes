@@ -2,3 +2,4 @@
 *.webp binary
 *.png binary
 *.gif binary
+sources/reference/locomotion-rigid/manifest.json text eol=lf

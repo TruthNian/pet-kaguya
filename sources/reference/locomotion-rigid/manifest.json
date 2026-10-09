@@ -1,0 +1,407 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "commit": "d804cd5e6eefdf1de106c97c2f5470837fab9dc2",
+  "referenceRole": "frozen-source-input-not-active-animation",
+  "referencePurpose": "isolate-ear-hair-follow-through",
+  "visualApprovalInherited": false,
+  "installableFullAtlas": false,
+  "installed": false,
+  "states": {
+    "run_right": {
+      "file": "run_right.webp",
+      "encodedSha256": "40CB0B176E16E4033B7969FAF72958D24A0F29CD61398AF5243CF3D7D53F751B",
+      "frameHashes": [
+        "3A2611D212F34B9B1C1A16E069E100EE1197E25611650E4FC1F3F66225916DD4",
+        "5409A2F982861B22D1677354EE132C6FEE04FEE0CB48C10B3AB13CC71DD8AE1E",
+        "300100B88C26EAB4E5A9D0FE870E03AD6DE9D2D8824DAA80CA5C6FFA7E1E1905",
+        "5409A2F982861B22D1677354EE132C6FEE04FEE0CB48C10B3AB13CC71DD8AE1E",
+        "3A2611D212F34B9B1C1A16E069E100EE1197E25611650E4FC1F3F66225916DD4",
+        "6EEDD5BD2B156A23950C0BDEFFE3B582D83D4A8DA7F61F06C0AB74A2587B1A13",
+        "435BA4B66D2C72E0FA23FC79ECAB4624CCF1180C2F583A97785B8AD04AA6E1F4",
+        "55CB9B6FA059C47DB936F8D4B7B30B5BEAE919CBB9BD95CB01D5A61AC5AC78BF"
+      ],
+      "contract": {
+        "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+        "state": "run_right",
+        "nativeRow": 1,
+        "camera": {
+          "scale": 0.15833333333333333,
+          "x": 0.36666666666667425,
+          "y": 7.883333333333354,
+          "visibleBBox": [
+            142,
+            26,
+            1066,
+            1226
+          ],
+          "floor": 202,
+          "topReserve": 12,
+          "cell": [
+            192,
+            208
+          ]
+        },
+        "durationsMs": [
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          220
+        ],
+        "projection": "front-held-alternating-small-steps",
+        "supportFeet": [
+          [
+            "left",
+            "right"
+          ],
+          [
+            "right"
+          ],
+          [
+            "right"
+          ],
+          [
+            "right"
+          ],
+          [
+            "left",
+            "right"
+          ],
+          [
+            "left"
+          ],
+          [
+            "left"
+          ],
+          [
+            "left"
+          ]
+        ],
+        "footOffsetsSourcePx": [
+          {
+            "left": [
+              0,
+              0
+            ],
+            "right": [
+              0,
+              0
+            ]
+          },
+          {
+            "left": [
+              1.296296296296,
+              -1.944444444444
+            ],
+            "right": [
+              0,
+              0
+            ]
+          },
+          {
+            "left": [
+              5,
+              -7.5
+            ],
+            "right": [
+              0,
+              0
+            ]
+          },
+          {
+            "left": [
+              1.296296296296,
+              -1.944444444444
+            ],
+            "right": [
+              0,
+              0
+            ]
+          },
+          {
+            "left": [
+              0,
+              0
+            ],
+            "right": [
+              0,
+              0
+            ]
+          },
+          {
+            "left": [
+              0,
+              0
+            ],
+            "right": [
+              1.296296296296,
+              -1.944444444444
+            ]
+          },
+          {
+            "left": [
+              0,
+              0
+            ],
+            "right": [
+              5,
+              -7.5
+            ]
+          },
+          {
+            "left": [
+              0,
+              0
+            ],
+            "right": [
+              1.708728134111,
+              -2.563092201166
+            ]
+          }
+        ],
+        "rootOffsetsSourcePx": [
+          [
+            0,
+            0
+          ],
+          [
+            8,
+            1
+          ],
+          [
+            12,
+            1.5
+          ],
+          [
+            8,
+            1
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            -8,
+            1
+          ],
+          [
+            -12,
+            1.5
+          ],
+          [
+            -8,
+            1
+          ]
+        ],
+        "focusOffsetSourcePx": [
+          6,
+          0
+        ],
+        "legCompositionVersion": "leg-material-v2",
+        "legBackingGeneratedSha256": "F4DB57340CF910C3F5A773BEFF3345823C42FBCFFEBD44C12F7E00990EACD93A",
+        "eyeBackingGeneratedSha256": "684BA98301B8BD4F204581E77CDE1586528D0EC7B1804C5CFC4ADB5E1EF2B61A"
+      }
+    },
+    "run_left": {
+      "file": "run_left.webp",
+      "encodedSha256": "0658A1DFC2387B9EE21097FDA1BB525FB879B7FB8F52C67ADF8194564CC47D35",
+      "frameHashes": [
+        "FB10851B84EB34681EEDB19A468804C4E767695F0516FE757DAE56331E4113B1",
+        "0327E4853BB005858DE5F263CAC208DC21E282BCA99B4961EF944D638648E541",
+        "04F13E2D33323F710B459BC497869B9FF8D0554152903F4F747ACAB96D0687C7",
+        "0327E4853BB005858DE5F263CAC208DC21E282BCA99B4961EF944D638648E541",
+        "FB10851B84EB34681EEDB19A468804C4E767695F0516FE757DAE56331E4113B1",
+        "A656B1740F4D90B7EFAF872C7CF0306D3CB59EDE8B9CCD45680B15714D19AD4F",
+        "E95451BBFAB039460D3F1BF4C5C807C4DD297F0B62F152A9B8DBFE7FA6879265",
+        "482417E30788C78B949071D7D76AFF8F3DD0C3D74C26387FB485BB0D443B4BD6"
+      ],
+      "contract": {
+        "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+        "state": "run_left",
+        "nativeRow": 2,
+        "camera": {
+          "scale": 0.15833333333333333,
+          "x": 0.36666666666667425,
+          "y": 7.883333333333354,
+          "visibleBBox": [
+            142,
+            26,
+            1066,
+            1226
+          ],
+          "floor": 202,
+          "topReserve": 12,
+          "cell": [
+            192,
+            208
+          ]
+        },
+        "durationsMs": [
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          220
+        ],
+        "projection": "front-held-alternating-small-steps",
+        "supportFeet": [
+          [
+            "left",
+            "right"
+          ],
+          [
+            "right"
+          ],
+          [
+            "right"
+          ],
+          [
+            "right"
+          ],
+          [
+            "left",
+            "right"
+          ],
+          [
+            "left"
+          ],
+          [
+            "left"
+          ],
+          [
+            "left"
+          ]
+        ],
+        "footOffsetsSourcePx": [
+          {
+            "left": [
+              0,
+              0
+            ],
+            "right": [
+              0,
+              0
+            ]
+          },
+          {
+            "left": [
+              -1.296296296296,
+              -1.944444444444
+            ],
+            "right": [
+              0,
+              0
+            ]
+          },
+          {
+            "left": [
+              -5,
+              -7.5
+            ],
+            "right": [
+              0,
+              0
+            ]
+          },
+          {
+            "left": [
+              -1.296296296296,
+              -1.944444444444
+            ],
+            "right": [
+              0,
+              0
+            ]
+          },
+          {
+            "left": [
+              0,
+              0
+            ],
+            "right": [
+              0,
+              0
+            ]
+          },
+          {
+            "left": [
+              0,
+              0
+            ],
+            "right": [
+              -1.296296296296,
+              -1.944444444444
+            ]
+          },
+          {
+            "left": [
+              0,
+              0
+            ],
+            "right": [
+              -5,
+              -7.5
+            ]
+          },
+          {
+            "left": [
+              0,
+              0
+            ],
+            "right": [
+              -1.708728134111,
+              -2.563092201166
+            ]
+          }
+        ],
+        "rootOffsetsSourcePx": [
+          [
+            0,
+            0
+          ],
+          [
+            8,
+            1
+          ],
+          [
+            12,
+            1.5
+          ],
+          [
+            8,
+            1
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            -8,
+            1
+          ],
+          [
+            -12,
+            1.5
+          ],
+          [
+            -8,
+            1
+          ]
+        ],
+        "focusOffsetSourcePx": [
+          -6,
+          0
+        ],
+        "legCompositionVersion": "leg-material-v2",
+        "legBackingGeneratedSha256": "F4DB57340CF910C3F5A773BEFF3345823C42FBCFFEBD44C12F7E00990EACD93A",
+        "eyeBackingGeneratedSha256": "684BA98301B8BD4F204581E77CDE1586528D0EC7B1804C5CFC4ADB5E1EF2B61A"
+      }
+    }
+  }
+}

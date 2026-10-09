@@ -10,6 +10,7 @@
   "ornamentFlash": false,
   "handStrategy": "two-low-hands-held",
   "strategyUserApproval": "pending",
+  "heldTimingUserDecision": "held-gesture-boundary-decision-20261009.json",
   "focusOffsetSourcePx": [0,5],
   "keyframes": [
     {"bodyY":0,"earAngle":0,"hairAngle":0},
@@ -25,7 +26,7 @@
     "Two low hands are a candidate, not an approved user strategy; no book, tool or effects were added.",
     "The newly drawn right palm is more open than the softly curled left; contact and hand volume require visual acceptance.",
     "The green sleeve has angular folds; source foreground polygons preserve pixel plates, not clean recovered mattes. The v3 composition restores inspected originally visible hair and estimates hidden RGB/alpha continuity. Hidden strand topology and enlarged seams remain unapproved.",
-    "All three cycles hold the hands; first-only raising and last-only lowering cannot be encoded in one repeating native row. Entry and idle fallback have no arm transition.",
+    "The user temporarily accepts held timing and continued structural improvement, not the rendered hand/sleeve structure. First-only raising and last-only lowering cannot be encoded in one repeating native row; entry and idle fallback have no arm transition.",
     "A 1030 ms cycle is not used for a forced fast breath; the body is held, not a claim that all frozen-body problems are solved.",
     "Downward gaze, small-scale state legibility, sleeve seams and naturalness are unapproved; original host resolution, durations and pointer priority are unchanged."
   ]

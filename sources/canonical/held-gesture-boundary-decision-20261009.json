@@ -1,0 +1,16 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "date": "2026-10-09",
+  "question": "托腮/合手的完整进入退出超出了现有循环图集能力。你希望暂时保留保持姿势与切换短跳变，继续优化结构；还是允许研究独立、可控的宠物运行宿主，实现真实进入/保持/退出？后者仍不修改已安装应用，但会扩大开发范围。",
+  "answer": "暂保留保持姿势，继续优化结构（建议）",
+  "scope": "temporary-held-timing-boundary-only",
+  "heldTimingAcceptedTemporarily": true,
+  "knownEntryExitJumpsRemain": true,
+  "continueStructuralImprovement": true,
+  "renderedHandStructureApproved": false,
+  "sleeveAndHairSeamsApproved": false,
+  "fullNaturalnessApproved": false,
+  "allMotionApproved": false,
+  "independentPetHostAuthorized": false,
+  "installedHostChangeAuthorized": false
+}

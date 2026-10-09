@@ -12,11 +12,13 @@ from build_idle import specification as idle_specification, region_masks, render
 import build_gaze as gaze
 from animation_output import write_animation
 from protocol import DURATIONS
+from held_timing import validate_decision
 
 OUT = ROOT/'candidates/phase5/review'
 
 
 def validate_motion(motion, gaze_spec):
+    validate_decision(motion)
     if (motion['sourceSha256'] != ACCEPTED_SHA or motion['state'] != 'review'
             or motion['nativeRow'] != 8 or motion['durationsMs'] != DURATIONS[8]
             or motion['repeatBeforeIdle'] != 3 or not motion['faceShapeLocked']
@@ -87,6 +89,7 @@ def main():
         repeatBeforeIdle=3, actionDurationMs=3*sum(DURATIONS[8]), closedEyeFrames=0,
         bodyPulse=False, ornamentFlash=False, bodyTranslationPx=0,
         handStrategy=motion['handStrategy'], strategyUserApproval='pending',
+        heldTimingUserDecision=motion['heldTimingUserDecision'], heldTimingAcceptedTemporarily=True,
         focusOffsetSourcePx=motion['focusOffsetSourcePx'], camera=data['transform'],
         sameSourceCoordinateCamera=True, focusedEyeAlphaPreservedExactly=True,
         sourceFaceExceptEyeAperturesFixed=True, sourceForegroundPlatesPreserved=True,

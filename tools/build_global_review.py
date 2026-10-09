@@ -89,7 +89,7 @@ def main():
         facialGeometryRepair=False,generatedFromRejectedSources=False,
         installableFullAtlas=False,installed=False,
         limitations=['Complete cell coverage is NOT complete/approved animation quality or release authority.',
-                     'Frontal small-step direction is approved, not finished gait. Waiting/review strategies and all action/gaze aesthetics remain pending.',
+                     'Frontal small-step direction is approved, not finished gait. Waiting/review held timing is temporarily accepted, not hand/sleeve structure or full action/gaze aesthetics.',
                      'Global state changes, weak 80px cues, pose connections and arbitrary drag exits remain under review.',
                      'Fixed native resolution/timing/priority and decoded texture size are unchanged.',
                      'No pet.json or installer target is produced; this is a development QA artifact.'])

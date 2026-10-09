@@ -12,9 +12,10 @@
   </header>
   <section class="idle-review" aria-labelledby="idle-heading">
     <h2 id="idle-heading">Phase 5 · 同一母版的局部动作候选</h2>
-    <p>左侧固定 v3；右侧可选九个动作候选。所有候选共用相机与脸型；新增像素只用于局部缺画与隐藏底图。你已确认保留正面轻小步并补足自然度，不做侧身跑；腿与兔鞋材料来自母版、不镜像饰品，现有步态视觉仍待认可。waiting 保持托腮；review 双手低处轻合、视线向下，手势/节奏同样待确认。九状态和16视线已组成开发验收图集，但不是已通过的完整宠物，也未安装。</p>
+    <p>右侧可选九个动作候选；左侧默认固定 v3，左右小步自动使用同步旧版，隔离耳发跟随的变化。所有候选共用相机与脸型；新增像素只用于局部缺画与隐藏底图。你已确认正面轻小步方向、摆幅及起落基础，并暂保留托腮/合手的保持时序，继续优化结构；这些决定不代表手形、袖褶或整体自然度通过。九状态和16视线为开发验收图集，未安装。</p>
     <div class="controls">
       <label>候选 <select id="idle-action"><option value="idle">idle · 微呼吸</option><option value="run_right">run_right · 正面向右小步原型</option><option value="run_left">run_left · 正面向左小步原型</option><option value="failed">failed · 三轮后回 idle</option><option value="jumping">jumping · 五帧，三轮后回 idle</option><option value="waving">waving · 四格，三轮后回 idle</option><option value="waving_source">waving · 原像素低位试验（未采用）</option><option value="processing">processing · 六格专注，三轮后回 idle</option><option value="waiting">waiting · 六格保持托腮，待确认</option><option value="review">review · 六格低手下视，待确认</option></select></label>
+      <label>左侧参考 <select id="idle-comparison" disabled><option value="idle">固定 idle · 检查身份</option><option value="rigid">同步旧小步 · 检查耳发跟随</option></select></label>
       <label>宽度 <select id="idle-size"><option>80</option><option selected>113</option><option>192</option><option>224</option></select> px</label>
       <label>背景 <select id="idle-background"><option value="dark">深色</option><option value="light">浅色</option><option value="grid">透明网格</option></select></label>
       <label><input id="idle-reduced" type="checkbox">减少动态</label>
@@ -22,10 +23,11 @@
       <label>单帧检查 <input id="idle-frame" type="range" min="0" max="5" value="0" step="1"></label>
     </div>
     <div id="idle-stage" class="stage dark">
-      <article><h2>同一母版 · 固定第 1 帧</h2><canvas id="idle-reference" width="192" height="208" aria-label="Idle 固定参考"></canvas></article>
+      <article><h2 id="reference-candidate-title">同一母版 · 固定第 1 帧</h2><canvas id="idle-reference" width="192" height="208" aria-label="左侧参考"></canvas></article>
       <article><h2 id="current-candidate-title">同一母版 · 六帧微呼吸</h2><canvas id="idle-animated" width="192" height="208" aria-label="当前动作候选"></canvas></article>
     </div>
     <output id="idle-status" aria-live="off">正在解码 idle 候选…</output>
+    <output id="reference-status" aria-live="off">固定 idle 用于形象对照；小步动作比较请使用同步旧版。</output>
     <p>idle 周期 6.6 秒；failed 1.22 秒、jumping 0.84 秒、waving 0.7 秒、processing 0.82 秒、waiting 1.01 秒、review 1.03 秒，动作均三轮后回 idle。jumping 最高离地 8 px，仅着地格鞋部固定。waving 末格为原图放松，停留 280 ms；过渡偏向放松。processing 对应宿主 running 行。waiting/review 身体与手势保持，只做微小耳发响应；review 仅在原眼开口内移虹膜，不改眼眶或脸型。短周期不做快呼吸或胸饰闪烁。静态关键姿势不等于完整手臂骨骼：托腮/合手的入场和回 idle 仍缺过渡，80 px 状态差异弱，review 右手更展开、袖褶偏硬、前景保护多边形不是干净图层。所有动作的可爱感、接缝和节奏仍待视觉认可。</p>
     <p>review 当前采用合成 v4（母版仍为锁定 v3）：保留此前原发丝恢复，修正下方手掌被遮罩切掉的指尖，不缩放手、不重画脸。GIMP真实图层工程已保存并重开验证；这不是桌面手绘、干净分层或造型通过。袖褶、两手关系、接缝与动作过渡仍待。</p>
     <p><a href="../candidates/phase5/review-hand-outline-v1/contact-113px.png">指尖修正113px明暗对照</a> · <a href="../sources/editor/review-hand/kaguya-review-hand.xcf" download>GIMP可编辑图层工程</a> · <a href="../docs/PHASE5-STATES.zh-CN.md">具体限制与缺陷</a></p>

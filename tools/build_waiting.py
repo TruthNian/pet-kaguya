@@ -10,11 +10,13 @@ import review_waiting as art
 from build_idle import specification as idle_specification,region_masks,render
 from animation_output import write_animation
 from protocol import DURATIONS
+from held_timing import validate_decision
 
 OUT = ROOT/'candidates/phase5/waiting'
 
 
 def validate_motion(motion):
+    validate_decision(motion)
     if (motion['sourceSha256'] != ACCEPTED_SHA or motion['state'] != 'waiting'
             or motion['nativeRow'] != 6 or motion['durationsMs'] != DURATIONS[6]
             or motion['repeatBeforeIdle'] != 3 or not motion['faceShapeLocked']
@@ -65,6 +67,7 @@ def main():
         actionDurationMs=3*sum(DURATIONS[6]),closedEyeFrames=0,bodyPulse=False,bodyTranslationPx=0,
         camera=data['transform'],sameSourceCoordinateCamera=True,
         handStrategy=motion['handStrategy'],strategyUserApproval='pending',
+        heldTimingUserDecision=motion['heldTimingUserDecision'],heldTimingAcceptedTemporarily=True,
         cheekHandContactFixed=True,sourceFaceOutsideHandOcclusionFixed=True,
         loopSeamRGBAExact=frames[0].tobytes()==frames[-1].tobytes(),
         uniqueCels=len(set(frame.tobytes() for frame in frames)),

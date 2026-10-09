@@ -2,6 +2,7 @@
 import {durations} from './clock.mjs';
 import {candidateRows as rows,candidateSlot,candidatePoseOffset,candidateCelKey} from './candidate-clock.mjs';
 import {paintCel} from './cel-painter.mjs';
+import {comparisonReference,validateRigidReference} from './comparison-reference.mjs';
 
 const el=id=>document.getElementById(id);
 const canvases=[el('idle-reference'),el('idle-animated')];
@@ -10,7 +11,9 @@ const media=matchMedia('(prefers-reduced-motion: reduce)');
 el('idle-reduced').checked=media.matches;
 const sources={idle:'idle',run_right:'run_right',run_left:'run_left',failed:'failed',jumping:'jumping',waving:'waving',waving_source:'wave-source-rig-v3',processing:'processing',waiting:'waiting',review:'review'};
 const cache=new Map();
+const rigidCache=new Map();
 let mode='idle',ready=false,timer=null,baseElapsed=0,startedAt=null,paused=false,manualIndex=null,lastKey='',paintCount=0,request=0;
+let lastReferenceKey='',referencePaintCount=0;
 const reduced=()=>el('idle-reduced').checked;
 const elapsed=()=>baseElapsed+(startedAt===null?0:performance.now()-startedAt);
 const canRun=()=>ready&&!paused&&!reduced()&&!document.hidden;
@@ -82,6 +85,21 @@ async function asset(state){
   })().catch(error=>{cache.delete(state);throw error;}));
   return cache.get(state);
 }
+async function rigidAsset(state,current){
+  if(!rigidCache.has(state))rigidCache.set(state,(async()=>{
+    const root='../sources/reference/locomotion-rigid';
+    const response=await fetch(`${root}/manifest.json`);
+    if(!response.ok)throw new Error('rigid reference metadata unavailable');
+    const metadata=await response.json();
+    const entry=validateRigidReference(metadata,state,current);
+    const image=new Image();image.src=`${root}/${entry.file}`;await image.decode();
+    if(image.naturalWidth!==1536||image.naturalHeight!==208)throw new Error('rigid reference dimensions mismatch');
+    return {image,metadata,frameHashes:entry.frameHashes};
+  })().catch(error=>{rigidCache.delete(state);throw error;}));
+  const reference=await rigidCache.get(state);
+  validateRigidReference(reference.metadata,state,current);
+  return reference;
+}
 function stopClock(){
   if(startedAt!==null){baseElapsed+=performance.now()-startedAt;startedAt=null;}
   if(timer!==null){clearTimeout(timer);timer=null;}
@@ -100,10 +118,23 @@ function slot(){
 }
 async function draw(){
   if(!ready)return;
-  const selected=slot(),key=`${selected.state}:${selected.index}`;
+  const selected=slot(),key=`${selected.state}:${selected.index}`,thisRequest=request;
+  const choice=el('idle-comparison').value;
   const {image,metadata}=await cache.get(selected.state);
+  const reference=comparisonReference(choice,selected.state,selected.index);
+  const referenceAsset=reference.kind==='rigid'?await rigidAsset(reference.state,metadata):await asset(reference.state);
   const current=slot();
-  if(!ready||key!==`${current.state}:${current.index}`)return;
+  if(!ready||thisRequest!==request||key!==`${current.state}:${current.index}`||choice!==el('idle-comparison').value)return;
+  const referenceKey=candidateCelKey(referenceAsset.frameHashes??referenceAsset.metadata.frameHashes,reference.index);
+  if(referenceKey!==lastReferenceKey){
+    paintCel(contexts[0],referenceAsset.image,reference.index);
+    lastReferenceKey=referenceKey;referencePaintCount++;
+  }
+  el('reference-candidate-title').textContent=reference.kind==='rigid'?`同步旧小步 · ${reference.state} 第 ${reference.index+1} 格`
+    :reference.synchronized?`同步回退 · idle 第 ${reference.index+1} 格`:'同一母版 · 固定第 1 帧';
+  el('reference-status').textContent=reference.synchronized
+    ?`左右共用同一时钟/帧位，暂停、单帧、减少动态及三轮回退同步 · ${referencePaintCount} 次参考绘制 · 旧版归档d804cd5，不继承完整视觉批准`
+    :'固定 idle 只用于身份检查，不是同节奏动作对照。';
   const paintKey=candidateCelKey(metadata.frameHashes,selected.index);
   if(paintKey!==lastKey){
     paintCel(contexts[1],image,selected.index);
@@ -132,19 +163,25 @@ function schedule(){
 }
 async function selectMode(){
   const thisRequest=++request;
-  stopClock();ready=false;mode=el('idle-action').value;baseElapsed=0;manualIndex=null;paused=false;lastKey='';
+  const selectedMode=el('idle-action').value;
+  stopClock();ready=false;mode=selectedMode;baseElapsed=0;manualIndex=null;paused=false;lastKey='';
+  lastReferenceKey='';
+  const gait=['run_right','run_left'].includes(mode);
+  el('idle-comparison').disabled=!gait;el('idle-comparison').value=gait?'rigid':'idle';
   el('idle-status').textContent=`正在解码 ${mode} 候选…`;
   el('idle-frame').max=String(durations[rows[mode]]?.length-1);
   el('idle-frame').value='0';el('idle-pause').disabled=true;
   try{
-    if(!(mode in sources))throw new Error('unsupported candidate');
-    const [{image}]=await Promise.all([asset('idle'),asset(mode)]);
+    if(!(selectedMode in sources))throw new Error('unsupported candidate');
+    const [,current]=await Promise.all([asset('idle'),asset(selectedMode)]);
     if(thisRequest!==request)return;
-    paintCel(contexts[0],image,0);
+    if(gait)await rigidAsset(selectedMode,current.metadata);
+    if(thisRequest!==request)return;
     ready=true;size();await draw();schedule();
-  }catch(error){if(thisRequest===request)el('idle-status').textContent=`候选加载失败：${error.message}`;console.error(error);}
+  }catch(error){if(thisRequest!==request)return;el('idle-status').textContent=`候选加载失败：${error.message}`;console.error(error);}
 }
 el('idle-action').addEventListener('change',selectMode);
+el('idle-comparison').addEventListener('change',async()=>{await draw();});
 el('idle-pause').addEventListener('click',async()=>{stopClock();paused=!paused;manualIndex=null;await draw();schedule();});
 el('idle-restart').addEventListener('click',async()=>{stopClock();baseElapsed=0;manualIndex=null;paused=false;await draw();schedule();});
 el('idle-frame').addEventListener('input',async()=>{
@@ -153,6 +190,7 @@ el('idle-frame').addEventListener('input',async()=>{
   // selected action until the user deliberately starts manual inspection.
   const inspectState=slot().state,index=Number(el('idle-frame').value);
   stopClock();mode=inspectState;el('idle-action').value=mode;
+  if(!['run_right','run_left'].includes(mode)){el('idle-comparison').disabled=true;el('idle-comparison').value='idle';}
   paused=true;manualIndex=index;baseElapsed=candidatePoseOffset(mode,index);await draw();
 });
 el('idle-size').addEventListener('change',size);
