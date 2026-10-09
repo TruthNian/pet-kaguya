@@ -30,13 +30,23 @@
     <output id="reference-status" aria-live="off">固定 idle 用于形象对照；小步动作比较请使用同步旧版。</output>
     <p>idle 周期 6.6 秒；failed 1.22 秒、jumping 0.84 秒、waving 0.7 秒、processing 0.82 秒、waiting 1.01 秒、review 1.03 秒，动作均三轮后回 idle。jumping 最高离地 8 px，仅着地格鞋部固定。waving 末格为原图放松，停留 280 ms；过渡偏向放松。processing 对应宿主 running 行。waiting/review 身体与手势保持，只做微小耳发响应；review 仅在原眼开口内移虹膜，不改眼眶或脸型。短周期不做快呼吸或胸饰闪烁。静态关键姿势不等于完整手臂骨骼：托腮/合手的入场和回 idle 仍缺过渡，80 px 状态差异弱，review 右手更展开、袖褶偏硬、前景保护多边形不是干净图层。所有动作的可爱感、接缝和节奏仍待视觉认可。</p>
     <p>review 当前采用合成 v4（母版仍为锁定 v3）：保留此前原发丝恢复，修正下方手掌被遮罩切掉的指尖，不缩放手、不重画脸。GIMP真实图层工程已保存并重开验证；这不是桌面手绘、干净分层或造型通过。袖褶、两手关系、接缝与动作过渡仍待。</p>
-    <p><a href="../candidates/phase5/review-hand-outline-v1/contact-113px.png">指尖修正113px明暗对照</a> · <a href="../sources/editor/review-hand/kaguya-review-hand.xcf" download>GIMP可编辑图层工程</a> · <a href="../docs/PHASE5-STATES.zh-CN.md">具体限制与缺陷</a></p>
+    <p><a href="#held-structure-review">集中查看当前托腮/合手结构</a> · <a href="../candidates/phase5/review-hand-outline-v1/contact-113px.png">指尖修正113px明暗对照</a> · <a href="../sources/editor/review-hand/kaguya-review-hand.xcf" download>GIMP可编辑图层工程</a> · <a href="../docs/PHASE5-STATES.zh-CN.md">具体限制与缺陷</a></p>
     <p>左右小步为八格、1060 ms一轮。此处模拟状态未被打断时的三轮3180 ms后回 idle；真实宿主的左右跑是拖拽反馈，松手可中断任意格并回到底层任务状态，不一定 idle，也不会等待脚落地。图集没有速度输入，不能保证鼠标拖动中的屏幕地面防滑。向支撑侧的身体横向摆幅仍为你认可的约1.9原生像素，下沉最多0.24像素。你对最新起落节奏回复“我觉得还行”，仅作为后续打磨基础，不扩大为完整自然度或其他动作通过。脸型、衣服与手保留刚性跟随，支撑兔鞋的位移与身体位移抵消。当前耳尖/发梢增加由身体横移驱动的微小滞后，上限约0.13/0.32原生像素；按实际120/220ms停留取样，身体不动时不会自行摇摆。它不是实测质量中心或已证明的物理平衡。抬脚仍约1.19像素，80 px提示弱。</p>
     <p>当前每侧均有缓升→峰值→接近→接触；左脚在第5格着地，右脚在下一轮第1格（最后一轮直接回idle）着地。删除人为的首尾像素相等规则，首尾不再相同，但相机与脸型仍固定。着地前离地约0.31/0.41原生像素；右侧因末格220ms而不对称，比上轮0.31略高。身体最大相邻横移由1.9降为约1.27像素，最大脚部垂直跳变约0.88像素，不是审美评分。新增缓升姿态并不等于连续起落或真实零速度触地；周期边界、三轮回idle和任意拖拽退出仍待整体视觉接受。</p>
     <p>当前从leg-material-v2原材料直接取样到原生3倍覆盖网格，再统一末端缩小，不把全尺寸腿部姿势图当输入；虹膜仍有源空间预合成，不声称全画单次采样。可见背景按覆盖率归一后，分数坐标的同材料中性合成成立；只在各姿势中消除低于1e-10的浮点叠加误差，中性原生RGBA与原取样器精确一致，不特判零位移。耳发几何也在原背景材料取样前计算，不再加工低清帧；保护脸/前衣袖/手/腿鞋，但区域仍是估计，不是干净分层。微滞后来自周期稳态参考，不会按每次真实拖拽初始化；原生仍离散，衣物柔性跟随、进入退出和完整自然度未通过。侧身不是所选方向，不把中性等式或格内支撑固定当作真实跑步完成。</p>
     <p><a href="../candidates/phase5/leg-material-v2/contact-224px.png">母版/旧中性/新中性/左右抬脚对照</a> · <a href="../candidates/phase5/run_right/native-timing.gif">向右小步真实停留GIF</a> · <a href="../candidates/phase5/leg-backing-v1/prompt.txt">无脸隐藏底图实际生成提示词</a> · <a href="../docs/PHASE5-STATES.zh-CN.md">合成修正与剩余问题</a></p>
   </section>
-  <details id="source-arm-study" class="idle-review" open><summary>原像素手袖运动试验 · 修正漏选袖边与头发约束，尚未采用</summary>
+  <section id="held-structure-review" class="idle-review" aria-labelledby="held-structure-heading">
+    <h2 id="held-structure-heading">当前托腮 / 合手 · 静态结构复核</h2>
+    <p>左为当前idle，中为waiting托腮，右为review合手下视。每张都直接来自当前动作条的第1格，224px明暗背景；不是下面的新头发试验。保持时序已暂时接受，但实际脸、手与衣袖关系仍需确认。腰间白色月纹在母版就存在，不是旧手残留。</p>
+    <img loading="lazy" src="../candidates/phase5/review-hair-boundary-v1/current-held-structure-224px.png" width="732" height="550" alt="当前idle、waiting托腮、review合手的真实第1格，224像素明暗结构对照">
+  </section>
+  <details id="review-hair-boundary-study" class="idle-review"><summary>头发边界试验 · 只用已观察到的头发约束，尚未采用</summary>
+    <p>左为母版，中为当前静态合成v4，右为新候选；手、衣袖、脸与alpha完全不变，只改既有未知头发域的RGB。移除把衣袖/旧补片当头发观察的边界约束，使用490条真实源图接边；两个无观察锚点的孤立像素保持原状。</p>
+    <img loading="lazy" src="../candidates/phase5/review-hair-boundary-v1/detail.png" width="660" height="480" alt="母版、当前合成v4、仅使用可见头发边界的新候选局部对照">
+    <p>这只估计颜色连续性，没有恢复隐藏发束走向；仍有346个颜色通道裁切，局部亮斑/线条错接不能仅凭求解收敛宣布修复。未替换任何动作条、全局图集或安装文件。<a href="../candidates/phase5/review-hair-boundary-v1/contact-113px.png">113px完整对照</a> · <a href="../candidates/phase5/review-hair-boundary-v1/build.json">实际约束与限制</a></p>
+  </details>
+  <details id="source-arm-study" class="idle-review"><summary>原像素手袖运动试验 · 修正漏选袖边与头发约束，尚未采用</summary>
     <p>下图依次为上轮+6°、本轮+6°、上轮底图、本轮底图。补回221个漏选的原袖面/描边材料像素，排除把绿色衣服当作头发的错误约束；只用可见头发校正隐藏底图，并对部分平缓边缘估计梯度延长。没有新生成脸、手或袖子。</p>
     <img loading="lazy" src="../candidates/phase5/wave-source-rig-v3/detail.png" width="1000" height="460" alt="旧袖边残影及底图拼接与本轮修正对照，动作和造型仍未获接受">
     <p>上方候选菜单新增“原像素低位试验”，按真实140/140/140/280 ms四格、700 ms×3后回idle播放；它是招手行的独立试验，不是第十个宿主状态，也没有替换现用招手或完整开发图集。静止由同一材料精确还原；脸型、原alpha、另一侧身体和鞋不变。</p>

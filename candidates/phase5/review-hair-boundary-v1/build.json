@@ -1,0 +1,79 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "parentCompositionVersion": "review-art-v4",
+  "parentPoseRGBAHash": "6A92ACB8FF75F2F77F639ECFF402C1B3AA796AFB88362E66589F850E0C535B49",
+  "gradientMaterialPoseRGBAHash": "8618A3A73301ED7A3B29D63983878159C7B35D39BA33E465186584C539E32570",
+  "method": "gradient-guided RGB offset; observed mother hair Dirichlet, unobserved boundary natural zero-normal offset",
+  "solverCrop": [
+    775,
+    569,
+    960,
+    1002
+  ],
+  "solver": {
+    "iterations": 881,
+    "relativeResidual": 9.6109e-09,
+    "anchors": 490,
+    "clippedChannels": 346,
+    "components": [
+      {
+        "pixels": 31550,
+        "observedAnchorEdges": 490,
+        "box": [
+          779,
+          582,
+          946,
+          989
+        ]
+      },
+      {
+        "pixels": 1,
+        "observedAnchorEdges": 0,
+        "box": [
+          852,
+          934,
+          853,
+          935
+        ]
+      },
+      {
+        "pixels": 1,
+        "observedAnchorEdges": 0,
+        "box": [
+          784,
+          944,
+          785,
+          945
+        ]
+      }
+    ],
+    "residualDisplaySignificantDigits": 5
+  },
+  "observedSourcePixels": 2931,
+  "unknownHairPixels": 31552,
+  "excludedBoundaryPixels": 1051,
+  "anchoredUnknownPixels": 31550,
+  "unanchoredUnknownPixelsKept": 2,
+  "changedPixels": 29608,
+  "changedOutsideUnknown": 0,
+  "parentAlphaPreserved": true,
+  "handsAndSleevesRGBAExact": true,
+  "knownSourceRGBAExact": true,
+  "poseRGBAHash": "75094F63452511B977D1774A97093615C2F2C11928060D1C3871C5C080ACFFA2",
+  "frameRGBAHash": "DAAE71EC61EE9F5E337E9E05C93C0085CA6B362A9388C5FA489AEF9F60CDE249",
+  "newArtworkGenerated": false,
+  "facialGeometryRepair": false,
+  "hiddenStrandTopologyRecovered": false,
+  "cleanLayerRecoveryClaimed": false,
+  "animationBuilt": false,
+  "adopted": false,
+  "activeAtlasChanged": false,
+  "visualAcceptance": "pending",
+  "installableFullAtlas": false,
+  "installed": false,
+  "limitations": [
+    "Material strand gradients remain an authored estimate; removing false observations does not reconstruct hidden strand paths.",
+    "A zero-normal offset boundary is a declared regularizer, not an observation of hair color or a guarantee of perfect seam tangents.",
+    "Actual native-scale seams and costume/hand aesthetics require visual inspection before adoption."
+  ]
+}
