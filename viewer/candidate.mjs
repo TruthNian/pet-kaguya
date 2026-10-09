@@ -1,10 +1,11 @@
 // Current v3-only development candidates. Historical preview is separate.
 import {durations} from './clock.mjs';
 import {candidateRows as rows,candidateSlot,candidatePoseOffset,candidateCelKey} from './candidate-clock.mjs';
-import {paintCel} from './cel-painter.mjs';
+import {paintCel} from './cel-painter.mjs?v=20261010-terminal-precision-v1';
 import {comparisonReference,validateRigidReference,validateHopReference} from './comparison-reference.mjs?v=20261009-hop-contact-v1';
 import {validateReviewMetadata} from './review-contract.mjs';
 import {validateWaitingMetadata} from './waiting-contract.mjs';
+import {validateSamplingStudy} from './sampling-contract.mjs';
 
 const el=id=>document.getElementById(id);
 const canvases=[el('idle-reference'),el('idle-animated')];
@@ -15,6 +16,7 @@ const sources={idle:'idle',run_right:'run_right',run_left:'run_left',failed:'fai
 const cache=new Map();
 const rigidCache=new Map();
 const contactCache=new Map();
+let samplingPromise=null;
 let mode='idle',ready=false,timer=null,baseElapsed=0,startedAt=null,paused=false,manualIndex=null,lastKey='',paintCount=0,request=0;
 let lastReferenceKey='',referencePaintCount=0;
 const reduced=()=>el('idle-reduced').checked;
@@ -101,6 +103,22 @@ async function rigidAsset(state,current){
   validateRigidReference(reference.metadata,state,current);
   return reference;
 }
+async function samplingAsset(state,current){
+  if(samplingPromise===null)samplingPromise=(async()=>{
+    const root='../candidates/phase5/terminal-sampling-v1';
+    const response=await fetch(`${root}/build.json`,{cache:'no-cache'});
+    if(!response.ok)throw new Error('terminal precision study unavailable');
+    const metadata=await response.json();
+    validateSamplingStudy(metadata,state,current);
+    const image=new Image();image.src=`${root}/spritesheet.webp?v=${metadata.candidateAtlasRGBAHash}`;
+    await image.decode();
+    if(image.naturalWidth!==1536||image.naturalHeight!==2288)throw new Error('precision atlas dimensions mismatch');
+    return {image,metadata};
+  })().catch(error=>{samplingPromise=null;throw error;});
+  const result=await samplingPromise;
+  const entry=validateSamplingStudy(result.metadata,state,current);
+  return {...result,entry};
+}
 function stopClock(){
   if(startedAt!==null){baseElapsed+=performance.now()-startedAt;startedAt=null;}
   if(timer!==null){clearTimeout(timer);timer=null;}
@@ -120,9 +138,12 @@ async function contactAsset(current){
 }
 function comparisonMode(reset=false){
   const gait=['run_right','run_left'].includes(mode),hop=mode==='jumping';
-  el('idle-comparison').disabled=!gait&&!hop;
+  const precision=mode!=='waving_source';
+  el('idle-comparison').disabled=!gait&&!hop&&!precision;
+  el('sampling-reference-choice').disabled=!precision;
   el('rigid-reference-choice').disabled=!gait;el('contact-reference-choice').disabled=!hop;
-  if(reset||(!gait&&!hop))el('idle-comparison').value=gait?'rigid':hop?'contact':'idle';
+  if(reset||(!gait&&!hop&&el('idle-comparison').value!=='sampling')||(!precision&&el('idle-comparison').value==='sampling'))
+    el('idle-comparison').value=gait?'rigid':hop?'contact':'idle';
 }
 function size(){
   const width=Number(el('idle-size').value);
@@ -141,8 +162,11 @@ async function draw(){
   const selected=slot(),key=`${selected.state}:${selected.index}`,thisRequest=request;
   const choice=el('idle-comparison').value;
   const {image,metadata}=await cache.get(selected.state);
-  const reference=comparisonReference(choice,selected.state,selected.index);
-  const referenceAsset=reference.kind==='rigid'?await rigidAsset(reference.state,metadata)
+  const precision=choice==='sampling';
+  const reference=precision?{kind:'current',state:selected.state,index:selected.index,synchronized:true}
+    :comparisonReference(choice,selected.state,selected.index);
+  const precisionAsset=precision?await samplingAsset(selected.state,metadata):null;
+  const referenceAsset=precision?{image,metadata}:reference.kind==='rigid'?await rigidAsset(reference.state,metadata)
     :reference.kind==='contact'?await contactAsset(metadata):await asset(reference.state);
   const current=slot();
   if(!ready||thisRequest!==request||key!==`${current.state}:${current.index}`||choice!==el('idle-comparison').value)return;
@@ -151,15 +175,18 @@ async function draw(){
     paintCel(contexts[0],referenceAsset.image,reference.index);
     lastReferenceKey=referenceKey;referencePaintCount++;
   }
-  el('reference-candidate-title').textContent=reference.kind==='rigid'?`同步旧小步 · ${reference.state} 第 ${reference.index+1} 格`
+  el('reference-candidate-title').textContent=precision?`同步现用采样 · ${reference.state} 第 ${reference.index+1} 格`
+    :reference.kind==='rigid'?`同步旧小步 · ${reference.state} 第 ${reference.index+1} 格`
     :reference.kind==='contact'?`同步旧轻跃（高度场） · 第 ${reference.index+1} 格`
     :reference.synchronized?`同步回退 · idle 第 ${reference.index+1} 格`:'同一母版 · 固定第 1 帧';
-  el('reference-status').textContent=reference.synchronized
+  el('reference-status').textContent=precision
+    ?`左右同源/同姿势/同钟/同格；右侧仅末端浮点采样试验，未采用 · ${referencePaintCount} 次参考绘制 · 数值误差不代表审美通过`
+    :reference.synchronized
     ?`左右共用同一时钟/帧位，暂停、单帧、减少动态及三轮回退同步 · ${referencePaintCount} 次参考绘制 · ${choice==='contact'?'旧高度场按同参数重建，非历史发布或视觉批准':'旧版归档d804cd5，不继承完整视觉批准'}`
     :'固定 idle 只用于身份检查，不是同节奏动作对照。';
-  const paintKey=candidateCelKey(metadata.frameHashes,selected.index);
+  const paintKey=candidateCelKey(precision?precisionAsset.entry.candidateFrameHashes:metadata.frameHashes,selected.index);
   if(paintKey!==lastKey){
-    paintCel(contexts[1],image,selected.index);
+    paintCel(contexts[1],precision?precisionAsset.image:image,selected.index,precision?precisionAsset.entry.nativeRows[0]:0);
     lastKey=paintKey;paintCount++;
   }
   el('idle-frame').max=String(durations[rows[selected.state]].length-1);
@@ -170,12 +197,12 @@ async function draw(){
   const labels={run_right:'run_right · 正面向右小步原型',run_left:'run_left · 正面向左小步原型',review:'review · 六格低手下视候选',waiting:'waiting · 六格托腮保持候选',failed:'failed · 八帧轻微失落',jumping:'jumping · 五帧轻跃候选',waving:'waving · 四格招手候选',processing:'processing · 清醒专注候选',idle:'idle · 六帧微呼吸'};
   labels.waving_source='waving · 原像素低位试验，未采用';
   const label=labels[selected.state];
-  el('current-candidate-title').textContent=label;
+  el('current-candidate-title').textContent=precision?`${label} · 浮点采样试验，未采用`:label;
   const status=manualIndex!==null?'单帧检查':reduced()?'减少动态':paused?'已暂停':selected.completedAction?'三轮已结束，已回 idle':'实际时长播放';
   const timing=` · 第 ${selected.index+1}/${durations[rows[selected.state]].length} 帧 · 停留 ${selected.holdMs} ms · 周期 ${selected.cycleMs} ms`;
   const followHint=['run_right','run_left'].includes(selected.state)?' · 耳发按身体运动轻微滞后，非实时物理':'';
   const dragBoundary=['run_right','run_left'].includes(mode)?' · 此处仅行内时钟；真实拖拽可随时中断/恢复底层状态，无速度同步':'';
-  el('idle-status').textContent=`${label} · ${status}${timing}${followHint}${dragBoundary} · ${paintCount} 次候选绘制 · 未经完整视觉验收，非完成宠物，未安装`;
+  el('idle-status').textContent=`${label}${precision?' · 浮点采样试验，未采用':''} · ${status}${timing}${followHint}${dragBoundary} · ${paintCount} 次候选绘制 · 未经完整视觉验收，非完成宠物，未安装`;
 }
 function schedule(){
   if(!canRun())return;
@@ -204,7 +231,11 @@ async function selectMode(){
   }catch(error){if(thisRequest!==request)return;el('idle-status').textContent=`候选加载失败：${error.message}`;console.error(error);}
 }
 el('idle-action').addEventListener('change',selectMode);
-el('idle-comparison').addEventListener('change',async()=>{await draw();});
+el('idle-comparison').addEventListener('change',async()=>{
+  el('idle-status').textContent='正在加载所选对照；画面尚未完成切换…';
+  try{await draw();}
+  catch(error){el('idle-status').textContent=`对照加载失败，未替换上次画面：${error.message}`;console.error(error);}
+});
 el('idle-pause').addEventListener('click',async()=>{stopClock();paused=!paused;manualIndex=null;await draw();schedule();});
 el('idle-restart').addEventListener('click',async()=>{stopClock();baseElapsed=0;manualIndex=null;paused=false;await draw();schedule();});
 el('idle-frame').addEventListener('input',async()=>{

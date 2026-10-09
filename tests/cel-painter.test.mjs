@@ -35,3 +35,14 @@ test('invalid native indices fail before altering the existing canvas',()=>{
     assert.equal(context.alpha,.75);assert.deepEqual(context.calls,[]);
   }
 });
+
+test('full native atlas selects actual rows before painting and rejects invalid rows',()=>{
+  const context=surface(),image={alpha:.25};
+  paintCel(context,image,5,8);
+  assert.deepEqual(context.calls,[['clear',0,0,192,208],['draw',image,960,1664,192,208,0,0,192,208]]);
+  for(const row of [-1,11,.5,NaN,Infinity,'0',null]){
+    context.calls=[];
+    assert.throws(()=>paintCel(context,image,0,row),RangeError);
+    assert.deepEqual(context.calls,[]);
+  }
+});

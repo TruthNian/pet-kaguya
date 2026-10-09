@@ -87,7 +87,7 @@ def coordinates(x, y, pose, transform, regions, masks):
     return source_x, source_y
 
 
-def render(image, pose, transform, regions, masks):
+def render(image, pose, transform, regions, masks, *, terminal=None):
     # One geometry evaluation from full-resolution source; a 3x integration
     # grid then one shared terminal downsample, never low-res frame recycling.
     yy, xx = np.mgrid[:HEIGHT*SUPERSAMPLE, :WIDTH*SUPERSAMPLE].astype(float)
@@ -99,6 +99,10 @@ def render(image, pose, transform, regions, masks):
     pixels = np.asarray(image, dtype=float)
     pixels[..., :3] *= pixels[..., 3:4]/255
     sampled = sample(pixels, sx, sy)
+    # An explicit study hook receives the actual floating premultiplied grid,
+    # BEFORE the two historical 8-bit conversions. Default output is unchanged.
+    if terminal is not None:
+        return terminal(sampled)
     np.divide(sampled[..., :3]*255, sampled[..., 3:4], out=sampled[..., :3], where=sampled[..., 3:4] > 0)
     sampled[sampled[..., 3] == 0, :3] = 0
     high = Image.fromarray(np.clip(np.rint(sampled), 0, 255).astype(np.uint8))

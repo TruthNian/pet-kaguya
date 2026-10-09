@@ -13,9 +13,10 @@
   <section class="idle-review" aria-labelledby="idle-heading">
     <h2 id="idle-heading">Phase 5 · 同一母版的局部动作候选</h2>
     <p>右侧可选九个动作候选；左侧默认固定 v3。左右小步自动同步旧版比较耳发跟随；jumping自动同步旧高度场比较当前屈膝接触，空中三格相同。所有候选共用相机与脸型；新增像素仅用于局部结构修正、缺画与隐藏底图。你已确认正面轻小步方向、摆幅及起落基础，并暂保留托腮/合手的保持时序，继续优化结构；这些决定不代表手形、袖褶或整体自然度通过。九状态和16视线为开发验收图集，未安装。</p>
+    <p>新增“精度对照”：左侧为现用动作，右侧为同源、同姿势、同格的末端浮点采样试验，尚未采用。73个动作/视线格全部核对；相对独立64位滤波参考的平均显示颜色误差约0.358→0.128（0–255单位），不是画质评分。113px肉眼差异小，没有新增细节、帧率或分辨率；不修复手袖造型。<a href="../candidates/phase5/terminal-sampling-v1/contact-113px.png">九状态明暗前后对照</a> · <a href="../candidates/phase5/terminal-sampling-v1/build.json">逐格证据和限制</a></p>
     <div class="controls">
       <label>候选 <select id="idle-action"><option value="idle">idle · 微呼吸</option><option value="run_right">run_right · 正面向右小步原型</option><option value="run_left">run_left · 正面向左小步原型</option><option value="failed">failed · 三轮后回 idle</option><option value="jumping">jumping · 五帧，三轮后回 idle</option><option value="waving">waving · 四格，三轮后回 idle</option><option value="waving_source">waving · 原像素低位试验（未采用）</option><option value="processing">processing · 六格专注，三轮后回 idle</option><option value="waiting">waiting · 六格保持托腮，待确认</option><option value="review">review · 六格低手下视，待确认</option></select></label>
-      <label>左侧参考 <select id="idle-comparison" disabled><option value="idle">固定 idle · 检查身份</option><option id="rigid-reference-choice" value="rigid" disabled>同步旧小步 · 检查耳发跟随</option><option id="contact-reference-choice" value="contact" disabled>同步旧轻跃 · 检查屈膝接触</option></select></label>
+      <label>左侧参考 <select id="idle-comparison" disabled><option value="idle">固定 idle · 检查身份</option><option id="rigid-reference-choice" value="rigid" disabled>同步旧小步 · 检查耳发跟随</option><option id="contact-reference-choice" value="contact" disabled>同步旧轻跃 · 检查屈膝接触</option><option id="sampling-reference-choice" value="sampling">精度对照 · 左现用，右浮点试验</option></select></label>
       <label>宽度 <select id="idle-size"><option>80</option><option selected>113</option><option>192</option><option>224</option></select> px</label>
       <label>背景 <select id="idle-background"><option value="dark">深色</option><option value="light">浅色</option><option value="grid">透明网格</option></select></label>
       <label><input id="idle-reduced" type="checkbox">减少动态</label>
@@ -179,6 +180,6 @@
   </details>
 </main>
 <script type="module" src="app.mjs"></script>
-<script type="module" src="candidate.mjs?v=20261010-waiting-cloth-v1"></script>
+<script type="module" src="candidate.mjs?v=20261010-terminal-precision-v2"></script>
 <script type="module" src="gaze.mjs"></script>
 </html>

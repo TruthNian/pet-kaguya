@@ -28,7 +28,8 @@ FOLDERS = ['candidates/phase4/static', 'candidates/phase4/canonical-v3', 'candid
            'candidates/phase5/review-hair-boundary-v1','candidates/phase5/review-art-v5',
            'candidates/phase5/review-sleeves-v2','candidates/phase5/review-art-v6',
            'candidates/phase5/waiting-sleeve-v1','candidates/phase5/waiting-art-v2',
-           'candidates/phase5/review-hands-pair-v1','candidates/phase5/review-hands-overlap-v1']
+           'candidates/phase5/review-hands-pair-v1','candidates/phase5/review-hands-overlap-v1',
+           'candidates/phase5/terminal-sampling-v1']
 
 
 def snapshot():
@@ -73,6 +74,8 @@ def main():
     subprocess.run([sys.executable,str(ROOT/'tools/review_source_arm.py'),'--backing-v2'],
                    cwd=ROOT,check=True,capture_output=True)
     subprocess.run([sys.executable,str(ROOT/'tools/refine_source_arm.py')],
+                   cwd=ROOT,check=True,capture_output=True)
+    subprocess.run([sys.executable,str(ROOT/'tools/study_terminal_sampling.py')],
                    cwd=ROOT,check=True,capture_output=True)
     after, encoded_after = snapshot()
     load_canonical()  # Re-check the immutable selected source after all builds.

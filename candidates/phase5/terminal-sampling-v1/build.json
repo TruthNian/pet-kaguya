@@ -1,0 +1,2103 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "method": "float32-premult-lanczos; single-final-straight-rgba8-quantization",
+  "camera": {
+    "scale": 0.15833333333333333,
+    "x": 0.36666666666667425,
+    "y": 7.883333333333354,
+    "visibleBBox": [
+      142,
+      26,
+      1066,
+      1226
+    ],
+    "floor": 202,
+    "topReserve": 12,
+    "cell": [
+      192,
+      208
+    ]
+  },
+  "role": "full-coverage-terminal-precision-study-not-an-active-pet",
+  "coverage": {
+    "actionStates": 9,
+    "lookDirections": 16,
+    "actualTimedActionCels": 57,
+    "comparedCels": 73
+  },
+  "atlasCanvas": [
+    1536,
+    2288
+  ],
+  "decodedBytes": 14057472,
+  "baselineAtlasRGBAHash": "89D096DF28D82B7F9DBC103D6A840D0A2D805E02461A308AFA2C7D7B01E4AE42",
+  "candidateAtlasRGBAHash": "8C69082C7ED3D9BEEF96620724763142020B7FC778753E8C954815B41A0398E1",
+  "filter": "same nonlinear-sRGB premultiplied Lanczos convention; not a linear-light change",
+  "oracle": "independent NumPy float64 separable sinc(x)*sinc(x/3), same support, normalization and border crop",
+  "oracleIsAestheticProof": false,
+  "allLegacyCelsReconstructedExactly": true,
+  "measurementDecimalPlaces": 9,
+  "measurementRoundingDoesNotRelaxPixelHashes": true,
+  "meanLegacyCompositedError": 0.357515739,
+  "meanCandidateCompositedError": 0.127655489,
+  "maximumFloat32FilterError": 3.0806e-05,
+  "allCelsLowerMeanCompositedError": true,
+  "quantization": "no uint8 straight/associated intermediate; float32 filter, float64 unassociation, final RGBA8 once",
+  "intermediateLanczosOvershootClamped": true,
+  "geometryAndSourcePixelsUnchanged": true,
+  "nativeTimingsChanged": false,
+  "hostResolutionChanged": false,
+  "hostFpsChanged": false,
+  "sourcePrecompositionRemoved": false,
+  "nativeUpscalingChanged": false,
+  "activeAtlasChanged": false,
+  "adopted": false,
+  "visualApproval": "pending",
+  "installableFullAtlas": false,
+  "installed": false,
+  "states": {
+    "idle": {
+      "nativeRows": [
+        0
+      ],
+      "camera": {
+        "scale": 0.15833333333333333,
+        "x": 0.36666666666667425,
+        "y": 7.883333333333354,
+        "visibleBBox": [
+          142,
+          26,
+          1066,
+          1226
+        ],
+        "floor": 202,
+        "topReserve": 12,
+        "cell": [
+          192,
+          208
+        ]
+      },
+      "durationsMs": [
+        1680,
+        660,
+        660,
+        840,
+        840,
+        1920
+      ],
+      "legacyFrameHashes": [
+        "E049C9010F4C3C2B2FD686620DCC1BF3FD97B4A97A5FE2913B69E4EA1924C6A8",
+        "409CACA82EFCCA7B445357D75A791F7AA1F831405BE852351DADBE3DC923D00D",
+        "27ECB0159235D3C250B17BFD3ED030AC809A14417698CE3E3415D053B37EBF32",
+        "77371B54FC0DA770B8D25309B0E2407655442A7C4CE969A5DF9E0BC5B1E75572",
+        "BDEE408A5CF0939715AB4B02F9BCEF9A46FDC896768BBDE3A932F82287B46F48",
+        "E049C9010F4C3C2B2FD686620DCC1BF3FD97B4A97A5FE2913B69E4EA1924C6A8"
+      ],
+      "candidateFrameHashes": [
+        "5B95C87D8108DA64F95FF2F1260C0E2745D18FFE8754A4F20E1D2B3966A02C7A",
+        "0BD60854B7191E4B5EB7A65C67EB327F378883BDAFDE6090AE3EA7582F451F62",
+        "A6C41891EA54C1AC02E3921ADF13F106435054E74C44819B002E2C3532F8848F",
+        "DB993D0AABF77F5C891D6D8A7591246F48923984BCBB2A952C0B086C1CE29832",
+        "42B2331EC965E5F77BE9CC4B129CCEB8A8F471C6002DC96AA6107DA3FEC4F2AD",
+        "5B95C87D8108DA64F95FF2F1260C0E2745D18FFE8754A4F20E1D2B3966A02C7A"
+      ],
+      "cels": [
+        {
+          "index": 0,
+          "legacyRGBAHash": "E049C9010F4C3C2B2FD686620DCC1BF3FD97B4A97A5FE2913B69E4EA1924C6A8",
+          "candidateRGBAHash": "5B95C87D8108DA64F95FF2F1260C0E2745D18FFE8754A4F20E1D2B3966A02C7A",
+          "changedPixels": 19604,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.35773514,
+            "compositedMaximumAbsoluteError": 13.615842831,
+            "alphaMeanAbsoluteError": 0.104747339,
+            "alphaMaximumAbsoluteError": 10.947094572
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127429221,
+            "compositedMaximumAbsoluteError": 0.898859517,
+            "alphaMeanAbsoluteError": 0.036632626,
+            "alphaMaximumAbsoluteError": 0.499865073
+          },
+          "float32FilterMaximumError": 3.0806e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 1,
+          "legacyRGBAHash": "409CACA82EFCCA7B445357D75A791F7AA1F831405BE852351DADBE3DC923D00D",
+          "candidateRGBAHash": "0BD60854B7191E4B5EB7A65C67EB327F378883BDAFDE6090AE3EA7582F451F62",
+          "changedPixels": 19634,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.358493199,
+            "compositedMaximumAbsoluteError": 11.04706498,
+            "alphaMeanAbsoluteError": 0.105266159,
+            "alphaMaximumAbsoluteError": 11.04706498
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127849832,
+            "compositedMaximumAbsoluteError": 0.960981944,
+            "alphaMeanAbsoluteError": 0.036570555,
+            "alphaMaximumAbsoluteError": 0.499980284
+          },
+          "float32FilterMaximumError": 2.9933e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 2,
+          "legacyRGBAHash": "27ECB0159235D3C250B17BFD3ED030AC809A14417698CE3E3415D053B37EBF32",
+          "candidateRGBAHash": "A6C41891EA54C1AC02E3921ADF13F106435054E74C44819B002E2C3532F8848F",
+          "changedPixels": 19721,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.360609047,
+            "compositedMaximumAbsoluteError": 10.183311133,
+            "alphaMeanAbsoluteError": 0.104831342,
+            "alphaMaximumAbsoluteError": 12.0
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127794515,
+            "compositedMaximumAbsoluteError": 0.93081865,
+            "alphaMeanAbsoluteError": 0.037178698,
+            "alphaMaximumAbsoluteError": 0.499727939
+          },
+          "float32FilterMaximumError": 2.5118e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 3,
+          "legacyRGBAHash": "77371B54FC0DA770B8D25309B0E2407655442A7C4CE969A5DF9E0BC5B1E75572",
+          "candidateRGBAHash": "DB993D0AABF77F5C891D6D8A7591246F48923984BCBB2A952C0B086C1CE29832",
+          "changedPixels": 19659,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.359613158,
+            "compositedMaximumAbsoluteError": 9.90334733,
+            "alphaMeanAbsoluteError": 0.105508633,
+            "alphaMaximumAbsoluteError": 9.943498406
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127569295,
+            "compositedMaximumAbsoluteError": 0.9541346,
+            "alphaMeanAbsoluteError": 0.037007337,
+            "alphaMaximumAbsoluteError": 0.499909863
+          },
+          "float32FilterMaximumError": 2.6248e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 4,
+          "legacyRGBAHash": "BDEE408A5CF0939715AB4B02F9BCEF9A46FDC896768BBDE3A932F82287B46F48",
+          "candidateRGBAHash": "42B2331EC965E5F77BE9CC4B129CCEB8A8F471C6002DC96AA6107DA3FEC4F2AD",
+          "changedPixels": 19579,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.357446495,
+            "compositedMaximumAbsoluteError": 14.192571127,
+            "alphaMeanAbsoluteError": 0.104654851,
+            "alphaMaximumAbsoluteError": 10.845125021
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127499012,
+            "compositedMaximumAbsoluteError": 0.919586103,
+            "alphaMeanAbsoluteError": 0.036982568,
+            "alphaMaximumAbsoluteError": 0.499913311
+          },
+          "float32FilterMaximumError": 2.6064e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 5,
+          "legacyRGBAHash": "E049C9010F4C3C2B2FD686620DCC1BF3FD97B4A97A5FE2913B69E4EA1924C6A8",
+          "candidateRGBAHash": "5B95C87D8108DA64F95FF2F1260C0E2745D18FFE8754A4F20E1D2B3966A02C7A",
+          "changedPixels": 19604,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.35773514,
+            "compositedMaximumAbsoluteError": 13.615842831,
+            "alphaMeanAbsoluteError": 0.104747339,
+            "alphaMaximumAbsoluteError": 10.947094572
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127429221,
+            "compositedMaximumAbsoluteError": 0.898859517,
+            "alphaMeanAbsoluteError": 0.036632626,
+            "alphaMaximumAbsoluteError": 0.499865073
+          },
+          "float32FilterMaximumError": 3.0806e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        }
+      ]
+    },
+    "run_right": {
+      "nativeRows": [
+        1
+      ],
+      "camera": {
+        "scale": 0.15833333333333333,
+        "x": 0.36666666666667425,
+        "y": 7.883333333333354,
+        "visibleBBox": [
+          142,
+          26,
+          1066,
+          1226
+        ],
+        "floor": 202,
+        "topReserve": 12,
+        "cell": [
+          192,
+          208
+        ]
+      },
+      "durationsMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        220
+      ],
+      "legacyFrameHashes": [
+        "85202B290D3C2E0EBDE00CFF7311D42CCDD4336305B413FD6C5C8B917F140889",
+        "2B1ED3C28DD48CF0AE6D5387E302C66805800CC27713A44A6B60AE7224A91ABB",
+        "A9C8266B1DCEEAE63184C58FD2728F42D32D3A48459378B94B580919EE9B304C",
+        "A5848C8D89039CA6F9DA996887E8C00BDDCDDFF05C159A09717B5642E883DE08",
+        "599CBDDA342DB8A744779585FF7B68598536B7B2671BBF4DAF6D535B432F56DF",
+        "766B119302DA7A47D50B40B1358D83CDECB66B59F01FE716C6EF3B16F30E9710",
+        "DDAFC1B2B0FC6074393791CF62315CB8FC726C927ED8EDAEB4C79004DD6F05F1",
+        "1C1A20B8410EDB917A2D8C9499357E722755CF8C7FBB70A18F9A6CDC0659AC27"
+      ],
+      "candidateFrameHashes": [
+        "7DC8742BF5C3C56C014D6BDA2EFDD47BB3AAC07EE464842E05811404D17035F0",
+        "D202AD86DB10CBDF558D2ED80009FA0E2F60BD30A2B810E7ACF7078784F31C40",
+        "C9168FA7B30EFA7C2A1A29BC3BCF08307007F119F68D73A556D47C7B63E306F2",
+        "E668DA329CE8FF7E19E38C6DEE38296DF6EC4B516482A39E61858235A534CE66",
+        "4820C3AA511272E373BCE6699B42F26710A419C5F81DB4CA7BDFF0E47995E118",
+        "12366D76277057104E7AB084029C66893C1088D3D69F3D616FF7C6BF9F0EB4C3",
+        "5A3FBBFDAF90D8558B0FA21E26428DDB71EF67B540D2F8ECDB094C5F7A9F5012",
+        "3771410240CD39AEDEAE10F55F5D57BA7459DC9E1B2AE4FB7D3BB1080344F673"
+      ],
+      "cels": [
+        {
+          "index": 0,
+          "legacyRGBAHash": "85202B290D3C2E0EBDE00CFF7311D42CCDD4336305B413FD6C5C8B917F140889",
+          "candidateRGBAHash": "7DC8742BF5C3C56C014D6BDA2EFDD47BB3AAC07EE464842E05811404D17035F0",
+          "changedPixels": 19599,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.357948407,
+            "compositedMaximumAbsoluteError": 13.615842831,
+            "alphaMeanAbsoluteError": 0.104400186,
+            "alphaMaximumAbsoluteError": 10.947094572
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127396184,
+            "compositedMaximumAbsoluteError": 0.973882459,
+            "alphaMeanAbsoluteError": 0.03666685,
+            "alphaMaximumAbsoluteError": 0.499865073
+          },
+          "float32FilterMaximumError": 2.6807e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 1,
+          "legacyRGBAHash": "2B1ED3C28DD48CF0AE6D5387E302C66805800CC27713A44A6B60AE7224A91ABB",
+          "candidateRGBAHash": "D202AD86DB10CBDF558D2ED80009FA0E2F60BD30A2B810E7ACF7078784F31C40",
+          "changedPixels": 19686,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.356983014,
+            "compositedMaximumAbsoluteError": 12.0,
+            "alphaMeanAbsoluteError": 0.101436345,
+            "alphaMaximumAbsoluteError": 12.0
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127291923,
+            "compositedMaximumAbsoluteError": 0.970672393,
+            "alphaMeanAbsoluteError": 0.037401652,
+            "alphaMaximumAbsoluteError": 0.499706192
+          },
+          "float32FilterMaximumError": 2.6845e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 2,
+          "legacyRGBAHash": "A9C8266B1DCEEAE63184C58FD2728F42D32D3A48459378B94B580919EE9B304C",
+          "candidateRGBAHash": "C9168FA7B30EFA7C2A1A29BC3BCF08307007F119F68D73A556D47C7B63E306F2",
+          "changedPixels": 19588,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.357986911,
+            "compositedMaximumAbsoluteError": 13.981076713,
+            "alphaMeanAbsoluteError": 0.107724708,
+            "alphaMaximumAbsoluteError": 13.952084113
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127441915,
+            "compositedMaximumAbsoluteError": 0.969011591,
+            "alphaMeanAbsoluteError": 0.038075918,
+            "alphaMaximumAbsoluteError": 0.499934972
+          },
+          "float32FilterMaximumError": 2.6347e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 3,
+          "legacyRGBAHash": "A5848C8D89039CA6F9DA996887E8C00BDDCDDFF05C159A09717B5642E883DE08",
+          "candidateRGBAHash": "E668DA329CE8FF7E19E38C6DEE38296DF6EC4B516482A39E61858235A534CE66",
+          "changedPixels": 19654,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.356475586,
+            "compositedMaximumAbsoluteError": 11.886407134,
+            "alphaMeanAbsoluteError": 0.101032507,
+            "alphaMaximumAbsoluteError": 11.886407134
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127496518,
+            "compositedMaximumAbsoluteError": 0.940940312,
+            "alphaMeanAbsoluteError": 0.037440995,
+            "alphaMaximumAbsoluteError": 0.49986752
+          },
+          "float32FilterMaximumError": 2.6845e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 4,
+          "legacyRGBAHash": "599CBDDA342DB8A744779585FF7B68598536B7B2671BBF4DAF6D535B432F56DF",
+          "candidateRGBAHash": "4820C3AA511272E373BCE6699B42F26710A419C5F81DB4CA7BDFF0E47995E118",
+          "changedPixels": 19637,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.356970366,
+            "compositedMaximumAbsoluteError": 13.615842831,
+            "alphaMeanAbsoluteError": 0.103158881,
+            "alphaMaximumAbsoluteError": 10.947094572
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127481897,
+            "compositedMaximumAbsoluteError": 0.93618737,
+            "alphaMeanAbsoluteError": 0.036835941,
+            "alphaMaximumAbsoluteError": 0.499923439
+          },
+          "float32FilterMaximumError": 2.6807e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 5,
+          "legacyRGBAHash": "766B119302DA7A47D50B40B1358D83CDECB66B59F01FE716C6EF3B16F30E9710",
+          "candidateRGBAHash": "12366D76277057104E7AB084029C66893C1088D3D69F3D616FF7C6BF9F0EB4C3",
+          "changedPixels": 19589,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.358545421,
+            "compositedMaximumAbsoluteError": 12.0,
+            "alphaMeanAbsoluteError": 0.106436179,
+            "alphaMaximumAbsoluteError": 12.122708814
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.126516049,
+            "compositedMaximumAbsoluteError": 0.944139061,
+            "alphaMeanAbsoluteError": 0.036992304,
+            "alphaMaximumAbsoluteError": 0.49997619
+          },
+          "float32FilterMaximumError": 2.585e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 6,
+          "legacyRGBAHash": "DDAFC1B2B0FC6074393791CF62315CB8FC726C927ED8EDAEB4C79004DD6F05F1",
+          "candidateRGBAHash": "5A3FBBFDAF90D8558B0FA21E26428DDB71EF67B540D2F8ECDB094C5F7A9F5012",
+          "changedPixels": 19594,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.358044514,
+            "compositedMaximumAbsoluteError": 9.878186577,
+            "alphaMeanAbsoluteError": 0.105065454,
+            "alphaMaximumAbsoluteError": 10.795833636
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127393304,
+            "compositedMaximumAbsoluteError": 0.948411659,
+            "alphaMeanAbsoluteError": 0.037435508,
+            "alphaMaximumAbsoluteError": 0.499955628
+          },
+          "float32FilterMaximumError": 2.648e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 7,
+          "legacyRGBAHash": "1C1A20B8410EDB917A2D8C9499357E722755CF8C7FBB70A18F9A6CDC0659AC27",
+          "candidateRGBAHash": "3771410240CD39AEDEAE10F55F5D57BA7459DC9E1B2AE4FB7D3BB1080344F673",
+          "changedPixels": 19622,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.358929094,
+            "compositedMaximumAbsoluteError": 12.0,
+            "alphaMeanAbsoluteError": 0.107211556,
+            "alphaMaximumAbsoluteError": 12.122708814
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.126697557,
+            "compositedMaximumAbsoluteError": 0.944903323,
+            "alphaMeanAbsoluteError": 0.03711369,
+            "alphaMaximumAbsoluteError": 0.49997619
+          },
+          "float32FilterMaximumError": 2.546e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        }
+      ]
+    },
+    "run_left": {
+      "nativeRows": [
+        2
+      ],
+      "camera": {
+        "scale": 0.15833333333333333,
+        "x": 0.36666666666667425,
+        "y": 7.883333333333354,
+        "visibleBBox": [
+          142,
+          26,
+          1066,
+          1226
+        ],
+        "floor": 202,
+        "topReserve": 12,
+        "cell": [
+          192,
+          208
+        ]
+      },
+      "durationsMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        220
+      ],
+      "legacyFrameHashes": [
+        "A4EEC1DBC8408DB94C9D17449E8DE60E8A8F3DE3593E20B195967DB03AB0D53A",
+        "696526D3293E744D0631FAA655BB4A173E9441D4FDFC6A6FD108669F875BC195",
+        "32393D69A982E9E7A2D47B6867929CB80BBD97E6EA3027A8DF6EF5F99F526A1F",
+        "6F11DBF63A2A03CAB63C9AD6E7189601C47715AD6D75B3039F722E9A335A8E77",
+        "94C65921F1519B0CFAF07C1E504CB0642F66A6CBE483F616B2DE08AD153A7A09",
+        "27C573C6859FAE8CE406B9F080B978B1E98B95EE02883D496044C418F7E3D9A1",
+        "5BA28BE85878ECB71063448E0611CD8E536F7AD77E88A600B3F89E58C7D8EBAE",
+        "C873FA268DB54196F9C56F6F9C80D90408A3308B339B3D679A4828582544281A"
+      ],
+      "candidateFrameHashes": [
+        "87ACDB21A537F57D0615934F224293307BF5214D333B9EE24A588F59FAD6387E",
+        "B25076681F9F72032824B99DC90007560B65ECC1B56D79D95867BCFE9713E333",
+        "D192E5159F70919892C991E73C3E2EE572A41D70492ABA1B469276133B542FF8",
+        "CF9E97068928BEC55016116831523DDAA573B7540AC15E415405A509E17A54C2",
+        "62F5AA0B24F000B0B98B243ABD9079D3C33BBFEB2BFDB12C2BE086475C7048FB",
+        "F5EF506002186F1FC6FC9A8F5A16C829BBBF422C87E50134B205F9E54EDA757B",
+        "2CCF195FEE1EC7B35C18852B313D9D82BDCBD88109D67E1DC47FF944F6AD87F2",
+        "02FE2BF4553078DD03A75B508DD167869E22842309C810D46DF10BC54457585D"
+      ],
+      "cels": [
+        {
+          "index": 0,
+          "legacyRGBAHash": "A4EEC1DBC8408DB94C9D17449E8DE60E8A8F3DE3593E20B195967DB03AB0D53A",
+          "candidateRGBAHash": "87ACDB21A537F57D0615934F224293307BF5214D333B9EE24A588F59FAD6387E",
+          "changedPixels": 19602,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.358108489,
+            "compositedMaximumAbsoluteError": 13.615842831,
+            "alphaMeanAbsoluteError": 0.104400186,
+            "alphaMaximumAbsoluteError": 10.947094572
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127362716,
+            "compositedMaximumAbsoluteError": 0.973882459,
+            "alphaMeanAbsoluteError": 0.03666685,
+            "alphaMaximumAbsoluteError": 0.499865073
+          },
+          "float32FilterMaximumError": 2.6807e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 1,
+          "legacyRGBAHash": "696526D3293E744D0631FAA655BB4A173E9441D4FDFC6A6FD108669F875BC195",
+          "candidateRGBAHash": "B25076681F9F72032824B99DC90007560B65ECC1B56D79D95867BCFE9713E333",
+          "changedPixels": 19675,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.357068112,
+            "compositedMaximumAbsoluteError": 12.0,
+            "alphaMeanAbsoluteError": 0.10246814,
+            "alphaMaximumAbsoluteError": 12.0
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127300917,
+            "compositedMaximumAbsoluteError": 0.970672393,
+            "alphaMeanAbsoluteError": 0.037588575,
+            "alphaMaximumAbsoluteError": 0.499706192
+          },
+          "float32FilterMaximumError": 2.6845e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 2,
+          "legacyRGBAHash": "32393D69A982E9E7A2D47B6867929CB80BBD97E6EA3027A8DF6EF5F99F526A1F",
+          "candidateRGBAHash": "D192E5159F70919892C991E73C3E2EE572A41D70492ABA1B469276133B542FF8",
+          "changedPixels": 19575,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.357742344,
+            "compositedMaximumAbsoluteError": 13.981076713,
+            "alphaMeanAbsoluteError": 0.107848114,
+            "alphaMaximumAbsoluteError": 13.952084113
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127574453,
+            "compositedMaximumAbsoluteError": 0.956965334,
+            "alphaMeanAbsoluteError": 0.038167218,
+            "alphaMaximumAbsoluteError": 0.499934972
+          },
+          "float32FilterMaximumError": 2.6347e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 3,
+          "legacyRGBAHash": "6F11DBF63A2A03CAB63C9AD6E7189601C47715AD6D75B3039F722E9A335A8E77",
+          "candidateRGBAHash": "CF9E97068928BEC55016116831523DDAA573B7540AC15E415405A509E17A54C2",
+          "changedPixels": 19643,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.356563084,
+            "compositedMaximumAbsoluteError": 11.886407134,
+            "alphaMeanAbsoluteError": 0.102080921,
+            "alphaMaximumAbsoluteError": 11.886407134
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127495795,
+            "compositedMaximumAbsoluteError": 0.940940312,
+            "alphaMeanAbsoluteError": 0.037632244,
+            "alphaMaximumAbsoluteError": 0.49986752
+          },
+          "float32FilterMaximumError": 2.6845e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 4,
+          "legacyRGBAHash": "94C65921F1519B0CFAF07C1E504CB0642F66A6CBE483F616B2DE08AD153A7A09",
+          "candidateRGBAHash": "62F5AA0B24F000B0B98B243ABD9079D3C33BBFEB2BFDB12C2BE086475C7048FB",
+          "changedPixels": 19640,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.357130447,
+            "compositedMaximumAbsoluteError": 13.615842831,
+            "alphaMeanAbsoluteError": 0.103158881,
+            "alphaMaximumAbsoluteError": 10.947094572
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127448429,
+            "compositedMaximumAbsoluteError": 0.93618737,
+            "alphaMeanAbsoluteError": 0.036835941,
+            "alphaMaximumAbsoluteError": 0.499923439
+          },
+          "float32FilterMaximumError": 2.6807e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 5,
+          "legacyRGBAHash": "27C573C6859FAE8CE406B9F080B978B1E98B95EE02883D496044C418F7E3D9A1",
+          "candidateRGBAHash": "F5EF506002186F1FC6FC9A8F5A16C829BBBF422C87E50134B205F9E54EDA757B",
+          "changedPixels": 19598,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.358413484,
+            "compositedMaximumAbsoluteError": 12.0,
+            "alphaMeanAbsoluteError": 0.105678388,
+            "alphaMaximumAbsoluteError": 12.122708814
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.12663972,
+            "compositedMaximumAbsoluteError": 0.944139061,
+            "alphaMeanAbsoluteError": 0.036958486,
+            "alphaMaximumAbsoluteError": 0.49997619
+          },
+          "float32FilterMaximumError": 2.4364e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 6,
+          "legacyRGBAHash": "5BA28BE85878ECB71063448E0611CD8E536F7AD77E88A600B3F89E58C7D8EBAE",
+          "candidateRGBAHash": "2CCF195FEE1EC7B35C18852B313D9D82BDCBD88109D67E1DC47FF944F6AD87F2",
+          "changedPixels": 19589,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.358327886,
+            "compositedMaximumAbsoluteError": 9.878186577,
+            "alphaMeanAbsoluteError": 0.105733802,
+            "alphaMaximumAbsoluteError": 10.795833636
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127467408,
+            "compositedMaximumAbsoluteError": 0.948411659,
+            "alphaMeanAbsoluteError": 0.037160197,
+            "alphaMaximumAbsoluteError": 0.499955628
+          },
+          "float32FilterMaximumError": 2.648e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 7,
+          "legacyRGBAHash": "C873FA268DB54196F9C56F6F9C80D90408A3308B339B3D679A4828582544281A",
+          "candidateRGBAHash": "02FE2BF4553078DD03A75B508DD167869E22842309C810D46DF10BC54457585D",
+          "changedPixels": 19627,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.359709812,
+            "compositedMaximumAbsoluteError": 12.0,
+            "alphaMeanAbsoluteError": 0.10753352,
+            "alphaMaximumAbsoluteError": 12.122708814
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.126826352,
+            "compositedMaximumAbsoluteError": 0.944903323,
+            "alphaMeanAbsoluteError": 0.037214149,
+            "alphaMaximumAbsoluteError": 0.49997619
+          },
+          "float32FilterMaximumError": 2.5156e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        }
+      ]
+    },
+    "waving": {
+      "nativeRows": [
+        3
+      ],
+      "camera": {
+        "scale": 0.15833333333333333,
+        "x": 0.36666666666667425,
+        "y": 7.883333333333354,
+        "visibleBBox": [
+          142,
+          26,
+          1066,
+          1226
+        ],
+        "floor": 202,
+        "topReserve": 12,
+        "cell": [
+          192,
+          208
+        ]
+      },
+      "durationsMs": [
+        140,
+        140,
+        140,
+        280
+      ],
+      "legacyFrameHashes": [
+        "D4B92531FFB5559FD99A006816D011601E83C56E2E15F2465FED768C7F0E6789",
+        "6D9F65C6A13CE81FBB9C6632D7997B77C0266361C1E734984AB4B94060917B0D",
+        "D4B92531FFB5559FD99A006816D011601E83C56E2E15F2465FED768C7F0E6789",
+        "E049C9010F4C3C2B2FD686620DCC1BF3FD97B4A97A5FE2913B69E4EA1924C6A8"
+      ],
+      "candidateFrameHashes": [
+        "906406D55D1CE8126C0499550FD4393911A4A83917FAA2CF0DB4626EC73748FD",
+        "41FF4CA92D31F001C2AEE21772C076B449E075AC2615E618C992B4E0B83762BA",
+        "906406D55D1CE8126C0499550FD4393911A4A83917FAA2CF0DB4626EC73748FD",
+        "5B95C87D8108DA64F95FF2F1260C0E2745D18FFE8754A4F20E1D2B3966A02C7A"
+      ],
+      "cels": [
+        {
+          "index": 0,
+          "legacyRGBAHash": "D4B92531FFB5559FD99A006816D011601E83C56E2E15F2465FED768C7F0E6789",
+          "candidateRGBAHash": "906406D55D1CE8126C0499550FD4393911A4A83917FAA2CF0DB4626EC73748FD",
+          "changedPixels": 19595,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.356182241,
+            "compositedMaximumAbsoluteError": 12.717490185,
+            "alphaMeanAbsoluteError": 0.111574723,
+            "alphaMaximumAbsoluteError": 10.947094572
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.128079439,
+            "compositedMaximumAbsoluteError": 0.91553868,
+            "alphaMeanAbsoluteError": 0.042828445,
+            "alphaMaximumAbsoluteError": 0.499914624
+          },
+          "float32FilterMaximumError": 3.0806e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 1,
+          "legacyRGBAHash": "6D9F65C6A13CE81FBB9C6632D7997B77C0266361C1E734984AB4B94060917B0D",
+          "candidateRGBAHash": "41FF4CA92D31F001C2AEE21772C076B449E075AC2615E618C992B4E0B83762BA",
+          "changedPixels": 19656,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.359492689,
+            "compositedMaximumAbsoluteError": 12.717490185,
+            "alphaMeanAbsoluteError": 0.104957081,
+            "alphaMaximumAbsoluteError": 10.947094572
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.12748087,
+            "compositedMaximumAbsoluteError": 0.898859517,
+            "alphaMeanAbsoluteError": 0.036828023,
+            "alphaMaximumAbsoluteError": 0.499865073
+          },
+          "float32FilterMaximumError": 3.0806e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 2,
+          "legacyRGBAHash": "D4B92531FFB5559FD99A006816D011601E83C56E2E15F2465FED768C7F0E6789",
+          "candidateRGBAHash": "906406D55D1CE8126C0499550FD4393911A4A83917FAA2CF0DB4626EC73748FD",
+          "changedPixels": 19595,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.356182241,
+            "compositedMaximumAbsoluteError": 12.717490185,
+            "alphaMeanAbsoluteError": 0.111574723,
+            "alphaMaximumAbsoluteError": 10.947094572
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.128079439,
+            "compositedMaximumAbsoluteError": 0.91553868,
+            "alphaMeanAbsoluteError": 0.042828445,
+            "alphaMaximumAbsoluteError": 0.499914624
+          },
+          "float32FilterMaximumError": 3.0806e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 3,
+          "legacyRGBAHash": "E049C9010F4C3C2B2FD686620DCC1BF3FD97B4A97A5FE2913B69E4EA1924C6A8",
+          "candidateRGBAHash": "5B95C87D8108DA64F95FF2F1260C0E2745D18FFE8754A4F20E1D2B3966A02C7A",
+          "changedPixels": 19604,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.35773514,
+            "compositedMaximumAbsoluteError": 13.615842831,
+            "alphaMeanAbsoluteError": 0.104747339,
+            "alphaMaximumAbsoluteError": 10.947094572
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127429221,
+            "compositedMaximumAbsoluteError": 0.898859517,
+            "alphaMeanAbsoluteError": 0.036632626,
+            "alphaMaximumAbsoluteError": 0.499865073
+          },
+          "float32FilterMaximumError": 3.0806e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        }
+      ]
+    },
+    "jumping": {
+      "nativeRows": [
+        4
+      ],
+      "camera": {
+        "scale": 0.15833333333333333,
+        "x": 0.36666666666667425,
+        "y": 7.883333333333354,
+        "visibleBBox": [
+          142,
+          26,
+          1066,
+          1226
+        ],
+        "floor": 202,
+        "topReserve": 12,
+        "cell": [
+          192,
+          208
+        ]
+      },
+      "durationsMs": [
+        140,
+        140,
+        140,
+        140,
+        280
+      ],
+      "legacyFrameHashes": [
+        "D97503D6294CC134F5ED6486FB186351C7472F54EDEC6B56C6597C7CA99BF7DF",
+        "F66213D8143F5F4FC35502F1B9318E8FC2AF347F21285F4476AE00A9F513E039",
+        "687145828FFC7050E6B6FC08FD0CD7E7EE1491240A5FD824F914430F263E010C",
+        "2F2BEFF1B30A51F51E0A398E38EABA41372DD40A034EB7468E640C598EC55C58",
+        "1A0BF0292DB2741830B000434A6B332AF1E5B73765C70D1FB24FB850F0A9A44B"
+      ],
+      "candidateFrameHashes": [
+        "F1A341A3741DAE76AB7289E14F3A3864D8BF06BEB8E47D5F093FA5F0F80564F4",
+        "38AA2B1BC90871F73E5C9D7E657685282E4BA9B7EFCD973BF827AD5C4274E295",
+        "1648116314E61708E56838E4E3A55766E531CBB72CE6C360F220ED7EE594A582",
+        "F4504B615AA22A8DE562EA963A2D94B10AECF1CD2AD9B07382200D44519279D7",
+        "C6FE95C7DE5A9FDA264F7ED5D405C92AEB590A9F2C8264CF3D41746238712430"
+      ],
+      "cels": [
+        {
+          "index": 0,
+          "legacyRGBAHash": "D97503D6294CC134F5ED6486FB186351C7472F54EDEC6B56C6597C7CA99BF7DF",
+          "candidateRGBAHash": "F1A341A3741DAE76AB7289E14F3A3864D8BF06BEB8E47D5F093FA5F0F80564F4",
+          "changedPixels": 19604,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.358526515,
+            "compositedMaximumAbsoluteError": 10.982098198,
+            "alphaMeanAbsoluteError": 0.105730227,
+            "alphaMaximumAbsoluteError": 10.358467199
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127308007,
+            "compositedMaximumAbsoluteError": 0.968179693,
+            "alphaMeanAbsoluteError": 0.036577737,
+            "alphaMaximumAbsoluteError": 0.499895537
+          },
+          "float32FilterMaximumError": 2.9131e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 1,
+          "legacyRGBAHash": "F66213D8143F5F4FC35502F1B9318E8FC2AF347F21285F4476AE00A9F513E039",
+          "candidateRGBAHash": "38AA2B1BC90871F73E5C9D7E657685282E4BA9B7EFCD973BF827AD5C4274E295",
+          "changedPixels": 19698,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.358273821,
+            "compositedMaximumAbsoluteError": 10.380360621,
+            "alphaMeanAbsoluteError": 0.104120894,
+            "alphaMaximumAbsoluteError": 9.958182316
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127551662,
+            "compositedMaximumAbsoluteError": 0.944769618,
+            "alphaMeanAbsoluteError": 0.036718223,
+            "alphaMaximumAbsoluteError": 0.499805624
+          },
+          "float32FilterMaximumError": 2.7737e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 2,
+          "legacyRGBAHash": "687145828FFC7050E6B6FC08FD0CD7E7EE1491240A5FD824F914430F263E010C",
+          "candidateRGBAHash": "1648116314E61708E56838E4E3A55766E531CBB72CE6C360F220ED7EE594A582",
+          "changedPixels": 19594,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.357663654,
+            "compositedMaximumAbsoluteError": 13.615842831,
+            "alphaMeanAbsoluteError": 0.103825112,
+            "alphaMaximumAbsoluteError": 10.947370074
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127353516,
+            "compositedMaximumAbsoluteError": 0.929504385,
+            "alphaMeanAbsoluteError": 0.037022785,
+            "alphaMaximumAbsoluteError": 0.499932872
+          },
+          "float32FilterMaximumError": 2.5805e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 3,
+          "legacyRGBAHash": "2F2BEFF1B30A51F51E0A398E38EABA41372DD40A034EB7468E640C598EC55C58",
+          "candidateRGBAHash": "F4504B615AA22A8DE562EA963A2D94B10AECF1CD2AD9B07382200D44519279D7",
+          "changedPixels": 19672,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.358276698,
+            "compositedMaximumAbsoluteError": 10.004189696,
+            "alphaMeanAbsoluteError": 0.103805794,
+            "alphaMaximumAbsoluteError": 9.632393662
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127824983,
+            "compositedMaximumAbsoluteError": 0.92974008,
+            "alphaMeanAbsoluteError": 0.037157373,
+            "alphaMaximumAbsoluteError": 0.499940298
+          },
+          "float32FilterMaximumError": 2.7737e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 4,
+          "legacyRGBAHash": "1A0BF0292DB2741830B000434A6B332AF1E5B73765C70D1FB24FB850F0A9A44B",
+          "candidateRGBAHash": "C6FE95C7DE5A9FDA264F7ED5D405C92AEB590A9F2C8264CF3D41746238712430",
+          "changedPixels": 19536,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.357784326,
+            "compositedMaximumAbsoluteError": 13.011785443,
+            "alphaMeanAbsoluteError": 0.105367475,
+            "alphaMaximumAbsoluteError": 12.636793098
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127504987,
+            "compositedMaximumAbsoluteError": 0.97268285,
+            "alphaMeanAbsoluteError": 0.037176321,
+            "alphaMaximumAbsoluteError": 0.499963024
+          },
+          "float32FilterMaximumError": 2.6684e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        }
+      ]
+    },
+    "failed": {
+      "nativeRows": [
+        5
+      ],
+      "camera": {
+        "scale": 0.15833333333333333,
+        "x": 0.36666666666667425,
+        "y": 7.883333333333354,
+        "visibleBBox": [
+          142,
+          26,
+          1066,
+          1226
+        ],
+        "floor": 202,
+        "topReserve": 12,
+        "cell": [
+          192,
+          208
+        ]
+      },
+      "durationsMs": [
+        140,
+        140,
+        140,
+        140,
+        140,
+        140,
+        140,
+        240
+      ],
+      "legacyFrameHashes": [
+        "2D0B74400BBB3426FCD4B717E4BC73BEEEDC600C64F0B33379DA1B96B0E3F33C",
+        "D18657BA39F4277B3064AC9E862763D1097FA9A825214C35E56F5058BF47420D",
+        "C4BBF031498772CFC895343210E6EE4200EA2AB293AC02E38116C735C1C8DAF1",
+        "27BAC200BBFD7C2395BAA18E99600C493B097B924CB1773FA7C7E3C0DB7DEB47",
+        "2C3F0E11167DC449C4AD167C1F955C8EA5126381A0164F5A42E6DCC59E54B8FF",
+        "FFA57A08CF240978CB2B8897E2C4095D5E9C3B37DA378824CB4ADC46E8B6C116",
+        "03D2D45766A46F41E79B0667BF987CEEDD4C960755B83C798D1D54BF4436499A",
+        "ED153210E07106117706A2C4DD55C5922B439D8AA92356183D8726BD8543E128"
+      ],
+      "candidateFrameHashes": [
+        "14D04F8917EEAA5EC3ABCBAFBCFE5BBF7F23D920530D9680BB0BC277EE5291A9",
+        "8B44E17AA8948CE756A96DC02CA9792FD8E3B87FE2923E4B9B0034C5BA7F644D",
+        "2E70ECA6BC9A252C83E6C727522DF6A9BCA4CA7B5F6B36BFC20820B36D780DA1",
+        "58C7AC53C4D0A38440CBFA3E96B65AE9CE6CD1697726AA1DDFD1B9B314EFEFDE",
+        "8CAA387EFE7AC550C40AF9B97BE44A300784EC958724BCC446C1F4D2C9519E10",
+        "15432230DD076061A30DC817629BA523A46BC826B53E9BBF053B466671BBA14B",
+        "F18619B0C40856FDF40BF6B0BFC46F84FE646461937A21F8B70D16E7A50FCAD9",
+        "396C4E2C5E200C4020EF2213632D42CD8E19D7CC5FD7281EFF1A6E0F82A8DD98"
+      ],
+      "cels": [
+        {
+          "index": 0,
+          "legacyRGBAHash": "2D0B74400BBB3426FCD4B717E4BC73BEEEDC600C64F0B33379DA1B96B0E3F33C",
+          "candidateRGBAHash": "14D04F8917EEAA5EC3ABCBAFBCFE5BBF7F23D920530D9680BB0BC277EE5291A9",
+          "changedPixels": 19617,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.357458847,
+            "compositedMaximumAbsoluteError": 10.294897956,
+            "alphaMeanAbsoluteError": 0.106512659,
+            "alphaMaximumAbsoluteError": 10.534481677
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127609495,
+            "compositedMaximumAbsoluteError": 0.939054488,
+            "alphaMeanAbsoluteError": 0.036968476,
+            "alphaMaximumAbsoluteError": 0.499728844
+          },
+          "float32FilterMaximumError": 2.6152e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 1,
+          "legacyRGBAHash": "D18657BA39F4277B3064AC9E862763D1097FA9A825214C35E56F5058BF47420D",
+          "candidateRGBAHash": "8B44E17AA8948CE756A96DC02CA9792FD8E3B87FE2923E4B9B0034C5BA7F644D",
+          "changedPixels": 19578,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.358378152,
+            "compositedMaximumAbsoluteError": 9.691056931,
+            "alphaMeanAbsoluteError": 0.106066019,
+            "alphaMaximumAbsoluteError": 12.0
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127108775,
+            "compositedMaximumAbsoluteError": 0.941117252,
+            "alphaMeanAbsoluteError": 0.037144188,
+            "alphaMaximumAbsoluteError": 0.499941339
+          },
+          "float32FilterMaximumError": 2.5118e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 2,
+          "legacyRGBAHash": "C4BBF031498772CFC895343210E6EE4200EA2AB293AC02E38116C735C1C8DAF1",
+          "candidateRGBAHash": "2E70ECA6BC9A252C83E6C727522DF6A9BCA4CA7B5F6B36BFC20820B36D780DA1",
+          "changedPixels": 19494,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.357000127,
+            "compositedMaximumAbsoluteError": 10.525993142,
+            "alphaMeanAbsoluteError": 0.105372171,
+            "alphaMaximumAbsoluteError": 9.240973371
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.126886633,
+            "compositedMaximumAbsoluteError": 0.968183609,
+            "alphaMeanAbsoluteError": 0.036678052,
+            "alphaMaximumAbsoluteError": 0.499755039
+          },
+          "float32FilterMaximumError": 2.9131e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 3,
+          "legacyRGBAHash": "27BAC200BBFD7C2395BAA18E99600C493B097B924CB1773FA7C7E3C0DB7DEB47",
+          "candidateRGBAHash": "58C7AC53C4D0A38440CBFA3E96B65AE9CE6CD1697726AA1DDFD1B9B314EFEFDE",
+          "changedPixels": 19475,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.355547215,
+            "compositedMaximumAbsoluteError": 13.615842831,
+            "alphaMeanAbsoluteError": 0.104435161,
+            "alphaMaximumAbsoluteError": 10.947336966
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.126531577,
+            "compositedMaximumAbsoluteError": 0.953696716,
+            "alphaMeanAbsoluteError": 0.036865549,
+            "alphaMaximumAbsoluteError": 0.499889643
+          },
+          "float32FilterMaximumError": 2.5118e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 4,
+          "legacyRGBAHash": "2C3F0E11167DC449C4AD167C1F955C8EA5126381A0164F5A42E6DCC59E54B8FF",
+          "candidateRGBAHash": "8CAA387EFE7AC550C40AF9B97BE44A300784EC958724BCC446C1F4D2C9519E10",
+          "changedPixels": 19453,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.355624695,
+            "compositedMaximumAbsoluteError": 13.615842831,
+            "alphaMeanAbsoluteError": 0.104240252,
+            "alphaMaximumAbsoluteError": 10.947336966
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.126377652,
+            "compositedMaximumAbsoluteError": 0.953696716,
+            "alphaMeanAbsoluteError": 0.03689596,
+            "alphaMaximumAbsoluteError": 0.499864809
+          },
+          "float32FilterMaximumError": 2.5118e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 5,
+          "legacyRGBAHash": "FFA57A08CF240978CB2B8897E2C4095D5E9C3B37DA378824CB4ADC46E8B6C116",
+          "candidateRGBAHash": "15432230DD076061A30DC817629BA523A46BC826B53E9BBF053B466671BBA14B",
+          "changedPixels": 19482,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.357023919,
+            "compositedMaximumAbsoluteError": 10.525993142,
+            "alphaMeanAbsoluteError": 0.105571685,
+            "alphaMaximumAbsoluteError": 9.240973371
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127020283,
+            "compositedMaximumAbsoluteError": 0.968183609,
+            "alphaMeanAbsoluteError": 0.036781703,
+            "alphaMaximumAbsoluteError": 0.499700672
+          },
+          "float32FilterMaximumError": 2.9131e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 6,
+          "legacyRGBAHash": "03D2D45766A46F41E79B0667BF987CEEDD4C960755B83C798D1D54BF4436499A",
+          "candidateRGBAHash": "F18619B0C40856FDF40BF6B0BFC46F84FE646461937A21F8B70D16E7A50FCAD9",
+          "changedPixels": 19582,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.358332097,
+            "compositedMaximumAbsoluteError": 9.936641692,
+            "alphaMeanAbsoluteError": 0.10550445,
+            "alphaMaximumAbsoluteError": 9.930008805
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127605119,
+            "compositedMaximumAbsoluteError": 0.962695341,
+            "alphaMeanAbsoluteError": 0.037044997,
+            "alphaMaximumAbsoluteError": 0.499784775
+          },
+          "float32FilterMaximumError": 2.5118e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 7,
+          "legacyRGBAHash": "ED153210E07106117706A2C4DD55C5922B439D8AA92356183D8726BD8543E128",
+          "candidateRGBAHash": "396C4E2C5E200C4020EF2213632D42CD8E19D7CC5FD7281EFF1A6E0F82A8DD98",
+          "changedPixels": 19581,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.357452966,
+            "compositedMaximumAbsoluteError": 14.192571127,
+            "alphaMeanAbsoluteError": 0.105483054,
+            "alphaMaximumAbsoluteError": 10.845194717
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127230003,
+            "compositedMaximumAbsoluteError": 0.942674131,
+            "alphaMeanAbsoluteError": 0.036707214,
+            "alphaMaximumAbsoluteError": 0.499913311
+          },
+          "float32FilterMaximumError": 2.5118e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        }
+      ]
+    },
+    "waiting": {
+      "nativeRows": [
+        6
+      ],
+      "camera": {
+        "scale": 0.15833333333333333,
+        "x": 0.36666666666667425,
+        "y": 7.883333333333354,
+        "visibleBBox": [
+          142,
+          26,
+          1066,
+          1226
+        ],
+        "floor": 202,
+        "topReserve": 12,
+        "cell": [
+          192,
+          208
+        ]
+      },
+      "durationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        260
+      ],
+      "legacyFrameHashes": [
+        "D6F3A6201EB8877FB3FAE183D8142B92743B2B07283F6F96FBFC208E65D4633A",
+        "48902D7A679FE3A018E2FFA2BBCA8BA42CD1A0E32A6322BA1D5723D818BC7190",
+        "62A52963EBF9B5060FF1B3AEE69FD7B8FFDB63B7CD7BEA922B02DC64AACE757F",
+        "7AD3F53858DFA3CD0D3D2A15A538455C5B12E04D62A5939087CCF54C245D22B7",
+        "48902D7A679FE3A018E2FFA2BBCA8BA42CD1A0E32A6322BA1D5723D818BC7190",
+        "D6F3A6201EB8877FB3FAE183D8142B92743B2B07283F6F96FBFC208E65D4633A"
+      ],
+      "candidateFrameHashes": [
+        "DA837F49F27C227CF6446420F30540F3682B215850741206DEBB94B4A8545ABE",
+        "9138D96BEAC84479ED2C93990767F9DD39D8BC29DDC6A613D21ED8977F87C416",
+        "EF2C20B3469E73E89AD8077CE3679C16C46624119BE0541874C3696D4620AA56",
+        "6964D11F88728F8697369C7CF96F918524472572DF35FD19BCDCA9023C3D3668",
+        "9138D96BEAC84479ED2C93990767F9DD39D8BC29DDC6A613D21ED8977F87C416",
+        "DA837F49F27C227CF6446420F30540F3682B215850741206DEBB94B4A8545ABE"
+      ],
+      "cels": [
+        {
+          "index": 0,
+          "legacyRGBAHash": "D6F3A6201EB8877FB3FAE183D8142B92743B2B07283F6F96FBFC208E65D4633A",
+          "candidateRGBAHash": "DA837F49F27C227CF6446420F30540F3682B215850741206DEBB94B4A8545ABE",
+          "changedPixels": 19654,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.359599946,
+            "compositedMaximumAbsoluteError": 12.717490185,
+            "alphaMeanAbsoluteError": 0.108673602,
+            "alphaMaximumAbsoluteError": 10.947094572
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127946117,
+            "compositedMaximumAbsoluteError": 0.958095536,
+            "alphaMeanAbsoluteError": 0.040411092,
+            "alphaMaximumAbsoluteError": 0.499865073
+          },
+          "float32FilterMaximumError": 3.0806e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 1,
+          "legacyRGBAHash": "48902D7A679FE3A018E2FFA2BBCA8BA42CD1A0E32A6322BA1D5723D818BC7190",
+          "candidateRGBAHash": "9138D96BEAC84479ED2C93990767F9DD39D8BC29DDC6A613D21ED8977F87C416",
+          "changedPixels": 19641,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.35926714,
+            "compositedMaximumAbsoluteError": 12.717490185,
+            "alphaMeanAbsoluteError": 0.108144973,
+            "alphaMaximumAbsoluteError": 10.94701171
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127754027,
+            "compositedMaximumAbsoluteError": 0.958095536,
+            "alphaMeanAbsoluteError": 0.040465773,
+            "alphaMaximumAbsoluteError": 0.499920806
+          },
+          "float32FilterMaximumError": 3.0806e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 2,
+          "legacyRGBAHash": "62A52963EBF9B5060FF1B3AEE69FD7B8FFDB63B7CD7BEA922B02DC64AACE757F",
+          "candidateRGBAHash": "EF2C20B3469E73E89AD8077CE3679C16C46624119BE0541874C3696D4620AA56",
+          "changedPixels": 19706,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.359444001,
+            "compositedMaximumAbsoluteError": 12.717490185,
+            "alphaMeanAbsoluteError": 0.107222116,
+            "alphaMaximumAbsoluteError": 10.946887234
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.128097284,
+            "compositedMaximumAbsoluteError": 0.958095536,
+            "alphaMeanAbsoluteError": 0.040686241,
+            "alphaMaximumAbsoluteError": 0.499865624
+          },
+          "float32FilterMaximumError": 2.5118e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 3,
+          "legacyRGBAHash": "7AD3F53858DFA3CD0D3D2A15A538455C5B12E04D62A5939087CCF54C245D22B7",
+          "candidateRGBAHash": "6964D11F88728F8697369C7CF96F918524472572DF35FD19BCDCA9023C3D3668",
+          "changedPixels": 19698,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.359586445,
+            "compositedMaximumAbsoluteError": 12.717490185,
+            "alphaMeanAbsoluteError": 0.107507841,
+            "alphaMaximumAbsoluteError": 10.946887234
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.128121117,
+            "compositedMaximumAbsoluteError": 0.958095536,
+            "alphaMeanAbsoluteError": 0.040655476,
+            "alphaMaximumAbsoluteError": 0.499941339
+          },
+          "float32FilterMaximumError": 2.5118e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 4,
+          "legacyRGBAHash": "48902D7A679FE3A018E2FFA2BBCA8BA42CD1A0E32A6322BA1D5723D818BC7190",
+          "candidateRGBAHash": "9138D96BEAC84479ED2C93990767F9DD39D8BC29DDC6A613D21ED8977F87C416",
+          "changedPixels": 19641,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.35926714,
+            "compositedMaximumAbsoluteError": 12.717490185,
+            "alphaMeanAbsoluteError": 0.108144973,
+            "alphaMaximumAbsoluteError": 10.94701171
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127754027,
+            "compositedMaximumAbsoluteError": 0.958095536,
+            "alphaMeanAbsoluteError": 0.040465773,
+            "alphaMaximumAbsoluteError": 0.499920806
+          },
+          "float32FilterMaximumError": 3.0806e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 5,
+          "legacyRGBAHash": "D6F3A6201EB8877FB3FAE183D8142B92743B2B07283F6F96FBFC208E65D4633A",
+          "candidateRGBAHash": "DA837F49F27C227CF6446420F30540F3682B215850741206DEBB94B4A8545ABE",
+          "changedPixels": 19654,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.359599946,
+            "compositedMaximumAbsoluteError": 12.717490185,
+            "alphaMeanAbsoluteError": 0.108673602,
+            "alphaMaximumAbsoluteError": 10.947094572
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127946117,
+            "compositedMaximumAbsoluteError": 0.958095536,
+            "alphaMeanAbsoluteError": 0.040411092,
+            "alphaMaximumAbsoluteError": 0.499865073
+          },
+          "float32FilterMaximumError": 3.0806e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        }
+      ]
+    },
+    "processing": {
+      "nativeRows": [
+        7
+      ],
+      "camera": {
+        "scale": 0.15833333333333333,
+        "x": 0.36666666666667425,
+        "y": 7.883333333333354,
+        "visibleBBox": [
+          142,
+          26,
+          1066,
+          1226
+        ],
+        "floor": 202,
+        "topReserve": 12,
+        "cell": [
+          192,
+          208
+        ]
+      },
+      "durationsMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        220
+      ],
+      "legacyFrameHashes": [
+        "48644E9BA135281A27D4FFE604F66DA04E63E092757143AECD1557ED5B745C22",
+        "48644E9BA135281A27D4FFE604F66DA04E63E092757143AECD1557ED5B745C22",
+        "BF07358A0EE8C566EEFF3635AB52C1D6DB124814D2EACC17496D1643D938AD40",
+        "477B4252467427956D87974E277E7CFE3CCEA88187CE824A8F33B55D01E148F9",
+        "9E430FF9B84F9173D1181E1145A084EF21C7D2B6ED30C233A687B1A8077F47DF",
+        "48644E9BA135281A27D4FFE604F66DA04E63E092757143AECD1557ED5B745C22"
+      ],
+      "candidateFrameHashes": [
+        "48A5619A3713804165BD03F4E0B044EFA977ED1106911E67BB2530CD14544870",
+        "48A5619A3713804165BD03F4E0B044EFA977ED1106911E67BB2530CD14544870",
+        "46C779BBB741F8924DBB1A3AA66945F37E68114E68B76F8901B4EE4D8568719E",
+        "0A175786838BD91966BB3E6B4BF386DB793A832DC06D789879C88049DEF1B9E0",
+        "A41F01DBBD93DEA825B4577CF95FE67B8701BB58344BA351578F09238453CC10",
+        "48A5619A3713804165BD03F4E0B044EFA977ED1106911E67BB2530CD14544870"
+      ],
+      "cels": [
+        {
+          "index": 0,
+          "legacyRGBAHash": "48644E9BA135281A27D4FFE604F66DA04E63E092757143AECD1557ED5B745C22",
+          "candidateRGBAHash": "48A5619A3713804165BD03F4E0B044EFA977ED1106911E67BB2530CD14544870",
+          "changedPixels": 19620,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.357104311,
+            "compositedMaximumAbsoluteError": 12.717490185,
+            "alphaMeanAbsoluteError": 0.111259156,
+            "alphaMaximumAbsoluteError": 10.947094572
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.128135553,
+            "compositedMaximumAbsoluteError": 0.920240733,
+            "alphaMeanAbsoluteError": 0.042524538,
+            "alphaMaximumAbsoluteError": 0.499865073
+          },
+          "float32FilterMaximumError": 3.0806e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 1,
+          "legacyRGBAHash": "48644E9BA135281A27D4FFE604F66DA04E63E092757143AECD1557ED5B745C22",
+          "candidateRGBAHash": "48A5619A3713804165BD03F4E0B044EFA977ED1106911E67BB2530CD14544870",
+          "changedPixels": 19620,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.357104311,
+            "compositedMaximumAbsoluteError": 12.717490185,
+            "alphaMeanAbsoluteError": 0.111259156,
+            "alphaMaximumAbsoluteError": 10.947094572
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.128135553,
+            "compositedMaximumAbsoluteError": 0.920240733,
+            "alphaMeanAbsoluteError": 0.042524538,
+            "alphaMaximumAbsoluteError": 0.499865073
+          },
+          "float32FilterMaximumError": 3.0806e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 2,
+          "legacyRGBAHash": "BF07358A0EE8C566EEFF3635AB52C1D6DB124814D2EACC17496D1643D938AD40",
+          "candidateRGBAHash": "46C779BBB741F8924DBB1A3AA66945F37E68114E68B76F8901B4EE4D8568719E",
+          "changedPixels": 19617,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.356726144,
+            "compositedMaximumAbsoluteError": 12.717490185,
+            "alphaMeanAbsoluteError": 0.110366633,
+            "alphaMaximumAbsoluteError": 10.946956415
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.128104585,
+            "compositedMaximumAbsoluteError": 0.920240733,
+            "alphaMeanAbsoluteError": 0.042540798,
+            "alphaMaximumAbsoluteError": 0.499908474
+          },
+          "float32FilterMaximumError": 3.0806e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 3,
+          "legacyRGBAHash": "477B4252467427956D87974E277E7CFE3CCEA88187CE824A8F33B55D01E148F9",
+          "candidateRGBAHash": "0A175786838BD91966BB3E6B4BF386DB793A832DC06D789879C88049DEF1B9E0",
+          "changedPixels": 19637,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.3571663,
+            "compositedMaximumAbsoluteError": 12.717490185,
+            "alphaMeanAbsoluteError": 0.110433181,
+            "alphaMaximumAbsoluteError": 10.946817986
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.12828413,
+            "compositedMaximumAbsoluteError": 0.944410803,
+            "alphaMeanAbsoluteError": 0.042801563,
+            "alphaMaximumAbsoluteError": 0.499941339
+          },
+          "float32FilterMaximumError": 2.5118e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 4,
+          "legacyRGBAHash": "9E430FF9B84F9173D1181E1145A084EF21C7D2B6ED30C233A687B1A8077F47DF",
+          "candidateRGBAHash": "A41F01DBBD93DEA825B4577CF95FE67B8701BB58344BA351578F09238453CC10",
+          "changedPixels": 19628,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.357005215,
+            "compositedMaximumAbsoluteError": 12.717490185,
+            "alphaMeanAbsoluteError": 0.110380489,
+            "alphaMaximumAbsoluteError": 10.946956415
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.128266287,
+            "compositedMaximumAbsoluteError": 0.920240733,
+            "alphaMeanAbsoluteError": 0.042665704,
+            "alphaMaximumAbsoluteError": 0.499941339
+          },
+          "float32FilterMaximumError": 2.5118e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 5,
+          "legacyRGBAHash": "48644E9BA135281A27D4FFE604F66DA04E63E092757143AECD1557ED5B745C22",
+          "candidateRGBAHash": "48A5619A3713804165BD03F4E0B044EFA977ED1106911E67BB2530CD14544870",
+          "changedPixels": 19620,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.357104311,
+            "compositedMaximumAbsoluteError": 12.717490185,
+            "alphaMeanAbsoluteError": 0.111259156,
+            "alphaMaximumAbsoluteError": 10.947094572
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.128135553,
+            "compositedMaximumAbsoluteError": 0.920240733,
+            "alphaMeanAbsoluteError": 0.042524538,
+            "alphaMaximumAbsoluteError": 0.499865073
+          },
+          "float32FilterMaximumError": 3.0806e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        }
+      ]
+    },
+    "review": {
+      "nativeRows": [
+        8
+      ],
+      "camera": {
+        "scale": 0.15833333333333333,
+        "x": 0.36666666666667425,
+        "y": 7.883333333333354,
+        "visibleBBox": [
+          142,
+          26,
+          1066,
+          1226
+        ],
+        "floor": 202,
+        "topReserve": 12,
+        "cell": [
+          192,
+          208
+        ]
+      },
+      "durationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        280
+      ],
+      "legacyFrameHashes": [
+        "AF91CA1B6139C71DC93901B9A8AFB44AB153C036F841EAB60597C0D0F5C36E73",
+        "BCCAC1FF6826DFBE1B65AF35BA81BCD20CFEF50A9522596B8530AACA481CED62",
+        "DADBAFB1605C7BA2A64895B6099672891FBE0CECD6029A1D873B0E926C88F10E",
+        "61CA98F16422A51AB309899FB906E51B9F8154214A1C9E9B6509D20A1C091A97",
+        "BCCAC1FF6826DFBE1B65AF35BA81BCD20CFEF50A9522596B8530AACA481CED62",
+        "AF91CA1B6139C71DC93901B9A8AFB44AB153C036F841EAB60597C0D0F5C36E73"
+      ],
+      "candidateFrameHashes": [
+        "87A18D1CCBA49E8046969ABF07EB6D5E1A1946C268F9F9B43317C88B9763A10C",
+        "AA99CBB2CB8AA7D1DD633CD75D0963C0FBC76193A5C6BF848A53DF846F78C8FC",
+        "272BFC4B9B3E366D58C85179269D4ADFCD573C347B2C82A7D3FC1B8120ABBC17",
+        "2DDB2189514066309A55245A217407111E6BBE287941130DC6342DB227D26D8E",
+        "AA99CBB2CB8AA7D1DD633CD75D0963C0FBC76193A5C6BF848A53DF846F78C8FC",
+        "87A18D1CCBA49E8046969ABF07EB6D5E1A1946C268F9F9B43317C88B9763A10C"
+      ],
+      "cels": [
+        {
+          "index": 0,
+          "legacyRGBAHash": "AF91CA1B6139C71DC93901B9A8AFB44AB153C036F841EAB60597C0D0F5C36E73",
+          "candidateRGBAHash": "87A18D1CCBA49E8046969ABF07EB6D5E1A1946C268F9F9B43317C88B9763A10C",
+          "changedPixels": 19550,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.35369028,
+            "compositedMaximumAbsoluteError": 11.636992843,
+            "alphaMeanAbsoluteError": 0.121749041,
+            "alphaMaximumAbsoluteError": 10.947094572
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.12934555,
+            "compositedMaximumAbsoluteError": 0.941939283,
+            "alphaMeanAbsoluteError": 0.052531334,
+            "alphaMaximumAbsoluteError": 0.499865073
+          },
+          "float32FilterMaximumError": 3.0806e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 1,
+          "legacyRGBAHash": "BCCAC1FF6826DFBE1B65AF35BA81BCD20CFEF50A9522596B8530AACA481CED62",
+          "candidateRGBAHash": "AA99CBB2CB8AA7D1DD633CD75D0963C0FBC76193A5C6BF848A53DF846F78C8FC",
+          "changedPixels": 19537,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.353357474,
+            "compositedMaximumAbsoluteError": 11.636914078,
+            "alphaMeanAbsoluteError": 0.121220412,
+            "alphaMaximumAbsoluteError": 10.94701171
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.129153459,
+            "compositedMaximumAbsoluteError": 0.941939283,
+            "alphaMeanAbsoluteError": 0.052586016,
+            "alphaMaximumAbsoluteError": 0.499920806
+          },
+          "float32FilterMaximumError": 3.0806e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 2,
+          "legacyRGBAHash": "DADBAFB1605C7BA2A64895B6099672891FBE0CECD6029A1D873B0E926C88F10E",
+          "candidateRGBAHash": "272BFC4B9B3E366D58C85179269D4ADFCD573C347B2C82A7D3FC1B8120ABBC17",
+          "changedPixels": 19597,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.353475439,
+            "compositedMaximumAbsoluteError": 11.636795757,
+            "alphaMeanAbsoluteError": 0.120296202,
+            "alphaMaximumAbsoluteError": 10.946887234
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.129490996,
+            "compositedMaximumAbsoluteError": 0.941939283,
+            "alphaMeanAbsoluteError": 0.052805282,
+            "alphaMaximumAbsoluteError": 0.499882492
+          },
+          "float32FilterMaximumError": 2.5118e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 3,
+          "legacyRGBAHash": "61CA98F16422A51AB309899FB906E51B9F8154214A1C9E9B6509D20A1C091A97",
+          "candidateRGBAHash": "2DDB2189514066309A55245A217407111E6BBE287941130DC6342DB227D26D8E",
+          "changedPixels": 19588,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.353668885,
+            "compositedMaximumAbsoluteError": 11.636795757,
+            "alphaMeanAbsoluteError": 0.120580048,
+            "alphaMaximumAbsoluteError": 10.946887234
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.129516528,
+            "compositedMaximumAbsoluteError": 0.941939283,
+            "alphaMeanAbsoluteError": 0.052773308,
+            "alphaMaximumAbsoluteError": 0.499941339
+          },
+          "float32FilterMaximumError": 2.5118e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 4,
+          "legacyRGBAHash": "BCCAC1FF6826DFBE1B65AF35BA81BCD20CFEF50A9522596B8530AACA481CED62",
+          "candidateRGBAHash": "AA99CBB2CB8AA7D1DD633CD75D0963C0FBC76193A5C6BF848A53DF846F78C8FC",
+          "changedPixels": 19537,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.353357474,
+            "compositedMaximumAbsoluteError": 11.636914078,
+            "alphaMeanAbsoluteError": 0.121220412,
+            "alphaMaximumAbsoluteError": 10.94701171
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.129153459,
+            "compositedMaximumAbsoluteError": 0.941939283,
+            "alphaMeanAbsoluteError": 0.052586016,
+            "alphaMaximumAbsoluteError": 0.499920806
+          },
+          "float32FilterMaximumError": 3.0806e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 5,
+          "legacyRGBAHash": "AF91CA1B6139C71DC93901B9A8AFB44AB153C036F841EAB60597C0D0F5C36E73",
+          "candidateRGBAHash": "87A18D1CCBA49E8046969ABF07EB6D5E1A1946C268F9F9B43317C88B9763A10C",
+          "changedPixels": 19550,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.35369028,
+            "compositedMaximumAbsoluteError": 11.636992843,
+            "alphaMeanAbsoluteError": 0.121749041,
+            "alphaMaximumAbsoluteError": 10.947094572
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.12934555,
+            "compositedMaximumAbsoluteError": 0.941939283,
+            "alphaMeanAbsoluteError": 0.052531334,
+            "alphaMaximumAbsoluteError": 0.499865073
+          },
+          "float32FilterMaximumError": 3.0806e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        }
+      ]
+    },
+    "look": {
+      "nativeRows": [
+        9,
+        10
+      ],
+      "camera": {
+        "scale": 0.15833333333333333,
+        "x": 0.36666666666667425,
+        "y": 7.883333333333354,
+        "visibleBBox": [
+          142,
+          26,
+          1066,
+          1226
+        ],
+        "floor": 202,
+        "topReserve": 12,
+        "cell": [
+          192,
+          208
+        ]
+      },
+      "durationsMs": null,
+      "legacyFrameHashes": [
+        "7BC69FD61C874E839F5491B0EB2EFAA5204226A24EBCC398875C470E4D374400",
+        "B4A518A76D35D053992B1AD7BA9A6FD190FB788F11403BE956E4186E34AC446D",
+        "6A96AA95D504BFA89AB68875BA65E3DBD4905FDAA24C7C2D2EC7A2E2A4DCFD11",
+        "3290654307CBF20C22CE3C9F06254DEE66062010030DE90816B3D98B4F9BAA27",
+        "2A19DB852BA0488639863503A4DCF7C244975B9C1A7FADD86D155D1D5CD3372E",
+        "D3D1A5BA648768277BA8D7E67390CC01ADBA015A5C49D618D8E820C930AF49D7",
+        "B94400CE1226A6F6640D6EAE47A50D4BDF68DFB3790D52941CD674C9026E034F",
+        "B52CB7B1F0C33CE445685A2CA66A2557F7706A356D30A7EB3658940CD37C1833",
+        "363144D673DA99BC3607FF4EA5817139A93C38B0BAC6586D259BE032C166F310",
+        "DFF476DFA209B486BA7B154F04F34D943C096CE137CC49F7D47C5C1BE842C3F3",
+        "7DFB4CCF1CED5829955B5432B94205C074EDE5382D1A004F42506C19C6B17FE1",
+        "BEA37100B3FEE36521B25E0E57D93A1EA75DECFD444DD667BEC3516BCDA7F3A5",
+        "89BDAD4AF25EAEFCF0871B1CBF6832D7253AC0CCF4159298F36AE99417059069",
+        "56DB11CDDB268D861D5D333E6FADC5E7154FF4CF4CDAAD1DD9546B32AA74128E",
+        "F3EE1E8230A2FE84DC6E62C25DBF9662D1808954A23DBE214A27144E69ADF1DA",
+        "DE95D79C58587855E47F3EFCF02AEE39C2FD9AB20369C392A2743132B6DA2CAE"
+      ],
+      "candidateFrameHashes": [
+        "46474B1A9FE9D65338CF9C60249FF8BAA11DA878010EC03D6EFC78B8D99E9D9A",
+        "FDE59085AC630EA0B42469F6EF49BF7543FF0C368FC11CF9FAF37FD8CD3B04F1",
+        "E43EF4B4A2B00168B6F6D8C2DFCB302E5131F73E85D4F6109116297CE5D84C21",
+        "E71C382D60209D33715C2D5F6C0697CB0113ACB758B4194C0B2D0DEF3093ECE3",
+        "560CC999B90526524BAFF2719746C4EDE994F502F96EB798CCC110CC98DA6403",
+        "C1A83209CF88184970B738551FE44F58617760569DCBBCBB3367E284672B88F3",
+        "A58FB3DB788F2D1323CAABD9BCDEBB63B764ABF75CB57E418B0E3194B9A134CC",
+        "2698AF2BFD6232C247DF763DB916208F049DF396B0DEB0A8652392C17E70E369",
+        "70DFFF00F8A09A31C3A83B91A49E9289D126820499939167D16DD1DD1058F8BE",
+        "5B8DF4F57B5E644BF61FD6B0150F1C6AB5B9C367491F0F70CF9FA0519272A7B4",
+        "87D3F46CF3AF32171BADED8F25F962C5FDC22E4599912133C2F507AD9AFE689C",
+        "BA513066FEA9C9AB700B2F81DDA4F0352B1F2F194EEA37F05F640B170F30D575",
+        "F14565C8C3DBED216CFD31FC1F888E58494751F1D8055D90DA629FC665552DBB",
+        "27E8AF32D207C8A1411DA559857EFF22ECD3059897AC31D6C5A95F2FA1FC03AA",
+        "857AAD08F8614713A9C0636A80C140EAA84D9FECEE77BAB4C926F445BEA4EEA2",
+        "201D9FD15AFF5E5F6461E60C6B93669C829341B82E44E3B8283A6B62D42F2CE4"
+      ],
+      "cels": [
+        {
+          "index": 0,
+          "legacyRGBAHash": "7BC69FD61C874E839F5491B0EB2EFAA5204226A24EBCC398875C470E4D374400",
+          "candidateRGBAHash": "46474B1A9FE9D65338CF9C60249FF8BAA11DA878010EC03D6EFC78B8D99E9D9A",
+          "changedPixels": 19621,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.357849822,
+            "compositedMaximumAbsoluteError": 13.615842831,
+            "alphaMeanAbsoluteError": 0.104747339,
+            "alphaMaximumAbsoluteError": 10.947094572
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127434632,
+            "compositedMaximumAbsoluteError": 0.898859517,
+            "alphaMeanAbsoluteError": 0.036632626,
+            "alphaMaximumAbsoluteError": 0.499865073
+          },
+          "float32FilterMaximumError": 3.0806e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 1,
+          "legacyRGBAHash": "B4A518A76D35D053992B1AD7BA9A6FD190FB788F11403BE956E4186E34AC446D",
+          "candidateRGBAHash": "FDE59085AC630EA0B42469F6EF49BF7543FF0C368FC11CF9FAF37FD8CD3B04F1",
+          "changedPixels": 19631,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.35819995,
+            "compositedMaximumAbsoluteError": 13.615842831,
+            "alphaMeanAbsoluteError": 0.104747339,
+            "alphaMaximumAbsoluteError": 10.947094572
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127550285,
+            "compositedMaximumAbsoluteError": 0.898859517,
+            "alphaMeanAbsoluteError": 0.036632626,
+            "alphaMaximumAbsoluteError": 0.499865073
+          },
+          "float32FilterMaximumError": 3.0806e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 2,
+          "legacyRGBAHash": "6A96AA95D504BFA89AB68875BA65E3DBD4905FDAA24C7C2D2EC7A2E2A4DCFD11",
+          "candidateRGBAHash": "E43EF4B4A2B00168B6F6D8C2DFCB302E5131F73E85D4F6109116297CE5D84C21",
+          "changedPixels": 19622,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.357815857,
+            "compositedMaximumAbsoluteError": 13.615842831,
+            "alphaMeanAbsoluteError": 0.104747339,
+            "alphaMaximumAbsoluteError": 10.947094572
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127475819,
+            "compositedMaximumAbsoluteError": 0.898859517,
+            "alphaMeanAbsoluteError": 0.036632626,
+            "alphaMaximumAbsoluteError": 0.499865073
+          },
+          "float32FilterMaximumError": 3.0806e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 3,
+          "legacyRGBAHash": "3290654307CBF20C22CE3C9F06254DEE66062010030DE90816B3D98B4F9BAA27",
+          "candidateRGBAHash": "E71C382D60209D33715C2D5F6C0697CB0113ACB758B4194C0B2D0DEF3093ECE3",
+          "changedPixels": 19621,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.357695883,
+            "compositedMaximumAbsoluteError": 13.615842831,
+            "alphaMeanAbsoluteError": 0.104747339,
+            "alphaMaximumAbsoluteError": 10.947094572
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127476497,
+            "compositedMaximumAbsoluteError": 0.898859517,
+            "alphaMeanAbsoluteError": 0.036632626,
+            "alphaMaximumAbsoluteError": 0.499865073
+          },
+          "float32FilterMaximumError": 3.0806e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 4,
+          "legacyRGBAHash": "2A19DB852BA0488639863503A4DCF7C244975B9C1A7FADD86D155D1D5CD3372E",
+          "candidateRGBAHash": "560CC999B90526524BAFF2719746C4EDE994F502F96EB798CCC110CC98DA6403",
+          "changedPixels": 19643,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.357681996,
+            "compositedMaximumAbsoluteError": 13.615842831,
+            "alphaMeanAbsoluteError": 0.104747339,
+            "alphaMaximumAbsoluteError": 10.947094572
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127472474,
+            "compositedMaximumAbsoluteError": 0.898859517,
+            "alphaMeanAbsoluteError": 0.036632626,
+            "alphaMaximumAbsoluteError": 0.499865073
+          },
+          "float32FilterMaximumError": 3.0806e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 5,
+          "legacyRGBAHash": "D3D1A5BA648768277BA8D7E67390CC01ADBA015A5C49D618D8E820C930AF49D7",
+          "candidateRGBAHash": "C1A83209CF88184970B738551FE44F58617760569DCBBCBB3367E284672B88F3",
+          "changedPixels": 19618,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.357583272,
+            "compositedMaximumAbsoluteError": 13.615842831,
+            "alphaMeanAbsoluteError": 0.104747339,
+            "alphaMaximumAbsoluteError": 10.947094572
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127448305,
+            "compositedMaximumAbsoluteError": 0.898859517,
+            "alphaMeanAbsoluteError": 0.036632626,
+            "alphaMaximumAbsoluteError": 0.499865073
+          },
+          "float32FilterMaximumError": 3.0806e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 6,
+          "legacyRGBAHash": "B94400CE1226A6F6640D6EAE47A50D4BDF68DFB3790D52941CD674C9026E034F",
+          "candidateRGBAHash": "A58FB3DB788F2D1323CAABD9BCDEBB63B764ABF75CB57E418B0E3194B9A134CC",
+          "changedPixels": 19627,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.357529527,
+            "compositedMaximumAbsoluteError": 13.615842831,
+            "alphaMeanAbsoluteError": 0.104747339,
+            "alphaMaximumAbsoluteError": 10.947094572
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127537803,
+            "compositedMaximumAbsoluteError": 0.898859517,
+            "alphaMeanAbsoluteError": 0.036632626,
+            "alphaMaximumAbsoluteError": 0.499865073
+          },
+          "float32FilterMaximumError": 3.0806e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 7,
+          "legacyRGBAHash": "B52CB7B1F0C33CE445685A2CA66A2557F7706A356D30A7EB3658940CD37C1833",
+          "candidateRGBAHash": "2698AF2BFD6232C247DF763DB916208F049DF396B0DEB0A8652392C17E70E369",
+          "changedPixels": 19618,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.35746297,
+            "compositedMaximumAbsoluteError": 13.615842831,
+            "alphaMeanAbsoluteError": 0.104747339,
+            "alphaMaximumAbsoluteError": 10.947094572
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.12754152,
+            "compositedMaximumAbsoluteError": 0.898859517,
+            "alphaMeanAbsoluteError": 0.036632626,
+            "alphaMaximumAbsoluteError": 0.499865073
+          },
+          "float32FilterMaximumError": 3.0806e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 8,
+          "legacyRGBAHash": "363144D673DA99BC3607FF4EA5817139A93C38B0BAC6586D259BE032C166F310",
+          "candidateRGBAHash": "70DFFF00F8A09A31C3A83B91A49E9289D126820499939167D16DD1DD1058F8BE",
+          "changedPixels": 19616,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.357564172,
+            "compositedMaximumAbsoluteError": 13.615842831,
+            "alphaMeanAbsoluteError": 0.104747339,
+            "alphaMaximumAbsoluteError": 10.947094572
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127439295,
+            "compositedMaximumAbsoluteError": 0.898859517,
+            "alphaMeanAbsoluteError": 0.036632626,
+            "alphaMaximumAbsoluteError": 0.499865073
+          },
+          "float32FilterMaximumError": 3.0806e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 9,
+          "legacyRGBAHash": "DFF476DFA209B486BA7B154F04F34D943C096CE137CC49F7D47C5C1BE842C3F3",
+          "candidateRGBAHash": "5B8DF4F57B5E644BF61FD6B0150F1C6AB5B9C367491F0F70CF9FA0519272A7B4",
+          "changedPixels": 19628,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.358136961,
+            "compositedMaximumAbsoluteError": 14.28784855,
+            "alphaMeanAbsoluteError": 0.104747339,
+            "alphaMaximumAbsoluteError": 10.947094572
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127509156,
+            "compositedMaximumAbsoluteError": 0.898859517,
+            "alphaMeanAbsoluteError": 0.036632626,
+            "alphaMaximumAbsoluteError": 0.499865073
+          },
+          "float32FilterMaximumError": 3.0806e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 10,
+          "legacyRGBAHash": "7DFB4CCF1CED5829955B5432B94205C074EDE5382D1A004F42506C19C6B17FE1",
+          "candidateRGBAHash": "87D3F46CF3AF32171BADED8F25F962C5FDC22E4599912133C2F507AD9AFE689C",
+          "changedPixels": 19629,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.357798775,
+            "compositedMaximumAbsoluteError": 13.615842831,
+            "alphaMeanAbsoluteError": 0.104747339,
+            "alphaMaximumAbsoluteError": 10.947094572
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127490014,
+            "compositedMaximumAbsoluteError": 0.898859517,
+            "alphaMeanAbsoluteError": 0.036632626,
+            "alphaMaximumAbsoluteError": 0.499865073
+          },
+          "float32FilterMaximumError": 3.0806e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 11,
+          "legacyRGBAHash": "BEA37100B3FEE36521B25E0E57D93A1EA75DECFD444DD667BEC3516BCDA7F3A5",
+          "candidateRGBAHash": "BA513066FEA9C9AB700B2F81DDA4F0352B1F2F194EEA37F05F640B170F30D575",
+          "changedPixels": 19636,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.357770929,
+            "compositedMaximumAbsoluteError": 13.615842831,
+            "alphaMeanAbsoluteError": 0.104747339,
+            "alphaMaximumAbsoluteError": 10.947094572
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127436846,
+            "compositedMaximumAbsoluteError": 0.898859517,
+            "alphaMeanAbsoluteError": 0.036632626,
+            "alphaMaximumAbsoluteError": 0.499865073
+          },
+          "float32FilterMaximumError": 3.0806e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 12,
+          "legacyRGBAHash": "89BDAD4AF25EAEFCF0871B1CBF6832D7253AC0CCF4159298F36AE99417059069",
+          "candidateRGBAHash": "F14565C8C3DBED216CFD31FC1F888E58494751F1D8055D90DA629FC665552DBB",
+          "changedPixels": 19616,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.358280144,
+            "compositedMaximumAbsoluteError": 13.615842831,
+            "alphaMeanAbsoluteError": 0.104747339,
+            "alphaMaximumAbsoluteError": 10.947094572
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127492922,
+            "compositedMaximumAbsoluteError": 0.898859517,
+            "alphaMeanAbsoluteError": 0.036632626,
+            "alphaMaximumAbsoluteError": 0.499865073
+          },
+          "float32FilterMaximumError": 3.0806e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 13,
+          "legacyRGBAHash": "56DB11CDDB268D861D5D333E6FADC5E7154FF4CF4CDAAD1DD9546B32AA74128E",
+          "candidateRGBAHash": "27E8AF32D207C8A1411DA559857EFF22ECD3059897AC31D6C5A95F2FA1FC03AA",
+          "changedPixels": 19627,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.358190305,
+            "compositedMaximumAbsoluteError": 13.615842831,
+            "alphaMeanAbsoluteError": 0.104747339,
+            "alphaMaximumAbsoluteError": 10.947094572
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127483567,
+            "compositedMaximumAbsoluteError": 0.898859517,
+            "alphaMeanAbsoluteError": 0.036632626,
+            "alphaMaximumAbsoluteError": 0.499865073
+          },
+          "float32FilterMaximumError": 3.0806e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 14,
+          "legacyRGBAHash": "F3EE1E8230A2FE84DC6E62C25DBF9662D1808954A23DBE214A27144E69ADF1DA",
+          "candidateRGBAHash": "857AAD08F8614713A9C0636A80C140EAA84D9FECEE77BAB4C926F445BEA4EEA2",
+          "changedPixels": 19626,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.357785004,
+            "compositedMaximumAbsoluteError": 13.615842831,
+            "alphaMeanAbsoluteError": 0.104747339,
+            "alphaMaximumAbsoluteError": 10.947094572
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127506108,
+            "compositedMaximumAbsoluteError": 0.92957063,
+            "alphaMeanAbsoluteError": 0.036632626,
+            "alphaMaximumAbsoluteError": 0.499865073
+          },
+          "float32FilterMaximumError": 3.0806e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        },
+        {
+          "index": 15,
+          "legacyRGBAHash": "DE95D79C58587855E47F3EFCF02AEE39C2FD9AB20369C392A2743132B6DA2CAE",
+          "candidateRGBAHash": "201D9FD15AFF5E5F6461E60C6B93669C829341B82E44E3B8283A6B62D42F2CE4",
+          "changedPixels": 19617,
+          "legacyError": {
+            "compositedMeanAbsoluteError": 0.357573836,
+            "compositedMaximumAbsoluteError": 13.615842831,
+            "alphaMeanAbsoluteError": 0.104747339,
+            "alphaMaximumAbsoluteError": 10.947094572
+          },
+          "candidateError": {
+            "compositedMeanAbsoluteError": 0.127485698,
+            "compositedMaximumAbsoluteError": 0.898859517,
+            "alphaMeanAbsoluteError": 0.036632626,
+            "alphaMaximumAbsoluteError": 0.499865073
+          },
+          "float32FilterMaximumError": 3.0806e-05,
+          "faceGeometryChanged": false,
+          "sourceArtworkRepainted": false
+        }
+      ]
+    }
+  },
+  "limitations": [
+    "Lower numerical filter error does not prove sharper, prettier or more legible artwork.",
+    "Current source-space pose and iris/arm precompositions remain; this is not a whole-pipeline single sampling pass.",
+    "Same 192x208 cells and discrete held schedules, same decoded texture memory; no new source detail, blink, FPS or host performance claim.",
+    "Small-size state/gaze legibility, cuffs/hair seams, arbitrary interruptions and global naturalness remain unapproved.",
+    "The float64 reference uses the same reconstruction kernel, not original continuous artwork or physical light truth."
+  ]
+}

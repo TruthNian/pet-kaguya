@@ -47,10 +47,12 @@ def sample_pose(material,x,y,pose,transform,regions,masks):
     return evaluate(material,x,y,current,1,source_fields=fields)
 
 
-def render(material,pose,transform,regions,masks):
+def render(material,pose,transform,regions,masks,*,terminal=None):
     key(pose,transform['scale'])
     x,y=integration_coordinates(transform,actor_y=pose['actorY'])
     pixels=sample_pose(material,x,y,pose,transform,regions,masks)
+    if terminal is not None:
+        return terminal(pixels)
     high=quantize(pixels)
     frame=high.convert('RGBa').resize((WIDTH,HEIGHT),Image.Resampling.LANCZOS).convert('RGBA')
     result=np.asarray(frame).copy()

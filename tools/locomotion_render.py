@@ -117,9 +117,11 @@ def quantize(pixels):
     return Image.fromarray(np.clip(np.rint(straight),0,255).astype(np.uint8))
 
 
-def render(material,key,direction,transform,*,normalized_backing=True):
+def render(material,key,direction,transform,*,normalized_backing=True,terminal=None):
     x,y=integration_coordinates(transform)
     sampled=evaluate(material,x,y,key,direction,normalized_backing=normalized_backing)
+    if terminal is not None:
+        return terminal(sampled)
     high=quantize(sampled)
     frame=high.convert('RGBa').resize((WIDTH,HEIGHT),Image.Resampling.LANCZOS).convert('RGBA')
     rgba=np.asarray(frame).copy(); rgba[rgba[...,3]==0,:3]=0
