@@ -146,7 +146,7 @@ def main():
         sourceCrop=[680,540,1000,1020],rawCanvas=[1024,1536],
         role='unadopted face-free hidden-hair compositing study',methods=records,
         fullCropRedrawAccepted=False,handOrSleeveRepaintAccepted=False,facialGeometryRepair=False,
-        activeCompositionVersion='review-art-v2',activeAtlasChanged=False,adopted=False,
+        activeCompositionVersionAtExperiment='review-art-v2',activeAtlasChanged=False,adopted=False,
         visualAcceptance='not-accepted',installableFullAtlas=False,installed=False,
         unresolved=['Generated crop repaints clothing and hair outside permission; its full redraw is not used.',
                     'Bounded feather reduces neither all color plates nor mismatched strand paths.',

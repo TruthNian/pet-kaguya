@@ -6,7 +6,7 @@ import math
 import numpy as np
 
 from canonical import ROOT, ACCEPTED_SHA, load_canonical, clean_cutout, camera
-from review_review_v2 import inputs as art_inputs, localized_pose, GENERATED_SHA
+from review_review_v3 import inputs as art_inputs, localized_pose, GENERATED_SHA
 from review_processing import GENERATED_SHA as LEFT_SHA
 from build_idle import specification as idle_specification, region_masks, render
 import build_gaze as gaze
@@ -79,7 +79,8 @@ def main():
     data['focused'].save(OUT/'focused-pose.png')
     metadata = dict(sourceSha256=ACCEPTED_SHA, source='sources/canonical/artwork.png',
         rightHandGeneratedSha256=GENERATED_SHA, leftHandGeneratedSha256=LEFT_SHA,
-        rightArmCompositionVersion='review-art-v2', newArtworkGenerated=False,
+        rightArmCompositionVersion='review-art-v3', newArtworkGenerated=False,
+        knownSourceHairRGBAExact=True,paintedHairAlphaContinuityEstimated=True,
         eyeBackingGeneratedSha256=gaze.GENERATED_SHA, state='review', nativeRow=8,
         statesInThisArtifact=['review'], durationsMs=DURATIONS[8], totalDurationMs=sum(DURATIONS[8]),
         repeatBeforeIdle=3, actionDurationMs=3*sum(DURATIONS[8]), closedEyeFrames=0,

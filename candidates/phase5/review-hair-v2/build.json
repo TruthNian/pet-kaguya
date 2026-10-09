@@ -39,7 +39,7 @@
   "fullCropRedrawAccepted": false,
   "handOrSleeveRepaintAccepted": false,
   "facialGeometryRepair": false,
-  "activeCompositionVersion": "review-art-v2",
+  "activeCompositionVersionAtExperiment": "review-art-v2",
   "activeAtlasChanged": false,
   "adopted": false,
   "visualAcceptance": "not-accepted",
