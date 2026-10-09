@@ -3,8 +3,12 @@
   "source": "sources/canonical/artwork.png",
   "rightHandGeneratedSha256": "0E6AD86D64E5FB6B6E85B50953E2C4E717506F4340B8ECA2EC8E7A77FA151452",
   "leftHandGeneratedSha256": "6BEEFEBA2456425C2B3648AEED8B3668F46A768D489A7A41D4F6016BD36FCDB3",
-  "rightArmCompositionVersion": "review-art-v5",
-  "newArtworkGenerated": false,
+  "rightArmCompositionVersion": "review-art-v6",
+  "newArtworkGenerated": true,
+  "clothCompositionVersion": "review-sleeves-v2",
+  "clothGeneratedSha256": "41BAC8EC07B2EF55B9E89382CAA4B5FE1A34F105377E12DADEE291FEF48CB678",
+  "heldHandsUnchangedFromV5": true,
+  "clothAlphaPreservedExactly": true,
   "observedHairAlphaHolesRestored": true,
   "originalLowerHandContourRestored": true,
   "handScaled": false,
@@ -63,12 +67,12 @@
   "loopSeamRGBAExact": true,
   "uniqueCels": 4,
   "frameHashes": [
-    "9FE0C28942B78F78F1346395AF9A632D0C9D323DCB9FC35FB8FAF19C95630346",
-    "853C5D5E2A333D1BAE78029C70FD70BF2285B76535934685A83BEE4DDBB0FA90",
-    "7D6BD5E0458514DE6C185B9CB49025BB60A3F39792BFB7855C67442A2A9CF58B",
-    "CB1B47BC902008FF3D57F4B9ED278BFB81D390CDBC043E872F1C3B0F44A8DC00",
-    "853C5D5E2A333D1BAE78029C70FD70BF2285B76535934685A83BEE4DDBB0FA90",
-    "9FE0C28942B78F78F1346395AF9A632D0C9D323DCB9FC35FB8FAF19C95630346"
+    "AF91CA1B6139C71DC93901B9A8AFB44AB153C036F841EAB60597C0D0F5C36E73",
+    "BCCAC1FF6826DFBE1B65AF35BA81BCD20CFEF50A9522596B8530AACA481CED62",
+    "DADBAFB1605C7BA2A64895B6099672891FBE0CECD6029A1D873B0E926C88F10E",
+    "61CA98F16422A51AB309899FB906E51B9F8154214A1C9E9B6509D20A1C091A97",
+    "BCCAC1FF6826DFBE1B65AF35BA81BCD20CFEF50A9522596B8530AACA481CED62",
+    "AF91CA1B6139C71DC93901B9A8AFB44AB153C036F841EAB60597C0D0F5C36E73"
   ],
   "method": "bounded two-low-hands cel, downward original iris translation and very small ear/hair fields; body held",
   "sampling": "new right/left arm each first uses fixed-crop source projection; shared canonical camera, 3x coverage and terminal Lanczos downsample",
@@ -84,7 +88,7 @@
   "unresolved": [
     "Two low hands are a candidate, not an approved user strategy; no book, tool or effects were added.",
     "The newly drawn right palm is more open than the softly curled left; contact and hand volume require visual acceptance.",
-    "The green sleeve has angular folds; source foreground polygons preserve pixel plates, not clean recovered mattes. The v3 composition restores inspected originally visible hair and estimates hidden RGB/alpha continuity. Hidden strand topology and enlarged seams remain unapproved.",
+    "The v6 sleeve interiors use continuous curved folds; wrist/outer boundary integration and full garment volume still require visual acceptance. Source foreground polygons preserve pixel plates, not clean recovered mattes; v5 observed hair restoration is retained. Hidden strand topology and enlarged seams remain unapproved.",
     "The user temporarily accepts held timing and continued structural improvement, not the rendered hand/sleeve structure. First-only raising and last-only lowering cannot be encoded in one repeating native row; entry and idle fallback have no arm transition.",
     "A 1030 ms cycle is not used for a forced fast breath; the body is held, not a claim that all frozen-body problems are solved.",
     "Downward gaze, small-scale state legibility, sleeve seams and naturalness are unapproved; original host resolution, durations and pointer priority are unchanged."

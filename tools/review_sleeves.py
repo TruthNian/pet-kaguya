@@ -84,20 +84,14 @@ def fill_holes(binary):
     return ~exterior
 
 
-def study(parent, mapped, continuous=True):
-    if rgba_hash(parent)!=PARENT_HASH:
-        raise ValueError('Cannot replace the current parent silently')
-    _, expected = inputs()
-    if rgba_hash(mapped)!=rgba_hash(expected):
-        raise ValueError('Cannot replace archived cloth material silently')
-    a,b = np.asarray(parent),np.asarray(mapped)
+def cloth_permission(parent, continuous=True):
+    """Estimated connected interior permission; no new geometry authority."""
+    a = np.asarray(parent)
     rgb = a[...,:3].astype(np.int16)
     # Keep dark internal green creases too, not just bright flat cloth. This
     # test is still color evidence, not semantic layer recovery.
     green = ((rgb[...,1]-rgb[...,0]>=-4) & (rgb[...,1]-rgb[...,2]>12)
              & (rgb.max(axis=2)>60) & (a[...,3]>0))
-    raw = b[...,:3].astype(np.int16)
-    raw_green = ((raw[...,1]-raw[...,0]>=-8) & (raw[...,1]-raw[...,2]>10))
     protected = Image.new('L',parent.size)
     draw = ImageDraw.Draw(protected)
     for points in left_spec()['preservedForegroundPolygons']+right_spec()['preservedForegroundPolygons']:
@@ -126,8 +120,22 @@ def study(parent, mapped, continuous=True):
             cloth[y0:y1,x0:x1] = fill_holes(np.asarray(closed)>0)
             cloth &= envelope_mask & ~protection
         # A shared crease domain, not scattered independent interior patches.
-        allowed |= cloth if continuous else cloth & raw_green
+        allowed |= cloth
         parts.append(int(cloth.sum()))
+    return allowed,protection,parts
+
+
+def study(parent, mapped, continuous=True):
+    if rgba_hash(parent)!=PARENT_HASH:
+        raise ValueError('Cannot replace the current parent silently')
+    _, expected = inputs()
+    if rgba_hash(mapped)!=rgba_hash(expected):
+        raise ValueError('Cannot replace archived cloth material silently')
+    a,b = np.asarray(parent),np.asarray(mapped)
+    allowed,protection,parts = cloth_permission(parent,continuous)
+    if not continuous:
+        raw = b[...,:3].astype(np.int16)
+        allowed &= (raw[...,1]-raw[...,0]>=-8) & (raw[...,1]-raw[...,2]>10)
     hard = Image.fromarray(allowed.astype(np.uint8)*255)
     # Inward edge ramp: no color leaks into hair, cuffs or accessories.
     inner = hard.filter(ImageFilter.MinFilter(5))

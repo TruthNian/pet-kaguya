@@ -54,9 +54,11 @@ class VisibleHairHoles(unittest.TestCase):
         self.assertEqual(metadata['changedOutsideSourceHoles'],0)
         self.assertEqual(metadata['restoredSourceHolePixels'],12)
         self.assertEqual(metadata['knownSourceHairRestoredPixels'],2943)
-        self.assertEqual(build_review.art_inputs.__module__,'review_review_v5')
+        self.assertEqual(build_review.art_inputs.__module__,'review_review_v6')
         active=json.loads((build_review.OUT/'build.json').read_text(encoding='utf-8'))
-        self.assertEqual(active['rightArmCompositionVersion'],'review-art-v5')
+        self.assertEqual(active['rightArmCompositionVersion'],'review-art-v6')
+        actual=np.asarray(build_review.inputs()['armPose'])
+        np.testing.assert_array_equal(actual[self.visible],self.source[self.visible])
         self.assertTrue(active['observedHairAlphaHolesRestored'])
         self.assertEqual(active['visualMotionApproval'],'pending')
         for key in ('facialGeometryRepair','newArtworkGenerated','hiddenHairReconstructionClaimed',

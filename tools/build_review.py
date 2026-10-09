@@ -6,7 +6,8 @@ import math
 import numpy as np
 
 from canonical import ROOT, ACCEPTED_SHA, load_canonical, clean_cutout, camera
-from review_review_v5 import inputs as art_inputs, localized_pose, GENERATED_SHA
+from review_review_v6 import inputs as art_inputs, localized_pose, GENERATED_SHA
+from review_cloth_v2 import GENERATED_SHA as CLOTH_SHA
 from review_processing import GENERATED_SHA as LEFT_SHA
 from build_idle import specification as idle_specification, region_masks, render
 import build_gaze as gaze
@@ -81,7 +82,9 @@ def main():
     data['focused'].save(OUT/'focused-pose.png')
     metadata = dict(sourceSha256=ACCEPTED_SHA, source='sources/canonical/artwork.png',
         rightHandGeneratedSha256=GENERATED_SHA, leftHandGeneratedSha256=LEFT_SHA,
-        rightArmCompositionVersion='review-art-v5', newArtworkGenerated=False,
+        rightArmCompositionVersion='review-art-v6', newArtworkGenerated=True,
+        clothCompositionVersion='review-sleeves-v2',clothGeneratedSha256=CLOTH_SHA,
+        heldHandsUnchangedFromV5=True,clothAlphaPreservedExactly=True,
         observedHairAlphaHolesRestored=True,
         originalLowerHandContourRestored=True,handScaled=False,
         knownSourceHairRGBAExact=True,paintedHairAlphaContinuityEstimated=True,

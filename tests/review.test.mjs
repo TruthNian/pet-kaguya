@@ -20,19 +20,22 @@ test('static review selections reject invalid values',()=>{
   assert.throws(()=>reviewCell('idle','unknown'),RangeError);
 });
 
-test('the actual viewer accepts the current restored-hair composition metadata',()=>{
+test('the actual viewer accepts the current cloth composition and retains the hair repair',()=>{
   const metadata=JSON.parse(readFileSync(new URL('../candidates/phase5/review/build.json',import.meta.url),'utf8'));
   assert.equal(validateReviewMetadata(metadata),metadata);
-  assert.equal(metadata.rightArmCompositionVersion,'review-art-v5');
+  assert.equal(metadata.rightArmCompositionVersion,'review-art-v6');
+  assert.equal(metadata.clothCompositionVersion,'review-sleeves-v2');
   assert.equal(metadata.observedHairAlphaHolesRestored,true);
 });
 
 test('old or incomplete composition and art/motion overclaims still fail the viewer contract',()=>{
   const metadata=JSON.parse(readFileSync(new URL('../candidates/phase5/review/build.json',import.meta.url),'utf8'));
-  for(const [field,value] of [['rightArmCompositionVersion','review-art-v4'],
+  for(const [field,value] of [['rightArmCompositionVersion','review-art-v5'],
+    ['clothCompositionVersion','review-sleeves-v1'],['clothGeneratedSha256','changed'],
+    ['heldHandsUnchangedFromV5',false],['clothAlphaPreservedExactly',false],
     ['observedHairAlphaHolesRestored',false],['knownSourceHairRGBAExact',false],
     ['handScaled',true],['visualMotionApproval','approved'],['strategyUserApproval','approved'],
-    ['nativeRow',6],['repeatBeforeIdle',1],['newArtworkGenerated',true]]){
+    ['nativeRow',6],['repeatBeforeIdle',1],['newArtworkGenerated',false]]){
     assert.throws(()=>validateReviewMetadata({...metadata,[field]:value}),/boundary mismatch/);
   }
   assert.throws(()=>validateReviewMetadata(null));

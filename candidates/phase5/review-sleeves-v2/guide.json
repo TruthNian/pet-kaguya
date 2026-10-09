@@ -1,0 +1,30 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "parentPoseRGBAHash": "0F0F16D20970DC9AD1F7BB419B1E7BA22BE2C6E054A299298A53E2913EB81D45",
+  "parentCompositionVersion": "review-art-v5",
+  "sourceCrop": [
+    300,
+    500,
+    960,
+    1040
+  ],
+  "guideCanvas": [
+    660,
+    660
+  ],
+  "guideCropOrigin": [
+    0,
+    0
+  ],
+  "role": "continuous green sleeves in the existing held gesture",
+  "inputRoles": [
+    "edit-target: current geometry and hand/cuff placement",
+    "style-reference: original cloth palette and shading, not pose"
+  ],
+  "faceIncluded": false,
+  "faceGeometryChangeAllowed": false,
+  "handChangeAllowed": false,
+  "outlineChangeAllowed": false,
+  "adopted": false,
+  "installed": false
+}

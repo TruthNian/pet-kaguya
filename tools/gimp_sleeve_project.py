@@ -12,24 +12,25 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'tools'))
 from gimp_review_project import Gimp, Gegl, file, load_layer, save, export, set_mask
 
-SOURCE = ROOT/'candidates/phase5/review-sleeves-v1'
+SOURCE = Path(globals().get('MATERIAL_INPUT',ROOT/'candidates/phase5/review-sleeves-v1')).resolve()
+VERSION = globals().get('PARENT_COMPOSITION','review-art-v4')
 OUT = Path(globals().get('PROJECT_OUTPUT',ROOT/'work/gimp-review-sleeves-v1')).resolve()
 
 
 def main():
-    if ROOT not in OUT.parents:
+    if ROOT not in OUT.parents or ROOT not in SOURCE.parents or VERSION not in ('review-art-v4','review-art-v5'):
         raise ValueError('Project must stay in a fresh repository subdirectory')
     OUT.mkdir(parents=True,exist_ok=True)
     xcf = OUT/'kaguya-review-sleeves.xcf'
     if xcf.exists():
         raise RuntimeError('Do not overwrite an existing editable project')
     image = Gimp.file_load(Gimp.RunMode.NONINTERACTIVE,
-        file(ROOT/'candidates/phase5/review-art-v4/pose.png'))
+        file(ROOT/'candidates/phase5'/VERSION/'pose.png'))
     if image is None or (image.get_width(),image.get_height())!=(1205,1306):
         raise RuntimeError('Source-space camera must not change')
     image.convert_precision(Gimp.Precision.FLOAT_NON_LINEAR)
     base = image.get_layers()[0]
-    base.set_name('01 Locked v4 - face, hands, accessories and silhouette')
+    base.set_name('01 Locked '+VERSION+' - face, hands, accessories and silhouette')
     base.set_lock_position(True)
     cloth = load_layer(image,SOURCE/'mapped-cloth.png','02 Complete cloth surface - editable mask')
     cloth.set_mode(Gimp.LayerMode.NORMAL)
@@ -57,7 +58,7 @@ def main():
     export(reopened,OUT/'gimp-reopened-export.png')
     metadata = dict(editor='GIMP',editorVersion=Gimp.version(),canvas=[1205,1306],
         project=xcf.name,projectSha256=hashlib.sha256(xcf.read_bytes()).hexdigest().upper(),
-        projectReopened=True,parentCompositionVersion='review-art-v4',
+        projectReopened=True,parentCompositionVersion=VERSION,
         layers=[dict(name=layer.get_name(),visible=layer.get_visible(),
                      locked=layer.get_lock_content(),hasMask=layer.get_mask() is not None)
                 for layer in reopened.get_layers()],

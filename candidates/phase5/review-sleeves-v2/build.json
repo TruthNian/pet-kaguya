@@ -1,0 +1,46 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "parentCompositionVersion": "review-art-v5",
+  "parentPoseRGBAHash": "0F0F16D20970DC9AD1F7BB419B1E7BA22BE2C6E054A299298A53E2913EB81D45",
+  "materialGeneratedSha256": "41BAC8EC07B2EF55B9E89382CAA4B5FE1A34F105377E12DADEE291FEF48CB678",
+  "newArtworkGenerated": true,
+  "rawCanvas": [
+    1254,
+    1254
+  ],
+  "sourceCrop": [
+    300,
+    500,
+    960,
+    1040
+  ],
+  "guideCanvas": [
+    660,
+    660
+  ],
+  "paddingBottomSourcePx": 120,
+  "registration": "uniform whole square canvas, no object-bound fitting",
+  "connectedClothPixels": [
+    11508,
+    15058
+  ],
+  "allowedPixels": 26566,
+  "changedPixels": 26025,
+  "rawChangedPixelsOutsidePermission": 322704,
+  "changedOutsidePermission": 0,
+  "parentAlphaPreserved": true,
+  "protectedForegroundRGBAExact": true,
+  "poseRGBAHash": "3701641146B3CDF39C71F43A1EF9648511AB6D8565751C31C1BB205CC87664FE",
+  "frameRGBAHash": "5D5B69FE445962C03C4A6F5EA2AEDE899E2146318FB587069C62D5F37650B5BA",
+  "handScaled": false,
+  "faceGeometryChanged": false,
+  "outlineChanged": false,
+  "cleanLayerRecoveryClaimed": false,
+  "animationBuilt": false,
+  "visualAcceptance": "pending",
+  "adopted": true,
+  "adoptedIntoDevelopmentOnly": true,
+  "activeAtlasChanged": true,
+  "installed": false,
+  "limitation": "Estimated cloth interiors, not a clean semantic matte or physical fabric simulation; outer lines and hands remain the exact current pose; full gesture still unapproved."
+}
