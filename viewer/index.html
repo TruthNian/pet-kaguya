@@ -36,6 +36,11 @@
     <p>每排依次为锁定 v3、旧 v1 合成、当前 v2。修正的是旧袖/手轮廓漏移除；脸型、手势、取景和原生分辨率没有变化。右侧背景发丝仍有接缝，左右手形、袖褶和状态过渡仍待优化。</p>
     <img loading="lazy" src="../candidates/phase5/review-art-v2/contact-192px.png" width="636" height="480" alt="同一母版、旧袖残影缺陷、修正后的review，深浅背景对照">
   </details>
+  <details id="review-hair-study" class="idle-review"><summary>未采用试验 · 隐藏发丝接缝（不替换当前动作）</summary>
+    <p>依次为当前 v2、有界羽化、边界色彩约束。后两列都未采用：部分颜色衔接改善，发丝仍有错接，小尺寸收益不明确。两种试验只改内部头发 RGB，每个原 alpha、手袖、脸与外轮廓不变；这不是视觉通过证明。当前动作和全局图集没有替换。</p>
+    <img loading="lazy" src="../candidates/phase5/review-hair-v2/contact-192px.png" width="636" height="480" alt="当前review与两个未采用的发丝融合实验，深浅背景对照">
+    <p><a href="../candidates/phase5/review-hair-v2/detail.png">高清局部接缝对照</a> · <a href="../candidates/phase5/review-hair-v2/contact-113px.png">113 px对照</a> · <a href="../candidates/phase5/review-hair-v2/prompt.txt">无脸局部素材实际生成提示词</a> · <a href="../candidates/phase5/review-hair-v2/build.json">未采用理由及保护范围</a></p>
+  </details>
   <details id="global-review" class="idle-review"><summary>Phase 5 · 九状态全局结构对照（开发验收，不可安装）</summary>
     <p>九状态代表姿势，以113 px实际采样模拟展示，依次为 idle、左右小步、wave、jump、failed、waiting、processing、review；上三排深色、下三排浅色。它用于找脸身、衣袖、姿势的退步，不是视觉通过证明。完整开发图集为1536×2288，原生格192×208，解码RGBA仍14,057,472字节。</p>
     <img loading="lazy" src="../candidates/phase5/global/contact-113px.png" width="375" height="900" alt="九状态113像素明暗全局结构对照，所有动作人工接受待确认">

@@ -1,0 +1,54 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "parentPoseRGBAHash": "8618A3A73301ED7A3B29D63983878159C7B35D39BA33E465186584C539E32570",
+  "generatedSha256": "9C0C8C196D44BE6C3512AB3D11E7624E6D1D48835961E99CCE8B4268168B41CC",
+  "sourceCrop": [
+    680,
+    540,
+    1000,
+    1020
+  ],
+  "rawCanvas": [
+    1024,
+    1536
+  ],
+  "role": "unadopted face-free hidden-hair compositing study",
+  "methods": {
+    "bounded-feather": {
+      "changedPixels": 32881,
+      "outsidePermissionChangedPixels": 0,
+      "protectedForegroundChangedPixels": 0,
+      "poseRGBAHash": "C8C7166FE2F05B51D82459C2A99882CB48DC7CE3B89FADB4874421ADA2BA9EEF",
+      "frameRGBAHash": "6B8A9FDC9CE5B306CB02BFA22FD9EC3CB1ECAB0D9FDC687202E2FC7852BD9437",
+      "parentAlphaPreservedExactly": true,
+      "adopted": false,
+      "activePreviewSelected": false
+    },
+    "harmonic-rgb": {
+      "changedPixels": 32754,
+      "outsidePermissionChangedPixels": 0,
+      "protectedForegroundChangedPixels": 0,
+      "poseRGBAHash": "508BD0882564FE94C37CB60B4ED29973DD3DF580BB86E18B0FED8B2B5B14EEEA",
+      "frameRGBAHash": "405D43A276BF78F99A67A36AE12858BA8F72A89920C8DC39F56845ED29F533F7",
+      "parentAlphaPreservedExactly": true,
+      "adopted": false,
+      "activePreviewSelected": false,
+      "solverConvergedBelowRelativeTolerance": true
+    }
+  },
+  "fullCropRedrawAccepted": false,
+  "handOrSleeveRepaintAccepted": false,
+  "facialGeometryRepair": false,
+  "activeCompositionVersion": "review-art-v2",
+  "activeAtlasChanged": false,
+  "adopted": false,
+  "visualAcceptance": "not-accepted",
+  "installableFullAtlas": false,
+  "installed": false,
+  "unresolved": [
+    "Generated crop repaints clothing and hair outside permission; its full redraw is not used.",
+    "Bounded feather reduces neither all color plates nor mismatched strand paths.",
+    "Harmonic RGB boundary correction improves some color joins but cannot repair strand topology.",
+    "No full-pose, motion, small-scale aesthetic or state-transition acceptance follows from pixel guards."
+  ]
+}

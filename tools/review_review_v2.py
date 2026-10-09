@@ -19,11 +19,11 @@ from review_wave import native_frame
 OUT = ROOT/'candidates/phase5/review-art-v2'
 
 
-def comparison(frames,width):
+def comparison(frames,width,labels=None):
     height = round(width*208/192)
     board = Image.new('RGB',(3*(width+20),2*(height+32)),'#23252b')
     draw = ImageDraw.Draw(board)
-    for col,(frame,label) in enumerate(zip(frames,['locked v3','v1 (defect)','v2 (repair)'])):
+    for col,(frame,label) in enumerate(zip(frames,labels or ['locked v3','v1 (defect)','v2 (repair)'])):
         for row,background in enumerate(['#23252b','#f1f0ee']):
             tile = Image.new('RGBA',frame.size,background)
             tile.alpha_composite(frame)

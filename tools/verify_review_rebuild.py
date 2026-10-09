@@ -18,6 +18,7 @@ FOLDERS = ['candidates/phase4/static', 'candidates/phase4/canonical-v3', 'candid
            'candidates/phase5/waving','candidates/phase5/processing-art-v1',
            'candidates/phase5/processing','candidates/phase5/waiting',
            'candidates/phase5/review-art-v1','candidates/phase5/review-art-v2','candidates/phase5/review',
+           'candidates/phase5/review-hair-v1','candidates/phase5/review-hair-v2',
            'candidates/phase5/leg-backing-v1','candidates/phase5/locomotion-inspection',
            'candidates/phase5/run_right','candidates/phase5/run_left','candidates/phase5/global']
 
@@ -49,6 +50,7 @@ def main():
                    'guide_wave.py','review_wave.py','guide_wave_middle.py','build_waving.py',
                    'guide_processing.py','review_processing.py','build_processing.py','build_waiting.py',
                    'guide_review.py','review_review.py','review_review_v2.py','build_review.py',
+                   'guide_review_hair.py','review_hair.py',
                    'guide_legs.py','leg_material.py','review_locomotion.py','build_locomotion.py','build_global_review.py']:
         subprocess.run([sys.executable, str(ROOT/'tools'/script)], cwd=ROOT, check=True, capture_output=True)
     after, encoded_after = snapshot()
