@@ -22,7 +22,9 @@
   "visualMotionApproval": "pending",
   "limitations": [
     "Only five held poses; this is not continuous ballistic playback or a native FPS improvement.",
-    "Grounded legs accommodate less than one output pixel; no newly painted knee or arm articulation.",
+    "Grounded root descends less than one output pixel; original-source legs bend through an estimated frontal two-link rig, not newly painted anatomy.",
+    "Estimated leg mattes can carry hair fringe; hidden backing and joint locations remain hypotheses, not recovered artist layers or measured forces.",
+    "Rigid body/dress translation replaces the old lower-body height field at contact; shoe material targets are pinned, but nearby backing/edge colors need not stay identical.",
     "Native action repeats three times; landing has one held pose, not a within-slot recovery animation.",
     "Naturalness and restrained character remain subject to actual-size visual review."
   ]

@@ -53,6 +53,35 @@
     -4.444444444444444,
     0
   ],
+  "bodyCompressionOutputPx": [
+    0.8,
+    0,
+    0,
+    0,
+    0.25
+  ],
+  "tipAnglesDegrees": [
+    [
+      0.08,
+      0
+    ],
+    [
+      -0.12,
+      0.05
+    ],
+    [
+      -0.2,
+      0.08
+    ],
+    [
+      0.1,
+      -0.03
+    ],
+    [
+      0.04,
+      -0.02
+    ]
+  ],
   "groundedFrames": [
     0,
     4
@@ -90,21 +119,393 @@
     ]
   ],
   "nativeInterpolation": false,
-  "method": "pinned grounded shoes; rigid actor flight from a parabolic model sampled at real hold midpoints; no head/body resizing",
+  "method": "original-source two-link knees at grounded holds; planted shoes; rigid actor flight at actual hold midpoints; no head/body resizing",
+  "groundedContactVersion": "two-link-source-material-v1",
+  "legCompositionVersion": "leg-material-v2",
+  "legBackingGeneratedSha256": "F4DB57340CF910C3F5A773BEFF3345823C42FBCFFEBD44C12F7E00990EACD93A",
+  "contactRigJoints": [
+    [
+      {
+        "name": "left",
+        "rootSourcePx": [
+          0.0,
+          5.052631579
+        ],
+        "relativeAnkleOffsetSourcePx": [
+          0.0,
+          -5.052631579
+        ],
+        "worldJointSourcePx": [
+          [
+            535.0,
+            941.052631579
+          ],
+          [
+            513.402723721,
+            978.436554024
+          ],
+          [
+            521.0,
+            1026.0
+          ]
+        ],
+        "designSegmentLengthsSourcePx": [
+          43.17406629,
+          48.166378315
+        ],
+        "actualSegmentLengthsSourcePx": [
+          43.17406629,
+          48.166378315
+        ],
+        "grounded": true
+      },
+      {
+        "name": "right",
+        "rootSourcePx": [
+          0.0,
+          5.052631579
+        ],
+        "relativeAnkleOffsetSourcePx": [
+          0.0,
+          -5.052631579
+        ],
+        "worldJointSourcePx": [
+          [
+            674.0,
+            941.052631579
+          ],
+          [
+            695.917909905,
+            979.126313111
+          ],
+          [
+            689.0,
+            1026.0
+          ]
+        ],
+        "designSegmentLengthsSourcePx": [
+          43.931765273,
+          47.381430962
+        ],
+        "actualSegmentLengthsSourcePx": [
+          43.931765273,
+          47.381430962
+        ],
+        "grounded": true
+      }
+    ],
+    [
+      {
+        "name": "left",
+        "rootSourcePx": [
+          0.0,
+          -28.070175439
+        ],
+        "relativeAnkleOffsetSourcePx": [
+          0.0,
+          0.0
+        ],
+        "worldJointSourcePx": [
+          [
+            535.0,
+            907.929824561
+          ],
+          [
+            525.0,
+            949.929824561
+          ],
+          [
+            521.0,
+            997.929824561
+          ]
+        ],
+        "designSegmentLengthsSourcePx": [
+          43.17406629,
+          48.166378315
+        ],
+        "actualSegmentLengthsSourcePx": [
+          43.17406629,
+          48.166378315
+        ],
+        "grounded": false
+      },
+      {
+        "name": "right",
+        "rootSourcePx": [
+          0.0,
+          -28.070175439
+        ],
+        "relativeAnkleOffsetSourcePx": [
+          0.0,
+          0.0
+        ],
+        "worldJointSourcePx": [
+          [
+            674.0,
+            907.929824561
+          ],
+          [
+            683.0,
+            950.929824561
+          ],
+          [
+            689.0,
+            997.929824561
+          ]
+        ],
+        "designSegmentLengthsSourcePx": [
+          43.931765273,
+          47.381430962
+        ],
+        "actualSegmentLengthsSourcePx": [
+          43.931765273,
+          47.381430962
+        ],
+        "grounded": false
+      }
+    ],
+    [
+      {
+        "name": "left",
+        "rootSourcePx": [
+          0.0,
+          -50.526315789
+        ],
+        "relativeAnkleOffsetSourcePx": [
+          0.0,
+          0.0
+        ],
+        "worldJointSourcePx": [
+          [
+            535.0,
+            885.473684211
+          ],
+          [
+            525.0,
+            927.473684211
+          ],
+          [
+            521.0,
+            975.473684211
+          ]
+        ],
+        "designSegmentLengthsSourcePx": [
+          43.17406629,
+          48.166378315
+        ],
+        "actualSegmentLengthsSourcePx": [
+          43.17406629,
+          48.166378315
+        ],
+        "grounded": false
+      },
+      {
+        "name": "right",
+        "rootSourcePx": [
+          0.0,
+          -50.526315789
+        ],
+        "relativeAnkleOffsetSourcePx": [
+          0.0,
+          0.0
+        ],
+        "worldJointSourcePx": [
+          [
+            674.0,
+            885.473684211
+          ],
+          [
+            683.0,
+            928.473684211
+          ],
+          [
+            689.0,
+            975.473684211
+          ]
+        ],
+        "designSegmentLengthsSourcePx": [
+          43.931765273,
+          47.381430962
+        ],
+        "actualSegmentLengthsSourcePx": [
+          43.931765273,
+          47.381430962
+        ],
+        "grounded": false
+      }
+    ],
+    [
+      {
+        "name": "left",
+        "rootSourcePx": [
+          0.0,
+          -28.070175439
+        ],
+        "relativeAnkleOffsetSourcePx": [
+          0.0,
+          0.0
+        ],
+        "worldJointSourcePx": [
+          [
+            535.0,
+            907.929824561
+          ],
+          [
+            525.0,
+            949.929824561
+          ],
+          [
+            521.0,
+            997.929824561
+          ]
+        ],
+        "designSegmentLengthsSourcePx": [
+          43.17406629,
+          48.166378315
+        ],
+        "actualSegmentLengthsSourcePx": [
+          43.17406629,
+          48.166378315
+        ],
+        "grounded": false
+      },
+      {
+        "name": "right",
+        "rootSourcePx": [
+          0.0,
+          -28.070175439
+        ],
+        "relativeAnkleOffsetSourcePx": [
+          0.0,
+          0.0
+        ],
+        "worldJointSourcePx": [
+          [
+            674.0,
+            907.929824561
+          ],
+          [
+            683.0,
+            950.929824561
+          ],
+          [
+            689.0,
+            997.929824561
+          ]
+        ],
+        "designSegmentLengthsSourcePx": [
+          43.931765273,
+          47.381430962
+        ],
+        "actualSegmentLengthsSourcePx": [
+          43.931765273,
+          47.381430962
+        ],
+        "grounded": false
+      }
+    ],
+    [
+      {
+        "name": "left",
+        "rootSourcePx": [
+          0.0,
+          1.578947368
+        ],
+        "relativeAnkleOffsetSourcePx": [
+          0.0,
+          -1.578947368
+        ],
+        "worldJointSourcePx": [
+          [
+            535.0,
+            937.578947368
+          ],
+          [
+            519.457432206,
+            977.858329022
+          ],
+          [
+            521.0,
+            1026.0
+          ]
+        ],
+        "designSegmentLengthsSourcePx": [
+          43.17406629,
+          48.166378315
+        ],
+        "actualSegmentLengthsSourcePx": [
+          43.17406629,
+          48.166378315
+        ],
+        "grounded": true
+      },
+      {
+        "name": "right",
+        "rootSourcePx": [
+          0.0,
+          1.578947368
+        ],
+        "relativeAnkleOffsetSourcePx": [
+          0.0,
+          -1.578947368
+        ],
+        "worldJointSourcePx": [
+          [
+            674.0,
+            937.578947368
+          ],
+          [
+            689.664204223,
+            978.623224754
+          ],
+          [
+            689.0,
+            1026.0
+          ]
+        ],
+        "designSegmentLengthsSourcePx": [
+          43.931765273,
+          47.381430962
+        ],
+        "actualSegmentLengthsSourcePx": [
+          43.931765273,
+          47.381430962
+        ],
+        "grounded": true
+      }
+    ]
+  ],
+  "jointEvidenceDecimalPlaces": 9,
+  "sourceAlphaAndOcclusionSeparated": true,
+  "normalizedKnownBacking": true,
+  "artistLayerRecoveryClaimed": false,
+  "newArtworkGenerated": false,
+  "physicalBalanceProven": false,
+  "continuousLandingProven": false,
+  "originalAirCelsRGBAExact": true,
+  "strategyUserApproval": "pending",
+  "strategyApprovalInheritedFromLocomotion": false,
+  "directSamplerNeutralPremultErrorTolerance": 1e-10,
+  "directSamplerNeutralPremultMatchesWithinTolerance": true,
+  "directSamplerNeutralRGBAExact": true,
+  "directSamplerNeutralChangedPixels": 0,
+  "directSamplerNeutralMaximumRGBADifference": 0,
   "sampling": "3x coverage integration from high-resolution source, one terminal Lanczos downsample",
   "visualMotionApproval": "pending",
   "installableFullAtlas": false,
   "installed": false,
   "frameHashes": [
-    "0B5CCEF2078370D89BA917C9ACC6EA1613D0EA0531B52003A1340B77ADC66706",
+    "D97503D6294CC134F5ED6486FB186351C7472F54EDEC6B56C6597C7CA99BF7DF",
     "F66213D8143F5F4FC35502F1B9318E8FC2AF347F21285F4476AE00A9F513E039",
     "687145828FFC7050E6B6FC08FD0CD7E7EE1491240A5FD824F914430F263E010C",
     "2F2BEFF1B30A51F51E0A398E38EABA41372DD40A034EB7468E640C598EC55C58",
-    "0060B645699BE3F637BA21DF0ABE84167B7E5D0326152572F836815FB074AE0F"
+    "1A0BF0292DB2741830B000434A6B332AF1E5B73765C70D1FB24FB850F0A9A44B"
   ],
   "unresolved": [
     "Only five held poses; this is not continuous ballistic playback or a native FPS improvement.",
-    "Grounded legs accommodate less than one output pixel; no newly painted knee or arm articulation.",
+    "Grounded root descends less than one output pixel; original-source legs bend through an estimated frontal two-link rig, not newly painted anatomy.",
+    "Estimated leg mattes can carry hair fringe; hidden backing and joint locations remain hypotheses, not recovered artist layers or measured forces.",
+    "Rigid body/dress translation replaces the old lower-body height field at contact; shoe material targets are pinned, but nearby backing/edge colors need not stay identical.",
     "Native action repeats three times; landing has one held pose, not a within-slot recovery animation.",
     "Naturalness and restrained character remain subject to actual-size visual review."
   ]

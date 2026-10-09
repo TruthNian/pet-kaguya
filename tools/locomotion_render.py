@@ -59,7 +59,8 @@ def source_coordinates(x,y,key):
     return x-rx,y-ry
 
 
-def evaluate(material, x, y, key, direction, *, normalized_backing=True, rebase_roundoff=True):
+def evaluate(material, x, y, key, direction, *, normalized_backing=True, rebase_roundoff=True,
+             source_fields=None):
     """Evaluate original paint/occlusion at destination points; no posed raster.
 
     root + (world foot - root) cancels for a planted shoe. Thus a fractional
@@ -69,8 +70,11 @@ def evaluate(material, x, y, key, direction, *, normalized_backing=True, rebase_
     """
     data=material['data']; x0,y0,_,_=data['box']
     qx,qy=source_coordinates(x,y,key)
-    bx,by = (follow.coordinates(qx,qy,key,material['followFields'])
-             if material['followFields'] is not None else (qx,qy))
+    if source_fields is not None:
+        bx,by = source_fields(qx,qy)
+    else:
+        bx,by = (follow.coordinates(qx,qy,key,material['followFields'])
+                 if material['followFields'] is not None else (qx,qy))
     backing=sample(material['backing'],bx,by)
     if normalized_backing:
         visible=sample(material['visibility'],bx,by)
@@ -80,6 +84,11 @@ def evaluate(material, x, y, key, direction, *, normalized_backing=True, rebase_
     for leg,paint,beta,offset in zip(data['spec']['legs'],data['layers'],data['occlusions'],
                                     relative_offsets(key,direction)):
         sx,sy=leg_coordinates(qx,qy,leg,*offset)
+        if source_fields is not None:
+            # Apply the same authored source field to paint, occlusion and
+            # backing. Warping only B leaves source hair carried by a matte
+            # unmoved and breaks the neutral composition at that boundary.
+            sx,sy=source_fields(sx,sy)
         result=over(sample(paint,sx-x0,sy-y0),sample(beta,sx-x0,sy-y0),result)
     if (not np.isfinite(result).all() or np.any(result < -1e-7)
             or np.any(result[...,3] > 255+1e-7)
@@ -95,10 +104,10 @@ def evaluate(material, x, y, key, direction, *, normalized_backing=True, rebase_
     return result
 
 
-def integration_coordinates(transform):
+def integration_coordinates(transform, *, actor_y=0):
     yy,xx=np.mgrid[:HEIGHT*SUPERSAMPLE,:WIDTH*SUPERSAMPLE].astype(float)
     return (((xx+.5)/SUPERSAMPLE-transform['x'])/transform['scale']-.5,
-            ((yy+.5)/SUPERSAMPLE-transform['y'])/transform['scale']-.5)
+            ((yy+.5)/SUPERSAMPLE-transform['y']-actor_y)/transform['scale']-.5)
 
 
 def quantize(pixels):

@@ -42,6 +42,18 @@ class DirectLocomotion(unittest.TestCase):
         naive=render.evaluate(m,x,y,k,1,normalized_backing=False,rebase_roundoff=False)
         self.assertGreater(float(np.max(abs(naive-expected))),40)
 
+    def test_optional_source_field_warps_paint_occlusion_and_backing_together(self):
+        source=np.array([[[50,30,20,255],[100,100,100,255]]]*2,dtype=np.uint8)
+        backing=np.array([[[0,0,0,255],[255,255,255,255]]]*2,dtype=float)
+        paint,beta=condition(source.astype(float),backing,np.array([[.25,1.]]*2))
+        data=dict(self.data,mother=Image.fromarray(source),box=(0,0,2,2),background=backing,
+                  layers=[paint,np.zeros_like(paint)],occlusions=[beta,np.zeros_like(beta)])
+        material=render.prepare(data,data['mother'])
+        key=dict(rootSourcePx=[0,0],left=[0,0],right=[0,0])
+        actual=render.evaluate(material,np.array([.5]),np.array([.5]),key,1,
+            source_fields=lambda x,y:(x+.25,y+.1),rebase_roundoff=False)
+        np.testing.assert_allclose(actual,[[87.5,82.5,80,255]],atol=1e-12,rtol=0)
+
     def test_fractional_full_material_neutral_and_native_reference_not_a_source_shortcut(self):
         m=self.material;k=dict(rootSourcePx=[0,0],left=[0,0],right=[0,0])
         x,y=render.integration_coordinates(self.transform)

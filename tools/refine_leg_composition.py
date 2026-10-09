@@ -28,6 +28,15 @@ def strategy_decision():
 
 def inputs():
     strategy_decision()
+    return material_inputs()
+
+
+def material_inputs():
+    """Original texture/matte hypothesis, without locomotion-style approval.
+
+    Reuse in another frontal motion must not inherit the user's approval of
+    small-step direction. inputs() retains that guard for existing consumers.
+    """
     original=legacy.inputs()
     source=legacy.premult(original['mother'].crop(original['box']))
     hints=[np.asarray(mask,dtype=float)/255*original['allowed'] for mask in original['masks']]

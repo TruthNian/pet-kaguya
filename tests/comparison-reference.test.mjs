@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {comparisonReference,validateRigidReference} from '../viewer/comparison-reference.mjs';
+import {comparisonReference,validateRigidReference,validateHopReference} from '../viewer/comparison-reference.mjs';
 import {candidateSlot,candidatePoseOffset} from '../viewer/candidate-clock.mjs';
 import {durations} from '../viewer/clock.mjs';
 
@@ -59,5 +59,44 @@ test('changed root, feet, focus, source, camera or schedule cannot silently masq
 test('invalid references and indices fail before selecting a misleading cel',()=>{
   for(const [choice,state,index] of [['phase3','idle',0],['rigid','waiting',0],['rigid','run_left',8],
     ['idle','idle',6],['rigid','run_right',.5],['rigid','run_right',NaN],['idle','none',0]])
+    assert.throws(()=>comparisonReference(choice,state,index));
+});
+
+const hop=JSON.parse(readFileSync(new URL('../candidates/phase5/jumping/build.json',import.meta.url),'utf8'));
+const contact=JSON.parse(readFileSync(new URL('../candidates/phase5/jumping/contact-proof.json',import.meta.url),'utf8'));
+test('actual two-link hop and old-height-field reference have the same source, poses and native holds',()=>{
+  assert.equal(validateHopReference(contact,hop),contact);
+  assert.deepEqual(contact.airCelsRGBAExact,[true,true,true]);
+  assert.equal(contact.visualApprovalInherited,false);
+  assert.equal(hop.strategyApprovalInheritedFromLocomotion,false);
+  for(const key of Object.keys(contact.contract)){
+    const changed=structuredClone(hop);changed[key]=null;
+    assert.throws(()=>validateHopReference(contact,changed));
+  }
+  for(const [key,value] of [['referenceRole','approved-old-pet'],['visualApprovalInherited',true],
+    ['installed',true],['file','bad.webp'],['airCelsRGBAExact',[true,false,true]]]){
+    assert.throws(()=>validateHopReference({...contact,[key]:value},hop));
+  }
+  assert.throws(()=>validateHopReference({...contact,candidateFrameHashes:contact.frameHashes},hop));
+  assert.throws(()=>validateHopReference(contact,{...hop,groundedContactVersion:'old-height-field'}));
+});
+test('same hop slot drives the counterfactual at every hold and synchronous three-cycle idle fallback',()=>{
+  for(let cycle=0;cycle<3;cycle++)for(let index=0;index<5;index++){
+    const start=cycle*840+candidatePoseOffset('jumping',index);
+    for(const time of [start,start+durations[4][index]-.001]){
+      const selected=candidateSlot('jumping',time),reference=comparisonReference('contact',selected.state,selected.index);
+      assert.deepEqual(reference,{kind:'contact',state:'jumping',index,synchronized:true});
+    }
+  }
+  for(const time of [2520,2520+1680,999999]){
+    const selected=candidateSlot('jumping',time),reference=comparisonReference('contact',selected.state,selected.index);
+    assert.equal(selected.state,'idle');assert.equal(reference.state,'idle');
+    assert.equal(reference.kind,'candidate');assert.equal(reference.index,selected.index);
+  }
+});
+test('manual hop reference shares the exact frame and cannot silently select gait or unrelated actions',()=>{
+  for(let index=0;index<5;index++)assert.equal(comparisonReference('contact','jumping',index).index,index);
+  for(const [choice,state,index] of [['contact','jumping',5],['contact','waiting',0],
+    ['contact','run_right',0],['rigid','jumping',0],['contact','jumping',.5]])
     assert.throws(()=>comparisonReference(choice,state,index));
 });

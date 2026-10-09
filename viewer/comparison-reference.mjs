@@ -20,11 +20,32 @@ export function validateRigidReference(metadata,state,current){
   return entry;
 }
 export function comparisonReference(choice,state,index){
-  if(!['idle','rigid'].includes(choice)||!Number.isInteger(index)||index<0
+  if(!['idle','rigid','contact'].includes(choice)||!Number.isInteger(index)||index<0
       ||!durations[candidateRows[state]]||index>=durations[candidateRows[state]].length)
     throw new Error('Invalid comparison selection');
   if(choice==='idle')return {kind:'candidate',state:'idle',index:0,synchronized:false};
-  if(['run_right','run_left'].includes(state))return {kind:'rigid',state,index,synchronized:true};
+  if(choice==='rigid'&&['run_right','run_left'].includes(state))return {kind:'rigid',state,index,synchronized:true};
+  if(choice==='contact'&&state==='jumping')return {kind:'contact',state,index,synchronized:true};
   if(state==='idle')return {kind:'candidate',state,index,synchronized:true};
-  throw new Error('Rigid gait reference cannot compare a different action');
+  throw new Error('Synchronized reference cannot compare a different action');
+}
+
+export function validateHopReference(metadata,current){
+  const fields=['sourceSha256','state','nativeRow','camera','durationsMs','actorOffsetsPx',
+    'bodyCompressionOutputPx','tipAnglesDegrees','nativeInterpolation','repeatBeforeIdle'];
+  if(current.state!=='jumping'||current.nativeRow!==4
+      ||current.groundedContactVersion!=='two-link-source-material-v1'
+      ||current.strategyApprovalInheritedFromLocomotion!==false
+      ||current.visualMotionApproval!=='pending'||current.originalAirCelsRGBAExact!==true
+      ||metadata.referenceRole!=='regenerated-counterfactual-not-active-animation'
+      ||metadata.referencePurpose!=='isolate-grounded-two-link-knees-vs-vertical-height-field'
+      ||metadata.file!=='comparison-old-strip.webp'||metadata.frameHashes?.length!==5
+      ||metadata.visualApprovalInherited!==false||metadata.installableFullAtlas!==false||metadata.installed!==false
+      ||JSON.stringify(metadata.airCelsRGBAExact)!==JSON.stringify([true,true,true])
+      ||JSON.stringify(metadata.candidateFrameHashes)!==JSON.stringify(current.frameHashes)
+      ||fields.some(key=>current[key]===undefined||JSON.stringify(metadata.contract?.[key])!==JSON.stringify(current[key])))
+    throw new Error('Hop comparison source/poses/timing or candidate boundary mismatch');
+  metadata.frameHashes.forEach((_,index)=>candidateCelKey(metadata.frameHashes,index));
+  current.frameHashes.forEach((_,index)=>candidateCelKey(current.frameHashes,index));
+  return metadata;
 }
