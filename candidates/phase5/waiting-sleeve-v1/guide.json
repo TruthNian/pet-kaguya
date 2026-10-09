@@ -1,0 +1,28 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "parentPoseRGBAHash": "115DC5C3C52D75A3DB9FEA5E783DC80192C56B58705094954318F7829A30C488",
+  "parentCompositionVersion": "waiting-art-v1",
+  "sourceCrop": [
+    280,
+    480,
+    620,
+    975
+  ],
+  "guideCanvas": [
+    495,
+    495
+  ],
+  "transparentPaddingRightSourcePx": 155,
+  "faceIncluded": false,
+  "faceGeometryChangeAllowed": false,
+  "heldHandPositionChangeAllowed": false,
+  "newPoseAllowed": false,
+  "role": "complete raised sleeve flow/volume, not recoloring disconnected patches",
+  "inputRoles": [
+    "current waiting sleeve and fixed wrist/shoulder context",
+    "canonical material/style only, not its relaxed arm pose"
+  ],
+  "adoption": "guide only; current bounded development adoption is recorded separately in waiting-art-v2",
+  "activeAtlasChanged": false,
+  "installed": false
+}

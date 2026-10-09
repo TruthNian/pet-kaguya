@@ -1,0 +1,45 @@
+{
+  "editor": "GIMP",
+  "editorVersion": "3.2.6",
+  "canvas": [
+    1205,
+    1306
+  ],
+  "project": "kaguya-waiting-sleeve.xcf",
+  "projectSha256": "1971F1687E1CF3FA7E14819A7175C56EB5B5DBB220B70BEA1834F048F860A51A",
+  "projectReopened": true,
+  "parentCompositionVersion": "waiting-art-v1",
+  "layers": [
+    {
+      "name": "GUIDE ONLY - protected foreground",
+      "visible": false,
+      "locked": true,
+      "hasMask": false
+    },
+    {
+      "name": "REFERENCE ONLY - canonical v3, never replace",
+      "visible": false,
+      "locked": true,
+      "hasMask": false
+    },
+    {
+      "name": "02 Raised garment and bounded backing - editable compensated mask",
+      "visible": true,
+      "locked": false,
+      "hasMask": true
+    },
+    {
+      "name": "01 Locked waiting v1 - original held hand, face, cape and torso",
+      "visible": true,
+      "locked": true,
+      "hasMask": true
+    }
+  ],
+  "composition": "normal-over with float base-mask compensation; nonlinear RGB",
+  "maskEditingRequiresBaseCompensationRebuild": true,
+  "nativeDesktopPaintingClaimed": false,
+  "cleanRigClaimed": false,
+  "userVisualApproval": "pending",
+  "activeAtlasChanged": false,
+  "installedPetChanged": false
+}

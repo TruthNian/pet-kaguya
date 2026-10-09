@@ -58,7 +58,7 @@ class WaitingMotion(unittest.TestCase):
             self.assertEqual(frame.crop((73,47,122,100)).tobytes(),data['frames'][0].crop((73,47,122,100)).tobytes())
 
     def test_shoes_body_and_zero_pose_match_the_existing_static_key_pose(self):
-        with Image.open(art.OUT/'frame.png') as frame:
+        with Image.open(waiting.art.OUT/'frame.png') as frame:
             self.assertEqual(frame.convert('RGBA').tobytes(),self.data['frames'][0].tobytes())
         for frame in self.data['frames']:
             for box in ((72,180,122,202),(94,99,123,144),(115,120,143,132)):
@@ -136,6 +136,10 @@ class WaitingMotion(unittest.TestCase):
         for key in ('installed','installableFullAtlas','facialGeometryRepair','articulatedArmBuilt','fullRedrawAccepted','bodyPulse','nativeInterpolation'):
             self.assertFalse(self.meta[key])
         self.assertTrue(self.meta['animationBuilt'])
+        self.assertEqual(self.meta['artworkCompositionVersion'],'waiting-art-v2')
+        self.assertEqual(self.meta['clothCompositionVersion'],'waiting-sleeve-v1')
+        self.assertTrue(self.meta['heldHandRGBAExactFromV1'])
+        self.assertFalse(self.meta['clothAlphaPreservedExactly'])
         self.assertGreaterEqual(len(self.meta['unresolved']),5)
 
 

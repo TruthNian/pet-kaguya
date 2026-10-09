@@ -109,6 +109,20 @@ def revise(parent, material, known, unknown):
     return Image.fromarray(result), diagnostics, eligible
 
 
+def write_held_structure():
+    """Refresh actual current cels without rerunning the unrelated hair solver."""
+    held_frames=[]
+    for name in ('idle','waiting','review'):
+        folder=ROOT/f'candidates/phase5/{name}'
+        metadata=json.loads((folder/'build.json').read_text(encoding='utf-8'))
+        with Image.open(folder/'strip.webp') as opened:
+            first=opened.convert('RGBA').crop((0,0,192,208))
+        if metadata['sourceSha256']!=ACCEPTED_SHA or rgba_hash(first)!=metadata['frameHashes'][0]:
+            raise ValueError('Held structure contact must show actual current cels')
+        held_frames.append(first)
+    comparison(held_frames,224,['current idle','current waiting','current review']).save(OUT/'current-held-structure-224px.png')
+
+
 def main():
     parent, material, masks = inputs()
     pose, diagnostics, eligible = revise(parent, material, masks['known'], masks['unknown'])
@@ -126,16 +140,7 @@ def main():
     frames = [native_frame(load_canonical()), native_frame(parent), frame]
     for width in (80, 113, 192, 224):
         comparison(frames, width, ['mother v3', 'current v4', 'visible anchors only']).save(OUT/f'contact-{width}px.png')
-    held_frames = []
-    for name in ('idle', 'waiting', 'review'):
-        folder = ROOT/f'candidates/phase5/{name}'
-        metadata = json.loads((folder/'build.json').read_text(encoding='utf-8'))
-        with Image.open(folder/'strip.webp') as opened:
-            first = opened.convert('RGBA').crop((0, 0, 192, 208))
-        if metadata['sourceSha256'] != ACCEPTED_SHA or rgba_hash(first) != metadata['frameHashes'][0]:
-            raise ValueError('Held structure contact must show actual current cels')
-        held_frames.append(first)
-    comparison(held_frames, 224, ['current idle', 'current waiting', 'current review']).save(OUT/'current-held-structure-224px.png')
+    write_held_structure()
     board = Image.new('RGB', (660, 480), '#23252b')
     draw = ImageDraw.Draw(board)
     for index, (image, label) in enumerate(zip((load_canonical(), parent, pose),

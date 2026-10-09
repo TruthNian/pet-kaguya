@@ -6,7 +6,8 @@ import math
 import numpy as np
 
 from canonical import ROOT,ACCEPTED_SHA,load_canonical,clean_cutout,camera
-import review_waiting as art
+import review_waiting_v2 as art
+import review_waiting_sleeve as cloth
 from build_idle import specification as idle_specification,region_masks,render
 from animation_output import write_animation
 from protocol import DURATIONS
@@ -63,6 +64,10 @@ def main():
     write_animation(OUT,frames,DURATIONS[6])
     metadata = dict(sourceSha256=ACCEPTED_SHA,source='sources/canonical/artwork.png',
         handGeneratedSha256=art.GENERATED_SHA,state='waiting',nativeRow=6,statesInThisArtifact=['waiting'],
+        artworkCompositionVersion='waiting-art-v2',clothCompositionVersion='waiting-sleeve-v1',
+        clothGeneratedSha256=cloth.GENERATED_SHA,newArtworkGenerated=True,
+        heldHandRGBAExactFromV1=True,wholeRaisedGarmentAndBoundedBacking=True,
+        clothAlphaPreservedExactly=False,cleanSemanticMatteClaimed=False,clothOnlyPixelChangeClaimed=False,
         durationsMs=DURATIONS[6],totalDurationMs=sum(DURATIONS[6]),repeatBeforeIdle=3,
         actionDurationMs=3*sum(DURATIONS[6]),closedEyeFrames=0,bodyPulse=False,bodyTranslationPx=0,
         camera=data['transform'],sameSourceCoordinateCamera=True,
@@ -72,7 +77,7 @@ def main():
         loopSeamRGBAExact=frames[0].tobytes()==frames[-1].tobytes(),
         uniqueCels=len(set(frame.tobytes() for frame in frames)),
         frameHashes=[hashlib.sha256(frame.tobytes()).hexdigest().upper() for frame in frames],
-        method='bounded original waiting key pose held with small non-face ear/hair response; no entry/exit simulation',
+        method='bounded complete raised sleeve over original held hand; small non-face ear/hair response, no entry/exit simulation',
         sampling='same canonical camera, 3x coverage from high-resolution pose and one terminal Lanczos downsample',
         facialGeometryRepair=False,fullRedrawAccepted=False,articulatedArmBuilt=False,
         animationBuilt=True,nativeInterpolation=False,visualMotionApproval='pending',

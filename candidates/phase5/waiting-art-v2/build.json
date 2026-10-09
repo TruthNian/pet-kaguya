@@ -1,0 +1,60 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "generatedSha256": "39165C8A937747F6B38CDCC3A2F8CA9CC11787C03EA46856D0E25F69CD111BD2",
+  "cameraDimensionsMatch": true,
+  "camera": {
+    "scale": 0.15833333333333333,
+    "x": 0.36666666666667425,
+    "y": 7.883333333333354,
+    "visibleBBox": [
+      142,
+      26,
+      1066,
+      1226
+    ],
+    "floor": 202,
+    "topReserve": 12,
+    "cell": [
+      192,
+      208
+    ]
+  },
+  "rawExactUnchangedFraction": 0.4663373005534622,
+  "rawChangedPixelsOutsidePatch": 722923,
+  "boundedChangedPixels": 116920,
+  "boundedChangedPixelsOutsidePatch": 0,
+  "faceChangesOutsideForegroundHand": 0,
+  "poseRGBAHash": "2CAA92BED439AEEC56C491CD2B36FC4CF1D0F0F72C50DC47C35BD0BB81EFE30F",
+  "frameRGBAHash": "D6F3A6201EB8877FB3FAE183D8142B92743B2B07283F6F96FBFC208E65D4633A",
+  "alphaCleanup": {
+    "distantVeryFaintPixelsRemoved": 4177,
+    "removedOpacitySum": 4971,
+    "maximumRemovedAlpha": 8,
+    "retainedFringeRadius": 4,
+    "paintedPixelsAboveAlpha8PreservedExactly": true,
+    "transparentRGBPixelsCleared": 859,
+    "sourceFileModified": false,
+    "faceShapeModified": false
+  },
+  "sameSourceCoordinateCamera": true,
+  "independentHeadFitting": false,
+  "facialGeometryRepair": false,
+  "fullRedrawAccepted": false,
+  "visualAcceptance": "pending",
+  "animationBuilt": false,
+  "installed": false,
+  "installableFullAtlas": false,
+  "parentCompositionVersion": "waiting-art-v1",
+  "compositionVersion": "waiting-art-v2",
+  "parentPoseRGBAHash": "115DC5C3C52D75A3DB9FEA5E783DC80192C56B58705094954318F7829A30C488",
+  "clothCompositionVersion": "waiting-sleeve-v1",
+  "clothGeneratedSha256": "60B513037DBCEDDF647C500D84C17BBF2706D81DB8EF85F9228DBE80CBC15F8F",
+  "newArtworkGenerated": true,
+  "handRGBAExactFromV1": true,
+  "changedPixelsFromV1": 53583,
+  "alphaChangedPixelsFromV1": 12314,
+  "adoptedIntoDevelopmentOnly": true,
+  "clothOnlyPixelChangeClaimed": false,
+  "cleanSemanticMatteClaimed": false,
+  "placementLimitation": "Complete raised garment plus limited contour-side occlusion backing. Face and original held hand unchanged; alpha changes are allowed only within the recorded garment envelope. Hard shadows, fold scale, wrist/cape contour integration and full aesthetics remain unapproved. No enter/exit motion or installed host change."
+}

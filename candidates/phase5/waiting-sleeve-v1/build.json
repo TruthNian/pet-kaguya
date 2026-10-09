@@ -1,0 +1,147 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "parentPoseRGBAHash": "115DC5C3C52D75A3DB9FEA5E783DC80192C56B58705094954318F7829A30C488",
+  "materialGeneratedSha256": "60B513037DBCEDDF647C500D84C17BBF2706D81DB8EF85F9228DBE80CBC15F8F",
+  "rawCanvas": [
+    1254,
+    1254
+  ],
+  "sourceCrop": [
+    280,
+    480,
+    620,
+    975
+  ],
+  "wholeSquareProjection": true,
+  "objectBoundsFitting": false,
+  "allowedEnvelope": [
+    [
+      476,
+      505
+    ],
+    [
+      493,
+      493
+    ],
+    [
+      507,
+      491
+    ],
+    [
+      514,
+      525
+    ],
+    [
+      551,
+      533
+    ],
+    [
+      562,
+      565
+    ],
+    [
+      560,
+      618
+    ],
+    [
+      544,
+      672
+    ],
+    [
+      508,
+      739
+    ],
+    [
+      480,
+      795
+    ],
+    [
+      451,
+      839
+    ],
+    [
+      421,
+      866
+    ],
+    [
+      372,
+      900
+    ],
+    [
+      348,
+      918
+    ],
+    [
+      327,
+      918
+    ],
+    [
+      305,
+      898
+    ],
+    [
+      304,
+      870
+    ],
+    [
+      311,
+      836
+    ],
+    [
+      338,
+      779
+    ],
+    [
+      359,
+      724
+    ],
+    [
+      382,
+      681
+    ],
+    [
+      380,
+      629
+    ],
+    [
+      390,
+      589
+    ],
+    [
+      412,
+      557
+    ],
+    [
+      447,
+      528
+    ]
+  ],
+  "allowedPixels": 54610,
+  "changedPixels": 53583,
+  "changedOutsidePermission": 0,
+  "rawChangedPixelsOutsidePermission": 112876,
+  "alphaChangedPixels": 12314,
+  "protectedRGBAExact": true,
+  "handRGBAExact": true,
+  "capeOverlapColorDiagnostic": {
+    "failed": {
+      "warmColorPixels": 139,
+      "pinkColorPixels": 139
+    },
+    "corrected": {
+      "warmColorPixels": 4,
+      "pinkColorPixels": 0
+    }
+  },
+  "colorDiagnosticIsSemanticSegmentation": false,
+  "failedCapePoseRGBAHash": "BCEFE68B708E08C6F1E0F0DA8F0F28C28B5B3D976837416CC27E25BBCA0070CE",
+  "poseRGBAHash": "2CAA92BED439AEEC56C491CD2B36FC4CF1D0F0F72C50DC47C35BD0BB81EFE30F",
+  "frameRGBAHash": "D6F3A6201EB8877FB3FAE183D8142B92743B2B07283F6F96FBFC208E65D4633A",
+  "visualAcceptance": "pending",
+  "adoptedIntoDevelopmentOnly": true,
+  "installed": false,
+  "clothOnlyPixelChangeClaimed": false,
+  "cleanSemanticMatteClaimed": false,
+  "animationBuilt": false,
+  "limitation": "Whole raised garment plus bounded contour-side occlusion plate, not pure cloth-only RGB edits. Hand/cape/torso protected by inspected but estimated boundaries; hard shadows, fold/contour integration and full structure/motion remain visually unapproved."
+}

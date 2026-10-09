@@ -4,6 +4,7 @@ import {candidateRows as rows,candidateSlot,candidatePoseOffset,candidateCelKey}
 import {paintCel} from './cel-painter.mjs';
 import {comparisonReference,validateRigidReference,validateHopReference} from './comparison-reference.mjs?v=20261009-hop-contact-v1';
 import {validateReviewMetadata} from './review-contract.mjs';
+import {validateWaitingMetadata} from './waiting-contract.mjs';
 
 const el=id=>document.getElementById(id);
 const canvases=[el('idle-reference'),el('idle-animated')];
@@ -42,10 +43,7 @@ async function asset(state){
         ||metadata.nativeInterpolation!==false||metadata.adopted!==false||metadata.activeAtlasChanged!==false
         ||metadata.strategyUserApproval!=='pending'||metadata.visualMotionApproval!=='pending'
         ||metadata.repeatBeforeIdle!==3))throw new Error('source-arm experimental preview boundary mismatch');
-    if(state==='waiting'&&(metadata.animationBuilt!==true||metadata.nativeRow!==6
-        ||metadata.handStrategy!=='held-chin-contact'||metadata.strategyUserApproval!=='pending'
-        ||metadata.closedEyeFrames!==0||metadata.bodyPulse!==false||metadata.repeatBeforeIdle!==3))
-      throw new Error('waiting held-contact candidate boundary mismatch');
+    if(state==='waiting')validateWaitingMetadata(metadata);
     if(state==='processing'&&(metadata.nativeState!=='running'||metadata.nativeRow!==7
         ||metadata.closedEyeFrames!==0||metadata.bodyPulse!==false||metadata.ornamentFlash!==false
         ||metadata.repeatBeforeIdle!==3||metadata.visualMotionApproval!=='pending'))

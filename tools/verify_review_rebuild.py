@@ -26,7 +26,8 @@ FOLDERS = ['candidates/phase4/static', 'candidates/phase4/canonical-v3', 'candid
            'candidates/phase5/leg-backing-v1','candidates/phase5/leg-material-v2','candidates/phase5/locomotion-inspection',
            'candidates/phase5/run_right','candidates/phase5/run_left','candidates/phase5/global',
            'candidates/phase5/review-hair-boundary-v1','candidates/phase5/review-art-v5',
-           'candidates/phase5/review-sleeves-v2','candidates/phase5/review-art-v6']
+           'candidates/phase5/review-sleeves-v2','candidates/phase5/review-art-v6',
+           'candidates/phase5/waiting-sleeve-v1','candidates/phase5/waiting-art-v2']
 
 
 def snapshot():
@@ -56,7 +57,8 @@ def main():
     for script in ['identity.py', 'review_jaw.py', 'review_waiting.py', 'review_failed.py', 'review_arm_backing.py',
                    'build_idle.py', 'build_failed.py', 'build_jumping.py','build_gaze.py',
                    'guide_wave.py','review_wave.py','guide_wave_middle.py','build_waving.py',
-                   'guide_processing.py','review_processing.py','build_processing.py','build_waiting.py',
+                   'guide_processing.py','review_processing.py','build_processing.py',
+                   'guide_waiting_sleeve.py','review_waiting_sleeve.py','review_waiting_v2.py','build_waiting.py',
                    'guide_review.py','review_review.py','review_review_v2.py','review_review_v3.py',
                    'repair_review_hand_outline.py','review_review_v4.py','review_review_v5.py',
                    'guide_review_cloth.py','review_cloth_v2.py','review_review_v6.py','build_review.py','review_hair_boundary.py',

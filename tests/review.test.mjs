@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {reviewCell,reviewStates} from '../viewer/review.mjs';
 import {validateReviewMetadata} from '../viewer/review-contract.mjs';
+import {validateWaitingMetadata} from '../viewer/waiting-contract.mjs';
 
 test('static review does not silently compare waiting with an unrelated source row',()=>{
   assert.deepEqual(reviewCell('waiting','source'),{row:7,col:1});
@@ -39,4 +40,24 @@ test('old or incomplete composition and art/motion overclaims still fail the vie
     assert.throws(()=>validateReviewMetadata({...metadata,[field]:value}),/boundary mismatch/);
   }
   assert.throws(()=>validateReviewMetadata(null));
+});
+
+test('the viewer accepts current waiting garment while retaining held-contact limits',()=>{
+  const metadata=JSON.parse(readFileSync(new URL('../candidates/phase5/waiting/build.json',import.meta.url),'utf8'));
+  assert.equal(validateWaitingMetadata(metadata),metadata);
+  assert.equal(metadata.heldTimingAcceptedTemporarily,true);
+  assert.equal(metadata.clothAlphaPreservedExactly,false);
+});
+
+test('waiting rejects stale art and misleading alpha/approval/rig claims',()=>{
+  const metadata=JSON.parse(readFileSync(new URL('../candidates/phase5/waiting/build.json',import.meta.url),'utf8'));
+  for(const [field,value] of [['artworkCompositionVersion','waiting-art-v1'],
+    ['clothCompositionVersion','wrong'],['clothGeneratedSha256','changed'],['heldHandRGBAExactFromV1',false],
+    ['wholeRaisedGarmentAndBoundedBacking',false],['clothAlphaPreservedExactly',true],
+    ['clothOnlyPixelChangeClaimed',true],['cleanSemanticMatteClaimed',true],['newArtworkGenerated',false],
+    ['heldTimingAcceptedTemporarily',false],['handStrategy','raise-hold-lower'],
+    ['strategyUserApproval','approved'],['visualMotionApproval','approved'],['nativeRow',8]]){
+    assert.throws(()=>validateWaitingMetadata({...metadata,[field]:value}),/boundary mismatch/);
+  }
+  assert.throws(()=>validateWaitingMetadata(null));
 });

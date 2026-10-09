@@ -15,13 +15,18 @@ from gimp_review_project import Gimp, Gegl, file, load_layer, save, export, set_
 SOURCE = Path(globals().get('MATERIAL_INPUT',ROOT/'candidates/phase5/review-sleeves-v1')).resolve()
 VERSION = globals().get('PARENT_COMPOSITION','review-art-v4')
 OUT = Path(globals().get('PROJECT_OUTPUT',ROOT/'work/gimp-review-sleeves-v1')).resolve()
+MATERIAL_NAME = globals().get('MATERIAL_NAME','mapped-cloth.png')
+PROJECT_NAME = globals().get('PROJECT_NAME','kaguya-review-sleeves.xcf')
 
 
 def main():
-    if ROOT not in OUT.parents or ROOT not in SOURCE.parents or VERSION not in ('review-art-v4','review-art-v5'):
+    if (ROOT not in OUT.parents or ROOT not in SOURCE.parents
+            or VERSION not in ('review-art-v4','review-art-v5','waiting-art-v1')
+            or MATERIAL_NAME not in ('mapped-cloth.png','mapped-material.png')
+            or PROJECT_NAME not in ('kaguya-review-sleeves.xcf','kaguya-waiting-sleeve.xcf')):
         raise ValueError('Project must stay in a fresh repository subdirectory')
     OUT.mkdir(parents=True,exist_ok=True)
-    xcf = OUT/'kaguya-review-sleeves.xcf'
+    xcf = OUT/PROJECT_NAME
     if xcf.exists():
         raise RuntimeError('Do not overwrite an existing editable project')
     image = Gimp.file_load(Gimp.RunMode.NONINTERACTIVE,
@@ -30,9 +35,10 @@ def main():
         raise RuntimeError('Source-space camera must not change')
     image.convert_precision(Gimp.Precision.FLOAT_NON_LINEAR)
     base = image.get_layers()[0]
-    base.set_name('01 Locked '+VERSION+' - face, hands, accessories and silhouette')
+    base.set_name(globals().get('BASE_LABEL','01 Locked '+VERSION+' - face, hands, accessories and silhouette'))
     base.set_lock_position(True)
-    cloth = load_layer(image,SOURCE/'mapped-cloth.png','02 Complete cloth surface - editable mask')
+    cloth = load_layer(image,SOURCE/MATERIAL_NAME,
+                       globals().get('MATERIAL_LABEL','02 Complete cloth surface - editable mask'))
     cloth.set_mode(Gimp.LayerMode.NORMAL)
     cloth.set_blend_space(Gimp.LayerColorSpace.RGB_NON_LINEAR)
     cloth.set_composite_space(Gimp.LayerColorSpace.RGB_NON_LINEAR)

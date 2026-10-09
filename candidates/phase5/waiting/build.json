@@ -7,6 +7,15 @@
   "statesInThisArtifact": [
     "waiting"
   ],
+  "artworkCompositionVersion": "waiting-art-v2",
+  "clothCompositionVersion": "waiting-sleeve-v1",
+  "clothGeneratedSha256": "60B513037DBCEDDF647C500D84C17BBF2706D81DB8EF85F9228DBE80CBC15F8F",
+  "newArtworkGenerated": true,
+  "heldHandRGBAExactFromV1": true,
+  "wholeRaisedGarmentAndBoundedBacking": true,
+  "clothAlphaPreservedExactly": false,
+  "cleanSemanticMatteClaimed": false,
+  "clothOnlyPixelChangeClaimed": false,
   "durationsMs": [
     150,
     150,
@@ -48,14 +57,14 @@
   "loopSeamRGBAExact": true,
   "uniqueCels": 4,
   "frameHashes": [
-    "29329FDD03E87A258271336DFA3888F852A8A888FABBBF3818E9708D3CE84E90",
-    "C0668714EB4236302C8A00D304882C091365E40D72156405FF1CF039E1B5AB3F",
-    "94FEE900F03FC968CA95B25A33A9F1B1690C5E2D424397EE737DB284F0D87FE8",
-    "A2896BB7F08C4499BE25C1373A41B028963AFC309501644116FE5B46848719BC",
-    "C0668714EB4236302C8A00D304882C091365E40D72156405FF1CF039E1B5AB3F",
-    "29329FDD03E87A258271336DFA3888F852A8A888FABBBF3818E9708D3CE84E90"
+    "D6F3A6201EB8877FB3FAE183D8142B92743B2B07283F6F96FBFC208E65D4633A",
+    "48902D7A679FE3A018E2FFA2BBCA8BA42CD1A0E32A6322BA1D5723D818BC7190",
+    "62A52963EBF9B5060FF1B3AEE69FD7B8FFDB63B7CD7BEA922B02DC64AACE757F",
+    "7AD3F53858DFA3CD0D3D2A15A538455C5B12E04D62A5939087CCF54C245D22B7",
+    "48902D7A679FE3A018E2FFA2BBCA8BA42CD1A0E32A6322BA1D5723D818BC7190",
+    "D6F3A6201EB8877FB3FAE183D8142B92743B2B07283F6F96FBFC208E65D4633A"
   ],
-  "method": "bounded original waiting key pose held with small non-face ear/hair response; no entry/exit simulation",
+  "method": "bounded complete raised sleeve over original held hand; small non-face ear/hair response, no entry/exit simulation",
   "sampling": "same canonical camera, 3x coverage from high-resolution pose and one terminal Lanczos downsample",
   "facialGeometryRepair": false,
   "fullRedrawAccepted": false,

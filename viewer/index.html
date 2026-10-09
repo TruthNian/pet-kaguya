@@ -29,7 +29,7 @@
     <output id="idle-status" aria-live="off">正在解码 idle 候选…</output>
     <output id="reference-status" aria-live="off">固定 idle 用于形象对照；小步动作比较请使用同步旧版。</output>
     <p>idle 周期 6.6 秒；failed 1.22 秒、jumping 0.84 秒、waving 0.7 秒、processing 0.82 秒、waiting 1.01 秒、review 1.03 秒，动作均三轮后回 idle。jumping 最高离地 8 px，仅着地格鞋部固定。waving 末格为原图放松，停留 280 ms；过渡偏向放松。processing 对应宿主 running 行。waiting/review 身体与手势保持，只做微小耳发响应；review 仅在原眼开口内移虹膜，不改眼眶或脸型。短周期不做快呼吸或胸饰闪烁。静态关键姿势不等于完整手臂骨骼：托腮/合手的入场和回 idle 仍缺过渡，80 px 状态差异弱，review 右手更展开、新袖褶的边界融合仍待确认、前景保护多边形不是干净图层。所有动作的可爱感、接缝和节奏仍待视觉认可。</p>
-    <p>review 当前采用合成 v6（母版仍为锁定 v3）：保留此前指尖与12个可见发丝修正，只替换两袖连续内部褶线与明暗。手、袖口、外轮廓、饰品、脸和全部alpha保持v5原样；并非整张采用生成图。两手体积/遮挡、袖面边界融合及动作过渡仍待，保持时序没有变。</p>
+    <p>waiting 当前合成v2收束抬袖鼓包并调整完整垂袖褶线，仅采用有界衣料及轮廓旁少量遮挡底图；手、脸、肩披与主体保留原样。此处alpha确有局部变化，不是仅改RGB。review 当前仍为合成 v6（母版锁定 v3），只替换两袖连续内部；手、轮廓及全部alpha保持v5。两种处理不能混称。结构、边界融合及完整动作仍待确认，保持时序没有变。</p>
     <p><a href="#held-structure-review">集中查看当前托腮/合手结构</a> · <a href="../candidates/phase5/review-hand-outline-v1/contact-113px.png">指尖修正113px明暗对照</a> · <a href="../sources/editor/review-hand/kaguya-review-hand.xcf" download>GIMP可编辑图层工程</a> · <a href="../docs/PHASE5-STATES.zh-CN.md">具体限制与缺陷</a></p>
     <p>左右小步为八格、1060 ms一轮。此处模拟状态未被打断时的三轮3180 ms后回 idle；真实宿主的左右跑是拖拽反馈，松手可中断任意格并回到底层任务状态，不一定 idle，也不会等待脚落地。图集没有速度输入，不能保证鼠标拖动中的屏幕地面防滑。向支撑侧的身体横向摆幅仍为你认可的约1.9原生像素，下沉最多0.24像素。你对最新起落节奏回复“我觉得还行”，仅作为后续打磨基础，不扩大为完整自然度或其他动作通过。脸型、衣服与手保留刚性跟随，支撑兔鞋的位移与身体位移抵消。当前耳尖/发梢增加由身体横移驱动的微小滞后，上限约0.13/0.32原生像素；按实际120/220ms停留取样，身体不动时不会自行摇摆。它不是实测质量中心或已证明的物理平衡。抬脚仍约1.19像素，80 px提示弱。</p>
     <p>当前每侧均有缓升→峰值→接近→接触；左脚在第5格着地，右脚在下一轮第1格（最后一轮直接回idle）着地。删除人为的首尾像素相等规则，首尾不再相同，但相机与脸型仍固定。着地前离地约0.31/0.41原生像素；右侧因末格220ms而不对称，比上轮0.31略高。身体最大相邻横移由1.9降为约1.27像素，最大脚部垂直跳变约0.88像素，不是审美评分。新增缓升姿态并不等于连续起落或真实零速度触地；周期边界、三轮回idle和任意拖拽退出仍待整体视觉接受。</p>
@@ -46,6 +46,11 @@
     <p>左为当前idle，中为waiting托腮，右为review合手下视。每张都直接来自当前动作条的第1格，224px明暗背景；不是下面的新头发试验。保持时序已暂时接受，但实际脸、手与衣袖关系仍需确认。腰间白色月纹在母版就存在，不是旧手残留。</p>
     <img loading="lazy" src="../candidates/phase5/review-hair-boundary-v1/current-held-structure-224px.png" width="732" height="550" alt="当前idle、waiting托腮、review合手的真实第1格，224像素明暗结构对照">
   </section>
+  <details id="waiting-cloth-current" class="idle-review"><summary>当前改进 · waiting 抬袖与垂袖（开发合成 v2，待视觉认可）</summary>
+    <p>左为此前waiting，右为当前开发版。固定腕口与手位，收束红袖鼓包，让垂袖沿同一布面下垂；53,583个源RGBA像素变化，其中12,314处alpha变化。只采用受限衣料与轮廓旁遮挡底图，手、脸、肩披、腰饰、另一侧身体及鞋不动。阴影仍偏硬，不声称布料力学或全部造型通过。</p>
+    <img loading="lazy" src="../candidates/phase5/waiting-sleeve-v1/detail.png" width="680" height="525" alt="此前与当前waiting袖子同坐标比较，原托腮手位与脸未变">
+    <p><a href="../candidates/phase5/waiting-sleeve-v1/contact-224px.png">224px明暗对照</a> · <a href="../candidates/phase5/waiting-sleeve-v1/contact-80px.png">80px实际对照</a> · <a href="../sources/editor/waiting-sleeve/kaguya-waiting-sleeve.xcf" download>当前waiting的GIMP图层工程</a> · <a href="../candidates/phase5/waiting-sleeve-v1/failed-cape-overlap.png">错误保护区造成花纹拼接的失败合成</a> · <a href="../candidates/phase5/waiting-sleeve-v1/build.json">来源、边界与限制</a>。工程已实际保存/重开，可见RGBA精确匹配，859个透明隐藏RGB归零；修改权重须重算底层补偿，不是完整干净分层。已接入顶部waiting六格及开发图集，未安装。静态结构/整体自然度与进入退出仍未完成。</p>
+  </details>
   <details id="review-source-hole-repair" class="idle-review"><summary>已接入开发动作 · 可见发丝的alpha漏修洞</summary>
     <p>左为母版真实可见发丝，中为此前合成v4，右为当前v5。两处亮点来自12个alpha=239的补片像素，被旧“当前alpha≥240”条件排除在修复域外；现按原图可见性与前景遮挡恢复原始RGBA。不是模糊、补画发束或更换母版，手/衣袖/脸与其他像素不动。</p>
     <img loading="lazy" src="../candidates/phase5/review-art-v5/detail.png" width="750" height="330" alt="母版可见发丝、此前alpha漏修亮点、当前原RGBA修复的局部对照">
@@ -160,6 +165,6 @@
   </details>
 </main>
 <script type="module" src="app.mjs"></script>
-<script type="module" src="candidate.mjs?v=20261009-cloth-v2"></script>
+<script type="module" src="candidate.mjs?v=20261010-waiting-cloth-v1"></script>
 <script type="module" src="gaze.mjs"></script>
 </html>
