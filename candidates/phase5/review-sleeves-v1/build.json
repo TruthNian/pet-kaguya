@@ -1,0 +1,174 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "parentCompositionVersion": "review-art-v4",
+  "parentPoseRGBAHash": "6A92ACB8FF75F2F77F639ECFF402C1B3AA796AFB88362E66589F850E0C535B49",
+  "materialGeneratedSha256": "87FA2A01EA75F082F81E1D0BDC9C932DAB1C710A2F5E3F925016B8008BD4ACDF",
+  "materialSource": "candidates/phase5/review-structure-v1/generated.png",
+  "newArtworkGenerated": false,
+  "sourceCrop": [
+    300,
+    500,
+    960,
+    1040
+  ],
+  "canvas": [
+    1205,
+    1306
+  ],
+  "envelopes": [
+    [
+      [
+        334,
+        678
+      ],
+      [
+        369,
+        660
+      ],
+      [
+        418,
+        635
+      ],
+      [
+        454,
+        620
+      ],
+      [
+        449,
+        657
+      ],
+      [
+        441,
+        699
+      ],
+      [
+        427,
+        752
+      ],
+      [
+        406,
+        809
+      ],
+      [
+        387,
+        858
+      ],
+      [
+        373,
+        824
+      ],
+      [
+        348,
+        779
+      ],
+      [
+        341,
+        737
+      ]
+    ],
+    [
+      [
+        701,
+        639
+      ],
+      [
+        746,
+        632
+      ],
+      [
+        781,
+        650
+      ],
+      [
+        810,
+        691
+      ],
+      [
+        818,
+        744
+      ],
+      [
+        832,
+        805
+      ],
+      [
+        851,
+        864
+      ],
+      [
+        838,
+        883
+      ],
+      [
+        797,
+        857
+      ],
+      [
+        755,
+        834
+      ],
+      [
+        713,
+        804
+      ],
+      [
+        677,
+        776
+      ],
+      [
+        643,
+        750
+      ],
+      [
+        616,
+        736
+      ],
+      [
+        596,
+        694
+      ],
+      [
+        634,
+        677
+      ],
+      [
+        666,
+        657
+      ]
+    ]
+  ],
+  "seeds": [
+    [
+      377,
+      740
+    ],
+    [
+      782,
+      753
+    ]
+  ],
+  "connectedClothPixels": [
+    11508,
+    15058
+  ],
+  "allowedPixels": 26566,
+  "changedPixels": 25937,
+  "changedOutsidePermission": 0,
+  "parentAlphaPreserved": true,
+  "protectedForegroundRGBAExact": true,
+  "poseRGBAHash": "69A9CD5210C1023B355B693D126C664DC6D9C58A2F10AE10D6BB7D9732E5BA89",
+  "frameRGBAHash": "6F54F41F6301BB92D5CCC3AEBFEF11E7D4B661156B162D51A8C4C89DBE0B74CF",
+  "maskMethod": "Connected cloth, 4px closing and enclosed-gap fill; recorded envelope/protection re-applied; 2px erosion and 1px Gaussian inward ramp",
+  "failedPixelSelectionRetained": true,
+  "isolatedCreaseSurfacePolygons": false,
+  "cleanLayerRecoveryClaimed": false,
+  "handScaled": false,
+  "facialGeometryRepair": false,
+  "articulatedArmBuilt": false,
+  "animationBuilt": false,
+  "visualAcceptance": "pending",
+  "adopted": false,
+  "activeAtlasChanged": false,
+  "installed": false,
+  "limitation": "Same-coordinate whole cloth color study, not registered cloth geometry or complete seam/volume approval. Color-derived permission is not a clean semantic matte; preserved boundary lines can still disagree with new folds."
+}

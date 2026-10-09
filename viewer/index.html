@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Kaguya · 本地动画验收</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=20261009-cloth-1">
 <main>
   <header><span class="eyebrow">PET KAGUYA / ANIMATION LAB</span>
     <h1>轻一点，也鲜活一点。</h1>
@@ -32,6 +32,11 @@
     <p>左右小步为八格、1060 ms一轮。此处模拟状态未被打断时的三轮3180 ms后回 idle；真实宿主的左右跑是拖拽反馈，松手可中断任意格并回到底层任务状态，不一定 idle，也不会等待脚落地。图集没有速度输入，不能保证鼠标拖动中的屏幕地面防滑。抬脚约1.19原生像素，80 px提示弱；拆层不是无损中立重建，衣边/发丝遮罩残影与克制感仍需验收，不把支撑脚坐标固定等同于真实跑步完成。</p>
     <p><a href="../candidates/phase5/locomotion-inspection/contact-224px.png">原母版/中立拆层/左右抬脚对照</a> · <a href="../candidates/phase5/run_right/native-timing.gif">向右小步真实停留GIF</a> · <a href="../candidates/phase5/leg-backing-v1/prompt.txt">无脸隐藏底图实际生成提示词</a></p>
   </section>
+  <details id="review-sleeves-study" class="idle-review" open><summary>新候选 · 连续袖面与GIMP工程（尚未采用）</summary>
+    <p>下图左为当前合成v4，中为此前整张未采用的素材，右为本次连续袖面候选。手、脸、饰品及原alpha保持；只处理绿袖，未采用整张重绘，也未改上方动画。母版本来就有直线和三角阴影，不能把“有棱角”一概诊断为错误；此次主要避免补片边界截断褶线。</p>
+    <img loading="lazy" src="../candidates/phase5/review-sleeves-v1/detail.png" width="1200" height="305" alt="当前review、未整张采用的源素材、连续袖面候选局部对照">
+    <p><a href="../candidates/phase5/review-sleeves-v1/contact-224px.png">224px完整明暗对照</a> · <a href="../candidates/phase5/review-sleeves-v1/contact-113px.png">113px对照</a> · <a href="../sources/editor/review-sleeves/kaguya-review-sleeves.xcf" download>真实可编辑GIMP工程</a> · <a href="../sources/editor/review-sleeves/gimp-reopened-export.png">实际重开导出</a> · <a href="../candidates/phase5/review-sleeves-v1/failed-pixel-selection.png">逐点绿色选区造成斑驳的失败版本</a>。工程已保存/重开，可见RGBA与候选完全一致；透明隐藏RGB有859处归零。连续选区仍非干净角色分层，袖口/外轮廓与新褶线是否合适仍待视觉确认，不称完整体积或动作已解决。</p>
+  </details>
   <details id="review-hand-contour" class="idle-review"><summary>review · 指尖裁切修正与真实GIMP工程</summary>
     <p>下图依次为修正前合成v3、同坐标原素材（整张未采用）、有界轮廓修正。原素材的指尖是完整的，旧遮罩却切入轮廓；此前把缺口都归于手形是不准确的。当前开发动画和全局图集已同步局部修正，手腕、另一只手、脸型与相机不动，不代表袖褶或完整手势已通过。</p>
     <img loading="lazy" src="../candidates/phase5/review-hand-outline-v1/detail.png" width="900" height="260" alt="旧合成的指尖缺口、同坐标完整原素材、有界修正的局部对照">

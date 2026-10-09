@@ -1,0 +1,12 @@
+{
+  "adopted": false,
+  "activeAtlasChanged": false,
+  "installed": false,
+  "visualAcceptance": "pending",
+  "diagnosisCorrection": "Straight or triangular folds are not inherently incorrect; the selected mother also contains them. Previous arbitrary interior patches cut across crease paths.",
+  "failedAttempt": "Pointwise green selection omitted dark creases and produced a speckled left sleeve; preserved as failed-pixel-selection.png, not adopted.",
+  "observedImprovement": "Continuous cloth permission removes the point-mask speckles and allows an uninterrupted curved right-sleeve shading field.",
+  "remainingUncertainty": "Cloth volume, cuff/outline-to-fold registration, original pixel-plate seams, joint layers and all motion entry/exit are not established.",
+  "actualEditor": "GIMP 3.2.6 XCF saved, reopened and exported; not native desktop brush painting.",
+  "nextGate": "Compare the candidate with current v4 at full crop and 80/113/192/224px, retaining the current atlas until the cloth structure is accepted."
+}

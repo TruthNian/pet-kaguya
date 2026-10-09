@@ -1,0 +1,45 @@
+{
+  "editor": "GIMP",
+  "editorVersion": "3.2.6",
+  "canvas": [
+    1205,
+    1306
+  ],
+  "project": "kaguya-review-sleeves.xcf",
+  "projectSha256": "210345F3D75865845DF0A872E25FEEB2E5A537F7300E1ED6E3C7A3EF6BC9341D",
+  "projectReopened": true,
+  "parentCompositionVersion": "review-art-v4",
+  "layers": [
+    {
+      "name": "GUIDE ONLY - protected foreground",
+      "visible": false,
+      "locked": true,
+      "hasMask": false
+    },
+    {
+      "name": "REFERENCE ONLY - canonical v3, never replace",
+      "visible": false,
+      "locked": true,
+      "hasMask": false
+    },
+    {
+      "name": "02 Complete cloth surface - editable mask",
+      "visible": true,
+      "locked": false,
+      "hasMask": true
+    },
+    {
+      "name": "01 Locked v4 - face, hands, accessories and silhouette",
+      "visible": true,
+      "locked": true,
+      "hasMask": true
+    }
+  ],
+  "composition": "normal-over with float base-mask compensation; nonlinear RGB",
+  "maskEditingRequiresBaseCompensationRebuild": true,
+  "nativeDesktopPaintingClaimed": false,
+  "cleanRigClaimed": false,
+  "userVisualApproval": "pending",
+  "activeAtlasChanged": false,
+  "installedPetChanged": false
+}
