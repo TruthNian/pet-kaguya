@@ -1,0 +1,10 @@
+{
+  "sha256": "F1B5B9652586E4A2E6657C4DDAC7898CC41FB3A4376745B7625E29D91111A8F9",
+  "size": [1254, 1254],
+  "source": "built-in image_gen",
+  "prompt": "prompt.txt",
+  "transparentBackground": true,
+  "scope": "hidden hair backing only",
+  "wholeCropAdopted": false,
+  "poseApproved": false
+}

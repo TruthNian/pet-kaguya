@@ -1,0 +1,6 @@
+Use case: precise-object-edit
+Asset type: hidden-background plate for a layered 2D sprite, NOT a finished character pose.
+Input images: Image 1 is the edit target, a square 512x512 face-free crop of the approved sprite.
+Primary request: Remove ONLY the viewer-left arm, its hand, and its long green sleeve with the cream cuff and red upper-arm cloth. Fill the removed area with the continuing golden hair that lies behind the sleeve and hand. The existing hand is at the left middle of the crop; the green sleeve hangs down the left-middle. Remove the old dark sleeve/hand outline and its antialias fringe too.
+Style/medium: Match the existing softly shaded anime illustration, curved fine golden strands and painterly highlights/shadows, not flat yellow.
+Constraints: Keep the exact square crop, scale, placement and camera. Preserve the already visible golden hair, its existing outer silhouette, light and strand direction. Preserve the shoulder cape at the top, cream/gold front hair lock, moon ornament, red torso/dress at the right and all other existing material. Continue nearby hair shading naturally across the newly revealed area. Preserve genuine transparency outside the original silhouette. No face, new arm, new hand, new sleeve, text, watermark or other elements. Do not recenter, enlarge or redesign anything.

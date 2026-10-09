@@ -1,0 +1,19 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "sourceCrop": [
+    200,
+    500,
+    712,
+    1012
+  ],
+  "inputSha256": "D7688E5B58AED7DD27EC06BD937D003CBC26EAAE4D75A22EAD9CD71C62974727",
+  "inputSize": [
+    512,
+    512
+  ],
+  "editMode": "built-in image_gen",
+  "role": "hidden hair only",
+  "wholeRedrawAdopted": false,
+  "adopted": false,
+  "installed": false
+}

@@ -1,0 +1,18 @@
+{
+  "canvas": [
+    1205,
+    1306
+  ],
+  "roi": [
+    250,
+    565,
+    527,
+    1001
+  ],
+  "format": "little-endian float32, straight nonlinear RGBA plus numeric matte",
+  "alphaPlane": "canonical mother, not a recovered foreground alpha",
+  "foregroundSha256": "CD2ADE8B050D2B50CB9DCA59C7DB2DF67E51F423FC6B04976DFCCABD711970B8",
+  "maskSha256": "BF024F81372FBDCA89A1930AF2607E2067BFBEF6C1569F991C44F49D65F652EF",
+  "cleanArtistLayers": false,
+  "maskEditingRequiresRebuild": true
+}

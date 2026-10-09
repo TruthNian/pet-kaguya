@@ -1,0 +1,440 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "source": "sources/canonical/artwork.png",
+  "backingGeneratedSha256": "F1B5B9652586E4A2E6657C4DDAC7898CC41FB3A4376745B7625E29D91111A8F9",
+  "state": "waving",
+  "nativeRow": 3,
+  "durationsMs": [
+    140,
+    140,
+    140,
+    280
+  ],
+  "totalDurationMs": 700,
+  "repeatBeforeIdle": 3,
+  "canvas": [
+    1205,
+    1306
+  ],
+  "roi": [
+    250,
+    565,
+    527,
+    1001
+  ],
+  "shoulderSourcePx": [
+    476.0,
+    585.0
+  ],
+  "elbowSourcePx": [
+    449.0,
+    703.0
+  ],
+  "wristSourcePx": [
+    356.0,
+    743.0
+  ],
+  "jointPositionsEstimated": true,
+  "forearmRotationDriven": true,
+  "palmAndCuffShareRotation": false,
+  "palmRotationRigidInSector": true,
+  "upperCuffAttachmentEstimated": true,
+  "lowerSleeveFollowsWristTranslation": true,
+  "sourceMatteEstimated": true,
+  "material": "background-conditioned latent RGB foreground; canonical alpha plane retained",
+  "armEnvelope": [
+    [
+      411,
+      575
+    ],
+    [
+      459,
+      576
+    ],
+    [
+      489,
+      580
+    ],
+    [
+      486,
+      607
+    ],
+    [
+      499,
+      590
+    ],
+    [
+      521,
+      604
+    ],
+    [
+      519,
+      634
+    ],
+    [
+      498,
+      678
+    ],
+    [
+      471,
+      723
+    ],
+    [
+      449,
+      775
+    ],
+    [
+      442,
+      805
+    ],
+    [
+      429,
+      847
+    ],
+    [
+      413,
+      886
+    ],
+    [
+      396,
+      931
+    ],
+    [
+      378,
+      956
+    ],
+    [
+      351,
+      978
+    ],
+    [
+      331,
+      982
+    ],
+    [
+      313,
+      972
+    ],
+    [
+      303,
+      951
+    ],
+    [
+      298,
+      927
+    ],
+    [
+      300,
+      876
+    ],
+    [
+      304,
+      828
+    ],
+    [
+      313,
+      777
+    ],
+    [
+      309,
+      774
+    ],
+    [
+      295,
+      777
+    ],
+    [
+      283,
+      771
+    ],
+    [
+      282,
+      763
+    ],
+    [
+      292,
+      757
+    ],
+    [
+      279,
+      753
+    ],
+    [
+      270,
+      747
+    ],
+    [
+      271,
+      738
+    ],
+    [
+      282,
+      736
+    ],
+    [
+      308,
+      728
+    ],
+    [
+      333,
+      718
+    ],
+    [
+      324,
+      703
+    ],
+    [
+      312,
+      691
+    ],
+    [
+      310,
+      678
+    ],
+    [
+      324,
+      666
+    ],
+    [
+      348,
+      638
+    ],
+    [
+      380,
+      607
+    ],
+    [
+      406,
+      581
+    ]
+  ],
+  "protectedTorso": [
+    [
+      512,
+      657
+    ],
+    [
+      532,
+      659
+    ],
+    [
+      542,
+      666
+    ],
+    [
+      579,
+      682
+    ],
+    [
+      627,
+      675
+    ],
+    [
+      685,
+      696
+    ],
+    [
+      704,
+      737
+    ],
+    [
+      734,
+      780
+    ],
+    [
+      764,
+      817
+    ],
+    [
+      802,
+      871
+    ],
+    [
+      807,
+      884
+    ],
+    [
+      782,
+      893
+    ],
+    [
+      756,
+      911
+    ],
+    [
+      729,
+      891
+    ],
+    [
+      712,
+      875
+    ],
+    [
+      687,
+      891
+    ],
+    [
+      687,
+      916
+    ],
+    [
+      665,
+      924
+    ],
+    [
+      637,
+      927
+    ],
+    [
+      624,
+      908
+    ],
+    [
+      612,
+      918
+    ],
+    [
+      560,
+      923
+    ],
+    [
+      516,
+      920
+    ],
+    [
+      480,
+      913
+    ],
+    [
+      480,
+      890
+    ],
+    [
+      461,
+      884
+    ],
+    [
+      450,
+      908
+    ],
+    [
+      421,
+      901
+    ],
+    [
+      397,
+      884
+    ],
+    [
+      397,
+      872
+    ],
+    [
+      425,
+      816
+    ],
+    [
+      458,
+      749
+    ],
+    [
+      492,
+      690
+    ]
+  ],
+  "anglesDegrees": [
+    0.0,
+    6.0,
+    -3.0,
+    0.0
+  ],
+  "measurements": [
+    {
+      "angleDegrees": 0.0,
+      "wristSourcePx": [
+        356.0,
+        743.0
+      ],
+      "forearmLengthSourcePx": 101.23734489,
+      "minimumForwardJacobian": 1.0,
+      "maximumInverseErrorSourcePx": 0.0,
+      "changedPixels": 0,
+      "changedOutsidePermission": 0,
+      "poseRGBAHash": "7C41805C11ADB3AE9191B3BE20D230371DA4AD754E26618A97AAC6FE1DDF3911"
+    },
+    {
+      "angleDegrees": 6.0,
+      "wristSourcePx": [
+        352.3283252,
+        733.05972873
+      ],
+      "forearmLengthSourcePx": 101.23734489,
+      "minimumForwardJacobian": 0.90986261,
+      "maximumInverseErrorSourcePx": 0.0,
+      "changedPixels": 48138,
+      "changedOutsidePermission": 0,
+      "poseRGBAHash": "14167D034ED06A5719E47A4E478C15E33CA4AB5303AE9E69019699FE948760AF"
+    },
+    {
+      "angleDegrees": -3.0,
+      "wristSourcePx": [
+        358.22089152,
+        747.81242532
+      ],
+      "forearmLengthSourcePx": 101.23734489,
+      "minimumForwardJacobian": 0.92501381,
+      "maximumInverseErrorSourcePx": 0.0,
+      "changedPixels": 44998,
+      "changedOutsidePermission": 0,
+      "poseRGBAHash": "13BBC03227C69D5F275EEC4DC244C8A92AD439B68DEEE2919FD9531346A2452C"
+    },
+    {
+      "angleDegrees": 0.0,
+      "wristSourcePx": [
+        356.0,
+        743.0
+      ],
+      "forearmLengthSourcePx": 101.23734489,
+      "minimumForwardJacobian": 1.0,
+      "maximumInverseErrorSourcePx": 0.0,
+      "changedPixels": 0,
+      "changedOutsidePermission": 0,
+      "poseRGBAHash": "7C41805C11ADB3AE9191B3BE20D230371DA4AD754E26618A97AAC6FE1DDF3911"
+    }
+  ],
+  "neutralChangedPixels": 0,
+  "neutralFromSameMaterialNotSourceShortcut": true,
+  "neutralRestRGBAExact": true,
+  "sourceBackgroundOutsideMaterialPreserved": true,
+  "failedCoarseContourRetained": false,
+  "failedCoarseContourPoseRGBAHash": null,
+  "failedIncompleteAAFixtureRGBAHash": null,
+  "sourceForegroundArtwork": true,
+  "newForegroundArtworkGenerated": false,
+  "hiddenBackingVersion": 2,
+  "fullRedrawAccepted": false,
+  "facialGeometryRepair": false,
+  "cleanLayerRecoveryClaimed": false,
+  "articulatedArmBuilt": false,
+  "nativeInterpolation": false,
+  "visualMotionApproval": "pending",
+  "strategyUserApproval": "pending",
+  "adopted": false,
+  "activeAtlasChanged": false,
+  "installableFullAtlas": false,
+  "installed": false,
+  "frameHashes": [
+    "E049C9010F4C3C2B2FD686620DCC1BF3FD97B4A97A5FE2913B69E4EA1924C6A8",
+    "BA0F420C22D750DDA7C3DEE8C89D26C0BBD73AB9D9935D470ABF81104C34E755",
+    "68A514002D6CEF04DC4D26D3FD3BA30E5416062F7E527B5654C9E1F59B71D684",
+    "E049C9010F4C3C2B2FD686620DCC1BF3FD97B4A97A5FE2913B69E4EA1924C6A8"
+  ],
+  "unresolved": [
+    "Estimated joint positions and foreground matte, not original artist layers or a complete elbow/wrist rig.",
+    "Visible old-arm retirement and nonzero arm/cuff/hair seams require inspection; neutral equality is not aesthetic proof.",
+    "The upper cuff lies in the attachment fade; the entire cuff does not share one rigid palm rotation.",
+    "Small low-hand movement may not communicate greeting at 80px; it is not an approved replacement gesture.",
+    "Four native held frames still have discrete changes; arbitrary cross-state interruption/entry is not solved.",
+    "Hidden hair is generated/estimated; movement foreground comes only from the approved mother."
+  ]
+}

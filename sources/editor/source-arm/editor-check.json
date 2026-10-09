@@ -1,0 +1,53 @@
+{
+  "editor": "GIMP",
+  "editorVersion": "3.2.6",
+  "canvas": [
+    1205,
+    1306
+  ],
+  "project": "kaguya-source-arm.xcf",
+  "projectSha256": "550EDDF01152CDD27C699B6C7B3C886CAA6FE0986567C36AE839F4127D0A79F4",
+  "projectReopened": true,
+  "sourceMaterial": "candidates/phase5/wave-source-rig-v2",
+  "layers": [
+    {
+      "name": "GUIDE ONLY - fixed foreground",
+      "visible": false,
+      "locked": true,
+      "hasMask": false
+    },
+    {
+      "name": "DIAGNOSTIC ONLY - +6 deg, seams unresolved",
+      "visible": false,
+      "locked": true,
+      "hasMask": false
+    },
+    {
+      "name": "REFERENCE ONLY - locked canonical v3",
+      "visible": false,
+      "locked": true,
+      "hasMask": false
+    },
+    {
+      "name": "02 Original arm artwork - estimated editable matte",
+      "visible": true,
+      "locked": false,
+      "hasMask": true
+    },
+    {
+      "name": "01 Hidden hair backing - estimated, locked",
+      "visible": true,
+      "locked": true,
+      "hasMask": true
+    }
+  ],
+  "composition": "nonlinear RGB normal-over with compensated base mask",
+  "floatEstimatedMaterial": true,
+  "sourceArtworkPreserved": true,
+  "maskEditingRequiresBaseCompensationRebuild": true,
+  "nativeDesktopPaintingClaimed": false,
+  "cleanRigClaimed": false,
+  "userVisualApproval": "pending",
+  "activeAtlasChanged": false,
+  "installedPetChanged": false
+}
