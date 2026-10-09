@@ -1,0 +1,33 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "parentPoseRGBAHash": "29B889E8F9EC0BADF3762B1D9EE0C78F4CA752E95A9071F8AD77119562F748C5",
+  "parentCompositionVersion": "review-art-v3",
+  "generatedSource": "candidates/phase5/review-art-v1/generated.png",
+  "generatedSha256": "0E6AD86D64E5FB6B6E85B50953E2C4E717506F4340B8ECA2EC8E7A77FA151452",
+  "newArtworkGenerated": false,
+  "method": "complete observed original lower-hand contour, raw-exact core plus bounded edge blend; no hand scaling",
+  "seedSourcePx": [
+    560,
+    700
+  ],
+  "connectedSkinPixels": 2866,
+  "rawExactCorePixels": 5121,
+  "changedPixels": 2510,
+  "changedPixelsOutsidePermission": 0,
+  "protectedForegroundRGBAExact": true,
+  "alphaChangedPixels": 1598,
+  "poseRGBAHash": "6A92ACB8FF75F2F77F639ECFF402C1B3AA796AFB88362E66589F850E0C535B49",
+  "facialGeometryRepair": false,
+  "fullRedrawAccepted": false,
+  "cleanLayerRecoveryClaimed": false,
+  "articulatedArmBuilt": false,
+  "animationBuilt": false,
+  "adopted": true,
+  "activeAtlasChanged": true,
+  "adoptionScope": "local technical contour repair in development QA; pose/motion approval remains pending",
+  "visualAcceptance": "pending",
+  "strategyUserApproval": "pending",
+  "installableFullAtlas": false,
+  "installed": false,
+  "limitation": "Local contour/mixing repair only. Inspection must establish whether light-region connectivity includes the intended lower hand, and whether the protected upper hand and source plates cut it legitimately. No new finger articulation, sleeve repair or motion acceptance is claimed."
+}

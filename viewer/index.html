@@ -27,23 +27,28 @@
     </div>
     <output id="idle-status" aria-live="off">正在解码 idle 候选…</output>
     <p>idle 周期 6.6 秒；failed 1.22 秒、jumping 0.84 秒、waving 0.7 秒、processing 0.82 秒、waiting 1.01 秒、review 1.03 秒，动作均三轮后回 idle。jumping 最高离地 8 px，仅着地格鞋部固定。waving 末格为原图放松，停留 280 ms；过渡偏向放松。processing 对应宿主 running 行。waiting/review 身体与手势保持，只做微小耳发响应；review 仅在原眼开口内移虹膜，不改眼眶或脸型。短周期不做快呼吸或胸饰闪烁。静态关键姿势不等于完整手臂骨骼：托腮/合手的入场和回 idle 仍缺过渡，80 px 状态差异弱，review 右手更展开、袖褶偏硬、前景保护多边形不是干净图层。所有动作的可爱感、接缝和节奏仍待视觉认可。</p>
-    <p>review 当前采用合成 v3：沿用 v2 旧袖移除与手势，恢复部分原本可见的母版发丝，仅在未知内部估计颜色/透明度连续性。不重画脸、手袖或母版，也不采用上轮失败的发丝生成图。局部色块减轻不代表发束结构、手袖或动作已经通过。</p>
-    <p><a href="../candidates/phase5/review-art-v3/contact-224px.png">review 母版 / 修正前 / 原发丝恢复明暗对照</a> · <a href="../candidates/phase5/review-art-v1/prompt.txt">沿用手势素材的实际生成提示词</a> · <a href="../docs/PHASE5-STATES.zh-CN.md">具体限制与缺陷</a></p>
+    <p>review 当前采用合成 v4（母版仍为锁定 v3）：保留此前原发丝恢复，修正下方手掌被遮罩切掉的指尖，不缩放手、不重画脸。GIMP真实图层工程已保存并重开验证；这不是桌面手绘、干净分层或造型通过。袖褶、两手关系、接缝与动作过渡仍待。</p>
+    <p><a href="../candidates/phase5/review-hand-outline-v1/contact-113px.png">指尖修正113px明暗对照</a> · <a href="../sources/editor/review-hand/kaguya-review-hand.xcf" download>GIMP可编辑图层工程</a> · <a href="../docs/PHASE5-STATES.zh-CN.md">具体限制与缺陷</a></p>
     <p>左右小步为八格、1060 ms一轮。此处模拟状态未被打断时的三轮3180 ms后回 idle；真实宿主的左右跑是拖拽反馈，松手可中断任意格并回到底层任务状态，不一定 idle，也不会等待脚落地。图集没有速度输入，不能保证鼠标拖动中的屏幕地面防滑。抬脚约1.19原生像素，80 px提示弱；拆层不是无损中立重建，衣边/发丝遮罩残影与克制感仍需验收，不把支撑脚坐标固定等同于真实跑步完成。</p>
     <p><a href="../candidates/phase5/locomotion-inspection/contact-224px.png">原母版/中立拆层/左右抬脚对照</a> · <a href="../candidates/phase5/run_right/native-timing.gif">向右小步真实停留GIF</a> · <a href="../candidates/phase5/leg-backing-v1/prompt.txt">无脸隐藏底图实际生成提示词</a></p>
   </section>
-  <details id="review-composition" class="idle-review"><summary>review · 原发丝恢复前后（不代表全部造型通过）</summary>
-    <p>每排依次为锁定母版 v3、修正前合成 v2、当前合成 v3。2,931个已知发丝像素完整RGBA恢复，未知内部的颜色/透明度是连续性估计。脸型、手势、衣服、取景和原生分辨率未改。剩余接缝、手形、袖褶与过渡仍未解决。</p>
+  <details id="review-hand-contour" class="idle-review"><summary>review · 指尖裁切修正与真实GIMP工程</summary>
+    <p>下图依次为修正前合成v3、同坐标原素材（整张未采用）、有界轮廓修正。原素材的指尖是完整的，旧遮罩却切入轮廓；此前把缺口都归于手形是不准确的。当前开发动画和全局图集已同步局部修正，手腕、另一只手、脸型与相机不动，不代表袖褶或完整手势已通过。</p>
+    <img loading="lazy" src="../candidates/phase5/review-hand-outline-v1/detail.png" width="900" height="260" alt="旧合成的指尖缺口、同坐标完整原素材、有界修正的局部对照">
+    <p><a href="../sources/editor/review-hand/kaguya-review-hand.xcf" download>真实XCF图层与可编辑遮罩</a> · <a href="../sources/editor/review-hand/gimp-reopened-export.png">GIMP重开后的真实导出</a> · <a href="../candidates/phase5/review-art-v4/contact-224px.png">实际尺寸明暗对照</a>。编辑器正常叠加会重复计算素材alpha；当前工程使用浮点底层补偿遮罩，修改上层遮罩后须重新计算补偿。它不是完整角色rig。CI只核对归档哈希与导出证据，不重新运行GIMP。</p>
+  </details>
+  <details id="review-composition" class="idle-review"><summary>review · 前轮原发丝恢复证据（不是新母版）</summary>
+    <p>每排依次为锁定母版v3、历史合成v2、历史合成v3；当前主预览已为合成v4。2,931个已知发丝像素完整RGBA恢复，未知内部的颜色/透明度是连续性估计。剩余接缝、手形、袖褶与过渡仍未解决。</p>
     <img loading="lazy" src="../candidates/phase5/review-art-v3/contact-192px.png" width="636" height="480" alt="锁定母版、原发丝恢复前、局部修正后的review，深浅背景对照">
     <p><a href="../candidates/phase5/review-art-v3/detail.png">高清局部对照</a> · <a href="../candidates/phase5/review-art-v3/failed-direct-copy-detail.png">直接复制失败/耦合修正</a> · <a href="../candidates/phase5/review-art-v2/contact-192px.png">此前旧袖残影修正证据</a></p>
   </details>
   <details id="review-structure-study" class="idle-review"><summary>未采用试验 · 手形与袖褶（中性精确不代表自然）</summary>
-    <p>上方动作仍为合成 v3，未替换。下图依次为当前、原像素手层的中性重建、固定袖口的缩短候选。中性RGBA完全一致，但缩短后指尖/拇指关系和两手之间的轮廓仍不自然；袖褶也未修复。不能因为重建精确就把候选晋升。脸、母版、另一只手、袖口及完整alpha均未改。</p>
+    <p>这是前轮未采用试验，图中current指当时合成v3；上方动作现在为合成v4，仅修正原素材轮廓裁切，没有采用缩短手形。下图依次为历史v3、原像素手层的中性重建、固定袖口的缩短候选。中性RGBA完全一致，但缩短后指尖/拇指关系仍别扭；不能把精确重建当成造型接受。</p>
     <img loading="lazy" src="../candidates/phase5/review-hand-v2/detail.png" width="900" height="260" alt="当前review、中性精确重建、仍未采用的紧凑手形，局部同坐标对照">
     <p><a href="../candidates/phase5/review-hand-v2/contact-113px.png">113px明暗对照</a> · <a href="../candidates/phase5/review-hand-v1/detail.png">原像素朴素叠加失败：残边与61/255误差</a> · <a href="../candidates/phase5/review-structure-v1/detail.png">整袖表面试作：新旧折线断接</a> · <a href="../candidates/phase5/review-structure-v1/prompt.txt">无脸手袖实际AI提示词</a> · <a href="../candidates/phase5/review-hand-v2/build.json">手层重建数据与限制</a></p>
   </details>
   <details id="review-hair-study" class="idle-review"><summary>未采用试验 · 隐藏发丝接缝（不替换当前动作）</summary>
-    <p>这是上轮未采用试验，图中 current v2 是当时版本；目前主预览为合成 v3。后两列均未采用：它们的部分颜色衔接改善不足以解决发丝错接。其父alpha及手袖不变，不是视觉通过证明；本轮恢复原发丝没有使用这两张生成补片。</p>
+    <p>这是未采用的历史试验，图中current v2是当时版本；目前主预览为合成v4。后两列均未采用：部分颜色衔接改善不足以解决发丝错接。其父alpha及手袖不变，不是视觉通过证明；当前没有使用这两张生成补片。</p>
     <img loading="lazy" src="../candidates/phase5/review-hair-v2/contact-192px.png" width="636" height="480" alt="当前review与两个未采用的发丝融合实验，深浅背景对照">
     <p><a href="../candidates/phase5/review-hair-v2/detail.png">高清局部接缝对照</a> · <a href="../candidates/phase5/review-hair-v2/contact-113px.png">113 px对照</a> · <a href="../candidates/phase5/review-hair-v2/prompt.txt">无脸局部素材实际生成提示词</a> · <a href="../candidates/phase5/review-hair-v2/build.json">未采用理由及保护范围</a></p>
   </details>

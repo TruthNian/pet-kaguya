@@ -4,9 +4,9 @@ Local Kaguya sprite assets, reproducible animation tools, and an honest quality 
 
 ## Current work: locked mother pose and bounded action candidates
 
-The latest hands/sleeves repair studies are **not adopted**. A face-free AI crop rounds cloth facets but causes old/new crease discontinuities when bounded; the hand-only edit returned no output. A same-pixel compact-hand study now reconstructs the neutral RGBA exactly using its recorded existing background, yet finger/thumb articulation and inter-hand contour remain awkward. Passing this algebraic check is not visual acceptance. The active review row/global atlas still use the unchanged composition v3. [Studies, concrete failures and next structural constraints](docs/PHASE5-STATES.zh-CN.md).
+Current review uses composition **v4**, not a new mother drawing. A same-coordinate inspection showed that part of the bad fingertip shape was caused by an inward-clipping mask, not the original drawing. v4 restores that recorded source contour without scaling the hand, retaining the previous v3 hair repair. The row and development atlas are synchronized; all pose/motion aesthetics remain pending. The preceding sleeve/compact-hand studies remain **not adopted**. [Concrete correction, failed studies and remaining constraints](docs/PHASE5-STATES.zh-CN.md).
 
-Current review uses `review-art-v3`, a local composition revision, **not a new mother drawing**. It restores 2,931 inspected visible-hair pixels from the locked source exactly and reconciles only the unknown interior's RGB/alpha boundary. Its two masks actually share source-anchor edges; an eroded, disconnected solve was rejected. The prior face-free generated hair studies remain **not adopted**. Hidden strand topology, hand/clothing quality and state transitions are still unresolved; no pixel test promotes the result to aesthetic acceptance or installation. [Local improvement, failures and limits](docs/PHASE5-STATES.zh-CN.md).
+GIMP 3.2.6 was actually used through its official batch API to create, save, reopen and export an [editable XCF project](sources/editor/review-hand/kaguya-review-hand.xcf). Its visible RGBA matches the controlled contour repair exactly; 859 fully transparent hidden RGB values are normalized, not a full-byte identity claim. The first normal-over alpha-stacking error was rejected. Editable masks need float base-mask compensation to avoid repeating that error. This is not desktop brush painting or a clean character rig; CI checks the archive hash and saved export evidence, not a live GIMP replay. Cross-platform animation rebuilds do not require GIMP. Hidden strand topology, sleeve/hand aesthetics and state transitions remain unresolved.
 
 Phase 5 has **nine motion candidates and sixteen eye-only gaze cells**, sharing the locked v3 mother and camera. `candidates/phase5/global/` combines their exact decoded rows into a complete-coverage development atlas, **not an approved or installable release**. No `pet.json` or installer target is created. Left/right candidates propose small frontal alternating steps using estimated source leg/shoe mattes; shoes translate rigidly, with independently pinned support feet. They are drag feedback, not autonomous locomotion: host pointer displacement is independent of the sprite schedule, and drag release can interrupt any cel and restore the underlying state, not necessarily idle. No world-foot no-slip, velocity synchronization, side-face redraw or artwork mirroring is claimed. The frontal strategy is still awaiting user confirmation. Neutral leg reconstruction is measurably non-lossless; edge alpha/adjacent hair fringe remain uncertain. Body weight transfer is not built and 80 px cues are weak.
 
@@ -66,6 +66,9 @@ python tools/build_waiting.py
 python tools/guide_review.py
 python tools/review_review.py
 python tools/review_review_v2.py
+python tools/review_review_v3.py
+python tools/repair_review_hand_outline.py
+python tools/review_review_v4.py
 python tools/build_review.py
 python tools/guide_legs.py
 python tools/leg_material.py

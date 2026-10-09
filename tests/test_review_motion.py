@@ -12,7 +12,7 @@ from PIL import Image
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT/'tools'))
 import build_review as review
-import review_review_v3 as art
+import review_review_v4 as art
 import build_gaze as gaze
 from arm_material import project_fixed_crop
 from build_idle import coordinates
@@ -32,11 +32,11 @@ class Review(unittest.TestCase):
         before, after = np.asarray(data['base']), np.asarray(data['armPose'])
         np.testing.assert_array_equal(after[~data['armAllowed']], before[~data['armAllowed']])
         np.testing.assert_array_equal(after[data['preserved']], before[data['preserved']])
-        self.assertEqual(int(np.any(before!=after,axis=2).sum()),78805)
-        self.assertEqual(self.art_meta['boundedRightArmChangedPixels'],78805)
-        self.assertEqual(self.art_meta['changedPixelsFromV1'],30591)
+        self.assertEqual(int(np.any(before!=after,axis=2).sum()),80508)
+        self.assertEqual(self.art_meta['boundedRightArmChangedPixels'],80508)
+        self.assertEqual(self.art_meta['changedPixelsFromV1'],33101)
         self.assertEqual(self.art_meta['boundedRightArmChangedPixelsOutsidePatch'],0)
-        self.assertEqual(self.art_meta['rawMappedCropChangedPixelsOutsidePatch'],177351)
+        self.assertEqual(self.art_meta['rawMappedCropChangedPixelsOutsidePatch'],175648)
 
     def test_unmodified_head_face_and_shoes_are_actual_source_rgba(self):
         source, pose = np.asarray(self.data['mother']), np.asarray(self.data['armPose'])
@@ -184,7 +184,9 @@ class Review(unittest.TestCase):
                     'articulatedArmBuilt','nativeInterpolation','bodyPulse','ornamentFlash'):
             self.assertFalse(self.meta[key])
         self.assertTrue(self.meta['animationBuilt'])
-        self.assertEqual(self.meta['rightArmCompositionVersion'],'review-art-v3')
+        self.assertEqual(self.meta['rightArmCompositionVersion'],'review-art-v4')
+        self.assertTrue(self.meta['originalLowerHandContourRestored'])
+        self.assertFalse(self.meta['handScaled'])
         self.assertTrue(self.meta['knownSourceHairRGBAExact'])
         self.assertTrue(self.meta['paintedHairAlphaContinuityEstimated'])
         self.assertFalse(self.meta['newArtworkGenerated'])

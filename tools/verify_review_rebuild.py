@@ -20,6 +20,7 @@ FOLDERS = ['candidates/phase4/static', 'candidates/phase4/canonical-v3', 'candid
            'candidates/phase5/review-art-v1','candidates/phase5/review-art-v2','candidates/phase5/review',
            'candidates/phase5/review-hair-v1','candidates/phase5/review-hair-v2','candidates/phase5/review-art-v3',
            'candidates/phase5/review-structure-v1','candidates/phase5/review-hand-v1','candidates/phase5/review-hand-v2',
+           'candidates/phase5/review-hand-outline-v1','candidates/phase5/review-art-v4',
            'candidates/phase5/leg-backing-v1','candidates/phase5/locomotion-inspection',
            'candidates/phase5/run_right','candidates/phase5/run_left','candidates/phase5/global']
 
@@ -50,7 +51,8 @@ def main():
                    'build_idle.py', 'build_failed.py', 'build_jumping.py','build_gaze.py',
                    'guide_wave.py','review_wave.py','guide_wave_middle.py','build_waving.py',
                    'guide_processing.py','review_processing.py','build_processing.py','build_waiting.py',
-                   'guide_review.py','review_review.py','review_review_v2.py','review_review_v3.py','build_review.py',
+                   'guide_review.py','review_review.py','review_review_v2.py','review_review_v3.py',
+                   'repair_review_hand_outline.py','review_review_v4.py','build_review.py',
                    'guide_review_hair.py','review_hair.py',
                    'guide_review_structure.py','review_structure.py','guide_review_hand.py','review_hand.py','review_hand_v2.py',
                    'guide_legs.py','leg_material.py','review_locomotion.py','build_locomotion.py','build_global_review.py']:

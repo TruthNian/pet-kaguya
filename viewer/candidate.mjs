@@ -38,7 +38,8 @@ async function asset(state){
         ||metadata.repeatBeforeIdle!==3||metadata.visualMotionApproval!=='pending'))
       throw new Error('processing state or restrained-motion boundary mismatch');
     if(state==='review'&&(metadata.animationBuilt!==true||metadata.nativeRow!==8
-        ||metadata.rightArmCompositionVersion!=='review-art-v3'||metadata.newArtworkGenerated!==false
+        ||metadata.rightArmCompositionVersion!=='review-art-v4'||metadata.newArtworkGenerated!==false
+        ||metadata.originalLowerHandContourRestored!==true||metadata.handScaled!==false
         ||metadata.knownSourceHairRGBAExact!==true||metadata.paintedHairAlphaContinuityEstimated!==true
         ||metadata.handStrategy!=='two-low-hands-held'||metadata.strategyUserApproval!=='pending'
         ||metadata.closedEyeFrames!==0||metadata.bodyPulse!==false||metadata.ornamentFlash!==false

@@ -1,0 +1,42 @@
+{
+  "editor": "GIMP",
+  "editorVersion": "3.2.6",
+  "canvas": [
+    1205,
+    1306
+  ],
+  "project": "kaguya-review-hand.xcf",
+  "projectReopened": true,
+  "layers": [
+    {
+      "name": "GUIDE ONLY - protected foreground, never replace",
+      "visible": false,
+      "locked": true,
+      "hasMask": false
+    },
+    {
+      "name": "REFERENCE ONLY - selected canonical v3, face locked",
+      "visible": false,
+      "locked": true,
+      "hasMask": false
+    },
+    {
+      "name": "02 Original lower hand - edit its mask, not its pixels",
+      "visible": true,
+      "locked": false,
+      "hasMask": true
+    },
+    {
+      "name": "01 Before repair - locked review composition v3",
+      "visible": true,
+      "locked": true,
+      "hasMask": true
+    }
+  ],
+  "composition": "normal-over with float base-mask compensation; nonlinear RGB",
+  "maskEditingRequiresBaseCompensationRebuild": true,
+  "nativeDesktopPaintingClaimed": false,
+  "cleanRigClaimed": false,
+  "userVisualApproval": "pending",
+  "installedPetChanged": false
+}

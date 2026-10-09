@@ -1,5 +1,19 @@
 # Phase 5：同一母版的动作与缺画素材
 
+## 最新：修正指尖裁切，并接入真实GIMP图层工程
+
+母版仍为用户选定的canonical-v3，脸型不动。当前review开发动画改用合成v4：保留v3发丝恢复，仅恢复下方手掌被遮罩切掉的原素材轮廓。此前把这些指尖缺口都归为“手形本身不自然”不准确；同坐标原素材的轮廓更完整，错误来自过紧的合成权限与轮廓内羽化。手掌体积与袖褶的其他问题仍存在。
+
+这轮先质疑是否需要重新画手；删除整体缩手和新重绘；用同一固定投影下的原像素修复已有轮廓；在四种实尺寸和局部检查后才同步六格review与全局开发图集。核心区5,121源像素逐RGBA取回原素材，相对v3改变2,510像素，许可外0，其中1,598个alpha有改变；不能再声称手区alpha全部不变。另一只手、腰饰、脸、鞋及此前发丝恢复均保持。
+
+用户建议使用图形工具后，从GIMP官方源下载3.2.6，核对SHA-256与有效数字签名，按当前用户安装于本机；PNG默认打开程序保持。实际通过GIMP的python-fu-eval创建、保存、重新打开23,205,095字节的XCF，包含锁定的原合成、原手素材及可编辑遮罩、隐藏母版参考和前景保护指引。**没有假称进行了桌面画笔操作；这也不是干净前景matte或角色rig。**
+
+首版工程错误地使用REPLACE：这是绘制内部模式，保存的图层实际回到NORMAL，半透明手部被重复叠得更不透明。[实际失败导出](../sources/editor/review-hand/failed-normal-over.png)留作回归证据，有7,231处RGBA差异、核心区5,121处均未保持原素材RGBA，此输出未进入动画。纠正为浮点正常叠加，底层补偿 `k=(1-w)/(1-alpha_raw*w)`，使预乘混合成立。上层遮罩调整后须重算底层补偿，不是任意手绘即可自动通过的工程。第二版实际保存/重开导出一致；全部可见RGBA与受控修补逐像素精确，原素材核心RGBA也精确。其859处差异仅是alpha=0的隐藏RGB被归零，既不宣称全图原字节一致，也不把它当可见退步。
+
+归档XCF SHA-256为`EE76825E3A0E3991AFE09CD503EBD27DE3033B351625D66C4DEAC276ACBD12E3`。CI仅验证归档哈希及已保存的实际导出证据，不安装GIMP或重放编辑器；项目改动后必须重新导出/复核。普通动画重建仍跨平台、不依赖本机GIMP，采用与编辑器可见结果一致的固定原像素修补。当前只修复了有证据的裁切错误，未取得整体造型/动作视觉认可，未安装宠物，R06/R13等门槛仍开放。
+
+证据：[同坐标轮廓对照](../candidates/phase5/review-hand-outline-v1/detail.png)、[113px明暗](../candidates/phase5/review-hand-outline-v1/contact-113px.png)、[真实GIMP工程](../sources/editor/review-hand/kaguya-review-hand.xcf)、[GIMP重开导出](../sources/editor/review-hand/gimp-reopened-export.png)、[实际图层清单](../sources/editor/review-hand/editor-check.json)、[当前合成v4](../candidates/phase5/review-art-v4/build.json)。下载/API来源：[官方稳定版](https://www.gimp.org/downloads/)、[官方批处理接口](https://www.gimp.org/man/gimp.html)。以下“本轮/当前”均是各次历史记录，应以本节和当前构建文件为准。
+
 ## 最新结构试验：中性重建精确，手袖仍不自然
 
 本轮保持 canonical-v3 母版、当前 review 合成 v3、六格动作条和全局图集不变；没有安装。目标不是“把补片做得更顺滑”，而是让两只手体积可信、袖口连接连续、布料的褶线符合支撑与下垂关系。不同朝向的手不能只比较外接矩形大小；柔和色块也不能证明布料体积成立。
