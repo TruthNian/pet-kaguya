@@ -10,7 +10,11 @@
 
 受控对比提交3472b69：只改变左右行第2/3/6/7格（零基索引1/2/5/6），其他四格精确不变；每格顶部148原生行RGBA不变。右侧四格分别改变1023/1054/972/1014个像素，左侧1018/1051/985/1023个像素；全局只有原生第1/2行变化（零基），分别4063/4077像素，其他九行精确不变。这不是全画衣褶/造型通过。完整开发图集当前1132306字节，解码14057472字节不变，前轮重心版1132576字节；动作像素已变，不称同质量压缩优化。
 
-证据：[八格224px明暗](../candidates/phase5/run_right/contact-224px.png)、[113px向左](../candidates/phase5/run_left/contact-113px.png)、[实际停留GIF（QA无限循环）](../candidates/phase5/run_right/native-timing.gif)、[参考计算](../tools/locomotion_landing.py)、[独立检查](../tests/test_locomotion_landing.py)、[实际构建声明](../candidates/phase5/run_right/build.json)。本地178项Python（192.507s）、27项Node及511件逻辑资产严格重建均通过，编码差异0；CI须在新提交后独立核对。母版和安装图集SHA未变；未安装、未获完整步态视觉批准，R10仍开放。
+证据：[八格224px明暗](../candidates/phase5/run_right/contact-224px.png)、[113px向左](../candidates/phase5/run_left/contact-113px.png)、[实际停留GIF（QA无限循环）](../candidates/phase5/run_right/native-timing.gif)、[参考计算](../tools/locomotion_landing.py)、[独立检查](../tests/test_locomotion_landing.py)、[实际构建声明](../candidates/phase5/run_right/build.json)。本地178项Python（192.507s）、27项Node及511件逻辑资产严格重建均通过，编码差异0。素材提交1231ede的[CI 37905507720](https://github.com/TruthNian/pet-kaguya/actions/runs/37905507720)也独立成功：178项Python（77.892s）、27项Node、Windows隔离安装器、511件逻辑资产一致，406件编码不同但解码一致。母版和安装图集SHA未变；未安装、未获完整步态视觉批准，R10仍开放。
+
+实际页另核对右侧224px浅色/左侧113px深色全部八格，192px网格画布为192×208；80px减少动态保持第1格，关闭后按行内时钟三轮回idle，控制台无warning/error。截图留于忽略的`work/landing-approach-proof-20261009.png`。这是开发页的状态与显示证据，不是原生宿主性能或真人自然度接受。
+
+下一步先复查帧预算，而非立即给身体叠加新的正弦摆动：“首末必须逐像素相同”是当前制作/测试规则，**不是宿主协议要求**。它占用一次姿态槽；保留两个双支撑槽及相同首末时，每侧只剩两格离地，不能同时独立显示缓升/峰值/接近。循环可接受的真正条件应是末→首、三轮→idle与任意中断的可见差异，而非自动把像素相等当成自然。后续可比较在周期边界完成接触的八格方案，但末格220ms的非对称停留也要实看；当前尚未采用该替代方案，不删除旧受控版本。衣发跟随应由身体运动驱动并保留锚点，不为增加不同帧而独立摆动；未知分层与触地不能靠曲线命名补足。
 
 ## 前轮：正面小步加入支撑侧重心，腿部直接原材料取样
 
