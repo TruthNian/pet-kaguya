@@ -154,62 +154,62 @@
     ],
     [
       [
-        515.850511388261,
-        974.694923257565
+        521.000300346254,
+        974.14852911146
       ],
       [
-        683.0,
-        979.0
+        694.917955554466,
+        978.989599001334
       ]
     ],
     [
       [
-        511.867155153955,
-        972.453689653159
+        519.491007519724,
+        970.775446394003
       ],
       [
-        683.0,
-        979.0
+        698.569952447696,
+        979.595086357705
       ]
     ],
     [
       [
-        525.0,
-        978.0
+        526.427453699212,
+        978.140385016771
       ],
       [
-        683.0,
-        979.0
+        694.566218794769,
+        978.946655715786
       ]
     ],
     [
       [
-        525.0,
-        978.0
+        514.721400869068,
+        978.244589909068
       ],
       [
-        683.0,
-        979.0
+        682.015084237827,
+        979.136251197804
       ]
     ],
     [
       [
-        525.0,
-        978.0
+        514.385118244247,
+        978.290007971522
       ],
       [
-        694.315482871447,
-        974.952293330431
+        688.055904799018,
+        974.993908241936
       ]
     ],
     [
       [
-        525.0,
-        978.0
+        510.822567253506,
+        978.921131463356
       ],
       [
-        699.897340281035,
-        971.487008416719
+        690.087067975156,
+        971.280417590062
       ]
     ],
     [
@@ -225,7 +225,46 @@
   ],
   "maximumFootLiftOutputPx": 1.1875,
   "wholeCuffAndShoeRigidlyTranslated": true,
-  "bodyTranslationPx": 0,
+  "rootMotion": "rigid-actor-translation-in-source-coordinates",
+  "rootOffsetsSourcePx": [
+    [
+      0,
+      0
+    ],
+    [
+      8,
+      1
+    ],
+    [
+      12,
+      1.5
+    ],
+    [
+      6,
+      1.5
+    ],
+    [
+      -6,
+      1.5
+    ],
+    [
+      -8,
+      1
+    ],
+    [
+      -12,
+      1.5
+    ],
+    [
+      0,
+      0
+    ]
+  ],
+  "maximumRootTranslationOutputPx": [
+    1.9,
+    0.2375
+  ],
+  "rootShiftFollowsSupportNotTravelDirection": true,
   "bodyPulse": false,
   "ornamentFlash": false,
   "focusOffsetSourcePx": [
@@ -253,24 +292,40 @@
   "sameSourceCoordinateCamera": true,
   "facialGeometryRepair": false,
   "sourceFaceExceptEyeAperturesFixed": true,
+  "faceGeometryRigidRootTranslation": true,
+  "sourceArtworkChangedOutsideEyeApertures": false,
   "closedEyeFrames": 0,
   "nativeInterpolation": false,
   "loopSeamRGBAExact": true,
-  "uniqueCels": 5,
+  "uniqueCels": 7,
   "frameHashes": [
     "3A2611D212F34B9B1C1A16E069E100EE1197E25611650E4FC1F3F66225916DD4",
-    "1796A47A0F5971304665B6ECA9335EDF448ED289BE075AD8A738237AB734D7C1",
-    "5906ED1229F96AEF9FAF86ACDDFEE1FE4D4B8945284FC100FE894E9CF3AEF9DA",
-    "3A2611D212F34B9B1C1A16E069E100EE1197E25611650E4FC1F3F66225916DD4",
-    "3A2611D212F34B9B1C1A16E069E100EE1197E25611650E4FC1F3F66225916DD4",
-    "A49E866A5D12CE1780423770B6E69DB3545363E08CF782022E5E7A5C96260D2F",
-    "40F145A5382060E567619CEAED382392C8F88BA130B8A58FECDE96E2D340C871",
+    "41B4A7D0B327EED9592BCB4A8F5A01939026DAEFDEB704915B2B1A5C19BB1846",
+    "300100B88C26EAB4E5A9D0FE870E03AD6DE9D2D8824DAA80CA5C6FFA7E1E1905",
+    "7454F52B461660941B2E0DFD34EA641165C18B911335253AD1BA50E34BC54D6D",
+    "936CFFC96F3FF549398911137F1B6B145B6C8F55C86DA7910A080F5A0401D12A",
+    "C56BB113D6A33090720D547F07BD6EC028FE0BD24BFD3A4F921FFB61BCE6CAE6",
+    "435BA4B66D2C72E0FA23FC79ECAB4624CCF1180C2F583A97785B8AD04AA6E1F4",
     "3A2611D212F34B9B1C1A16E069E100EE1197E25611650E4FC1F3F66225916DD4"
   ],
-  "method": "conditioned source leg RGBA and separate moving occlusion; 2-D joint hypothesis with C1 ring displacement; fixed face and original iris shift",
+  "method": "direct source-material sampling; rigid root towards support and cancelling planted-shoe displacement; coverage-normalized known backing",
+  "legSampling": "original leg paint and occlusion sampled directly on 3x native integration grid; one terminal Lanczos downsample; no posed leg raster input",
+  "rootAndLegGeometryCombinedBeforeSampling": true,
+  "gazeRemainsSourceSpacePrecomposition": true,
+  "wholeArtworkSingleSamplingPass": false,
+  "normalizedKnownBacking": true,
+  "diagnosticPosesAreNotFrameInputs": true,
+  "measuredMassCentre": false,
+  "physicalBalanceProven": false,
+  "secondaryMotion": "rigid-follow-only; delayed ear/hair response remains missing",
   "legCompositionVersion": "leg-material-v2",
-  "neutralLegCompositorRGBAExact": true,
-  "neutralLegCompositorNativeRGBAExact": true,
+  "integerSourceMaterialNeutralRGBAExact": true,
+  "directSamplerNeutralPremultErrorTolerance": 1e-10,
+  "directSamplerNeutralPremultMatchesWithinTolerance": true,
+  "directSamplerNeutralRGBAExact": true,
+  "directSamplerNeutralChangedPixels": 0,
+  "directSamplerNeutralMaximumRGBADifference": 0,
+  "roundoffCanonicalizationPremultTolerance": 1e-10,
   "sourceAlphaAndOcclusionSeparated": true,
   "artistLayerRecoveryClaimed": false,
   "inferredMatte": true,
@@ -286,7 +341,9 @@
     "Foreground outlines are estimated from flattened source pixels; adjacent hair fringe and residual boundary ghosts remain possible.",
     "The old flat source-over neutral failure is preserved. Current conditioned occlusion reconstructs neutral RGBA exactly, without proving clean artist layers or nonzero edge ownership.",
     "At 80 px the approximately 1.2-native-pixel foot lift and gaze cue are weak; naturalness and left/right legibility are pending.",
-    "Body is intentionally held; this is not a completed physically balanced running or weight-transfer animation.",
+    "The root shifts toward the supporting foot, not the travel direction. Its motion is a restrained 2-D design, not a measured mass centre or proven physical balance.",
+    "Clothes/head/hair follow the root rigidly; delayed soft follow-through and full entry/exit remain missing.",
+    "Direct material sampling uses a coverage-normalized backing convention. Only composite roundoff below 1e-10 premultiplied units is canonicalized at every pose, not a neutral-raster shortcut; full neutral native RGBA matches the original sampler.",
     "Native eight discrete holds, irregular rest duration and arbitrary exit have no new interpolation or transition cels."
   ]
 }

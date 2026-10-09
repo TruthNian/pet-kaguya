@@ -60,7 +60,11 @@ async function asset(state){
         ||metadata.actualDragReleaseCanInterruptAnyCel!==true||metadata.visualMotionApproval!=='pending'))
       throw new Error('drag-feedback candidate boundary mismatch');
     if(['run_right','run_left'].includes(state)&&(metadata.legCompositionVersion!=='leg-material-v2'
-        ||metadata.neutralLegCompositorRGBAExact!==true||metadata.neutralLegCompositorNativeRGBAExact!==true
+        ||metadata.integerSourceMaterialNeutralRGBAExact!==true||metadata.directSamplerNeutralRGBAExact!==true
+        ||metadata.directSamplerNeutralPremultMatchesWithinTolerance!==true
+        ||metadata.rootShiftFollowsSupportNotTravelDirection!==true||metadata.faceGeometryRigidRootTranslation!==true
+        ||metadata.normalizedKnownBacking!==true||metadata.diagnosticPosesAreNotFrameInputs!==true
+        ||metadata.measuredMassCentre!==false||metadata.physicalBalanceProven!==false
         ||metadata.sourceAlphaAndOcclusionSeparated!==true||metadata.artistLayerRecoveryClaimed!==false))
       throw new Error('conditioned leg composition boundary mismatch');
     const image=new Image();image.src=`${root}/strip.webp`;await image.decode();

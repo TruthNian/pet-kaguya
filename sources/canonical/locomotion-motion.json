@@ -10,20 +10,22 @@
   "visualMotionApproval": "pending",
   "faceShapeLocked": true,
   "artMirrored": false,
-  "bodyTranslationPx": 0,
+  "rootMotion": "rigid-actor-translation-in-source-coordinates",
+  "maximumRootTranslationSourcePx": [12,1.5],
+  "secondaryMotion": "rigid-follow-only; delayed ear/hair response remains missing",
   "closedEyeFrames": 0,
   "nativeInterpolation": false,
   "hostVelocitySynchronization": false,
   "focusOffsetSourcePx": [6,0],
   "keyframes": [
-    {"left":[0,0],"right":[0,0],"support":["left","right"]},
-    {"left":[2.5,-3.75],"right":[0,0],"support":["right"]},
-    {"left":[5,-7.5],"right":[0,0],"support":["right"]},
-    {"left":[0,0],"right":[0,0],"support":["left","right"]},
-    {"left":[0,0],"right":[0,0],"support":["left","right"]},
-    {"left":[0,0],"right":[2.5,-3.75],"support":["left"]},
-    {"left":[0,0],"right":[5,-7.5],"support":["left"]},
-    {"left":[0,0],"right":[0,0],"support":["left","right"]}
+    {"left":[0,0],"right":[0,0],"rootSourcePx":[0,0],"support":["left","right"]},
+    {"left":[2.5,-3.75],"right":[0,0],"rootSourcePx":[8,1],"support":["right"]},
+    {"left":[5,-7.5],"right":[0,0],"rootSourcePx":[12,1.5],"support":["right"]},
+    {"left":[0,0],"right":[0,0],"rootSourcePx":[6,1.5],"support":["left","right"]},
+    {"left":[0,0],"right":[0,0],"rootSourcePx":[-6,1.5],"support":["left","right"]},
+    {"left":[0,0],"right":[2.5,-3.75],"rootSourcePx":[-8,1],"support":["left"]},
+    {"left":[0,0],"right":[5,-7.5],"rootSourcePx":[-12,1.5],"support":["left"]},
+    {"left":[0,0],"right":[0,0],"rootSourcePx":[0,0],"support":["left","right"]}
   ],
   "limitations": [
     "The user approved frontal small steps only, not side-view running or finished motion aesthetics.",
@@ -33,7 +35,9 @@
     "Foreground outlines are estimated from flattened source pixels; adjacent hair fringe and residual boundary ghosts remain possible.",
     "The old flat source-over neutral failure is preserved. Current conditioned occlusion reconstructs neutral RGBA exactly, without proving clean artist layers or nonzero edge ownership.",
     "At 80 px the approximately 1.2-native-pixel foot lift and gaze cue are weak; naturalness and left/right legibility are pending.",
-    "Body is intentionally held; this is not a completed physically balanced running or weight-transfer animation.",
+    "The root shifts toward the supporting foot, not the travel direction. Its motion is a restrained 2-D design, not a measured mass centre or proven physical balance.",
+    "Clothes/head/hair follow the root rigidly; delayed soft follow-through and full entry/exit remain missing.",
+    "Direct material sampling uses a coverage-normalized backing convention. Only composite roundoff below 1e-10 premultiplied units is canonicalized at every pose, not a neutral-raster shortcut; full neutral native RGBA matches the original sampler.",
     "Native eight discrete holds, irregular rest duration and arbitrary exit have no new interpolation or transition cels."
   ]
 }

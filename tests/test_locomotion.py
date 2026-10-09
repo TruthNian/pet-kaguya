@@ -13,6 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'tools'))
 import build_locomotion as run
 import leg_material as art
+import locomotion_render as renderer
 import build_global_review as global_review
 from canonical import ACCEPTED_SHA,clean_cutout,camera
 from protocol import DURATIONS,COUNTS,WIDTH,HEIGHT
@@ -113,20 +114,24 @@ class Locomotion(unittest.TestCase):
                 determinant = ((xp-xm)*(typ-tym)-(txp-txm)*(yp-ym))/.0004
                 self.assertGreater(float(determinant.min()),.5)
 
-    def test_all_pose_face_except_original_eye_apertures_and_upper_body_are_fixed(self):
+    def test_source_face_fixed_and_head_geometry_is_only_rigid_root_translation(self):
         data = self.data;original = np.asarray(data['mother'])
-        allowed = data['eyeAllowed'].copy();allowed[936:1240,425:810] = True
+        y,x=np.mgrid[250:465:7,455:775:7].astype(float)
         for name,result in data['results'].items():
-            first = np.asarray(result['frames'][0])
-            for pose,frame in zip(result['poses'],result['frames']):
-                pixels = np.asarray(pose)
-                np.testing.assert_array_equal(pixels[~allowed],original[~allowed])
-                np.testing.assert_array_equal(pixels[:936,:,3],original[:936,:,3])
-                np.testing.assert_array_equal(np.asarray(frame)[:154],first[:154])
+            source=np.asarray(result['sourceWithGaze'])
+            np.testing.assert_array_equal(source[~data['eyeAllowed']],original[~data['eyeAllowed']])
+            np.testing.assert_array_equal(source[...,3],original[...,3])
+            expected=renderer.sample(result['material']['source'],x,y)
+            for key in data['motion']['keyframes']:
+                rx,ry=key['rootSourcePx']
+                sx,sy=renderer.source_coordinates(x+rx,y+ry,key)
+                np.testing.assert_array_equal(sx,x);np.testing.assert_array_equal(sy,y)
+                actual=renderer.evaluate(result['material'],x+rx,y+ry,key,result['state']['direction'])
+                np.testing.assert_array_equal(actual,expected)
             self.assertEqual(result['frames'][0].tobytes(),result['frames'][-1].tobytes())
-            self.assertEqual(len(set(frame.tobytes() for frame in result['frames'])),5)
-        self.assertFalse(np.array_equal(np.asarray(data['results']['run_right']['poses'][0]),
-                                       np.asarray(data['results']['run_left']['poses'][0])))
+            self.assertEqual(len(set(frame.tobytes() for frame in result['frames'])),7)
+        self.assertFalse(np.array_equal(np.asarray(data['results']['run_right']['sourceWithGaze']),
+                                       np.asarray(data['results']['run_left']['sourceWithGaze'])))
 
     def test_eight_saved_cels_actual_native_holds_no_border_or_invisible_rgb(self):
         for name,result in self.data['results'].items():
@@ -151,8 +156,20 @@ class Locomotion(unittest.TestCase):
             for key in ('hostVelocitySynchronization','screenWorldNoSlipProven','artMirrored',
                         'artistLayerRecoveryClaimed','installed','installableFullAtlas','facialGeometryRepair'):
                 self.assertFalse(meta[key])
-            self.assertTrue(meta['neutralLegCompositorRGBAExact'])
-            self.assertTrue(meta['neutralLegCompositorNativeRGBAExact'])
+            self.assertTrue(meta['integerSourceMaterialNeutralRGBAExact'])
+            self.assertTrue(meta['directSamplerNeutralRGBAExact'])
+            self.assertTrue(meta['directSamplerNeutralPremultMatchesWithinTolerance'])
+            self.assertEqual(meta['directSamplerNeutralChangedPixels'],0)
+            self.assertEqual(meta['directSamplerNeutralMaximumRGBADifference'],0)
+            self.assertEqual(meta['rootOffsetsSourcePx'],[key['rootSourcePx'] for key in self.data['motion']['keyframes']])
+            self.assertTrue(meta['rootShiftFollowsSupportNotTravelDirection'])
+            self.assertTrue(meta['faceGeometryRigidRootTranslation'])
+            self.assertTrue(meta['normalizedKnownBacking'])
+            self.assertTrue(meta['diagnosticPosesAreNotFrameInputs'])
+            self.assertTrue(meta['rootAndLegGeometryCombinedBeforeSampling'])
+            self.assertTrue(meta['gazeRemainsSourceSpacePrecomposition'])
+            self.assertFalse(meta['wholeArtworkSingleSamplingPass'])
+            self.assertFalse(meta['measuredMassCentre']);self.assertFalse(meta['physicalBalanceProven'])
             self.assertTrue(meta['sourceAlphaAndOcclusionSeparated'])
             self.assertEqual(meta['legCompositionVersion'],'leg-material-v2')
             self.assertTrue(meta['actualDragReleaseCanInterruptAnyCel'])
@@ -166,15 +183,17 @@ class Locomotion(unittest.TestCase):
 
     def test_invalid_motion_no_support_foot_sliding_side_face_or_authority_overclaim(self):
         for key,value in [('sourceSha256','bad'),('durationsMs',[100]*8),('artMirrored',True),
-                          ('faceShapeLocked',False),('projection','side-view'),('bodyTranslationPx',.1),
+                          ('faceShapeLocked',False),('projection','side-view'),('rootMotion','face-warp'),
+                          ('maximumRootTranslationSourcePx',[20,1.5]),('secondaryMotion','physical-simulation-approved'),
                           ('nativeInterpolation',True),('hostVelocitySynchronization',True),
                           ('visualMotionApproval','approved'),('strategyUserApproval','pending'),
                           ('strategyApprovalScope','all-gait-approved'),('strategyUserDecision','bad.json')]:
             bad = copy.deepcopy(self.data['motion']);bad[key] = value
             with self.assertRaises(ValueError):run.validate_motion(bad)
-        for pose in [dict(left=[0,0],right=[0,0],support=[]),dict(left=[5,-8],right=[0,0],support=['right']),
-                     dict(left=[5,-7.5],right=[1,0],support=['right']),
-                     dict(left=[True,-7.5],right=[0,0],support=['right'])]:
+        for pose in [dict(left=[0,0],right=[0,0],rootSourcePx=[12,1.5],support=[]),
+                     dict(left=[5,-8],right=[0,0],rootSourcePx=[12,1.5],support=['right']),
+                     dict(left=[5,-7.5],right=[1,0],rootSourcePx=[12,1.5],support=['right']),
+                     dict(left=[True,-7.5],right=[0,0],rootSourcePx=[12,1.5],support=['right'])]:
             bad = copy.deepcopy(self.data['motion']);bad['keyframes'][2] = pose
             with self.assertRaises(ValueError):run.validate_motion(bad)
 
