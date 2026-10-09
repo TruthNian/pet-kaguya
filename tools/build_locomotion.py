@@ -6,7 +6,8 @@ import math
 import numpy as np
 
 from canonical import ROOT, ACCEPTED_SHA,clean_cutout,camera
-from leg_material import inputs as material_inputs,composite,inverse_kinematics,GENERATED_SHA
+from leg_material import inverse_kinematics,GENERATED_SHA
+from refine_leg_composition import inputs as material_inputs,composite,strategy_decision,DECISION
 from build_idle import specification as idle_specification,region_masks,render
 import build_gaze as gaze
 from animation_output import write_animation
@@ -14,13 +15,15 @@ from protocol import DURATIONS
 
 
 def validate_motion(motion):
+    strategy_decision()
     if (motion['sourceSha256'] != ACCEPTED_SHA
             or motion['states'] != [dict(state='run_right',nativeState='running-right',nativeRow=1,direction=1),
                                     dict(state='run_left',nativeState='running-left',nativeRow=2,direction=-1)]
             or motion['durationsMs'] != DURATIONS[1] or DURATIONS[1] != DURATIONS[2]
             or motion['repeatBeforeIdleIfStateRemainsSelected'] != 3
             or motion['projection'] != 'front-held-alternating-small-steps'
-            or motion['strategyUserApproval'] != 'pending' or motion['visualMotionApproval'] != 'pending'
+            or motion['strategyUserApproval'] != 'approved' or motion['visualMotionApproval'] != 'pending'
+            or motion['strategyUserDecision']!=DECISION or motion['strategyApprovalScope']!='front-held-small-steps-only'
             or not motion['faceShapeLocked'] or motion['artMirrored'] or motion['bodyTranslationPx'] != 0
             or motion['closedEyeFrames'] != 0 or motion['nativeInterpolation']
             or motion['hostVelocitySynchronization'] or motion['focusOffsetSourcePx'] != [6,0]):
@@ -95,7 +98,8 @@ def main():
         metadata = dict(sourceSha256=ACCEPTED_SHA,source='sources/canonical/artwork.png',
             legBackingGeneratedSha256=GENERATED_SHA,eyeBackingGeneratedSha256=gaze.GENERATED_SHA,
             **{key:result['state'][key] for key in ('state','nativeState','nativeRow')},
-            animationBuilt=True,projection=motion['projection'],strategyUserApproval='pending',visualMotionApproval='pending',
+            animationBuilt=True,projection=motion['projection'],strategyUserApproval='approved',visualMotionApproval='pending',
+            strategyApprovalScope=motion['strategyApprovalScope'],strategyUserDecision=DECISION,
             durationsMs=motion['durationsMs'],totalDurationMs=sum(motion['durationsMs']),
             repeatBeforeIdle=3,uninterruptedRowDurationMs=3*sum(motion['durationsMs']),
             actualDragReleaseCanInterruptAnyCel=True,dragEndTargetIsUnderlyingStateNotNecessarilyIdle=True,
@@ -111,8 +115,10 @@ def main():
             loopSeamRGBAExact=frames[0].tobytes()==frames[-1].tobytes(),
             uniqueCels=len(set(frame.tobytes() for frame in frames)),
             frameHashes=[hashlib.sha256(frame.tobytes()).hexdigest().upper() for frame in frames],
-            method='source leg/shoe estimated mattes; 2-D joint hypothesis with C1 ring displacement; fixed face and original iris shift',
-            losslessNeutralDecomposition=False,inferredMatte=True,fullRedrawAccepted=False,
+            method='conditioned source leg RGBA and separate moving occlusion; 2-D joint hypothesis with C1 ring displacement; fixed face and original iris shift',
+            legCompositionVersion='leg-material-v2',neutralLegCompositorRGBAExact=True,
+            neutralLegCompositorNativeRGBAExact=True,sourceAlphaAndOcclusionSeparated=True,
+            artistLayerRecoveryClaimed=False,inferredMatte=True,fullRedrawAccepted=False,
             generatedFromRejectedSources=False,installableFullAtlas=False,installed=False,
             unresolved=motion['limitations'])
         (out/'build.json').write_text(json.dumps(metadata,indent=2)+'\n',encoding='utf-8')

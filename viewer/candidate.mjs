@@ -53,10 +53,16 @@ async function asset(state){
         ||metadata.repeatBeforeIdle!==3||metadata.visualMotionApproval!=='pending'))
       throw new Error('review state or unapproved-motion boundary mismatch');
     if(['run_right','run_left'].includes(state)&&(metadata.animationBuilt!==true||metadata.nativeRow!==rows[state]
-        ||metadata.projection!=='front-held-alternating-small-steps'||metadata.strategyUserApproval!=='pending'
+        ||metadata.projection!=='front-held-alternating-small-steps'||metadata.strategyUserApproval!=='approved'
+        ||metadata.strategyApprovalScope!=='front-held-small-steps-only'
+        ||metadata.strategyUserDecision!=='sources/canonical/locomotion-decision-20261009.json'
         ||metadata.artMirrored!==false||metadata.hostVelocitySynchronization!==false||metadata.screenWorldNoSlipProven!==false
         ||metadata.actualDragReleaseCanInterruptAnyCel!==true||metadata.visualMotionApproval!=='pending'))
       throw new Error('drag-feedback candidate boundary mismatch');
+    if(['run_right','run_left'].includes(state)&&(metadata.legCompositionVersion!=='leg-material-v2'
+        ||metadata.neutralLegCompositorRGBAExact!==true||metadata.neutralLegCompositorNativeRGBAExact!==true
+        ||metadata.sourceAlphaAndOcclusionSeparated!==true||metadata.artistLayerRecoveryClaimed!==false))
+      throw new Error('conditioned leg composition boundary mismatch');
     const image=new Image();image.src=`${root}/strip.webp`;await image.decode();
     if(image.naturalWidth!==1536||image.naturalHeight!==208)throw new Error(`${state} dimensions mismatch`);
     return {image,metadata};

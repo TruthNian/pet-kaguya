@@ -12,7 +12,7 @@
   </header>
   <section class="idle-review" aria-labelledby="idle-heading">
     <h2 id="idle-heading">Phase 5 · 同一母版的局部动作候选</h2>
-    <p>左侧固定 v3；右侧可选九个动作候选。所有候选共用相机与脸型；新增像素只用于局部缺画与隐藏底图。左右小步保持正面、不镜像饰品，腿与兔鞋材料来自母版，方案及视觉待确认。waiting 保持托腮；review 双手低处轻合、视线向下，手势/节奏同样待确认。九状态和16视线已组成开发验收图集，但不是已通过的完整宠物，也未安装。</p>
+    <p>左侧固定 v3；右侧可选九个动作候选。所有候选共用相机与脸型；新增像素只用于局部缺画与隐藏底图。你已确认保留正面轻小步并补足自然度，不做侧身跑；腿与兔鞋材料来自母版、不镜像饰品，现有步态视觉仍待认可。waiting 保持托腮；review 双手低处轻合、视线向下，手势/节奏同样待确认。九状态和16视线已组成开发验收图集，但不是已通过的完整宠物，也未安装。</p>
     <div class="controls">
       <label>候选 <select id="idle-action"><option value="idle">idle · 微呼吸</option><option value="run_right">run_right · 正面向右小步原型</option><option value="run_left">run_left · 正面向左小步原型</option><option value="failed">failed · 三轮后回 idle</option><option value="jumping">jumping · 五帧，三轮后回 idle</option><option value="waving">waving · 四格，三轮后回 idle</option><option value="waving_source">waving · 原像素低位试验（未采用）</option><option value="processing">processing · 六格专注，三轮后回 idle</option><option value="waiting">waiting · 六格保持托腮，待确认</option><option value="review">review · 六格低手下视，待确认</option></select></label>
       <label>宽度 <select id="idle-size"><option>80</option><option selected>113</option><option>192</option><option>224</option></select> px</label>
@@ -29,8 +29,8 @@
     <p>idle 周期 6.6 秒；failed 1.22 秒、jumping 0.84 秒、waving 0.7 秒、processing 0.82 秒、waiting 1.01 秒、review 1.03 秒，动作均三轮后回 idle。jumping 最高离地 8 px，仅着地格鞋部固定。waving 末格为原图放松，停留 280 ms；过渡偏向放松。processing 对应宿主 running 行。waiting/review 身体与手势保持，只做微小耳发响应；review 仅在原眼开口内移虹膜，不改眼眶或脸型。短周期不做快呼吸或胸饰闪烁。静态关键姿势不等于完整手臂骨骼：托腮/合手的入场和回 idle 仍缺过渡，80 px 状态差异弱，review 右手更展开、袖褶偏硬、前景保护多边形不是干净图层。所有动作的可爱感、接缝和节奏仍待视觉认可。</p>
     <p>review 当前采用合成 v4（母版仍为锁定 v3）：保留此前原发丝恢复，修正下方手掌被遮罩切掉的指尖，不缩放手、不重画脸。GIMP真实图层工程已保存并重开验证；这不是桌面手绘、干净分层或造型通过。袖褶、两手关系、接缝与动作过渡仍待。</p>
     <p><a href="../candidates/phase5/review-hand-outline-v1/contact-113px.png">指尖修正113px明暗对照</a> · <a href="../sources/editor/review-hand/kaguya-review-hand.xcf" download>GIMP可编辑图层工程</a> · <a href="../docs/PHASE5-STATES.zh-CN.md">具体限制与缺陷</a></p>
-    <p>左右小步为八格、1060 ms一轮。此处模拟状态未被打断时的三轮3180 ms后回 idle；真实宿主的左右跑是拖拽反馈，松手可中断任意格并回到底层任务状态，不一定 idle，也不会等待脚落地。图集没有速度输入，不能保证鼠标拖动中的屏幕地面防滑。抬脚约1.19原生像素，80 px提示弱；拆层不是无损中立重建，衣边/发丝遮罩残影与克制感仍需验收，不把支撑脚坐标固定等同于真实跑步完成。</p>
-    <p><a href="../candidates/phase5/locomotion-inspection/contact-224px.png">原母版/中立拆层/左右抬脚对照</a> · <a href="../candidates/phase5/run_right/native-timing.gif">向右小步真实停留GIF</a> · <a href="../candidates/phase5/leg-backing-v1/prompt.txt">无脸隐藏底图实际生成提示词</a></p>
+    <p>左右小步为八格、1060 ms一轮。此处模拟状态未被打断时的三轮3180 ms后回 idle；真实宿主的左右跑是拖拽反馈，松手可中断任意格并回到底层任务状态，不一定 idle，也不会等待脚落地。图集没有速度输入，不能保证鼠标拖动中的屏幕地面防滑。抬脚约1.19原生像素，80 px提示弱。当前用leg-material-v2：分开像素alpha和遮挡权重，同一材料的腿脚中性重建及原生帧精确等于母版（移视线另算），不再重复叠加alpha。衣边/发丝遮罩仍是估计，完整重心、入场退场和克制感未通过；侧身不是所选方向。不把中性等式或支撑坐标固定当作真实跑步完成。</p>
+    <p><a href="../candidates/phase5/leg-material-v2/contact-224px.png">母版/旧中性/新中性/左右抬脚对照</a> · <a href="../candidates/phase5/run_right/native-timing.gif">向右小步真实停留GIF</a> · <a href="../candidates/phase5/leg-backing-v1/prompt.txt">无脸隐藏底图实际生成提示词</a> · <a href="../docs/PHASE5-STATES.zh-CN.md">合成修正与剩余问题</a></p>
   </section>
   <details id="source-arm-study" class="idle-review" open><summary>原像素手袖运动试验 · 修正漏选袖边与头发约束，尚未采用</summary>
     <p>下图依次为上轮+6°、本轮+6°、上轮底图、本轮底图。补回221个漏选的原袖面/描边材料像素，排除把绿色衣服当作头发的错误约束；只用可见头发校正隐藏底图，并对部分平缓边缘估计梯度延长。没有新生成脸、手或袖子。</p>

@@ -1,0 +1,35 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "generatedSha256": "F4DB57340CF910C3F5A773BEFF3345823C42FBCFFEBD44C12F7E00990EACD93A",
+  "method": "conditioned premultiplied RGBA plus separately moving occlusion weight",
+  "neutralRestRGBAExact": true,
+  "neutralNativeRGBAExact": true,
+  "neutralNativeMaximumPremultRGBAError": 0.0,
+  "neutralFromSameMaterialNotSourceShortcut": true,
+  "sourceAlphaAndOcclusionSeparated": true,
+  "estimatedMatte": true,
+  "artistLayerRecoveryClaimed": false,
+  "newArtworkGenerated": false,
+  "facialGeometryRepair": false,
+  "visualMotionApproval": "pending",
+  "strategyUserApproval": "approved",
+  "strategyApprovalScope": "front-held-small-steps-only",
+  "strategyUserDecision": "sources/canonical/locomotion-decision-20261009.json",
+  "usedByDevelopmentLocomotion": true,
+  "developmentAtlasChanged": true,
+  "visualApprovalClaimed": false,
+  "installableFullAtlas": false,
+  "installed": false,
+  "poseHashes": [
+    "7C41805C11ADB3AE9191B3BE20D230371DA4AD754E26618A97AAC6FE1DDF3911",
+    "80833C51524EFABA02821716A83E7BE976CED1C468ED5C50AB8740802AC2EAFB",
+    "7C41805C11ADB3AE9191B3BE20D230371DA4AD754E26618A97AAC6FE1DDF3911",
+    "D19B039D1A9B54705772B7C818402A837CAFF22DE9FC1A4C0736C097CE65C16E",
+    "2001FD9F76888CC93429BF0F2AC0FFD5358EF0D7CC24F6B851E7E764F25F98D2"
+  ],
+  "unresolved": [
+    "Estimated silhouettes can still carry hair or miss original fine edges.",
+    "Hidden hair and puppet anatomy remain estimates.",
+    "Frontal view is intentional; body-weight shift, entry/exit and screen-world velocity synchronization remain missing."
+  ]
+}

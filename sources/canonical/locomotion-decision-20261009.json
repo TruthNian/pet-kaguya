@@ -1,0 +1,13 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "date": "2026-10-09",
+  "question": "左右跑目前是正面轻小步，尚缺自然重心转移。后续你希望保留这个克制方向并改善步态，还是允许补画侧身小跑？两种方案都会保留选定母版的角色身份，不改已安装宿主。",
+  "answer": "保留正面轻小步，补足自然度（建议）",
+  "projection": "front-held-alternating-small-steps",
+  "strategyUserApproval": "approved",
+  "scope": "front-held-small-steps-only",
+  "visualMotionApproved": false,
+  "sideViewAuthorized": false,
+  "faceGeometryChangeAuthorized": false,
+  "installedHostChangeAuthorized": false
+}

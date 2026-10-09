@@ -4,7 +4,9 @@
   "durationsMs": [120,120,120,120,120,120,120,220],
   "repeatBeforeIdleIfStateRemainsSelected": 3,
   "projection": "front-held-alternating-small-steps",
-  "strategyUserApproval": "pending",
+  "strategyUserApproval": "approved",
+  "strategyUserDecision": "sources/canonical/locomotion-decision-20261009.json",
+  "strategyApprovalScope": "front-held-small-steps-only",
   "visualMotionApproval": "pending",
   "faceShapeLocked": true,
   "artMirrored": false,
@@ -24,12 +26,12 @@
     {"left":[0,0],"right":[0,0],"support":["left","right"]}
   ],
   "limitations": [
-    "Frontal small steps preserve the locked face and ornament sides; this strategy is proposed, not user-approved side-view running.",
+    "The user approved frontal small steps only, not side-view running or finished motion aesthetics.",
     "The host uses run states as drag feedback; pointer screen displacement is independent of the fixed sprite schedule. No screen-world no-slip claim.",
     "Drag release or direction/state change can interrupt any cel and restore the underlying task state; three loops then idle is only the uninterrupted-row schedule.",
     "Leg joints and smooth frontal projection are a 2-D puppet hypothesis, not recovered anatomy or a full 3-D rig.",
     "Foreground outlines are estimated from flattened source pixels; adjacent hair fringe and residual boundary ghosts remain possible.",
-    "Neutral source-over reconstruction is not lossless; edge alpha differs even when source leg RGB material is retained.",
+    "The old flat source-over neutral failure is preserved. Current conditioned occlusion reconstructs neutral RGBA exactly, without proving clean artist layers or nonzero edge ownership.",
     "At 80 px the approximately 1.2-native-pixel foot lift and gaze cue are weak; naturalness and left/right legibility are pending.",
     "Body is intentionally held; this is not a completed physically balanced running or weight-transfer animation.",
     "Native eight discrete holds, irregular rest duration and arbitrary exit have no new interpolation or transition cels."

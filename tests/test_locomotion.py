@@ -23,6 +23,7 @@ class Locomotion(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.data = run.inputs()
+        cls.legacy = art.inputs()
 
     def test_fixed_raw_crop_and_source_hash_not_object_fit_or_face_redraw(self):
         data = self.data
@@ -34,15 +35,15 @@ class Locomotion(unittest.TestCase):
         self.assertEqual(data['transform'],camera(clean_cutout(data['mother'])[0]))
 
     def test_material_source_is_actual_foreground_rgba_times_estimated_coverage(self):
-        source = art.premult(self.data['mother'].crop(self.data['box']))
-        for layer,mask in zip(self.data['layers'],self.data['masks']):
+        source = art.premult(self.legacy['mother'].crop(self.legacy['box']))
+        for layer,mask in zip(self.legacy['layers'],self.legacy['masks']):
             np.testing.assert_array_equal(layer,source*np.asarray(mask,dtype=float)[...,None]/255)
             self.assertGreater(np.count_nonzero(np.asarray(mask)==255),10000)
             self.assertTrue(np.isfinite(layer).all())
             self.assertFalse((layer[...,:3]>layer[...,3:4]+1e-9).any())
 
     def test_neutral_is_same_compositor_and_honestly_not_lossless(self):
-        neutral = art.composite(self.data,[(0,0),(0,0)])
+        neutral = art.composite(self.legacy,[(0,0),(0,0)])
         with Image.open(art.OUT/'neutral-reconstruction.png') as saved:
             self.assertEqual(saved.convert('RGBA').tobytes(),neutral.tobytes())
         a,b = np.asarray(self.data['mother']),np.asarray(neutral)
@@ -148,17 +149,27 @@ class Locomotion(unittest.TestCase):
             self.assertEqual(meta['durationsMs'],DURATIONS[result['state']['nativeRow']])
             self.assertEqual(meta['uninterruptedRowDurationMs'],3180)
             for key in ('hostVelocitySynchronization','screenWorldNoSlipProven','artMirrored',
-                        'losslessNeutralDecomposition','installed','installableFullAtlas','facialGeometryRepair'):
+                        'artistLayerRecoveryClaimed','installed','installableFullAtlas','facialGeometryRepair'):
                 self.assertFalse(meta[key])
+            self.assertTrue(meta['neutralLegCompositorRGBAExact'])
+            self.assertTrue(meta['neutralLegCompositorNativeRGBAExact'])
+            self.assertTrue(meta['sourceAlphaAndOcclusionSeparated'])
+            self.assertEqual(meta['legCompositionVersion'],'leg-material-v2')
             self.assertTrue(meta['actualDragReleaseCanInterruptAnyCel'])
-            self.assertEqual(meta['strategyUserApproval'],'pending')
+            self.assertEqual(meta['strategyUserApproval'],'approved')
+            self.assertEqual(meta['strategyApprovalScope'],'front-held-small-steps-only')
+            decision=json.loads((ROOT/meta['strategyUserDecision']).read_text(encoding='utf-8'))
+            self.assertEqual(decision['answer'],'保留正面轻小步，补足自然度（建议）')
+            for key in ('visualMotionApproved','sideViewAuthorized','faceGeometryChangeAuthorized','installedHostChangeAuthorized'):
+                self.assertFalse(decision[key])
             self.assertEqual(meta['visualMotionApproval'],'pending')
 
     def test_invalid_motion_no_support_foot_sliding_side_face_or_authority_overclaim(self):
         for key,value in [('sourceSha256','bad'),('durationsMs',[100]*8),('artMirrored',True),
                           ('faceShapeLocked',False),('projection','side-view'),('bodyTranslationPx',.1),
                           ('nativeInterpolation',True),('hostVelocitySynchronization',True),
-                          ('visualMotionApproval','approved'),('strategyUserApproval','approved')]:
+                          ('visualMotionApproval','approved'),('strategyUserApproval','pending'),
+                          ('strategyApprovalScope','all-gait-approved'),('strategyUserDecision','bad.json')]:
             bad = copy.deepcopy(self.data['motion']);bad[key] = value
             with self.assertRaises(ValueError):run.validate_motion(bad)
         for pose in [dict(left=[0,0],right=[0,0],support=[]),dict(left=[5,-8],right=[0,0],support=['right']),
