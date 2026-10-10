@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kaguya · 完整观看现用开发版</title>
+<style>
+  :root{color-scheme:dark;font:15px/1.6 system-ui,"Microsoft YaHei",sans-serif;background:#15191d;color:#e7e3d7}
+  *{box-sizing:border-box}body{margin:0}main{max-width:1020px;margin:auto;padding:24px}
+  h1{font-size:25px;margin:0 0 8px}p{margin:8px 0}a{color:#ceb78c}
+  .muted{font-size:13px;color:#b8b5aa}.controls{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:16px 0}
+  button,select{font:inherit;background:#292f34;color:inherit;border:1px solid #50555a;border-radius:7px;padding:6px 10px}button:disabled{opacity:.45}
+  progress{width:180px;height:8px}.panels{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  figure{margin:0;border-radius:10px;overflow:hidden;background:#22252b;height:272px;display:flex;align-items:center;justify-content:center;position:relative}
+  figure:nth-child(-n+2){height:166px}
+  figure.light{background:#efeee9;color:#4c4a43}figcaption{position:absolute;left:16px;top:10px;font-size:13px}
+  canvas{image-rendering:pixelated;width:var(--size);height:auto}h2{font-size:17px;margin:12px 0}
+  @media(max-width:620px){main{padding:15px}.panels{grid-template-columns:1fr}figure{height:260px}}
+</style>
+<main>
+  <h1>一次完整观看现用 Kaguya</h1>
+  <p>九状态与十六个视线方向，共约55秒。只播放现用开发图集，不混入未采用候选。</p>
+  <p class="muted">锁定 v3 脸型；4px轻跃、新嘴线与降低抬手是开发基础，完整动作未通过。此页不修改安装文件。<a href="index.html">返回局部对照页</a></p>
+  <div class="controls">
+    <button id="replay" disabled>重新完整观看</button><button id="pause" disabled>播放演示</button>
+    <label>章节 <select id="chapter" disabled><option value="idle">idle · 微呼吸</option><option value="waving">waving · 招手</option><option value="run_right">向右小步</option><option value="run_left">向左小步</option><option value="jumping">4px轻跃</option><option value="failed">轻微失落</option><option value="waiting">托腮等待</option><option value="processing">专注</option><option value="review">低位双手下视</option><option value="look">十六方向视线</option></select></label>
+    <progress id="progress" max="1" value="0" aria-label="完整观看进度"></progress>
+  </div>
+  <h2 id="state" aria-live="polite">载入现用开发图集…</h2>
+  <div class="panels">
+    <figure class="light"><figcaption>113px · 浅色 · 原生最近邻缩放</figcaption><canvas width="192" height="208" style="--size:113px" aria-label="113像素浅色角色"></canvas></figure>
+    <figure><figcaption>113px · 深色 · 原生最近邻缩放</figcaption><canvas width="192" height="208" style="--size:113px" aria-label="113像素深色角色"></canvas></figure>
+    <figure class="light"><figcaption>224px · 浅色 · 检查手袖边界</figcaption><canvas width="192" height="208" style="--size:224px" aria-label="224像素浅色角色"></canvas></figure>
+    <figure><figcaption>224px · 深色 · 检查手袖边界</figcaption><canvas width="192" height="208" style="--size:224px" aria-label="224像素深色角色"></canvas></figure>
+  </div>
+  <p id="status" role="status" class="muted">这是集中观看工具，不是新宠物宿主、实机录像或性能证明。</p>
+  <p class="muted">动作沿用原生持帧计划与三轮后idle；章节顺序为演示编排。视线每方向停留600ms仅为观察设置。页面隐藏时暂停，不补间、不制造高帧率；计时器迟到可能延后实际播放。</p>
+</main>
+<script type="module" src="whole-review.mjs"></script>
+</html>
