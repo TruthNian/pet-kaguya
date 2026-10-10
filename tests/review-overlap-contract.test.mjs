@@ -66,7 +66,7 @@ test('trial comparison disables unrelated float epoch; normal actions keep their
   assert.deepEqual(comparisonPolicy('review_overlap','sampling'),{allowed:['idle'],choice:'idle'});
   assert.equal(comparisonPolicy('review_overlap','idle').choice,'idle');
   assert.equal(comparisonPolicy('review_overlap','idle',true).choice,'idle');
-  for(const [mode,choice] of [['jumping','height'],['failed','mouth'],['run_left','idle'],['review','hands']])
+  for(const [mode,choice] of [['jumping','height'],['failed','calm'],['run_left','idle'],['review','hands']])
     assert.equal(comparisonPolicy(mode,'hands',true).choice,choice);
   assert.equal(comparisonPolicy('review','sampling').allowed.includes('sampling'),false);
   assert.equal(comparisonPolicy('review','sampling').choice,'hands');

@@ -51,7 +51,7 @@
     "sourceFileModified": false,
     "faceShapeModified": false
   },
-  "method": "unchanged mouth/brow source; canonical body height held, tiny existing ear/hair response retained",
+  "method": "bounded mouth/brow art; authored native poses with rigid face/upper-body settling and pinned shoes",
   "sampling": "3x coverage integration from high-resolution source, one terminal Lanczos downsample",
   "visualMotionApproval": "pending",
   "installableFullAtlas": false,
@@ -63,72 +63,64 @@
   "mouthApprovalScope": "mouth-line-development-basis-only",
   "mouthUserDecision": "sources/canonical/failed-mouth-decision-20261010.json",
   "sourceAlphaPreservedExactly": true,
-  "nativeAlphaPreservedExactly": false,
-  "bodyEarHairPosesUnchanged": false,
-  "earHairPosesAndTimingUnchanged": true,
-  "newArtworkGeneratedThisIteration": false,
-  "failedBodyDevelopmentBasis": "developer-selected-calm-body-hold",
-  "bodyMotionUserApproval": "pending",
-  "bodyHeldAtCanonicalHeight": true,
-  "bodyMotionUserApprovalClaimed": false,
-  "failedBodyReference": "sources/reference/failed-body-before",
-  "loopSeamRGBAExact": true,
+  "nativeAlphaPreservedExactly": true,
+  "bodyEarHairPosesUnchanged": true,
   "keyframes": [
     {
-      "bodyY": 0,
+      "bodyY": 0.2,
       "earAngle": 0,
       "hairAngle": 0
     },
     {
-      "bodyY": 0,
+      "bodyY": 0.5,
       "earAngle": -0.06,
       "hairAngle": 0.02
     },
     {
-      "bodyY": 0,
+      "bodyY": 0.8,
       "earAngle": -0.1,
       "hairAngle": 0.04
     },
     {
-      "bodyY": 0,
+      "bodyY": 1.0,
       "earAngle": -0.15,
       "hairAngle": 0.06
     },
     {
-      "bodyY": 0,
+      "bodyY": 1.0,
       "earAngle": -0.15,
       "hairAngle": 0.08
     },
     {
-      "bodyY": 0,
+      "bodyY": 0.8,
       "earAngle": -0.1,
       "hairAngle": 0.06
     },
     {
-      "bodyY": 0,
+      "bodyY": 0.4,
       "earAngle": -0.05,
       "hairAngle": 0.03
     },
     {
-      "bodyY": 0,
+      "bodyY": 0.1,
       "earAngle": 0,
       "hairAngle": 0
     }
   ],
   "frameHashes": [
-    "CAF228D7441082C8EFD7DBFC844DEFE04A0245685BCC1905672CE412C0DCE308",
-    "2D9C3D295871EACDE98741348F13592544102E4D06C9FA03D752522072B8D758",
-    "3DA544842E0EF2C99329FC3871D53EFD4D88D38D48E1619A1D2F076A8C202643",
-    "176140F9C642171BC7D46E0174468F5B098666D13A5FC689F2D6287AE9DB1102",
-    "5FAE37DC00204FED09AA8B5130B30957C6807E09D9A4FED29059C32F4F478C8F",
-    "1ADA9FC67BDCCC3176660365558FDFEA6E2C820BA72D3234BA24F24283DBD917",
-    "205D6005D0F30C94C41E7B6BE104DC69E00968DBFF2C57F2049A8BB67424B147",
-    "CAF228D7441082C8EFD7DBFC844DEFE04A0245685BCC1905672CE412C0DCE308"
+    "2E03F03B0DAC76E266190CDEF4806AD1CEAB967A241B76C4C0256B5B9DA83C28",
+    "1309732CCA294ECC0866AE88EF0071CC8BC215A98C02395A5F8820C96192CE94",
+    "2A97772F151A974C1388675B5E7A6A9CA62DF37C00F5F4C974291655FF397E50",
+    "83BA3EB45D82812BCC551A1F344914E78E36BD854CF4AA39B7A016D540EC4685",
+    "63FE507EF623ABE3E6AFB26EC02E85867087999A72637A3534FAC5B8B49BDE00",
+    "5B910C5C832765591C14B516161D8B3FBB087BC0C68BCDCC86C406CD8C73B814",
+    "75DC8F966C2085C9AFD326417CD83CA4E759955EC4944A03C3BF797C868940BE",
+    "EC282CFF53D2C4C43E33530265ED005E7AD1161EA94AB86A5A1794AF8A5A45EF"
   ],
   "unresolved": [
     "Mouth line accepted as development basis only; brows and complete motion remain unapproved.",
     "The accepted line is 46 source pixels by the diagnostic, below mother smile 54; 80px cues remain weak.",
-    "Body oscillation removed, but fixed native holds, expression cuts and arbitrary exits remain; developer choice is not user motion approval.",
+    "Short repeating native holds and upper-body settling do not prove articulated leaning or smooth arbitrary exits.",
     "Native-host loading/performance and final release/install acceptance remain unverified."
   ]
 }

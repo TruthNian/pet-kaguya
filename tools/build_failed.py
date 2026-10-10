@@ -12,22 +12,26 @@ import review_failed_mouth as mouth
 OUT = ROOT/'candidates/phase5/failed'
 
 
-def specification():
-    motion = json.loads((ROOT/'sources/canonical/failed-motion.json').read_text(encoding='utf-8'))
+def specification(*, frozen_motion=False):
+    path='sources/reference/failed-body-before/motion.json' if frozen_motion else 'sources/canonical/failed-motion.json'
+    motion = json.loads((ROOT/path).read_text(encoding='utf-8'))
     if (motion['durationsMs'] != DURATIONS[5] or len(motion['keyframes']) != 8
             or not motion['faceShapeLocked'] or motion['closedEyeFrames'] != 0
             or motion['visualMotionApproval'] != 'pending'):
         raise ValueError('Failed candidate source/schedule/approval changed')
+    if not frozen_motion and (motion.get('bodyStrategy')!='held-canonical-height-developer-improvement'
+            or motion.get('bodyMotionUserApproval')!='pending' or any(pose['bodyY']!=0 for pose in motion['keyframes'])):
+        raise ValueError('Current failed body must retain the unapproved calm hold boundary')
     return motion
 
 
-def reference_inputs():
+def reference_inputs(*, frozen_motion=False):
     mother = load_canonical()
     source, _ = localized_pose(mother, load_generated(), expression_specification())
     source, cleanup = clean_cutout(source)
     transform = camera(clean_cutout(mother)[0])  # Mother camera, NOT per-state fitting.
     regions, _ = idle_specification()
-    return source, cleanup, transform, regions, region_masks(regions), specification()
+    return source, cleanup, transform, regions, region_masks(regions), specification(frozen_motion=frozen_motion)
 
 
 def inputs():
@@ -49,19 +53,24 @@ def main():
         state='failed', nativeRow=5, statesInThisArtifact=['failed'], generatedFromRejectedSources=False,
         facialGeometryRepair=False, closedEyeFrames=0, durationsMs=DURATIONS[5], totalDurationMs=sum(DURATIONS[5]),
         repeatBeforeIdle=3, actionDurationMs=3*sum(DURATIONS[5]), camera=transform, alphaCleanup=cleanup,
-        method='bounded mouth/brow art; authored native poses with rigid face/upper-body settling and pinned shoes',
+        method='unchanged mouth/brow source; canonical body height held, tiny existing ear/hair response retained',
         sampling='3x coverage integration from high-resolution source, one terminal Lanczos downsample',
         visualMotionApproval='pending', installableFullAtlas=False, installed=False,
         mouthArt='candidates/phase5/failed-mouth-v2',mouthGeneratedSha256=mouth.GENERATED_SHA,
         mouthPoseRGBAHash=mouth.rgba_hash(mouth.compose(*mouth.inputs())[0]),
         mouthLineVisualApproval='approved-as-development-basis',
         mouthApprovalScope='mouth-line-development-basis-only',mouthUserDecision=mouth.DECISION,
-        sourceAlphaPreservedExactly=True,nativeAlphaPreservedExactly=True,bodyEarHairPosesUnchanged=True,
+        sourceAlphaPreservedExactly=True,nativeAlphaPreservedExactly=False,bodyEarHairPosesUnchanged=False,
+        earHairPosesAndTimingUnchanged=True,newArtworkGeneratedThisIteration=False,
+        failedBodyDevelopmentBasis='developer-selected-calm-body-hold',bodyMotionUserApproval='pending',
+        bodyHeldAtCanonicalHeight=True,bodyMotionUserApprovalClaimed=False,
+        failedBodyReference='sources/reference/failed-body-before',
+        loopSeamRGBAExact=frames[0].tobytes()==frames[-1].tobytes(),
         keyframes=motion['keyframes'],
         frameHashes=[hashlib.sha256(frame.tobytes()).hexdigest().upper() for frame in frames],
         unresolved=['Mouth line accepted as development basis only; brows and complete motion remain unapproved.',
                     'The accepted line is 46 source pixels by the diagnostic, below mother smile 54; 80px cues remain weak.',
-                    'Short repeating native holds and upper-body settling do not prove articulated leaning or smooth arbitrary exits.',
+                    'Body oscillation removed, but fixed native holds, expression cuts and arbitrary exits remain; developer choice is not user motion approval.',
                     'Native-host loading/performance and final release/install acceptance remain unverified.'])
     (OUT/'build.json').write_text(json.dumps(metadata, indent=2)+'\n', encoding='utf-8')
     print(json.dumps({key:value for key,value in metadata.items() if key!='frameHashes'}, indent=2))

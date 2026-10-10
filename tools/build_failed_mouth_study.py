@@ -17,7 +17,7 @@ REFERENCE = ROOT/'sources/reference/failed-mouth-v1'
 
 def inputs():
     mouth.decision()
-    original, _, transform, regions, masks, motion = build_failed.reference_inputs()
+    original, _, transform, regions, masks, motion = build_failed.reference_inputs(frozen_motion=True)
     before, mapped = mouth.inputs()
     pose, allowed, _ = mouth.compose(before, mapped)
     source = clean_cutout(pose)[0]
@@ -25,7 +25,7 @@ def inputs():
     for key in motion['keyframes']:
         old_frames.append(render(original,key,transform,regions,masks))
         frames.append(render(source,key,transform,regions,masks))
-    active = json.loads((build_failed.OUT/'build.json').read_text(encoding='utf-8'))
+    active = json.loads((ROOT/'sources/reference/failed-body-before/build.json').read_text(encoding='utf-8'))
     baseline = json.loads((REFERENCE/'contract.json').read_text(encoding='utf-8'))
     manifest = json.loads((REFERENCE/'manifest.json').read_text(encoding='utf-8'))
     if hashlib.sha256((REFERENCE/manifest['file']).read_bytes()).hexdigest().upper() != manifest['fileSha256']:

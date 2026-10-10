@@ -22,7 +22,7 @@ export function validateRigidReference(metadata,state,current){
   return entry;
 }
 export function comparisonReference(choice,state,index){
-  if(!['idle','rigid','contact','mouth','height','hands','cloth','wave','link'].includes(choice)||!Number.isInteger(index)||index<0
+  if(!['idle','rigid','contact','mouth','height','hands','cloth','wave','link','calm'].includes(choice)||!Number.isInteger(index)||index<0
       ||!durations[candidateRows[state]]||index>=durations[candidateRows[state]].length)
     throw new Error('Invalid comparison selection');
   if(choice==='idle')return {kind:'candidate',state:'idle',index:0,synchronized:false};
@@ -33,6 +33,7 @@ export function comparisonReference(choice,state,index){
   if(choice==='link'&&state==='waving_link')return {kind:'candidate',state:'waving',index,synchronized:true};
   if(choice==='contact'&&state==='jumping')return {kind:'contact',state,index,synchronized:true};
   if(choice==='mouth'&&state==='failed')return {kind:'mouth',state:'failed',index,synchronized:true};
+  if(choice==='calm'&&state==='failed')return {kind:'failed-before',state,index,synchronized:true};
   if(choice==='height'&&state==='jumping')return {kind:'height',state,index,synchronized:true};
   if(choice==='hands'&&state==='review')return {kind:'hand-before',state,index,synchronized:true};
   if(choice==='hands'&&state==='review_overlap')return {kind:'hands',state:'review',index,synchronized:true};
@@ -44,13 +45,39 @@ export function comparisonReference(choice,state,index){
 // references rather than silently comparing different states or art epochs.
 export function comparisonPolicy(mode,choice,reset=false){
   if(!Object.keys(candidateRows).includes(mode))throw new Error('Invalid comparison mode');
-  const actionChoices=mode==='jumping'?['height','contact']:mode==='failed'?['mouth']
+  const actionChoices=mode==='jumping'?['height','contact']:mode==='failed'?['calm']
     :mode==='waving'?['link']:mode==='review'?['hands']:[];
   const allowed=['idle',...actionChoices];
   // Archived trials with v1 eye materials cannot be same-art comparisons
   // against actions that now use corrected eye extraction.
-  if(['idle','jumping','waiting','failed'].includes(mode))allowed.push('sampling');
+  if(['idle','jumping','waiting'].includes(mode))allowed.push('sampling');
   return {allowed,choice:reset||!allowed.includes(choice)?actionChoices[0]??'idle':choice};
+}
+
+export function validateFailedBodyReference(before,current){
+  const same=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
+  const fields=['sourceSha256','state','nativeRow','camera','durationsMs','repeatBeforeIdle',
+    'mouthArt','mouthGeneratedSha256','mouthPoseRGBAHash','mouthLineVisualApproval','mouthApprovalScope','mouthUserDecision'];
+  if(current.failedBodyDevelopmentBasis!=='developer-selected-calm-body-hold'
+      ||current.bodyMotionUserApproval!=='pending'||current.bodyMotionUserApprovalClaimed!==false
+      ||current.failedBodyReference!=='sources/reference/failed-body-before'
+      ||current.bodyHeldAtCanonicalHeight!==true||current.earHairPosesAndTimingUnchanged!==true
+      ||current.newArtworkGeneratedThisIteration!==false||current.sourceAlphaPreservedExactly!==true
+      ||current.nativeAlphaPreservedExactly!==false||current.bodyEarHairPosesUnchanged!==false
+      ||current.loopSeamRGBAExact!==true||current.visualMotionApproval!=='pending'
+      ||current.installed!==false||current.installableFullAtlas!==false
+      ||before.failedBodyDevelopmentBasis!==undefined||before.state!=='failed'||before.nativeRow!==5
+      ||before.mouthLineVisualApproval!=='approved-as-development-basis'
+      ||fields.some(key=>before[key]===undefined||!same(before[key],current[key]))
+      ||before.keyframes?.length!==8||current.keyframes?.length!==8
+      ||!same(before.keyframes.map(p=>p.bodyY),[.2,.5,.8,1,1,.8,.4,.1])
+      ||current.keyframes.some((p,i)=>p.bodyY!==0||p.earAngle!==before.keyframes[i].earAngle
+        ||p.hairAngle!==before.keyframes[i].hairAngle)
+      ||before.frameHashes?.length!==8||current.frameHashes?.length!==8)
+    throw new Error('Failed body comparison must keep accepted mouth source and actual native holds; no human motion approval');
+  for(const hashes of [before.frameHashes,current.frameHashes])
+    hashes.forEach((_,index)=>candidateCelKey(hashes,index));
+  return before;
 }
 
 export function validateMouthReference(manifest,baseline,study,current){

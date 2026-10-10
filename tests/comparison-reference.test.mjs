@@ -108,7 +108,7 @@ test('manual hop reference shares the exact frame and cannot silently select gai
     assert.throws(()=>comparisonReference(choice,state,index));
 });
 
-const currentFailed=JSON.parse(readFileSync(new URL('../candidates/phase5/failed/build.json',import.meta.url),'utf8'));
+const currentFailed=JSON.parse(readFileSync(new URL('../sources/reference/failed-body-before/build.json',import.meta.url),'utf8'));
 const mouthStudy=JSON.parse(readFileSync(new URL('../candidates/phase5/failed-mouth-v2/animation/build.json',import.meta.url),'utf8'));
 const mouthManifest=JSON.parse(readFileSync(new URL('../sources/reference/failed-mouth-v1/manifest.json',import.meta.url),'utf8'));
 const oldMouth=JSON.parse(readFileSync(new URL('../sources/reference/failed-mouth-v1/contract.json',import.meta.url),'utf8'));

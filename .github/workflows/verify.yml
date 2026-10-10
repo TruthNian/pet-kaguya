@@ -36,7 +36,7 @@ jobs:
       - name: Read current pixels and native contracts without regenerating artwork
         run: python tools/verify_fast.py
       - name: Core playback, cel replacement, interruption and adopted wave boundaries
-        run: node --test tests/clock.test.mjs tests/candidate-clock.test.mjs tests/cel-painter.test.mjs tests/interaction-clock.test.mjs tests/wave-amplitude-contract.test.mjs tests/whole-review-clock.test.mjs
+        run: node --test tests/clock.test.mjs tests/candidate-clock.test.mjs tests/cel-painter.test.mjs tests/interaction-clock.test.mjs tests/wave-amplitude-contract.test.mjs tests/failed-body-contract.test.mjs tests/whole-review-clock.test.mjs
       - run: node --check viewer/candidate.mjs
       - run: node --check viewer/interaction.mjs
       - run: node --check viewer/whole-review.mjs

@@ -1,4 +1,4 @@
-"""Narrow approved mouth basis and exact native adoption, not full approval."""
+"""Frozen mouth-only adoption epoch, not today's body motion or full approval."""
 import hashlib
 import json
 from pathlib import Path
@@ -65,16 +65,14 @@ class FailedMouth(unittest.TestCase):
         data,meta = self.data,self.animation
         with (Image.open(study.OUT/'strip.webp') as strip,
               Image.open(study.REFERENCE/'failed.webp') as old_strip,
-              Image.open(ROOT/'candidates/phase5/failed/strip.webp') as current_strip,
-              Image.open(ROOT/'candidates/phase5/global/spritesheet.webp') as global_atlas):
+              Image.open(ROOT/'sources/reference/failed-body-before/strip.webp') as adopted_strip):
             for i,(old,new,change) in enumerate(zip(data['oldFrames'],data['frames'],meta['changesFromFrozenOldMouth'])):
                 with Image.open(study.OUT/f'frame-{i}.png') as saved:
                     self.assertEqual(new.tobytes(),saved.convert('RGBA').tobytes())
                 box = (i*192,0,(i+1)*192,208)
                 self.assertEqual(old.tobytes(),old_strip.crop(box).convert('RGBA').tobytes())
                 self.assertEqual(new.tobytes(),strip.crop(box).convert('RGBA').tobytes())
-                self.assertEqual(new.tobytes(),current_strip.crop(box).convert('RGBA').tobytes())
-                self.assertEqual(new.tobytes(),global_atlas.crop((i*192,5*208,(i+1)*192,6*208)).convert('RGBA').tobytes())
+                self.assertEqual(new.tobytes(),adopted_strip.crop(box).convert('RGBA').tobytes())
                 self.assertEqual(art.rgba_hash(new),meta['frameHashes'][i])
                 a,b = np.asarray(old),np.asarray(new)
                 np.testing.assert_array_equal(a[...,3],b[...,3])
@@ -85,15 +83,10 @@ class FailedMouth(unittest.TestCase):
                 self.assertFalse(b[0,:,3].any() or b[-1,:,3].any() or b[:,0,3].any() or b[:,-1,3].any())
             self.assertEqual(strip.size,(1536,208))
             receipt = json.loads((ROOT/'qa/failed-mouth-adoption-20261010.json').read_text(encoding='utf-8'))
-            # The mouth receipt freezes that adoption's whole payload. New
-            # approved hop height must not erase it or rewrite the receipt.
-            mouth_epoch=global_atlas.convert('RGBA')
-            with Image.open(ROOT/'sources/reference/jumping-height-8px/jumping.webp') as frozen_hop:
-                mouth_epoch.paste(frozen_hop.convert('RGBA'),(0,4*208))
-            for row,state in ((1,'run_right'),(2,'run_left')):
-                with Image.open(ROOT/f'sources/reference/material-support-v1/{state}.webp') as frozen_gait:
-                    mouth_epoch.paste(frozen_gait.convert('RGBA'),(0,row*208))
-            self.assertEqual(art.rgba_hash(mouth_epoch),receipt['newAtlasRGBAHash'])
+            # Keep the receipt and mouth-only frames immutable. Reconstructing
+            # its whole atlas from today's unrelated gaze/wave/review/body
+            # epochs is not a mouth contract. Current atlas matching is checked
+            # by verify_fast; the body-only change has its own narrow check.
             self.assertEqual([c['changedPixels'] for c in meta['changesFromFrozenOldMouth']],receipt['nativeChangedPixelsPerCel'])
         self.assertEqual(meta['durationsMs'],DURATIONS[5])
         self.assertEqual(meta['keyframes'],data['active']['keyframes'])

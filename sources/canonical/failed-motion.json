@@ -5,17 +5,19 @@
   "motherSource": "sources/canonical/artwork.png",
   "expressionPatch": "candidates/phase5/failed-art-v1/patch.json",
   "durationsMs": [140,140,140,140,140,140,140,240],
+  "bodyStrategy": "held-canonical-height-developer-improvement",
+  "bodyMotionUserApproval": "pending",
   "keyframes": [
-    {"bodyY":0.2,"earAngle":0,"hairAngle":0},
-    {"bodyY":0.5,"earAngle":-0.06,"hairAngle":0.02},
-    {"bodyY":0.8,"earAngle":-0.10,"hairAngle":0.04},
-    {"bodyY":1.0,"earAngle":-0.15,"hairAngle":0.06},
-    {"bodyY":1.0,"earAngle":-0.15,"hairAngle":0.08},
-    {"bodyY":0.8,"earAngle":-0.10,"hairAngle":0.06},
-    {"bodyY":0.4,"earAngle":-0.05,"hairAngle":0.03},
-    {"bodyY":0.1,"earAngle":0,"hairAngle":0}
+    {"bodyY":0,"earAngle":0,"hairAngle":0},
+    {"bodyY":0,"earAngle":-0.06,"hairAngle":0.02},
+    {"bodyY":0,"earAngle":-0.10,"hairAngle":0.04},
+    {"bodyY":0,"earAngle":-0.15,"hairAngle":0.06},
+    {"bodyY":0,"earAngle":-0.15,"hairAngle":0.08},
+    {"bodyY":0,"earAngle":-0.10,"hairAngle":0.06},
+    {"bodyY":0,"earAngle":-0.05,"hairAngle":0.03},
+    {"bodyY":0,"earAngle":0,"hairAngle":0}
   ],
-  "semantics": "small disappointed mouth/brows, restrained upper-body settling; no seated redraw, no closed eyes",
+  "semantics": "same disappointed mouth/brows, held body height and retained tiny ear/hair response; no redraw, no closed eyes",
   "faceShapeLocked": true,
   "closedEyeFrames": 0,
   "visualMotionApproval": "pending"

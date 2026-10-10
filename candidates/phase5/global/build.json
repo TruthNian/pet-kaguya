@@ -106,7 +106,7 @@
       "state": "failed",
       "nativeRow": 5,
       "frameCount": 8,
-      "sourceRowRGBAHash": "82DD96021E69B5235E4935FB684699EE654631F82BC20FDBA5D91F2A5787BB4F",
+      "sourceRowRGBAHash": "94A5FECDEF190DD46B0898FDC2D033F19001D4E04EBEF24B9F1BD3A399E1EE6D",
       "representativeFrame": 3,
       "visualMotionApproval": "pending"
     },
@@ -135,7 +135,7 @@
       "visualMotionApproval": "pending"
     }
   ],
-  "atlasRGBAHash": "ED21FAEFBB0F986B1F3E6667EF7452817186053C048E569958F1E16F5FE3124F",
+  "atlasRGBAHash": "7AC9394B6AB37C7D0C3D74B0E93AC1180233D5E196076D5D46DBF1D322C06A8E",
   "construction": "exact paste of verified decoded v3 candidate strips; no new geometry or sampling",
   "visualAcceptance": "pending",
   "allStateTransitionsAccepted": false,

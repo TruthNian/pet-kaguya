@@ -8,12 +8,12 @@ const current=name=>JSON.parse(readFileSync(new URL(`../candidates/phase5/${name
 const frozenReview=JSON.parse(readFileSync(new URL('../sources/reference/gaze-action-v1/review.json',import.meta.url),'utf8'));
 
 test('only unchanged action metadata still match the frozen precision study',()=>{
-  for(const name of ['idle','jumping','failed','waiting']){
+  for(const name of ['idle','jumping','waiting']){
     const entry=validateSamplingStudy(metadata,name,current(name));
     assert.equal(entry.candidateFrameHashes.length,current(name).frameHashes.length);
     assert.deepEqual(entry.legacyFrameHashes,current(name).frameHashes);
   }
-  for(const name of ['run_right','run_left','processing','review','waving'])
+  for(const name of ['run_right','run_left','processing','review','waving','failed'])
     assert.throws(()=>validateSamplingStudy(metadata,name,current(name)));
 });
 test('different actual cels/camera/timing or wrong action are rejected',()=>{
