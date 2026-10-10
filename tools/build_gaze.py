@@ -256,7 +256,7 @@ def inputs(*, corrected=True):
     return source,generated,spec,eye_layers,transform,regions,region_masks(regions)
 
 
-def main():
+def rigid_main():
     source,generated,spec,eye_layers,transform,regions,masks = inputs()
     OUT.mkdir(parents=True,exist_ok=True)
     material_out=OUT/'material-v2'
@@ -333,6 +333,11 @@ def main():
                      'Native pointer priority remains unchanged; independent preview is not host integration.'])
     (OUT/'build.json').write_text(json.dumps(metadata,indent=2)+'\n',encoding='utf-8')
     print(json.dumps({k:v for k,v in metadata.items() if k!='frameHashes'},indent=2))
+
+
+def main():
+    from eye_motion import adopt_look
+    adopt_look()
 
 
 if __name__ == '__main__':

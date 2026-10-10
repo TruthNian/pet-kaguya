@@ -61,7 +61,7 @@ def repair_receipt(state,frames,*,eye_revision=None):
     filter_frames=frames
     source_revision=None
     if eye_revision is not None:
-        if eye_revision!='observed-eye-opening-v2' or state not in ('run_left','run_right'):
+        if eye_revision not in ('observed-eye-opening-v2','original-aperture-surface-flow-v1') or state not in ('run_left','run_right'):
             raise ValueError('Unsupported source revision for filter counterfactual')
         # The old filter comparison cannot also freeze every future eye pixel.
         # Keep that SAME-SOURCE evidence, then separately verify the actual new

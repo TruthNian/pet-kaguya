@@ -1,0 +1,137 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "eyeBackingGeneratedSha256": "684BA98301B8BD4F204581E77CDE1586528D0EC7B1804C5CFC4ADB5E1EF2B61A",
+  "sourceRig": "sources/canonical/gaze-rig-v2.json",
+  "sourceGeometryRevision": "observed-eye-opening-v2",
+  "eyeMaterial": "candidates/phase5/look/material-v2",
+  "legacyActionEyeMaterialsChanged": true,
+  "state": "look",
+  "directionCount": 16,
+  "nativeRows": [
+    9,
+    10
+  ],
+  "directionZero": "up",
+  "clockwiseStepDegrees": 22.5,
+  "sourceOffsetDecimalPlaces": 12,
+  "sourceOffsetsPx": [
+    [
+      0,
+      -7
+    ],
+    [
+      4.592201188381,
+      -6.467156727579
+    ],
+    [
+      8.485281374239,
+      -4.949747468306
+    ],
+    [
+      11.086554390135,
+      -2.678784026556
+    ],
+    [
+      12,
+      0
+    ],
+    [
+      11.086554390135,
+      2.678784026556
+    ],
+    [
+      8.485281374239,
+      4.949747468306
+    ],
+    [
+      4.592201188381,
+      6.467156727579
+    ],
+    [
+      0,
+      7
+    ],
+    [
+      -4.592201188381,
+      6.467156727579
+    ],
+    [
+      -8.485281374239,
+      4.949747468306
+    ],
+    [
+      -11.086554390135,
+      2.678784026556
+    ],
+    [
+      -12,
+      0
+    ],
+    [
+      -11.086554390135,
+      -2.678784026556
+    ],
+    [
+      -8.485281374239,
+      -4.949747468306
+    ],
+    [
+      -4.592201188381,
+      -6.467156727579
+    ]
+  ],
+  "camera": {
+    "scale": 0.15833333333333333,
+    "x": 0.36666666666667425,
+    "y": 7.883333333333354,
+    "visibleBBox": [
+      142,
+      26,
+      1066,
+      1226
+    ],
+    "floor": 202,
+    "topReserve": 12,
+    "cell": [
+      192,
+      208
+    ]
+  },
+  "bodyRotated": false,
+  "artMirrored": false,
+  "irisShapeWarp": false,
+  "eyeOutlineFixed": true,
+  "facialGeometryRepair": false,
+  "neutralReconstructionRGBAExact": true,
+  "originalSourceModified": false,
+  "onlyEyeAperturesMayChange": true,
+  "frameHashes": [
+    "C5ADBC9979B5B42634205DDF50CF1519313B4A0C4459CBBB6B8C0ABE70A4F781",
+    "7343D32765B4388300267A9E763CC56B0BC02E3610749ECCDD74D85BEFD70E5A",
+    "2D34D5E9B8F2676CF7DF6EF2B5046FCAD487B3F4AE97DC839F60DAE6A9E916EA",
+    "3D26415DC29B252E06E993DD8254B0961C9C445A36341EC31C978532384D4B19",
+    "ABBC6AB10BD0E9B80783C41ACBDB41C6F14CC52A0965C58386C170A27271ECD9",
+    "38C9C628AB4C9FDEFFB8D1EC4DAB15AC586646F7D1623971B6ADEAF951788846",
+    "891E8C6D8D61AEFBFE4167D57C5FB3223C4293E7141D393681818A81441809B8",
+    "BECCEF16380673DFC0110F55F3A42D303217BF2120487C4D6E423B967EAD2AAA",
+    "8C58F225694C8D0A511A16E8D986EBA85CA60D89B25C119D0BF0F72AAE10034D",
+    "B9B26224F5C58EAB58B005159DFC6A420D65DA8DEB7DC6D43642930662D04A77",
+    "DC356503E53E8E7B9BED6E0AA6701E97E5C148948613A5A9A2C146FF5A21DE31",
+    "752925EECD0D2C266C5BE626DD038E5696BAAD0AD176356E25BFDC8501180AB1",
+    "5A8F20A1DCCCFB2DE63002EC322AE90E06FC3FD5AB6F44EBA66A616DC1D359B5",
+    "3384381BA36C3AC67659620E1635A6F942D890EE3256CF7D174FC82120C3F389",
+    "974A0EB74AFE7A1EB8527342C7A59BF4EE7AB536F79490A80B51B1CA8E06AFD6",
+    "D1ABC13B7AEFCDE79FD88EA3726AD23FCEE163F0B93A3FA431105DE288405D8F"
+  ],
+  "neutralFrameHash": "E049C9010F4C3C2B2FD686620DCC1BF3FD97B4A97A5FE2913B69E4EA1924C6A8",
+  "visualAcceptance": "pending",
+  "installed": false,
+  "installableFullAtlas": false,
+  "limitations": [
+    "Iris matte and corrected opening vertices are estimated from visible source pixels; pale fringes are not claimed fully removed.",
+    "Production actions with iris translation share the corrected eye opening. Unadopted archived trials retain their frozen v1 eye materials.",
+    "Only gaze is changed; no head turn or new native interpolation.",
+    "Small-scale direction legibility and naturalness require visual acceptance.",
+    "Native pointer priority remains unchanged; independent preview is not host integration."
+  ]
+}

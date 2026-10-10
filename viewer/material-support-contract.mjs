@@ -20,9 +20,10 @@ export function validateMaterialSupport(current){
   const revision=repair.independentEyeSourceRevision;
   const filterHashes=revision?repair.sameSourceFilterFrameHashes:current.frameHashes;
   if(revision){
+    const rig={'observed-eye-opening-v2':'sources/canonical/gaze-rig-v2.json',
+      'original-aperture-surface-flow-v1':'sources/canonical/gaze-surface-v1.json'}[current.sourceEyeGeometryRevision];
     if(!['run_right','run_left'].includes(current.state)
-        ||current.sourceEyeGeometryRevision!=='observed-eye-opening-v2'
-        ||current.sourceEyeRig!=='sources/canonical/gaze-rig-v2.json'
+        ||!rig||current.sourceEyeRig!==rig
         ||revision.revision!==current.sourceEyeGeometryRevision
         ||revision.reference!==`sources/reference/gaze-action-v1/${current.state}.json`
         ||revision.onlyNativeEyeWindowsChanged!==true||revision.nativeAlphaPreservedExactly!==true
@@ -32,6 +33,11 @@ export function validateMaterialSupport(current){
         ||JSON.stringify(revision.beforeFrameHashes)!==JSON.stringify(filterHashes)
         ||JSON.stringify(revision.afterFrameHashes)!==JSON.stringify(current.frameHashes))
       throw new Error('Eye-source and historical filter evidence cannot be conflated');
+    if(current.sourceEyeGeometryRevision==='original-aperture-surface-flow-v1'
+        &&(current.eyeMotionApprovalScope!=='gaze-surface-development-basis-only'
+          ||current.eyeMotionVisualApproval!=='approved-as-development-basis'
+          ||current.irisShapeWarp!==true||current.eyeBackingUsed!==false))
+      throw new Error('New eye flow requires explicit bounded development approval');
   }else if(current.sourceEyeGeometryRevision!==undefined){
     throw new Error('Corrected eyes require independent same-source filter evidence');
   }

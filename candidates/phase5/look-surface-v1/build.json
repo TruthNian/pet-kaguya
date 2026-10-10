@@ -1,0 +1,141 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "sourceRig": "sources/canonical/gaze-surface-v1.json",
+  "method": "original-aperture-surface-flow-v1",
+  "sourceRGBAExactAtZero": true,
+  "neutralReconstructionRGBAExact": true,
+  "onlyEyeAperturesMayChange": true,
+  "sourceAlphaPreservedExactly": true,
+  "nativeAlphaPreservedExactly": true,
+  "newArtworkGenerated": false,
+  "directionCount": 16,
+  "nativeRows": [
+    9,
+    10
+  ],
+  "sourceOffsetsPx": [
+    [
+      0,
+      -4
+    ],
+    [
+      2.296100594191,
+      -3.695518130045
+    ],
+    [
+      4.242640687119,
+      -2.828427124746
+    ],
+    [
+      5.543277195068,
+      -1.53073372946
+    ],
+    [
+      6,
+      0
+    ],
+    [
+      5.543277195068,
+      1.53073372946
+    ],
+    [
+      4.242640687119,
+      2.828427124746
+    ],
+    [
+      2.296100594191,
+      3.695518130045
+    ],
+    [
+      0,
+      4
+    ],
+    [
+      -2.296100594191,
+      3.695518130045
+    ],
+    [
+      -4.242640687119,
+      2.828427124746
+    ],
+    [
+      -5.543277195068,
+      1.53073372946
+    ],
+    [
+      -6,
+      0
+    ],
+    [
+      -5.543277195068,
+      -1.53073372946
+    ],
+    [
+      -4.242640687119,
+      -2.828427124746
+    ],
+    [
+      -2.296100594191,
+      -3.695518130045
+    ]
+  ],
+  "bodyRotated": false,
+  "artMirrored": false,
+  "irisShapeWarp": true,
+  "eyeOutlineFixed": true,
+  "facialGeometryRepair": false,
+  "maximumDisplacementSourcePx": [
+    6,
+    4
+  ],
+  "boundaryFalloffSourcePx": 14,
+  "inverseFlowMidpointSteps": 24,
+  "minimumSampledJacobian": 0.46415349598259326,
+  "frameHashes": [
+    "B27B53431E0CA49C1E3570ACFC70009F0BBF1B23D29EAE9E776C0D24A5DBCCC4",
+    "8A13B6B90E22D4243DED1182713726A588D26F12526DDAE02A198B35DEC8556E",
+    "6D0D950AE1F12CAAF57FD74ED45894DB580E5C1C880509A90F8D88ED95412D17",
+    "F775D679DD08BA79438915F148B1D636634F44E5F2B28E4896A00BC221F8D6FE",
+    "145FDFEB1EBFF31A1B16A3623B09FF6F9AA8A8618EB07BFDDBC6773167E20718",
+    "0F5E4FBCE5C233A3B56361A0636AF3DD167722D629C8E3E0845B1067FAF81C3D",
+    "0D82B1A389535401F524429FFFDA7543998EC264D20420092B608E46D03AF8DC",
+    "74A88CB665BA992E6296EEA182BDE81DEBB1180088ABECF8759E5B910CC1B66B",
+    "5DABB7339B25851D712440A960FC9B09E2235C0B81AD90E14887C3ADB3D71239",
+    "B5BB4E12C51D8FA73EE42878BFCA2FF3AB3EBB9F720ED200D28575C0F41DE4FF",
+    "5C323FE0F7E2D022DCFEF8182BCD0F240984A5D7E38F663BC16C6A75480DFF05",
+    "B3FCDBAE8AAB38FF8A1DAFFEFFDE7CC2BAC5A9C23C70B27F898E05310D41A570",
+    "62FFA1F4A0A3F962C55A4341200D71486B31DD7BC0CDBE41BEBB45112D0B7A7B",
+    "737FA2A06913B8148DB204A20068E42781020595214FB0F761C2366099C6CE84",
+    "FE7418330ACC7FFAA5F1DED9526BBB7D8816560611648C44ADA5A226453A761A",
+    "3F317936144F82849BBDFE31A81938D14393FFB42EBBDFD653A88B3966B692CB"
+  ],
+  "neutralFrameHash": "E049C9010F4C3C2B2FD686620DCC1BF3FD97B4A97A5FE2913B69E4EA1924C6A8",
+  "camera": {
+    "scale": 0.15833333333333333,
+    "x": 0.36666666666667425,
+    "y": 7.883333333333354,
+    "visibleBBox": [
+      142,
+      26,
+      1066,
+      1226
+    ],
+    "floor": 202,
+    "topReserve": 12,
+    "cell": [
+      192,
+      208
+    ]
+  },
+  "adopted": false,
+  "activeAtlasChanged": false,
+  "visualAcceptance": "pending",
+  "installableFullAtlas": false,
+  "installed": false,
+  "limitations": [
+    "Stylized 2-D texture flow, not reconstructed 3-D eye rotation.",
+    "Iris shape and catchlight shape can change slightly near the aperture boundary.",
+    "Gaze is quieter than current rigid displacement [12,7]; this is not a single-factor comparison.",
+    "Adjacent directions can remain weak at native small sizes."
+  ]
+}

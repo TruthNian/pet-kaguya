@@ -11,7 +11,7 @@ function draw(){
   const step=steps[position],key=`${step.row}:${step.index}`;
   if(key!==lastKey){contexts.forEach(context=>paintCel(context,atlas,step.index,step.row));lastKey=key;}
   el('chapter').value=step.chapter;
-  el('state').textContent=step.state==='look'?`视线 ${step.direction+1}/16 · 只移动原虹膜`
+  el('state').textContent=step.state==='look'?`视线 ${step.direction+1}/16 · 原图眼内微变形`
     :step.after?`回到 idle · ${step.after==='look'?'视线演示':step.after+'三轮'}结束`
     :`${step.state} · 第${step.index+1}格${step.row===0?'':` · 第${step.cycle}/3轮`}`;
   el('progress').value=prefix[position]/total;

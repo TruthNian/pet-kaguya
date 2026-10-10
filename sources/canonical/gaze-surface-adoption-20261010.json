@@ -1,0 +1,17 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "scope": "gaze-surface-development-basis-only",
+  "userAnswer": "接受，采用为眼动开发基础",
+  "approvedCandidate": "candidates/phase5/look-surface-v1",
+  "approvedCandidateBuildLfSha256": "DEDDB7769A8C72CCDF7FD84A6AD54AE2CC07956FB73C616E7DADDDC88EC4DF73",
+  "approvedLookStripEncodedSha256": "8A7B2CE435B805834933CCBFCB24968EED58C961D523693CEC94868F79F31695",
+  "candidatePixelsApprovedAsDevelopmentBasis": true,
+  "irisTextureShapeWarpAccepted": true,
+  "maximumDisplacementSourcePx": [6,4],
+  "actionFocusPolicy": "preserve direction and relative focus with axis ratios 6/12 and 4/7",
+  "fullMotionApproved": false,
+  "fullEyeQualityApproved": false,
+  "faceOutlineChangeApproved": false,
+  "hostChangeApproved": false,
+  "installationApproved": false
+}

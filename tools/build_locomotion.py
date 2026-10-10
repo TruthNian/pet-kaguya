@@ -11,6 +11,7 @@ from refine_leg_composition import inputs as material_inputs,strategy_decision,D
 import locomotion_render as renderer
 from locomotion_landing import reference as landing_reference
 import build_gaze as gaze
+import eye_motion
 import locomotion_follow as follow
 from animation_output import write_animation
 from protocol import DURATIONS
@@ -77,7 +78,7 @@ def inputs(*, corrected_gaze=True):
     motion = json.loads((ROOT/'sources/canonical/locomotion-motion.json').read_text(encoding='utf-8'))
     validate_motion(motion)
     source = data['mother']
-    eye_layers = gaze.layers(source,gaze.load_generated(),gaze.specification(corrected=corrected_gaze))
+    eye_layers = eye_motion.layers(source,corrected=corrected_gaze)
     transform = camera(clean_cutout(source)[0])
     regions=json.loads((ROOT/'sources/canonical/regions.json').read_text(encoding='utf-8'))
     if regions['sourceSha256']!=ACCEPTED_SHA or regions['canvas']!=[1205,1306]:
@@ -89,7 +90,7 @@ def inputs(*, corrected_gaze=True):
     results = {}
     for state in motion['states']:
         direction = state['direction']
-        original_gaze=gaze.pose(source,eye_layers,motion['focusOffsetSourcePx'][0]*direction,0)
+        original_gaze=eye_motion.pose(source,eye_layers,motion['focusOffsetSourcePx'][0]*direction,0,corrected=corrected_gaze)
         material=renderer.prepare(data,original_gaze,follow_fields,local_support=ZERO)
         rendered,frames,joints = {},[],[]
         for key in render_keys:
@@ -101,7 +102,8 @@ def inputs(*, corrected_gaze=True):
             joints.append([np.round(inverse_kinematics(leg,*offset)[1]+key['rootSourcePx'],12).tolist()
                            for leg,offset in zip(data['spec']['legs'],offsets)])
         results[state['state']] = dict(state=state,frames=frames,targetKnees=joints,
-                                      sourceWithGaze=original_gaze,material=material,renderKeys=render_keys)
+                                      sourceWithGaze=original_gaze,material=material,renderKeys=render_keys,
+                                      eyeOffsets=eye_motion.offsets(motion['focusOffsetSourcePx'][0]*direction,0,corrected=corrected_gaze))
     data.update(motion=motion,transform=transform,followResponse=response,
                 eyeAllowed=gaze.aperture_union(source,eye_layers),results=results)
     return data
@@ -127,8 +129,7 @@ def main():
         if not neutral['directSamplerNeutralPremultMatchesWithinTolerance'] or not neutral['directSamplerNeutralRGBAExact']:
             raise ValueError('Direct source filtering must retain the neutral reference')
         metadata = dict(sourceSha256=ACCEPTED_SHA,source='sources/canonical/artwork.png',
-            legBackingGeneratedSha256=GENERATED_SHA,eyeBackingGeneratedSha256=gaze.GENERATED_SHA,
-            sourceEyeRig='sources/canonical/gaze-rig-v2.json',sourceEyeGeometryRevision='observed-eye-opening-v2',
+            legBackingGeneratedSha256=GENERATED_SHA,**eye_motion.descriptor(),
             **{key:result['state'][key] for key in ('state','nativeState','nativeRow')},
             animationBuilt=True,projection=motion['projection'],strategyUserApproval='approved',visualMotionApproval='pending',
             strategyApprovalScope=motion['strategyApprovalScope'],strategyUserDecision=DECISION,
@@ -144,7 +145,7 @@ def main():
             rootOffsetsSourcePx=[pose['rootSourcePx'] for pose in motion['keyframes']],
             maximumRootTranslationOutputPx=[v*data['transform']['scale'] for v in motion['maximumRootTranslationSourcePx']],
             rootShiftFollowsSupportNotTravelDirection=True,bodyPulse=False,ornamentFlash=False,
-            focusOffsetSourcePx=[6*result['state']['direction'],0],artMirrored=False,
+            focusOffsetSourcePx=result['eyeOffsets'],legacyFocusIntentSourcePx=[6*result['state']['direction'],0],artMirrored=False,
             camera=data['transform'],sameSourceCoordinateCamera=True,facialGeometryRepair=False,
             sourceFaceExceptEyeAperturesFixed=True,faceGeometryRigidRootTranslation=True,
             sourceArtworkChangedOutsideEyeApertures=False,closedEyeFrames=0,nativeInterpolation=False,
@@ -171,7 +172,7 @@ def main():
             legCompositionVersion='leg-material-v2',integerSourceMaterialNeutralRGBAExact=True,
             **neutral,roundoffCanonicalizationPremultTolerance=1e-10,
             sourceAlphaAndOcclusionSeparated=True,
-            localFilterSupport=ZERO,materialSupportRepair=repair_receipt(name,frames,eye_revision='observed-eye-opening-v2'),
+            localFilterSupport=ZERO,materialSupportRepair=repair_receipt(name,frames,eye_revision=eye_motion.METHOD),
             artistLayerRecoveryClaimed=False,inferredMatte=True,fullRedrawAccepted=False,
             generatedFromRejectedSources=False,installableFullAtlas=False,installed=False,
             unresolved=motion['limitations'])

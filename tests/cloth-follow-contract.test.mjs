@@ -15,8 +15,9 @@ test('archived sleeve trials match their frozen gait, not current corrected eyes
     assert.deepEqual(entry.parentFrameHashes,current(state).frameHashes);
     assert.equal(entry.allNativeAlphaExact,false);
   }
-  assert.equal(comparisonPolicy('run_right','idle',true).choice,'rigid');
-  assert.equal(comparisonPolicy('run_left','cloth').choice,'rigid');
+  assert.equal(comparisonPolicy('run_right','idle',true).choice,'idle');
+  assert.equal(comparisonPolicy('run_left','cloth').choice,'idle');
+  assert.equal(comparisonPolicy('run_left','rigid').allowed.includes('rigid'),false);
   assert.equal(comparisonPolicy('run_left','cloth').allowed.includes('cloth'),false);
   for(const state of ['failed','jumping','review_overlap','waving_source','idle']){
     assert.equal(comparisonPolicy(state,'cloth').allowed.includes('cloth'),false);

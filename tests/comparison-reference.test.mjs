@@ -7,13 +7,19 @@ import {durations} from '../viewer/clock.mjs';
 
 const metadata=JSON.parse(readFileSync(new URL('../sources/reference/locomotion-rigid/manifest.json',import.meta.url),'utf8'));
 
-test('actual archived contracts match both current native rows without inheriting art approval',()=>{
+test('archived rigid comparisons retain their original eye-material epoch',()=>{
   for(const state of ['run_right','run_left']){
-    const current=JSON.parse(readFileSync(new URL(`../candidates/phase5/${state}/build.json`,import.meta.url),'utf8'));
+    const current=JSON.parse(readFileSync(new URL(`../sources/reference/gaze-action-v1/${state}.json`,import.meta.url),'utf8'));
     const entry=validateRigidReference(metadata,state,current);
     assert.equal(entry.file,`${state}.webp`);assert.equal(entry.frameHashes.length,8);
   }
   assert.equal(metadata.visualApprovalInherited,false);
+});
+test('actual quieter eye flow cannot masquerade as the old single-factor rigid comparison',()=>{
+  for(const state of ['run_right','run_left']){
+    const current=JSON.parse(readFileSync(new URL(`../candidates/phase5/${state}/build.json`,import.meta.url),'utf8'));
+    assert.throws(()=>validateRigidReference(metadata,state,current));
+  }
 });
 
 test('one selected native slot drives both sides at every hold and three-cycle fallback',()=>{

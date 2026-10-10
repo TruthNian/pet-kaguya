@@ -1,4 +1,4 @@
-"""Full 16-direction identity/layer proofs, not a subjective acceptance score."""
+"""Frozen rigid-v2 layer proofs, not tests of the later accepted surface model."""
 import copy
 import hashlib
 import json
@@ -14,6 +14,7 @@ sys.path.insert(0,str(ROOT/'tools'))
 import build_gaze as gaze
 from build_idle import render
 from canonical import ACCEPTED_SHA, clean_cutout
+FROZEN=ROOT/'sources/reference/gaze-rigid-v2'
 
 
 class Gaze(unittest.TestCase):
@@ -25,7 +26,7 @@ class Gaze(unittest.TestCase):
         cls.zero = dict(bodyY=0,earAngle=0,hairAngle=0)
         cls.neutral = render(clean_cutout(cls.source)[0],cls.zero,cls.camera,cls.regions,cls.masks)
         cls.frames = [render(clean_cutout(p)[0],cls.zero,cls.camera,cls.regions,cls.masks) for p in cls.poses]
-        cls.meta = json.loads((gaze.OUT/'build.json').read_text())
+        cls.meta = json.loads((FROZEN/'build.json').read_text())
 
     def test_neutral_reconstruction_uses_physical_layers_without_a_shortcut(self):
         self.assertEqual(gaze.pose(self.source,self.layers,0,0).tobytes(),self.source.tobytes())
@@ -96,15 +97,13 @@ class Gaze(unittest.TestCase):
         self.assertEqual(self.meta['sourceOffsetDecimalPlaces'],12)
 
     def test_saved_sixteen_frames_rows_and_neutral_are_exactly_rebuildable(self):
-        with Image.open(gaze.OUT/'neutral.png') as image:
+        with Image.open(FROZEN/'neutral.png') as image:
             self.assertEqual(image.convert('RGBA').tobytes(),self.neutral.tobytes())
         with Image.open(ROOT/'candidates/phase5/idle/frame-0.png') as image:
             self.assertEqual(image.convert('RGBA').tobytes(),self.neutral.tobytes())
-        with Image.open(gaze.OUT/'strip.webp') as strip:
+        with Image.open(FROZEN/'strip.webp') as strip:
             self.assertEqual(strip.size,(1536,416))
             for i,frame in enumerate(self.frames):
-                with Image.open(gaze.OUT/f'frame-{i}.png') as image:
-                    self.assertEqual(image.convert('RGBA').tobytes(),frame.tobytes())
                 x,y = i%8*192,i//8*208
                 self.assertEqual(strip.crop((x,y,x+192,y+208)).convert('RGBA').tobytes(),frame.tobytes())
                 self.assertEqual(hashlib.sha256(frame.tobytes()).hexdigest().upper(),self.meta['frameHashes'][i])

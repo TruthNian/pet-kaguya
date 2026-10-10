@@ -10,6 +10,7 @@ from arm_material import localized_arm_pose
 from review_processing import inputs as art_inputs, GENERATED_SHA
 from build_idle import specification as idle_specification, region_masks, render
 import build_gaze as gaze
+import eye_motion
 from animation_output import write_animation
 from protocol import DURATIONS
 
@@ -44,8 +45,8 @@ def inputs(*, corrected_gaze=True):
     gaze_spec = gaze.specification(corrected=corrected_gaze)
     motion = json.loads((ROOT/'sources/canonical/processing-motion.json').read_text(encoding='utf-8'))
     validate_motion(motion, gaze_spec)
-    eye_layers = gaze.layers(mother, gaze.load_generated(), gaze_spec)
-    focused = gaze.pose(arm_pose, eye_layers, *motion['focusOffsetSourcePx'])
+    eye_layers = eye_motion.layers(mother,corrected=corrected_gaze)
+    focused = eye_motion.pose(arm_pose,eye_layers,*motion['focusOffsetSourcePx'],corrected=corrected_gaze)
     eye_allowed = gaze.aperture_union(mother, eye_layers)
     changed = np.any(np.asarray(focused) != np.asarray(arm_pose), axis=2)
     if (np.any(changed & ~eye_allowed)
@@ -64,7 +65,8 @@ def inputs(*, corrected_gaze=True):
         frames.append(rendered[key])
     return dict(mother=mother, armPose=arm_pose, armAllowed=arm_allowed,
                 focused=focused, eyeAllowed=eye_allowed, motion=motion,
-                transform=transform, regions=regions, masks=masks, frames=frames)
+                transform=transform, regions=regions, masks=masks, frames=frames,
+                eyeOffsets=eye_motion.offsets(*motion['focusOffsetSourcePx'],corrected=corrected_gaze))
 
 
 def main():
@@ -77,18 +79,17 @@ def main():
     write_animation(OUT, frames, DURATIONS[7])
     data['focused'].save(OUT/'focused-pose.png')
     metadata = dict(sourceSha256=ACCEPTED_SHA, source='sources/canonical/artwork.png',
-        handGeneratedSha256=GENERATED_SHA, eyeBackingGeneratedSha256=gaze.GENERATED_SHA,
+        handGeneratedSha256=GENERATED_SHA, **eye_motion.descriptor(),
         state='processing', nativeState='running', nativeRow=7, statesInThisArtifact=['processing'],
-        sourceEyeRig='sources/canonical/gaze-rig-v2.json',sourceEyeGeometryRevision='observed-eye-opening-v2',
         durationsMs=DURATIONS[7], totalDurationMs=sum(DURATIONS[7]), repeatBeforeIdle=3,
         actionDurationMs=3*sum(DURATIONS[7]), closedEyeFrames=0, bodyPulse=False, ornamentFlash=False,
-        bodyTranslationPx=0, focusOffsetSourcePx=motion['focusOffsetSourcePx'],
+        bodyTranslationPx=0, focusOffsetSourcePx=data['eyeOffsets'],legacyFocusIntentSourcePx=motion['focusOffsetSourcePx'],
         camera=data['transform'], sameSourceCoordinateCamera=True,
         focusedEyeAlphaPreservedExactly=True, sourceFaceExceptEyeAperturesFixed=True,
         sourceCapeAndForegroundLockPreserved=True, loopSeamRGBAExact=frames[0].tobytes()==frames[-1].tobytes(),
         uniqueCels=len(set(frame.tobytes() for frame in frames)),
         frameHashes=[hashlib.sha256(frame.tobytes()).hexdigest().upper() for frame in frames],
-        method='bounded gathered-hand cel, original iris translation and very small ear/hair fields; body held',
+        method='bounded gathered-hand cel, quieter original-eye texture flow and very small ear/hair fields; body held',
         sampling='new arm first uses fixed-crop uniform source projection; shared canonical camera, 3x coverage and terminal Lanczos downsample',
         fullRedrawAccepted=False, articulatedArmBuilt=False, facialGeometryRepair=False,
         generatedFromRejectedSources=False, nativeInterpolation=False,

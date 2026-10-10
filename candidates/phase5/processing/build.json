@@ -2,15 +2,22 @@
   "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
   "source": "sources/canonical/artwork.png",
   "handGeneratedSha256": "6BEEFEBA2456425C2B3648AEED8B3668F46A768D489A7A41D4F6016BD36FCDB3",
-  "eyeBackingGeneratedSha256": "684BA98301B8BD4F204581E77CDE1586528D0EC7B1804C5CFC4ADB5E1EF2B61A",
+  "sourceEyeRig": "sources/canonical/gaze-surface-v1.json",
+  "sourceEyeGeometryRevision": "original-aperture-surface-flow-v1",
+  "eyeMotionApprovalScope": "gaze-surface-development-basis-only",
+  "eyeMotionUserDecision": "sources/canonical/gaze-surface-adoption-20261010.json",
+  "eyeMotionVisualApproval": "approved-as-development-basis",
+  "irisShapeWarp": true,
+  "eyeOutlineFixed": true,
+  "newEyeArtworkGenerated": false,
+  "eyeBackingUsed": false,
+  "eyeBackingGeneratedSha256": null,
   "state": "processing",
   "nativeState": "running",
   "nativeRow": 7,
   "statesInThisArtifact": [
     "processing"
   ],
-  "sourceEyeRig": "sources/canonical/gaze-rig-v2.json",
-  "sourceEyeGeometryRevision": "observed-eye-opening-v2",
   "durationsMs": [
     120,
     120,
@@ -27,6 +34,10 @@
   "ornamentFlash": false,
   "bodyTranslationPx": 0,
   "focusOffsetSourcePx": [
+    -3.0,
+    2.0
+  ],
+  "legacyFocusIntentSourcePx": [
     -6,
     3.5
   ],
@@ -54,14 +65,14 @@
   "loopSeamRGBAExact": true,
   "uniqueCels": 4,
   "frameHashes": [
-    "AFC935DEAD450F74CEC9110D96ACA5C2F2A37FCB64220A4CA3758088080070FA",
-    "AFC935DEAD450F74CEC9110D96ACA5C2F2A37FCB64220A4CA3758088080070FA",
-    "7575C272C303022DD986AD11CC12BE80F53837E019C03F8D96972EE35F37490F",
-    "DC2C8A2B470102062614A902B7E0CAE12B08BC43AFA580A8F8D564AAA41206CC",
-    "01ADB8AAE461C6E46A35A21F06071E7CCDA0A670AC22A4A2F57B0EFA3F971857",
-    "AFC935DEAD450F74CEC9110D96ACA5C2F2A37FCB64220A4CA3758088080070FA"
+    "37ED3E9A46A3372D22A4948F735E5A94F2EDCE3C746369544930D3789DAEAFA7",
+    "37ED3E9A46A3372D22A4948F735E5A94F2EDCE3C746369544930D3789DAEAFA7",
+    "FD1025B1590D1356E62EDEEE722C4E1A065A5F5FD8A70A2A8523493B27D37A0A",
+    "3D298814884ABD0D0A0D247F64AA23F7BAA441F02FF112FF997200BB1248C688",
+    "EC914BF40145F7EB71067EC30268D120EC5BAA05B76BD7287A676B4F1AA495F9",
+    "37ED3E9A46A3372D22A4948F735E5A94F2EDCE3C746369544930D3789DAEAFA7"
   ],
-  "method": "bounded gathered-hand cel, original iris translation and very small ear/hair fields; body held",
+  "method": "bounded gathered-hand cel, quieter original-eye texture flow and very small ear/hair fields; body held",
   "sampling": "new arm first uses fixed-crop uniform source projection; shared canonical camera, 3x coverage and terminal Lanczos downsample",
   "fullRedrawAccepted": false,
   "articulatedArmBuilt": false,

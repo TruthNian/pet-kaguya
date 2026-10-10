@@ -14,11 +14,18 @@
   "handScaled": false,
   "knownSourceHairRGBAExact": true,
   "paintedHairAlphaContinuityEstimated": true,
-  "eyeBackingGeneratedSha256": "684BA98301B8BD4F204581E77CDE1586528D0EC7B1804C5CFC4ADB5E1EF2B61A",
+  "sourceEyeRig": "sources/canonical/gaze-surface-v1.json",
+  "sourceEyeGeometryRevision": "original-aperture-surface-flow-v1",
+  "eyeMotionApprovalScope": "gaze-surface-development-basis-only",
+  "eyeMotionUserDecision": "sources/canonical/gaze-surface-adoption-20261010.json",
+  "eyeMotionVisualApproval": "approved-as-development-basis",
+  "irisShapeWarp": true,
+  "eyeOutlineFixed": true,
+  "newEyeArtworkGenerated": false,
+  "eyeBackingUsed": false,
+  "eyeBackingGeneratedSha256": null,
   "state": "review",
   "nativeRow": 8,
-  "sourceEyeRig": "sources/canonical/gaze-rig-v2.json",
-  "sourceEyeGeometryRevision": "observed-eye-opening-v2",
   "statesInThisArtifact": [
     "review"
   ],
@@ -42,6 +49,10 @@
   "heldTimingUserDecision": "held-gesture-boundary-decision-20261009.json",
   "heldTimingAcceptedTemporarily": true,
   "focusOffsetSourcePx": [
+    0.0,
+    2.857142857143
+  ],
+  "legacyFocusIntentSourcePx": [
     0,
     5
   ],
@@ -69,14 +80,14 @@
   "loopSeamRGBAExact": true,
   "uniqueCels": 4,
   "frameHashes": [
-    "35386671725209DBD39E33292DFE98C483C1A8285EED16683F01B1BA12B4023E",
-    "AD11CBE9EF9BAB22DBF8FA0A4CC5A24E8C4B3BD5B5235E57FDA4EDEAB2BF554F",
-    "BF13D73D4FF9F2FB1CC75B7C75D4C0102D289850EB9F2EE414A314626DD4B909",
-    "E36FAC4C99A42949A83329C6A2AD1439D0485CFF44C35E816B8CC0C043E7AFA4",
-    "AD11CBE9EF9BAB22DBF8FA0A4CC5A24E8C4B3BD5B5235E57FDA4EDEAB2BF554F",
-    "35386671725209DBD39E33292DFE98C483C1A8285EED16683F01B1BA12B4023E"
+    "99FD0C938EC7A6E99857B0A1E3215224F00B27C50CA3C3D737F7A940A8AE02E8",
+    "3D40642D51C8F18A5D84CE3683736AA41A2D8061E83FA70CCC17BB8D4B09F54F",
+    "44D06FE39F34C23B7A1E7479D8578449859C15CF727CF4ED2740CE4D57C7857B",
+    "50F966C6C9A35C0049770692177E24DEC0DB4D1E6E74A39FDB1BF19C0A74F35D",
+    "3D40642D51C8F18A5D84CE3683736AA41A2D8061E83FA70CCC17BB8D4B09F54F",
+    "99FD0C938EC7A6E99857B0A1E3215224F00B27C50CA3C3D737F7A940A8AE02E8"
   ],
-  "method": "bounded two-low-hands cel, downward original iris translation and very small ear/hair fields; body held",
+  "method": "bounded two-low-hands cel, quieter original-eye texture flow and very small ear/hair fields; body held",
   "sampling": "new right/left arm each first uses fixed-crop source projection; shared canonical camera, 3x coverage and terminal Lanczos downsample",
   "fullRedrawAccepted": false,
   "articulatedArmBuilt": false,

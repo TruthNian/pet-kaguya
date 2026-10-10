@@ -157,20 +157,21 @@
     <p><a href="../candidates/phase5/global/spritesheet.webp">完整开发验收图集</a> · <a href="../candidates/phase5/global/build.json">覆盖范围、未完成条件与逐行像素哈希</a> · <a href="../qa/lossless-encoding-20261010.json">冻结本机实测及代价</a></p>
   </details>
   <details id="gaze-review" class="idle-review"><summary>Phase 5 · 十六个视线方向候选（点开验收）</summary>
-    <p>十六视线及小步、processing、review已共用收紧的眼部范围，避免把已确认的下眼缘肤色带入虹膜颜色。母版和中性视线不变；浅色边圈仍未彻底解决。本次局部修正不代表整体自然度通过。</p>
-    <p>同一 v3 母版，只平移原虹膜；眼眶、睫毛、眉、嘴、下颌、衣服、鞋与月饰固定。两眼原有差异保留，不做对称修正。最大位移源图 12×7 px，原生约 1.9×1.1 px；小尺寸辨认仍待验收。眼白底图是隐藏素材，不采用整张重画。</p>
+    <p>用户已接受原图眼内变形为眼动开发基础，现用十六视线及左右小步、processing、review共用这一方案。它减少观察到的重复浅色轮廓，不提取或重画眼珠；母版、眼眶边界、脸型和中性视线不变，虹膜略有形变。完整眼部自然度、手袖结构及全套动作尚未通过。</p>
+    <p>最大眼动由采用前12×7源px降为6×4源px，原生约0.95×0.63px。动作按原方向与相对幅度同比收敛，步态/耳发/持帧不改，不再使用生成眼白底图。选择旧版对照时，左为冻结的同方向采用前眼动、右为现用开发基础，非单因素对照。<a href="../candidates/phase5/look-surface-v1/comparison.png">四方向源尺寸细节</a></p>
     <div class="controls">
+      <label>眼动方案 <select id="gaze-method"><option value="current">现用版 · 原图中性参考</option><option value="surface">旧版对照 · 左采用前右现用开发基础</option></select></label>
       <label>视线 <select id="gaze-direction"><option value="neutral">中性 · 原图</option><option value="0">0 · 上</option><option value="1">1 · 上偏右</option><option value="2">2 · 右上</option><option value="3">3 · 右偏上</option><option value="4">4 · 右</option><option value="5">5 · 右偏下</option><option value="6">6 · 右下</option><option value="7">7 · 下偏右</option><option value="8">8 · 下</option><option value="9">9 · 下偏左</option><option value="10">10 · 左下</option><option value="11">11 · 左偏下</option><option value="12">12 · 左</option><option value="13">13 · 左偏上</option><option value="14">14 · 左上</option><option value="15">15 · 上偏左</option></select></label>
       <label>宽度 <select id="gaze-size"><option>80</option><option selected>113</option><option>192</option><option>224</option></select> px</label>
       <label>背景 <select id="gaze-background"><option value="dark">深色</option><option value="light">浅色</option><option value="grid">透明网格</option></select></label>
       <label><input id="gaze-pointer" type="checkbox">跟随指针（仅此验收区）</label>
     </div>
     <div id="gaze-stage" class="stage dark">
-      <article><h2>v3 · 原图中性视线</h2><canvas id="gaze-reference" width="192" height="208" aria-label="原图中性视线"></canvas></article>
-      <article><h2>同一母版 · 视线候选</h2><canvas id="gaze-pet" width="192" height="208" aria-label="十六方向视线候选"></canvas></article>
+      <article><h2 id="gaze-reference-title">v3 · 原图中性视线</h2><canvas id="gaze-reference" width="192" height="208" aria-label="原图中性视线"></canvas></article>
+      <article><h2 id="gaze-candidate-title">同一母版 · 现用视线</h2><canvas id="gaze-pet" width="192" height="208" aria-label="十六方向视线候选"></canvas></article>
     </div>
     <output id="gaze-status" aria-live="off">展开后按需解码；无循环计时器。</output>
-    <p>中性位置由同一分层合成，完整 RGBA 精确还原母版，不是特判返回源图。虹膜 matte 仍是从可见像素估计的边界，并非作者原始分层；人工视觉接受尚未确认。指针预览没有改变宿主优先级或原生帧率。</p>
+    <p>采用前中性位置通过同一分层合成还原，现用中性位置通过同一纹理采样还原，均非特判返回原图。现用是风格化二维眼内变形，不是真实三维眼球重建；旧版虹膜matte也不是作者原始分层。小尺寸方向辨认及完整自然度待确认，预览不改变宿主优先级或帧率。</p>
   </details>
   <details id="arm-material-review"><summary>制作素材：左手臂后方隐藏底图（不是宠物姿势）</summary>
     <p>仅替换旧手和长袖遮挡区域，肩披、前发与脸保留母版像素。这里刻意没有左手/长袖，是后续动作的底层素材；不是要安装缺手版本，也不代表已完成关节或干净前景层。</p>

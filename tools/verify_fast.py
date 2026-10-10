@@ -8,6 +8,7 @@ from PIL import Image
 
 from canonical import ROOT, ACCEPTED_SHA
 from build_global_review import assemble, OUT
+from eye_motion import approved, descriptor, SCOPE, DECISION
 
 
 def main():
@@ -23,6 +24,16 @@ def main():
             or metadata['visualAcceptance']!='pending' or metadata['installed']
             or metadata['installableFullAtlas'] or metadata['allStateTransitionsAccepted']):
         raise ValueError('Current atlas pixel/approval boundary mismatch')
+    gaze=json.loads((ROOT/'candidates/phase5/look/build.json').read_text(encoding='utf-8'))
+    if (gaze['frameHashes']!=approved()['frameHashes'] or gaze.get('adopted') is not True
+            or gaze.get('eyeMotionApprovalScope')!=SCOPE or gaze.get('eyeMotionUserDecision')!=DECISION
+            or gaze.get('eyeMotionVisualApproval')!='approved-as-development-basis'
+            or gaze.get('irisShapeWarp') is not True or gaze.get('eyeBackingUsed') is not False):
+        raise ValueError('Current gaze must use the exact narrowly approved candidate pixels')
+    for state in ('run_right','run_left','processing','review'):
+        action=json.loads((ROOT/f'candidates/phase5/{state}/build.json').read_text(encoding='utf-8'))
+        if any(action.get(key)!=value for key,value in descriptor().items()):
+            raise ValueError('Current eye-moving action has not adopted the same bounded eye model')
     decision=json.loads((ROOT/'sources/canonical/waving-amplitude-adoption-20261010.json').read_text(encoding='utf-8'))
     wave=json.loads((ROOT/'candidates/phase5/waving/build.json').read_text(encoding='utf-8'))
     if (decision['scope']!='waving-lower-amplitude-development-basis-only'

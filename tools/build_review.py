@@ -11,6 +11,7 @@ from review_cloth_v2 import GENERATED_SHA as CLOTH_SHA
 from review_processing import GENERATED_SHA as LEFT_SHA
 from build_idle import specification as idle_specification, region_masks, render
 import build_gaze as gaze
+import eye_motion
 from animation_output import write_animation
 from protocol import DURATIONS
 from held_timing import validate_decision
@@ -49,8 +50,8 @@ def inputs(*, corrected_gaze=True):
     gaze_spec = gaze.specification(corrected=corrected_gaze)
     motion = json.loads((ROOT/'sources/canonical/review-motion.json').read_text(encoding='utf-8'))
     validate_motion(motion, gaze_spec)
-    eye_layers = gaze.layers(mother, gaze.load_generated(), gaze_spec)
-    focused = gaze.pose(arm_pose, eye_layers, *motion['focusOffsetSourcePx'])
+    eye_layers = eye_motion.layers(mother,corrected=corrected_gaze)
+    focused = eye_motion.pose(arm_pose,eye_layers,*motion['focusOffsetSourcePx'],corrected=corrected_gaze)
     eye_allowed = gaze.aperture_union(mother, eye_layers)
     changed = np.any(np.asarray(focused) != np.asarray(arm_pose), axis=2)
     if (np.any(changed & ~eye_allowed)
@@ -68,7 +69,8 @@ def inputs(*, corrected_gaze=True):
         frames.append(rendered[key])
     return dict(mother=mother, base=base, armPose=arm_pose, armAllowed=arm_allowed,
                 preserved=preserved, focused=focused, eyeAllowed=eye_allowed, motion=motion,
-                transform=transform, regions=regions, masks=masks, frames=frames)
+                transform=transform, regions=regions, masks=masks, frames=frames,
+                eyeOffsets=eye_motion.offsets(*motion['focusOffsetSourcePx'],corrected=corrected_gaze))
 
 
 def main():
@@ -88,20 +90,19 @@ def main():
         observedHairAlphaHolesRestored=True,
         originalLowerHandContourRestored=True,handScaled=False,
         knownSourceHairRGBAExact=True,paintedHairAlphaContinuityEstimated=True,
-        eyeBackingGeneratedSha256=gaze.GENERATED_SHA, state='review', nativeRow=8,
-        sourceEyeRig='sources/canonical/gaze-rig-v2.json',sourceEyeGeometryRevision='observed-eye-opening-v2',
+        **eye_motion.descriptor(), state='review', nativeRow=8,
         statesInThisArtifact=['review'], durationsMs=DURATIONS[8], totalDurationMs=sum(DURATIONS[8]),
         repeatBeforeIdle=3, actionDurationMs=3*sum(DURATIONS[8]), closedEyeFrames=0,
         bodyPulse=False, ornamentFlash=False, bodyTranslationPx=0,
         handStrategy=motion['handStrategy'], strategyUserApproval='pending',
         heldTimingUserDecision=motion['heldTimingUserDecision'], heldTimingAcceptedTemporarily=True,
-        focusOffsetSourcePx=motion['focusOffsetSourcePx'], camera=data['transform'],
+        focusOffsetSourcePx=data['eyeOffsets'],legacyFocusIntentSourcePx=motion['focusOffsetSourcePx'], camera=data['transform'],
         sameSourceCoordinateCamera=True, focusedEyeAlphaPreservedExactly=True,
         sourceFaceExceptEyeAperturesFixed=True, sourceForegroundPlatesPreserved=True,
         loopSeamRGBAExact=frames[0].tobytes()==frames[-1].tobytes(),
         uniqueCels=len(set(frame.tobytes() for frame in frames)),
         frameHashes=[hashlib.sha256(frame.tobytes()).hexdigest().upper() for frame in frames],
-        method='bounded two-low-hands cel, downward original iris translation and very small ear/hair fields; body held',
+        method='bounded two-low-hands cel, quieter original-eye texture flow and very small ear/hair fields; body held',
         sampling='new right/left arm each first uses fixed-crop source projection; shared canonical camera, 3x coverage and terminal Lanczos downsample',
         fullRedrawAccepted=False, articulatedArmBuilt=False, facialGeometryRepair=False,
         animationBuilt=True, generatedFromRejectedSources=False, nativeInterpolation=False,
