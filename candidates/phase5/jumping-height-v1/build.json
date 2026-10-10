@@ -1,0 +1,246 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "state": "jumping",
+  "nativeRow": 4,
+  "camera": {
+    "scale": 0.15833333333333333,
+    "x": 0.36666666666667425,
+    "y": 7.883333333333354,
+    "visibleBBox": [
+      142,
+      26,
+      1066,
+      1226
+    ],
+    "floor": 202,
+    "topReserve": 12,
+    "cell": [
+      192,
+      208
+    ]
+  },
+  "durationsMs": [
+    140,
+    140,
+    140,
+    140,
+    280
+  ],
+  "repeatBeforeIdle": 3,
+  "bodyCompressionOutputPx": [
+    0.8,
+    0,
+    0,
+    0,
+    0.25
+  ],
+  "tipAnglesDegrees": [
+    [
+      0.08,
+      0
+    ],
+    [
+      -0.12,
+      0.05
+    ],
+    [
+      -0.2,
+      0.08
+    ],
+    [
+      0.1,
+      -0.03
+    ],
+    [
+      0.04,
+      -0.02
+    ]
+  ],
+  "groundedFrames": [
+    0,
+    4
+  ],
+  "groundedContactVersion": "two-link-source-material-v1",
+  "legCompositionVersion": "leg-material-v2",
+  "legBackingGeneratedSha256": "F4DB57340CF910C3F5A773BEFF3345823C42FBCFFEBD44C12F7E00990EACD93A",
+  "previewVariant": "jumping_height",
+  "source": "sources/canonical/artwork.png",
+  "referencePurpose": "isolate-flight-height-only",
+  "baselineApexOutputPx": 8,
+  "candidateApexOutputPx": 4,
+  "actorOffsetsPx": [
+    0,
+    -2.2222222222222223,
+    -4.0,
+    -2.222222222222222,
+    0
+  ],
+  "baselineActorOffsetsPx": [
+    0,
+    -4.444444444444445,
+    -8.0,
+    -4.444444444444444,
+    0
+  ],
+  "keyframes": [
+    {
+      "phase": "anticipation",
+      "grounded": true,
+      "actorY": 0,
+      "bodyY": 0.8,
+      "earAngle": 0.08,
+      "hairAngle": 0
+    },
+    {
+      "phase": "ascent",
+      "grounded": false,
+      "flightTimeMs": 70,
+      "bodyY": 0,
+      "earAngle": -0.12,
+      "hairAngle": 0.05,
+      "actorY": -2.2222222222222223
+    },
+    {
+      "phase": "apex",
+      "grounded": false,
+      "flightTimeMs": 210,
+      "bodyY": 0,
+      "earAngle": -0.2,
+      "hairAngle": 0.08,
+      "actorY": -4.0
+    },
+    {
+      "phase": "descent",
+      "grounded": false,
+      "flightTimeMs": 350,
+      "bodyY": 0,
+      "earAngle": 0.1,
+      "hairAngle": -0.03,
+      "actorY": -2.222222222222222
+    },
+    {
+      "phase": "landing",
+      "grounded": true,
+      "actorY": 0,
+      "bodyY": 0.25,
+      "earAngle": 0.04,
+      "hairAngle": -0.02
+    }
+  ],
+  "baselineKeyframes": [
+    {
+      "phase": "anticipation",
+      "grounded": true,
+      "actorY": 0,
+      "bodyY": 0.8,
+      "earAngle": 0.08,
+      "hairAngle": 0
+    },
+    {
+      "phase": "ascent",
+      "grounded": false,
+      "flightTimeMs": 70,
+      "bodyY": 0,
+      "earAngle": -0.12,
+      "hairAngle": 0.05,
+      "actorY": -4.444444444444445
+    },
+    {
+      "phase": "apex",
+      "grounded": false,
+      "flightTimeMs": 210,
+      "bodyY": 0,
+      "earAngle": -0.2,
+      "hairAngle": 0.08,
+      "actorY": -8.0
+    },
+    {
+      "phase": "descent",
+      "grounded": false,
+      "flightTimeMs": 350,
+      "bodyY": 0,
+      "earAngle": 0.1,
+      "hairAngle": -0.03,
+      "actorY": -4.444444444444444
+    },
+    {
+      "phase": "landing",
+      "grounded": true,
+      "actorY": 0,
+      "bodyY": 0.25,
+      "earAngle": 0.04,
+      "hairAngle": -0.02
+    }
+  ],
+  "baselineFrameHashes": [
+    "D97503D6294CC134F5ED6486FB186351C7472F54EDEC6B56C6597C7CA99BF7DF",
+    "F66213D8143F5F4FC35502F1B9318E8FC2AF347F21285F4476AE00A9F513E039",
+    "687145828FFC7050E6B6FC08FD0CD7E7EE1491240A5FD824F914430F263E010C",
+    "2F2BEFF1B30A51F51E0A398E38EABA41372DD40A034EB7468E640C598EC55C58",
+    "1A0BF0292DB2741830B000434A6B332AF1E5B73765C70D1FB24FB850F0A9A44B"
+  ],
+  "frameHashes": [
+    "D97503D6294CC134F5ED6486FB186351C7472F54EDEC6B56C6597C7CA99BF7DF",
+    "368AFFD001202032E26219CBD862AD8181159A6B6D2B24D03FCF2CEDA86F248D",
+    "68741C8C47303A289B06A7841B8B2DA5F3D7764F28F017F62AE80AAB78140968",
+    "E2B26D01B45314137D4FFF6063F2C6EF2C1FF144A66A66513666AD44004F2126",
+    "1A0BF0292DB2741830B000434A6B332AF1E5B73765C70D1FB24FB850F0A9A44B"
+  ],
+  "baselineActualCelsRGBAExact": true,
+  "groundedCelsRGBAExact": true,
+  "onlyFlightActorTranslationChanged": true,
+  "facialGeometryRepair": false,
+  "newArtworkGenerated": false,
+  "nativeInterpolation": false,
+  "continuousLandingProven": false,
+  "physicalBalanceProven": false,
+  "animationBuilt": true,
+  "visualMotionApproval": "pending",
+  "strategyUserApproval": "pending",
+  "adopted": false,
+  "activeAtlasChanged": false,
+  "installableFullAtlas": false,
+  "installed": false,
+  "actorOnlyMaximumAdjacentStepPx": {
+    "current": 4.444444444444445,
+    "trial": 2.2222222222222223
+  },
+  "rootMaximumAdjacentStepPx": {
+    "current": 5.2444444444444445,
+    "trial": 3.022222222222222
+  },
+  "maximumFlightHeightBeforeAbruptReturnPx": {
+    "current": 8,
+    "trial": 4
+  },
+  "displayHeightBeforeAbruptReturnPx": [
+    {
+      "width": 80,
+      "current": 3.3333333333333335,
+      "trial": 1.6666666666666667
+    },
+    {
+      "width": 113,
+      "current": 4.708333333333333,
+      "trial": 2.3541666666666665
+    },
+    {
+      "width": 192,
+      "current": 8.0,
+      "trial": 4.0
+    },
+    {
+      "width": 224,
+      "current": 9.333333333333334,
+      "trial": 4.666666666666667
+    }
+  ],
+  "method": "same original high-resolution material/camera sampler; only three actor-flight offsets halved",
+  "limitations": [
+    "4px is a comparison candidate, not a first-principles unique optimum or user acceptance.",
+    "The five native holds, three action cycles, ground compression and tip angles are unchanged.",
+    "Smaller translation may reduce a height cut but does not repair arm/pose cuts, interpolation or landing recovery.",
+    "Actual-size readability, restraint and naturalness still need human review.",
+    "The active atlas, installed pet and host remain unchanged; no FPS/resolution/performance improvement."
+  ]
+}

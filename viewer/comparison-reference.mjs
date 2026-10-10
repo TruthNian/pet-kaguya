@@ -20,13 +20,14 @@ export function validateRigidReference(metadata,state,current){
   return entry;
 }
 export function comparisonReference(choice,state,index){
-  if(!['idle','rigid','contact','mouth'].includes(choice)||!Number.isInteger(index)||index<0
+  if(!['idle','rigid','contact','mouth','height'].includes(choice)||!Number.isInteger(index)||index<0
       ||!durations[candidateRows[state]]||index>=durations[candidateRows[state]].length)
     throw new Error('Invalid comparison selection');
   if(choice==='idle')return {kind:'candidate',state:'idle',index:0,synchronized:false};
   if(choice==='rigid'&&['run_right','run_left'].includes(state))return {kind:'rigid',state,index,synchronized:true};
   if(choice==='contact'&&state==='jumping')return {kind:'contact',state,index,synchronized:true};
   if(choice==='mouth'&&state==='failed')return {kind:'mouth',state:'failed',index,synchronized:true};
+  if(choice==='height'&&state==='jumping_height')return {kind:'candidate',state:'jumping',index,synchronized:true};
   if(state==='idle')return {kind:'candidate',state,index,synchronized:true};
   throw new Error('Synchronized reference cannot compare a different action');
 }
