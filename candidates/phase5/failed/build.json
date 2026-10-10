@@ -56,6 +56,48 @@
   "visualMotionApproval": "pending",
   "installableFullAtlas": false,
   "installed": false,
+  "keyframes": [
+    {
+      "bodyY": 0.2,
+      "earAngle": 0,
+      "hairAngle": 0
+    },
+    {
+      "bodyY": 0.5,
+      "earAngle": -0.06,
+      "hairAngle": 0.02
+    },
+    {
+      "bodyY": 0.8,
+      "earAngle": -0.1,
+      "hairAngle": 0.04
+    },
+    {
+      "bodyY": 1.0,
+      "earAngle": -0.15,
+      "hairAngle": 0.06
+    },
+    {
+      "bodyY": 1.0,
+      "earAngle": -0.15,
+      "hairAngle": 0.08
+    },
+    {
+      "bodyY": 0.8,
+      "earAngle": -0.1,
+      "hairAngle": 0.06
+    },
+    {
+      "bodyY": 0.4,
+      "earAngle": -0.05,
+      "hairAngle": 0.03
+    },
+    {
+      "bodyY": 0.1,
+      "earAngle": 0,
+      "hairAngle": 0
+    }
+  ],
   "frameHashes": [
     "2D0B74400BBB3426FCD4B717E4BC73BEEEDC600C64F0B33379DA1B96B0E3F33C",
     "D18657BA39F4277B3064AC9E862763D1097FA9A825214C35E56F5058BF47420D",
@@ -67,9 +109,9 @@
     "ED153210E07106117706A2C4DD55C5922B439D8AA92356183D8726BD8543E128"
   ],
   "unresolved": [
-    "subjective expression/motion acceptance",
-    "waiting arm entry/exit artwork",
-    "remaining states and look directions",
-    "native-host loading/performance"
+    "Current mouth/brow artwork and complete motion lack human visual approval.",
+    "The current mouth line is shorter than the mother smile; 80px expression cues remain weak.",
+    "Short repeating native holds and upper-body settling do not prove articulated leaning or smooth arbitrary exits.",
+    "Native-host loading/performance and final release/install acceptance remain unverified."
   ]
 }

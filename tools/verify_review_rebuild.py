@@ -29,7 +29,8 @@ FOLDERS = ['candidates/phase4/static', 'candidates/phase4/canonical-v3', 'candid
            'candidates/phase5/review-sleeves-v2','candidates/phase5/review-art-v6',
            'candidates/phase5/waiting-sleeve-v1','candidates/phase5/waiting-art-v2',
            'candidates/phase5/review-hands-pair-v1','candidates/phase5/review-hands-overlap-v1',
-           'candidates/phase5/terminal-sampling-v1']
+           'candidates/phase5/terminal-sampling-v1','candidates/phase5/failed-mouth-v2',
+           'candidates/phase5/failed-mouth-v2/animation']
 
 
 def snapshot():
@@ -57,7 +58,8 @@ def snapshot():
 def main():
     before, encoded_before = snapshot()
     for script in ['identity.py', 'review_jaw.py', 'review_waiting.py', 'review_failed.py', 'review_arm_backing.py',
-                   'build_idle.py', 'build_failed.py', 'build_jumping.py','build_gaze.py',
+                   'build_idle.py', 'guide_failed_mouth.py','review_failed_mouth.py',
+                   'build_failed.py','build_failed_mouth_study.py','build_jumping.py','build_gaze.py',
                    'guide_wave.py','review_wave.py','guide_wave_middle.py','build_waving.py',
                    'guide_processing.py','review_processing.py','build_processing.py',
                    'guide_waiting_sleeve.py','review_waiting_sleeve.py','review_waiting_v2.py','build_waiting.py',

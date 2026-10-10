@@ -1,0 +1,43 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "parentPoseRGBAHash": "07A9C448D24525C2DFC72D4EEDB32075C23F89D6649C68A76875BA963D299B30",
+  "crop": [
+    570,
+    370,
+    670,
+    430
+  ],
+  "squareCanvas": [
+    100,
+    100
+  ],
+  "bottomTransparentPx": 40,
+  "eyeJawOrWholeFaceIncluded": false,
+  "motherMouthLineDiagnostic": {
+    "thresholdDefinesEditMask": false,
+    "thresholdIsBeautyScore": false,
+    "count": 131,
+    "bounds": [
+      587,
+      390,
+      641,
+      403
+    ]
+  },
+  "currentFrownLineDiagnostic": {
+    "thresholdDefinesEditMask": false,
+    "thresholdIsBeautyScore": false,
+    "count": 121,
+    "bounds": [
+      595,
+      396,
+      632,
+      407
+    ]
+  },
+  "diagnosticIsSemanticSelection": false,
+  "intention": "slightly disappointed closed mouth with original smile-line width; no eyes, brows, cheeks, jaw, camera, alpha or body changes",
+  "visualAcceptance": "pending",
+  "adopted": false,
+  "installed": false
+}

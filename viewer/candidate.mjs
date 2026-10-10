@@ -1,8 +1,8 @@
 // Current v3-only development candidates. Historical preview is separate.
 import {durations} from './clock.mjs';
-import {candidateRows as rows,candidateSlot,candidatePoseOffset,candidateCelKey} from './candidate-clock.mjs';
+import {candidateRows as rows,candidateSlot,candidatePoseOffset,candidateCelKey} from './candidate-clock.mjs?v=20261010-mouth-1';
 import {paintCel} from './cel-painter.mjs?v=20261010-terminal-precision-v1';
-import {comparisonReference,validateRigidReference,validateHopReference} from './comparison-reference.mjs?v=20261009-hop-contact-v1';
+import {comparisonReference,validateRigidReference,validateHopReference,validateMouthStudy} from './comparison-reference.mjs?v=20261010-mouth-1';
 import {validateReviewMetadata} from './review-contract.mjs';
 import {validateWaitingMetadata} from './waiting-contract.mjs';
 import {validateSamplingStudy} from './sampling-contract.mjs';
@@ -12,7 +12,7 @@ const canvases=[el('idle-reference'),el('idle-animated')];
 const contexts=canvases.map(canvas=>canvas.getContext('2d',{alpha:true}));
 const media=matchMedia('(prefers-reduced-motion: reduce)');
 el('idle-reduced').checked=media.matches;
-const sources={idle:'idle',run_right:'run_right',run_left:'run_left',failed:'failed',jumping:'jumping',waving:'waving',waving_source:'wave-source-rig-v3',processing:'processing',waiting:'waiting',review:'review'};
+const sources={idle:'idle',run_right:'run_right',run_left:'run_left',failed:'failed',failed_mouth:'failed-mouth-v2/animation',jumping:'jumping',waving:'waving',waving_source:'wave-source-rig-v3',processing:'processing',waiting:'waiting',review:'review'};
 const cache=new Map();
 const rigidCache=new Map();
 const contactCache=new Map();
@@ -38,6 +38,7 @@ async function asset(state){
     if(!Array.isArray(metadata.frameHashes)||metadata.frameHashes.length!==durations[rows[state]].length)
       throw new Error(`${state} cel hash count mismatch`);
     metadata.frameHashes.forEach((_,index)=>candidateCelKey(metadata.frameHashes,index));
+    if(state==='failed_mouth')validateMouthStudy(metadata,(await asset('failed')).metadata);
     if(state==='waving_source'&&(metadata.state!=='waving'||metadata.nativeRow!==3
         ||metadata.originalConnectedSleeveEdgeFollowed!==true||metadata.foregroundMatteStillEstimated!==true
         ||metadata.newArtworkGenerated!==false||metadata.inferredBoundaryIsNotSourceObservation!==true
@@ -138,12 +139,14 @@ async function contactAsset(current){
 }
 function comparisonMode(reset=false){
   const gait=['run_right','run_left'].includes(mode),hop=mode==='jumping';
-  const precision=mode!=='waving_source';
-  el('idle-comparison').disabled=!gait&&!hop&&!precision;
+  const mouth=mode==='failed_mouth',precision=!['waving_source','failed_mouth'].includes(mode);
+  el('idle-comparison').disabled=!gait&&!hop&&!mouth&&!precision;
   el('sampling-reference-choice').disabled=!precision;
+  el('mouth-reference-choice').disabled=!mouth;
   el('rigid-reference-choice').disabled=!gait;el('contact-reference-choice').disabled=!hop;
-  if(reset||(!gait&&!hop&&el('idle-comparison').value!=='sampling')||(!precision&&el('idle-comparison').value==='sampling'))
-    el('idle-comparison').value=gait?'rigid':hop?'contact':'idle';
+  const choice=el('idle-comparison').value;
+  if(reset||(choice==='mouth'&&!mouth)||(!gait&&!hop&&!mouth&&choice!=='sampling')||(!precision&&choice==='sampling'))
+    el('idle-comparison').value=gait?'rigid':hop?'contact':mouth?'mouth':'idle';
 }
 function size(){
   const width=Number(el('idle-size').value);
@@ -178,11 +181,12 @@ async function draw(){
   el('reference-candidate-title').textContent=precision?`同步现用采样 · ${reference.state} 第 ${reference.index+1} 格`
     :reference.kind==='rigid'?`同步旧小步 · ${reference.state} 第 ${reference.index+1} 格`
     :reference.kind==='contact'?`同步旧轻跃（高度场） · 第 ${reference.index+1} 格`
+    :choice==='mouth'&&reference.state==='failed'?`同步现用 failed · 第 ${reference.index+1} 格`
     :reference.synchronized?`同步回退 · idle 第 ${reference.index+1} 格`:'同一母版 · 固定第 1 帧';
   el('reference-status').textContent=precision
     ?`左右同源/同姿势/同钟/同格；右侧仅末端浮点采样试验，未采用 · ${referencePaintCount} 次参考绘制 · 数值误差不代表审美通过`
     :reference.synchronized
-    ?`左右共用同一时钟/帧位，暂停、单帧、减少动态及三轮回退同步 · ${referencePaintCount} 次参考绘制 · ${choice==='contact'?'旧高度场按同参数重建，非历史发布或视觉批准':'旧版归档d804cd5，不继承完整视觉批准'}`
+    ?`左右共用同一时钟/帧位，暂停、单帧、减少动态及三轮回退同步 · ${referencePaintCount} 次参考绘制 · ${choice==='contact'?'旧高度场按同参数重建，非历史发布或视觉批准':choice==='mouth'?'左现用、右嘴线试验；身体/耳发姿态相同，未采用或获视觉批准':'旧版归档d804cd5，不继承完整视觉批准'}`
     :'固定 idle 只用于身份检查，不是同节奏动作对照。';
   const paintKey=candidateCelKey(precision?precisionAsset.entry.candidateFrameHashes:metadata.frameHashes,selected.index);
   if(paintKey!==lastKey){
@@ -196,6 +200,7 @@ async function draw(){
   el('idle-pause').textContent=paused?'播放候选':'暂停候选';
   const labels={run_right:'run_right · 正面向右小步原型',run_left:'run_left · 正面向左小步原型',review:'review · 六格低手下视候选',waiting:'waiting · 六格托腮保持候选',failed:'failed · 八帧轻微失落',jumping:'jumping · 五帧轻跃候选',waving:'waving · 四格招手候选',processing:'processing · 清醒专注候选',idle:'idle · 六帧微呼吸'};
   labels.waving_source='waving · 原像素低位试验，未采用';
+  labels.failed_mouth='failed · 八格局部嘴线试验，未采用';
   const label=labels[selected.state];
   el('current-candidate-title').textContent=precision?`${label} · 浮点采样试验，未采用`:label;
   const status=manualIndex!==null?'单帧检查':reduced()?'减少动态':paused?'已暂停':selected.completedAction?'三轮已结束，已回 idle':'实际时长播放';

@@ -1,0 +1,110 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "parentPoseRGBAHash": "07A9C448D24525C2DFC72D4EEDB32075C23F89D6649C68A76875BA963D299B30",
+  "generatedSha256": "695E3EC9867FB8A8A919E203E607A19D0E3A0AA7D469BDEA847B6E56397F3082",
+  "rawCanvas": [
+    1254,
+    1254
+  ],
+  "sourceCrop": [
+    570,
+    370,
+    670,
+    430
+  ],
+  "wholeSquareProjection": true,
+  "objectBoundsFitting": false,
+  "permissionPolygon": [
+    [
+      589,
+      393
+    ],
+    [
+      645,
+      393
+    ],
+    [
+      645,
+      414
+    ],
+    [
+      589,
+      414
+    ]
+  ],
+  "edgeFeatherSourcePx": 1.5,
+  "allowedPixels": 1254,
+  "changedPixels": 1254,
+  "changedOutsidePermission": 0,
+  "alphaChangedPixels": 0,
+  "rawChangesOutsidePermission": 4746,
+  "currentMouthLineDiagnostic": {
+    "thresholdDefinesEditMask": false,
+    "thresholdIsBeautyScore": false,
+    "count": 121,
+    "bounds": [
+      595,
+      396,
+      632,
+      407
+    ]
+  },
+  "candidateMouthLineDiagnostic": {
+    "thresholdDefinesEditMask": false,
+    "thresholdIsBeautyScore": false,
+    "count": 114,
+    "bounds": [
+      594,
+      397,
+      640,
+      405
+    ]
+  },
+  "originalSmileLineDiagnostic": {
+    "thresholdDefinesEditMask": false,
+    "thresholdIsBeautyScore": false,
+    "count": 131,
+    "bounds": [
+      587,
+      390,
+      641,
+      403
+    ]
+  },
+  "diagnosticDefinesPermission": false,
+  "poseRGBAHash": "30137EB265F82710BDA3B98B437B1C21D9A2DF5BEFA78879FAEE9582B4EBD292",
+  "frameRGBAHash": "CAF228D7441082C8EFD7DBFC844DEFE04A0245685BCC1905672CE412C0DCE308",
+  "camera": {
+    "scale": 0.15833333333333333,
+    "x": 0.36666666666667425,
+    "y": 7.883333333333354,
+    "visibleBBox": [
+      142,
+      26,
+      1066,
+      1226
+    ],
+    "floor": 202,
+    "topReserve": 12,
+    "cell": [
+      192,
+      208
+    ]
+  },
+  "sameSourceCoordinateCamera": true,
+  "facialGeometryRepair": false,
+  "newFaceGeometry": false,
+  "eyesBrowsJawCostumeRGBAExact": true,
+  "newArtworkGenerated": true,
+  "generatedAlphaRetainedInRaw": true,
+  "alphaAdopted": false,
+  "fullRedrawAccepted": false,
+  "adopted": false,
+  "animationBuilt": false,
+  "visualAcceptance": "pending",
+  "installed": false,
+  "installableFullAtlas": false,
+  "generationMode": "built-in imagegen",
+  "prompt": "candidates/phase5/failed-mouth-v2/prompt.txt",
+  "limitation": "Changes RGB throughout the bounded internal mouth patch, including nearby skin; not literally only brown-line pixels. Original width/stroke style are visual targets, not guaranteed by prompt or threshold diagnostics. No eight-cel failed animation or current atlas update, no human visual approval, no FPS/resolution gain."
+}

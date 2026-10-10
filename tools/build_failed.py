@@ -41,9 +41,12 @@ def main():
         method='bounded mouth/brow art; authored native poses with rigid face/upper-body settling and pinned shoes',
         sampling='3x coverage integration from high-resolution source, one terminal Lanczos downsample',
         visualMotionApproval='pending', installableFullAtlas=False, installed=False,
+        keyframes=motion['keyframes'],
         frameHashes=[hashlib.sha256(frame.tobytes()).hexdigest().upper() for frame in frames],
-        unresolved=['subjective expression/motion acceptance', 'waiting arm entry/exit artwork',
-                    'remaining states and look directions', 'native-host loading/performance'])
+        unresolved=['Current mouth/brow artwork and complete motion lack human visual approval.',
+                    'The current mouth line is shorter than the mother smile; 80px expression cues remain weak.',
+                    'Short repeating native holds and upper-body settling do not prove articulated leaning or smooth arbitrary exits.',
+                    'Native-host loading/performance and final release/install acceptance remain unverified.'])
     (OUT/'build.json').write_text(json.dumps(metadata, indent=2)+'\n', encoding='utf-8')
     print(json.dumps({key:value for key,value in metadata.items() if key!='frameHashes'}, indent=2))
 

@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {comparisonReference,validateRigidReference,validateHopReference} from '../viewer/comparison-reference.mjs';
+import {comparisonReference,validateRigidReference,validateHopReference,validateMouthStudy} from '../viewer/comparison-reference.mjs';
 import {candidateSlot,candidatePoseOffset} from '../viewer/candidate-clock.mjs';
 import {durations} from '../viewer/clock.mjs';
 
@@ -99,4 +99,35 @@ test('manual hop reference shares the exact frame and cannot silently select gai
   for(const [choice,state,index] of [['contact','jumping',5],['contact','waiting',0],
     ['contact','run_right',0],['rigid','jumping',0],['contact','jumping',.5]])
     assert.throws(()=>comparisonReference(choice,state,index));
+});
+
+const currentFailed=JSON.parse(readFileSync(new URL('../candidates/phase5/failed/build.json',import.meta.url),'utf8'));
+const mouthStudy=JSON.parse(readFileSync(new URL('../candidates/phase5/failed-mouth-v2/animation/build.json',import.meta.url),'utf8'));
+test('actual mouth trial shares current failed poses and cannot disguise source or approval drift',()=>{
+  assert.equal(validateMouthStudy(mouthStudy,currentFailed),mouthStudy);
+  for(const field of ['sourceSha256','camera','durationsMs','keyframes','repeatBeforeIdle','frameHashes']){
+    const altered=structuredClone(currentFailed);altered[field]=null;
+    assert.throws(()=>validateMouthStudy(mouthStudy,altered));
+  }
+  for(const [field,value] of [['adopted',true],['activeAtlasChanged',true],['installed',true],
+    ['visualMotionApproval','approved'],['sourceAlphaPreservedExactly',false],
+    ['bodyEarHairPosesUnchanged',false],['baselineFrameHashes',mouthStudy.frameHashes],['frameHashes',['bad']]]){
+    assert.throws(()=>validateMouthStudy({...mouthStudy,[field]:value},currentFailed));
+  }
+});
+test('the mouth study and actual current failed share all eight native holds and three-cycle fallback',()=>{
+  for(let cycle=0;cycle<3;cycle++)for(let index=0;index<8;index++){
+    const start=cycle*1220+candidatePoseOffset('failed_mouth',index);
+    for(const time of [start,start+durations[5][index]-.001]){
+      const slot=candidateSlot('failed_mouth',time);
+      assert.deepEqual(comparisonReference('mouth',slot.state,slot.index),
+        {kind:'candidate',state:'failed',index,synchronized:true});
+      assert.equal(slot.index,candidateSlot('failed',time).index);
+    }
+  }
+  for(const time of [3660,3660+1680,999999]){
+    const slot=candidateSlot('failed_mouth',time),reference=comparisonReference('mouth',slot.state,slot.index);
+    assert.equal(slot.state,'idle');assert.equal(reference.state,'idle');assert.equal(reference.index,slot.index);
+  }
+  for(const state of ['waiting','failed','run_right'])assert.throws(()=>comparisonReference('mouth',state,0));
 });

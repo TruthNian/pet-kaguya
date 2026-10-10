@@ -20,14 +20,34 @@ export function validateRigidReference(metadata,state,current){
   return entry;
 }
 export function comparisonReference(choice,state,index){
-  if(!['idle','rigid','contact'].includes(choice)||!Number.isInteger(index)||index<0
+  if(!['idle','rigid','contact','mouth'].includes(choice)||!Number.isInteger(index)||index<0
       ||!durations[candidateRows[state]]||index>=durations[candidateRows[state]].length)
     throw new Error('Invalid comparison selection');
   if(choice==='idle')return {kind:'candidate',state:'idle',index:0,synchronized:false};
   if(choice==='rigid'&&['run_right','run_left'].includes(state))return {kind:'rigid',state,index,synchronized:true};
   if(choice==='contact'&&state==='jumping')return {kind:'contact',state,index,synchronized:true};
+  if(choice==='mouth'&&state==='failed_mouth')return {kind:'candidate',state:'failed',index,synchronized:true};
   if(state==='idle')return {kind:'candidate',state,index,synchronized:true};
   throw new Error('Synchronized reference cannot compare a different action');
+}
+
+export function validateMouthStudy(study,current){
+  if(study.state!=='failed'||study.previewVariant!=='failed_mouth'||study.nativeRow!==5
+      ||study.referencePurpose!=='isolate-internal-mouth-rgb-only'
+      ||study.adopted!==false||study.activeAtlasChanged!==false||study.installed!==false
+      ||study.installableFullAtlas!==false||study.visualMotionApproval!=='pending'
+      ||study.animationBuilt!==true||study.facialGeometryRepair!==false||study.newFaceGeometry!==false
+      ||study.nativeInterpolation!==false||study.sourceAlphaPreservedExactly!==true
+      ||study.nativeAlphaPreservedExactly!==true||study.bodyEarHairPosesUnchanged!==true
+      ||study.baselineActualCelsReconstructedExactly!==true||study.frameHashes?.length!==8
+      ||current.state!=='failed'||current.nativeRow!==5||current.visualMotionApproval!=='pending'
+      ||['sourceSha256','camera','durationsMs','keyframes','repeatBeforeIdle'].some(key=>
+        current[key]===undefined||JSON.stringify(study[key])!==JSON.stringify(current[key]))
+      ||JSON.stringify(study.baselineFrameHashes)!==JSON.stringify(current.frameHashes))
+    throw new Error('Mouth trial source/poses/timing or unadopted boundary mismatch');
+  study.frameHashes.forEach((_,index)=>candidateCelKey(study.frameHashes,index));
+  current.frameHashes.forEach((_,index)=>candidateCelKey(current.frameHashes,index));
+  return study;
 }
 
 export function validateHopReference(metadata,current){
