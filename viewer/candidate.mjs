@@ -405,19 +405,16 @@ async function selectMode(){
   const selectedMode=el('idle-action').value;
   stopClock();ready=false;mode=selectedMode;baseElapsed=0;manualIndex=null;paused=false;lastKey='';
   lastReferenceKey='';
-  const gait=['run_right','run_left'].includes(mode);
   comparisonMode(true);
   el('idle-status').textContent=`正在解码 ${mode} 候选…`;
   el('idle-frame').max=String(durations[rows[mode]]?.length-1);
   el('idle-frame').value='0';el('idle-pause').disabled=true;
   try{
     if(!(selectedMode in sources))throw new Error('unsupported candidate');
-    const [,current]=await Promise.all([asset('idle'),asset(selectedMode)]);
-    if(thisRequest!==request)return;
-    if(gait)await rigidAsset(selectedMode,current.metadata);
-    if(selectedMode==='jumping')await Promise.all([contactAsset(current.metadata),heightAsset(current.metadata)]);
-    if(selectedMode==='failed')await failedBeforeAsset(current.metadata);
-    if(selectedMode==='review_overlap')await handsAsset(current.metadata);
+    // Load the actual action and its idle fallback first. draw() loads only
+    // the chosen comparison, with its existing contract checks. A retired
+    // reference must neither consume work nor block a valid current action.
+    await Promise.all([asset('idle'),asset(selectedMode)]);
     if(thisRequest!==request)return;
     ready=true;size();await draw();schedule();
   }catch(error){if(thisRequest!==request)return;el('idle-status').textContent=`候选加载失败：${error.message}`;console.error(error);}
