@@ -2,7 +2,8 @@
 import {durations} from './clock.mjs';
 import {candidateRows as rows,candidateSlot,candidatePoseOffset,candidateCelKey} from './candidate-clock.mjs?v=20261010-review-overlap-1';
 import {paintCel} from './cel-painter.mjs?v=20261010-terminal-precision-v1';
-import {comparisonReference,comparisonPolicy,validateRigidReference,validateHopReference,validateMouthReference} from './comparison-reference.mjs?v=20261010-review-overlap-1';
+import {comparisonReference,comparisonPolicy,validateRigidReference,validateHopReference,validateMouthReference} from './comparison-reference.mjs?v=20261010-cloth-1';
+import {validateClothStudy} from './cloth-follow-contract.mjs';
 import {validateReviewOverlapMetadata,validateReviewOverlapReference} from './review-overlap-contract.mjs';
 import {validateMaterialSupport} from './material-support-contract.mjs';
 import {validateReviewMetadata} from './review-contract.mjs';
@@ -19,6 +20,7 @@ const sources={idle:'idle',run_right:'run_right',run_left:'run_left',failed:'fai
 const cache=new Map();
 const rigidCache=new Map();
 const contactCache=new Map();
+const clothCache=new Map();
 let samplingPromise=null;
 let mouthPromise=null;
 let heightPromise=null;
@@ -131,6 +133,21 @@ async function samplingAsset(state,current){
   const entry=validateSamplingStudy(result.metadata,state,current);
   return {...result,entry};
 }
+async function clothAsset(state,current){
+  if(!clothCache.has(state))clothCache.set(state,(async()=>{
+    const root='../candidates/phase5/cloth-follow-v1';
+    const response=await fetch(`${root}/build.json`,{cache:'no-cache'});
+    if(!response.ok)throw new Error('Sleeve study metadata unavailable');
+    const metadata=await response.json();
+    const entry=validateClothStudy(metadata,state,current);
+    const image=new Image();image.src=`${root}/${state}/strip.webp?v=${entry.frameHashes.join('')}`;
+    await image.decode();
+    if(image.naturalWidth!==1536||image.naturalHeight!==208)throw new Error('Sleeve study dimensions mismatch');
+    return {image,metadata};
+  })().catch(error=>{clothCache.delete(state);throw error;}));
+  const result=await clothCache.get(state);
+  return {...result,entry:validateClothStudy(result.metadata,state,current)};
+}
 function stopClock(){
   if(startedAt!==null){baseElapsed+=performance.now()-startedAt;startedAt=null;}
   if(timer!==null){clearTimeout(timer);timer=null;}
@@ -205,7 +222,7 @@ async function handsAsset(study){
 function comparisonMode(reset=false){
   const policy=comparisonPolicy(mode,el('idle-comparison').value,reset);
   el('idle-comparison').disabled=policy.allowed.length===1;
-  for(const choice of ['height','sampling','mouth','rigid','contact','hands'])
+  for(const choice of ['height','sampling','mouth','rigid','contact','hands','cloth'])
     el(`${choice}-reference-choice`).disabled=!policy.allowed.includes(choice);
   el('idle-comparison').value=policy.choice;
 }
@@ -227,10 +244,12 @@ async function draw(){
   const choice=el('idle-comparison').value;
   const {image,metadata}=await cache.get(selected.state);
   const precision=choice==='sampling';
+  const cloth=choice==='cloth'&&['run_right','run_left'].includes(selected.state);
   const reference=precision?{kind:'current',state:selected.state,index:selected.index,synchronized:true}
     :comparisonReference(choice,selected.state,selected.index);
   const precisionAsset=precision?await samplingAsset(selected.state,metadata):null;
-  const referenceAsset=precision?{image,metadata}:reference.kind==='rigid'?await rigidAsset(reference.state,metadata)
+  const sleeveAsset=cloth?await clothAsset(selected.state,metadata):null;
+  const referenceAsset=precision||reference.kind==='current'?{image,metadata}:reference.kind==='rigid'?await rigidAsset(reference.state,metadata)
     :reference.kind==='contact'?await contactAsset(metadata)
     :reference.kind==='height'?await heightAsset(metadata)
     :reference.kind==='mouth'?await mouthAsset(metadata)
@@ -242,21 +261,24 @@ async function draw(){
     paintCel(contexts[0],referenceAsset.image,reference.index);
     lastReferenceKey=referenceKey;referencePaintCount++;
   }
-  el('reference-candidate-title').textContent=precision?`同步现用采样 · ${reference.state} 第 ${reference.index+1} 格`
+  el('reference-candidate-title').textContent=cloth?`同步现用袖角 · ${reference.state} 第 ${reference.index+1} 格`
+    :precision?`同步现用采样 · ${reference.state} 第 ${reference.index+1} 格`
     :reference.kind==='rigid'?`同步旧小步 · ${reference.state} 第 ${reference.index+1} 格`
     :reference.kind==='contact'?`同步旧轻跃（高度场） · 第 ${reference.index+1} 格`
     :reference.kind==='mouth'?`同步旧嘴线 · failed 第 ${reference.index+1} 格`
     :reference.kind==='height'?`同步旧幅度 · 8px · 第 ${reference.index+1} 格`
     :reference.kind==='hands'?`同步现用双手 · review v6 第 ${reference.index+1} 格`
     :reference.synchronized?`同步回退 · idle 第 ${reference.index+1} 格`:'同一母版 · 固定第 1 帧';
-  el('reference-status').textContent=precision
+  el('reference-status').textContent=choice==='cloth'
+    ?`左右同钟/同格；左现用，右袖角跟随试验，未采用 · ${referencePaintCount} 次参考绘制 · ${cloth?'只改下垂袖角附近源坐标，也影响附近可见底图；局部alpha如实变化，脸/手/腰饰/腿鞋与步态固定，不是真实布料模拟':'三轮已结束，两侧同步同一idle，未附加袖角变形'}`
+    :precision
     ?`左右同源/同姿势/同钟/同格；右侧仅末端浮点采样试验，未采用 · ${referencePaintCount} 次参考绘制 · 数值误差不代表审美通过`
     :reference.synchronized
     ?`左右共用同一时钟/帧位，暂停、单帧、减少动态及三轮回退同步 · ${referencePaintCount} 次参考绘制 · ${choice==='hands'?'左冻结现用v6、右相叠手未采用；仅手与袖口RGB不同，脸/眼神/alpha/镜头/节奏相同。保持时序不代表手势或完整动作批准':choice==='height'?'左冻结8px、右现用4px开发基础；另含局部采样修复（最多1通道值，alpha/轨迹不变），不代表完整动作通过':choice==='contact'?'旧高度场按现用4px参数重建，非冻结8px版本或视觉批准':choice==='mouth'?'failed时左旧嘴线、右现用新嘴线；回退时两侧同一idle。仅嘴线获开发基础批准，完整动作待验收':'旧版归档d804cd5；右版含耳发跟随及局部滤波修复，非严格单变量或完整视觉批准'}`
     :'固定 idle 只用于身份检查，不是同节奏动作对照。';
-  const paintKey=candidateCelKey(precision?precisionAsset.entry.candidateFrameHashes:metadata.frameHashes,selected.index);
+  const paintKey=candidateCelKey(cloth?sleeveAsset.entry.frameHashes:precision?precisionAsset.entry.candidateFrameHashes:metadata.frameHashes,selected.index);
   if(paintKey!==lastKey){
-    paintCel(contexts[1],precision?precisionAsset.image:image,selected.index,precision?precisionAsset.entry.nativeRows[0]:0);
+    paintCel(contexts[1],cloth?sleeveAsset.image:precision?precisionAsset.image:image,selected.index,precision?precisionAsset.entry.nativeRows[0]:0);
     lastKey=paintKey;paintCount++;
   }
   el('idle-frame').max=String(durations[rows[selected.state]].length-1);
@@ -270,12 +292,12 @@ async function draw(){
   labels.jumping='jumping · 4px轻跃开发基础';
   labels.failed='failed · 八格新嘴线开发基础';
   const label=labels[selected.state];
-  el('current-candidate-title').textContent=precision?`${label} · 浮点采样试验，未采用`:label;
+  el('current-candidate-title').textContent=cloth?`${label} · 袖角跟随试验，未采用`:precision?`${label} · 浮点采样试验，未采用`:label;
   const status=manualIndex!==null?'单帧检查':reduced()?'减少动态':paused?'已暂停':selected.completedAction?'三轮已结束，已回 idle':'实际时长播放';
   const timing=` · 第 ${selected.index+1}/${durations[rows[selected.state]].length} 帧 · 停留 ${selected.holdMs} ms · 周期 ${selected.cycleMs} ms`;
   const followHint=['run_right','run_left'].includes(selected.state)?' · 耳发按身体运动轻微滞后，非实时物理':'';
   const dragBoundary=['run_right','run_left'].includes(mode)?' · 此处仅行内时钟；真实拖拽可随时中断/恢复底层状态，无速度同步':'';
-  el('idle-status').textContent=`${label}${precision?' · 浮点采样试验，未采用':''} · ${status}${timing}${followHint}${dragBoundary} · ${paintCount} 次候选绘制 · 未经完整视觉验收，非完成宠物，未安装`;
+  el('idle-status').textContent=`${label}${cloth?' · 袖角跟随试验，未采用':precision?' · 浮点采样试验，未采用':''} · ${status}${timing}${followHint}${dragBoundary} · ${paintCount} 次候选绘制 · 未经完整视觉验收，非完成宠物，未安装`;
 }
 function schedule(){
   if(!canRun())return;

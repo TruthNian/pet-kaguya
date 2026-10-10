@@ -1,0 +1,704 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "method": "compact-side-sleeve-source-field; periodic-held-root-lag",
+  "spec": {
+    "timeConstantMs": 190,
+    "gain": 0.25,
+    "maximumOffsetSourcePx": 2.5,
+    "sample": "native-hold-midpoint",
+    "boundary": "periodic-steady-state",
+    "ellipses": [
+      {
+        "center": [
+          353,
+          915
+        ],
+        "radii": [
+          69,
+          82
+        ]
+      },
+      {
+        "center": [
+          857,
+          919
+        ],
+        "radii": [
+          68,
+          78
+        ]
+      }
+    ],
+    "protectedRects": [
+      [
+        275,
+        20,
+        955,
+        485
+      ],
+      [
+        264,
+        705,
+        413,
+        808
+      ],
+      [
+        812,
+        705,
+        952,
+        815
+      ],
+      [
+        395,
+        450,
+        815,
+        936
+      ],
+      [
+        400,
+        912,
+        830,
+        1240
+      ]
+    ],
+    "protectionFadeSourcePx": 24
+  },
+  "response": {
+    "initialStateSourcePx": -7.538135599049,
+    "endStateSourcePx": -7.538135599049,
+    "offsetsSourcePx": [
+      -1.37422652918,
+      -2.189172964688,
+      -1.893309026218,
+      -0.277557019176,
+      1.310834535405,
+      2.155464175,
+      1.875384325723,
+      0.206009925747
+    ]
+  },
+  "camera": {
+    "scale": 0.15833333333333333,
+    "x": 0.36666666666667425,
+    "y": 7.883333333333354,
+    "visibleBBox": [
+      142,
+      26,
+      1066,
+      1226
+    ],
+    "floor": 202,
+    "topReserve": 12,
+    "cell": [
+      192,
+      208
+    ]
+  },
+  "durationsMs": [
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    220
+  ],
+  "repeatBeforeIdle": 3,
+  "animationBuilt": true,
+  "newArtworkGenerated": false,
+  "facialGeometryRepair": false,
+  "nativeInterpolation": false,
+  "cleanClothLayersRecovered": false,
+  "physicalClothSimulation": false,
+  "liveDragLagInitialization": false,
+  "visualMotionApproval": "pending",
+  "specificMotionUserApproval": "pending",
+  "adopted": false,
+  "activeAtlasChanged": false,
+  "installableFullAtlas": false,
+  "installed": false,
+  "maximumOffsetOutputPx": 0.3466190527422666,
+  "states": {
+    "run_right": {
+      "nativeRow": 1,
+      "parentFrameHashes": [
+        "85202B290D3C2E0EBDE00CFF7311D42CCDD4336305B413FD6C5C8B917F140889",
+        "5D96B80C8821C6B45486D1485F4AE79BB6ECEE3DC0AE32DDEC0F3AB5155FE508",
+        "A9C8266B1DCEEAE63184C58FD2728F42D32D3A48459378B94B580919EE9B304C",
+        "DE9FF8FDCE211E65B48C065C58256D10182897C85F7F82A6DE7FF9CFB740A7BE",
+        "599CBDDA342DB8A744779585FF7B68598536B7B2671BBF4DAF6D535B432F56DF",
+        "766B119302DA7A47D50B40B1358D83CDECB66B59F01FE716C6EF3B16F30E9710",
+        "DDAFC1B2B0FC6074393791CF62315CB8FC726C927ED8EDAEB4C79004DD6F05F1",
+        "1C1A20B8410EDB917A2D8C9499357E722755CF8C7FBB70A18F9A6CDC0659AC27"
+      ],
+      "frameHashes": [
+        "749D1BBDAE97082CDF8EC77389ACEA67EDFC6CE6CBD94A8356431E30DDDF981E",
+        "F23125DD96964790B2B392D5DD973DC838307EB1699FE32412C4CAAF6211A438",
+        "EF5DA0E457E2E5778802B944353B05E0A0DFA9B335872C2AE2FBAA5F14FB9A00",
+        "230193C23B633B28C7957817D8866E8A9124C3233D5AB70F57781D38D25CCD8B",
+        "52E711B9B14D065E434382EE1020B526C43CF4FEC39B181AAC832D19A9E0D9A7",
+        "39C79F9B93F93583E4DA83DEFEA4B4EF98300F7BB4FF55A1D9ACD2FC453FE43A",
+        "56C73F088356FC4F98093D362800965E120AF381823D8BFC6957FA3B6A2CD6A4",
+        "578C4E0A9C202869674002B3BE377B0C4913FD418D6E2D8F8A757CFC36889298"
+      ],
+      "parentSourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+      "rootOffsetsSourcePx": [
+        [
+          0,
+          0
+        ],
+        [
+          8,
+          1
+        ],
+        [
+          12,
+          1.5
+        ],
+        [
+          8,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          -8,
+          1
+        ],
+        [
+          -12,
+          1.5
+        ],
+        [
+          -8,
+          1
+        ]
+      ],
+      "footOffsetsSourcePx": [
+        {
+          "left": [
+            0,
+            0
+          ],
+          "right": [
+            0,
+            0
+          ]
+        },
+        {
+          "left": [
+            1.296296296296,
+            -1.944444444444
+          ],
+          "right": [
+            0,
+            0
+          ]
+        },
+        {
+          "left": [
+            5,
+            -7.5
+          ],
+          "right": [
+            0,
+            0
+          ]
+        },
+        {
+          "left": [
+            1.296296296296,
+            -1.944444444444
+          ],
+          "right": [
+            0,
+            0
+          ]
+        },
+        {
+          "left": [
+            0,
+            0
+          ],
+          "right": [
+            0,
+            0
+          ]
+        },
+        {
+          "left": [
+            0,
+            0
+          ],
+          "right": [
+            1.296296296296,
+            -1.944444444444
+          ]
+        },
+        {
+          "left": [
+            0,
+            0
+          ],
+          "right": [
+            5,
+            -7.5
+          ]
+        },
+        {
+          "left": [
+            0,
+            0
+          ],
+          "right": [
+            1.708728134111,
+            -2.563092201166
+          ]
+        }
+      ],
+      "focusOffsetSourcePx": [
+        6,
+        0
+      ],
+      "tipOffsetsSourcePx": [
+        {
+          "ear": -0.63101907158,
+          "hair": -1.353179165111
+        },
+        {
+          "ear": -0.782435364204,
+          "hair": -2.013775135047
+        },
+        {
+          "ear": -0.514297994184,
+          "hair": -1.638529297328
+        },
+        {
+          "ear": 0.172482792014,
+          "hair": -0.086697156953
+        },
+        {
+          "ear": 0.661566513188,
+          "hair": 1.333625720419
+        },
+        {
+          "ear": 0.790487582389,
+          "hair": 2.004538741783
+        },
+        {
+          "ear": 0.516420535853,
+          "hair": 1.634166334083
+        },
+        {
+          "ear": -0.098641579244,
+          "hair": 0.061921195261
+        }
+      ],
+      "allNativeAlphaExact": false,
+      "actualCurrentParentReconstructedExactly": true,
+      "differences": [
+        {
+          "changedRGBAPixels": 446,
+          "changedRGBPixels": 446,
+          "bounds": [
+            46,
+            141,
+            146,
+            165
+          ],
+          "maximumChannelDifference": 15,
+          "changedAlphaPixels": 3,
+          "maximumAlphaDifference": 1
+        },
+        {
+          "changedRGBAPixels": 479,
+          "changedRGBPixels": 478,
+          "bounds": [
+            47,
+            141,
+            147,
+            166
+          ],
+          "maximumChannelDifference": 22,
+          "changedAlphaPixels": 7,
+          "maximumAlphaDifference": 1
+        },
+        {
+          "changedRGBAPixels": 475,
+          "changedRGBPixels": 474,
+          "bounds": [
+            47,
+            140,
+            148,
+            165
+          ],
+          "maximumChannelDifference": 19,
+          "changedAlphaPixels": 4,
+          "maximumAlphaDifference": 1
+        },
+        {
+          "changedRGBAPixels": 268,
+          "changedRGBPixels": 268,
+          "bounds": [
+            48,
+            141,
+            146,
+            166
+          ],
+          "maximumChannelDifference": 3,
+          "changedAlphaPixels": 1,
+          "maximumAlphaDifference": 1
+        },
+        {
+          "changedRGBAPixels": 440,
+          "changedRGBPixels": 440,
+          "bounds": [
+            46,
+            141,
+            146,
+            165
+          ],
+          "maximumChannelDifference": 13,
+          "changedAlphaPixels": 4,
+          "maximumAlphaDifference": 1
+        },
+        {
+          "changedRGBAPixels": 471,
+          "changedRGBPixels": 471,
+          "bounds": [
+            45,
+            141,
+            145,
+            165
+          ],
+          "maximumChannelDifference": 22,
+          "changedAlphaPixels": 2,
+          "maximumAlphaDifference": 1
+        },
+        {
+          "changedRGBAPixels": 460,
+          "changedRGBPixels": 460,
+          "bounds": [
+            44,
+            142,
+            145,
+            166
+          ],
+          "maximumChannelDifference": 18,
+          "changedAlphaPixels": 3,
+          "maximumAlphaDifference": 1
+        },
+        {
+          "changedRGBAPixels": 233,
+          "changedRGBPixels": 233,
+          "bounds": [
+            46,
+            144,
+            144,
+            165
+          ],
+          "maximumChannelDifference": 3,
+          "changedAlphaPixels": 0,
+          "maximumAlphaDifference": 0
+        }
+      ]
+    },
+    "run_left": {
+      "nativeRow": 2,
+      "parentFrameHashes": [
+        "A4EEC1DBC8408DB94C9D17449E8DE60E8A8F3DE3593E20B195967DB03AB0D53A",
+        "9007B24D3CE51A36691CB3E9C1390124F7C2D8ABD518313A4EF6E001F860008F",
+        "32393D69A982E9E7A2D47B6867929CB80BBD97E6EA3027A8DF6EF5F99F526A1F",
+        "5AD4E353E6AD01F3ECC6FD2B55D11F6280233B28BCB896BDA336C7C3E342FCEB",
+        "94C65921F1519B0CFAF07C1E504CB0642F66A6CBE483F616B2DE08AD153A7A09",
+        "27C573C6859FAE8CE406B9F080B978B1E98B95EE02883D496044C418F7E3D9A1",
+        "5BA28BE85878ECB71063448E0611CD8E536F7AD77E88A600B3F89E58C7D8EBAE",
+        "C873FA268DB54196F9C56F6F9C80D90408A3308B339B3D679A4828582544281A"
+      ],
+      "frameHashes": [
+        "43D5B26B75174464950CA974AA9FBAA4B7B0E2EAAE44B214A101CCBB3F09EF40",
+        "1C4C13A60C210AEF7F5983869AD7A440DF649D7A99BEDABAA9037F88C384A83D",
+        "93A8E39B8E4E30C2AE250E6C783D6BBC7D5384A4B6FA568095AAAEABE00B7283",
+        "665A8CBAC50C148542A385B1D15D986CB793A3812937FE3A83A67D8E611B5748",
+        "507EA74AA787E80F6108597CCB30ED2323EB0BD1767F0D3059CB307E49645535",
+        "07DDE9C8815CEC2702B4A51A5F72F7948D5A506CF5FD33EDCE1B809637C4FD42",
+        "BEF266B74AEF16E0553711E641C9DA2E05474A14C0EB583CACDC108DBD1C1E38",
+        "A62C0C5B144455F15F1D933F64D49B0AD9D822B956F4BBC3904A11A3F9F543EB"
+      ],
+      "parentSourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+      "rootOffsetsSourcePx": [
+        [
+          0,
+          0
+        ],
+        [
+          8,
+          1
+        ],
+        [
+          12,
+          1.5
+        ],
+        [
+          8,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          -8,
+          1
+        ],
+        [
+          -12,
+          1.5
+        ],
+        [
+          -8,
+          1
+        ]
+      ],
+      "footOffsetsSourcePx": [
+        {
+          "left": [
+            0,
+            0
+          ],
+          "right": [
+            0,
+            0
+          ]
+        },
+        {
+          "left": [
+            -1.296296296296,
+            -1.944444444444
+          ],
+          "right": [
+            0,
+            0
+          ]
+        },
+        {
+          "left": [
+            -5,
+            -7.5
+          ],
+          "right": [
+            0,
+            0
+          ]
+        },
+        {
+          "left": [
+            -1.296296296296,
+            -1.944444444444
+          ],
+          "right": [
+            0,
+            0
+          ]
+        },
+        {
+          "left": [
+            0,
+            0
+          ],
+          "right": [
+            0,
+            0
+          ]
+        },
+        {
+          "left": [
+            0,
+            0
+          ],
+          "right": [
+            -1.296296296296,
+            -1.944444444444
+          ]
+        },
+        {
+          "left": [
+            0,
+            0
+          ],
+          "right": [
+            -5,
+            -7.5
+          ]
+        },
+        {
+          "left": [
+            0,
+            0
+          ],
+          "right": [
+            -1.708728134111,
+            -2.563092201166
+          ]
+        }
+      ],
+      "focusOffsetSourcePx": [
+        -6,
+        0
+      ],
+      "tipOffsetsSourcePx": [
+        {
+          "ear": -0.63101907158,
+          "hair": -1.353179165111
+        },
+        {
+          "ear": -0.782435364204,
+          "hair": -2.013775135047
+        },
+        {
+          "ear": -0.514297994184,
+          "hair": -1.638529297328
+        },
+        {
+          "ear": 0.172482792014,
+          "hair": -0.086697156953
+        },
+        {
+          "ear": 0.661566513188,
+          "hair": 1.333625720419
+        },
+        {
+          "ear": 0.790487582389,
+          "hair": 2.004538741783
+        },
+        {
+          "ear": 0.516420535853,
+          "hair": 1.634166334083
+        },
+        {
+          "ear": -0.098641579244,
+          "hair": 0.061921195261
+        }
+      ],
+      "allNativeAlphaExact": false,
+      "actualCurrentParentReconstructedExactly": true,
+      "differences": [
+        {
+          "changedRGBAPixels": 446,
+          "changedRGBPixels": 446,
+          "bounds": [
+            46,
+            141,
+            146,
+            165
+          ],
+          "maximumChannelDifference": 15,
+          "changedAlphaPixels": 3,
+          "maximumAlphaDifference": 1
+        },
+        {
+          "changedRGBAPixels": 479,
+          "changedRGBPixels": 478,
+          "bounds": [
+            47,
+            141,
+            147,
+            166
+          ],
+          "maximumChannelDifference": 22,
+          "changedAlphaPixels": 7,
+          "maximumAlphaDifference": 1
+        },
+        {
+          "changedRGBAPixels": 475,
+          "changedRGBPixels": 474,
+          "bounds": [
+            47,
+            140,
+            148,
+            165
+          ],
+          "maximumChannelDifference": 19,
+          "changedAlphaPixels": 4,
+          "maximumAlphaDifference": 1
+        },
+        {
+          "changedRGBAPixels": 268,
+          "changedRGBPixels": 268,
+          "bounds": [
+            48,
+            141,
+            146,
+            166
+          ],
+          "maximumChannelDifference": 3,
+          "changedAlphaPixels": 1,
+          "maximumAlphaDifference": 1
+        },
+        {
+          "changedRGBAPixels": 440,
+          "changedRGBPixels": 440,
+          "bounds": [
+            46,
+            141,
+            146,
+            165
+          ],
+          "maximumChannelDifference": 13,
+          "changedAlphaPixels": 4,
+          "maximumAlphaDifference": 1
+        },
+        {
+          "changedRGBAPixels": 471,
+          "changedRGBPixels": 471,
+          "bounds": [
+            45,
+            141,
+            145,
+            165
+          ],
+          "maximumChannelDifference": 22,
+          "changedAlphaPixels": 2,
+          "maximumAlphaDifference": 1
+        },
+        {
+          "changedRGBAPixels": 460,
+          "changedRGBPixels": 460,
+          "bounds": [
+            44,
+            142,
+            145,
+            166
+          ],
+          "maximumChannelDifference": 18,
+          "changedAlphaPixels": 3,
+          "maximumAlphaDifference": 1
+        },
+        {
+          "changedRGBAPixels": 233,
+          "changedRGBPixels": 233,
+          "bounds": [
+            46,
+            144,
+            144,
+            165
+          ],
+          "maximumChannelDifference": 3,
+          "changedAlphaPixels": 0,
+          "maximumAlphaDifference": 0
+        }
+      ]
+    }
+  },
+  "limitations": [
+    "Compact influence bends existing flattened side-sleeve/backing pixels, not an independently recovered garment layer.",
+    "Face, head, wrists/hands, waist/front ornaments and the leg material region are excluded geometrically; actual native changes are bounded to two lower side windows.",
+    "No new hidden artwork or hem disocclusion is reconstructed. Native alpha may change only inside the same bounded windows; original near-opaque source alpha is sampled, never forced to 255 or pasted back.",
+    "Periodic midpoint response is not initialized per live drag and does not fix entry/release or arbitrary task cuts.",
+    "Eight original holds, feet, body sway, gaze and ear/hair response are unchanged; native frame rate/size are unchanged.",
+    "Naturalness and actual-size visibility need visual judgment; pixel deltas are not quality scores."
+  ]
+}

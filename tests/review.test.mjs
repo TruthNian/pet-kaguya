@@ -14,7 +14,7 @@ test('visual review keeps technical prose folded without hiding adoption boundar
     assert.doesNotMatch(block[0],/<(?:canvas|select|output)\b/);
   }
   const guide=html.match(/<p class="comparison-guide">([\s\S]*?)<\/p>/)?.[1];
-  assert.match(guide,/相叠手及精度试验未采用/);
+  assert.match(guide,/相叠手、袖角跟随及精度试验未采用/);
   assert.match(guide,/完整动作未通过，安装文件未改/);
   assert.ok(html.indexOf('id="idle-stage"')<html.indexOf('id="candidate-evidence"'));
 });
