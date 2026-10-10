@@ -29,7 +29,7 @@ class Review(unittest.TestCase):
 
     def test_bounded_right_arm_preserves_base_outside_permission(self):
         data = self.data
-        before, after = np.asarray(data['base']), np.asarray(data['armPose'])
+        before, after = np.asarray(data['base']), np.asarray(data['armPoseBeforeHands'])
         np.testing.assert_array_equal(after[~data['armAllowed']], before[~data['armAllowed']])
         np.testing.assert_array_equal(after[data['preserved']], before[data['preserved']])
         self.assertEqual(int(np.any(before!=after,axis=2).sum()),91859)
@@ -71,8 +71,8 @@ class Review(unittest.TestCase):
 
     def test_saved_static_pose_and_native_frame_are_exactly_rebuilt(self):
         with Image.open(art.OUT/'pose.png') as image:
-            self.assertEqual(image.convert('RGBA').tobytes(),self.data['armPose'].tobytes())
-        self.assertEqual(hashlib.sha256(self.data['armPose'].tobytes()).hexdigest().upper(),self.art_meta['poseRGBAHash'])
+            self.assertEqual(image.convert('RGBA').tobytes(),self.data['armPoseBeforeHands'].tobytes())
+        self.assertEqual(hashlib.sha256(self.data['armPoseBeforeHands'].tobytes()).hexdigest().upper(),self.art_meta['poseRGBAHash'])
         with Image.open(art.OUT/'frame.png') as image:
             self.assertEqual(hashlib.sha256(image.convert('RGBA').tobytes()).hexdigest().upper(),self.art_meta['frameRGBAHash'])
         self.assertFalse(self.art_meta['animationBuilt'])
@@ -185,13 +185,15 @@ class Review(unittest.TestCase):
             self.assertFalse(self.meta[key])
         self.assertTrue(self.meta['animationBuilt'])
         self.assertEqual(self.meta['rightArmCompositionVersion'],'review-art-v6')
-        self.assertTrue(self.meta['originalLowerHandContourRestored'])
+        self.assertFalse(self.meta['originalLowerHandContourRestored'])
         self.assertFalse(self.meta['handScaled'])
         self.assertTrue(self.meta['knownSourceHairRGBAExact'])
         self.assertTrue(self.meta['paintedHairAlphaContinuityEstimated'])
         self.assertTrue(self.meta['newArtworkGenerated'])
         self.assertEqual(self.meta['clothCompositionVersion'],'review-sleeves-v2')
-        self.assertTrue(self.meta['heldHandsUnchangedFromV5'])
+        self.assertFalse(self.meta['heldHandsUnchangedFromV5'])
+        self.assertEqual(self.meta['handCompositionVersion'],'review-hands-overlap-v1')
+        self.assertFalse(self.meta['handUserApprovalClaimed'])
         self.assertEqual(self.meta['strategyUserApproval'],'pending')
         self.assertEqual(self.meta['visualMotionApproval'],'pending')
         self.assertGreaterEqual(len(self.meta['unresolved']),6)

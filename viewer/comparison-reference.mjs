@@ -34,6 +34,7 @@ export function comparisonReference(choice,state,index){
   if(choice==='contact'&&state==='jumping')return {kind:'contact',state,index,synchronized:true};
   if(choice==='mouth'&&state==='failed')return {kind:'mouth',state:'failed',index,synchronized:true};
   if(choice==='height'&&state==='jumping')return {kind:'height',state,index,synchronized:true};
+  if(choice==='hands'&&state==='review')return {kind:'hand-before',state,index,synchronized:true};
   if(choice==='hands'&&state==='review_overlap')return {kind:'hands',state:'review',index,synchronized:true};
   if(state==='idle')return {kind:'candidate',state,index,synchronized:true};
   throw new Error('Synchronized reference cannot compare a different action');
@@ -44,7 +45,7 @@ export function comparisonReference(choice,state,index){
 export function comparisonPolicy(mode,choice,reset=false){
   if(!Object.keys(candidateRows).includes(mode))throw new Error('Invalid comparison mode');
   const actionChoices=mode==='jumping'?['height','contact']:mode==='failed'?['mouth']
-    :mode==='waving'?['link']:[];
+    :mode==='waving'?['link']:mode==='review'?['hands']:[];
   const allowed=['idle',...actionChoices];
   // Archived trials with v1 eye materials cannot be same-art comparisons
   // against actions that now use corrected eye extraction.

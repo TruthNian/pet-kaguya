@@ -12,6 +12,7 @@ from review_processing import GENERATED_SHA as LEFT_SHA
 from build_idle import specification as idle_specification, region_masks, render
 import build_gaze as gaze
 import eye_motion
+import review_overlap as hands
 from animation_output import write_animation
 from protocol import DURATIONS
 from held_timing import validate_decision
@@ -43,10 +44,15 @@ def validate_motion(motion, gaze_spec):
             raise ValueError('Review cannot add body pulse or excessive ear/hair fields')
 
 
-def inputs(*, corrected_gaze=True):
+def inputs(*, corrected_gaze=True, overlap_hands=True):
     mother = load_canonical()
     base, spec, raw = art_inputs()
     arm_pose, arm_allowed, preserved = localized_pose(base, raw, spec)
+    previous_arm_pose=arm_pose
+    if overlap_hands:
+        arm_pose,hand_allowed,_=hands.development_pose(arm_pose)
+        arm_allowed=arm_allowed|hand_allowed
+        preserved=preserved&~hand_allowed
     gaze_spec = gaze.specification(corrected=corrected_gaze)
     motion = json.loads((ROOT/'sources/canonical/review-motion.json').read_text(encoding='utf-8'))
     validate_motion(motion, gaze_spec)
@@ -67,7 +73,7 @@ def inputs(*, corrected_gaze=True):
         if key not in rendered:
             rendered[key] = render(source, pose, transform, regions, masks)
         frames.append(rendered[key])
-    return dict(mother=mother, base=base, armPose=arm_pose, armAllowed=arm_allowed,
+    return dict(mother=mother, base=base, armPose=arm_pose, armPoseBeforeHands=previous_arm_pose, armAllowed=arm_allowed,
                 preserved=preserved, focused=focused, eyeAllowed=eye_allowed, motion=motion,
                 transform=transform, regions=regions, masks=masks, frames=frames,
                 eyeOffsets=eye_motion.offsets(*motion['focusOffsetSourcePx'],corrected=corrected_gaze))
@@ -86,15 +92,20 @@ def main():
         rightHandGeneratedSha256=GENERATED_SHA, leftHandGeneratedSha256=LEFT_SHA,
         rightArmCompositionVersion='review-art-v6', newArtworkGenerated=True,
         clothCompositionVersion='review-sleeves-v2',clothGeneratedSha256=CLOTH_SHA,
-        heldHandsUnchangedFromV5=True,clothAlphaPreservedExactly=True,
+        heldHandsUnchangedFromV5=False,clothAlphaPreservedExactly=True,
         observedHairAlphaHolesRestored=True,
-        originalLowerHandContourRestored=True,handScaled=False,
+        originalLowerHandContourRestored=False,handScaled=False,
+        handCompositionVersion='review-hands-overlap-v1',handGeneratedSha256=hands.GENERATED_SHA,
+        handPoseRGBAHash=hands.POSE_HASH,handDevelopmentBasis='developer-selected-relaxed-hand-structure',
+        handUserApprovalClaimed=False,specificPoseUserApproval='pending',
+        newArtworkGeneratedThisIteration=False,entryExitTransitionsBuilt=False,
+        handReference='sources/reference/review-hands-before',
         knownSourceHairRGBAExact=True,paintedHairAlphaContinuityEstimated=True,
         **eye_motion.descriptor(), state='review', nativeRow=8,
         statesInThisArtifact=['review'], durationsMs=DURATIONS[8], totalDurationMs=sum(DURATIONS[8]),
         repeatBeforeIdle=3, actionDurationMs=3*sum(DURATIONS[8]), closedEyeFrames=0,
         bodyPulse=False, ornamentFlash=False, bodyTranslationPx=0,
-        handStrategy=motion['handStrategy'], strategyUserApproval='pending',
+        handStrategy='low-overlapping-hands-held', legacyHandStrategy=motion['handStrategy'], strategyUserApproval='pending',
         heldTimingUserDecision=motion['heldTimingUserDecision'], heldTimingAcceptedTemporarily=True,
         focusOffsetSourcePx=data['eyeOffsets'],legacyFocusIntentSourcePx=motion['focusOffsetSourcePx'], camera=data['transform'],
         sameSourceCoordinateCamera=True, focusedEyeAlphaPreservedExactly=True,
@@ -102,12 +113,13 @@ def main():
         loopSeamRGBAExact=frames[0].tobytes()==frames[-1].tobytes(),
         uniqueCels=len(set(frame.tobytes() for frame in frames)),
         frameHashes=[hashlib.sha256(frame.tobytes()).hexdigest().upper() for frame in frames],
-        method='bounded two-low-hands cel, quieter original-eye texture flow and very small ear/hair fields; body held',
+        method='existing bounded overlapping-hand/cuff RGB over v6; same quieter eye flow and held ear/hair fields; no new drawing',
         sampling='new right/left arm each first uses fixed-crop source projection; shared canonical camera, 3x coverage and terminal Lanczos downsample',
         fullRedrawAccepted=False, articulatedArmBuilt=False, facialGeometryRepair=False,
         animationBuilt=True, generatedFromRejectedSources=False, nativeInterpolation=False,
         visualMotionApproval='pending', installableFullAtlas=False, installed=False,
-        unresolved=motion['limitations'])
+        unresolved=['The selected hands lightly overlap at the waist; finger volume, wrist/cuff fusion and small-size legibility remain pending.',
+            'Existing local hand/cuff pixels are developer-selected, not human-approved or clean original hand layers.']+motion['limitations'][2:])
     (OUT/'build.json').write_text(json.dumps(metadata, indent=2)+'\n', encoding='utf-8')
     print(json.dumps(metadata, indent=2))
 

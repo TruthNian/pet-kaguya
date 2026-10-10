@@ -84,7 +84,8 @@ class EncodingAndRejectedStudy(unittest.TestCase):
         self.assertEqual(meta['generatedSha256'],study.GENERATED_SHA)
         current=json.loads((ROOT/'candidates/phase5/review/build.json').read_text())
         self.assertEqual(current['rightArmCompositionVersion'],'review-art-v6')
-        self.assertTrue(current['heldHandsUnchangedFromV5'])
+        self.assertFalse(current['heldHandsUnchangedFromV5'])
+        self.assertEqual(current['handCompositionVersion'],'review-hands-overlap-v1')
 
 
 if __name__=='__main__':unittest.main()

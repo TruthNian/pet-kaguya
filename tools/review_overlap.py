@@ -31,6 +31,7 @@ PROTECTED=[FIRST_PROTECTED[0],
            FIRST_PROTECTED[2]]
 FIRST_POSE_HASH='C92586E3B68041F6590447847150D79A1065777930E6FD8A2CFF36CEBC687DE1'
 SECOND_POSE_HASH='BDEB711C0596C45F00706248B10C55BF7809D69B9026AF0198A5BA2EDCC91CE4'
+POSE_HASH='F4A43E5B7A3DFC23D89206E148C073CDA38317303CCDDEB17BC3CB49061B09F0'
 POLYGON=[(440,632),(516,632),(532,660),(610,660),(627,688),(644,733),
          (645,784),(625,797),(603,774),(573,763),(492,764),(467,778),
          (443,804),(420,819),(395,819),(404,793),(416,766),(429,736),
@@ -91,6 +92,24 @@ def compose(before,mapped,first=False,second=False):
     np.divide(out[...,:3]*255,out[...,3:4],out=out[...,:3],where=out[...,3:4]>0)
     result=a.copy();result[allowed]=np.clip(np.rint(out[allowed]),0,255).astype(np.uint8)
     return Image.fromarray(result),allowed,protected,weight
+
+
+def development_pose(before):
+    """Select existing hand/cuff pixels, without rewriting historical approval."""
+    metadata=json.loads((OUT/'build.json').read_text(encoding='utf-8'))
+    digest=lambda image:hashlib.sha256(image.tobytes()).hexdigest().upper()
+    if (digest(before)!=PARENT_HASH or metadata['parentPoseRGBAHash']!=PARENT_HASH
+            or metadata['sourceSha256']!=ACCEPTED_SHA or metadata['poseRGBAHash']!=POSE_HASH
+            or hashlib.sha256((OUT/'generated.png').read_bytes()).hexdigest().upper()!=GENERATED_SHA):
+        raise ValueError('Selected overlap source or parent changed')
+    with Image.open(OUT/'static-candidate.png') as image:pose=image.convert('RGBA')
+    if pose.size!=before.size or digest(pose)!=POSE_HASH:
+        raise ValueError('Expected the actual selected static hand/cuff pixels')
+    allowed,protected,_=masks(before)
+    a,b=np.asarray(before),np.asarray(pose)
+    if np.any(np.any(a!=b,axis=2)&~allowed) or not np.array_equal(a[...,3],b[...,3]):
+        raise ValueError('Hand selection changed protected pixels or alpha')
+    return pose,allowed,protected
 
 
 def main():

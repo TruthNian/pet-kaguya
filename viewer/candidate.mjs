@@ -2,12 +2,12 @@
 import {durations} from './clock.mjs';
 import {candidateRows as rows,candidateSlot,candidatePoseOffset,candidateCelKey} from './candidate-clock.mjs?v=20261010-wave-link-1';
 import {paintCel} from './cel-painter.mjs?v=20261010-terminal-precision-v1';
-import {comparisonReference,comparisonPolicy,validateRigidReference,validateHopReference,validateMouthReference} from './comparison-reference.mjs?v=20261010-wave-middle-dev-1';
+import {comparisonReference,comparisonPolicy,validateRigidReference,validateHopReference,validateMouthReference} from './comparison-reference.mjs?v=20261010-review-hands-dev-1';
 import {validateWaveAmplitude,validateCurrentWave,validateWaveMiddleReference} from './wave-amplitude-contract.mjs?v=20261010-wave-middle-dev-1';
 import {validateClothStudy} from './cloth-follow-contract.mjs';
 import {validateReviewOverlapMetadata,validateReviewOverlapReference} from './review-overlap-contract.mjs';
 import {validateMaterialSupport} from './material-support-contract.mjs';
-import {validateReviewMetadata} from './review-contract.mjs';
+import {validateReviewMetadata,validateReviewHandReference} from './review-contract.mjs?v=20261010-review-hands-dev-1';
 import {validateWaitingMetadata} from './waiting-contract.mjs';
 import {validateSamplingStudy} from './sampling-contract.mjs';
 import {validateHopHeightStudy} from './height-contract.mjs?v=20261010-support-2';
@@ -28,6 +28,7 @@ let heightPromise=null;
 let handsPromise=null;
 let wavePromise=null;
 let middleBeforePromise=null;
+let handBeforePromise=null;
 let mode='idle',ready=false,timer=null,baseElapsed=0,startedAt=null,paused=false,manualIndex=null,lastKey='',paintCount=0,request=0;
 let lastReferenceKey='',referencePaintCount=0;
 const reduced=()=>el('idle-reduced').checked;
@@ -198,6 +199,19 @@ async function middleBeforeAsset(current){
   })().catch(error=>{middleBeforePromise=null;throw error;});
   const result=await middleBeforePromise;validateWaveMiddleReference(result.metadata,current);return result;
 }
+async function handBeforeAsset(current){
+  if(handBeforePromise===null)handBeforePromise=(async()=>{
+    const root='../sources/reference/review-hands-before';
+    const response=await fetch(`${root}/build.json`,{cache:'no-cache'});
+    if(!response.ok)throw new Error('Pre-overlap review reference unavailable');
+    const metadata=validateReviewHandReference(await response.json(),current);
+    const image=new Image();image.src=`${root}/strip.webp?v=${metadata.frameHashes[0]}`;
+    await image.decode();
+    if(image.naturalWidth!==1536||image.naturalHeight!==208)throw new Error('Review reference dimensions mismatch');
+    return {image,metadata,frameHashes:metadata.frameHashes};
+  })().catch(error=>{handBeforePromise=null;throw error;});
+  const result=await handBeforePromise;validateReviewHandReference(result.metadata,current);return result;
+}
 async function contactAsset(current){
   if(!contactCache.has('jumping'))contactCache.set('jumping',(async()=>{
     const root='../candidates/phase5/jumping';
@@ -298,6 +312,7 @@ async function draw(){
   const sleeveAsset=cloth?await clothAsset(selected.state,metadata):null;
   const referenceAsset=precision||reference.kind==='current'?{image,metadata}:reference.kind==='rigid'?await rigidAsset(reference.state,metadata)
     :reference.kind==='middle-before'?await middleBeforeAsset(metadata)
+    :reference.kind==='hand-before'?await handBeforeAsset(metadata)
     :reference.kind==='wave'?await waveAsset(metadata)
     :reference.kind==='contact'?await contactAsset(metadata)
     :reference.kind==='height'?await heightAsset(metadata)
@@ -315,6 +330,7 @@ async function draw(){
     :cloth?`同步现用袖角 · ${reference.state} 第 ${reference.index+1} 格`
     :precision?`同步现用采样 · ${reference.state} 第 ${reference.index+1} 格`
     :reference.kind==='middle-before'?`同步改动前招手 · 第 ${reference.index+1} 格`
+    :reference.kind==='hand-before'?`同步改动前双手 · 第 ${reference.index+1} 格`
     :reference.kind==='rigid'?`同步旧小步 · ${reference.state} 第 ${reference.index+1} 格`
     :reference.kind==='contact'?`同步旧轻跃（高度场） · 第 ${reference.index+1} 格`
     :reference.kind==='mouth'?`同步旧嘴线 · failed 第 ${reference.index+1} 格`
@@ -323,6 +339,8 @@ async function draw(){
     :reference.synchronized?`同步回退 · idle 第 ${reference.index+1} 格`:'同一母版 · 固定第 1 帧';
   el('reference-status').textContent=choice==='link'
     ?`左右同钟/同格；左冻结改动前，右现用中间格开发改进 · ${referencePaintCount} 次参考绘制 · ${selected.state==='waving'?'只改第1/3格；认可的峰值及原图放松格保持精确。开发者选择，完整手形/招手待确认，不继承用户批准':'三轮已结束，两侧同步同一idle'}`
+    :choice==='hands'
+    ?`左右同钟/同格；左冻结改动前，右现用相叠手开发改进 · ${referencePaintCount} 次参考绘制 · ${selected.state==='review'?'眼动、脸、alpha、镜头和1030ms保持不变；开发者选择，手形/衣袖及完整动作待确认，不继承用户批准':'三轮已结束，两侧同步同一idle'}`
     :choice==='wave'
     ?`左右同钟/同格；左冻结旧招手，右现用降低抬手开发基础 · ${referencePaintCount} 次参考绘制 · ${wave?'仅第2格手掌降低约8.7原生像素；原掌按估计掩码保护，局部补画袖带连接。你已确认此版为开发基础，完整动作未通过':'三轮已结束，两侧同步同一idle'}`
     :choice==='cloth'
@@ -346,6 +364,7 @@ async function draw(){
   labels.waving_source='waving · 原像素低位试验，未采用';
   labels.waving_link='waving · 中间格衔接试验，未采用';
   labels.review_overlap='review · 六格低位相叠手试验，未采用';
+  labels.review='review · 低位相叠手开发改进';
   labels.jumping='jumping · 4px轻跃开发基础';
   labels.failed='failed · 八格新嘴线开发基础';
   labels.waving='waving · 中间格衔接开发改进';
