@@ -36,7 +36,7 @@ FOLDERS = ['candidates/phase4/static', 'candidates/phase4/canonical-v3', 'candid
            'candidates/phase5/review-hands-overlap-v1/animation','candidates/phase5/cloth-follow-v1',
            'candidates/phase5/cloth-follow-v1/run_right','candidates/phase5/cloth-follow-v1/run_left',
            'candidates/phase5/wave-amplitude-v1','candidates/phase5/wave-amplitude-cloth-v1',
-           'sources/reference/waving-amplitude-high']
+           'sources/reference/waving-amplitude-high','candidates/phase5/wave-middle-link-v1']
 
 
 def snapshot():
@@ -87,7 +87,8 @@ def main():
                    cwd=ROOT,check=True,capture_output=True)
     subprocess.run([sys.executable,str(ROOT/'tools/cloth_follow_study.py')],
                    cwd=ROOT,check=True,capture_output=True)
-    for script in ('study_wave_amplitude.py','guide_wave_amplitude.py'):
+    for script in ('study_wave_amplitude.py','guide_wave_amplitude.py',
+                   'guide_wave_middle_link.py','build_wave_middle_link.py'):
         subprocess.run([sys.executable,str(ROOT/'tools'/script)],cwd=ROOT,check=True,capture_output=True)
     after, encoded_after = snapshot()
     load_canonical()  # Re-check the immutable selected source after all builds.

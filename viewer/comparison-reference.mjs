@@ -22,13 +22,14 @@ export function validateRigidReference(metadata,state,current){
   return entry;
 }
 export function comparisonReference(choice,state,index){
-  if(!['idle','rigid','contact','mouth','height','hands','cloth','wave'].includes(choice)||!Number.isInteger(index)||index<0
+  if(!['idle','rigid','contact','mouth','height','hands','cloth','wave','link'].includes(choice)||!Number.isInteger(index)||index<0
       ||!durations[candidateRows[state]]||index>=durations[candidateRows[state]].length)
     throw new Error('Invalid comparison selection');
   if(choice==='idle')return {kind:'candidate',state:'idle',index:0,synchronized:false};
   if(choice==='rigid'&&['run_right','run_left'].includes(state))return {kind:'rigid',state,index,synchronized:true};
   if(choice==='cloth'&&['run_right','run_left'].includes(state))return {kind:'current',state,index,synchronized:true};
   if(choice==='wave'&&state==='waving')return {kind:'wave',state,index,synchronized:true};
+  if(choice==='link'&&state==='waving_link')return {kind:'candidate',state:'waving',index,synchronized:true};
   if(choice==='contact'&&state==='jumping')return {kind:'contact',state,index,synchronized:true};
   if(choice==='mouth'&&state==='failed')return {kind:'mouth',state:'failed',index,synchronized:true};
   if(choice==='height'&&state==='jumping')return {kind:'height',state,index,synchronized:true};
@@ -43,9 +44,9 @@ export function comparisonPolicy(mode,choice,reset=false){
   if(!Object.keys(candidateRows).includes(mode))throw new Error('Invalid comparison mode');
   const actionChoices=['run_right','run_left'].includes(mode)?['rigid','cloth']
     :mode==='jumping'?['height','contact']:mode==='failed'?['mouth']
-    :mode==='review_overlap'?['hands']:mode==='waving'?['wave']:[];
+    :mode==='review_overlap'?['hands']:mode==='waving'?['wave']:mode==='waving_link'?['link']:[];
   const allowed=['idle',...actionChoices];
-  if(!['waving_source','review_overlap'].includes(mode))allowed.push('sampling');
+  if(!['waving_source','waving_link','review_overlap'].includes(mode))allowed.push('sampling');
   return {allowed,choice:reset||!allowed.includes(choice)?actionChoices[0]??'idle':choice};
 }
 

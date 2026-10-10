@@ -1,0 +1,243 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "state": "waving",
+  "previewVariant": "waving_link",
+  "nativeRow": 3,
+  "camera": {
+    "scale": 0.15833333333333333,
+    "x": 0.36666666666667425,
+    "y": 7.883333333333354,
+    "visibleBBox": [
+      142,
+      26,
+      1066,
+      1226
+    ],
+    "floor": 202,
+    "topReserve": 12,
+    "cell": [
+      192,
+      208
+    ]
+  },
+  "durationsMs": [
+    140,
+    140,
+    140,
+    280
+  ],
+  "repeatBeforeIdle": 3,
+  "totalDurationMs": 700,
+  "actionDurationMs": 2100,
+  "frameHashes": [
+    "1ADE339D8E003656323BC65FCECCE5B9E6591BF1B53486DBD4A82C4322E4D043",
+    "61C09D34D0A702F5AA5B472FAE38D8945BED2836E7EA61A55E63C0B1F65EF3D6",
+    "1ADE339D8E003656323BC65FCECCE5B9E6591BF1B53486DBD4A82C4322E4D043",
+    "E049C9010F4C3C2B2FD686620DCC1BF3FD97B4A97A5FE2913B69E4EA1924C6A8"
+  ],
+  "baselineFrameHashes": [
+    "D4B92531FFB5559FD99A006816D011601E83C56E2E15F2465FED768C7F0E6789",
+    "61C09D34D0A702F5AA5B472FAE38D8945BED2836E7EA61A55E63C0B1F65EF3D6",
+    "D4B92531FFB5559FD99A006816D011601E83C56E2E15F2465FED768C7F0E6789",
+    "E049C9010F4C3C2B2FD686620DCC1BF3FD97B4A97A5FE2913B69E4EA1924C6A8"
+  ],
+  "unchangedHoldIndices": [
+    1,
+    3
+  ],
+  "returnedMiddleCelReused": true,
+  "sourceCrop": [
+    250,
+    500,
+    550,
+    950
+  ],
+  "generatedSha256": "2E5DFACB79D7649034D46FE368D87411DEFD9CA5423C99BF484BAF9ABE05A0B8",
+  "rawCanvas": [
+    1024,
+    1536
+  ],
+  "foregroundPolygon": [
+    [
+      399,
+      574
+    ],
+    [
+      444,
+      576
+    ],
+    [
+      482,
+      578
+    ],
+    [
+      492,
+      598
+    ],
+    [
+      505,
+      623
+    ],
+    [
+      516,
+      628
+    ],
+    [
+      513,
+      651
+    ],
+    [
+      499,
+      693
+    ],
+    [
+      477,
+      734
+    ],
+    [
+      449,
+      776
+    ],
+    [
+      416,
+      809
+    ],
+    [
+      386,
+      832
+    ],
+    [
+      373,
+      834
+    ],
+    [
+      359,
+      814
+    ],
+    [
+      347,
+      781
+    ],
+    [
+      339,
+      748
+    ],
+    [
+      338,
+      725
+    ],
+    [
+      322,
+      723
+    ],
+    [
+      306,
+      718
+    ],
+    [
+      295,
+      712
+    ],
+    [
+      294,
+      703
+    ],
+    [
+      309,
+      692
+    ],
+    [
+      317,
+      687
+    ],
+    [
+      301,
+      684
+    ],
+    [
+      292,
+      679
+    ],
+    [
+      292,
+      670
+    ],
+    [
+      300,
+      665
+    ],
+    [
+      321,
+      668
+    ],
+    [
+      314,
+      662
+    ],
+    [
+      302,
+      658
+    ],
+    [
+      299,
+      651
+    ],
+    [
+      306,
+      646
+    ],
+    [
+      317,
+      647
+    ],
+    [
+      339,
+      657
+    ],
+    [
+      339,
+      647
+    ],
+    [
+      338,
+      642
+    ],
+    [
+      343,
+      637
+    ],
+    [
+      349,
+      638
+    ],
+    [
+      360,
+      625
+    ],
+    [
+      376,
+      605
+    ]
+  ],
+  "foregroundBoundaryEstimated": true,
+  "sourceChangePermissionPixels": 64085,
+  "nativeChangedPixels": [
+    1199,
+    0,
+    1199,
+    0
+  ],
+  "facialGeometryRepair": false,
+  "nativeInterpolation": false,
+  "adopted": false,
+  "activeAtlasChanged": false,
+  "visualMotionApproval": "pending",
+  "installableFullAtlas": false,
+  "installed": false,
+  "method": "one face-free authored intermediate arm; same bounded hidden backing/cape/frontlock; exact accepted peak and rest reused",
+  "limitations": [
+    "Anatomy and cloth continuity require actual visual judgement; no clean artist layers or mathematically exact midpoint claimed.",
+    "Only holds 0/2 change; entry/exit hard cuts and the fixed 700ms three-cycle schedule remain.",
+    "This candidate has not replaced the accepted current wave, global atlas or installed pet."
+  ]
+}
