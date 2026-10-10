@@ -1,7 +1,7 @@
 import {durations,cycles} from './clock.mjs';
 
 // Trial variants reuse existing native rows; they are not additional pet states.
-export const candidateRows=Object.freeze({idle:0,run_right:1,run_left:2,failed:5,jumping:4,jumping_height:4,waving:3,waving_source:3,waiting:6,processing:7,review:8});
+export const candidateRows=Object.freeze({idle:0,run_right:1,run_left:2,failed:5,jumping:4,waving:3,waving_source:3,waiting:6,processing:7,review:8});
 const rows=candidateRows;
 export function candidateCelKey(hashes,index){
   if(!Array.isArray(hashes)||!Number.isInteger(index)||index<0||index>=hashes.length

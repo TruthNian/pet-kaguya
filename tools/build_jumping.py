@@ -15,10 +15,26 @@ from locomotion_render import prepare, neutral_evidence
 import hop_contact
 
 OUT = ROOT/'candidates/phase5/jumping'
+HEIGHT_DECISION = 'sources/canonical/jumping-height-decision-20261010.json'
 
 
-def specification():
-    motion = json.loads((ROOT/'sources/canonical/jumping-motion.json').read_text(encoding='utf-8'))
+def height_decision():
+    decision = json.loads((ROOT/HEIGHT_DECISION).read_text(encoding='utf-8'))
+    if (decision['scope'] != 'hop-height-development-basis-only' or decision['apexOutputPx'] != 4
+            or decision['candidate'] != 'candidates/phase5/jumping-height-v1'
+            or decision['baseline'] != 'sources/reference/jumping-height-8px'
+            or any(decision[key] is not False for key in ('fullMotionApproved',
+                'faceGeometryChangeApproved','hostChangeApproved','installationApproved'))):
+        raise ValueError('Hop height receipt exceeds the user-approved development scope')
+    return decision
+
+
+def specification(motion=None):
+    active = motion is None
+    if active:
+        motion = json.loads((ROOT/'sources/canonical/jumping-motion.json').read_text(encoding='utf-8'))
+        if motion['flightModel']['apexOutputPx'] != height_decision()['apexOutputPx']:
+            raise ValueError('Active hop height disagrees with the explicit user decision')
     if (motion['sourceSha256'] != ACCEPTED_SHA or motion['durationsMs'] != DURATIONS[4]
             or len(motion['keyframes']) != 5 or not motion['faceShapeLocked']
             or motion['closedEyeFrames'] != 0 or motion['visualMotionApproval'] != 'pending'):
@@ -45,11 +61,11 @@ def specification():
     return motion, poses
 
 
-def inputs():
+def inputs(motion=None):
     image, cleanup = clean_cutout(load_canonical())
     transform = camera(image)
     regions, _ = idle_specification()
-    motion, poses = specification()
+    motion, poses = specification(motion)
     return image, cleanup, transform, regions, region_masks(regions), motion, poses
 
 
@@ -92,6 +108,8 @@ def comparison(out,old,frames,metadata):
         frameHashes=[hashlib.sha256(frame.tobytes()).hexdigest().upper() for frame in old],
         candidateFrameHashes=metadata['frameHashes'],
         airCelsRGBAExact=[old[i].tobytes()==frames[i].tobytes() for i in (1,2,3)],
+        airChangedPixels=metadata['heightFieldAirChangedPixels'],
+        airMaximumChannelDifference=metadata['heightFieldAirMaximumChannelDifference'],
         groundedChangedPixels=[int(np.any(np.asarray(old[i])!=np.asarray(frames[i]),axis=2).sum()) for i in (0,4)],
         visualApprovalInherited=False,installableFullAtlas=False,installed=False,
         limitations=['Regenerated comparison is not a frozen historical release or visual approval.',
@@ -105,8 +123,9 @@ def main():
     data,material=contact_inputs()
     frames = [hop_contact.render(material,pose,transform,regions,masks) for pose in poses]
     old=[render(source,pose,transform,regions,masks) for pose in poses]
-    if any(old[i].tobytes()!=frames[i].tobytes() for i in (1,2,3)):
-        raise ValueError('Grounded-contact repair must not change the three original air cels')
+    air_difference=[np.abs(np.asarray(old[i],dtype=int)-np.asarray(frames[i],dtype=int)) for i in (1,2,3)]
+    if any(int(diff.max())>1 for diff in air_difference):
+        raise ValueError('Unexpected air-material difference exceeds the recorded one-channel-unit defect')
     joints=[hop_contact.joint_evidence(data,pose,transform) for pose in poses]
     neutral=neutral_evidence(material,data['mother'],transform)
     if not neutral['directSamplerNeutralRGBAExact']:
@@ -134,7 +153,14 @@ def main():
         legBackingGeneratedSha256=GENERATED_SHA,contactRigJoints=joints,jointEvidenceDecimalPlaces=9,
         sourceAlphaAndOcclusionSeparated=True,normalizedKnownBacking=True,
         artistLayerRecoveryClaimed=False,newArtworkGenerated=False,physicalBalanceProven=False,
-        continuousLandingProven=False,originalAirCelsRGBAExact=True,
+        continuousLandingProven=False,originalAirCelsRGBAExact=all(not diff.any() for diff in air_difference),
+        airComparisonScope='same-current-poses-height-field-counterfactual-not-frozen-8px',
+        heightFieldAirChangedPixels=[int(np.any(diff,axis=2).sum()) for diff in air_difference],
+        heightFieldAirMaximumChannelDifference=[int(diff.max()) for diff in air_difference],
+        airMaterialIdentityProven=False,
+        apexOutputPx=motion['flightModel']['apexOutputPx'],
+        heightVisualApproval='approved-as-development-basis',
+        heightApprovalScope=height_decision()['scope'],heightUserDecision=HEIGHT_DECISION,
         strategyUserApproval='pending',strategyApprovalInheritedFromLocomotion=False,
         **neutral,
         sampling='3x coverage integration from high-resolution source, one terminal Lanczos downsample',

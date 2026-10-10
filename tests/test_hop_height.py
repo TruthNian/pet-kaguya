@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 import sys
 import unittest
+from unittest.mock import patch
 
 import numpy as np
 from PIL import Image
@@ -13,6 +14,7 @@ sys.path.insert(0,str(ROOT/'tools'))
 import study_hop_height as study
 from build_idle import sample
 import hop_contact
+import build_jumping as jumping
 from protocol import DURATIONS
 
 
@@ -72,8 +74,12 @@ class HopHeight(unittest.TestCase):
             actual=hop_contact.sample_pose(self.material,xx,actor_y,pose,self.transform,self.regions,self.masks)
             np.testing.assert_allclose(actual,expected,rtol=0,atol=1e-10)
 
-    def test_study_does_not_claim_adoption_artwork_host_or_performance_improvement(self):
-        for name in ('adopted','activeAtlasChanged','installed','installableFullAtlas','newArtworkGenerated',
+    def test_only_height_is_adopted_without_artwork_host_or_performance_claims(self):
+        for name in ('adopted','activeAtlasChanged','currentJumpingCelsRGBAExact'):
+            self.assertIs(self.meta[name],True)
+        self.assertEqual(self.meta['adoptionScope'],'hop-height-development-basis-only')
+        self.assertEqual(self.meta['userDecision'],jumping.HEIGHT_DECISION)
+        for name in ('installed','installableFullAtlas','newArtworkGenerated',
                      'facialGeometryRepair','nativeInterpolation','continuousLandingProven','physicalBalanceProven'):
             self.assertIs(self.meta[name],False)
         self.assertEqual(self.meta['visualMotionApproval'],'pending')
@@ -83,10 +89,29 @@ class HopHeight(unittest.TestCase):
             with Image.open(ROOT/'candidates/phase5/jumping/strip.webp') as active:
                 self.assertEqual(atlas.crop((0,4*208,1536,5*208)).convert('RGBA').tobytes(),
                                  active.convert('RGBA').tobytes())
+                with Image.open(study.OUT/'strip.webp') as accepted:
+                    self.assertEqual(active.convert('RGBA').tobytes(),accepted.convert('RGBA').tobytes())
         # Unrelated future art improvements must not be blocked by freezing
         # the whole atlas to this turn's historical hash.
         self.assertEqual(hashlib.sha256((ROOT/'sources/canonical/artwork.png').read_bytes()).hexdigest().upper(),
                          self.meta['sourceSha256'])
+
+    def test_frozen_reference_and_narrow_decision_reject_broad_or_changed_height_claims(self):
+        with Image.open(study.REFERENCE/'jumping.webp') as saved:
+            for i,frame in enumerate(self.old):
+                self.assertEqual(saved.crop((i*192,0,(i+1)*192,208)).convert('RGBA').tobytes(),frame.tobytes())
+        manifest=json.loads((study.REFERENCE/'manifest.json').read_text())
+        self.assertEqual(hashlib.sha256((study.REFERENCE/'jumping.webp').read_bytes()).hexdigest().upper(),
+                         manifest['fileSha256'])
+        self.assertFalse(manifest['visualApprovalInherited'])
+        decision=jumping.height_decision()
+        for key in ('fullMotionApproved','faceGeometryChangeApproved','hostChangeApproved','installationApproved'):
+            with patch.object(jumping.json,'loads',return_value={**decision,key:True}):
+                with self.assertRaises(ValueError):jumping.height_decision()
+        motion=jumping.specification()[0]
+        wrong=json.loads(json.dumps(motion));wrong['flightModel']['apexOutputPx']=8
+        with patch.object(jumping,'height_decision',return_value=decision), patch.object(jumping.json,'loads',return_value=wrong):
+            with self.assertRaises(ValueError):jumping.specification()
 
 
 if __name__ == '__main__':unittest.main()

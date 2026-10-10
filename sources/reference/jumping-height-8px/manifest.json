@@ -1,0 +1,12 @@
+{
+  "commit": "603b9ba02f6bc5c89ff971b54d087156a1a845c8",
+  "referenceRole": "frozen-source-input-not-active-animation",
+  "referencePurpose": "isolate-flight-height-only",
+  "file": "jumping.webp",
+  "contract": "contract.json",
+  "motion": "motion.json",
+  "fileSha256": "9BD0F25575A378F9CB4519581A10E7A15FFF8B08066009CB0E09D9FF335D9ACB",
+  "visualApprovalInherited": false,
+  "installableFullAtlas": false,
+  "installed": false
+}

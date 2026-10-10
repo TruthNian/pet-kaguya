@@ -1,0 +1,12 @@
+{
+  "question": "左为现用8px，右为4px，两边同钟同格。你更喜欢哪种轻跃幅度？这次只确认幅度，不代表手势切换、落地恢复或完整动作通过。",
+  "answer": "采用4px作为继续打磨的基础（建议）",
+  "scope": "hop-height-development-basis-only",
+  "apexOutputPx": 4,
+  "candidate": "candidates/phase5/jumping-height-v1",
+  "baseline": "sources/reference/jumping-height-8px",
+  "fullMotionApproved": false,
+  "faceGeometryChangeApproved": false,
+  "hostChangeApproved": false,
+  "installationApproved": false
+}

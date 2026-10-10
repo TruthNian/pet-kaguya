@@ -197,10 +197,14 @@
   "animationBuilt": true,
   "visualMotionApproval": "pending",
   "strategyUserApproval": "pending",
-  "adopted": false,
-  "activeAtlasChanged": false,
+  "adopted": true,
+  "activeAtlasChanged": true,
   "installableFullAtlas": false,
   "installed": false,
+  "adoptionScope": "hop-height-development-basis-only",
+  "userDecision": "sources/canonical/jumping-height-decision-20261010.json",
+  "heightVisualApproval": "approved-as-development-basis",
+  "currentJumpingCelsRGBAExact": true,
   "actorOnlyMaximumAdjacentStepPx": {
     "current": 4.444444444444445,
     "trial": 2.2222222222222223
@@ -237,10 +241,10 @@
   ],
   "method": "same original high-resolution material/camera sampler; only three actor-flight offsets halved",
   "limitations": [
-    "4px is a comparison candidate, not a first-principles unique optimum or user acceptance.",
+    "4px is accepted as a height-only development basis, not a unique optimum or full-motion acceptance.",
     "The five native holds, three action cycles, ground compression and tip angles are unchanged.",
     "Smaller translation may reduce a height cut but does not repair arm/pose cuts, interpolation or landing recovery.",
     "Actual-size readability, restraint and naturalness still need human review.",
-    "The active atlas, installed pet and host remain unchanged; no FPS/resolution/performance improvement."
+    "Only the active development hop height is adopted; installed pet and host remain unchanged; no FPS/resolution/performance improvement."
   ]
 }

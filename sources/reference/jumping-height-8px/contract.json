@@ -48,9 +48,9 @@
   },
   "actorOffsetsPx": [
     0,
-    -2.2222222222222223,
-    -4.0,
-    -2.222222222222222,
+    -4.444444444444445,
+    -8.0,
+    -4.444444444444444,
     0
   ],
   "bodyCompressionOutputPx": [
@@ -95,21 +95,21 @@
     ],
     [
       22,
-      9,
-      169,
-      200
-    ],
-    [
-      22,
-      8,
+      7,
       169,
       198
     ],
     [
       22,
-      9,
+      4,
+      169,
+      194
+    ],
+    [
+      22,
+      7,
       170,
-      200
+      198
     ],
     [
       22,
@@ -199,7 +199,7 @@
         "name": "left",
         "rootSourcePx": [
           0.0,
-          -14.035087719
+          -28.070175439
         ],
         "relativeAnkleOffsetSourcePx": [
           0.0,
@@ -208,15 +208,15 @@
         "worldJointSourcePx": [
           [
             535.0,
-            921.964912281
+            907.929824561
           ],
           [
             525.0,
-            963.964912281
+            949.929824561
           ],
           [
             521.0,
-            1011.964912281
+            997.929824561
           ]
         ],
         "designSegmentLengthsSourcePx": [
@@ -233,7 +233,7 @@
         "name": "right",
         "rootSourcePx": [
           0.0,
-          -14.035087719
+          -28.070175439
         ],
         "relativeAnkleOffsetSourcePx": [
           0.0,
@@ -242,15 +242,15 @@
         "worldJointSourcePx": [
           [
             674.0,
-            921.964912281
+            907.929824561
           ],
           [
             683.0,
-            964.964912281
+            950.929824561
           ],
           [
             689.0,
-            1011.964912281
+            997.929824561
           ]
         ],
         "designSegmentLengthsSourcePx": [
@@ -269,7 +269,7 @@
         "name": "left",
         "rootSourcePx": [
           0.0,
-          -25.263157895
+          -50.526315789
         ],
         "relativeAnkleOffsetSourcePx": [
           0.0,
@@ -278,15 +278,15 @@
         "worldJointSourcePx": [
           [
             535.0,
-            910.736842105
+            885.473684211
           ],
           [
             525.0,
-            952.736842105
+            927.473684211
           ],
           [
             521.0,
-            1000.736842105
+            975.473684211
           ]
         ],
         "designSegmentLengthsSourcePx": [
@@ -303,7 +303,7 @@
         "name": "right",
         "rootSourcePx": [
           0.0,
-          -25.263157895
+          -50.526315789
         ],
         "relativeAnkleOffsetSourcePx": [
           0.0,
@@ -312,15 +312,15 @@
         "worldJointSourcePx": [
           [
             674.0,
-            910.736842105
+            885.473684211
           ],
           [
             683.0,
-            953.736842105
+            928.473684211
           ],
           [
             689.0,
-            1000.736842105
+            975.473684211
           ]
         ],
         "designSegmentLengthsSourcePx": [
@@ -339,7 +339,7 @@
         "name": "left",
         "rootSourcePx": [
           0.0,
-          -14.035087719
+          -28.070175439
         ],
         "relativeAnkleOffsetSourcePx": [
           0.0,
@@ -348,15 +348,15 @@
         "worldJointSourcePx": [
           [
             535.0,
-            921.964912281
+            907.929824561
           ],
           [
             525.0,
-            963.964912281
+            949.929824561
           ],
           [
             521.0,
-            1011.964912281
+            997.929824561
           ]
         ],
         "designSegmentLengthsSourcePx": [
@@ -373,7 +373,7 @@
         "name": "right",
         "rootSourcePx": [
           0.0,
-          -14.035087719
+          -28.070175439
         ],
         "relativeAnkleOffsetSourcePx": [
           0.0,
@@ -382,15 +382,15 @@
         "worldJointSourcePx": [
           [
             674.0,
-            921.964912281
+            907.929824561
           ],
           [
             683.0,
-            964.964912281
+            950.929824561
           ],
           [
             689.0,
-            1011.964912281
+            997.929824561
           ]
         ],
         "designSegmentLengthsSourcePx": [
@@ -482,23 +482,7 @@
   "newArtworkGenerated": false,
   "physicalBalanceProven": false,
   "continuousLandingProven": false,
-  "originalAirCelsRGBAExact": false,
-  "airComparisonScope": "same-current-poses-height-field-counterfactual-not-frozen-8px",
-  "heightFieldAirChangedPixels": [
-    18,
-    0,
-    18
-  ],
-  "heightFieldAirMaximumChannelDifference": [
-    1,
-    0,
-    1
-  ],
-  "airMaterialIdentityProven": false,
-  "apexOutputPx": 4,
-  "heightVisualApproval": "approved-as-development-basis",
-  "heightApprovalScope": "hop-height-development-basis-only",
-  "heightUserDecision": "sources/canonical/jumping-height-decision-20261010.json",
+  "originalAirCelsRGBAExact": true,
   "strategyUserApproval": "pending",
   "strategyApprovalInheritedFromLocomotion": false,
   "directSamplerNeutralPremultErrorTolerance": 1e-10,
@@ -512,9 +496,9 @@
   "installed": false,
   "frameHashes": [
     "D97503D6294CC134F5ED6486FB186351C7472F54EDEC6B56C6597C7CA99BF7DF",
-    "368AFFD001202032E26219CBD862AD8181159A6B6D2B24D03FCF2CEDA86F248D",
-    "68741C8C47303A289B06A7841B8B2DA5F3D7764F28F017F62AE80AAB78140968",
-    "E2B26D01B45314137D4FFF6063F2C6EF2C1FF144A66A66513666AD44004F2126",
+    "F66213D8143F5F4FC35502F1B9318E8FC2AF347F21285F4476AE00A9F513E039",
+    "687145828FFC7050E6B6FC08FD0CD7E7EE1491240A5FD824F914430F263E010C",
+    "2F2BEFF1B30A51F51E0A398E38EABA41372DD40A034EB7468E640C598EC55C58",
     "1A0BF0292DB2741830B000434A6B332AF1E5B73765C70D1FB24FB850F0A9A44B"
   ],
   "unresolved": [

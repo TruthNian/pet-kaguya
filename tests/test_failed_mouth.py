@@ -85,7 +85,12 @@ class FailedMouth(unittest.TestCase):
                 self.assertFalse(b[0,:,3].any() or b[-1,:,3].any() or b[:,0,3].any() or b[:,-1,3].any())
             self.assertEqual(strip.size,(1536,208))
             receipt = json.loads((ROOT/'qa/failed-mouth-adoption-20261010.json').read_text(encoding='utf-8'))
-            self.assertEqual(art.rgba_hash(global_atlas.convert('RGBA')),receipt['newAtlasRGBAHash'])
+            # The mouth receipt freezes that adoption's whole payload. New
+            # approved hop height must not erase it or rewrite the receipt.
+            mouth_epoch=global_atlas.convert('RGBA')
+            with Image.open(ROOT/'sources/reference/jumping-height-8px/jumping.webp') as frozen_hop:
+                mouth_epoch.paste(frozen_hop.convert('RGBA'),(0,4*208))
+            self.assertEqual(art.rgba_hash(mouth_epoch),receipt['newAtlasRGBAHash'])
             self.assertEqual([c['changedPixels'] for c in meta['changesFromFrozenOldMouth']],receipt['nativeChangedPixelsPerCel'])
         self.assertEqual(meta['durationsMs'],DURATIONS[5])
         self.assertEqual(meta['keyframes'],data['active']['keyframes'])

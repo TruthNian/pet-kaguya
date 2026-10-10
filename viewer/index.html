@@ -12,12 +12,12 @@
   </header>
   <section class="idle-review" aria-labelledby="idle-heading">
     <h2 id="idle-heading">Phase 5 · 同一母版的局部动作候选</h2>
-    <p>轻跃幅度单因素试验：在“候选”选择4px版，左为现用8px、右为4px，双方同钟同格；五个停留、源脸衣结构与着地格不变，空中格因平移重新采样。试验从原高分辨率材料直接采样，不缩放低清角色。只用于比较克制感和高度硬切，不修复手势切换/落地恢复，尚未采用。<a href="../candidates/phase5/jumping-height-v1/contact-113px.png">真实五格明暗对照</a> · <a href="../candidates/phase5/jumping-height-v1/build.json">单因素约束</a></p>
-    <p>右侧可选九个动作候选；左侧通常固定v3，小步/轻跃/failed则默认同节奏旧版对照。failed已采用你认可的新嘴线，旧嘴线仅作冻结参照；批准范围仅限开发基础。小步比较耳发跟随，轻跃比较屈膝接触且空中三格相同。所有候选共用相机与脸型；新增像素仅用于局部结构修正、缺画与隐藏底图。正面小步方向、摆幅及起落基础已确认，托腮/合手暂保留保持时序；这些决定不代表手形、袖褶或整体自然度通过。九状态和16视线为开发验收图集，未安装。</p>
+    <p>轻跃已采用你认可的4px幅度作为继续打磨的基础。选择jumping：左为冻结8px参照，右为现用4px，双方同钟同格；五个停留、源脸衣结构与两格着地RGBA不变，只有三格飞行高度减半。仍从原高分辨率材料直接采样，不缩放低清角色。批准仅限幅度，手势硬切、落地恢复和完整自然度尚未通过。<a href="../candidates/phase5/jumping-height-v1/contact-113px.png">真实五格明暗对照</a> · <a href="../sources/canonical/jumping-height-decision-20261010.json">准确决定范围</a></p>
+    <p>右侧可选九个动作候选；左侧通常固定v3，小步/轻跃/failed则默认同节奏旧版对照。failed已采用你认可的新嘴线，旧嘴线仅作冻结参照；批准范围仅限开发基础。小步比较耳发跟随，轻跃默认比较8px/4px幅度，也可手选屈膝接触对照。所有候选共用相机与脸型；新增像素仅用于局部结构修正、缺画与隐藏底图。正面小步方向、摆幅及起落基础已确认，托腮/合手暂保留保持时序；这些决定不代表手形、袖褶或整体自然度通过。九状态和16视线为开发验收图集，未安装。</p>
     <p>新增“精度对照”：左侧为现用动作，右侧为同源、同姿势、同格的末端浮点采样试验，尚未采用。73个动作/视线格全部核对；相对独立64位滤波参考的平均显示颜色误差约0.358→0.128（0–255单位），不是画质评分。113px肉眼差异小，没有新增细节、帧率或分辨率；不修复手袖造型。<a href="../candidates/phase5/terminal-sampling-v1/contact-113px.png">九状态明暗前后对照</a> · <a href="../candidates/phase5/terminal-sampling-v1/build.json">逐格证据和限制</a></p>
     <div class="controls">
-      <label>候选 <select id="idle-action"><option value="idle">idle · 微呼吸</option><option value="run_right">run_right · 正面向右小步原型</option><option value="run_left">run_left · 正面向左小步原型</option><option value="failed">failed · 新嘴线开发基础</option><option value="jumping">jumping · 五帧，三轮后回 idle</option><option value="jumping_height">jumping · 4px幅度试验（未采用）</option><option value="waving">waving · 四格，三轮后回 idle</option><option value="waving_source">waving · 原像素低位试验（未采用）</option><option value="processing">processing · 六格专注，三轮后回 idle</option><option value="waiting">waiting · 六格保持托腮，待确认</option><option value="review">review · 六格低手下视，待确认</option></select></label>
-      <label>左侧参考 <select id="idle-comparison" disabled><option value="idle">固定 idle · 检查身份</option><option id="rigid-reference-choice" value="rigid" disabled>同步旧小步 · 检查耳发跟随</option><option id="contact-reference-choice" value="contact" disabled>同步旧轻跃 · 检查屈膝接触</option><option id="height-reference-choice" value="height" disabled>同步现用8px · 比较轻跃幅度</option><option id="mouth-reference-choice" value="mouth" disabled>同步旧嘴线 · 检查失落表达</option><option id="sampling-reference-choice" value="sampling">精度对照 · 左现用，右浮点试验</option></select></label>
+      <label>候选 <select id="idle-action"><option value="idle">idle · 微呼吸</option><option value="run_right">run_right · 正面向右小步原型</option><option value="run_left">run_left · 正面向左小步原型</option><option value="failed">failed · 新嘴线开发基础</option><option value="jumping">jumping · 4px轻跃开发基础</option><option value="waving">waving · 四格，三轮后回 idle</option><option value="waving_source">waving · 原像素低位试验（未采用）</option><option value="processing">processing · 六格专注，三轮后回 idle</option><option value="waiting">waiting · 六格保持托腮，待确认</option><option value="review">review · 六格低手下视，待确认</option></select></label>
+      <label>左侧参考 <select id="idle-comparison" disabled><option value="idle">固定 idle · 检查身份</option><option id="rigid-reference-choice" value="rigid" disabled>同步旧小步 · 检查耳发跟随</option><option id="contact-reference-choice" value="contact" disabled>同步旧高度场 · 检查屈膝接触</option><option id="height-reference-choice" value="height" disabled>同步冻结8px · 比较轻跃幅度</option><option id="mouth-reference-choice" value="mouth" disabled>同步旧嘴线 · 检查失落表达</option><option id="sampling-reference-choice" value="sampling">精度对照 · 左现用，右浮点试验</option></select></label>
       <label>宽度 <select id="idle-size"><option>80</option><option selected>113</option><option>192</option><option>224</option></select> px</label>
       <label>背景 <select id="idle-background"><option value="dark">深色</option><option value="light">浅色</option><option value="grid">透明网格</option></select></label>
       <label><input id="idle-reduced" type="checkbox">减少动态</label>
@@ -30,7 +30,7 @@
     </div>
     <output id="idle-status" aria-live="off">正在解码 idle 候选…</output>
     <output id="reference-status" aria-live="off">固定 idle 用于形象对照；小步动作比较请使用同步旧版。</output>
-    <p>idle 周期 6.6 秒；failed 1.22 秒、jumping 0.84 秒、waving 0.7 秒、processing 0.82 秒、waiting 1.01 秒、review 1.03 秒，动作均三轮后回 idle。jumping 最高离地 8 px，仅着地格鞋部固定。waving 末格为原图放松，停留 280 ms；过渡偏向放松。processing 对应宿主 running 行。waiting/review 身体与手势保持，只做微小耳发响应；review 仅在原眼开口内移虹膜，不改眼眶或脸型。短周期不做快呼吸或胸饰闪烁。静态关键姿势不等于完整手臂骨骼：托腮/合手的入场和回 idle 仍缺过渡，80 px 状态差异弱，review 右手更展开、新袖褶的边界融合仍待确认、前景保护多边形不是干净图层。所有动作的可爱感、接缝和节奏仍待视觉认可。</p>
+    <p>idle 周期 6.6 秒；failed 1.22 秒、jumping 0.84 秒、waving 0.7 秒、processing 0.82 秒、waiting 1.01 秒、review 1.03 秒，动作均三轮后回 idle。jumping 最高离地4px，仅着地格鞋部固定。waving 末格为原图放松，停留 280 ms；过渡偏向放松。processing 对应宿主 running 行。waiting/review 身体与手势保持，只做微小耳发响应；review 仅在原眼开口内移虹膜，不改眼眶或脸型。短周期不做快呼吸或胸饰闪烁。静态关键姿势不等于完整手臂骨骼：托腮/合手的入场和回 idle 仍缺过渡，80 px 状态差异弱，review 右手更展开、新袖褶的边界融合仍待确认、前景保护多边形不是干净图层。所有动作的可爱感、接缝和节奏仍待视觉认可。</p>
     <p>waiting 当前合成v2收束抬袖鼓包并调整完整垂袖褶线，仅采用有界衣料及轮廓旁少量遮挡底图；手、脸、肩披与主体保留原样。此处alpha确有局部变化，不是仅改RGB。review 当前仍为合成 v6（母版锁定 v3），只替换两袖连续内部；手、轮廓及全部alpha保持v5。两种处理不能混称。结构、边界融合及完整动作仍待确认，保持时序没有变。</p>
     <p><a href="#held-structure-review">集中查看当前托腮/合手结构</a> · <a href="../candidates/phase5/review-hand-outline-v1/contact-113px.png">指尖修正113px明暗对照</a> · <a href="../sources/editor/review-hand/kaguya-review-hand.xcf" download>GIMP可编辑图层工程</a> · <a href="../docs/PHASE5-STATES.zh-CN.md">具体限制与缺陷</a></p>
     <p>左右小步为八格、1060 ms一轮。此处模拟状态未被打断时的三轮3180 ms后回 idle；真实宿主的左右跑是拖拽反馈，松手可中断任意格，若仍悬停则恢复jumping，否则恢复底层任务状态。不一定 idle，也不会等待脚落地；完整选择规则另见下方全局中断验收。图集没有速度输入，不能保证鼠标拖动中的屏幕地面防滑。向支撑侧的身体横向摆幅仍为你认可的约1.9原生像素，下沉最多0.24像素。你对最新起落节奏回复“我觉得还行”，仅作为后续打磨基础，不扩大为完整自然度或其他动作通过。脸型、衣服与手保留刚性跟随，支撑兔鞋的位移与身体位移抵消。当前耳尖/发梢增加由身体横移驱动的微小滞后，上限约0.13/0.32原生像素；按实际120/220ms停留取样，身体不动时不会自行摇摆。它不是实测质量中心或已证明的物理平衡。抬脚仍约1.19像素，80 px提示弱。</p>
@@ -66,7 +66,7 @@
     <p><a href="../candidates/phase5/failed-mouth-v2/contact-80px.png">80px实际对照</a> · <a href="../candidates/phase5/failed-mouth-v2/contact-224px.png">224px实际对照</a> · <a href="../candidates/phase5/failed-mouth-v2/prompt.txt">实际内置图像编辑提示词</a> · <a href="../candidates/phase5/failed-mouth-v2/animation/build.json">八格范围/来源/时序证据</a>。只重建源像素，不加工低清动作帧；每格仅60–67原生RGB像素变化，alpha固定。这里也改变许可内附近皮肤RGB，不冒称只修改棕色线像素。</p>
   </details>
   <details id="hop-contact-review" class="idle-review"><summary>轻跃接触改进 · 同参数高度场 / 双节屈膝对照</summary>
-    <p>上为旧高度形变，下为当前双节腿部，两列分别为蓄力和落地，局部放大用于找形状问题。身体仍只下沉0.8/0.25原生像素；双脚目标固定，膝部轻微弯曲，原鞋材质不缩放。上方选择jumping会自动以同一时钟/帧位播放旧参考和新候选，空中三格RGBA完全相同。未改脸、跳高、五格时长或已安装宠物。</p>
+    <p>上为旧高度形变，下为当前双节腿部，两列分别为蓄力和落地，局部放大用于找形状问题。身体仍只下沉0.8/0.25原生像素；双脚目标固定，膝部轻微弯曲，原鞋材质不缩放。上方jumping默认对照冻结8px/现用4px；另选“同步旧高度场”才是同参数屈膝对照。4px下两条采样路径的上升/下降格各有18像素相差最多1通道值，顶格精确相同；此前8px的空中相同结论不能推广到所有高度。现用五格与获认可的4px试验精确一致，不隐藏材料采样缺陷；未改脸、五格时长或安装宠物。</p>
     <img loading="lazy" src="../candidates/phase5/jumping/contact-detail.png" width="750" height="600" alt="同参数旧高度形变与新双节屈膝，蓄力及落地局部对照">
     <p>这是估计的正面二维骨架，不是实测力学、干净画师分层或完整自然度证明；隐藏头发、边缘与衣物柔性仍有局限。鞋的几何目标固定，不等于周围头发与混色边缘RGBA不变。只保留五格，落地没有格内恢复，周期与退出仍待。<a href="../candidates/phase5/jumping/contact-comparison-113px.png">113px明暗对照</a> · <a href="../candidates/phase5/jumping/contact-proof.json">实际对照契约</a></p>
   </details>
@@ -208,7 +208,7 @@
   </details>
 </main>
 <script type="module" src="app.mjs"></script>
-<script type="module" src="candidate.mjs?v=20261010-height-1"></script>
+<script type="module" src="candidate.mjs?v=20261010-height-adopt-1"></script>
 <script type="module" src="interaction.mjs?v=20261010-interaction-1"></script>
 <script type="module" src="gaze.mjs"></script>
 </html>

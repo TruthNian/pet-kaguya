@@ -75,7 +75,9 @@ class Hop(unittest.TestCase):
         self.assertEqual(self.metadata['actionDurationMs'], 2520)
         self.assertEqual(self.metadata['groundedFrames'], [0,4])
         self.assertEqual([p.get('flightTimeMs') for p in self.poses[1:4]], [70,210,350])
-        np.testing.assert_allclose(self.metadata['actorOffsetsPx'], [0,-40/9,-8,-40/9,0], atol=1e-12)
+        np.testing.assert_allclose(self.metadata['actorOffsetsPx'], [0,-20/9,-4,-20/9,0], atol=1e-12)
+        self.assertEqual(self.metadata['heightApprovalScope'],'hop-height-development-basis-only')
+        self.assertEqual(self.metadata['heightVisualApproval'],'approved-as-development-basis')
         self.assertFalse(self.metadata['nativeInterpolation'])
 
     def test_previous_height_field_reference_face_and_shoes_are_rigid_not_current_contact_proof(self):
@@ -144,12 +146,12 @@ class Hop(unittest.TestCase):
             actual=hop_contact.sample_pose(self.material,xx,y,pose,self.transform,self.regions,self.masks)
             np.testing.assert_allclose(actual,expected,rtol=0,atol=1e-10)
 
-    def test_current_neutral_and_all_three_air_cels_are_exact_without_material_bypass(self):
+    def test_current_neutral_is_exact_without_material_bypass_and_air_differences_are_explicit(self):
         zero=dict(grounded=True,actorY=0,bodyY=0,earAngle=0,hairAngle=0)
         actual=hop_contact.render(self.material,zero,self.transform,self.regions,self.masks)
         reference=render(self.source,zero,self.transform,self.regions,self.masks)
         self.assertEqual(actual.tobytes(),reference.tobytes())
-        for index in (1,2,3):self.assertEqual(self.frames[index].tobytes(),self.old_frames[index].tobytes())
+        self.assertFalse(self.metadata['originalAirCelsRGBAExact'])
         # Valid material changes must still be observable in a neutral pose.
         changed=dict(self.material,data=dict(self.material['data'],layers=[p.copy() for p in self.material['data']['layers']]))
         paint=changed['data']['layers'][0]
@@ -158,6 +160,20 @@ class Hop(unittest.TestCase):
         x0,y0,_,_=self.data['box']
         point=hop_contact.sample_pose(changed,np.array([x+x0]),np.array([y+y0]),zero,self.transform,self.regions,self.masks)
         self.assertGreater(float(abs(point[0,0]-self.material['source'][y+y0,x+x0,0])),.9)
+
+    def test_air_material_difference_is_measured_not_mislabelled_as_exact_or_approved_art(self):
+        changed=[];maximum=[]
+        for i in (1,2,3):
+            legacy=render(self.source,self.poses[i],self.transform,self.regions,self.masks)
+            diff=np.abs(np.asarray(legacy,dtype=int)-np.asarray(self.frames[i],dtype=int))
+            changed.append(int(np.any(diff,axis=2).sum()));maximum.append(int(diff.max()))
+            self.assertLessEqual(maximum[-1],1)
+        self.assertEqual(changed,self.metadata['heightFieldAirChangedPixels'])
+        self.assertEqual(maximum,self.metadata['heightFieldAirMaximumChannelDifference'])
+        self.assertGreater(sum(changed),0)
+        self.assertFalse(self.metadata['airMaterialIdentityProven'])
+        self.assertEqual(self.metadata['airComparisonScope'],
+                         'same-current-poses-height-field-counterfactual-not-frozen-8px')
 
     def test_current_grounded_joint_targets_bend_without_stretch_or_moving_either_ankle(self):
         scale=self.transform['scale']
@@ -219,7 +235,9 @@ class Hop(unittest.TestCase):
         with Image.open(jumping.OUT/proof['file']) as strip:
             for index,frame in enumerate(self.old_frames):
                 self.assertEqual(strip.crop((index*192,0,(index+1)*192,208)).convert('RGBA').tobytes(),frame.tobytes())
-        self.assertEqual(proof['airCelsRGBAExact'],[True]*3)
+        self.assertEqual(proof['airCelsRGBAExact'],[a.tobytes()==self.frames[i].tobytes() for i,a in zip((1,2,3),self.old_frames[1:4])])
+        self.assertEqual(proof['airChangedPixels'],self.metadata['heightFieldAirChangedPixels'])
+        self.assertEqual(proof['airMaximumChannelDifference'],self.metadata['heightFieldAirMaximumChannelDifference'])
         self.assertEqual(proof['candidateFrameHashes'],self.metadata['frameHashes'])
         for field,value in proof['contract'].items():self.assertEqual(value,self.metadata[field])
         self.assertFalse(proof['visualApprovalInherited'] or proof['installed'] or proof['installableFullAtlas'])

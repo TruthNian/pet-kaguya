@@ -98,7 +98,7 @@
       "state": "jumping",
       "nativeRow": 4,
       "frameCount": 5,
-      "sourceRowRGBAHash": "08B787871C49E94D5F2417046980DA9EA3AF63037FEA019B1758AD6F48E42086",
+      "sourceRowRGBAHash": "DBFEBF4F6C55FF1B33F1744CC35B0B3EBCBFA88701C8AE154E93259B2A900EE9",
       "representativeFrame": 2,
       "visualMotionApproval": "pending"
     },
@@ -135,7 +135,7 @@
       "visualMotionApproval": "pending"
     }
   ],
-  "atlasRGBAHash": "3FACDFAB6B56D5D50339492B77A437DC7AD2A11EC5C7C2095D246E79EADDF598",
+  "atlasRGBAHash": "CCDD566B56EB9B11042DC0CEF87A612E211EDCF6F0CB5A96CCAFE13D24D89BB2",
   "construction": "exact paste of verified decoded v3 candidate strips; no new geometry or sampling",
   "visualAcceptance": "pending",
   "allStateTransitionsAccepted": false,

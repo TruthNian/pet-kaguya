@@ -7,7 +7,7 @@
   "durationsMs": [140,140,140,140,280],
   "flightModel": {
     "airtimeMs": 420,
-    "apexOutputPx": 4,
+    "apexOutputPx": 8,
     "sampleAt": "midpoint of each of the three native flight holds",
     "trajectory": "height = 4 * apex * u * (1-u), u = time / airtime",
     "nativeInterpolation": false

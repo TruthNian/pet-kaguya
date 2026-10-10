@@ -30,16 +30,16 @@
     2288
   ],
   "decodedBytes": 14057472,
-  "baselineAtlasRGBAHash": "3FACDFAB6B56D5D50339492B77A437DC7AD2A11EC5C7C2095D246E79EADDF598",
-  "candidateAtlasRGBAHash": "BE52C28D2FF5247778A6B25E36A575EC6EA5EE653AB741396AB7850996C31476",
+  "baselineAtlasRGBAHash": "CCDD566B56EB9B11042DC0CEF87A612E211EDCF6F0CB5A96CCAFE13D24D89BB2",
+  "candidateAtlasRGBAHash": "5F775BD4F9065D844B32BADD1B2F9BC1C130771613BBA41AB412118D2863B101",
   "filter": "same nonlinear-sRGB premultiplied Lanczos convention; not a linear-light change",
   "oracle": "independent NumPy float64 separable sinc(x)*sinc(x/3), same support, normalization and border crop",
   "oracleIsAestheticProof": false,
   "allLegacyCelsReconstructedExactly": true,
   "measurementDecimalPlaces": 9,
   "measurementRoundingDoesNotRelaxPixelHashes": true,
-  "meanLegacyCompositedError": 0.357521764,
-  "meanCandidateCompositedError": 0.127656734,
+  "meanLegacyCompositedError": 0.357522506,
+  "meanCandidateCompositedError": 0.127646462,
   "maximumFloat32FilterError": 3.0806e-05,
   "allCelsLowerMeanCompositedError": true,
   "quantization": "no uint8 straight/associated intermediate; float32 filter, float64 unassociation, final RGBA8 once",
@@ -830,16 +830,16 @@
       ],
       "legacyFrameHashes": [
         "D97503D6294CC134F5ED6486FB186351C7472F54EDEC6B56C6597C7CA99BF7DF",
-        "F66213D8143F5F4FC35502F1B9318E8FC2AF347F21285F4476AE00A9F513E039",
-        "687145828FFC7050E6B6FC08FD0CD7E7EE1491240A5FD824F914430F263E010C",
-        "2F2BEFF1B30A51F51E0A398E38EABA41372DD40A034EB7468E640C598EC55C58",
+        "368AFFD001202032E26219CBD862AD8181159A6B6D2B24D03FCF2CEDA86F248D",
+        "68741C8C47303A289B06A7841B8B2DA5F3D7764F28F017F62AE80AAB78140968",
+        "E2B26D01B45314137D4FFF6063F2C6EF2C1FF144A66A66513666AD44004F2126",
         "1A0BF0292DB2741830B000434A6B332AF1E5B73765C70D1FB24FB850F0A9A44B"
       ],
       "candidateFrameHashes": [
         "F1A341A3741DAE76AB7289E14F3A3864D8BF06BEB8E47D5F093FA5F0F80564F4",
-        "38AA2B1BC90871F73E5C9D7E657685282E4BA9B7EFCD973BF827AD5C4274E295",
-        "1648116314E61708E56838E4E3A55766E531CBB72CE6C360F220ED7EE594A582",
-        "F4504B615AA22A8DE562EA963A2D94B10AECF1CD2AD9B07382200D44519279D7",
+        "8C073734D6D573CFB03970B368558EFC206E52720B48C140DDDDB9CDBF769B30",
+        "7ED345F61C2A4030F61E30D6FDA180EB73AF28CD882948985C062533D20547B1",
+        "6712843C7F2CDC93607DD9C3444B320CE98966D186A94008132C92286DB4166D",
         "C6FE95C7DE5A9FDA264F7ED5D405C92AEB590A9F2C8264CF3D41746238712430"
       ],
       "cels": [
@@ -866,40 +866,40 @@
         },
         {
           "index": 1,
-          "legacyRGBAHash": "F66213D8143F5F4FC35502F1B9318E8FC2AF347F21285F4476AE00A9F513E039",
-          "candidateRGBAHash": "38AA2B1BC90871F73E5C9D7E657685282E4BA9B7EFCD973BF827AD5C4274E295",
-          "changedPixels": 19698,
+          "legacyRGBAHash": "368AFFD001202032E26219CBD862AD8181159A6B6D2B24D03FCF2CEDA86F248D",
+          "candidateRGBAHash": "8C073734D6D573CFB03970B368558EFC206E52720B48C140DDDDB9CDBF769B30",
+          "changedPixels": 19646,
           "legacyError": {
-            "compositedMeanAbsoluteError": 0.358273821,
-            "compositedMaximumAbsoluteError": 10.380360621,
-            "alphaMeanAbsoluteError": 0.104120894,
-            "alphaMaximumAbsoluteError": 9.958182316
+            "compositedMeanAbsoluteError": 0.358247117,
+            "compositedMaximumAbsoluteError": 11.540864269,
+            "alphaMeanAbsoluteError": 0.105343636,
+            "alphaMaximumAbsoluteError": 10.587416037
           },
           "candidateError": {
-            "compositedMeanAbsoluteError": 0.127551662,
-            "compositedMaximumAbsoluteError": 0.944769618,
-            "alphaMeanAbsoluteError": 0.036718223,
-            "alphaMaximumAbsoluteError": 0.499805624
+            "compositedMeanAbsoluteError": 0.127297051,
+            "compositedMaximumAbsoluteError": 0.954832175,
+            "alphaMeanAbsoluteError": 0.036566814,
+            "alphaMaximumAbsoluteError": 0.499949916
           },
-          "float32FilterMaximumError": 2.7737e-05,
+          "float32FilterMaximumError": 2.6784e-05,
           "faceGeometryChanged": false,
           "sourceArtworkRepainted": false
         },
         {
           "index": 2,
-          "legacyRGBAHash": "687145828FFC7050E6B6FC08FD0CD7E7EE1491240A5FD824F914430F263E010C",
-          "candidateRGBAHash": "1648116314E61708E56838E4E3A55766E531CBB72CE6C360F220ED7EE594A582",
+          "legacyRGBAHash": "68741C8C47303A289B06A7841B8B2DA5F3D7764F28F017F62AE80AAB78140968",
+          "candidateRGBAHash": "7ED345F61C2A4030F61E30D6FDA180EB73AF28CD882948985C062533D20547B1",
           "changedPixels": 19594,
           "legacyError": {
-            "compositedMeanAbsoluteError": 0.357663654,
+            "compositedMeanAbsoluteError": 0.357677316,
             "compositedMaximumAbsoluteError": 13.615842831,
-            "alphaMeanAbsoluteError": 0.103825112,
+            "alphaMeanAbsoluteError": 0.10382879,
             "alphaMaximumAbsoluteError": 10.947370074
           },
           "candidateError": {
-            "compositedMeanAbsoluteError": 0.127353516,
+            "compositedMeanAbsoluteError": 0.127355355,
             "compositedMaximumAbsoluteError": 0.929504385,
-            "alphaMeanAbsoluteError": 0.037022785,
+            "alphaMeanAbsoluteError": 0.037026463,
             "alphaMaximumAbsoluteError": 0.499932872
           },
           "float32FilterMaximumError": 2.5805e-05,
@@ -908,22 +908,22 @@
         },
         {
           "index": 3,
-          "legacyRGBAHash": "2F2BEFF1B30A51F51E0A398E38EABA41372DD40A034EB7468E640C598EC55C58",
-          "candidateRGBAHash": "F4504B615AA22A8DE562EA963A2D94B10AECF1CD2AD9B07382200D44519279D7",
-          "changedPixels": 19672,
+          "legacyRGBAHash": "E2B26D01B45314137D4FFF6063F2C6EF2C1FF144A66A66513666AD44004F2126",
+          "candidateRGBAHash": "6712843C7F2CDC93607DD9C3444B320CE98966D186A94008132C92286DB4166D",
+          "changedPixels": 19637,
           "legacyError": {
-            "compositedMeanAbsoluteError": 0.358276698,
-            "compositedMaximumAbsoluteError": 10.004189696,
-            "alphaMeanAbsoluteError": 0.103805794,
-            "alphaMaximumAbsoluteError": 9.632393662
+            "compositedMeanAbsoluteError": 0.358343862,
+            "compositedMaximumAbsoluteError": 10.808965498,
+            "alphaMeanAbsoluteError": 0.105560195,
+            "alphaMaximumAbsoluteError": 10.162810923
           },
           "candidateError": {
-            "compositedMeanAbsoluteError": 0.127824983,
-            "compositedMaximumAbsoluteError": 0.92974008,
-            "alphaMeanAbsoluteError": 0.037157373,
-            "alphaMaximumAbsoluteError": 0.499940298
+            "compositedMeanAbsoluteError": 0.127327882,
+            "compositedMaximumAbsoluteError": 0.954832175,
+            "alphaMeanAbsoluteError": 0.037054744,
+            "alphaMaximumAbsoluteError": 0.499949916
           },
-          "float32FilterMaximumError": 2.7737e-05,
+          "float32FilterMaximumError": 2.6784e-05,
           "faceGeometryChanged": false,
           "sourceArtworkRepainted": false
         },

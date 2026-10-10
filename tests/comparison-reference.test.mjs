@@ -66,7 +66,8 @@ const hop=JSON.parse(readFileSync(new URL('../candidates/phase5/jumping/build.js
 const contact=JSON.parse(readFileSync(new URL('../candidates/phase5/jumping/contact-proof.json',import.meta.url),'utf8'));
 test('actual two-link hop and old-height-field reference have the same source, poses and native holds',()=>{
   assert.equal(validateHopReference(contact,hop),contact);
-  assert.deepEqual(contact.airCelsRGBAExact,[true,true,true]);
+  assert.deepEqual(contact.airCelsRGBAExact,[false,true,false]);
+  assert.deepEqual(contact.airMaximumChannelDifference,[1,0,1]);
   assert.equal(contact.visualApprovalInherited,false);
   assert.equal(hop.strategyApprovalInheritedFromLocomotion,false);
   for(const key of Object.keys(contact.contract)){
@@ -74,7 +75,7 @@ test('actual two-link hop and old-height-field reference have the same source, p
     assert.throws(()=>validateHopReference(contact,changed));
   }
   for(const [key,value] of [['referenceRole','approved-old-pet'],['visualApprovalInherited',true],
-    ['installed',true],['file','bad.webp'],['airCelsRGBAExact',[true,false,true]]]){
+    ['installed',true],['file','bad.webp'],['airCelsRGBAExact',[true,true,true]]]){
     assert.throws(()=>validateHopReference({...contact,[key]:value},hop));
   }
   assert.throws(()=>validateHopReference({...contact,candidateFrameHashes:contact.frameHashes},hop));

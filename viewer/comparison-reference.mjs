@@ -27,7 +27,7 @@ export function comparisonReference(choice,state,index){
   if(choice==='rigid'&&['run_right','run_left'].includes(state))return {kind:'rigid',state,index,synchronized:true};
   if(choice==='contact'&&state==='jumping')return {kind:'contact',state,index,synchronized:true};
   if(choice==='mouth'&&state==='failed')return {kind:'mouth',state:'failed',index,synchronized:true};
-  if(choice==='height'&&state==='jumping_height')return {kind:'candidate',state:'jumping',index,synchronized:true};
+  if(choice==='height'&&state==='jumping')return {kind:'height',state,index,synchronized:true};
   if(state==='idle')return {kind:'candidate',state,index,synchronized:true};
   throw new Error('Synchronized reference cannot compare a different action');
 }
@@ -76,12 +76,17 @@ export function validateHopReference(metadata,current){
   if(current.state!=='jumping'||current.nativeRow!==4
       ||current.groundedContactVersion!=='two-link-source-material-v1'
       ||current.strategyApprovalInheritedFromLocomotion!==false
-      ||current.visualMotionApproval!=='pending'||current.originalAirCelsRGBAExact!==true
+      ||current.visualMotionApproval!=='pending'||current.originalAirCelsRGBAExact!==false
+      ||current.airMaterialIdentityProven!==false
       ||metadata.referenceRole!=='regenerated-counterfactual-not-active-animation'
       ||metadata.referencePurpose!=='isolate-grounded-two-link-knees-vs-vertical-height-field'
       ||metadata.file!=='comparison-old-strip.webp'||metadata.frameHashes?.length!==5
       ||metadata.visualApprovalInherited!==false||metadata.installableFullAtlas!==false||metadata.installed!==false
-      ||JSON.stringify(metadata.airCelsRGBAExact)!==JSON.stringify([true,true,true])
+      ||JSON.stringify(metadata.airCelsRGBAExact)!==JSON.stringify([false,true,false])
+      ||JSON.stringify(metadata.airChangedPixels)!==JSON.stringify(current.heightFieldAirChangedPixels)
+      ||JSON.stringify(metadata.airMaximumChannelDifference)!==JSON.stringify(current.heightFieldAirMaximumChannelDifference)
+      ||current.heightFieldAirMaximumChannelDifference?.length!==3
+      ||current.heightFieldAirMaximumChannelDifference.some(n=>!Number.isInteger(n)||n<0||n>1)
       ||JSON.stringify(metadata.candidateFrameHashes)!==JSON.stringify(current.frameHashes)
       ||fields.some(key=>current[key]===undefined||JSON.stringify(metadata.contract?.[key])!==JSON.stringify(current[key])))
     throw new Error('Hop comparison source/poses/timing or candidate boundary mismatch');
