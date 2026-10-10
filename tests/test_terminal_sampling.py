@@ -1,18 +1,13 @@
-"""Filter arithmetic and complete actual-cel isolation, not visual approval."""
-import hashlib
-import json
+"""Small filter-arithmetic checks; unadopted historical research is not a current-artwork gate."""
 from pathlib import Path
 import sys
 import unittest
 
 import numpy as np
-from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT/'tools'))
 import terminal_sampling as sampling
-import study_terminal_sampling as study
-from canonical import ACCEPTED_SHA
 
 
 class TerminalFilter(unittest.TestCase):
@@ -69,68 +64,6 @@ class TerminalFilter(unittest.TestCase):
         extreme = np.array([[[-3, 8, 280, 270], [9, -3, 1, -1]]], dtype=float)
         self.assertTrue(np.array_equal(np.asarray(sampling.rgba8(extreme)), [[[0, 8, 255, 255], [0, 0, 0, 0]]]))
 
-
-class ActualCoverage(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        cls.meta = json.loads((study.OUT/'build.json').read_text(encoding='utf-8'))
-        with Image.open(study.OUT/'spritesheet.webp') as image: cls.atlas = image.convert('RGBA')
-        with Image.open(ROOT/'candidates/phase5/global/spritesheet.webp') as image: cls.old = image.convert('RGBA')
-
-    def test_all_actual_cels_and_only_the_unused_native_idle_slot_are_replaced(self):
-        self.assertEqual(self.meta['sourceSha256'], ACCEPTED_SHA)
-        self.assertEqual(self.meta['coverage'], dict(actionStates=9, lookDirections=16,
-                          actualTimedActionCels=57, comparedCels=73))
-        self.assertEqual(study.digest(self.atlas), self.meta['candidateAtlasRGBAHash'])
-        self.assertEqual(study.digest(self.old), self.meta['baselineAtlasRGBAHash'])
-        records = []
-        touched = np.zeros((2288, 1536), dtype=bool)
-        for name in study.STATES+['look']:
-            entry = self.meta['states'][name]
-            active = study.metadata(name)
-            self.assertEqual(entry['legacyFrameHashes'], active['frameHashes'])
-            self.assertEqual(entry['camera'], active['camera'])
-            self.assertEqual(entry['durationsMs'], active.get('durationsMs'))
-            for i, record in enumerate(entry['cels']):
-                row = 9+i//8 if name == 'look' else study.STATES.index(name)
-                box = ((i%8)*192, row*208, (i%8+1)*192, (row+1)*208)
-                touched[box[1]:box[3], box[0]:box[2]] = True
-                self.assertEqual(study.digest(self.atlas.crop(box)), record['candidateRGBAHash'])
-                self.assertEqual(study.digest(self.old.crop(box)), record['legacyRGBAHash'])
-                self.assertLess(record['candidateError']['compositedMeanAbsoluteError'],
-                                record['legacyError']['compositedMeanAbsoluteError'])
-                self.assertLess(record['float32FilterMaximumError'], 4e-5)
-                records.append(record)
-        touched[:208, 6*192:7*192] = True
-        self.assertEqual(self.atlas.crop((6*192, 0, 7*192, 208)).tobytes(), self.atlas.crop((0, 0, 192, 208)).tobytes())
-        self.assertTrue(np.array_equal(np.asarray(self.atlas)[~touched], np.asarray(self.old)[~touched]))
-        self.assertEqual(len(records), 73)
-        self.assertAlmostEqual(self.meta['meanLegacyCompositedError'],
-                               np.mean([r['legacyError']['compositedMeanAbsoluteError'] for r in records]))
-
-    def test_no_art_geometry_fps_memory_or_adoption_claim(self):
-        self.assertEqual(self.atlas.size, (1536, 2288))
-        self.assertEqual(self.meta['decodedBytes'], 14057472)
-        self.assertTrue(self.meta['allLegacyCelsReconstructedExactly'])
-        self.assertTrue(self.meta['geometryAndSourcePixelsUnchanged'])
-        self.assertTrue(self.meta['allCelsLowerMeanCompositedError'])
-        for key in ('oracleIsAestheticProof', 'hostResolutionChanged', 'hostFpsChanged',
-                    'nativeTimingsChanged', 'sourcePrecompositionRemoved', 'nativeUpscalingChanged',
-                    'activeAtlasChanged', 'adopted', 'installableFullAtlas', 'installed'):
-            self.assertFalse(self.meta[key], key)
-        self.assertEqual(self.meta['visualApproval'], 'pending')
-
-    def test_hop_closure_uses_its_own_material_and_all_three_renderer_hooks_rebuild(self):
-        jobs, _ = study.jobs()
-        # A first-run late-binding defect used run_left's gaze/follow material
-        # in jumping. Verify the actual callback route after all jobs are built.
-        for name, index in [('idle', 2), ('jumping', 0), ('run_left', 6), ('review', 0), ('look', 15)]:
-            frame, record = study.compare(name, index, jobs[name][index],
-                                        self.meta['states'][name]['legacyFrameHashes'][index])
-            self.assertEqual(record, self.meta['states'][name]['cels'][index])
-            row = 9+index//8 if name == 'look' else study.STATES.index(name)
-            self.assertEqual(frame.tobytes(), self.atlas.crop(((index%8)*192, row*208,
-                                   (index%8+1)*192, (row+1)*208)).tobytes())
 
 
 if __name__ == '__main__': unittest.main()

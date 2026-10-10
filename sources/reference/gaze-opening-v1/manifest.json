@@ -1,0 +1,12 @@
+{
+  "referencePurpose": "exact-pre-correction-look-cells-and-atlas",
+  "commit": "6c0957cd0fad8a76050e4a2bd248d3966f3727f0",
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "lookFile": "look.webp",
+  "lookEncodedSha256": "210079953FF8563690562B1E8DAB1658CC9CC9FBDFF6DEC392645CA78CC358E1",
+  "lookContract": "look-contract.json",
+  "atlasFile": "atlas.webp",
+  "atlasEncodedSha256": "64D13B2C201821E01B9DD13BBF16ACCE4AD457DB87CC14D06BDAF2151C2E3484",
+  "role": "frozen input for corrected-eye scope comparison; not current assets or visual approval",
+  "installed": false
+}

@@ -30,10 +30,11 @@ The whole review excludes all unadopted candidates, so they cannot be confused w
 | Hands and clothing | Waiting/review hand volume, wrist/cuff joins, sleeve edges and hidden-hair integration need visual judgement and refinement. |
 | Natural motion | Discrete holds, arbitrary state cuts, airborne interruptions and held-hand entry/exit remain; current prototypes are not finished motion. |
 | Small-size expression | Several gestures and nearby gaze directions are weak at 80px. |
+| Eye materials | The sixteen look cells now exclude two confirmed lower-eye skin locations from the moving iris. Pale rims remain; action rows still use the legacy eye extraction. |
 | Host capabilities | Native 192×208 cells, fixed hold times, pixelated scaling and pointer priority are unchanged. Atlas edits cannot remove these constraints. |
 | Delivery and measurement | Complete aesthetic acceptance, native-host loading of the new atlas, final release and real CPU/GPU/FPS measurements are not established. |
 
-The current atlas is 1,009,836 encoded bytes and decodes to 14,057,472 RGBA bytes.
+The current atlas is 1,008,944 encoded bytes and decodes to 14,057,472 RGBA bytes.
 Changed artwork is not a same-content compression result; file size does not prove FPS or texture-memory improvement.
 See the [full scope/acceptance ledger](docs/REQUIREMENTS.zh-CN.md) and [chronological work record](docs/PHASE5-STATES.zh-CN.md).
 Old long-form README notes remain in [Git history](https://github.com/TruthNian/pet-kaguya/blob/165d52c1050cef67c6cd7d01098587e972adb343/README.md), not as misleading current status.
@@ -51,6 +52,8 @@ python -m http.server 8767 --bind 127.0.0.1
 Use http://127.0.0.1:8767/viewer/whole-review.html for the whole review.
 The fast check reads current pixels/contracts; it does not rerender historical studies.
 Build only the action being edited and check only affected playback logic.
+The unadopted float-sampling study is frozen research, not a required artwork rebuild; its old sixteen gaze cells do not describe the corrected current gaze.
+Three whole-scene research tests have been removed. Small filter arithmetic checks remain, but are not part of the daily visual loop.
 The default CI uses fast current-asset/core-logic checks. Full archived regressions and installer audits require explicit manual `full_audit`; they do not block daily visual iteration.
 A green engineering check is not aesthetic approval.
 

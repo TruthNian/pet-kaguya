@@ -1,0 +1,23 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "generatedSha256": "684BA98301B8BD4F204581E77CDE1586528D0EC7B1804C5CFC4ADB5E1EF2B61A",
+  "role": "hidden eye backing only; not a visible pet face",
+  "fullRedrawAccepted": false,
+  "rawChangedPixelsOutsideEyeApertures": 814439,
+  "boundedChangedPixelsOutsideEyeApertures": 0,
+  "neutralReconstructionRGBAExact": true,
+  "neutralReconstructionUsesSameLayers": true,
+  "diagnosticIrisPNGsAreQuantized": true,
+  "layerCompositing": "nonnegative premultiplied material-colour layers with inverse matte; original face alpha coverage retained exactly",
+  "originalSourceAlphaPreservedExactly": true,
+  "facialGeometryRepair": false,
+  "eyeOutlineFixed": true,
+  "visualAcceptance": "pending",
+  "installed": false,
+  "installableFullAtlas": false,
+  "sourceRig": "sources/canonical/gaze-rig-v2.json",
+  "sourceGeometryRevision": "observed-eye-opening-v2",
+  "rawGeneratedSource": "candidates/phase5/eye-backing-v1/generated.png",
+  "newArtworkGenerated": false,
+  "legacyActionEyeMaterialsChanged": false
+}

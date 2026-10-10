@@ -135,7 +135,7 @@
       "visualMotionApproval": "pending"
     }
   ],
-  "atlasRGBAHash": "8655596D700C919C07068F30B8E18A60E1E821137DD363082CDE1CB61FDB578F",
+  "atlasRGBAHash": "E1A913E477BBD293193D056E9EC3A5D65DD0E128D41AB74B69F3F71D686949A5",
   "construction": "exact paste of verified decoded v3 candidate strips; no new geometry or sampling",
   "visualAcceptance": "pending",
   "allStateTransitionsAccepted": false,

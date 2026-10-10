@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "canvas": [1205,1306],
+  "faceShapeLocked": true,
+  "irisShapeWarpAllowed": false,
+  "bodyRotationAllowed": false,
+  "maximumDisplacementSourcePx": [12,7],
+  "directions": 16,
+  "offsetDecimalPlaces": 12,
+  "directionZero": "up; clockwise 22.5-degree sectors",
+  "sourceGeometryRevision": "observed-eye-opening-v2",
+  "apertureEdgeFeatherSourcePx": 0.65,
+  "irisEdgeBlurSourcePx": 0.7,
+  "backingMarginSourcePx": 3,
+  "eyes": [
+    {
+      "name": "viewer_left",
+      "edgeHighlightRects": [[550,348,567,360]],
+      "box": [465,280,587,397],
+      "aperturePolygon": [[529,295],[549,302],[563,316],[572,335],[575,353],[567,367],[555,376],[542,381],[528,383],[514,383],[500,381],[486,374],[477,363],[474,348],[477,327],[486,311],[500,301],[515,295]],
+      "irisPolygon": [[529,298],[546,303],[558,313],[568,330],[572,349],[566,367],[553,377],[538,383],[522,382],[507,376],[497,365],[491,347],[491,329],[497,314],[508,302],[521,298]]
+    },
+    {
+      "name": "viewer_right",
+      "edgeHighlightRects": [],
+      "box": [636,263,761,386],
+      "aperturePolygon": [[690,283],[708,286],[724,297],[737,311],[744,331],[739,347],[727,357],[715,363],[703,367],[693,369],[682,367],[670,363],[660,357],[651,345],[647,332],[648,314],[656,300],[669,289],[680,283]],
+      "irisPolygon": [[690,288],[705,290],[718,298],[728,316],[731,335],[722,354],[709,364],[693,368],[677,364],[663,354],[655,339],[654,325],[657,310],[665,298],[677,289]]
+    }
+  ],
+  "geometryEvidence": "Mother source eye crops inspected at 4x with 10px coordinates; legacy extraction included upper sclera shadows and lower skin, especially the viewer-right iris. Vertices are bounded estimates, not recovered artist layers.",
+  "visualAcceptance": "pending",
+  "installableFullAtlas": false
+}

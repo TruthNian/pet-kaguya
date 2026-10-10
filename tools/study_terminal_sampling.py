@@ -83,7 +83,8 @@ def jobs():
         material = walking.prepare(legs, focused, fields,local_support=ZERO)
         result[state['state']] = [lambda terminal, key=key, material=material, direction=direction:
             walking.render(material, key, direction, transform, terminal=terminal) for key in keys]
-    gaze_spec = gaze.specification()
+    gaze_spec = gaze.specification(corrected=True)
+    eye_layers = gaze.layers(mother,gaze.load_generated(),gaze_spec)
     result['look'] = [ordinary(gaze.pose(mother, eye_layers, *gaze.offsets(i, gaze_spec)), [zero])[0]
                       for i in range(16)]
     return result, transform

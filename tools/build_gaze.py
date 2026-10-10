@@ -21,8 +21,9 @@ OUT = ROOT/'candidates/phase5/look'
 GENERATED_SHA = '684BA98301B8BD4F204581E77CDE1586528D0EC7B1804C5CFC4ADB5E1EF2B61A'
 
 
-def specification():
-    spec = json.loads((ROOT/'sources/canonical/gaze-rig.json').read_text(encoding='utf-8'))
+def specification(*, corrected=False):
+    name='gaze-rig-v2.json' if corrected else 'gaze-rig.json'
+    spec = json.loads((ROOT/'sources/canonical'/name).read_text(encoding='utf-8'))
     validate_rig(spec)
     return spec
 
@@ -33,6 +34,9 @@ def validate_rig(spec):
             or spec['bodyRotationAllowed'] or spec['directions'] != 16 or spec['offsetDecimalPlaces'] != 12
             or spec['installableFullAtlas'] or spec['visualAcceptance'] != 'pending'):
         raise ValueError('Gaze violates locked mother/eye shape/candidate boundary')
+    feather=spec.get('apertureEdgeFeatherSourcePx',0)
+    if isinstance(feather,bool) or not math.isfinite(feather) or not 0<=feather<=1:
+        raise ValueError('Eye-opening coverage feather must remain inside one source pixel')
     if (len(spec['maximumDisplacementSourcePx'])!=2
             or any(not math.isfinite(v) or v <= 0 or v > limit for v,limit in zip(spec['maximumDisplacementSourcePx'], [12,7]))):
         raise ValueError('Gaze displacement exceeds the inspected range')
@@ -129,7 +133,10 @@ def layers(source, generated, spec):
     for eye in spec['eyes']:
         original = np.asarray(source.crop(tuple(eye['box'])))
         new = np.asarray(generated.crop(tuple(eye['box'])))
-        aperture = np.asarray(polygon_mask(eye,'aperturePolygon')) > 0
+        aperture_mask=polygon_mask(eye,'aperturePolygon')
+        aperture = np.asarray(aperture_mask) > 0
+        feather=spec.get('apertureEdgeFeatherSourcePx',0)
+        aperture_coverage=np.where(aperture,np.asarray(aperture_mask.filter(ImageFilter.GaussianBlur(feather)),dtype=float)/255,0)
         iris_mask = visible_iris_mask(original,eye)
         support = np.asarray(iris_mask.filter(ImageFilter.MaxFilter(2*spec['backingMarginSourcePx']+1))) > 0
         support &= aperture
@@ -172,7 +179,8 @@ def layers(source, generated, spec):
             raise ValueError('Iris matte cannot reconstruct with physical RGBA layers')
         foreground = np.dstack([np.clip(premult,0,1),np.clip(alpha,0,1)])
         results.append(dict(eye=eye,original=original,background=b,aperture=aperture,
-                            support=support,foreground=foreground,knownSclera=keep))
+                            support=support,foreground=foreground,knownSclera=keep,
+                            apertureCoverage=aperture_coverage))
     return results
 
 
@@ -201,6 +209,8 @@ def pose(source, eye_layers, dx, dy):
         rgb = layer['background']*(1-moved[...,3:4])+moved[...,:3]
         patch = result[y0:y1,x0:x1]
         selected = layer['aperture']
+        coverage=layer['apertureCoverage'][...,None]
+        rgb=patch[...,:3]/255*(1-coverage)+rgb*coverage
         patch[...,:3][selected] = np.clip(np.rint(rgb[selected]*255),0,255).astype(np.uint8)
         # Original alpha, eye outline and every pixel outside the opening stay.
     return Image.fromarray(result)
@@ -238,8 +248,8 @@ def contact(frames, width):
     return board
 
 
-def inputs():
-    source, generated, spec = load_canonical(), load_generated(), specification()
+def inputs(*, corrected=True):
+    source, generated, spec = load_canonical(), load_generated(), specification(corrected=corrected)
     eye_layers = layers(source,generated,spec)
     transform = camera(clean_cutout(source)[0])
     regions,_ = idle_specification()
@@ -248,13 +258,16 @@ def inputs():
 
 def main():
     source,generated,spec,eye_layers,transform,regions,masks = inputs()
+    OUT.mkdir(parents=True,exist_ok=True)
+    material_out=OUT/'material-v2'
+    material_out.mkdir(parents=True,exist_ok=True)
     neutral = pose(source,eye_layers,0,0)
     if neutral.tobytes() != source.tobytes():
         raise ValueError('Neutral gaze layers do not reconstruct the complete original RGBA image')
     allowed = aperture_union(source,eye_layers)
     art = backing(source,eye_layers)
-    art.save(ART/'backing.png')
-    Image.fromarray(allowed.astype(np.uint8)*255).save(ART/'allowed-mask.png')
+    art.save(material_out/'backing.png')
+    Image.fromarray(allowed.astype(np.uint8)*255).save(material_out/'allowed-mask.png')
     diagnostics = ROOT/'work/gaze-inspection'
     diagnostics.mkdir(parents=True,exist_ok=True)
     for name,image in [('source',source),('raw',generated),('backing',art),('neutral',neutral)]:
@@ -263,7 +276,7 @@ def main():
         pixels = layer['foreground'].copy()
         np.divide(pixels[...,:3],pixels[...,3:4],out=pixels[...,:3],where=pixels[...,3:4]>0)
         pixels[pixels[...,3]==0,:3] = 0
-        Image.fromarray(np.clip(np.rint(pixels*255),0,255).astype(np.uint8)).save(ART/f"{layer['eye']['name']}-iris-diagnostic.png")
+        Image.fromarray(np.clip(np.rint(pixels*255),0,255).astype(np.uint8)).save(material_out/f"{layer['eye']['name']}-iris-diagnostic.png")
     OUT.mkdir(parents=True,exist_ok=True)
     poses,frames = [],[]
     zero_pose = dict(bodyY=0,earAngle=0,hairAngle=0)
@@ -298,8 +311,13 @@ def main():
         layerCompositing='nonnegative premultiplied material-colour layers with inverse matte; original face alpha coverage retained exactly',
         originalSourceAlphaPreservedExactly=True,
         facialGeometryRepair=False,eyeOutlineFixed=True,visualAcceptance='pending',installed=False,installableFullAtlas=False)
-    (ART/'build.json').write_text(json.dumps(art_metadata,indent=2)+'\n',encoding='utf-8')
+    art_metadata.update(sourceRig='sources/canonical/gaze-rig-v2.json',sourceGeometryRevision=spec['sourceGeometryRevision'],
+        rawGeneratedSource='candidates/phase5/eye-backing-v1/generated.png',newArtworkGenerated=False,
+        legacyActionEyeMaterialsChanged=False)
+    (material_out/'build.json').write_text(json.dumps(art_metadata,indent=2)+'\n',encoding='utf-8')
     metadata = dict(sourceSha256=ACCEPTED_SHA,eyeBackingGeneratedSha256=GENERATED_SHA,
+        sourceRig='sources/canonical/gaze-rig-v2.json',sourceGeometryRevision=spec['sourceGeometryRevision'],
+        eyeMaterial='candidates/phase5/look/material-v2',legacyActionEyeMaterialsChanged=False,
         state='look',directionCount=16,nativeRows=[9,10],directionZero='up',clockwiseStepDegrees=22.5,
         sourceOffsetDecimalPlaces=spec['offsetDecimalPlaces'],
         sourceOffsetsPx=[offsets(index,spec) for index in range(16)],camera=transform,
@@ -308,7 +326,8 @@ def main():
         onlyEyeAperturesMayChange=True,frameHashes=[hashlib.sha256(frame.tobytes()).hexdigest().upper() for frame in frames],
         neutralFrameHash=hashlib.sha256(neutral_frame.tobytes()).hexdigest().upper(),
         visualAcceptance='pending',installed=False,installableFullAtlas=False,
-        limitations=['Iris matte is estimated from visible source pixels, not an authored ground-truth eye layer; fine boundary uncertainty remains.',
+        limitations=['Iris matte and corrected opening vertices are estimated from visible source pixels; pale fringes are not claimed fully removed.',
+                     'This revision fixes the 16 look cells only. Existing action rows still use the frozen v1 eye materials and need separate propagation/review.',
                      'Only gaze is changed; no head turn or new native interpolation.',
                      'Small-scale direction legibility and naturalness require visual acceptance.',
                      'Native pointer priority remains unchanged; independent preview is not host integration.'])

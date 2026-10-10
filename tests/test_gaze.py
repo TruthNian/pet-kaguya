@@ -62,7 +62,7 @@ class Gaze(unittest.TestCase):
             np.testing.assert_array_equal(new[...,3],original[...,3])
             np.testing.assert_array_equal(new[~self.allowed],original[~self.allowed])
         # Independent landmarks: brows/lashes, mouth, chin and entire costume.
-        for x,y in [(535,250),(530,290),(695,273),(450,334),(773,320),(615,400),(610,447),(615,610)]:
+        for x,y in [(535,250),(530,290),(695,273),(450,334),(773,320),(615,400),(610,447),(615,610),(550,380),(683,370)]:
             self.assertFalse(self.allowed[y,x])
             for pose in self.poses:
                 np.testing.assert_array_equal(np.asarray(pose)[y,x],original[y,x])
@@ -140,6 +140,7 @@ class Gaze(unittest.TestCase):
         self.assertFalse(art_meta['fullRedrawAccepted'])
         self.assertEqual(self.meta['sourceSha256'],ACCEPTED_SHA)
         self.assertEqual(self.meta['directionCount'],16)
+        self.assertEqual(self.meta['sourceGeometryRevision'],'observed-eye-opening-v2')
         self.assertEqual(self.meta['nativeRows'],[9,10])
         for key in ('bodyRotated','artMirrored','irisShapeWarp','facialGeometryRepair','originalSourceModified','installed','installableFullAtlas'):
             self.assertFalse(self.meta[key])

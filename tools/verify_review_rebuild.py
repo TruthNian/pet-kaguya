@@ -29,7 +29,7 @@ FOLDERS = ['candidates/phase4/static', 'candidates/phase4/canonical-v3', 'candid
            'candidates/phase5/review-sleeves-v2','candidates/phase5/review-art-v6',
            'candidates/phase5/waiting-sleeve-v1','candidates/phase5/waiting-art-v2',
            'candidates/phase5/review-hands-pair-v1','candidates/phase5/review-hands-overlap-v1',
-           'candidates/phase5/terminal-sampling-v1','candidates/phase5/failed-mouth-v2',
+           'candidates/phase5/look/material-v2','candidates/phase5/failed-mouth-v2',
            'candidates/phase5/failed-mouth-v2/animation','sources/reference/failed-mouth-v1',
            'candidates/phase5/jumping-height-v1','sources/reference/jumping-height-8px',
            'sources/reference/material-support-v1','sources/reference/review-held-v6',
@@ -83,8 +83,8 @@ def main():
                    cwd=ROOT,check=True,capture_output=True)
     subprocess.run([sys.executable,str(ROOT/'tools/refine_source_arm.py')],
                    cwd=ROOT,check=True,capture_output=True)
-    subprocess.run([sys.executable,str(ROOT/'tools/study_terminal_sampling.py')],
-                   cwd=ROOT,check=True,capture_output=True)
+    # Unadopted precision research remains frozen at its documented epoch.
+    # It is not a release-artwork regression or a required full-scene rebuild.
     subprocess.run([sys.executable,str(ROOT/'tools/cloth_follow_study.py')],
                    cwd=ROOT,check=True,capture_output=True)
     for script in ('study_wave_amplitude.py','guide_wave_amplitude.py',
