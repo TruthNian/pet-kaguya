@@ -1,0 +1,11 @@
+{
+  "commit": "274abbb5122625de604a6e51299a80443c4c4bb9",
+  "referenceRole": "frozen-source-input-not-active-animation",
+  "referencePurpose": "isolate-review-held-hands-and-cuffs",
+  "file": "review.webp",
+  "contract": "contract.json",
+  "fileSha256": "885A19AA646D3B5EF3E1E978D95E116D745650F419CCEE22ED6C6B2CBFF28B63",
+  "visualApprovalInherited": false,
+  "installableFullAtlas": false,
+  "installed": false
+}

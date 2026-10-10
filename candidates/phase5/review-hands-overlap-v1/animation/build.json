@@ -1,0 +1,197 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "source": "sources/canonical/artwork.png",
+  "state": "review",
+  "previewVariant": "review_overlap",
+  "nativeRow": 8,
+  "handArt": "candidates/phase5/review-hands-overlap-v1",
+  "handGeneratedSha256": "4ACA513583BF6BD69B642D5A656E97386E3B890CD2BBD861A96B6A4A98AAB6EE",
+  "parentPoseRGBAHash": "3701641146B3CDF39C71F43A1EF9648511AB6D8565751C31C1BB205CC87664FE",
+  "candidatePoseRGBAHash": "F4A43E5B7A3DFC23D89206E148C073CDA38317303CCDDEB17BC3CB49061B09F0",
+  "focusedPoseRGBAHash": "0118C6FAC2509CB3A7534AC40E8B5194539F4405E1D70B3FB57DE957C016C8B1",
+  "camera": {
+    "scale": 0.15833333333333333,
+    "x": 0.36666666666667425,
+    "y": 7.883333333333354,
+    "visibleBBox": [
+      142,
+      26,
+      1066,
+      1226
+    ],
+    "floor": 202,
+    "topReserve": 12,
+    "cell": [
+      192,
+      208
+    ]
+  },
+  "durationsMs": [
+    150,
+    150,
+    150,
+    150,
+    150,
+    280
+  ],
+  "keyframes": [
+    {
+      "bodyY": 0,
+      "earAngle": 0,
+      "hairAngle": 0
+    },
+    {
+      "bodyY": 0,
+      "earAngle": 0.06,
+      "hairAngle": 0
+    },
+    {
+      "bodyY": 0,
+      "earAngle": 0.15,
+      "hairAngle": 0.01
+    },
+    {
+      "bodyY": 0,
+      "earAngle": 0.15,
+      "hairAngle": 0.02
+    },
+    {
+      "bodyY": 0,
+      "earAngle": 0.06,
+      "hairAngle": 0
+    },
+    {
+      "bodyY": 0,
+      "earAngle": 0,
+      "hairAngle": 0
+    }
+  ],
+  "repeatBeforeIdle": 3,
+  "totalDurationMs": 1030,
+  "actionDurationMs": 3090,
+  "focusOffsetSourcePx": [
+    0,
+    5
+  ],
+  "handStrategy": "low-overlapping-hands-held",
+  "heldTimingUserDecision": "held-gesture-boundary-decision-20261009.json",
+  "heldTimingAcceptedTemporarily": true,
+  "baselineFrameHashes": [
+    "AF91CA1B6139C71DC93901B9A8AFB44AB153C036F841EAB60597C0D0F5C36E73",
+    "BCCAC1FF6826DFBE1B65AF35BA81BCD20CFEF50A9522596B8530AACA481CED62",
+    "DADBAFB1605C7BA2A64895B6099672891FBE0CECD6029A1D873B0E926C88F10E",
+    "61CA98F16422A51AB309899FB906E51B9F8154214A1C9E9B6509D20A1C091A97",
+    "BCCAC1FF6826DFBE1B65AF35BA81BCD20CFEF50A9522596B8530AACA481CED62",
+    "AF91CA1B6139C71DC93901B9A8AFB44AB153C036F841EAB60597C0D0F5C36E73"
+  ],
+  "frameHashes": [
+    "D42B95162916765F3487E69F8FF81432A6A7C2CA95912D4BC61CDA68702E8891",
+    "4F2A4A29BB23F464A2096643EAB74B66429CDC7BDC9BBF64A62AF9448E3AF914",
+    "B120A98229007766BE984650862A8D1E749BF3D4506070CCC1B64B273A56DA3D",
+    "42FA43FD63A1DB8147860F8CB85352E0854230647BEAD4B8674BC8012A25DF38",
+    "4F2A4A29BB23F464A2096643EAB74B66429CDC7BDC9BBF64A62AF9448E3AF914",
+    "D42B95162916765F3487E69F8FF81432A6A7C2CA95912D4BC61CDA68702E8891"
+  ],
+  "changesFromFrozenReview": [
+    {
+      "changedPixels": 844,
+      "alphaChangedPixels": 0,
+      "bounds": [
+        61,
+        105,
+        104,
+        140
+      ]
+    },
+    {
+      "changedPixels": 844,
+      "alphaChangedPixels": 0,
+      "bounds": [
+        61,
+        105,
+        104,
+        140
+      ]
+    },
+    {
+      "changedPixels": 844,
+      "alphaChangedPixels": 0,
+      "bounds": [
+        61,
+        105,
+        104,
+        140
+      ]
+    },
+    {
+      "changedPixels": 844,
+      "alphaChangedPixels": 0,
+      "bounds": [
+        61,
+        105,
+        104,
+        140
+      ]
+    },
+    {
+      "changedPixels": 844,
+      "alphaChangedPixels": 0,
+      "bounds": [
+        61,
+        105,
+        104,
+        140
+      ]
+    },
+    {
+      "changedPixels": 844,
+      "alphaChangedPixels": 0,
+      "bounds": [
+        61,
+        105,
+        104,
+        140
+      ]
+    }
+  ],
+  "referencePurpose": "isolate-review-held-hands-and-cuffs",
+  "baselineActualCelsReconstructedExactly": true,
+  "sourceAlphaPreservedExactly": true,
+  "nativeAlphaPreservedExactly": true,
+  "sourceChangesInsideHandCuffPermissionOnly": true,
+  "sourceEyeFaceRGBAExactToBaseline": true,
+  "bodyEarHairPosesUnchanged": true,
+  "handCuffMaximumSourceDisplacementPx": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "sameSourceCoordinateCamera": true,
+  "closedEyeFrames": 0,
+  "facialGeometryRepair": false,
+  "newFaceGeometry": false,
+  "nativeInterpolation": false,
+  "animationBuilt": true,
+  "newArtworkGeneratedThisBuild": false,
+  "loopSeamRGBAExact": true,
+  "specificPoseUserApproval": "pending",
+  "visualMotionApproval": "pending",
+  "adopted": false,
+  "activeAtlasChanged": false,
+  "installableFullAtlas": false,
+  "installed": false,
+  "articulatedArmBuilt": false,
+  "cleanLayerRecoveryClaimed": false,
+  "entryExitTransitionsBuilt": false,
+  "limitations": [
+    "Six held cels only; reuses existing unapproved static hand/cuff artwork.",
+    "Same original-iris focus, camera, ear/hair fields, native holds and three-cycle fallback.",
+    "Hand/cuff RGB is bounded; original alpha, face/eyes and shoes preserved. Protected visible waist motif is retained; newly occluded parts are not claimed pixel-exact.",
+    "No new state, interpolation, natural entry/exit or clean author-layer claim.",
+    "Hand anatomy, wrist/cuff continuity and small-size visual quality still need user review.",
+    "Temporary held timing acceptance does not approve this hand strategy, full animation or installation."
+  ]
+}

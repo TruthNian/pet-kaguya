@@ -22,7 +22,7 @@ export function validateRigidReference(metadata,state,current){
   return entry;
 }
 export function comparisonReference(choice,state,index){
-  if(!['idle','rigid','contact','mouth','height'].includes(choice)||!Number.isInteger(index)||index<0
+  if(!['idle','rigid','contact','mouth','height','hands'].includes(choice)||!Number.isInteger(index)||index<0
       ||!durations[candidateRows[state]]||index>=durations[candidateRows[state]].length)
     throw new Error('Invalid comparison selection');
   if(choice==='idle')return {kind:'candidate',state:'idle',index:0,synchronized:false};
@@ -30,8 +30,21 @@ export function comparisonReference(choice,state,index){
   if(choice==='contact'&&state==='jumping')return {kind:'contact',state,index,synchronized:true};
   if(choice==='mouth'&&state==='failed')return {kind:'mouth',state:'failed',index,synchronized:true};
   if(choice==='height'&&state==='jumping')return {kind:'height',state,index,synchronized:true};
+  if(choice==='hands'&&state==='review_overlap')return {kind:'hands',state:'review',index,synchronized:true};
   if(state==='idle')return {kind:'candidate',state,index,synchronized:true};
   throw new Error('Synchronized reference cannot compare a different action');
+}
+
+// A trial has no entry in the current-atlas float study. Reset incompatible
+// references rather than silently comparing different states or art epochs.
+export function comparisonPolicy(mode,choice,reset=false){
+  if(!Object.keys(candidateRows).includes(mode))throw new Error('Invalid comparison mode');
+  const actionChoices=['run_right','run_left'].includes(mode)?['rigid']
+    :mode==='jumping'?['height','contact']:mode==='failed'?['mouth']
+    :mode==='review_overlap'?['hands']:[];
+  const allowed=['idle',...actionChoices];
+  if(!['waving_source','review_overlap'].includes(mode))allowed.push('sampling');
+  return {allowed,choice:reset||!allowed.includes(choice)?actionChoices[0]??'idle':choice};
 }
 
 export function validateMouthReference(manifest,baseline,study,current){
