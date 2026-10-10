@@ -35,12 +35,13 @@ The whole review excludes all unadopted candidates, so they cannot be confused w
 | Natural motion | Discrete holds, arbitrary state cuts, airborne interruptions and held-hand entry/exit remain; current prototypes are not finished motion. |
 | Small-size expression | Several gestures and nearby gaze directions are weak at 80px. |
 | Eye materials | Accepted original-eye texture flow reduces observed duplicate pale rims without iris extraction or generated eye-white backing. Complete naturalness, small-size direction legibility and slight iris deformation still need judgement. |
-| Host capabilities | Native 192×208 cells, fixed hold times, pixelated scaling and pointer priority are unchanged. Atlas edits cannot remove these constraints. |
+| Host capabilities | Known v2 format requires a 1536×2288 atlas with 192×208 cells. Display uses percentage sizing, not a hard 192×208 pixel crop; import/avatar generation validates exact known dimensions, and CSS requests pixelated scaling. Larger-density native compatibility is unproven. Fixed holds and pointer priority remain unchanged. |
 | Delivery and measurement | Complete aesthetic acceptance, native-host loading of the new atlas, final release and real CPU/GPU/FPS measurements are not established. |
 
 The current atlas is 819,706 encoded bytes and decodes to 14,057,472 RGBA bytes.
 Changed artwork is not a same-content compression result; file size does not prove FPS or texture-memory improvement.
 See the [full scope/acceptance ledger](docs/REQUIREMENTS.zh-CN.md) and [chronological work record](docs/PHASE5-STATES.zh-CN.md).
+The [read-only installed render facts](docs/HOST-RENDER-FACTS.json) distinguish accepted file geometry from display capability. Percentage rendering alone is not proof that a larger atlas will import, appear in settings, load correctly or improve real performance.
 Old long-form README notes remain in [Git history](https://github.com/TruthNian/pet-kaguya/blob/165d52c1050cef67c6cd7d01098587e972adb343/README.md), not as misleading current status.
 
 ## Build / verify / preview

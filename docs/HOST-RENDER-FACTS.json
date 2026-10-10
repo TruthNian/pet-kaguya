@@ -1,0 +1,42 @@
+{
+  "verifiedDateLocal": "2026-10-10",
+  "method": "Read-only installed Appx ASAR member inspection; independently described facts, no application source redistributed",
+  "package": "OpenAI.Codex_26.1002.7124.0_x64__2p2nqsd0c76g0",
+  "members": [
+    {
+      "path": "webview/assets/app-initial-25361a10f2bf.js",
+      "bytes": 11147906,
+      "sha256": "BDDF0E4E79918F7157682015C598B97EB833553C036026004555F88FA0CB9D3B"
+    },
+    {
+      "path": "webview/assets/app-initial-c43288484373.css",
+      "bytes": 247934,
+      "sha256": "AF7797D8BAADD961EF3A7AC9E9C9A663A30E1A9F6411B7FD17B430037DC3DC5B"
+    }
+  ],
+  "facts": {
+    "knownFormats": [
+      {"version": 1, "width": 1536, "height": 1872, "columns": 8, "rows": 9, "cellWidth": 192, "cellHeight": 208},
+      {"version": 2, "width": 1536, "height": 2288, "columns": 8, "rows": 11, "cellWidth": 192, "cellHeight": 208}
+    ],
+    "formatMatcherRequiresExactImageDimensions": true,
+    "cloudImportRejectsUnmatchedDimensions": true,
+    "avatarGenerationUtilityRejectsUnmatchedDimensions": true,
+    "rendererUsesPercentageBackgroundSizing": true,
+    "rendererBackgroundWidthPercent": 800,
+    "rendererBackgroundHeightPercent": "spriteRowCount times 100",
+    "cssAspectRatio": "192/208",
+    "cssImageRenderingRequested": "pixelated",
+    "displayPixelsAreNotHardCropped192By208": true
+  },
+  "notProven": [
+    "Every local filesystem discovery path rejects larger-density atlases; the native backend was not inspected or exercised.",
+    "A larger-density atlas can be selected and used successfully throughout the actual installed application.",
+    "Actual device-pixel-ratio and browser filtering outcomes, native visual quality, CPU, GPU, FPS or decoding performance.",
+    "Smooth scaling, new native holds or interpolation can be configured through pet.json."
+  ],
+  "largerDensityAtlasGenerated": false,
+  "candidateInstalledOrActivated": false,
+  "installedApplicationModified": false,
+  "installedPetFilesWritten": false
+}
