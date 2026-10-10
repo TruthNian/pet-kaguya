@@ -32,11 +32,31 @@
     <p>idle 周期 6.6 秒；failed 1.22 秒、jumping 0.84 秒、waving 0.7 秒、processing 0.82 秒、waiting 1.01 秒、review 1.03 秒，动作均三轮后回 idle。jumping 最高离地 8 px，仅着地格鞋部固定。waving 末格为原图放松，停留 280 ms；过渡偏向放松。processing 对应宿主 running 行。waiting/review 身体与手势保持，只做微小耳发响应；review 仅在原眼开口内移虹膜，不改眼眶或脸型。短周期不做快呼吸或胸饰闪烁。静态关键姿势不等于完整手臂骨骼：托腮/合手的入场和回 idle 仍缺过渡，80 px 状态差异弱，review 右手更展开、新袖褶的边界融合仍待确认、前景保护多边形不是干净图层。所有动作的可爱感、接缝和节奏仍待视觉认可。</p>
     <p>waiting 当前合成v2收束抬袖鼓包并调整完整垂袖褶线，仅采用有界衣料及轮廓旁少量遮挡底图；手、脸、肩披与主体保留原样。此处alpha确有局部变化，不是仅改RGB。review 当前仍为合成 v6（母版锁定 v3），只替换两袖连续内部；手、轮廓及全部alpha保持v5。两种处理不能混称。结构、边界融合及完整动作仍待确认，保持时序没有变。</p>
     <p><a href="#held-structure-review">集中查看当前托腮/合手结构</a> · <a href="../candidates/phase5/review-hand-outline-v1/contact-113px.png">指尖修正113px明暗对照</a> · <a href="../sources/editor/review-hand/kaguya-review-hand.xcf" download>GIMP可编辑图层工程</a> · <a href="../docs/PHASE5-STATES.zh-CN.md">具体限制与缺陷</a></p>
-    <p>左右小步为八格、1060 ms一轮。此处模拟状态未被打断时的三轮3180 ms后回 idle；真实宿主的左右跑是拖拽反馈，松手可中断任意格并回到底层任务状态，不一定 idle，也不会等待脚落地。图集没有速度输入，不能保证鼠标拖动中的屏幕地面防滑。向支撑侧的身体横向摆幅仍为你认可的约1.9原生像素，下沉最多0.24像素。你对最新起落节奏回复“我觉得还行”，仅作为后续打磨基础，不扩大为完整自然度或其他动作通过。脸型、衣服与手保留刚性跟随，支撑兔鞋的位移与身体位移抵消。当前耳尖/发梢增加由身体横移驱动的微小滞后，上限约0.13/0.32原生像素；按实际120/220ms停留取样，身体不动时不会自行摇摆。它不是实测质量中心或已证明的物理平衡。抬脚仍约1.19像素，80 px提示弱。</p>
+    <p>左右小步为八格、1060 ms一轮。此处模拟状态未被打断时的三轮3180 ms后回 idle；真实宿主的左右跑是拖拽反馈，松手可中断任意格，若仍悬停则恢复jumping，否则恢复底层任务状态。不一定 idle，也不会等待脚落地；完整选择规则另见下方全局中断验收。图集没有速度输入，不能保证鼠标拖动中的屏幕地面防滑。向支撑侧的身体横向摆幅仍为你认可的约1.9原生像素，下沉最多0.24像素。你对最新起落节奏回复“我觉得还行”，仅作为后续打磨基础，不扩大为完整自然度或其他动作通过。脸型、衣服与手保留刚性跟随，支撑兔鞋的位移与身体位移抵消。当前耳尖/发梢增加由身体横移驱动的微小滞后，上限约0.13/0.32原生像素；按实际120/220ms停留取样，身体不动时不会自行摇摆。它不是实测质量中心或已证明的物理平衡。抬脚仍约1.19像素，80 px提示弱。</p>
     <p>当前每侧均有缓升→峰值→接近→接触；左脚在第5格着地，右脚在下一轮第1格（最后一轮直接回idle）着地。删除人为的首尾像素相等规则，首尾不再相同，但相机与脸型仍固定。着地前离地约0.31/0.41原生像素；右侧因末格220ms而不对称，比上轮0.31略高。身体最大相邻横移由1.9降为约1.27像素，最大脚部垂直跳变约0.88像素，不是审美评分。新增缓升姿态并不等于连续起落或真实零速度触地；周期边界、三轮回idle和任意拖拽退出仍待整体视觉接受。</p>
     <p>当前从leg-material-v2原材料直接取样到原生3倍覆盖网格，再统一末端缩小，不把全尺寸腿部姿势图当输入；虹膜仍有源空间预合成，不声称全画单次采样。可见背景按覆盖率归一后，分数坐标的同材料中性合成成立；只在各姿势中消除低于1e-10的浮点叠加误差，中性原生RGBA与原取样器精确一致，不特判零位移。耳发几何也在原背景材料取样前计算，不再加工低清帧；保护脸/前衣袖/手/腿鞋，但区域仍是估计，不是干净分层。微滞后来自周期稳态参考，不会按每次真实拖拽初始化；原生仍离散，衣物柔性跟随、进入退出和完整自然度未通过。侧身不是所选方向，不把中性等式或格内支撑固定当作真实跑步完成。</p>
     <p><a href="../candidates/phase5/leg-material-v2/contact-224px.png">母版/旧中性/新中性/左右抬脚对照</a> · <a href="../candidates/phase5/run_right/native-timing.gif">向右小步真实停留GIF</a> · <a href="../candidates/phase5/leg-backing-v1/prompt.txt">无脸隐藏底图实际生成提示词</a> · <a href="../docs/PHASE5-STATES.zh-CN.md">合成修正与剩余问题</a></p>
   </section>
+  <details id="interaction-review" class="idle-review"><summary>全局中断验收 · 底层任务 / 悬停轻跃 / 拖拽 / 方向覆盖</summary>
+    <p>用当前完整开发图集检查真实规则下的硬切。左侧冻结切换前一格，右侧播放当前选择，不是两动作同步比较。优先级：拖拽覆盖 → 悬停轻跃 → 底层任务。松手或离开可随时恢复底层选择，不等脚落地，也不保证idle；底层本来就是jumping时，离开不会重启动作。</p>
+    <p>仅idle/processing（宿主running）/waving接受方向覆盖；方向移除会从当前选择首格重启。方向格在减少动态下仍可显示。有效属性改变才重启；同一拖拽覆盖期间改变底层任务，动作槽继续。这里按宿主每个停留链式计时，迟到回调只前进一格，不像顶部单行理想时钟追赶漏帧。规则来自本机代码只读复核，不是实际浮层事件/性能录像，不修改宿主或图集、不补间，也不代表完整自然度通过。</p>
+    <div class="controls">
+      <label>底层任务 <select id="interaction-task"><option value="idle">idle</option><option value="waving">waving</option><option value="jumping">jumping</option><option value="failed">failed</option><option value="waiting">waiting</option><option value="processing">processing / running</option><option value="review">review</option></select></label>
+      <label>模拟拖拽覆盖 <select id="interaction-drag"><option value="none">无</option><option value="run_right">向右 run_right</option><option value="run_left">向左 run_left</option></select></label>
+      <label><input id="interaction-hover" type="checkbox">模拟悬停轻跃</label>
+      <label>模拟方向覆盖 <select id="interaction-look"><option value="none">无</option><option value="0">0 上</option><option value="1">1 上偏右</option><option value="2">2 右上</option><option value="3">3 右偏上</option><option value="4">4 右</option><option value="5">5 右偏下</option><option value="6">6 右下</option><option value="7">7 下偏右</option><option value="8">8 下</option><option value="9">9 下偏左</option><option value="10">10 左下</option><option value="11">11 左偏下</option><option value="12">12 左</option><option value="13">13 左偏上</option><option value="14">14 左上</option><option value="15">15 上偏左</option></select></label>
+      <label><input id="interaction-reduced" type="checkbox">覆盖验收减少动态</label>
+      <label>切换验收宽度 <select id="interaction-size" aria-label="切换验收宽度 px"><option value="80">80</option><option value="113" selected>113</option><option value="192">192</option><option value="224">224</option></select> px</label>
+      <label>切换验收背景 <select id="interaction-background"><option value="dark">深色</option><option value="light">浅色</option><option value="grid">透明网格</option></select></label>
+      <button id="interaction-play" disabled>播放切换验收</button><button id="interaction-next" disabled>下一时间槽</button><button id="interaction-reset" disabled>重置当前序列</button>
+    </div>
+    <div id="interaction-stage" class="stage dark">
+      <article><h2 id="interaction-before-title">切换前冻结</h2><canvas id="interaction-before" width="192" height="208" aria-label="切换前冻结画面"></canvas></article>
+      <article><h2 id="interaction-current-title">当前原生时间槽</h2><canvas id="interaction-current" width="192" height="208" aria-label="覆盖切换当前画面"></canvas></article>
+    </div>
+    <output id="interaction-status" role="status">展开后按需解码；不会自动开始播放。</output>
+    <p><a href="../sources/canonical/host-interaction-contract.json">本机实际成员哈希与自述规则</a> · <a href="../docs/REQUIREMENTS.zh-CN.md">完整未完成目标</a>。这些控件只模拟输入选择；真实屏幕拖动速度、任务通知排序与上游方向对象刷新频率不在本页证明范围内。</p>
+  </details>
   <details id="failed-mouth-study" class="idle-review"><summary>failed 新嘴线 · 已采用为开发基础，完整动作待验收</summary>
     <p>左为锁定母版，中为旧嘴线，右为已获你认可的新嘴线开发基础。未重画眼睛、眉、下颌或衣服，也不缩放脸；仅采用1254个内部RGB像素，全身alpha及范围外RGBA保持。批准范围仅限嘴线，不代表眉眼、完整动作、小尺寸表达或安装通过。</p>
     <img loading="lazy" src="../candidates/phase5/failed-mouth-v2/detail.png?v=adopt-20261010" width="1110" height="310" alt="锁定母版、旧嘴线与已接受新嘴线的同坐标对照，眼眉下颌不变">
@@ -188,5 +208,6 @@
 </main>
 <script type="module" src="app.mjs"></script>
 <script type="module" src="candidate.mjs?v=20261010-mouth-adopt-2"></script>
+<script type="module" src="interaction.mjs?v=20261010-interaction-1"></script>
 <script type="module" src="gaze.mjs"></script>
 </html>

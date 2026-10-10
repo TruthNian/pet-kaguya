@@ -1,0 +1,31 @@
+{
+  "verifiedDateLocal": "2026-10-10",
+  "method": "read-only installed asar member inspection; independently described facts, no application source redistributed",
+  "package": "OpenAI.Codex_26.1002.7124.0_x64__2p2nqsd0c76g0",
+  "members": [
+    {"path":"webview/assets/avatar-overlay-native-page-2de8ca8bb031.js","bytes":330813,"sha256":"0CFCC8B3294BC924FAEC0A22F751C462A6209F55981C97A5F213CDE14F2295E0"},
+    {"path":"webview/assets/avatar-mascot-button-a626ddede376.js","bytes":9128,"sha256":"1A69752C18B48771390DCE47C4D0C1C036AF11C983A1A3B4D2059AF76A566642"},
+    {"path":"webview/assets/app-initial-25361a10f2bf.js","bytes":11147906,"sha256":"BDDF0E4E79918F7157682015C598B97EB833553C036026004555F88FA0CB9D3B"}
+  ],
+  "facts": {
+    "selectionPriority": ["drag-transient-state","pointer-hover-jumping","base-task-state"],
+    "pointerEnterCanSelectJumping": true,
+    "pointerLeaveRestoresUnderlyingSelectionImmediately": true,
+    "dragReleaseWaitsForLanding": false,
+    "lookEligibleSelectedStates": ["idle","running","waving"],
+    "lookCellTakesPrecedenceOverReducedMotion": true,
+    "changingEffectiveStateRestartsAtFirstCel": true,
+    "changingBaseWhileSameOverrideActiveDoesNotRestart": true,
+    "lookPropIdentityChangeRestartsEffectEvenAtSameDirection": true,
+    "removingLookRestartsCurrentSelectedStateAtFirstCel": true,
+    "unchangedEffectivePropsDoNotRestart": true,
+    "nativeTimer": "chained per-hold setTimeout; one frame per callback, no elapsed-time catch-up",
+    "lateCallbackSkipsIntermediateFrames": false,
+    "threeActionCyclesThenSlowIdleIfUninterrupted": true,
+    "idleCycleMs": 6600,
+    "interpolation": false
+  },
+  "notProven": ["Actual overlay visual quality, event propagation and performance recording.","A fixed direction necessarily has stable look-object identity upstream.","Timer lateness under an actual workload.","All transitions are aesthetically acceptable."],
+  "installedApplicationModified": false,
+  "independentPetHostCreated": false
+}
