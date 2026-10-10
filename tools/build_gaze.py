@@ -1,6 +1,6 @@
-"""Sixteen gaze poses: fixed eyes/face/body, translated original iris pixels.
+"""Eye geometry and archived rigid layers; default build adopts accepted flow cells.
 
-The inverse composite estimates an iris matte, not a new eye shape. Missing
+The archived inverse composite estimates an iris matte, not a new eye shape. Missing
 sclera comes from bounded generated backing. Neutral reconstruction is tested
 through the same physical, nonnegative premultiplied layers, not a special case.
 """
