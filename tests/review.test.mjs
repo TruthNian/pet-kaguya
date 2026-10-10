@@ -5,6 +5,32 @@ import {reviewCell,reviewStates} from '../viewer/review.mjs';
 import {validateReviewMetadata} from '../viewer/review-contract.mjs';
 import {validateWaitingMetadata} from '../viewer/waiting-contract.mjs';
 
+test('visual review keeps technical prose folded without hiding adoption boundaries',()=>{
+  const html=readFileSync(new URL('../viewer/index.html',import.meta.url),'utf8');
+  for(const id of ['comparison-evidence','candidate-evidence']){
+    const block=html.match(new RegExp(`<details\\b[^>]*id="${id}"[^>]*>[\\s\\S]*?</details>`));
+    assert.ok(block,`missing ${id}`);
+    assert.doesNotMatch(block[0].split('>')[0],/\bopen(?:\s|=|$)/);
+    assert.doesNotMatch(block[0],/<(?:canvas|select|output)\b/);
+  }
+  const guide=html.match(/<p class="comparison-guide">([\s\S]*?)<\/p>/)?.[1];
+  assert.match(guide,/相叠手及精度试验未采用/);
+  assert.match(guide,/完整动作未通过，安装文件未改/);
+  assert.ok(html.indexOf('id="idle-stage"')<html.indexOf('id="candidate-evidence"'));
+});
+
+test('visual review retains one copy of each control and its actual native canvas size',()=>{
+  const html=readFileSync(new URL('../viewer/index.html',import.meta.url),'utf8');
+  const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(match=>match[1]);
+  assert.equal(new Set(ids).size,ids.length);
+  for(const id of ['idle-action','idle-comparison','idle-size','idle-background','idle-reduced',
+    'idle-pause','idle-restart','idle-frame','idle-status','reference-status'])assert.ok(ids.includes(id));
+  for(const id of ['idle-reference','idle-animated']){
+    assert.match(html,new RegExp(`<canvas id="${id}" width="192" height="208"`));
+  }
+  assert.match(html,/<option value="review_overlap">[^<]*未采用/);
+});
+
 test('static review does not silently compare waiting with an unrelated source row',()=>{
   assert.deepEqual(reviewCell('waiting','source'),{row:7,col:1});
   assert.deepEqual(reviewCell('waving','source'),{row:3,col:1});

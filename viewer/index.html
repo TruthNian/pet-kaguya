@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Kaguya · 本地动画验收</title>
-<link rel="stylesheet" href="style.css?v=20261009-cloth-1">
+<link rel="stylesheet" href="style.css?v=20261010-visual-first-1">
 <main>
   <header><span class="eyebrow">PET KAGUYA / ANIMATION LAB</span>
     <h1>轻一点，也鲜活一点。</h1>
@@ -12,10 +12,13 @@
   </header>
   <section class="idle-review" aria-labelledby="idle-heading">
     <h2 id="idle-heading">Phase 5 · 同一母版的局部动作候选</h2>
+    <p class="comparison-guide">先看实际尺寸下的脸、手腕袖口与动作衔接。4px轻跃和新嘴线仅获接受为开发基础；相叠手及精度试验未采用，完整动作未通过，安装文件未改。</p>
+    <details id="comparison-evidence" class="evidence"><summary>对照目的与像素证据（展开查看）</summary>
     <p>新增“review · 六格低位相叠手试验”：左为冻结现用v6双手，右为此前静态候选的六格保持动画，未采用。两边眼神、脸型、透明度、镜头及1030ms节奏相同；只比较腰前手形和袖口，每格844个RGB像素变化。请看两手关系、手腕与袖口衔接，尤其113px。手势进入/回idle仍硬切，不冒称已完成；保持时序批准不等于造型批准。<a href="../candidates/phase5/review-hands-overlap-v1/animation/build.json">实际六格证据与限制</a></p>
     <p>轻跃保留你认可的4px幅度。现已修正局部裁片滤波支持域：轻跃51像素、左右小步各2像素改变，最多1个RGB通道值；全部alpha、源脸衣结构、相机、轨迹和时长精确不变。原4px确认候选与8px参照均冻结，现用修复版不冒称与它们逐像素相同。jumping默认左冻结8px、右现用4px，同钟同格。批准仅限幅度，手势硬切、落地恢复和完整自然度未通过。<a href="../sources/reference/material-support-v1/manifest.json">修复前输入</a> · <a href="../candidates/phase5/jumping/build.json">逐格差异证据</a> · <a href="../sources/canonical/jumping-height-decision-20261010.json">准确决定范围</a></p>
     <p>右侧可选九个动作候选；左侧通常固定v3，小步/轻跃/failed则默认同节奏旧版对照。failed已采用你认可的新嘴线，旧嘴线仅作冻结参照；批准范围仅限开发基础。小步比较耳发跟随，轻跃默认比较8px/4px幅度，也可手选屈膝接触对照。所有候选共用相机与脸型；新增像素仅用于局部结构修正、缺画与隐藏底图。正面小步方向、摆幅及起落基础已确认，托腮/合手暂保留保持时序；这些决定不代表手形、袖褶或整体自然度通过。九状态和16视线为开发验收图集，未安装。</p>
     <p>新增“精度对照”：左侧为现用动作，右侧为同源、同姿势、同格的末端浮点采样试验，尚未采用。73个动作/视线格全部核对；相对独立64位滤波参考的平均显示颜色误差约0.358→0.128（0–255单位），不是画质评分。113px肉眼差异小，没有新增细节、帧率或分辨率；不修复手袖造型。<a href="../candidates/phase5/terminal-sampling-v1/contact-113px.png">九状态明暗前后对照</a> · <a href="../candidates/phase5/terminal-sampling-v1/build.json">逐格证据和限制</a></p>
+    </details>
     <div class="controls">
       <label>候选 <select id="idle-action"><option value="idle">idle · 微呼吸</option><option value="run_right">run_right · 正面向右小步原型</option><option value="run_left">run_left · 正面向左小步原型</option><option value="failed">failed · 新嘴线开发基础</option><option value="jumping">jumping · 4px轻跃开发基础</option><option value="waving">waving · 四格，三轮后回 idle</option><option value="waving_source">waving · 原像素低位试验（未采用）</option><option value="processing">processing · 六格专注，三轮后回 idle</option><option value="waiting">waiting · 六格保持托腮，待确认</option><option value="review">review · 六格低手下视，待确认</option><option value="review_overlap">review · 六格低位相叠手试验（未采用）</option></select></label>
       <label>左侧参考 <select id="idle-comparison" disabled><option value="idle">固定 idle · 检查身份</option><option id="rigid-reference-choice" value="rigid" disabled>同步旧小步 · 检查耳发跟随</option><option id="contact-reference-choice" value="contact" disabled>同步旧高度场 · 检查屈膝接触</option><option id="height-reference-choice" value="height" disabled>同步冻结8px · 比较轻跃幅度</option><option id="mouth-reference-choice" value="mouth" disabled>同步旧嘴线 · 检查失落表达</option><option id="hands-reference-choice" value="hands" disabled>同步现用双手 · 比较手腕袖口</option><option id="sampling-reference-choice" value="sampling">精度对照 · 左现用，右浮点试验</option></select></label>
@@ -31,6 +34,7 @@
     </div>
     <output id="idle-status" aria-live="off">正在解码 idle 候选…</output>
     <output id="reference-status" aria-live="off">固定 idle 用于形象对照；小步动作比较请使用同步旧版。</output>
+    <details id="candidate-evidence" class="evidence"><summary>实际时序、素材来源与未解决问题（展开查看）</summary>
     <p>idle 周期 6.6 秒；failed 1.22 秒、jumping 0.84 秒、waving 0.7 秒、processing 0.82 秒、waiting 1.01 秒、review 1.03 秒，动作均三轮后回 idle。jumping 最高离地4px，仅着地格鞋部固定。waving 末格为原图放松，停留 280 ms；过渡偏向放松。processing 对应宿主 running 行。waiting/review 身体与手势保持，只做微小耳发响应；review 仅在原眼开口内移虹膜，不改眼眶或脸型。短周期不做快呼吸或胸饰闪烁。静态关键姿势不等于完整手臂骨骼：托腮/合手的入场和回 idle 仍缺过渡，80 px 状态差异弱，review 右手更展开、新袖褶的边界融合仍待确认、前景保护多边形不是干净图层。所有动作的可爱感、接缝和节奏仍待视觉认可。</p>
     <p>waiting 当前合成v2收束抬袖鼓包并调整完整垂袖褶线，仅采用有界衣料及轮廓旁少量遮挡底图；手、脸、肩披与主体保留原样。此处alpha确有局部变化，不是仅改RGB。review 当前仍为合成 v6（母版锁定 v3），只替换两袖连续内部；手、轮廓及全部alpha保持v5。两种处理不能混称。结构、边界融合及完整动作仍待确认，保持时序没有变。</p>
     <p><a href="#held-structure-review">集中查看当前托腮/合手结构</a> · <a href="../candidates/phase5/review-hand-outline-v1/contact-113px.png">指尖修正113px明暗对照</a> · <a href="../sources/editor/review-hand/kaguya-review-hand.xcf" download>GIMP可编辑图层工程</a> · <a href="../docs/PHASE5-STATES.zh-CN.md">具体限制与缺陷</a></p>
@@ -38,6 +42,7 @@
     <p>当前每侧均有缓升→峰值→接近→接触；左脚在第5格着地，右脚在下一轮第1格（最后一轮直接回idle）着地。删除人为的首尾像素相等规则，首尾不再相同，但相机与脸型仍固定。着地前离地约0.31/0.41原生像素；右侧因末格220ms而不对称，比上轮0.31略高。身体最大相邻横移由1.9降为约1.27像素，最大脚部垂直跳变约0.88像素，不是审美评分。新增缓升姿态并不等于连续起落或真实零速度触地；周期边界、三轮回idle和任意拖拽退出仍待整体视觉接受。</p>
     <p>当前从leg-material-v2原材料直接取样到原生3倍覆盖网格，再统一末端缩小，不把全尺寸腿部姿势图当输入；虹膜仍有源空间预合成，不声称全画单次采样。可见背景按覆盖率归一后，分数坐标的同材料中性合成成立；只在各姿势中消除低于1e-10的浮点叠加误差，中性原生RGBA与原取样器精确一致，不特判零位移。耳发几何也在原背景材料取样前计算，不再加工低清帧；保护脸/前衣袖/手/腿鞋，但区域仍是估计，不是干净分层。微滞后来自周期稳态参考，不会按每次真实拖拽初始化；原生仍离散，衣物柔性跟随、进入退出和完整自然度未通过。侧身不是所选方向，不把中性等式或格内支撑固定当作真实跑步完成。</p>
     <p><a href="../candidates/phase5/leg-material-v2/contact-224px.png">母版/旧中性/新中性/左右抬脚对照</a> · <a href="../candidates/phase5/run_right/native-timing.gif">向右小步真实停留GIF</a> · <a href="../candidates/phase5/leg-backing-v1/prompt.txt">无脸隐藏底图实际生成提示词</a> · <a href="../docs/PHASE5-STATES.zh-CN.md">合成修正与剩余问题</a></p>
+    </details>
   </section>
   <details id="interaction-review" class="idle-review"><summary>全局中断验收 · 底层任务 / 悬停轻跃 / 拖拽 / 方向覆盖</summary>
     <p>用当前完整开发图集检查真实规则下的硬切。左侧冻结切换前一格，右侧播放当前选择，不是两动作同步比较。优先级：拖拽覆盖 → 悬停轻跃 → 底层任务。松手或离开可随时恢复底层选择，不等脚落地，也不保证idle；底层本来就是jumping时，离开不会重启动作。</p>
