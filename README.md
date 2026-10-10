@@ -69,16 +69,17 @@ A green engineering check is not aesthetic approval.
 
 ## Compact frozen packages
 
-- [v3 development candidate, snapshot 0ac132c](deliverables/kaguya-candidate-0ac132c.zip): 1,007,149 bytes. Includes the exact nine-state/sixteen-look atlas, a local-v2 `pet.json`, a manifest and clear acceptance limits. Waving middle/review hands are developer-selected, not human-approved.
+- [Current v3 development candidate, snapshot f5eb77f](deliverables/kaguya-candidate-f5eb77f.zip): 823,480 bytes. Exact current nine-state/sixteen-look atlas, including the calm failed body; local-v2 `pet.json`, manifest and acceptance limits. Waving middle/review hands/failed body are developer-selected, not human-approved.
+- [Earlier v3 snapshot 0ac132c](deliverables/kaguya-candidate-0ac132c.zip): 1,007,149 bytes. Preserved unchanged for traceability; it precedes the calm failed-body change and is not the current download.
 - [Original Phase 2 archive](deliverables/kaguya-baseline-phase2.zip): 2,016,380 bytes. Both runtime files are byte-exact to frozen Git commit 97ec2ab. This is not the current installed backup or the recommended new artwork.
 - [Package hashes and frozen source commits](deliverables/index.json).
 
 These are file-layout-checked archives, **not approved releases or verified native-host installations**. No install script is included. Do not overwrite the installed pet; a separate explicit decision and a backup of the actual installation are still required.
-Snapshot 0ac132c precedes the calm failed-body change; it is not silently replaced by the latest development atlas.
+The index explicitly points to snapshot f5eb77f. Both earlier ZIPs remain byte-exact; no old archive is silently replaced. The package freezes resources, not the comparison viewer, and contains no installer.
 The existing installer continues to refuse unapproved development installation. No GitHub Release or application change is performed.
 
 Build these frozen snapshots with `python tools/build_native_packages.py`; read-only source/archive verification uses `python tools/build_native_packages.py --verify`. Neither command rebuilds artwork or writes installed files. The source commits must exist locally; a normal full Git clone has them. The packages do not follow future art changes silently.
-The local package/source round-trip check passed for the saved files. No complete regression, installer test or native-host activation was run for this packaging change.
+The local package/source round-trip check passed for all three saved files. The index accepts only its known two-package predecessor or the exact current three-package form; unknown entries are not discarded. No complete regression, installer test or native-host activation was run for this packaging change.
 
 ## Baseline and safety
 

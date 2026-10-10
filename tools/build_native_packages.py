@@ -14,6 +14,9 @@ CURRENT='0ac132cea9de5db54721d6e617e3f9c7de3ae76d'
 BASELINE='97ec2aba368d91faf5a127127a04105f58231247'
 CURRENT_SHA='5A1A93C1A709F98E6F3359F5E6A3241ABFECE2850695BC1E05590C895F9DC94B'
 CURRENT_RGBA='ED21FAEFBB0F986B1F3E6667EF7452817186053C048E569958F1E16F5FE3124F'
+LATEST='f5eb77fb5576d062916e19e2296292890ea4ab57'
+LATEST_SHA='FEE52726F71E85BC0AAD5745287A18C0731F2567F4DD3CE8E22ACE324BD6233B'
+LATEST_RGBA='7AC9394B6AB37C7D0C3D74B0E93AC1180233D5E196076D5D46DBF1D322C06A8E'
 BASELINE_SHA='71F7E36AD459D99C9DE1AC6033A968CDF4C125EB742FFD5FF19B8E81BBA56EF7'
 
 
@@ -40,17 +43,18 @@ def native_config(payload):
     return config
 
 
-def payloads(candidate):
-    commit=CURRENT if candidate else BASELINE
+def payloads(candidate, *, latest=False):
+    if latest and not candidate:raise ValueError('Latest is a development snapshot, not a replacement baseline')
+    commit=LATEST if latest else CURRENT if candidate else BASELINE
     folder='candidates/phase5/global' if candidate else 'baseline/phase2'
     atlas=blob(commit,f'{folder}/spritesheet.webp')
-    if sha(atlas)!=(CURRENT_SHA if candidate else BASELINE_SHA):
+    if sha(atlas)!=(LATEST_SHA if latest else CURRENT_SHA if candidate else BASELINE_SHA):
         raise ValueError('Frozen source atlas bytes changed')
     with Image.open(io.BytesIO(atlas)) as opened:
         image=opened.convert('RGBA')
         if image.size!=(1536,2288):raise ValueError('Local v2 atlas geometry changed')
         rgba=sha(image.tobytes())
-    if candidate and rgba!=CURRENT_RGBA:raise ValueError('Frozen current pixels changed')
+    if candidate and rgba!=(LATEST_RGBA if latest else CURRENT_RGBA):raise ValueError('Frozen current pixels changed')
     config_bytes=blob(BASELINE,'baseline/phase2/pet.json')
     config=native_config(config_bytes)
     if candidate:
@@ -85,14 +89,26 @@ def payloads(candidate):
             remainingIssues=['hand/cuff and sleeve aesthetics','small-size expression',
                 'discrete state cuts and held-hand entry/exit','complete visual acceptance',
                 'native-host loading and real performance evidence'])
+        if latest:
+            failed=json.loads(blob(commit,'candidates/phase5/failed/build.json'))
+            if (failed.get('failedBodyDevelopmentBasis')!='developer-selected-calm-body-hold'
+                    or failed.get('bodyMotionUserApproval')!='pending'
+                    or failed.get('bodyMotionUserApprovalClaimed') is not False
+                    or failed.get('newArtworkGeneratedThisIteration') is not False
+                    or failed.get('mouthLineVisualApproval')!='approved-as-development-basis'
+                    or failed.get('nativeAlphaPreservedExactly') is not False
+                    or len(failed['keyframes'])!=8 or any(p['bodyY']!=0 for p in failed['keyframes'])):
+                raise ValueError('Latest failed snapshot must not inherit human body approval or old alpha claims')
+            manifest['developerSelectedOnly'].append('failed calm body hold')
     readme=('Pet Kaguya · '+('开发候选资源包' if candidate else '原始 Phase 2 历史基准包')+'\n\n'
         '包中含 pet.json 和 spritesheet.webp，符合本地 v2 文件布局；并非 ChatGPT 云端宠物格式。\n'
         '未执行安装，也未验证实际宿主加载。本包不是已获批准的正式发布。\n'
         '不要直接覆盖已安装的 kaguya 目录；安装需另行明确决定，并先保存当前实际安装副本。\n'
         'manifest.json 保存冻结来源、两文件哈希、权限和验收边界；本包不含安装脚本。\n\n'
         +('这是现用开发图集的精确副本，没有重采样或重编码。脸型锁定 v3。\n'
-          '招手中间格、相叠手仅为开发者选择，不冒称用户批准；完整造型/动作仍待验收。\n'
-          '固定分辨率、持帧、状态优先级未改变，不承诺高帧率或自然进入/退出。\n'
+          +('招手中间格、相叠手、failed身体保持仅为开发者选择，不冒称用户批准；完整造型/动作仍待验收。\n'
+           if latest else '招手中间格、相叠手仅为开发者选择，不冒称用户批准；完整造型/动作仍待验收。\n')
+          +'固定分辨率、持帧、状态优先级未改变，不承诺高帧率或自然进入/退出。\n'
           if candidate else
           '这是冻结 Git 基准的精确两文件存档，不是当前已安装版本的备份，也不是当前推荐形象。\n'
           '禁止将其当作新母版，或自动回退到用户已否决的旧形象。\n'))
@@ -123,6 +139,17 @@ def save_or_verify(path,data,verify):
     else:path.write_bytes(data)
 
 
+def save_index(path,data,previous,verify):
+    # ZIPs are immutable. Only advance the index from the exact known two-pack
+    # index to the known three-pack index; never discard unexpected entries.
+    existing=path.read_bytes().replace(b'\r\n',b'\n') if path.exists() else None
+    if verify:
+        if existing!=data:raise ValueError('Package index does not match the three frozen sources')
+    elif existing==data:return
+    elif existing not in (None,previous):raise ValueError('Refusing to replace an unexpected package index')
+    else:path.write_bytes(data)
+
+
 def main(verify=False):
     if OUT.resolve().parent!=ROOT.resolve():raise ValueError('Deliverables directory redirects outside repository')
     if not verify:OUT.mkdir(exist_ok=True)
@@ -136,7 +163,16 @@ def main(verify=False):
             petConfigSHA256=manifest['files']['pet.json']['sha256']))
     index=dict(packages=entries,installationPerformed=False,artworkRebuilds=0,
         releaseApprovalClaimed=False,archiveRoundTripByteExact=True)
-    save_or_verify(OUT/'index.json',encoded(index),verify)
+    previous=encoded(index)
+    prefix='kaguya-candidate-f5eb77f'
+    files,manifest=payloads(True,latest=True);data=archive(prefix,files)
+    save_or_verify(OUT/f'{prefix}.zip',data,verify)
+    entries.append(dict(file=f'{prefix}.zip',bytes=len(data),sha256=sha(data),
+        sourceCommit=manifest['sourceCommit'],packageRole=manifest['packageRole'],
+        atlasSHA256=manifest['files']['spritesheet.webp']['sha256'],
+        petConfigSHA256=manifest['files']['pet.json']['sha256']))
+    index['currentDevelopmentPackage']=f'{prefix}.zip'
+    save_index(OUT/'index.json',encoded(index),previous,verify)
     print(json.dumps(index,ensure_ascii=False,indent=2))
 
 

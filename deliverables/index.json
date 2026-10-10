@@ -17,10 +17,20 @@
       "packageRole": "historical-baseline-archive",
       "atlasSHA256": "71F7E36AD459D99C9DE1AC6033A968CDF4C125EB742FFD5FF19B8E81BBA56EF7",
       "petConfigSHA256": "AB3CA7F7DB008F9BFE204B9C85A8737D85D20109C46C795989D6938807759C8D"
+    },
+    {
+      "file": "kaguya-candidate-f5eb77f.zip",
+      "bytes": 823480,
+      "sha256": "D5C09A2650A6EC330625328AE817742123EEF6E4CB709B628160586E99B71608",
+      "sourceCommit": "f5eb77fb5576d062916e19e2296292890ea4ab57",
+      "packageRole": "development-candidate",
+      "atlasSHA256": "FEE52726F71E85BC0AAD5745287A18C0731F2567F4DD3CE8E22ACE324BD6233B",
+      "petConfigSHA256": "4A599C8D8934B40E3AAC234B56FCC99A3F424C5EDD4D0BF7F5C2F40E6E9DC5E9"
     }
   ],
   "installationPerformed": false,
   "artworkRebuilds": 0,
   "releaseApprovalClaimed": false,
-  "archiveRoundTripByteExact": true
+  "archiveRoundTripByteExact": true,
+  "currentDevelopmentPackage": "kaguya-candidate-f5eb77f.zip"
 }
