@@ -6,9 +6,9 @@ import {comparisonPolicy,comparisonReference} from '../viewer/comparison-referen
 import {candidateSlot,candidatePoseOffset} from '../viewer/candidate-clock.mjs';
 
 const metadata=JSON.parse(readFileSync(new URL('../candidates/phase5/cloth-follow-v1/build.json',import.meta.url),'utf8'));
-const current=name=>JSON.parse(readFileSync(new URL(`../candidates/phase5/${name}/build.json`,import.meta.url),'utf8'));
+const current=name=>JSON.parse(readFileSync(new URL(`../sources/reference/gaze-action-v1/${name}.json`,import.meta.url),'utf8'));
 
-test('two actual sleeve trials match current gait without inheriting art or full-motion approval',()=>{
+test('archived sleeve trials match their frozen gait, not current corrected eyes',()=>{
   for(const state of ['run_right','run_left']){
     const entry=validateClothStudy(metadata,state,current(state));
     assert.equal(entry,metadata.states[state]);
@@ -16,7 +16,8 @@ test('two actual sleeve trials match current gait without inheriting art or full
     assert.equal(entry.allNativeAlphaExact,false);
   }
   assert.equal(comparisonPolicy('run_right','idle',true).choice,'rigid');
-  assert.equal(comparisonPolicy('run_left','cloth').choice,'cloth');
+  assert.equal(comparisonPolicy('run_left','cloth').choice,'rigid');
+  assert.equal(comparisonPolicy('run_left','cloth').allowed.includes('cloth'),false);
   for(const state of ['failed','jumping','review_overlap','waving_source','idle']){
     assert.equal(comparisonPolicy(state,'cloth').allowed.includes('cloth'),false);
     assert.notEqual(comparisonPolicy(state,'cloth').choice,'cloth');

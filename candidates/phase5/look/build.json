@@ -4,7 +4,7 @@
   "sourceRig": "sources/canonical/gaze-rig-v2.json",
   "sourceGeometryRevision": "observed-eye-opening-v2",
   "eyeMaterial": "candidates/phase5/look/material-v2",
-  "legacyActionEyeMaterialsChanged": false,
+  "legacyActionEyeMaterialsChanged": true,
   "state": "look",
   "directionCount": 16,
   "nativeRows": [
@@ -129,7 +129,7 @@
   "installableFullAtlas": false,
   "limitations": [
     "Iris matte and corrected opening vertices are estimated from visible source pixels; pale fringes are not claimed fully removed.",
-    "This revision fixes the 16 look cells only. Existing action rows still use the frozen v1 eye materials and need separate propagation/review.",
+    "Production actions with iris translation share the corrected eye opening. Unadopted archived trials retain their frozen v1 eye materials.",
     "Only gaze is changed; no head turn or new native interpolation.",
     "Small-scale direction legibility and naturalness require visual acceptance.",
     "Native pointer priority remains unchanged; independent preview is not host integration."

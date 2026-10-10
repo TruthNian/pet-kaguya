@@ -96,7 +96,8 @@ class LocalSupport(unittest.TestCase):
                     self.assertIsNone(strip.crop((n*192,0,1536,208)).getbbox())
                     row=metadata['nativeRow']
                     self.assertEqual(strip.convert('RGBA').tobytes(),atlas.crop((0,row*208,1536,(row+1)*208)).convert('RGBA').tobytes())
-                receipt=repair_receipt(state,frames)
+                eye_revision=metadata.get('sourceEyeGeometryRevision')
+                receipt=repair_receipt(state,frames,eye_revision=eye_revision)
                 self.assertEqual(metadata['materialSupportRepair'],receipt)
                 self.assertEqual([c['changedPixels'] for c in receipt['changes']],counts)
                 self.assertEqual([c['bounds'] for c in receipt['changes']],bounds)
@@ -104,11 +105,11 @@ class LocalSupport(unittest.TestCase):
                 self.assertFalse(receipt['sourceArtworkChanged'] or receipt['geometryChanged']
                                  or receipt['timingChanged'] or receipt['fullMotionApproved'])
                 # Reject changing a face, alpha, cel count, or a >1 channel step.
-                with self.assertRaises(ValueError):repair_receipt(state,frames[:-1])
-                for position,channel,delta in (((90,60),0,1),((90,154),3,1),((90,154),0,10)):
+                with self.assertRaises(ValueError):repair_receipt(state,frames[:-1],eye_revision=eye_revision)
+                for position,channel,delta in (((91,85),0,1),((90,154),3,1),((90,154),0,10)):
                     changed=[f.copy() for f in frames];rgba=list(changed[0].getpixel(position))
                     rgba[channel]=(rgba[channel]+delta)%256;changed[0].putpixel(position,tuple(rgba))
-                    with self.assertRaises(ValueError):repair_receipt(state,changed)
+                    with self.assertRaises(ValueError):repair_receipt(state,changed,eye_revision=eye_revision)
 
 
 if __name__=='__main__':unittest.main()

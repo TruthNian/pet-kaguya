@@ -19,5 +19,5 @@
   "sourceGeometryRevision": "observed-eye-opening-v2",
   "rawGeneratedSource": "candidates/phase5/eye-backing-v1/generated.png",
   "newArtworkGenerated": false,
-  "legacyActionEyeMaterialsChanged": false
+  "legacyActionEyeMaterialsChanged": true
 }

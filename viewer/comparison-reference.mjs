@@ -42,11 +42,13 @@ export function comparisonReference(choice,state,index){
 // references rather than silently comparing different states or art epochs.
 export function comparisonPolicy(mode,choice,reset=false){
   if(!Object.keys(candidateRows).includes(mode))throw new Error('Invalid comparison mode');
-  const actionChoices=['run_right','run_left'].includes(mode)?['rigid','cloth']
+  const actionChoices=['run_right','run_left'].includes(mode)?['rigid']
     :mode==='jumping'?['height','contact']:mode==='failed'?['mouth']
-    :mode==='review_overlap'?['hands']:mode==='waving'?['wave']:mode==='waving_link'?['link']:[];
+    :mode==='waving'?['wave']:mode==='waving_link'?['link']:[];
   const allowed=['idle',...actionChoices];
-  if(!['waving_source','waving_link','review_overlap'].includes(mode))allowed.push('sampling');
+  // Archived trials with v1 eye materials cannot be same-art comparisons
+  // against actions that now use corrected eye extraction.
+  if(['idle','waving','jumping','waiting','failed'].includes(mode))allowed.push('sampling');
   return {allowed,choice:reset||!allowed.includes(choice)?actionChoices[0]??'idle':choice};
 }
 

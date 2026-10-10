@@ -9,9 +9,9 @@ const json=path=>JSON.parse(readFileSync(new URL(`../${path}`,import.meta.url),'
 const study=json('candidates/phase5/review-hands-overlap-v1/animation/build.json');
 const manifest=json('sources/reference/review-held-v6/manifest.json');
 const baseline=json('sources/reference/review-held-v6/contract.json');
-const current=json('candidates/phase5/review/build.json');
+const current=json('sources/reference/gaze-action-v1/review.json');
 
-test('actual unadopted hand study matches frozen/current held review source, focus and timing',()=>{
+test('archived hand study matches its frozen review source, focus and timing',()=>{
   assert.equal(validateReviewOverlapMetadata(study),study);
   assert.equal(validateReviewOverlapReference(manifest,baseline,study,current),baseline);
   assert.equal(candidateRows.review_overlap,8);
@@ -63,13 +63,13 @@ test('reference provenance and current row cannot be silently replaced',()=>{
   }
 });
 test('trial comparison disables unrelated float epoch; normal actions keep their defaults',()=>{
-  assert.deepEqual(comparisonPolicy('review_overlap','sampling'),{allowed:['idle','hands'],choice:'hands'});
+  assert.deepEqual(comparisonPolicy('review_overlap','sampling'),{allowed:['idle'],choice:'idle'});
   assert.equal(comparisonPolicy('review_overlap','idle').choice,'idle');
-  assert.equal(comparisonPolicy('review_overlap','idle',true).choice,'hands');
+  assert.equal(comparisonPolicy('review_overlap','idle',true).choice,'idle');
   for(const [mode,choice] of [['jumping','height'],['failed','mouth'],['run_left','rigid'],['review','idle']])
     assert.equal(comparisonPolicy(mode,'hands',true).choice,choice);
-  assert.ok(comparisonPolicy('review','sampling').allowed.includes('sampling'));
-  assert.equal(comparisonPolicy('review','sampling').choice,'sampling');
+  assert.equal(comparisonPolicy('review','sampling').allowed.includes('sampling'),false);
+  assert.equal(comparisonPolicy('review','sampling').choice,'idle');
   assert.equal(comparisonPolicy('waving_source','sampling').choice,'idle');
   assert.equal(comparisonPolicy('idle','hands').choice,'idle');
   assert.throws(()=>comparisonPolicy('unbuilt','idle'));

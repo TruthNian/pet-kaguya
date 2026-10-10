@@ -40,7 +40,7 @@ def sample_local(array,x,y,support):
             +(corner(ix,ny)*(1-fx)+corner(nx,ny)*fx)*fy)
 
 
-def repair_receipt(state,frames):
+def repair_receipt(state,frames,*,eye_revision=None):
     manifest=json.loads((REFERENCE/'manifest.json').read_text(encoding='utf-8'))
     if state not in ('jumping','run_left','run_right'):
         raise ValueError('No frozen support input for this state')
@@ -58,16 +58,51 @@ def repair_receipt(state,frames):
     hashes=lambda images:[hashlib.sha256(f.tobytes()).hexdigest().upper() for f in images]
     if hashes(old)!=baseline['frameHashes']:
         raise ValueError('Frozen support-v1 cels disagree with their contract')
+    filter_frames=frames
+    source_revision=None
+    if eye_revision is not None:
+        if eye_revision!='observed-eye-opening-v2' or state not in ('run_left','run_right'):
+            raise ValueError('Unsupported source revision for filter counterfactual')
+        # The old filter comparison cannot also freeze every future eye pixel.
+        # Keep that SAME-SOURCE evidence, then separately verify the actual new
+        # scene differs from its post-filter baseline only at the eyes.
+        action_ref=ROOT/'sources/reference/gaze-action-v1'
+        contract=json.loads((action_ref/f'{state}.json').read_text(encoding='utf-8'))
+        frozen_path=ROOT/'sources/reference/gaze-opening-v1/atlas.webp'
+        atlas_manifest=json.loads((frozen_path.parent/'manifest.json').read_text(encoding='utf-8'))
+        if hashlib.sha256(frozen_path.read_bytes()).hexdigest().upper()!=atlas_manifest['atlasEncodedSha256']:
+            raise ValueError('Frozen pre-eye action atlas changed')
+        row={'run_right':1,'run_left':2}[state]
+        with Image.open(frozen_path) as atlas:
+            filter_frames=[atlas.crop((i*192,row*208,(i+1)*192,(row+1)*208)).convert('RGBA') for i in range(len(frames))]
+        if hashes(filter_frames)!=contract['frameHashes']:
+            raise ValueError('Frozen filter-corrected action disagrees with its contract')
+        allowed=np.zeros((208,192),bool)
+        for x0,y0,x1,y1 in ((68,44,100,76),(97,41,129,75)):allowed[y0:y1,x0:x1]=True
+        source_changes=[]
+        for before,after in zip(filter_frames,frames):
+            diff=np.abs(np.asarray(after,dtype=int)-np.asarray(before,dtype=int))
+            changed=np.any(diff,axis=2)
+            if diff[...,3].any() or np.any(changed&~allowed):
+                raise ValueError('Eye source revision changed alpha or non-eye action pixels')
+            source_changes.append(int(changed.sum()))
+        source_revision=dict(revision=eye_revision,reference=f'sources/reference/gaze-action-v1/{state}.json',
+            beforeFrameHashes=hashes(filter_frames),afterFrameHashes=hashes(frames),
+            changedPixels=source_changes,onlyNativeEyeWindowsChanged=True,nativeAlphaPreservedExactly=True)
     changes=[]
-    for before,after in zip(old,frames):
+    for before,after in zip(old,filter_frames):
         diff=np.abs(np.asarray(after,dtype=int)-np.asarray(before,dtype=int))
         yy,xx=np.where(np.any(diff,axis=2))
         if diff[...,3].any() or diff[:140].any() or diff[164:].any() or diff.max()>1:
             raise ValueError('Local support repair changed alpha, protected art or exceeded one channel unit')
         changes.append(dict(changedPixels=int(len(yy)),maximumChannelDifference=int(diff.max()),
             bounds=[int(xx.min()),int(yy.min()),int(xx.max()+1),int(yy.max()+1)] if len(yy) else None))
-    return dict(baselineCommit='7f58246889fbbcfef788606067a95cf9251e1a87',
+    receipt=dict(baselineCommit='7f58246889fbbcfef788606067a95cf9251e1a87',
         reference=f'sources/reference/material-support-v1/{state}.webp',
         baselineFrameHashes=hashes(old),currentFrameHashes=hashes(frames),changes=changes,
         scope='local-bilinear-support-only',sourceArtworkChanged=False,geometryChanged=False,
         timingChanged=False,nativeAlphaPreservedExactly=True,fullMotionApproved=False)
+    if source_revision is not None:
+        receipt.update(sameSourceFilterFrameHashes=hashes(filter_frames),independentEyeSourceRevision=source_revision,
+                       filterComparison='frozen-same-source-counterfactual; not raw current-vs-historical pixels')
+    return receipt

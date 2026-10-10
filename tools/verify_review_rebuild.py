@@ -85,8 +85,7 @@ def main():
                    cwd=ROOT,check=True,capture_output=True)
     # Unadopted precision research remains frozen at its documented epoch.
     # It is not a release-artwork regression or a required full-scene rebuild.
-    subprocess.run([sys.executable,str(ROOT/'tools/cloth_follow_study.py')],
-                   cwd=ROOT,check=True,capture_output=True)
+    # Cloth research also remains at its frozen eye-material epoch.
     for script in ('study_wave_amplitude.py','guide_wave_amplitude.py',
                    'guide_wave_middle_link.py','build_wave_middle_link.py'):
         subprocess.run([sys.executable,str(ROOT/'tools'/script)],cwd=ROOT,check=True,capture_output=True)

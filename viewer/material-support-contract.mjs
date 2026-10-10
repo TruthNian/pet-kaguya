@@ -17,12 +17,31 @@ export function validateMaterialSupport(current){
       ||repair.changes?.length!==scope.length
       ||JSON.stringify(repair.currentFrameHashes)!==JSON.stringify(current.frameHashes))
     throw new Error('Local texture support repair/source boundary mismatch');
+  const revision=repair.independentEyeSourceRevision;
+  const filterHashes=revision?repair.sameSourceFilterFrameHashes:current.frameHashes;
+  if(revision){
+    if(!['run_right','run_left'].includes(current.state)
+        ||current.sourceEyeGeometryRevision!=='observed-eye-opening-v2'
+        ||current.sourceEyeRig!=='sources/canonical/gaze-rig-v2.json'
+        ||revision.revision!==current.sourceEyeGeometryRevision
+        ||revision.reference!==`sources/reference/gaze-action-v1/${current.state}.json`
+        ||revision.onlyNativeEyeWindowsChanged!==true||revision.nativeAlphaPreservedExactly!==true
+        ||repair.filterComparison!=='frozen-same-source-counterfactual; not raw current-vs-historical pixels'
+        ||filterHashes?.length!==scope.length||revision.changedPixels?.length!==scope.length
+        ||revision.changedPixels.some(count=>!Number.isInteger(count)||count<=0||count>2112)
+        ||JSON.stringify(revision.beforeFrameHashes)!==JSON.stringify(filterHashes)
+        ||JSON.stringify(revision.afterFrameHashes)!==JSON.stringify(current.frameHashes))
+      throw new Error('Eye-source and historical filter evidence cannot be conflated');
+  }else if(current.sourceEyeGeometryRevision!==undefined){
+    throw new Error('Corrected eyes require independent same-source filter evidence');
+  }
   scope.forEach(([count,bounds],i)=>{
     candidateCelKey(current.frameHashes,i);candidateCelKey(repair.baselineFrameHashes,i);
+    candidateCelKey(filterHashes,i);
     const change=repair.changes[i];
     if(change?.changedPixels!==count||change.maximumChannelDifference!==(count?1:0)
         ||JSON.stringify(change.bounds)!==JSON.stringify(bounds)
-        ||(repair.baselineFrameHashes[i]===current.frameHashes[i])!==(count===0))
+        ||(repair.baselineFrameHashes[i]===filterHashes[i])!==(count===0))
       throw new Error('Local texture support repair exceeds its measured pixel scope');
   });
   return repair;

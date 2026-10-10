@@ -72,12 +72,12 @@ def validate_motion(motion):
     follow.profile(motion)
 
 
-def inputs():
+def inputs(*, corrected_gaze=True):
     data = material_inputs()
     motion = json.loads((ROOT/'sources/canonical/locomotion-motion.json').read_text(encoding='utf-8'))
     validate_motion(motion)
     source = data['mother']
-    eye_layers = gaze.layers(source,gaze.load_generated(),gaze.specification())
+    eye_layers = gaze.layers(source,gaze.load_generated(),gaze.specification(corrected=corrected_gaze))
     transform = camera(clean_cutout(source)[0])
     regions=json.loads((ROOT/'sources/canonical/regions.json').read_text(encoding='utf-8'))
     if regions['sourceSha256']!=ACCEPTED_SHA or regions['canvas']!=[1205,1306]:
@@ -128,6 +128,7 @@ def main():
             raise ValueError('Direct source filtering must retain the neutral reference')
         metadata = dict(sourceSha256=ACCEPTED_SHA,source='sources/canonical/artwork.png',
             legBackingGeneratedSha256=GENERATED_SHA,eyeBackingGeneratedSha256=gaze.GENERATED_SHA,
+            sourceEyeRig='sources/canonical/gaze-rig-v2.json',sourceEyeGeometryRevision='observed-eye-opening-v2',
             **{key:result['state'][key] for key in ('state','nativeState','nativeRow')},
             animationBuilt=True,projection=motion['projection'],strategyUserApproval='approved',visualMotionApproval='pending',
             strategyApprovalScope=motion['strategyApprovalScope'],strategyUserDecision=DECISION,
@@ -170,7 +171,7 @@ def main():
             legCompositionVersion='leg-material-v2',integerSourceMaterialNeutralRGBAExact=True,
             **neutral,roundoffCanonicalizationPremultTolerance=1e-10,
             sourceAlphaAndOcclusionSeparated=True,
-            localFilterSupport=ZERO,materialSupportRepair=repair_receipt(name,frames),
+            localFilterSupport=ZERO,materialSupportRepair=repair_receipt(name,frames,eye_revision='observed-eye-opening-v2'),
             artistLayerRecoveryClaimed=False,inferredMatte=True,fullRedrawAccepted=False,
             generatedFromRejectedSources=False,installableFullAtlas=False,installed=False,
             unresolved=motion['limitations'])

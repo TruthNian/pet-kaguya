@@ -24,7 +24,8 @@ def rgba_hash(image):
 
 
 def inputs():
-    old = build_review.inputs()
+    # This unadopted hand trial belongs to the frozen v1 eye-material epoch.
+    old = build_review.inputs(corrected_gaze=False)
     baseline = json.loads((REFERENCE/'contract.json').read_text(encoding='utf-8'))
     manifest = json.loads((REFERENCE/'manifest.json').read_text(encoding='utf-8'))
     if (manifest['referencePurpose'] != PURPOSE

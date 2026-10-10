@@ -314,7 +314,7 @@ async function draw(){
     :precision
     ?`左右同源/同姿势/同钟/同格；右侧仅末端浮点采样试验，未采用 · ${referencePaintCount} 次参考绘制 · 数值误差不代表审美通过`
     :reference.synchronized
-    ?`左右共用同一时钟/帧位，暂停、单帧、减少动态及三轮回退同步 · ${referencePaintCount} 次参考绘制 · ${choice==='hands'?'左冻结现用v6、右相叠手未采用；仅手与袖口RGB不同，脸/眼神/alpha/镜头/节奏相同。保持时序不代表手势或完整动作批准':choice==='height'?'左冻结8px、右现用4px开发基础；另含局部采样修复（最多1通道值，alpha/轨迹不变），不代表完整动作通过':choice==='contact'?'旧高度场按现用4px参数重建，非冻结8px版本或视觉批准':choice==='mouth'?'failed时左旧嘴线、右现用新嘴线；回退时两侧同一idle。仅嘴线获开发基础批准，完整动作待验收':'旧版归档d804cd5；右版含耳发跟随及局部滤波修复，非严格单变量或完整视觉批准'}`
+    ?`左右共用同一时钟/帧位，暂停、单帧、减少动态及三轮回退同步 · ${referencePaintCount} 次参考绘制 · ${choice==='hands'?'历史手对照已停用，不代表现用眼层':choice==='height'?'左冻结8px、右现用4px开发基础；另含局部采样修复（最多1通道值，alpha/轨迹不变），不代表完整动作通过':choice==='contact'?'旧高度场按现用4px参数重建，非冻结8px版本或视觉批准':choice==='mouth'?'failed时左旧嘴线、右现用新嘴线；回退时两侧同一idle。仅嘴线获开发基础批准，完整动作待验收':'旧版归档d804cd5；右版含耳发跟随、局部滤波及眼部提取修复，非严格单变量或完整视觉批准'}`
     :'固定 idle 只用于身份检查，不是同节奏动作对照。';
   const paintKey=candidateCelKey(cloth?sleeveAsset.entry.frameHashes:precision?precisionAsset.entry.candidateFrameHashes:metadata.frameHashes,selected.index);
   if(paintKey!==lastKey){

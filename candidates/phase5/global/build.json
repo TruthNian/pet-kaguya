@@ -74,7 +74,7 @@
       "state": "run_right",
       "nativeRow": 1,
       "frameCount": 8,
-      "sourceRowRGBAHash": "41FA54379FE3E3DDEC5448085B3D524A27A3C45E9D4E26FF7C02B360E5C9C28E",
+      "sourceRowRGBAHash": "1CE07340ACB6E7309987AAB8BE0239004A762BC1C7B8B0B413B17215939F8984",
       "representativeFrame": 2,
       "visualMotionApproval": "pending"
     },
@@ -82,7 +82,7 @@
       "state": "run_left",
       "nativeRow": 2,
       "frameCount": 8,
-      "sourceRowRGBAHash": "8E0CEB921ECFC2D3B99E9466A76E2EA0F589971EA40342878EB8A491C26403CF",
+      "sourceRowRGBAHash": "FC50E34770552AC8CA78F6625AC8A5A325AEA8B4F5329FA3C46A9080F4DE4C7D",
       "representativeFrame": 6,
       "visualMotionApproval": "pending"
     },
@@ -122,7 +122,7 @@
       "state": "processing",
       "nativeRow": 7,
       "frameCount": 6,
-      "sourceRowRGBAHash": "4E1947737CED70885AAB993B66F5992437274CAC2F4E7E5AD248E05DDC4F4254",
+      "sourceRowRGBAHash": "F06D8A4533B9C06AF899367E7E6B9714F0A5237C6C67B1D7C56E34BD65AADDEF",
       "representativeFrame": 3,
       "visualMotionApproval": "pending"
     },
@@ -130,12 +130,12 @@
       "state": "review",
       "nativeRow": 8,
       "frameCount": 6,
-      "sourceRowRGBAHash": "E5590A77BD973F8B88DE91354E929058F6903102AFBF0943A609107174AA164A",
+      "sourceRowRGBAHash": "795B7C0E0021CA9A128DEA8E3C4A60DA3FF85F846351FCC5439DEE2E624F5B57",
       "representativeFrame": 3,
       "visualMotionApproval": "pending"
     }
   ],
-  "atlasRGBAHash": "E1A913E477BBD293193D056E9EC3A5D65DD0E128D41AB74B69F3F71D686949A5",
+  "atlasRGBAHash": "1153C904A6D88A812C236CC8EC5C33A6B7CB4977258357CED80E3823C332E006",
   "construction": "exact paste of verified decoded v3 candidate strips; no new geometry or sampling",
   "visualAcceptance": "pending",
   "allStateTransitionsAccepted": false,

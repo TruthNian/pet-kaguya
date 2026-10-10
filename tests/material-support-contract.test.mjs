@@ -22,5 +22,11 @@ test('missing support version or falsified geometry/alpha/timing/approval and pi
     }
     const changed=structuredClone(current);changed.materialSupportRepair.currentFrameHashes[0]='bad';
     assert.throws(()=>validateMaterialSupport(changed));
+    if(current.sourceEyeGeometryRevision){
+      const bad=structuredClone(current);bad.materialSupportRepair.independentEyeSourceRevision.onlyNativeEyeWindowsChanged=false;
+      assert.throws(()=>validateMaterialSupport(bad));
+      const missing=structuredClone(current);delete missing.materialSupportRepair.independentEyeSourceRevision;
+      assert.throws(()=>validateMaterialSupport(missing));
+    }
   }
 });

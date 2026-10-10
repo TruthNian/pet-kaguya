@@ -42,11 +42,11 @@ def validate_motion(motion, gaze_spec):
             raise ValueError('Review cannot add body pulse or excessive ear/hair fields')
 
 
-def inputs():
+def inputs(*, corrected_gaze=True):
     mother = load_canonical()
     base, spec, raw = art_inputs()
     arm_pose, arm_allowed, preserved = localized_pose(base, raw, spec)
-    gaze_spec = gaze.specification()
+    gaze_spec = gaze.specification(corrected=corrected_gaze)
     motion = json.loads((ROOT/'sources/canonical/review-motion.json').read_text(encoding='utf-8'))
     validate_motion(motion, gaze_spec)
     eye_layers = gaze.layers(mother, gaze.load_generated(), gaze_spec)
@@ -89,6 +89,7 @@ def main():
         originalLowerHandContourRestored=True,handScaled=False,
         knownSourceHairRGBAExact=True,paintedHairAlphaContinuityEstimated=True,
         eyeBackingGeneratedSha256=gaze.GENERATED_SHA, state='review', nativeRow=8,
+        sourceEyeRig='sources/canonical/gaze-rig-v2.json',sourceEyeGeometryRevision='observed-eye-opening-v2',
         statesInThisArtifact=['review'], durationsMs=DURATIONS[8], totalDurationMs=sum(DURATIONS[8]),
         repeatBeforeIdle=3, actionDurationMs=3*sum(DURATIONS[8]), closedEyeFrames=0,
         bodyPulse=False, ornamentFlash=False, bodyTranslationPx=0,

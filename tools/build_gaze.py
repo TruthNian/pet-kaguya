@@ -313,11 +313,11 @@ def main():
         facialGeometryRepair=False,eyeOutlineFixed=True,visualAcceptance='pending',installed=False,installableFullAtlas=False)
     art_metadata.update(sourceRig='sources/canonical/gaze-rig-v2.json',sourceGeometryRevision=spec['sourceGeometryRevision'],
         rawGeneratedSource='candidates/phase5/eye-backing-v1/generated.png',newArtworkGenerated=False,
-        legacyActionEyeMaterialsChanged=False)
+        legacyActionEyeMaterialsChanged=True)
     (material_out/'build.json').write_text(json.dumps(art_metadata,indent=2)+'\n',encoding='utf-8')
     metadata = dict(sourceSha256=ACCEPTED_SHA,eyeBackingGeneratedSha256=GENERATED_SHA,
         sourceRig='sources/canonical/gaze-rig-v2.json',sourceGeometryRevision=spec['sourceGeometryRevision'],
-        eyeMaterial='candidates/phase5/look/material-v2',legacyActionEyeMaterialsChanged=False,
+        eyeMaterial='candidates/phase5/look/material-v2',legacyActionEyeMaterialsChanged=True,
         state='look',directionCount=16,nativeRows=[9,10],directionZero='up',clockwiseStepDegrees=22.5,
         sourceOffsetDecimalPlaces=spec['offsetDecimalPlaces'],
         sourceOffsetsPx=[offsets(index,spec) for index in range(16)],camera=transform,
@@ -327,7 +327,7 @@ def main():
         neutralFrameHash=hashlib.sha256(neutral_frame.tobytes()).hexdigest().upper(),
         visualAcceptance='pending',installed=False,installableFullAtlas=False,
         limitations=['Iris matte and corrected opening vertices are estimated from visible source pixels; pale fringes are not claimed fully removed.',
-                     'This revision fixes the 16 look cells only. Existing action rows still use the frozen v1 eye materials and need separate propagation/review.',
+                     'Production actions with iris translation share the corrected eye opening. Unadopted archived trials retain their frozen v1 eye materials.',
                      'Only gaze is changed; no head turn or new native interpolation.',
                      'Small-scale direction legibility and naturalness require visual acceptance.',
                      'Native pointer priority remains unchanged; independent preview is not host integration.'])

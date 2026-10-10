@@ -38,10 +38,10 @@ def validate_motion(motion, gaze_spec):
             raise ValueError('Processing cannot add body pulse, actor motion or excessive ear/hair fields')
 
 
-def inputs():
+def inputs(*, corrected_gaze=True):
     mother, art_spec, generated = art_inputs()
     arm_pose, arm_allowed = localized_arm_pose(mother, generated, art_spec)
-    gaze_spec = gaze.specification()
+    gaze_spec = gaze.specification(corrected=corrected_gaze)
     motion = json.loads((ROOT/'sources/canonical/processing-motion.json').read_text(encoding='utf-8'))
     validate_motion(motion, gaze_spec)
     eye_layers = gaze.layers(mother, gaze.load_generated(), gaze_spec)
@@ -79,6 +79,7 @@ def main():
     metadata = dict(sourceSha256=ACCEPTED_SHA, source='sources/canonical/artwork.png',
         handGeneratedSha256=GENERATED_SHA, eyeBackingGeneratedSha256=gaze.GENERATED_SHA,
         state='processing', nativeState='running', nativeRow=7, statesInThisArtifact=['processing'],
+        sourceEyeRig='sources/canonical/gaze-rig-v2.json',sourceEyeGeometryRevision='observed-eye-opening-v2',
         durationsMs=DURATIONS[7], totalDurationMs=sum(DURATIONS[7]), repeatBeforeIdle=3,
         actionDurationMs=3*sum(DURATIONS[7]), closedEyeFrames=0, bodyPulse=False, ornamentFlash=False,
         bodyTranslationPx=0, focusOffsetSourcePx=motion['focusOffsetSourcePx'],

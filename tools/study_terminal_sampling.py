@@ -74,7 +74,7 @@ def jobs():
     build_locomotion.validate_motion(motion)
     response = follow.profile(motion)
     fields = follow.fields(regions, motion['followThrough'])
-    eye_layers = gaze.layers(mother, gaze.load_generated(), gaze.specification())
+    eye_layers = gaze.layers(mother, gaze.load_generated(), gaze.specification(corrected=True))
     keys = [dict(key, followSourcePx={name: part['offsetsSourcePx'][i]
             for name, part in response.items()}) for i, key in enumerate(motion['keyframes'])]
     for state in motion['states']:

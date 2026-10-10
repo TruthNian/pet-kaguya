@@ -56,13 +56,15 @@ def response(motion):
 
 
 def inputs():
-    data = walk.inputs()
+    # Keep archived cloth research reproducible without rebuilding it after
+    # unrelated eye fixes. It is not a comparison against today's artwork.
+    data = walk.inputs(corrected_gaze=False)
     weight = influence([1205,1306]);lag = response(data['motion'])
     results = {}
     for name,result in data['results'].items():
-        active = json.loads((ROOT/'candidates/phase5'/name/'build.json').read_text(encoding='utf-8'))
+        active = json.loads((ROOT/'sources/reference/gaze-action-v1'/f'{name}.json').read_text(encoding='utf-8'))
         if [rgba_hash(frame) for frame in result['frames']] != active['frameHashes']:
-            raise ValueError('Parent must independently reconstruct the actual current gait')
+            raise ValueError('Parent must independently reconstruct the frozen study-epoch gait')
         material = dict(result['material'],followFields={**result['material']['followFields'],'cloth':weight})
         frames,keys = [],[]
         for index,key in enumerate(result['renderKeys']):
