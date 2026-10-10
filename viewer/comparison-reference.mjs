@@ -29,6 +29,7 @@ export function comparisonReference(choice,state,index){
   if(choice==='rigid'&&['run_right','run_left'].includes(state))return {kind:'rigid',state,index,synchronized:true};
   if(choice==='cloth'&&['run_right','run_left'].includes(state))return {kind:'current',state,index,synchronized:true};
   if(choice==='wave'&&state==='waving')return {kind:'wave',state,index,synchronized:true};
+  if(choice==='link'&&state==='waving')return {kind:'middle-before',state,index,synchronized:true};
   if(choice==='link'&&state==='waving_link')return {kind:'candidate',state:'waving',index,synchronized:true};
   if(choice==='contact'&&state==='jumping')return {kind:'contact',state,index,synchronized:true};
   if(choice==='mouth'&&state==='failed')return {kind:'mouth',state:'failed',index,synchronized:true};
@@ -43,11 +44,11 @@ export function comparisonReference(choice,state,index){
 export function comparisonPolicy(mode,choice,reset=false){
   if(!Object.keys(candidateRows).includes(mode))throw new Error('Invalid comparison mode');
   const actionChoices=mode==='jumping'?['height','contact']:mode==='failed'?['mouth']
-    :mode==='waving'?['wave']:mode==='waving_link'?['link']:[];
+    :mode==='waving'?['link']:[];
   const allowed=['idle',...actionChoices];
   // Archived trials with v1 eye materials cannot be same-art comparisons
   // against actions that now use corrected eye extraction.
-  if(['idle','waving','jumping','waiting','failed'].includes(mode))allowed.push('sampling');
+  if(['idle','jumping','waiting','failed'].includes(mode))allowed.push('sampling');
   return {allowed,choice:reset||!allowed.includes(choice)?actionChoices[0]??'idle':choice};
 }
 

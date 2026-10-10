@@ -10,7 +10,8 @@ The selected full AI mother is **canonical-v3**. Its face, identity and costume 
 - Accepted as development bases only: restrained frontal steps, the new failed mouth, 4px hop and lowered waving peak.
 - Original-eye texture flow is now an accepted eye-motion development basis. Sixteen looks reuse the exact approved pixels; frontal steps, processing and review share the same quieter model. Iris texture can deform slightly; the face/eye outline stays fixed.
 - Waiting/review held timing is temporarily accepted, not their hand/sleeve anatomy.
-- Overlapping review hands, the new waving middle cel, cloth lag and float sampling remain **unadopted trials**.
+- The turning-palm waving middle cel is now a developer-selected continuity improvement, preserving the accepted peak and canonical rest. Its hand/clothing and full motion still lack human acceptance.
+- Overlapping review hands, cloth lag and float sampling remain **unadopted trials**.
 - This is **not an approved release**. Installed pet resources and the installed application have not been changed.
 
 ### Watch the actual current version once
@@ -35,7 +36,7 @@ The whole review excludes all unadopted candidates, so they cannot be confused w
 | Host capabilities | Native 192×208 cells, fixed hold times, pixelated scaling and pointer priority are unchanged. Atlas edits cannot remove these constraints. |
 | Delivery and measurement | Complete aesthetic acceptance, native-host loading of the new atlas, final release and real CPU/GPU/FPS measurements are not established. |
 
-The current atlas is 1,002,518 encoded bytes and decodes to 14,057,472 RGBA bytes.
+The current atlas is 1,002,098 encoded bytes and decodes to 14,057,472 RGBA bytes.
 Changed artwork is not a same-content compression result; file size does not prove FPS or texture-memory improvement.
 See the [full scope/acceptance ledger](docs/REQUIREMENTS.zh-CN.md) and [chronological work record](docs/PHASE5-STATES.zh-CN.md).
 Old long-form README notes remain in [Git history](https://github.com/TruthNian/pet-kaguya/blob/165d52c1050cef67c6cd7d01098587e972adb343/README.md), not as misleading current status.
@@ -55,6 +56,7 @@ The fast check reads current pixels/contracts; it does not rerender historical s
 Build only the action being edited and check only affected playback logic.
 Unadopted float-sampling and sleeve studies are frozen research, not required artwork rebuilds. Comparisons whose eye-material baseline is now stale are disabled rather than silently regenerated.
 The eye section offers an explicitly frozen pre-adoption gaze comparison. The original proposal retains its pending-at-creation receipt; the separate [user adoption decision](sources/canonical/gaze-surface-adoption-20261010.json) approves only this development basis, not full motion or installation.
+The main waving comparison uses the frozen pre-middle version on the left and current wave on the right. The former high-peak and float-study comparisons are disabled for the changed wave rather than silently rebuilt or mislabelled as single-factor evidence.
 Three whole-scene research tests have been removed. Small filter arithmetic checks remain, but are not part of the daily visual loop.
 The default CI uses fast current-asset/core-logic checks. Full archived regressions and installer audits require explicit manual `full_audit`; they do not block daily visual iteration.
 A green engineering check is not aesthetic approval.

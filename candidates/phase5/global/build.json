@@ -90,7 +90,7 @@
       "state": "waving",
       "nativeRow": 3,
       "frameCount": 4,
-      "sourceRowRGBAHash": "0A7E250267108E180F08AF74A951935591DFC816DA8200DA8C71142368271CE5",
+      "sourceRowRGBAHash": "792A7C07016DF407702DF010D491E2077F1F50980586D3F102A5D1F521529842",
       "representativeFrame": 1,
       "visualMotionApproval": "pending"
     },
@@ -135,7 +135,7 @@
       "visualMotionApproval": "pending"
     }
   ],
-  "atlasRGBAHash": "11BCDC93112FE89E49F1A36C8B44D0097F2C13355396D02647465987A0327FA8",
+  "atlasRGBAHash": "9E572849759BA6163AB38C5E86C70D8E91A2C897242D89B1F41B139B999F225B",
   "construction": "exact paste of verified decoded v3 candidate strips; no new geometry or sampling",
   "visualAcceptance": "pending",
   "allStateTransitionsAccepted": false,

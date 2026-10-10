@@ -6,11 +6,40 @@ export function validateCurrentWave(current){
       ||current.amplitudeApprovalScope!=='waving-lower-amplitude-development-basis-only'
       ||current.amplitudeUserDecision!=='sources/canonical/waving-amplitude-adoption-20261010.json'
       ||current.handLoweringSourcePx!==55
-      ||JSON.stringify(current.unchangedOriginalHoldIndices)!==JSON.stringify([0,2,3])
       ||current.frameHashes?.[1]!=='61C09D34D0A702F5AA5B472FAE38D8945BED2836E7EA61A55E63C0B1F65EF3D6'
       ||current.visualMotionApproval!=='pending'||current.installed!==false||current.installableFullAtlas!==false)
     throw new Error('Wave development-basis approval/source boundary mismatch');
+  if(current.middleDevelopmentBasis===undefined){
+    if(JSON.stringify(current.unchangedOriginalHoldIndices)!=='[0,2,3]')
+      throw new Error('Frozen amplitude-only wave must preserve original middle/rest');
+  }else if(current.middleDevelopmentBasis!=='developer-selected-continuity-improvement'
+      ||current.middleSource!=='candidates/phase5/wave-middle-link-v1'
+      ||current.middleGeneratedSha256!=='2E5DFACB79D7649034D46FE368D87411DEFD9CA5423C99BF484BAF9ABE05A0B8'
+      ||current.middleVisualApproval!=='pending'||current.middleUserApprovalClaimed!==false
+      ||current.newMiddleArtworkGeneratedThisIteration!==false
+      ||current.middleUsesAuthoredHandNotOriginalPalmPixels!==true
+      ||JSON.stringify(current.unchangedOriginalHoldIndices)!=='[3]'
+      ||JSON.stringify(current.unchangedAcceptedAmplitudeHoldIndices)!=='[1,3]'
+      ||current.middleReference!=='sources/reference/waving-middle-before'
+      ||current.middleNativeRGBAHash!=='1ADE339D8E003656323BC65FCECCE5B9E6591BF1B53486DBD4A82C4322E4D043'
+      ||[0,2].some(i=>current.frameHashes[i]!==current.middleNativeRGBAHash))
+    throw new Error('Developer-selected middle cannot inherit human/full-motion approval');
   return current;
+}
+
+export function validateWaveMiddleReference(before,current){
+  validateCurrentWave(current);validateCurrentWave(before);
+  if(current.middleDevelopmentBasis!=='developer-selected-continuity-improvement'
+      ||before.middleDevelopmentBasis!==undefined
+      ||['sourceSha256','state','nativeRow','camera','durationsMs','sequence','repeatBeforeIdle'].some(key=>
+        JSON.stringify(before[key])!==JSON.stringify(current[key]))
+      ||before.frameHashes?.length!==4||current.frameHashes?.length!==4
+      ||before.frameHashes[0]!=='D4B92531FFB5559FD99A006816D011601E83C56E2E15F2465FED768C7F0E6789'
+      ||before.frameHashes[0]!==before.frameHashes[2]
+      ||[1,3].some(i=>before.frameHashes[i]!==current.frameHashes[i]))
+    throw new Error('Middle comparison must share exact accepted peak/rest, source and holds');
+  before.frameHashes.forEach((_,i)=>candidateCelKey(before.frameHashes,i));
+  return before;
 }
 
 export function validateWaveAmplitude(study,current,manifest,baseline){

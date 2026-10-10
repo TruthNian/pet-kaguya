@@ -8,6 +8,7 @@ from canonical import ROOT, ACCEPTED_SHA, load_canonical, clean_cutout, camera
 from review_wave import inputs as art_inputs, localized_pose, native_frame
 from animation_output import write_animation
 from protocol import DURATIONS
+import wave_middle_basis as middle
 
 OUT = ROOT/'candidates/phase5/waving'
 
@@ -36,7 +37,8 @@ def inputs():
     from study_wave_amplitude import lowered_inputs
     data=lowered_inputs(mother,motion,poses,baseline,include_failure=False)
     poses['peak']=data['repaired']
-    return mother,motion,poses,data['frames']
+    frames=middle.apply(poses,data['frames'],camera(clean_cutout(mother)[0]))
+    return mother,motion,poses,frames
 
 
 def main():
@@ -60,8 +62,9 @@ def main():
         amplitudeApprovalScope='waving-lower-amplitude-development-basis-only',
         amplitudeUserDecision='sources/canonical/waving-amplitude-adoption-20261010.json',
         handLoweringSourcePx=55,handLoweringNativePx=55*camera(clean_cutout(mother)[0])['scale'],
-        unchangedOriginalHoldIndices=[0,2,3],
-        method='original middle/rest holds; lowered original peak material with bounded new shoulder cloth; estimated original palm and cape/frontlock protected',
+        unchangedOriginalHoldIndices=[3],
+        **middle.descriptor(),
+        method='selected face-free turning-palm middle cel; exact accepted lowered peak and canonical rest; fixed native holds',
         sampling='middle insert first uses a fixed crop-to-source uniform projection; all native frames then share canonical camera, 3x coverage and one terminal Lanczos downsample',
         visualMotionApproval='pending',installableFullAtlas=False,installed=False,
         unresolved=motion['limitations'])

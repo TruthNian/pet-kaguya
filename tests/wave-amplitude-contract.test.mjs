@@ -1,18 +1,19 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {validateWaveAmplitude} from '../viewer/wave-amplitude-contract.mjs';
+import {validateWaveAmplitude,validateCurrentWave,validateWaveMiddleReference} from '../viewer/wave-amplitude-contract.mjs';
 import {comparisonReference,comparisonPolicy} from '../viewer/comparison-reference.mjs';
 import {candidateSlot,candidatePoseOffset} from '../viewer/candidate-clock.mjs';
 
 const load=path=>JSON.parse(readFileSync(new URL(path,import.meta.url),'utf8'));
 const study=load('../candidates/phase5/wave-amplitude-v1/build.json');
-const current=load('../candidates/phase5/waving/build.json');
+const current=load('../sources/reference/waving-middle-before/build.json');
+const active=load('../candidates/phase5/waving/build.json');
 const manifest=load('../sources/reference/waving-amplitude-high/manifest.json');
 const baseline=load('../sources/reference/waving-amplitude-high/contract.json');
 const validate=(trial=study,active=current,frozen=manifest,old=baseline)=>validateWaveAmplitude(trial,active,frozen,old);
 
-test('actual lowered wave is tied to current four cels, not an approved atlas',()=>{
+test('archived amplitude-only wave is tied to its frozen four cels, not an approved atlas',()=>{
   assert.equal(validate(),study);
   assert.deepEqual(study.unchangedHoldIndices,[0,2,3]);
   assert.equal(study.clothRepair.generatedHandNotUsed,true);
@@ -49,9 +50,26 @@ test('every wave hold and all three cycles use one reference slot, then the same
   }
 });
 test('wave comparison is not silently available for other state or sampling trials',()=>{
-  assert.deepEqual(comparisonPolicy('waving','idle',true),{allowed:['idle','wave','sampling'],choice:'wave'});
+  assert.deepEqual(comparisonPolicy('waving','idle',true),{allowed:['idle','link'],choice:'link'});
   assert.equal(comparisonPolicy('jumping','wave').choice,'height');
   assert.equal(comparisonPolicy('waving_source','wave').choice,'idle');
   for(const state of ['failed','review','run_right','waving_source'])
     assert.throws(()=>comparisonReference('wave',state,0));
+});
+test('current middle reuses accepted peak/rest without pretending human approval',()=>{
+  assert.equal(validateCurrentWave(active),active);
+  assert.equal(validateWaveMiddleReference(current,active),current);
+  assert.equal(active.middleUserApprovalClaimed,false);
+  assert.throws(()=>validateWaveAmplitude(study,active,manifest,baseline));
+  for(const [key,value] of [['middleVisualApproval','approved'],['middleUserApprovalClaimed',true],
+      ['middleNativeRGBAHash','bad'],['unchangedAcceptedAmplitudeHoldIndices',[3]]])
+    assert.throws(()=>validateCurrentWave({...active,[key]:value}));
+});
+test('same real four holds and three-cycle idle drive the new middle comparison',()=>{
+  for(let cycle=0;cycle<3;cycle++)for(let index=0;index<4;index++){
+    const selected=candidateSlot('waving',cycle*700+candidatePoseOffset('waving',index));
+    assert.deepEqual(comparisonReference('link',selected.state,selected.index),
+      {kind:'middle-before',state:'waving',index,synchronized:true});
+  }
+  assert.deepEqual(comparisonReference('link','idle',0),{kind:'candidate',state:'idle',index:0,synchronized:true});
 });

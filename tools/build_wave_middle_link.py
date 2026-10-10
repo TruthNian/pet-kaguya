@@ -31,15 +31,16 @@ def main():
         dict(foregroundPolygon=POLYGON,edgeFeatherSourcePx=1.5))
     pose.save(OUT/'pose.png')
     frame=native_frame(pose)
-    current_root=ROOT/'candidates/phase5/waving'
+    current_root=ROOT/'sources/reference/waving-middle-before'
     current=json.loads((current_root/'build.json').read_text(encoding='utf-8'))
     old=[]
-    for i,digest in enumerate(current['frameHashes']):
-        with Image.open(current_root/f'frame-{i}.png') as image:
-            cell=image.convert('RGBA')
-        if hashlib.sha256(cell.tobytes()).hexdigest().upper()!=digest:
-            raise ValueError('Current wave frame differs from its actual contract')
-        old.append(cell)
+    with Image.open(current_root/'strip.webp') as image:
+        strip=image.convert('RGBA')
+        for i,digest in enumerate(current['frameHashes']):
+            cell=strip.crop((i*192,0,(i+1)*192,208))
+            if hashlib.sha256(cell.tobytes()).hexdigest().upper()!=digest:
+                raise ValueError('Frozen pre-middle wave differs from its actual contract')
+            old.append(cell)
     frames=[frame,old[1],frame,old[3]]
     # Native filtering can change only the bounded arm/backing support.
     guard=np.ones((208,192),bool);guard[86:176,35:87]=False

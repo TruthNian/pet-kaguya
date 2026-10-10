@@ -2,8 +2,8 @@
 import {durations} from './clock.mjs';
 import {candidateRows as rows,candidateSlot,candidatePoseOffset,candidateCelKey} from './candidate-clock.mjs?v=20261010-wave-link-1';
 import {paintCel} from './cel-painter.mjs?v=20261010-terminal-precision-v1';
-import {comparisonReference,comparisonPolicy,validateRigidReference,validateHopReference,validateMouthReference} from './comparison-reference.mjs?v=20261010-wave-link-1';
-import {validateWaveAmplitude,validateCurrentWave} from './wave-amplitude-contract.mjs?v=20261010-wave-adopt-1';
+import {comparisonReference,comparisonPolicy,validateRigidReference,validateHopReference,validateMouthReference} from './comparison-reference.mjs?v=20261010-wave-middle-dev-1';
+import {validateWaveAmplitude,validateCurrentWave,validateWaveMiddleReference} from './wave-amplitude-contract.mjs?v=20261010-wave-middle-dev-1';
 import {validateClothStudy} from './cloth-follow-contract.mjs';
 import {validateReviewOverlapMetadata,validateReviewOverlapReference} from './review-overlap-contract.mjs';
 import {validateMaterialSupport} from './material-support-contract.mjs';
@@ -27,6 +27,7 @@ let mouthPromise=null;
 let heightPromise=null;
 let handsPromise=null;
 let wavePromise=null;
+let middleBeforePromise=null;
 let mode='idle',ready=false,timer=null,baseElapsed=0,startedAt=null,paused=false,manualIndex=null,lastKey='',paintCount=0,request=0;
 let lastReferenceKey='',referencePaintCount=0;
 const reduced=()=>el('idle-reduced').checked;
@@ -184,6 +185,19 @@ async function waveAsset(current){
   })().catch(error=>{wavePromise=null;throw error;});
   const result=await wavePromise;validateWaveAmplitude(result.metadata,current,result.manifest,result.baseline);return result;
 }
+async function middleBeforeAsset(current){
+  if(middleBeforePromise===null)middleBeforePromise=(async()=>{
+    const root='../sources/reference/waving-middle-before';
+    const response=await fetch(`${root}/build.json`,{cache:'no-cache'});
+    if(!response.ok)throw new Error('Pre-middle wave reference unavailable');
+    const metadata=validateWaveMiddleReference(await response.json(),current);
+    const image=new Image();image.src=`${root}/strip.webp?v=${metadata.frameHashes[0]}`;
+    await image.decode();
+    if(image.naturalWidth!==1536||image.naturalHeight!==208)throw new Error('Pre-middle wave dimensions mismatch');
+    return {image,metadata,frameHashes:metadata.frameHashes};
+  })().catch(error=>{middleBeforePromise=null;throw error;});
+  const result=await middleBeforePromise;validateWaveMiddleReference(result.metadata,current);return result;
+}
 async function contactAsset(current){
   if(!contactCache.has('jumping'))contactCache.set('jumping',(async()=>{
     const root='../candidates/phase5/jumping';
@@ -283,6 +297,7 @@ async function draw(){
   const precisionAsset=precision?await samplingAsset(selected.state,metadata):null;
   const sleeveAsset=cloth?await clothAsset(selected.state,metadata):null;
   const referenceAsset=precision||reference.kind==='current'?{image,metadata}:reference.kind==='rigid'?await rigidAsset(reference.state,metadata)
+    :reference.kind==='middle-before'?await middleBeforeAsset(metadata)
     :reference.kind==='wave'?await waveAsset(metadata)
     :reference.kind==='contact'?await contactAsset(metadata)
     :reference.kind==='height'?await heightAsset(metadata)
@@ -299,6 +314,7 @@ async function draw(){
     :reference.state==='waving'&&reference.kind==='candidate'?`同步现用招手 · 第 ${reference.index+1} 格`
     :cloth?`同步现用袖角 · ${reference.state} 第 ${reference.index+1} 格`
     :precision?`同步现用采样 · ${reference.state} 第 ${reference.index+1} 格`
+    :reference.kind==='middle-before'?`同步改动前招手 · 第 ${reference.index+1} 格`
     :reference.kind==='rigid'?`同步旧小步 · ${reference.state} 第 ${reference.index+1} 格`
     :reference.kind==='contact'?`同步旧轻跃（高度场） · 第 ${reference.index+1} 格`
     :reference.kind==='mouth'?`同步旧嘴线 · failed 第 ${reference.index+1} 格`
@@ -306,7 +322,7 @@ async function draw(){
     :reference.kind==='hands'?`同步现用双手 · review v6 第 ${reference.index+1} 格`
     :reference.synchronized?`同步回退 · idle 第 ${reference.index+1} 格`:'同一母版 · 固定第 1 帧';
   el('reference-status').textContent=choice==='link'
-    ?`左右同钟/同格；左现用降低抬手，右中间格衔接试验，未采用 · ${referencePaintCount} 次参考绘制 · ${selected.state==='waving_link'?'只改第1/3格手腕与衣袖；第2格峰值及第4格放松保持精确。脸型、其他身体与时长不变':'三轮已结束，两侧同步同一idle'}`
+    ?`左右同钟/同格；左冻结改动前，右现用中间格开发改进 · ${referencePaintCount} 次参考绘制 · ${selected.state==='waving'?'只改第1/3格；认可的峰值及原图放松格保持精确。开发者选择，完整手形/招手待确认，不继承用户批准':'三轮已结束，两侧同步同一idle'}`
     :choice==='wave'
     ?`左右同钟/同格；左冻结旧招手，右现用降低抬手开发基础 · ${referencePaintCount} 次参考绘制 · ${wave?'仅第2格手掌降低约8.7原生像素；原掌按估计掩码保护，局部补画袖带连接。你已确认此版为开发基础，完整动作未通过':'三轮已结束，两侧同步同一idle'}`
     :choice==='cloth'
@@ -332,7 +348,7 @@ async function draw(){
   labels.review_overlap='review · 六格低位相叠手试验，未采用';
   labels.jumping='jumping · 4px轻跃开发基础';
   labels.failed='failed · 八格新嘴线开发基础';
-  labels.waving='waving · 降低抬手开发基础';
+  labels.waving='waving · 中间格衔接开发改进';
   const label=labels[selected.state];
   el('current-candidate-title').textContent=cloth?`${label} · 袖角跟随试验，未采用`:precision?`${label} · 浮点采样试验，未采用`:label;
   const status=manualIndex!==null?'单帧检查':reduced()?'减少动态':paused?'已暂停':selected.completedAction?'三轮已结束，已回 idle':'实际时长播放';

@@ -51,9 +51,9 @@
   "nativeInterpolation": false,
   "canonicalRestRGBAExact": true,
   "frameHashes": [
-    "1ADE339D8E003656323BC65FCECCE5B9E6591BF1B53486DBD4A82C4322E4D043",
+    "D4B92531FFB5559FD99A006816D011601E83C56E2E15F2465FED768C7F0E6789",
     "61C09D34D0A702F5AA5B472FAE38D8945BED2836E7EA61A55E63C0B1F65EF3D6",
-    "1ADE339D8E003656323BC65FCECCE5B9E6591BF1B53486DBD4A82C4322E4D043",
+    "D4B92531FFB5559FD99A006816D011601E83C56E2E15F2465FED768C7F0E6789",
     "E049C9010F4C3C2B2FD686620DCC1BF3FD97B4A97A5FE2913B69E4EA1924C6A8"
   ],
   "amplitudeVisualApproval": "approved-as-development-basis",
@@ -62,22 +62,11 @@
   "handLoweringSourcePx": 55,
   "handLoweringNativePx": 8.708333333333332,
   "unchangedOriginalHoldIndices": [
+    0,
+    2,
     3
   ],
-  "middleDevelopmentBasis": "developer-selected-continuity-improvement",
-  "middleSource": "candidates/phase5/wave-middle-link-v1",
-  "middleGeneratedSha256": "2E5DFACB79D7649034D46FE368D87411DEFD9CA5423C99BF484BAF9ABE05A0B8",
-  "middleNativeRGBAHash": "1ADE339D8E003656323BC65FCECCE5B9E6591BF1B53486DBD4A82C4322E4D043",
-  "middleVisualApproval": "pending",
-  "middleUserApprovalClaimed": false,
-  "middleReference": "sources/reference/waving-middle-before",
-  "unchangedAcceptedAmplitudeHoldIndices": [
-    1,
-    3
-  ],
-  "newMiddleArtworkGeneratedThisIteration": false,
-  "middleUsesAuthoredHandNotOriginalPalmPixels": true,
-  "method": "selected face-free turning-palm middle cel; exact accepted lowered peak and canonical rest; fixed native holds",
+  "method": "original middle/rest holds; lowered original peak material with bounded new shoulder cloth; estimated original palm and cape/frontlock protected",
   "sampling": "middle insert first uses a fixed crop-to-source uniform projection; all native frames then share canonical camera, 3x coverage and one terminal Lanczos downsample",
   "visualMotionApproval": "pending",
   "installableFullAtlas": false,
