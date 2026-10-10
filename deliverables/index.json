@@ -1,0 +1,26 @@
+{
+  "packages": [
+    {
+      "file": "kaguya-candidate-0ac132c.zip",
+      "bytes": 1007149,
+      "sha256": "807543DF704BC9525CC19E513D4868CE6B618CD18C72AA5F818B40E79739A59D",
+      "sourceCommit": "0ac132cea9de5db54721d6e617e3f9c7de3ae76d",
+      "packageRole": "development-candidate",
+      "atlasSHA256": "5A1A93C1A709F98E6F3359F5E6A3241ABFECE2850695BC1E05590C895F9DC94B",
+      "petConfigSHA256": "4A599C8D8934B40E3AAC234B56FCC99A3F424C5EDD4D0BF7F5C2F40E6E9DC5E9"
+    },
+    {
+      "file": "kaguya-baseline-phase2.zip",
+      "bytes": 2016380,
+      "sha256": "47804EB4A3CBA874DC919C5834B9CF0C52E922C770DFEC73742B1D3072399AC4",
+      "sourceCommit": "97ec2aba368d91faf5a127127a04105f58231247",
+      "packageRole": "historical-baseline-archive",
+      "atlasSHA256": "71F7E36AD459D99C9DE1AC6033A968CDF4C125EB742FFD5FF19B8E81BBA56EF7",
+      "petConfigSHA256": "AB3CA7F7DB008F9BFE204B9C85A8737D85D20109C46C795989D6938807759C8D"
+    }
+  ],
+  "installationPerformed": false,
+  "artworkRebuilds": 0,
+  "releaseApprovalClaimed": false,
+  "archiveRoundTripByteExact": true
+}

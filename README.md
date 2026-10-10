@@ -61,7 +61,20 @@ The main waving comparison uses the frozen pre-middle version on the left and cu
 The current review comparison uses an exact frozen pre-hand strip with the same accepted eye model. It does not compare the new eyes against the archived rigid-eye hand study. The existing GIMP project remains the static hand source, not a claim that the new animated eye flow has been edited in GIMP.
 Three whole-scene research tests have been removed. Small filter arithmetic checks remain, but are not part of the daily visual loop.
 The default CI uses fast current-asset/core-logic checks. Full archived regressions and installer audits require explicit manual `full_audit`; they do not block daily visual iteration.
+Pushes that change only documentation, frozen downloads or their packaging tool do not rerun animation QA. Artwork, source, player, tests, dependencies and workflow changes still trigger the fast checks; pull requests retain verification.
 A green engineering check is not aesthetic approval.
+
+## Compact frozen packages
+
+- [v3 development candidate, snapshot 0ac132c](deliverables/kaguya-candidate-0ac132c.zip): 1,007,149 bytes. Includes the exact nine-state/sixteen-look atlas, a local-v2 `pet.json`, a manifest and clear acceptance limits. Waving middle/review hands are developer-selected, not human-approved.
+- [Original Phase 2 archive](deliverables/kaguya-baseline-phase2.zip): 2,016,380 bytes. Both runtime files are byte-exact to frozen Git commit 97ec2ab. This is not the current installed backup or the recommended new artwork.
+- [Package hashes and frozen source commits](deliverables/index.json).
+
+These are file-layout-checked archives, **not approved releases or verified native-host installations**. No install script is included. Do not overwrite the installed pet; a separate explicit decision and a backup of the actual installation are still required.
+The existing installer continues to refuse unapproved development installation. No GitHub Release or application change is performed.
+
+Build these frozen snapshots with `python tools/build_native_packages.py`; read-only source/archive verification uses `python tools/build_native_packages.py --verify`. Neither command rebuilds artwork or writes installed files. The source commits must exist locally; a normal full Git clone has them. The packages do not follow future art changes silently.
+The local package/source round-trip check passed for the saved files. No complete regression, installer test or native-host activation was run for this packaging change.
 
 ## Baseline and safety
 

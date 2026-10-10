@@ -1,6 +1,17 @@
 name: Verify Kaguya assets
 on:
   push:
+    # Documentation and frozen downloads do not change animation/runtime.
+    # Packaging has its own source/archive check; do not rerun artwork QA.
+    paths:
+      - 'candidates/phase5/**'
+      - 'sources/**'
+      - 'tools/**'
+      - '!tools/build_native_packages.py'
+      - 'viewer/**'
+      - 'tests/**'
+      - 'requirements.txt'
+      - '.github/workflows/verify.yml'
   pull_request:
   workflow_dispatch:
     inputs:
