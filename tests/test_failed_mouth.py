@@ -90,6 +90,9 @@ class FailedMouth(unittest.TestCase):
             mouth_epoch=global_atlas.convert('RGBA')
             with Image.open(ROOT/'sources/reference/jumping-height-8px/jumping.webp') as frozen_hop:
                 mouth_epoch.paste(frozen_hop.convert('RGBA'),(0,4*208))
+            for row,state in ((1,'run_right'),(2,'run_left')):
+                with Image.open(ROOT/f'sources/reference/material-support-v1/{state}.webp') as frozen_gait:
+                    mouth_epoch.paste(frozen_gait.convert('RGBA'),(0,row*208))
             self.assertEqual(art.rgba_hash(mouth_epoch),receipt['newAtlasRGBAHash'])
             self.assertEqual([c['changedPixels'] for c in meta['changesFromFrozenOldMouth']],receipt['nativeChangedPixelsPerCel'])
         self.assertEqual(meta['durationsMs'],DURATIONS[5])

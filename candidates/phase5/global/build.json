@@ -74,7 +74,7 @@
       "state": "run_right",
       "nativeRow": 1,
       "frameCount": 8,
-      "sourceRowRGBAHash": "13B0132F2AE7D0ABD3DE5A0816E6D3777D2F1F10704FF789AEE03181CE01103B",
+      "sourceRowRGBAHash": "41FA54379FE3E3DDEC5448085B3D524A27A3C45E9D4E26FF7C02B360E5C9C28E",
       "representativeFrame": 2,
       "visualMotionApproval": "pending"
     },
@@ -82,7 +82,7 @@
       "state": "run_left",
       "nativeRow": 2,
       "frameCount": 8,
-      "sourceRowRGBAHash": "C10594DC6E65B923E3C61F9DFAC5BC3130423874FEC4B021AB8275587164CB4F",
+      "sourceRowRGBAHash": "8E0CEB921ECFC2D3B99E9466A76E2EA0F589971EA40342878EB8A491C26403CF",
       "representativeFrame": 6,
       "visualMotionApproval": "pending"
     },
@@ -98,7 +98,7 @@
       "state": "jumping",
       "nativeRow": 4,
       "frameCount": 5,
-      "sourceRowRGBAHash": "DBFEBF4F6C55FF1B33F1744CC35B0B3EBCBFA88701C8AE154E93259B2A900EE9",
+      "sourceRowRGBAHash": "E1D7B888B0EEE69E16814866EEAEEC7E8E3F998CD69AA9BE70EC71118382D3DA",
       "representativeFrame": 2,
       "visualMotionApproval": "pending"
     },
@@ -135,7 +135,7 @@
       "visualMotionApproval": "pending"
     }
   ],
-  "atlasRGBAHash": "CCDD566B56EB9B11042DC0CEF87A612E211EDCF6F0CB5A96CCAFE13D24D89BB2",
+  "atlasRGBAHash": "1E1D25A012688E96CC1D4A59AD96696145B52DB7E7C9DAEF39AF9273A2128786",
   "construction": "exact paste of verified decoded v3 candidate strips; no new geometry or sampling",
   "visualAcceptance": "pending",
   "allStateTransitionsAccepted": false,

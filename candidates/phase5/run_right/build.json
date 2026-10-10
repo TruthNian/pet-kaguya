@@ -300,9 +300,9 @@
   "uniqueCels": 8,
   "frameHashes": [
     "85202B290D3C2E0EBDE00CFF7311D42CCDD4336305B413FD6C5C8B917F140889",
-    "2B1ED3C28DD48CF0AE6D5387E302C66805800CC27713A44A6B60AE7224A91ABB",
+    "5D96B80C8821C6B45486D1485F4AE79BB6ECEE3DC0AE32DDEC0F3AB5155FE508",
     "A9C8266B1DCEEAE63184C58FD2728F42D32D3A48459378B94B580919EE9B304C",
-    "A5848C8D89039CA6F9DA996887E8C00BDDCDDFF05C159A09717B5642E883DE08",
+    "DE9FF8FDCE211E65B48C065C58256D10182897C85F7F82A6DE7FF9CFB740A7BE",
     "599CBDDA342DB8A744779585FF7B68598536B7B2671BBF4DAF6D535B432F56DF",
     "766B119302DA7A47D50B40B1358D83CDECB66B59F01FE716C6EF3B16F30E9710",
     "DDAFC1B2B0FC6074393791CF62315CB8FC726C927ED8EDAEB4C79004DD6F05F1",
@@ -521,6 +521,89 @@
   "directSamplerNeutralMaximumRGBADifference": 0,
   "roundoffCanonicalizationPremultTolerance": 1e-10,
   "sourceAlphaAndOcclusionSeparated": true,
+  "localFilterSupport": "zero-extended-local-v2",
+  "materialSupportRepair": {
+    "baselineCommit": "7f58246889fbbcfef788606067a95cf9251e1a87",
+    "reference": "sources/reference/material-support-v1/run_right.webp",
+    "baselineFrameHashes": [
+      "85202B290D3C2E0EBDE00CFF7311D42CCDD4336305B413FD6C5C8B917F140889",
+      "2B1ED3C28DD48CF0AE6D5387E302C66805800CC27713A44A6B60AE7224A91ABB",
+      "A9C8266B1DCEEAE63184C58FD2728F42D32D3A48459378B94B580919EE9B304C",
+      "A5848C8D89039CA6F9DA996887E8C00BDDCDDFF05C159A09717B5642E883DE08",
+      "599CBDDA342DB8A744779585FF7B68598536B7B2671BBF4DAF6D535B432F56DF",
+      "766B119302DA7A47D50B40B1358D83CDECB66B59F01FE716C6EF3B16F30E9710",
+      "DDAFC1B2B0FC6074393791CF62315CB8FC726C927ED8EDAEB4C79004DD6F05F1",
+      "1C1A20B8410EDB917A2D8C9499357E722755CF8C7FBB70A18F9A6CDC0659AC27"
+    ],
+    "currentFrameHashes": [
+      "85202B290D3C2E0EBDE00CFF7311D42CCDD4336305B413FD6C5C8B917F140889",
+      "5D96B80C8821C6B45486D1485F4AE79BB6ECEE3DC0AE32DDEC0F3AB5155FE508",
+      "A9C8266B1DCEEAE63184C58FD2728F42D32D3A48459378B94B580919EE9B304C",
+      "DE9FF8FDCE211E65B48C065C58256D10182897C85F7F82A6DE7FF9CFB740A7BE",
+      "599CBDDA342DB8A744779585FF7B68598536B7B2671BBF4DAF6D535B432F56DF",
+      "766B119302DA7A47D50B40B1358D83CDECB66B59F01FE716C6EF3B16F30E9710",
+      "DDAFC1B2B0FC6074393791CF62315CB8FC726C927ED8EDAEB4C79004DD6F05F1",
+      "1C1A20B8410EDB917A2D8C9499357E722755CF8C7FBB70A18F9A6CDC0659AC27"
+    ],
+    "changes": [
+      {
+        "changedPixels": 0,
+        "maximumChannelDifference": 0,
+        "bounds": null
+      },
+      {
+        "changedPixels": 1,
+        "maximumChannelDifference": 1,
+        "bounds": [
+          113,
+          156,
+          114,
+          157
+        ]
+      },
+      {
+        "changedPixels": 0,
+        "maximumChannelDifference": 0,
+        "bounds": null
+      },
+      {
+        "changedPixels": 1,
+        "maximumChannelDifference": 1,
+        "bounds": [
+          113,
+          156,
+          114,
+          157
+        ]
+      },
+      {
+        "changedPixels": 0,
+        "maximumChannelDifference": 0,
+        "bounds": null
+      },
+      {
+        "changedPixels": 0,
+        "maximumChannelDifference": 0,
+        "bounds": null
+      },
+      {
+        "changedPixels": 0,
+        "maximumChannelDifference": 0,
+        "bounds": null
+      },
+      {
+        "changedPixels": 0,
+        "maximumChannelDifference": 0,
+        "bounds": null
+      }
+    ],
+    "scope": "local-bilinear-support-only",
+    "sourceArtworkChanged": false,
+    "geometryChanged": false,
+    "timingChanged": false,
+    "nativeAlphaPreservedExactly": true,
+    "fullMotionApproved": false
+  },
   "artistLayerRecoveryClaimed": false,
   "inferredMatte": true,
   "fullRedrawAccepted": false,

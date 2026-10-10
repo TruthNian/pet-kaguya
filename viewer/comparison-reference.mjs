@@ -1,10 +1,12 @@
 import {durations} from './clock.mjs';
 import {candidateRows,candidateCelKey} from './candidate-clock.mjs';
+import {validateMaterialSupport} from './material-support-contract.mjs';
 
 const fields=['sourceSha256','state','nativeRow','camera','durationsMs','projection','supportFeet',
   'footOffsetsSourcePx','rootOffsetsSourcePx','focusOffsetSourcePx','legCompositionVersion',
   'legBackingGeneratedSha256','eyeBackingGeneratedSha256'];
 export function validateRigidReference(metadata,state,current){
+  validateMaterialSupport(current);
   if(!['run_right','run_left'].includes(state)
       ||metadata.sourceSha256!==current.sourceSha256
       ||metadata.commit!=='d804cd5e6eefdf1de106c97c2f5470837fab9dc2'
@@ -71,22 +73,24 @@ export function validateMouthReference(manifest,baseline,study,current){
 }
 
 export function validateHopReference(metadata,current){
+  validateMaterialSupport(current);
   const fields=['sourceSha256','state','nativeRow','camera','durationsMs','actorOffsetsPx',
     'bodyCompressionOutputPx','tipAnglesDegrees','nativeInterpolation','repeatBeforeIdle'];
   if(current.state!=='jumping'||current.nativeRow!==4
       ||current.groundedContactVersion!=='two-link-source-material-v1'
       ||current.strategyApprovalInheritedFromLocomotion!==false
-      ||current.visualMotionApproval!=='pending'||current.originalAirCelsRGBAExact!==false
+      ||current.visualMotionApproval!=='pending'||current.originalAirCelsRGBAExact!==true
       ||current.airMaterialIdentityProven!==false
       ||metadata.referenceRole!=='regenerated-counterfactual-not-active-animation'
       ||metadata.referencePurpose!=='isolate-grounded-two-link-knees-vs-vertical-height-field'
       ||metadata.file!=='comparison-old-strip.webp'||metadata.frameHashes?.length!==5
       ||metadata.visualApprovalInherited!==false||metadata.installableFullAtlas!==false||metadata.installed!==false
-      ||JSON.stringify(metadata.airCelsRGBAExact)!==JSON.stringify([false,true,false])
+      ||JSON.stringify(metadata.airCelsRGBAExact)!==JSON.stringify([true,true,true])
       ||JSON.stringify(metadata.airChangedPixels)!==JSON.stringify(current.heightFieldAirChangedPixels)
       ||JSON.stringify(metadata.airMaximumChannelDifference)!==JSON.stringify(current.heightFieldAirMaximumChannelDifference)
       ||current.heightFieldAirMaximumChannelDifference?.length!==3
-      ||current.heightFieldAirMaximumChannelDifference.some(n=>!Number.isInteger(n)||n<0||n>1)
+      ||current.heightFieldAirMaximumChannelDifference.some(n=>n!==0)
+      ||JSON.stringify(current.heightFieldAirChangedPixels)!==JSON.stringify([0,0,0])
       ||JSON.stringify(metadata.candidateFrameHashes)!==JSON.stringify(current.frameHashes)
       ||fields.some(key=>current[key]===undefined||JSON.stringify(metadata.contract?.[key])!==JSON.stringify(current[key])))
     throw new Error('Hop comparison source/poses/timing or candidate boundary mismatch');

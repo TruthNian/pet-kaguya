@@ -1,0 +1,528 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "source": "sources/canonical/artwork.png",
+  "state": "jumping",
+  "nativeRow": 4,
+  "statesInThisArtifact": [
+    "jumping"
+  ],
+  "generatedFromRejectedSources": false,
+  "facialGeometryRepair": false,
+  "closedEyeFrames": 0,
+  "durationsMs": [
+    140,
+    140,
+    140,
+    140,
+    280
+  ],
+  "totalDurationMs": 840,
+  "repeatBeforeIdle": 3,
+  "actionDurationMs": 2520,
+  "camera": {
+    "scale": 0.15833333333333333,
+    "x": 0.36666666666667425,
+    "y": 7.883333333333354,
+    "visibleBBox": [
+      142,
+      26,
+      1066,
+      1226
+    ],
+    "floor": 202,
+    "topReserve": 12,
+    "cell": [
+      192,
+      208
+    ]
+  },
+  "alphaCleanup": {
+    "distantVeryFaintPixelsRemoved": 4177,
+    "removedOpacitySum": 4971,
+    "maximumRemovedAlpha": 8,
+    "retainedFringeRadius": 4,
+    "paintedPixelsAboveAlpha8PreservedExactly": true,
+    "transparentRGBPixelsCleared": 859,
+    "sourceFileModified": false,
+    "faceShapeModified": false
+  },
+  "actorOffsetsPx": [
+    0,
+    -2.2222222222222223,
+    -4.0,
+    -2.222222222222222,
+    0
+  ],
+  "bodyCompressionOutputPx": [
+    0.8,
+    0,
+    0,
+    0,
+    0.25
+  ],
+  "tipAnglesDegrees": [
+    [
+      0.08,
+      0
+    ],
+    [
+      -0.12,
+      0.05
+    ],
+    [
+      -0.2,
+      0.08
+    ],
+    [
+      0.1,
+      -0.03
+    ],
+    [
+      0.04,
+      -0.02
+    ]
+  ],
+  "groundedFrames": [
+    0,
+    4
+  ],
+  "visibleBoundsAlphaAbove8": [
+    [
+      22,
+      12,
+      170,
+      202
+    ],
+    [
+      22,
+      9,
+      169,
+      200
+    ],
+    [
+      22,
+      8,
+      169,
+      198
+    ],
+    [
+      22,
+      9,
+      170,
+      200
+    ],
+    [
+      22,
+      12,
+      170,
+      202
+    ]
+  ],
+  "nativeInterpolation": false,
+  "method": "original-source two-link knees at grounded holds; planted shoes; rigid actor flight at actual hold midpoints; no head/body resizing",
+  "groundedContactVersion": "two-link-source-material-v1",
+  "legCompositionVersion": "leg-material-v2",
+  "legBackingGeneratedSha256": "F4DB57340CF910C3F5A773BEFF3345823C42FBCFFEBD44C12F7E00990EACD93A",
+  "contactRigJoints": [
+    [
+      {
+        "name": "left",
+        "rootSourcePx": [
+          0.0,
+          5.052631579
+        ],
+        "relativeAnkleOffsetSourcePx": [
+          0.0,
+          -5.052631579
+        ],
+        "worldJointSourcePx": [
+          [
+            535.0,
+            941.052631579
+          ],
+          [
+            513.402723721,
+            978.436554024
+          ],
+          [
+            521.0,
+            1026.0
+          ]
+        ],
+        "designSegmentLengthsSourcePx": [
+          43.17406629,
+          48.166378315
+        ],
+        "actualSegmentLengthsSourcePx": [
+          43.17406629,
+          48.166378315
+        ],
+        "grounded": true
+      },
+      {
+        "name": "right",
+        "rootSourcePx": [
+          0.0,
+          5.052631579
+        ],
+        "relativeAnkleOffsetSourcePx": [
+          0.0,
+          -5.052631579
+        ],
+        "worldJointSourcePx": [
+          [
+            674.0,
+            941.052631579
+          ],
+          [
+            695.917909905,
+            979.126313111
+          ],
+          [
+            689.0,
+            1026.0
+          ]
+        ],
+        "designSegmentLengthsSourcePx": [
+          43.931765273,
+          47.381430962
+        ],
+        "actualSegmentLengthsSourcePx": [
+          43.931765273,
+          47.381430962
+        ],
+        "grounded": true
+      }
+    ],
+    [
+      {
+        "name": "left",
+        "rootSourcePx": [
+          0.0,
+          -14.035087719
+        ],
+        "relativeAnkleOffsetSourcePx": [
+          0.0,
+          0.0
+        ],
+        "worldJointSourcePx": [
+          [
+            535.0,
+            921.964912281
+          ],
+          [
+            525.0,
+            963.964912281
+          ],
+          [
+            521.0,
+            1011.964912281
+          ]
+        ],
+        "designSegmentLengthsSourcePx": [
+          43.17406629,
+          48.166378315
+        ],
+        "actualSegmentLengthsSourcePx": [
+          43.17406629,
+          48.166378315
+        ],
+        "grounded": false
+      },
+      {
+        "name": "right",
+        "rootSourcePx": [
+          0.0,
+          -14.035087719
+        ],
+        "relativeAnkleOffsetSourcePx": [
+          0.0,
+          0.0
+        ],
+        "worldJointSourcePx": [
+          [
+            674.0,
+            921.964912281
+          ],
+          [
+            683.0,
+            964.964912281
+          ],
+          [
+            689.0,
+            1011.964912281
+          ]
+        ],
+        "designSegmentLengthsSourcePx": [
+          43.931765273,
+          47.381430962
+        ],
+        "actualSegmentLengthsSourcePx": [
+          43.931765273,
+          47.381430962
+        ],
+        "grounded": false
+      }
+    ],
+    [
+      {
+        "name": "left",
+        "rootSourcePx": [
+          0.0,
+          -25.263157895
+        ],
+        "relativeAnkleOffsetSourcePx": [
+          0.0,
+          0.0
+        ],
+        "worldJointSourcePx": [
+          [
+            535.0,
+            910.736842105
+          ],
+          [
+            525.0,
+            952.736842105
+          ],
+          [
+            521.0,
+            1000.736842105
+          ]
+        ],
+        "designSegmentLengthsSourcePx": [
+          43.17406629,
+          48.166378315
+        ],
+        "actualSegmentLengthsSourcePx": [
+          43.17406629,
+          48.166378315
+        ],
+        "grounded": false
+      },
+      {
+        "name": "right",
+        "rootSourcePx": [
+          0.0,
+          -25.263157895
+        ],
+        "relativeAnkleOffsetSourcePx": [
+          0.0,
+          0.0
+        ],
+        "worldJointSourcePx": [
+          [
+            674.0,
+            910.736842105
+          ],
+          [
+            683.0,
+            953.736842105
+          ],
+          [
+            689.0,
+            1000.736842105
+          ]
+        ],
+        "designSegmentLengthsSourcePx": [
+          43.931765273,
+          47.381430962
+        ],
+        "actualSegmentLengthsSourcePx": [
+          43.931765273,
+          47.381430962
+        ],
+        "grounded": false
+      }
+    ],
+    [
+      {
+        "name": "left",
+        "rootSourcePx": [
+          0.0,
+          -14.035087719
+        ],
+        "relativeAnkleOffsetSourcePx": [
+          0.0,
+          0.0
+        ],
+        "worldJointSourcePx": [
+          [
+            535.0,
+            921.964912281
+          ],
+          [
+            525.0,
+            963.964912281
+          ],
+          [
+            521.0,
+            1011.964912281
+          ]
+        ],
+        "designSegmentLengthsSourcePx": [
+          43.17406629,
+          48.166378315
+        ],
+        "actualSegmentLengthsSourcePx": [
+          43.17406629,
+          48.166378315
+        ],
+        "grounded": false
+      },
+      {
+        "name": "right",
+        "rootSourcePx": [
+          0.0,
+          -14.035087719
+        ],
+        "relativeAnkleOffsetSourcePx": [
+          0.0,
+          0.0
+        ],
+        "worldJointSourcePx": [
+          [
+            674.0,
+            921.964912281
+          ],
+          [
+            683.0,
+            964.964912281
+          ],
+          [
+            689.0,
+            1011.964912281
+          ]
+        ],
+        "designSegmentLengthsSourcePx": [
+          43.931765273,
+          47.381430962
+        ],
+        "actualSegmentLengthsSourcePx": [
+          43.931765273,
+          47.381430962
+        ],
+        "grounded": false
+      }
+    ],
+    [
+      {
+        "name": "left",
+        "rootSourcePx": [
+          0.0,
+          1.578947368
+        ],
+        "relativeAnkleOffsetSourcePx": [
+          0.0,
+          -1.578947368
+        ],
+        "worldJointSourcePx": [
+          [
+            535.0,
+            937.578947368
+          ],
+          [
+            519.457432206,
+            977.858329022
+          ],
+          [
+            521.0,
+            1026.0
+          ]
+        ],
+        "designSegmentLengthsSourcePx": [
+          43.17406629,
+          48.166378315
+        ],
+        "actualSegmentLengthsSourcePx": [
+          43.17406629,
+          48.166378315
+        ],
+        "grounded": true
+      },
+      {
+        "name": "right",
+        "rootSourcePx": [
+          0.0,
+          1.578947368
+        ],
+        "relativeAnkleOffsetSourcePx": [
+          0.0,
+          -1.578947368
+        ],
+        "worldJointSourcePx": [
+          [
+            674.0,
+            937.578947368
+          ],
+          [
+            689.664204223,
+            978.623224754
+          ],
+          [
+            689.0,
+            1026.0
+          ]
+        ],
+        "designSegmentLengthsSourcePx": [
+          43.931765273,
+          47.381430962
+        ],
+        "actualSegmentLengthsSourcePx": [
+          43.931765273,
+          47.381430962
+        ],
+        "grounded": true
+      }
+    ]
+  ],
+  "jointEvidenceDecimalPlaces": 9,
+  "sourceAlphaAndOcclusionSeparated": true,
+  "normalizedKnownBacking": true,
+  "artistLayerRecoveryClaimed": false,
+  "newArtworkGenerated": false,
+  "physicalBalanceProven": false,
+  "continuousLandingProven": false,
+  "originalAirCelsRGBAExact": false,
+  "airComparisonScope": "same-current-poses-height-field-counterfactual-not-frozen-8px",
+  "heightFieldAirChangedPixels": [
+    18,
+    0,
+    18
+  ],
+  "heightFieldAirMaximumChannelDifference": [
+    1,
+    0,
+    1
+  ],
+  "airMaterialIdentityProven": false,
+  "apexOutputPx": 4,
+  "heightVisualApproval": "approved-as-development-basis",
+  "heightApprovalScope": "hop-height-development-basis-only",
+  "heightUserDecision": "sources/canonical/jumping-height-decision-20261010.json",
+  "strategyUserApproval": "pending",
+  "strategyApprovalInheritedFromLocomotion": false,
+  "directSamplerNeutralPremultErrorTolerance": 1e-10,
+  "directSamplerNeutralPremultMatchesWithinTolerance": true,
+  "directSamplerNeutralRGBAExact": true,
+  "directSamplerNeutralChangedPixels": 0,
+  "directSamplerNeutralMaximumRGBADifference": 0,
+  "sampling": "3x coverage integration from high-resolution source, one terminal Lanczos downsample",
+  "visualMotionApproval": "pending",
+  "installableFullAtlas": false,
+  "installed": false,
+  "frameHashes": [
+    "D97503D6294CC134F5ED6486FB186351C7472F54EDEC6B56C6597C7CA99BF7DF",
+    "368AFFD001202032E26219CBD862AD8181159A6B6D2B24D03FCF2CEDA86F248D",
+    "68741C8C47303A289B06A7841B8B2DA5F3D7764F28F017F62AE80AAB78140968",
+    "E2B26D01B45314137D4FFF6063F2C6EF2C1FF144A66A66513666AD44004F2126",
+    "1A0BF0292DB2741830B000434A6B332AF1E5B73765C70D1FB24FB850F0A9A44B"
+  ],
+  "unresolved": [
+    "Only five held poses; this is not continuous ballistic playback or a native FPS improvement.",
+    "Grounded root descends less than one output pixel; original-source legs bend through an estimated frontal two-link rig, not newly painted anatomy.",
+    "Estimated leg mattes can carry hair fringe; hidden backing and joint locations remain hypotheses, not recovered artist layers or measured forces.",
+    "Rigid body/dress translation replaces the old lower-body height field at contact; shoe material targets are pinned, but nearby backing/edge colors need not stay identical.",
+    "Native action repeats three times; landing has one held pose, not a within-slot recovery animation.",
+    "Naturalness and restrained character remain subject to actual-size visual review."
+  ]
+}

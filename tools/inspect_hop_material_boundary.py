@@ -13,11 +13,12 @@ import hop_contact
 from build_idle import coordinates, sample
 from locomotion_render import integration_coordinates
 from occlusion_material import over
+from material_support import LEGACY, ZERO
 
 
 def inspect():
     source,cleanup,transform,regions,masks,motion,poses=jumping.inputs()
-    data,material=jumping.contact_inputs()
+    data,material=jumping.contact_inputs(local_support=LEGACY)
     # This diagnosis applies only to the rigid ascent hold: body/leg roots
     # are zero. All material evaluation still occurs; no source-raster bypass.
     pose=poses[1]
@@ -27,6 +28,8 @@ def inspect():
     bx,by=coordinates(x,y,pose,transform,regions,masks)
     expected=sample(material['source'],bx,by)
     actual=hop_contact.sample_pose(material,x,y,pose,transform,regions,masks)
+    _,current_material=jumping.contact_inputs(local_support=ZERO)
+    current=hop_contact.sample_pose(current_material,x,y,pose,transform,regions,masks)
     visibility=sample(material['visibility'],bx,by)
     known=sample(material['visibleBacking'],bx,by)
     padded=sample(material['backing'],bx,by)
@@ -49,13 +52,14 @@ def inspect():
         affectedOutputGridBBox=[int(xx.min()),int(yy.min()),int(xx.max()+1),int(yy.max()+1)],
         affectedSourceCoordinateBBox=[float(bx[affected].min()),float(by[affected].min()),
             float(bx[affected].max()),float(by[affected].max())],
-        currentMaximumPremultDifference=float(difference.max()),
+        legacyMaximumPremultDifference=float(difference.max()),
+        activeV2MaximumPremultDifference=float(np.max(np.abs(current-expected))),
         zeroExtendedMaximumPremultDifference=float(repaired.max()),
         zeroExtendedIdentityWithin1eMinus10=bool(float(repaired.max())<1e-10),
         mechanism='full-canvas visibility includes partial boundary coverage while local sample() rejects coordinates outside its crop; pad paint and beta together to retain the same support',
         limitations=['One actual rigid hold isolates a sampler defect, not all articulated poses.',
-            'The counterfactual does not modify accepted cels or approve changed raster output.',
-            'Grounded/other states, protection and native raster rebuild need separate checks before repair adoption.'])
+            'This diagnostic does not mutate active files or approve any animation.',
+            'Grounded/other states and native protection are checked separately in test_material_support.py.'])
 
 
 if __name__=='__main__':

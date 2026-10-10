@@ -146,12 +146,12 @@ class Hop(unittest.TestCase):
             actual=hop_contact.sample_pose(self.material,xx,y,pose,self.transform,self.regions,self.masks)
             np.testing.assert_allclose(actual,expected,rtol=0,atol=1e-10)
 
-    def test_current_neutral_is_exact_without_material_bypass_and_air_differences_are_explicit(self):
+    def test_current_neutral_is_exact_without_material_bypass_and_air_cels_are_exact(self):
         zero=dict(grounded=True,actorY=0,bodyY=0,earAngle=0,hairAngle=0)
         actual=hop_contact.render(self.material,zero,self.transform,self.regions,self.masks)
         reference=render(self.source,zero,self.transform,self.regions,self.masks)
         self.assertEqual(actual.tobytes(),reference.tobytes())
-        self.assertFalse(self.metadata['originalAirCelsRGBAExact'])
+        self.assertTrue(self.metadata['originalAirCelsRGBAExact'])
         # Valid material changes must still be observable in a neutral pose.
         changed=dict(self.material,data=dict(self.material['data'],layers=[p.copy() for p in self.material['data']['layers']]))
         paint=changed['data']['layers'][0]
@@ -161,7 +161,7 @@ class Hop(unittest.TestCase):
         point=hop_contact.sample_pose(changed,np.array([x+x0]),np.array([y+y0]),zero,self.transform,self.regions,self.masks)
         self.assertGreater(float(abs(point[0,0]-self.material['source'][y+y0,x+x0,0])),.9)
 
-    def test_air_material_difference_is_measured_not_mislabelled_as_exact_or_approved_art(self):
+    def test_air_material_difference_is_zero_after_support_repair_not_full_identity_approval(self):
         changed=[];maximum=[]
         for i in (1,2,3):
             legacy=render(self.source,self.poses[i],self.transform,self.regions,self.masks)
@@ -170,7 +170,8 @@ class Hop(unittest.TestCase):
             self.assertLessEqual(maximum[-1],1)
         self.assertEqual(changed,self.metadata['heightFieldAirChangedPixels'])
         self.assertEqual(maximum,self.metadata['heightFieldAirMaximumChannelDifference'])
-        self.assertGreater(sum(changed),0)
+        self.assertEqual(changed,[0,0,0])
+        self.assertEqual(maximum,[0,0,0])
         self.assertFalse(self.metadata['airMaterialIdentityProven'])
         self.assertEqual(self.metadata['airComparisonScope'],
                          'same-current-poses-height-field-counterfactual-not-frozen-8px')

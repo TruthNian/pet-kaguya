@@ -204,7 +204,81 @@
   "adoptionScope": "hop-height-development-basis-only",
   "userDecision": "sources/canonical/jumping-height-decision-20261010.json",
   "heightVisualApproval": "approved-as-development-basis",
-  "currentJumpingCelsRGBAExact": true,
+  "currentJumpingCelsRGBAExact": false,
+  "acceptedHeightBasisPreservedExactly": true,
+  "currentJumpingFrameHashes": [
+    "A745001654E0BEAA16843FA9BE871627C27EB93BF9CA4848CA32A4AAC7425B70",
+    "51458F612D5A5B333D652AB35632E1F040852DE066E9D27F9737D380B5843A92",
+    "68741C8C47303A289B06A7841B8B2DA5F3D7764F28F017F62AE80AAB78140968",
+    "897B9AB55BAA911613C70087F9DC86FAD6FB6E25203DF6C2D621CDD9DAB9F6E0",
+    "1A0BF0292DB2741830B000434A6B332AF1E5B73765C70D1FB24FB850F0A9A44B"
+  ],
+  "materialSupportRepair": {
+    "baselineCommit": "7f58246889fbbcfef788606067a95cf9251e1a87",
+    "reference": "sources/reference/material-support-v1/jumping.webp",
+    "baselineFrameHashes": [
+      "D97503D6294CC134F5ED6486FB186351C7472F54EDEC6B56C6597C7CA99BF7DF",
+      "368AFFD001202032E26219CBD862AD8181159A6B6D2B24D03FCF2CEDA86F248D",
+      "68741C8C47303A289B06A7841B8B2DA5F3D7764F28F017F62AE80AAB78140968",
+      "E2B26D01B45314137D4FFF6063F2C6EF2C1FF144A66A66513666AD44004F2126",
+      "1A0BF0292DB2741830B000434A6B332AF1E5B73765C70D1FB24FB850F0A9A44B"
+    ],
+    "currentFrameHashes": [
+      "A745001654E0BEAA16843FA9BE871627C27EB93BF9CA4848CA32A4AAC7425B70",
+      "51458F612D5A5B333D652AB35632E1F040852DE066E9D27F9737D380B5843A92",
+      "68741C8C47303A289B06A7841B8B2DA5F3D7764F28F017F62AE80AAB78140968",
+      "897B9AB55BAA911613C70087F9DC86FAD6FB6E25203DF6C2D621CDD9DAB9F6E0",
+      "1A0BF0292DB2741830B000434A6B332AF1E5B73765C70D1FB24FB850F0A9A44B"
+    ],
+    "changes": [
+      {
+        "changedPixels": 15,
+        "maximumChannelDifference": 1,
+        "bounds": [
+          78,
+          154,
+          113,
+          159
+        ]
+      },
+      {
+        "changedPixels": 18,
+        "maximumChannelDifference": 1,
+        "bounds": [
+          78,
+          152,
+          113,
+          156
+        ]
+      },
+      {
+        "changedPixels": 0,
+        "maximumChannelDifference": 0,
+        "bounds": null
+      },
+      {
+        "changedPixels": 18,
+        "maximumChannelDifference": 1,
+        "bounds": [
+          78,
+          152,
+          113,
+          156
+        ]
+      },
+      {
+        "changedPixels": 0,
+        "maximumChannelDifference": 0,
+        "bounds": null
+      }
+    ],
+    "scope": "local-bilinear-support-only",
+    "sourceArtworkChanged": false,
+    "geometryChanged": false,
+    "timingChanged": false,
+    "nativeAlphaPreservedExactly": true,
+    "fullMotionApproved": false
+  },
   "actorOnlyMaximumAdjacentStepPx": {
     "current": 4.444444444444445,
     "trial": 2.2222222222222223
@@ -245,6 +319,7 @@
     "The five native holds, three action cycles, ground compression and tip angles are unchanged.",
     "Smaller translation may reduce a height cut but does not repair arm/pose cuts, interpolation or landing recovery.",
     "Actual-size readability, restraint and naturalness still need human review.",
+    "The legacy-sampler 4px basis stays exact; current hop separately repairs local texture support without changing geometry or alpha.",
     "Only the active development hop height is adopted; installed pet and host remain unchanged; no FPS/resolution/performance improvement."
   ]
 }

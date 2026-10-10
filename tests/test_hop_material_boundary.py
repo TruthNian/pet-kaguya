@@ -17,7 +17,8 @@ class HopMaterialBoundary(unittest.TestCase):
         y0,y1=result['affectedSourceCoordinateBBox'][1::2]
         self.assertAlmostEqual(y0,935.3245614035088,places=9)
         self.assertEqual(y0,y1)
-        self.assertGreater(result['currentMaximumPremultDifference'],9)
+        self.assertGreater(result['legacyMaximumPremultDifference'],9)
+        self.assertLess(result['activeV2MaximumPremultDifference'],1e-10)
         self.assertLess(result['zeroExtendedMaximumPremultDifference'],1e-10)
         self.assertTrue(result['zeroExtendedIdentityWithin1eMinus10'])
         for key in ('activeRendererChanged','installed','artworkChanged','fullMotionApproved'):

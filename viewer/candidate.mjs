@@ -2,11 +2,12 @@
 import {durations} from './clock.mjs';
 import {candidateRows as rows,candidateSlot,candidatePoseOffset,candidateCelKey} from './candidate-clock.mjs?v=20261010-height-adopt-1';
 import {paintCel} from './cel-painter.mjs?v=20261010-terminal-precision-v1';
-import {comparisonReference,validateRigidReference,validateHopReference,validateMouthReference} from './comparison-reference.mjs?v=20261010-height-adopt-1';
+import {comparisonReference,validateRigidReference,validateHopReference,validateMouthReference} from './comparison-reference.mjs?v=20261010-support-2';
+import {validateMaterialSupport} from './material-support-contract.mjs';
 import {validateReviewMetadata} from './review-contract.mjs';
 import {validateWaitingMetadata} from './waiting-contract.mjs';
 import {validateSamplingStudy} from './sampling-contract.mjs';
-import {validateHopHeightStudy} from './height-contract.mjs?v=20261010-height-adopt-1';
+import {validateHopHeightStudy} from './height-contract.mjs?v=20261010-support-2';
 
 const el=id=>document.getElementById(id);
 const canvases=[el('idle-reference'),el('idle-animated')];
@@ -54,8 +55,9 @@ async function asset(state){
         ||metadata.repeatBeforeIdle!==3||metadata.visualMotionApproval!=='pending'))
       throw new Error('processing state or restrained-motion boundary mismatch');
     if(state==='review')validateReviewMetadata(metadata);
+    if(['jumping','run_right','run_left'].includes(state))validateMaterialSupport(metadata);
     if(state==='jumping'&&(metadata.groundedContactVersion!=='two-link-source-material-v1'
-        ||metadata.originalAirCelsRGBAExact!==false||metadata.airMaterialIdentityProven!==false
+        ||metadata.originalAirCelsRGBAExact!==true||metadata.airMaterialIdentityProven!==false
         ||metadata.strategyApprovalInheritedFromLocomotion!==false
         ||metadata.artistLayerRecoveryClaimed!==false||metadata.newArtworkGenerated!==false
         ||metadata.continuousLandingProven!==false||metadata.physicalBalanceProven!==false
@@ -232,7 +234,7 @@ async function draw(){
   el('reference-status').textContent=precision
     ?`左右同源/同姿势/同钟/同格；右侧仅末端浮点采样试验，未采用 · ${referencePaintCount} 次参考绘制 · 数值误差不代表审美通过`
     :reference.synchronized
-    ?`左右共用同一时钟/帧位，暂停、单帧、减少动态及三轮回退同步 · ${referencePaintCount} 次参考绘制 · ${choice==='height'?'左冻结8px、右现用4px开发基础；只改飞行平移，着地格不变，不修复手势硬切或代表完整动作通过':choice==='contact'?'旧高度场按现用4px参数重建，非冻结8px版本或视觉批准':choice==='mouth'?'failed时左旧嘴线、右现用新嘴线；回退时两侧同一idle。仅嘴线获开发基础批准，完整动作待验收':'旧版归档d804cd5，不继承完整视觉批准'}`
+    ?`左右共用同一时钟/帧位，暂停、单帧、减少动态及三轮回退同步 · ${referencePaintCount} 次参考绘制 · ${choice==='height'?'左冻结8px、右现用4px开发基础；另含局部采样修复（最多1通道值，alpha/轨迹不变），不代表完整动作通过':choice==='contact'?'旧高度场按现用4px参数重建，非冻结8px版本或视觉批准':choice==='mouth'?'failed时左旧嘴线、右现用新嘴线；回退时两侧同一idle。仅嘴线获开发基础批准，完整动作待验收':'旧版归档d804cd5；右版含耳发跟随及局部滤波修复，非严格单变量或完整视觉批准'}`
     :'固定 idle 只用于身份检查，不是同节奏动作对照。';
   const paintKey=candidateCelKey(precision?precisionAsset.entry.candidateFrameHashes:metadata.frameHashes,selected.index);
   if(paintKey!==lastKey){

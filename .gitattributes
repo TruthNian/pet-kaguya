@@ -3,3 +3,4 @@
 *.png binary
 *.gif binary
 sources/reference/locomotion-rigid/manifest.json text eol=lf
+sources/reference/material-support-v1/*.json -text

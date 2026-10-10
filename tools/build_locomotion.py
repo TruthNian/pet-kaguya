@@ -14,6 +14,7 @@ import build_gaze as gaze
 import locomotion_follow as follow
 from animation_output import write_animation
 from protocol import DURATIONS
+from material_support import ZERO, repair_receipt
 
 
 def validate_motion(motion):
@@ -89,7 +90,7 @@ def inputs():
     for state in motion['states']:
         direction = state['direction']
         original_gaze=gaze.pose(source,eye_layers,motion['focusOffsetSourcePx'][0]*direction,0)
-        material=renderer.prepare(data,original_gaze,follow_fields)
+        material=renderer.prepare(data,original_gaze,follow_fields,local_support=ZERO)
         rendered,frames,joints = {},[],[]
         for key in render_keys:
             offsets = renderer.relative_offsets(key,direction)
@@ -169,6 +170,7 @@ def main():
             legCompositionVersion='leg-material-v2',integerSourceMaterialNeutralRGBAExact=True,
             **neutral,roundoffCanonicalizationPremultTolerance=1e-10,
             sourceAlphaAndOcclusionSeparated=True,
+            localFilterSupport=ZERO,materialSupportRepair=repair_receipt(name,frames),
             artistLayerRecoveryClaimed=False,inferredMatte=True,fullRedrawAccepted=False,
             generatedFromRejectedSources=False,installableFullAtlas=False,installed=False,
             unresolved=motion['limitations'])

@@ -16,16 +16,19 @@ PREVIOUS_RGBA='89D096DF28D82B7F9DBC103D6A840D0A2D805E02461A308AFA2C7D7B01E4AE42'
 
 
 class EncodingAndRejectedStudy(unittest.TestCase):
-    def test_actual_global_changes_only_accepted_mouth_and_height_and_keeps_exact_current_rows(self):
+    def test_actual_global_restores_historical_rows_and_keeps_exact_current_rows(self):
         with Image.open(global_review.OUT/'spritesheet.webp') as image:actual=image.convert('RGBA')
         # The encoding receipt is an immutable old-payload experiment, not a
         # permanent ban on approved artwork. Restore only the exact archived
-        # old mouth and 8px hop rows: every other decoded byte must still match.
+        # old mouth/8px hop and pre-support-repair gait rows. Other bytes match.
         historical = actual.copy()
         with Image.open(ROOT/'sources/reference/failed-mouth-v1/failed.webp') as image:
             historical.paste(image.convert('RGBA'),(0,5*208))
         with Image.open(ROOT/'sources/reference/jumping-height-8px/jumping.webp') as image:
             historical.paste(image.convert('RGBA'),(0,4*208))
+        for row,state in ((1,'run_right'),(2,'run_left')):
+            with Image.open(ROOT/f'sources/reference/material-support-v1/{state}.webp') as image:
+                historical.paste(image.convert('RGBA'),(0,row*208))
         self.assertEqual(hashlib.sha256(historical.tobytes()).hexdigest().upper(),PREVIOUS_RGBA)
         self.assertNotEqual(actual.tobytes(),historical.tobytes())
         expected,_,_,_=global_review.assemble()

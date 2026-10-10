@@ -31,7 +31,8 @@ FOLDERS = ['candidates/phase4/static', 'candidates/phase4/canonical-v3', 'candid
            'candidates/phase5/review-hands-pair-v1','candidates/phase5/review-hands-overlap-v1',
            'candidates/phase5/terminal-sampling-v1','candidates/phase5/failed-mouth-v2',
            'candidates/phase5/failed-mouth-v2/animation','sources/reference/failed-mouth-v1',
-           'candidates/phase5/jumping-height-v1','sources/reference/jumping-height-8px']
+           'candidates/phase5/jumping-height-v1','sources/reference/jumping-height-8px',
+           'sources/reference/material-support-v1']
 
 
 def snapshot():

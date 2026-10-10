@@ -1,0 +1,16 @@
+{
+  "commit": "7f58246889fbbcfef788606067a95cf9251e1a87",
+  "referenceRole": "frozen-source-input-not-active-animation",
+  "referencePurpose": "isolate-local-bilinear-support-repair",
+  "visualApprovalInherited": false,
+  "installed": false,
+  "installableFullAtlas": false,
+  "files": {
+    "jumping.webp": "0B7AF70EFD4339BA7A1C7C900F63C800C8462F031CF12D54F5C4BE024AD97862",
+    "jumping.json": "AFAE608F22466A5DC10E2811DE73E219DB0D63E12EE626CDB4B852EE6BB5089F",
+    "run_left.webp": "7D6493FB324F3209FEFC9DAD336E78AF46AA8D2123342028C27A7E563E933AB0",
+    "run_left.json": "193B4C86B3F20D86E61E1468C960E5AB382A1BD795AD004D725551D75C853DA6",
+    "run_right.webp": "99EF037AAFA0847D8C057AADA7C9C2F08AF484B3D09D424D771DE596A8DDD352",
+    "run_right.json": "F6AF63386C8F65852F74C6D9BD49F59588144623EA009B1E89AEDB3E551F15CE"
+  }
+}

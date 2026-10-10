@@ -12,18 +12,20 @@ const baseline=read('../sources/reference/jumping-height-8px/contract.json');
 const manifest=read('../sources/reference/jumping-height-8px/manifest.json');
 const validate=(s=study,c=current,b=baseline,m=manifest)=>validateHopHeightStudy(s,b,c,m);
 
-test('actual 4px study has the same current source/contact/holds, only three flight translations change',()=>{
+test('accepted legacy 4px study retains current geometry/holds, with the separate RGB repair disclosed',()=>{
   assert.equal(validate(),study);
   for(let i=0;i<5;i++){
     assert.equal(study.actorOffsetsPx[i],baseline.actorOffsetsPx[i]/2);
-    assert.equal(study.frameHashes[i],current.frameHashes[i]);
+    assert.equal(study.frameHashes[i],current.materialSupportRepair.baselineFrameHashes[i]);
+    assert.equal(study.currentJumpingFrameHashes[i],current.frameHashes[i]);
     if(i===0||i===4)assert.equal(study.frameHashes[i],baseline.frameHashes[i]);
     else assert.notEqual(study.frameHashes[i],baseline.frameHashes[i]);
   }
 });
 test('missing narrow approval, changed art/poses/timing/reference and broad quality claims are rejected',()=>{
   for(const [key,value] of [['adopted',false],['activeAtlasChanged',false],['installed',true],
-    ['adoptionScope','full-motion'],['heightVisualApproval','approved'],['currentJumpingCelsRGBAExact',false],
+    ['adoptionScope','full-motion'],['heightVisualApproval','approved'],['currentJumpingCelsRGBAExact',true],
+    ['acceptedHeightBasisPreservedExactly',false],['currentJumpingFrameHashes',study.frameHashes],
     ['installableFullAtlas',true],['candidateApexOutputPx',6],['baselineApexOutputPx',4],
     ['newArtworkGenerated',true],['facialGeometryRepair',true],['continuousLandingProven',true],
     ['physicalBalanceProven',true],['visualMotionApproval','approved'],['durationsMs',[140,140]],

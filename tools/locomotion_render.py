@@ -12,9 +12,10 @@ from leg_material import premult, leg_coordinates
 from occlusion_material import over
 from protocol import WIDTH, HEIGHT
 import locomotion_follow as follow
+from material_support import LEGACY, ZERO, sample_local
 
 
-def prepare(data, source, follow_fields=None):
+def prepare(data, source, follow_fields=None, *, local_support=LEGACY):
     """Keep known backing separate from the hidden-backing estimate.
 
     A separately bilinear-filtered P, beta and B does not in general retain
@@ -23,6 +24,8 @@ def prepare(data, source, follow_fields=None):
     texture. Where no backing was visible, use the existing hidden estimate.
     This is an edge-filtering convention, not newly observed hidden pixels.
     """
+    if local_support not in (LEGACY,ZERO):
+        raise ValueError('Unknown local material support version')
     cleaned, _ = clean_cutout(source)
     source_pixels = premult(cleaned)
     backing = source_pixels.copy()
@@ -44,7 +47,7 @@ def prepare(data, source, follow_fields=None):
     visibility[y0:y1,x0:x1] = np.maximum(0,1-beta)
     return dict(data=data, backing=backing, visibility=visibility,
                 visibleBacking=backing*visibility[...,None],source=source_pixels,
-                followFields=follow_fields)
+                followFields=follow_fields,localFilterSupport=local_support)
 
 
 def relative_offsets(key, direction):
@@ -89,7 +92,9 @@ def evaluate(material, x, y, key, direction, *, normalized_backing=True, rebase_
             # backing. Warping only B leaves source hair carried by a matte
             # unmoved and breaks the neutral composition at that boundary.
             sx,sy=source_fields(sx,sy)
-        result=over(sample(paint,sx-x0,sy-y0),sample(beta,sx-x0,sy-y0),result)
+        support=material['localFilterSupport']
+        result=over(sample_local(paint,sx-x0,sy-y0,support),
+                    sample_local(beta,sx-x0,sy-y0,support),result)
     if (not np.isfinite(result).all() or np.any(result < -1e-7)
             or np.any(result[...,3] > 255+1e-7)
             or np.any(result[...,:3] > result[...,3:4]+1e-7)):

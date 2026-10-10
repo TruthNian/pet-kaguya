@@ -75,8 +75,9 @@ class HopHeight(unittest.TestCase):
             np.testing.assert_allclose(actual,expected,rtol=0,atol=1e-10)
 
     def test_only_height_is_adopted_without_artwork_host_or_performance_claims(self):
-        for name in ('adopted','activeAtlasChanged','currentJumpingCelsRGBAExact'):
+        for name in ('adopted','activeAtlasChanged','acceptedHeightBasisPreservedExactly'):
             self.assertIs(self.meta[name],True)
+        self.assertFalse(self.meta['currentJumpingCelsRGBAExact'])
         self.assertEqual(self.meta['adoptionScope'],'hop-height-development-basis-only')
         self.assertEqual(self.meta['userDecision'],jumping.HEIGHT_DECISION)
         for name in ('installed','installableFullAtlas','newArtworkGenerated',
@@ -90,7 +91,12 @@ class HopHeight(unittest.TestCase):
                 self.assertEqual(atlas.crop((0,4*208,1536,5*208)).convert('RGBA').tobytes(),
                                  active.convert('RGBA').tobytes())
                 with Image.open(study.OUT/'strip.webp') as accepted:
-                    self.assertEqual(active.convert('RGBA').tobytes(),accepted.convert('RGBA').tobytes())
+                    with Image.open(ROOT/'sources/reference/material-support-v1/jumping.webp') as frozen:
+                        self.assertEqual(frozen.convert('RGBA').tobytes(),accepted.convert('RGBA').tobytes())
+                    self.assertNotEqual(active.convert('RGBA').tobytes(),accepted.convert('RGBA').tobytes())
+                current=json.loads((jumping.OUT/'build.json').read_text())
+                self.assertEqual(self.meta['currentJumpingFrameHashes'],current['frameHashes'])
+                self.assertEqual(self.meta['materialSupportRepair'],current['materialSupportRepair'])
         # Unrelated future art improvements must not be blocked by freezing
         # the whole atlas to this turn's historical hash.
         self.assertEqual(hashlib.sha256((ROOT/'sources/canonical/artwork.png').read_bytes()).hexdigest().upper(),

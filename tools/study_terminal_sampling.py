@@ -20,6 +20,7 @@ import locomotion_render as walking
 import locomotion_follow as follow
 from refine_leg_composition import inputs as leg_inputs
 import build_locomotion
+from material_support import ZERO
 from protocol import DURATIONS
 from terminal_sampling import METHOD, legacy, floating, filtered_float, reference64, composite_error
 
@@ -82,7 +83,7 @@ def jobs():
     for state in motion['states']:
         direction = state['direction']
         focused = gaze.pose(mother, eye_layers, motion['focusOffsetSourcePx'][0]*direction, 0)
-        material = walking.prepare(legs, focused, fields)
+        material = walking.prepare(legs, focused, fields,local_support=ZERO)
         result[state['state']] = [lambda terminal, key=key, material=material, direction=direction:
             walking.render(material, key, direction, transform, terminal=terminal) for key in keys]
     gaze_spec = gaze.specification()

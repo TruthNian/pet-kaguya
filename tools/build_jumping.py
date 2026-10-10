@@ -13,6 +13,7 @@ from refine_leg_composition import material_inputs
 from leg_material import GENERATED_SHA
 from locomotion_render import prepare, neutral_evidence
 import hop_contact
+from material_support import ZERO, repair_receipt
 
 OUT = ROOT/'candidates/phase5/jumping'
 HEIGHT_DECISION = 'sources/canonical/jumping-height-decision-20261010.json'
@@ -69,10 +70,10 @@ def inputs(motion=None):
     return image, cleanup, transform, regions, region_masks(regions), motion, poses
 
 
-def contact_inputs():
+def contact_inputs(*,local_support=ZERO):
     # No locomotion approval receipt is imported or inherited by this action.
     data=material_inputs()
-    return data,prepare(data,data['mother'])
+    return data,prepare(data,data['mother'],local_support=local_support)
 
 
 def comparison(out,old,frames,metadata):
@@ -124,8 +125,8 @@ def main():
     frames = [hop_contact.render(material,pose,transform,regions,masks) for pose in poses]
     old=[render(source,pose,transform,regions,masks) for pose in poses]
     air_difference=[np.abs(np.asarray(old[i],dtype=int)-np.asarray(frames[i],dtype=int)) for i in (1,2,3)]
-    if any(int(diff.max())>1 for diff in air_difference):
-        raise ValueError('Unexpected air-material difference exceeds the recorded one-channel-unit defect')
+    if any(diff.any() for diff in air_difference):
+        raise ValueError('Corrected rigid air materials must reconstruct same-pose source sampling exactly')
     joints=[hop_contact.joint_evidence(data,pose,transform) for pose in poses]
     neutral=neutral_evidence(material,data['mother'],transform)
     if not neutral['directSamplerNeutralRGBAExact']:
@@ -158,6 +159,7 @@ def main():
         heightFieldAirChangedPixels=[int(np.any(diff,axis=2).sum()) for diff in air_difference],
         heightFieldAirMaximumChannelDifference=[int(diff.max()) for diff in air_difference],
         airMaterialIdentityProven=False,
+        localFilterSupport=ZERO,materialSupportRepair=repair_receipt('jumping',frames),
         apexOutputPx=motion['flightModel']['apexOutputPx'],
         heightVisualApproval='approved-as-development-basis',
         heightApprovalScope=height_decision()['scope'],heightUserDecision=HEIGHT_DECISION,

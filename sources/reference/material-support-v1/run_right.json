@@ -1,0 +1,545 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "source": "sources/canonical/artwork.png",
+  "legBackingGeneratedSha256": "F4DB57340CF910C3F5A773BEFF3345823C42FBCFFEBD44C12F7E00990EACD93A",
+  "eyeBackingGeneratedSha256": "684BA98301B8BD4F204581E77CDE1586528D0EC7B1804C5CFC4ADB5E1EF2B61A",
+  "state": "run_right",
+  "nativeState": "running-right",
+  "nativeRow": 1,
+  "animationBuilt": true,
+  "projection": "front-held-alternating-small-steps",
+  "strategyUserApproval": "approved",
+  "visualMotionApproval": "pending",
+  "strategyApprovalScope": "front-held-small-steps-only",
+  "strategyUserDecision": "sources/canonical/locomotion-decision-20261009.json",
+  "durationsMs": [
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    220
+  ],
+  "totalDurationMs": 1060,
+  "repeatBeforeIdle": 3,
+  "uninterruptedRowDurationMs": 3180,
+  "actualDragReleaseCanInterruptAnyCel": true,
+  "dragEndTargetIsUnderlyingStateNotNecessarilyIdle": true,
+  "hostVelocitySynchronization": false,
+  "screenWorldNoSlipProven": false,
+  "supportFeet": [
+    [
+      "left",
+      "right"
+    ],
+    [
+      "right"
+    ],
+    [
+      "right"
+    ],
+    [
+      "right"
+    ],
+    [
+      "left",
+      "right"
+    ],
+    [
+      "left"
+    ],
+    [
+      "left"
+    ],
+    [
+      "left"
+    ]
+  ],
+  "footOffsetsSourcePx": [
+    {
+      "left": [
+        0,
+        0
+      ],
+      "right": [
+        0,
+        0
+      ]
+    },
+    {
+      "left": [
+        1.296296296296,
+        -1.944444444444
+      ],
+      "right": [
+        0,
+        0
+      ]
+    },
+    {
+      "left": [
+        5,
+        -7.5
+      ],
+      "right": [
+        0,
+        0
+      ]
+    },
+    {
+      "left": [
+        1.296296296296,
+        -1.944444444444
+      ],
+      "right": [
+        0,
+        0
+      ]
+    },
+    {
+      "left": [
+        0,
+        0
+      ],
+      "right": [
+        0,
+        0
+      ]
+    },
+    {
+      "left": [
+        0,
+        0
+      ],
+      "right": [
+        1.296296296296,
+        -1.944444444444
+      ]
+    },
+    {
+      "left": [
+        0,
+        0
+      ],
+      "right": [
+        5,
+        -7.5
+      ]
+    },
+    {
+      "left": [
+        0,
+        0
+      ],
+      "right": [
+        1.708728134111,
+        -2.563092201166
+      ]
+    }
+  ],
+  "targetKneesSourcePx": [
+    [
+      [
+        525.0,
+        978.0
+      ],
+      [
+        683.0,
+        979.0
+      ]
+    ],
+    [
+      [
+        524.338217444597,
+        975.932478367744
+      ],
+      [
+        694.917955554466,
+        978.989599001334
+      ]
+    ],
+    [
+      [
+        519.491007519724,
+        970.775446394003
+      ],
+      [
+        698.569952447696,
+        979.595086357705
+      ]
+    ],
+    [
+      [
+        524.338217444597,
+        975.932478367744
+      ],
+      [
+        694.917955554466,
+        978.989599001334
+      ]
+    ],
+    [
+      [
+        525.0,
+        978.0
+      ],
+      [
+        683.0,
+        979.0
+      ]
+    ],
+    [
+      [
+        514.385118244247,
+        978.290007971522
+      ],
+      [
+        683.938112909994,
+        977.102669552392
+      ]
+    ],
+    [
+      [
+        510.822567253506,
+        978.921131463356
+      ],
+      [
+        690.087067975156,
+        971.280417590062
+      ]
+    ],
+    [
+      [
+        514.385118244247,
+        978.290007971522
+      ],
+      [
+        685.562666584299,
+        976.335760779621
+      ]
+    ]
+  ],
+  "maximumFootLiftOutputPx": 1.1875,
+  "wholeCuffAndShoeRigidlyTranslated": true,
+  "rootMotion": "rigid-actor-translation-in-source-coordinates",
+  "rootOffsetsSourcePx": [
+    [
+      0,
+      0
+    ],
+    [
+      8,
+      1
+    ],
+    [
+      12,
+      1.5
+    ],
+    [
+      8,
+      1
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      -8,
+      1
+    ],
+    [
+      -12,
+      1.5
+    ],
+    [
+      -8,
+      1
+    ]
+  ],
+  "maximumRootTranslationOutputPx": [
+    1.9,
+    0.2375
+  ],
+  "rootShiftFollowsSupportNotTravelDirection": true,
+  "bodyPulse": false,
+  "ornamentFlash": false,
+  "focusOffsetSourcePx": [
+    6,
+    0
+  ],
+  "artMirrored": false,
+  "camera": {
+    "scale": 0.15833333333333333,
+    "x": 0.36666666666667425,
+    "y": 7.883333333333354,
+    "visibleBBox": [
+      142,
+      26,
+      1066,
+      1226
+    ],
+    "floor": 202,
+    "topReserve": 12,
+    "cell": [
+      192,
+      208
+    ]
+  },
+  "sameSourceCoordinateCamera": true,
+  "facialGeometryRepair": false,
+  "sourceFaceExceptEyeAperturesFixed": true,
+  "faceGeometryRigidRootTranslation": true,
+  "sourceArtworkChangedOutsideEyeApertures": false,
+  "closedEyeFrames": 0,
+  "nativeInterpolation": false,
+  "loopSeamRGBAExact": false,
+  "loopSeamContactAtNextCycle": true,
+  "loopSeamContinuousProven": false,
+  "uniqueCels": 8,
+  "frameHashes": [
+    "85202B290D3C2E0EBDE00CFF7311D42CCDD4336305B413FD6C5C8B917F140889",
+    "2B1ED3C28DD48CF0AE6D5387E302C66805800CC27713A44A6B60AE7224A91ABB",
+    "A9C8266B1DCEEAE63184C58FD2728F42D32D3A48459378B94B580919EE9B304C",
+    "A5848C8D89039CA6F9DA996887E8C00BDDCDDFF05C159A09717B5642E883DE08",
+    "599CBDDA342DB8A744779585FF7B68598536B7B2671BBF4DAF6D535B432F56DF",
+    "766B119302DA7A47D50B40B1358D83CDECB66B59F01FE716C6EF3B16F30E9710",
+    "DDAFC1B2B0FC6074393791CF62315CB8FC726C927ED8EDAEB4C79004DD6F05F1",
+    "1C1A20B8410EDB917A2D8C9499357E722755CF8C7FBB70A18F9A6CDC0659AC27"
+  ],
+  "method": "direct source-material sampling; rigid root towards support and cancelling planted-shoe displacement; coverage-normalized known backing",
+  "legSampling": "original leg paint and occlusion sampled directly on 3x native integration grid; one terminal Lanczos downsample; no posed leg raster input",
+  "rootAndLegGeometryCombinedBeforeSampling": true,
+  "gazeRemainsSourceSpacePrecomposition": true,
+  "wholeArtworkSingleSamplingPass": false,
+  "normalizedKnownBacking": true,
+  "diagnosticPosesAreNotFrameInputs": true,
+  "measuredMassCentre": false,
+  "physicalBalanceProven": false,
+  "secondaryMotion": "periodic-first-order-root-lag; visible-tip-fields-only",
+  "followThrough": {
+    "input": "held-root-horizontal-source-px",
+    "sample": "native-hold-midpoint",
+    "boundary": "periodic-steady-state",
+    "maximumTipOffsetSourcePx": 2.1,
+    "protectedHeadRect": [
+      275,
+      20,
+      955,
+      485
+    ],
+    "protectedFrontRect": [
+      290,
+      450,
+      950,
+      1040
+    ],
+    "protectedLegRect": [
+      425,
+      936,
+      810,
+      1240
+    ],
+    "protectionFadeSourcePx": 32,
+    "parts": {
+      "ear": {
+        "timeConstantMs": 90,
+        "gain": 0.15
+      },
+      "hair": {
+        "timeConstantMs": 160,
+        "gain": 0.25
+      }
+    }
+  },
+  "followResponse": {
+    "ear": {
+      "initialStateSourcePx": -8.193715508468,
+      "endStateSourcePx": -8.193715508468,
+      "offsetsSourcePx": [
+        -0.63101907158,
+        -0.782435364204,
+        -0.514297994184,
+        0.172482792014,
+        0.661566513188,
+        0.790487582389,
+        0.516420535853,
+        -0.098641579244
+      ]
+    },
+    "hair": {
+      "initialStateSourcePx": -7.875456270709,
+      "endStateSourcePx": -7.875456270709,
+      "offsetsSourcePx": [
+        -1.353179165111,
+        -2.013775135047,
+        -1.638529297328,
+        -0.086697156953,
+        1.333625720419,
+        2.004538741783,
+        1.634166334083,
+        0.061921195261
+      ]
+    }
+  },
+  "tipOffsetsSourcePx": [
+    {
+      "ear": -0.63101907158,
+      "hair": -1.353179165111
+    },
+    {
+      "ear": -0.782435364204,
+      "hair": -2.013775135047
+    },
+    {
+      "ear": -0.514297994184,
+      "hair": -1.638529297328
+    },
+    {
+      "ear": 0.172482792014,
+      "hair": -0.086697156953
+    },
+    {
+      "ear": 0.661566513188,
+      "hair": 1.333625720419
+    },
+    {
+      "ear": 0.790487582389,
+      "hair": 2.004538741783
+    },
+    {
+      "ear": 0.516420535853,
+      "hair": 1.634166334083
+    },
+    {
+      "ear": -0.098641579244,
+      "hair": 0.061921195261
+    }
+  ],
+  "maximumTipOffsetOutputPx": {
+    "ear": 0.12516053387825832,
+    "hair": 0.318847729715775
+  },
+  "secondaryGeometryCombinedBeforeBackingSampling": true,
+  "cleanTipLayersRecovered": false,
+  "liveDragLagInitialization": false,
+  "continuousSecondaryMotionProven": false,
+  "landingApproachAdded": true,
+  "landingReferenceIsNotHostInterpolation": true,
+  "continuousLandingProven": false,
+  "risingPoseAdded": true,
+  "continuousTakeoffProven": false,
+  "landingReference": [
+    {
+      "foot": "left",
+      "takeoff": 0,
+      "rise": 1,
+      "peak": 2,
+      "approach": 3,
+      "contact": 4,
+      "contactCycle": 0,
+      "takeoffReferenceMs": 120.0,
+      "riseReferenceMs": 180.0,
+      "peakReferenceMs": 300.0,
+      "riseWeightFraction": [
+        7,
+        27
+      ],
+      "approachReferenceMs": 420.0,
+      "contactReferenceMs": 480.0,
+      "approachWeightFraction": [
+        7,
+        27
+      ],
+      "riseOffsetSourcePx": [
+        1.296296296296,
+        -1.944444444444
+      ],
+      "peakOffsetSourcePx": [
+        5,
+        -7.5
+      ],
+      "approachOffsetSourcePx": [
+        1.296296296296,
+        -1.944444444444
+      ],
+      "contactOffsetSourcePx": [
+        0,
+        0
+      ]
+    },
+    {
+      "foot": "right",
+      "takeoff": 4,
+      "rise": 5,
+      "peak": 6,
+      "approach": 7,
+      "contact": 0,
+      "contactCycle": 1,
+      "takeoffReferenceMs": 600.0,
+      "riseReferenceMs": 660.0,
+      "peakReferenceMs": 780.0,
+      "riseWeightFraction": [
+        7,
+        27
+      ],
+      "approachReferenceMs": 950.0,
+      "contactReferenceMs": 1060.0,
+      "approachWeightFraction": [
+        3751,
+        10976
+      ],
+      "riseOffsetSourcePx": [
+        1.296296296296,
+        -1.944444444444
+      ],
+      "peakOffsetSourcePx": [
+        5,
+        -7.5
+      ],
+      "approachOffsetSourcePx": [
+        1.708728134111,
+        -2.563092201166
+      ],
+      "contactOffsetSourcePx": [
+        0,
+        0
+      ]
+    }
+  ],
+  "lastVerticalLandingStepSourcePx": [
+    1.944444444444,
+    2.563092201166
+  ],
+  "legCompositionVersion": "leg-material-v2",
+  "integerSourceMaterialNeutralRGBAExact": true,
+  "directSamplerNeutralPremultErrorTolerance": 1e-10,
+  "directSamplerNeutralPremultMatchesWithinTolerance": true,
+  "directSamplerNeutralRGBAExact": true,
+  "directSamplerNeutralChangedPixels": 0,
+  "directSamplerNeutralMaximumRGBADifference": 0,
+  "roundoffCanonicalizationPremultTolerance": 1e-10,
+  "sourceAlphaAndOcclusionSeparated": true,
+  "artistLayerRecoveryClaimed": false,
+  "inferredMatte": true,
+  "fullRedrawAccepted": false,
+  "generatedFromRejectedSources": false,
+  "installableFullAtlas": false,
+  "installed": false,
+  "unresolved": [
+    "The user approved frontal small steps only, not side-view running or finished motion aesthetics.",
+    "The host uses run states as drag feedback; pointer screen displacement is independent of the fixed sprite schedule. No screen-world no-slip claim.",
+    "Drag release or direction/state change can interrupt any cel and restore the underlying task state; three loops then idle is only the uninterrupted-row schedule.",
+    "Leg joints and smooth frontal projection are a 2-D puppet hypothesis, not recovered anatomy or a full 3-D rig.",
+    "Foreground outlines are estimated from flattened source pixels; adjacent hair fringe and residual boundary ghosts remain possible.",
+    "The old flat source-over neutral failure is preserved. Current conditioned occlusion reconstructs neutral RGBA exactly, without proving clean artist layers or nonzero edge ownership.",
+    "At 80 px the approximately 1.2-native-pixel foot lift and gaze cue are weak; naturalness and left/right legibility are pending.",
+    "The root shifts toward the supporting foot, not the travel direction. Its motion is a restrained 2-D design, not a measured mass centre or proven physical balance.",
+    "Visible ear/hair tips use a bounded root-driven lag; face, front clothes, hands and legs remain outside its field. Estimated visible-region ownership is not a clean layered rig, cloth simulation or recovered mass.",
+    "The lag is sampled from a periodic steady cycle, not initialized from each live drag or integrated by the host. Discrete cels, entry/release transients and full state transitions remain unresolved.",
+    "Direct material sampling uses a coverage-normalized backing convention. Only composite roundoff below 1e-10 premultiplied units is canonicalized at every pose, not a neutral-raster shortcut; full neutral native RGBA matches the original sampler.",
+    "Each swing shows rising, peak and approach poses; left contact occurs at slot 4, right contact at the next cycle's slot 0. First/last pixels are intentionally not equal. Reference curves select poses only, not native interpolation or measured endpoint velocity.",
+    "The 220 ms final hold makes the right approach asymmetric and more elevated than the left. Cyclic/root and fallback jumps remain discrete; continuous takeoff/landing, impact/follow-through and arbitrary exit remain unproven."
+  ]
+}

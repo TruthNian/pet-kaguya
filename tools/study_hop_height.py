@@ -10,6 +10,7 @@ from canonical import ROOT, ACCEPTED_SHA
 from animation_output import write_animation
 import build_jumping as jumping
 import hop_contact
+from material_support import LEGACY
 
 OUT = ROOT/'candidates/phase5/jumping-height-v1'
 REFERENCE = ROOT/'sources/reference/jumping-height-8px'
@@ -50,7 +51,7 @@ def inputs():
             or current['actorOffsetsPx'] != [pose['actorY'] for pose in baseline]
             or current['visualMotionApproval'] != 'pending' or current['installed']):
         raise ValueError('Frozen hop contract does not match the study source')
-    data,material=jumping.contact_inputs()
+    data,material=jumping.contact_inputs(local_support=LEGACY)
     return source,transform,regions,masks,current,material,baseline,changed_poses(baseline)
 
 
@@ -72,7 +73,7 @@ def main():
             raise ValueError('Height study touches a native cell boundary')
     write_animation(OUT,frames,current['durationsMs'])
     active=json.loads((jumping.OUT/'build.json').read_text(encoding='utf-8'))
-    if (active['frameHashes'] != [rgba_hash(frame) for frame in frames]
+    if (active['materialSupportRepair']['baselineFrameHashes'] != [rgba_hash(frame) for frame in frames]
             or active['actorOffsetsPx'] != [pose['actorY'] for pose in trial]
             or any(active[field] != current[field] for field in SHARED)
             or active['heightApprovalScope'] != jumping.height_decision()['scope']):
@@ -94,7 +95,9 @@ def main():
         animationBuilt=True,visualMotionApproval='pending',strategyUserApproval='pending',
         adopted=True,activeAtlasChanged=True,installableFullAtlas=False,installed=False,
         adoptionScope=jumping.height_decision()['scope'],userDecision=jumping.HEIGHT_DECISION,
-        heightVisualApproval='approved-as-development-basis',currentJumpingCelsRGBAExact=True,
+        heightVisualApproval='approved-as-development-basis',currentJumpingCelsRGBAExact=False,
+        acceptedHeightBasisPreservedExactly=True,
+        currentJumpingFrameHashes=active['frameHashes'],materialSupportRepair=active['materialSupportRepair'],
         actorOnlyMaximumAdjacentStepPx={'current':max_step(old_actor),'trial':max_step(new_actor)},
         rootMaximumAdjacentStepPx={'current':max_step(old_root),'trial':max_step(new_root)},
         maximumFlightHeightBeforeAbruptReturnPx={'current':8,'trial':4},
@@ -105,6 +108,7 @@ def main():
             'The five native holds, three action cycles, ground compression and tip angles are unchanged.',
             'Smaller translation may reduce a height cut but does not repair arm/pose cuts, interpolation or landing recovery.',
             'Actual-size readability, restraint and naturalness still need human review.',
+            'The legacy-sampler 4px basis stays exact; current hop separately repairs local texture support without changing geometry or alpha.',
             'Only the active development hop height is adopted; installed pet and host remain unchanged; no FPS/resolution/performance improvement.'])
     (OUT/'build.json').write_text(json.dumps(metadata,indent=2)+'\n',encoding='utf-8')
     print(json.dumps({key:metadata[key] for key in ('previewVariant','candidateApexOutputPx',

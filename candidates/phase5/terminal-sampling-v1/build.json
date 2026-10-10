@@ -30,16 +30,16 @@
     2288
   ],
   "decodedBytes": 14057472,
-  "baselineAtlasRGBAHash": "CCDD566B56EB9B11042DC0CEF87A612E211EDCF6F0CB5A96CCAFE13D24D89BB2",
-  "candidateAtlasRGBAHash": "5F775BD4F9065D844B32BADD1B2F9BC1C130771613BBA41AB412118D2863B101",
+  "baselineAtlasRGBAHash": "1E1D25A012688E96CC1D4A59AD96696145B52DB7E7C9DAEF39AF9273A2128786",
+  "candidateAtlasRGBAHash": "E8D21F800A21685DC855581579D7733B70F5E0E1AD8E970EDDC725B4A5534CE4",
   "filter": "same nonlinear-sRGB premultiplied Lanczos convention; not a linear-light change",
   "oracle": "independent NumPy float64 separable sinc(x)*sinc(x/3), same support, normalization and border crop",
   "oracleIsAestheticProof": false,
   "allLegacyCelsReconstructedExactly": true,
   "measurementDecimalPlaces": 9,
   "measurementRoundingDoesNotRelaxPixelHashes": true,
-  "meanLegacyCompositedError": 0.357522506,
-  "meanCandidateCompositedError": 0.127646462,
+  "meanLegacyCompositedError": 0.357522665,
+  "meanCandidateCompositedError": 0.127646524,
   "maximumFloat32FilterError": 3.0806e-05,
   "allCelsLowerMeanCompositedError": true,
   "quantization": "no uint8 straight/associated intermediate; float32 filter, float64 unassociation, final RGBA8 once",
@@ -263,9 +263,9 @@
       ],
       "legacyFrameHashes": [
         "85202B290D3C2E0EBDE00CFF7311D42CCDD4336305B413FD6C5C8B917F140889",
-        "2B1ED3C28DD48CF0AE6D5387E302C66805800CC27713A44A6B60AE7224A91ABB",
+        "5D96B80C8821C6B45486D1485F4AE79BB6ECEE3DC0AE32DDEC0F3AB5155FE508",
         "A9C8266B1DCEEAE63184C58FD2728F42D32D3A48459378B94B580919EE9B304C",
-        "A5848C8D89039CA6F9DA996887E8C00BDDCDDFF05C159A09717B5642E883DE08",
+        "DE9FF8FDCE211E65B48C065C58256D10182897C85F7F82A6DE7FF9CFB740A7BE",
         "599CBDDA342DB8A744779585FF7B68598536B7B2671BBF4DAF6D535B432F56DF",
         "766B119302DA7A47D50B40B1358D83CDECB66B59F01FE716C6EF3B16F30E9710",
         "DDAFC1B2B0FC6074393791CF62315CB8FC726C927ED8EDAEB4C79004DD6F05F1",
@@ -273,13 +273,13 @@
       ],
       "candidateFrameHashes": [
         "7DC8742BF5C3C56C014D6BDA2EFDD47BB3AAC07EE464842E05811404D17035F0",
-        "D202AD86DB10CBDF558D2ED80009FA0E2F60BD30A2B810E7ACF7078784F31C40",
+        "ACA85B253CA0E0A300C72D60A40BD545F6409242506D2F092704D2A27A332BE5",
         "C9168FA7B30EFA7C2A1A29BC3BCF08307007F119F68D73A556D47C7B63E306F2",
-        "E668DA329CE8FF7E19E38C6DEE38296DF6EC4B516482A39E61858235A534CE66",
+        "175A86887F60A5C88F8DC6DE413F6A252A5112B23ADA246FFD695119FC3AC99A",
         "4820C3AA511272E373BCE6699B42F26710A419C5F81DB4CA7BDFF0E47995E118",
-        "12366D76277057104E7AB084029C66893C1088D3D69F3D616FF7C6BF9F0EB4C3",
+        "B89DEB88A53E9B54FC8C7F317557C11337B3D51D78758A4EB28509F78F8F12C5",
         "5A3FBBFDAF90D8558B0FA21E26428DDB71EF67B540D2F8ECDB094C5F7A9F5012",
-        "3771410240CD39AEDEAE10F55F5D57BA7459DC9E1B2AE4FB7D3BB1080344F673"
+        "D79B7DE66587A714A5DB26B780AFBC9CF087D2062BD758C45197CDE92166394A"
       ],
       "cels": [
         {
@@ -305,22 +305,22 @@
         },
         {
           "index": 1,
-          "legacyRGBAHash": "2B1ED3C28DD48CF0AE6D5387E302C66805800CC27713A44A6B60AE7224A91ABB",
-          "candidateRGBAHash": "D202AD86DB10CBDF558D2ED80009FA0E2F60BD30A2B810E7ACF7078784F31C40",
-          "changedPixels": 19686,
+          "legacyRGBAHash": "5D96B80C8821C6B45486D1485F4AE79BB6ECEE3DC0AE32DDEC0F3AB5155FE508",
+          "candidateRGBAHash": "ACA85B253CA0E0A300C72D60A40BD545F6409242506D2F092704D2A27A332BE5",
+          "changedPixels": 19685,
           "legacyError": {
-            "compositedMeanAbsoluteError": 0.356983014,
+            "compositedMeanAbsoluteError": 0.356977267,
             "compositedMaximumAbsoluteError": 12.0,
-            "alphaMeanAbsoluteError": 0.101436345,
+            "alphaMeanAbsoluteError": 0.101436406,
             "alphaMaximumAbsoluteError": 12.0
           },
           "candidateError": {
-            "compositedMeanAbsoluteError": 0.127291923,
+            "compositedMeanAbsoluteError": 0.127288835,
             "compositedMaximumAbsoluteError": 0.970672393,
-            "alphaMeanAbsoluteError": 0.037401652,
+            "alphaMeanAbsoluteError": 0.037401714,
             "alphaMaximumAbsoluteError": 0.499706192
           },
-          "float32FilterMaximumError": 2.6845e-05,
+          "float32FilterMaximumError": 2.6538e-05,
           "faceGeometryChanged": false,
           "sourceArtworkRepainted": false
         },
@@ -347,22 +347,22 @@
         },
         {
           "index": 3,
-          "legacyRGBAHash": "A5848C8D89039CA6F9DA996887E8C00BDDCDDFF05C159A09717B5642E883DE08",
-          "candidateRGBAHash": "E668DA329CE8FF7E19E38C6DEE38296DF6EC4B516482A39E61858235A534CE66",
-          "changedPixels": 19654,
+          "legacyRGBAHash": "DE9FF8FDCE211E65B48C065C58256D10182897C85F7F82A6DE7FF9CFB740A7BE",
+          "candidateRGBAHash": "175A86887F60A5C88F8DC6DE413F6A252A5112B23ADA246FFD695119FC3AC99A",
+          "changedPixels": 19653,
           "legacyError": {
-            "compositedMeanAbsoluteError": 0.356475586,
+            "compositedMeanAbsoluteError": 0.356469839,
             "compositedMaximumAbsoluteError": 11.886407134,
-            "alphaMeanAbsoluteError": 0.101032507,
+            "alphaMeanAbsoluteError": 0.101032567,
             "alphaMaximumAbsoluteError": 11.886407134
           },
           "candidateError": {
-            "compositedMeanAbsoluteError": 0.127496518,
+            "compositedMeanAbsoluteError": 0.127493429,
             "compositedMaximumAbsoluteError": 0.940940312,
-            "alphaMeanAbsoluteError": 0.037440995,
+            "alphaMeanAbsoluteError": 0.037441056,
             "alphaMaximumAbsoluteError": 0.49986752
           },
-          "float32FilterMaximumError": 2.6845e-05,
+          "float32FilterMaximumError": 2.6538e-05,
           "faceGeometryChanged": false,
           "sourceArtworkRepainted": false
         },
@@ -390,18 +390,18 @@
         {
           "index": 5,
           "legacyRGBAHash": "766B119302DA7A47D50B40B1358D83CDECB66B59F01FE716C6EF3B16F30E9710",
-          "candidateRGBAHash": "12366D76277057104E7AB084029C66893C1088D3D69F3D616FF7C6BF9F0EB4C3",
-          "changedPixels": 19589,
+          "candidateRGBAHash": "B89DEB88A53E9B54FC8C7F317557C11337B3D51D78758A4EB28509F78F8F12C5",
+          "changedPixels": 19588,
           "legacyError": {
-            "compositedMeanAbsoluteError": 0.358545421,
+            "compositedMeanAbsoluteError": 0.358547232,
             "compositedMaximumAbsoluteError": 12.0,
-            "alphaMeanAbsoluteError": 0.106436179,
+            "alphaMeanAbsoluteError": 0.106436164,
             "alphaMaximumAbsoluteError": 12.122708814
           },
           "candidateError": {
-            "compositedMeanAbsoluteError": 0.126516049,
+            "compositedMeanAbsoluteError": 0.126516484,
             "compositedMaximumAbsoluteError": 0.944139061,
-            "alphaMeanAbsoluteError": 0.036992304,
+            "alphaMeanAbsoluteError": 0.036992295,
             "alphaMaximumAbsoluteError": 0.49997619
           },
           "float32FilterMaximumError": 2.585e-05,
@@ -432,18 +432,18 @@
         {
           "index": 7,
           "legacyRGBAHash": "1C1A20B8410EDB917A2D8C9499357E722755CF8C7FBB70A18F9A6CDC0659AC27",
-          "candidateRGBAHash": "3771410240CD39AEDEAE10F55F5D57BA7459DC9E1B2AE4FB7D3BB1080344F673",
-          "changedPixels": 19622,
+          "candidateRGBAHash": "D79B7DE66587A714A5DB26B780AFBC9CF087D2062BD758C45197CDE92166394A",
+          "changedPixels": 19621,
           "legacyError": {
-            "compositedMeanAbsoluteError": 0.358929094,
+            "compositedMeanAbsoluteError": 0.358930737,
             "compositedMaximumAbsoluteError": 12.0,
-            "alphaMeanAbsoluteError": 0.107211556,
+            "alphaMeanAbsoluteError": 0.107211617,
             "alphaMaximumAbsoluteError": 12.122708814
           },
           "candidateError": {
-            "compositedMeanAbsoluteError": 0.126697557,
+            "compositedMeanAbsoluteError": 0.126699035,
             "compositedMaximumAbsoluteError": 0.944903323,
-            "alphaMeanAbsoluteError": 0.03711369,
+            "alphaMeanAbsoluteError": 0.037113751,
             "alphaMaximumAbsoluteError": 0.49997619
           },
           "float32FilterMaximumError": 2.546e-05,
@@ -485,9 +485,9 @@
       ],
       "legacyFrameHashes": [
         "A4EEC1DBC8408DB94C9D17449E8DE60E8A8F3DE3593E20B195967DB03AB0D53A",
-        "696526D3293E744D0631FAA655BB4A173E9441D4FDFC6A6FD108669F875BC195",
+        "9007B24D3CE51A36691CB3E9C1390124F7C2D8ABD518313A4EF6E001F860008F",
         "32393D69A982E9E7A2D47B6867929CB80BBD97E6EA3027A8DF6EF5F99F526A1F",
-        "6F11DBF63A2A03CAB63C9AD6E7189601C47715AD6D75B3039F722E9A335A8E77",
+        "5AD4E353E6AD01F3ECC6FD2B55D11F6280233B28BCB896BDA336C7C3E342FCEB",
         "94C65921F1519B0CFAF07C1E504CB0642F66A6CBE483F616B2DE08AD153A7A09",
         "27C573C6859FAE8CE406B9F080B978B1E98B95EE02883D496044C418F7E3D9A1",
         "5BA28BE85878ECB71063448E0611CD8E536F7AD77E88A600B3F89E58C7D8EBAE",
@@ -495,13 +495,13 @@
       ],
       "candidateFrameHashes": [
         "87ACDB21A537F57D0615934F224293307BF5214D333B9EE24A588F59FAD6387E",
-        "B25076681F9F72032824B99DC90007560B65ECC1B56D79D95867BCFE9713E333",
+        "A81A97B97B4F93CB8704B43A9D45CC062C5881A614D0F54F1A63B2A4F0BC8BDE",
         "D192E5159F70919892C991E73C3E2EE572A41D70492ABA1B469276133B542FF8",
-        "CF9E97068928BEC55016116831523DDAA573B7540AC15E415405A509E17A54C2",
+        "9D27FF97F7DC377CAA9017654C40AE7042322FD3B15DA281A35C37FBEDA2B00D",
         "62F5AA0B24F000B0B98B243ABD9079D3C33BBFEB2BFDB12C2BE086475C7048FB",
-        "F5EF506002186F1FC6FC9A8F5A16C829BBBF422C87E50134B205F9E54EDA757B",
+        "ABA0C88C99D8AEEAF663AA4C9F583ED1B77863A0DDA9602BFAEA1806D2D087B3",
         "2CCF195FEE1EC7B35C18852B313D9D82BDCBD88109D67E1DC47FF944F6AD87F2",
-        "02FE2BF4553078DD03A75B508DD167869E22842309C810D46DF10BC54457585D"
+        "BADA5CD69421580722DB2404869CF4C6E26C9499DE8B44B4A1D7A9EE597328C6"
       ],
       "cels": [
         {
@@ -527,22 +527,22 @@
         },
         {
           "index": 1,
-          "legacyRGBAHash": "696526D3293E744D0631FAA655BB4A173E9441D4FDFC6A6FD108669F875BC195",
-          "candidateRGBAHash": "B25076681F9F72032824B99DC90007560B65ECC1B56D79D95867BCFE9713E333",
-          "changedPixels": 19675,
+          "legacyRGBAHash": "9007B24D3CE51A36691CB3E9C1390124F7C2D8ABD518313A4EF6E001F860008F",
+          "candidateRGBAHash": "A81A97B97B4F93CB8704B43A9D45CC062C5881A614D0F54F1A63B2A4F0BC8BDE",
+          "changedPixels": 19674,
           "legacyError": {
-            "compositedMeanAbsoluteError": 0.357068112,
+            "compositedMeanAbsoluteError": 0.357061733,
             "compositedMaximumAbsoluteError": 12.0,
-            "alphaMeanAbsoluteError": 0.10246814,
+            "alphaMeanAbsoluteError": 0.1024682,
             "alphaMaximumAbsoluteError": 12.0
           },
           "candidateError": {
-            "compositedMeanAbsoluteError": 0.127300917,
+            "compositedMeanAbsoluteError": 0.127297564,
             "compositedMaximumAbsoluteError": 0.970672393,
-            "alphaMeanAbsoluteError": 0.037588575,
+            "alphaMeanAbsoluteError": 0.037588637,
             "alphaMaximumAbsoluteError": 0.499706192
           },
-          "float32FilterMaximumError": 2.6845e-05,
+          "float32FilterMaximumError": 2.6538e-05,
           "faceGeometryChanged": false,
           "sourceArtworkRepainted": false
         },
@@ -569,22 +569,22 @@
         },
         {
           "index": 3,
-          "legacyRGBAHash": "6F11DBF63A2A03CAB63C9AD6E7189601C47715AD6D75B3039F722E9A335A8E77",
-          "candidateRGBAHash": "CF9E97068928BEC55016116831523DDAA573B7540AC15E415405A509E17A54C2",
-          "changedPixels": 19643,
+          "legacyRGBAHash": "5AD4E353E6AD01F3ECC6FD2B55D11F6280233B28BCB896BDA336C7C3E342FCEB",
+          "candidateRGBAHash": "9D27FF97F7DC377CAA9017654C40AE7042322FD3B15DA281A35C37FBEDA2B00D",
+          "changedPixels": 19642,
           "legacyError": {
-            "compositedMeanAbsoluteError": 0.356563084,
+            "compositedMeanAbsoluteError": 0.356556705,
             "compositedMaximumAbsoluteError": 11.886407134,
-            "alphaMeanAbsoluteError": 0.102080921,
+            "alphaMeanAbsoluteError": 0.102080981,
             "alphaMaximumAbsoluteError": 11.886407134
           },
           "candidateError": {
-            "compositedMeanAbsoluteError": 0.127495795,
+            "compositedMeanAbsoluteError": 0.127492441,
             "compositedMaximumAbsoluteError": 0.940940312,
-            "alphaMeanAbsoluteError": 0.037632244,
+            "alphaMeanAbsoluteError": 0.037632306,
             "alphaMaximumAbsoluteError": 0.49986752
           },
-          "float32FilterMaximumError": 2.6845e-05,
+          "float32FilterMaximumError": 2.6538e-05,
           "faceGeometryChanged": false,
           "sourceArtworkRepainted": false
         },
@@ -612,18 +612,18 @@
         {
           "index": 5,
           "legacyRGBAHash": "27C573C6859FAE8CE406B9F080B978B1E98B95EE02883D496044C418F7E3D9A1",
-          "candidateRGBAHash": "F5EF506002186F1FC6FC9A8F5A16C829BBBF422C87E50134B205F9E54EDA757B",
-          "changedPixels": 19598,
+          "candidateRGBAHash": "ABA0C88C99D8AEEAF663AA4C9F583ED1B77863A0DDA9602BFAEA1806D2D087B3",
+          "changedPixels": 19597,
           "legacyError": {
-            "compositedMeanAbsoluteError": 0.358413484,
+            "compositedMeanAbsoluteError": 0.358414843,
             "compositedMaximumAbsoluteError": 12.0,
-            "alphaMeanAbsoluteError": 0.105678388,
+            "alphaMeanAbsoluteError": 0.105678453,
             "alphaMaximumAbsoluteError": 12.122708814
           },
           "candidateError": {
-            "compositedMeanAbsoluteError": 0.12663972,
+            "compositedMeanAbsoluteError": 0.126640416,
             "compositedMaximumAbsoluteError": 0.944139061,
-            "alphaMeanAbsoluteError": 0.036958486,
+            "alphaMeanAbsoluteError": 0.036958471,
             "alphaMaximumAbsoluteError": 0.49997619
           },
           "float32FilterMaximumError": 2.4364e-05,
@@ -654,18 +654,18 @@
         {
           "index": 7,
           "legacyRGBAHash": "C873FA268DB54196F9C56F6F9C80D90408A3308B339B3D679A4828582544281A",
-          "candidateRGBAHash": "02FE2BF4553078DD03A75B508DD167869E22842309C810D46DF10BC54457585D",
-          "changedPixels": 19627,
+          "candidateRGBAHash": "BADA5CD69421580722DB2404869CF4C6E26C9499DE8B44B4A1D7A9EE597328C6",
+          "changedPixels": 19626,
           "legacyError": {
-            "compositedMeanAbsoluteError": 0.359709812,
+            "compositedMeanAbsoluteError": 0.35971118,
             "compositedMaximumAbsoluteError": 12.0,
-            "alphaMeanAbsoluteError": 0.10753352,
+            "alphaMeanAbsoluteError": 0.107533581,
             "alphaMaximumAbsoluteError": 12.122708814
           },
           "candidateError": {
-            "compositedMeanAbsoluteError": 0.126826352,
+            "compositedMeanAbsoluteError": 0.126827525,
             "compositedMaximumAbsoluteError": 0.944903323,
-            "alphaMeanAbsoluteError": 0.037214149,
+            "alphaMeanAbsoluteError": 0.037214193,
             "alphaMaximumAbsoluteError": 0.49997619
           },
           "float32FilterMaximumError": 2.5156e-05,
@@ -829,35 +829,35 @@
         280
       ],
       "legacyFrameHashes": [
-        "D97503D6294CC134F5ED6486FB186351C7472F54EDEC6B56C6597C7CA99BF7DF",
-        "368AFFD001202032E26219CBD862AD8181159A6B6D2B24D03FCF2CEDA86F248D",
+        "A745001654E0BEAA16843FA9BE871627C27EB93BF9CA4848CA32A4AAC7425B70",
+        "51458F612D5A5B333D652AB35632E1F040852DE066E9D27F9737D380B5843A92",
         "68741C8C47303A289B06A7841B8B2DA5F3D7764F28F017F62AE80AAB78140968",
-        "E2B26D01B45314137D4FFF6063F2C6EF2C1FF144A66A66513666AD44004F2126",
+        "897B9AB55BAA911613C70087F9DC86FAD6FB6E25203DF6C2D621CDD9DAB9F6E0",
         "1A0BF0292DB2741830B000434A6B332AF1E5B73765C70D1FB24FB850F0A9A44B"
       ],
       "candidateFrameHashes": [
-        "F1A341A3741DAE76AB7289E14F3A3864D8BF06BEB8E47D5F093FA5F0F80564F4",
-        "8C073734D6D573CFB03970B368558EFC206E52720B48C140DDDDB9CDBF769B30",
+        "419F6A88455104ED07CFE736908A90A06BB9D427B7431A87F2447B12F7E36BA9",
+        "74D7B72F9E5AC0FC42C954529C7EB276EF7576AC6BA38E99564CD7E63DDEE43A",
         "7ED345F61C2A4030F61E30D6FDA180EB73AF28CD882948985C062533D20547B1",
-        "6712843C7F2CDC93607DD9C3444B320CE98966D186A94008132C92286DB4166D",
+        "4F78300B74AC68287AB49284D4EED54E61C62D97F2F85023D69F35138076ADF7",
         "C6FE95C7DE5A9FDA264F7ED5D405C92AEB590A9F2C8264CF3D41746238712430"
       ],
       "cels": [
         {
           "index": 0,
-          "legacyRGBAHash": "D97503D6294CC134F5ED6486FB186351C7472F54EDEC6B56C6597C7CA99BF7DF",
-          "candidateRGBAHash": "F1A341A3741DAE76AB7289E14F3A3864D8BF06BEB8E47D5F093FA5F0F80564F4",
+          "legacyRGBAHash": "A745001654E0BEAA16843FA9BE871627C27EB93BF9CA4848CA32A4AAC7425B70",
+          "candidateRGBAHash": "419F6A88455104ED07CFE736908A90A06BB9D427B7431A87F2447B12F7E36BA9",
           "changedPixels": 19604,
           "legacyError": {
-            "compositedMeanAbsoluteError": 0.358526515,
+            "compositedMeanAbsoluteError": 0.358530115,
             "compositedMaximumAbsoluteError": 10.982098198,
-            "alphaMeanAbsoluteError": 0.105730227,
+            "alphaMeanAbsoluteError": 0.105731087,
             "alphaMaximumAbsoluteError": 10.358467199
           },
           "candidateError": {
-            "compositedMeanAbsoluteError": 0.127308007,
+            "compositedMeanAbsoluteError": 0.127310939,
             "compositedMaximumAbsoluteError": 0.968179693,
-            "alphaMeanAbsoluteError": 0.036577737,
+            "alphaMeanAbsoluteError": 0.036578557,
             "alphaMaximumAbsoluteError": 0.499895537
           },
           "float32FilterMaximumError": 2.9131e-05,
@@ -866,19 +866,19 @@
         },
         {
           "index": 1,
-          "legacyRGBAHash": "368AFFD001202032E26219CBD862AD8181159A6B6D2B24D03FCF2CEDA86F248D",
-          "candidateRGBAHash": "8C073734D6D573CFB03970B368558EFC206E52720B48C140DDDDB9CDBF769B30",
-          "changedPixels": 19646,
+          "legacyRGBAHash": "51458F612D5A5B333D652AB35632E1F040852DE066E9D27F9737D380B5843A92",
+          "candidateRGBAHash": "74D7B72F9E5AC0FC42C954529C7EB276EF7576AC6BA38E99564CD7E63DDEE43A",
+          "changedPixels": 19653,
           "legacyError": {
-            "compositedMeanAbsoluteError": 0.358247117,
+            "compositedMeanAbsoluteError": 0.358260156,
             "compositedMaximumAbsoluteError": 11.540864269,
-            "alphaMeanAbsoluteError": 0.105343636,
+            "alphaMeanAbsoluteError": 0.105344111,
             "alphaMaximumAbsoluteError": 10.587416037
           },
           "candidateError": {
-            "compositedMeanAbsoluteError": 0.127297051,
+            "compositedMeanAbsoluteError": 0.127302375,
             "compositedMaximumAbsoluteError": 0.954832175,
-            "alphaMeanAbsoluteError": 0.036566814,
+            "alphaMeanAbsoluteError": 0.036567404,
             "alphaMaximumAbsoluteError": 0.499949916
           },
           "float32FilterMaximumError": 2.6784e-05,
@@ -908,19 +908,19 @@
         },
         {
           "index": 3,
-          "legacyRGBAHash": "E2B26D01B45314137D4FFF6063F2C6EF2C1FF144A66A66513666AD44004F2126",
-          "candidateRGBAHash": "6712843C7F2CDC93607DD9C3444B320CE98966D186A94008132C92286DB4166D",
-          "changedPixels": 19637,
+          "legacyRGBAHash": "897B9AB55BAA911613C70087F9DC86FAD6FB6E25203DF6C2D621CDD9DAB9F6E0",
+          "candidateRGBAHash": "4F78300B74AC68287AB49284D4EED54E61C62D97F2F85023D69F35138076ADF7",
+          "changedPixels": 19644,
           "legacyError": {
-            "compositedMeanAbsoluteError": 0.358343862,
+            "compositedMeanAbsoluteError": 0.358356902,
             "compositedMaximumAbsoluteError": 10.808965498,
-            "alphaMeanAbsoluteError": 0.105560195,
+            "alphaMeanAbsoluteError": 0.105560669,
             "alphaMaximumAbsoluteError": 10.162810923
           },
           "candidateError": {
-            "compositedMeanAbsoluteError": 0.127327882,
+            "compositedMeanAbsoluteError": 0.127333207,
             "compositedMaximumAbsoluteError": 0.954832175,
-            "alphaMeanAbsoluteError": 0.037054744,
+            "alphaMeanAbsoluteError": 0.037055333,
             "alphaMaximumAbsoluteError": 0.499949916
           },
           "float32FilterMaximumError": 2.6784e-05,
