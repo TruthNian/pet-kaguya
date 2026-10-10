@@ -12,7 +12,7 @@ from protocol import DURATIONS
 OUT = ROOT/'candidates/phase5/waving'
 
 
-def inputs():
+def original_inputs():
     motion = json.loads((ROOT/'sources/canonical/waving-motion.json').read_text(encoding='utf-8'))
     if (motion['sourceSha256'] != ACCEPTED_SHA or not motion['faceShapeLocked']
             or motion['nativeRow'] != 3 or motion['durationsMs'] != DURATIONS[3]
@@ -27,6 +27,16 @@ def inputs():
         poses[kind] = localized_pose(mother,generated,spec)[0]
     frames = [native_frame(poses[kind]) for kind in motion['sequence']]
     return mother,motion,poses,frames
+
+
+def inputs():
+    mother,motion,poses,baseline=original_inputs()
+    # The study always reconstructs original_inputs(), never the adopted
+    # production peak, so the frozen old benchmark cannot drift.
+    from study_wave_amplitude import lowered_inputs
+    data=lowered_inputs(mother,motion,poses,baseline,include_failure=False)
+    poses['peak']=data['repaired']
+    return mother,motion,poses,data['frames']
 
 
 def main():
@@ -46,7 +56,12 @@ def main():
         fullRedrawAccepted=False,articulatedArmBuilt=False,nativeInterpolation=False,
         canonicalRestRGBAExact=frames[-1].tobytes()==native_frame(mother).tobytes(),
         frameHashes=[hashlib.sha256(frame.tobytes()).hexdigest().upper() for frame in frames],
-        method='bounded authored arm/sleeve cels over common hidden backing; original cape/frontlock foreground restored',
+        amplitudeVisualApproval='approved-as-development-basis',
+        amplitudeApprovalScope='waving-lower-amplitude-development-basis-only',
+        amplitudeUserDecision='sources/canonical/waving-amplitude-adoption-20261010.json',
+        handLoweringSourcePx=55,handLoweringNativePx=55*camera(clean_cutout(mother)[0])['scale'],
+        unchangedOriginalHoldIndices=[0,2,3],
+        method='original middle/rest holds; lowered original peak material with bounded new shoulder cloth; estimated original palm and cape/frontlock protected',
         sampling='middle insert first uses a fixed crop-to-source uniform projection; all native frames then share canonical camera, 3x coverage and one terminal Lanczos downsample',
         visualMotionApproval='pending',installableFullAtlas=False,installed=False,
         unresolved=motion['limitations'])

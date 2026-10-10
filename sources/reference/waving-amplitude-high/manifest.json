@@ -1,0 +1,11 @@
+{
+  "commit": "2a9688600e17a63253b2a3623fc8cd538c0d7453",
+  "referenceRole": "frozen-source-input-not-active-animation",
+  "referencePurpose": "isolate-lowered-wave-peak-with-local-cloth-repair",
+  "file": "waving.webp",
+  "contract": "contract.json",
+  "fileSha256": "15FBB171AF825AD5B26CE93F4CEFC9A9A16E3DD9BAC58F751BCCA4F9D8C33692",
+  "visualApprovalInherited": false,
+  "installableFullAtlas": false,
+  "installed": false
+}

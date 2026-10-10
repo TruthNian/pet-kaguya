@@ -20,12 +20,15 @@ class EncodingAndRejectedStudy(unittest.TestCase):
         with Image.open(global_review.OUT/'spritesheet.webp') as image:actual=image.convert('RGBA')
         # The encoding receipt is an immutable old-payload experiment, not a
         # permanent ban on approved artwork. Restore only the exact archived
-        # old mouth/8px hop and pre-support-repair gait rows. Other bytes match.
+        # old mouth/8px hop/high wave and pre-support-repair gait rows.
+        # Approved new wave pixels must not invalidate an old-payload receipt.
         historical = actual.copy()
         with Image.open(ROOT/'sources/reference/failed-mouth-v1/failed.webp') as image:
             historical.paste(image.convert('RGBA'),(0,5*208))
         with Image.open(ROOT/'sources/reference/jumping-height-8px/jumping.webp') as image:
             historical.paste(image.convert('RGBA'),(0,4*208))
+        with Image.open(ROOT/'sources/reference/waving-amplitude-high/waving.webp') as image:
+            historical.paste(image.convert('RGBA'),(0,3*208))
         for row,state in ((1,'run_right'),(2,'run_left')):
             with Image.open(ROOT/f'sources/reference/material-support-v1/{state}.webp') as image:
                 historical.paste(image.convert('RGBA'),(0,row*208))

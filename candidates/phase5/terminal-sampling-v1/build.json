@@ -30,16 +30,16 @@
     2288
   ],
   "decodedBytes": 14057472,
-  "baselineAtlasRGBAHash": "1E1D25A012688E96CC1D4A59AD96696145B52DB7E7C9DAEF39AF9273A2128786",
-  "candidateAtlasRGBAHash": "E8D21F800A21685DC855581579D7733B70F5E0E1AD8E970EDDC725B4A5534CE4",
+  "baselineAtlasRGBAHash": "8655596D700C919C07068F30B8E18A60E1E821137DD363082CDE1CB61FDB578F",
+  "candidateAtlasRGBAHash": "B193C6B2D3344F1ECFFCFC07DF02B39409893B267E57C4C04F1FC158AF294931",
   "filter": "same nonlinear-sRGB premultiplied Lanczos convention; not a linear-light change",
   "oracle": "independent NumPy float64 separable sinc(x)*sinc(x/3), same support, normalization and border crop",
   "oracleIsAestheticProof": false,
   "allLegacyCelsReconstructedExactly": true,
   "measurementDecimalPlaces": 9,
   "measurementRoundingDoesNotRelaxPixelHashes": true,
-  "meanLegacyCompositedError": 0.357522665,
-  "meanCandidateCompositedError": 0.127646524,
+  "meanLegacyCompositedError": 0.357499801,
+  "meanCandidateCompositedError": 0.127650067,
   "maximumFloat32FilterError": 3.0806e-05,
   "allCelsLowerMeanCompositedError": true,
   "quantization": "no uint8 straight/associated intermediate; float32 filter, float64 unassociation, final RGBA8 once",
@@ -703,13 +703,13 @@
       ],
       "legacyFrameHashes": [
         "D4B92531FFB5559FD99A006816D011601E83C56E2E15F2465FED768C7F0E6789",
-        "6D9F65C6A13CE81FBB9C6632D7997B77C0266361C1E734984AB4B94060917B0D",
+        "61C09D34D0A702F5AA5B472FAE38D8945BED2836E7EA61A55E63C0B1F65EF3D6",
         "D4B92531FFB5559FD99A006816D011601E83C56E2E15F2465FED768C7F0E6789",
         "E049C9010F4C3C2B2FD686620DCC1BF3FD97B4A97A5FE2913B69E4EA1924C6A8"
       ],
       "candidateFrameHashes": [
         "906406D55D1CE8126C0499550FD4393911A4A83917FAA2CF0DB4626EC73748FD",
-        "41FF4CA92D31F001C2AEE21772C076B449E075AC2615E618C992B4E0B83762BA",
+        "FB19C2411387DA7FC21A08EF9AB7A99EB8434C91E65393821AAD61A7DCA42AC4",
         "906406D55D1CE8126C0499550FD4393911A4A83917FAA2CF0DB4626EC73748FD",
         "5B95C87D8108DA64F95FF2F1260C0E2745D18FFE8754A4F20E1D2B3966A02C7A"
       ],
@@ -737,19 +737,19 @@
         },
         {
           "index": 1,
-          "legacyRGBAHash": "6D9F65C6A13CE81FBB9C6632D7997B77C0266361C1E734984AB4B94060917B0D",
-          "candidateRGBAHash": "41FF4CA92D31F001C2AEE21772C076B449E075AC2615E618C992B4E0B83762BA",
-          "changedPixels": 19656,
+          "legacyRGBAHash": "61C09D34D0A702F5AA5B472FAE38D8945BED2836E7EA61A55E63C0B1F65EF3D6",
+          "candidateRGBAHash": "FB19C2411387DA7FC21A08EF9AB7A99EB8434C91E65393821AAD61A7DCA42AC4",
+          "changedPixels": 19611,
           "legacyError": {
-            "compositedMeanAbsoluteError": 0.359492689,
+            "compositedMeanAbsoluteError": 0.357823661,
             "compositedMaximumAbsoluteError": 12.717490185,
-            "alphaMeanAbsoluteError": 0.104957081,
+            "alphaMeanAbsoluteError": 0.107619183,
             "alphaMaximumAbsoluteError": 10.947094572
           },
           "candidateError": {
-            "compositedMeanAbsoluteError": 0.12748087,
-            "compositedMaximumAbsoluteError": 0.898859517,
-            "alphaMeanAbsoluteError": 0.036828023,
+            "compositedMeanAbsoluteError": 0.127739522,
+            "compositedMaximumAbsoluteError": 0.913811215,
+            "alphaMeanAbsoluteError": 0.039351941,
             "alphaMaximumAbsoluteError": 0.499865073
           },
           "float32FilterMaximumError": 3.0806e-05,

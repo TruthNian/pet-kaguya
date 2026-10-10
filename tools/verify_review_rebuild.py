@@ -34,7 +34,9 @@ FOLDERS = ['candidates/phase4/static', 'candidates/phase4/canonical-v3', 'candid
            'candidates/phase5/jumping-height-v1','sources/reference/jumping-height-8px',
            'sources/reference/material-support-v1','sources/reference/review-held-v6',
            'candidates/phase5/review-hands-overlap-v1/animation','candidates/phase5/cloth-follow-v1',
-           'candidates/phase5/cloth-follow-v1/run_right','candidates/phase5/cloth-follow-v1/run_left']
+           'candidates/phase5/cloth-follow-v1/run_right','candidates/phase5/cloth-follow-v1/run_left',
+           'candidates/phase5/wave-amplitude-v1','candidates/phase5/wave-amplitude-cloth-v1',
+           'sources/reference/waving-amplitude-high']
 
 
 def snapshot():
@@ -85,6 +87,8 @@ def main():
                    cwd=ROOT,check=True,capture_output=True)
     subprocess.run([sys.executable,str(ROOT/'tools/cloth_follow_study.py')],
                    cwd=ROOT,check=True,capture_output=True)
+    for script in ('study_wave_amplitude.py','guide_wave_amplitude.py'):
+        subprocess.run([sys.executable,str(ROOT/'tools'/script)],cwd=ROOT,check=True,capture_output=True)
     after, encoded_after = snapshot()
     load_canonical()  # Re-check the immutable selected source after all builds.
     changed = [key for key in before.keys() | after.keys() if before.get(key) != after.get(key)]

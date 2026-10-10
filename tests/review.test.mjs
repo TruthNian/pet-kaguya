@@ -14,6 +14,7 @@ test('visual review keeps technical prose folded without hiding adoption boundar
     assert.doesNotMatch(block[0],/<(?:canvas|select|output)\b/);
   }
   const guide=html.match(/<p class="comparison-guide">([\s\S]*?)<\/p>/)?.[1];
+  assert.match(guide,/降低抬手仅获接受为开发基础/);
   assert.match(guide,/相叠手、袖角跟随及精度试验未采用/);
   assert.match(guide,/完整动作未通过，安装文件未改/);
   assert.ok(html.indexOf('id="idle-stage"')<html.indexOf('id="candidate-evidence"'));
@@ -29,6 +30,7 @@ test('visual review retains one copy of each control and its actual native canva
     assert.match(html,new RegExp(`<canvas id="${id}" width="192" height="208"`));
   }
   assert.match(html,/<option value="review_overlap">[^<]*未采用/);
+  assert.match(html,/<option id="wave-reference-choice" value="wave" disabled>[^<]*开发基础/);
 });
 
 test('static review does not silently compare waiting with an unrelated source row',()=>{

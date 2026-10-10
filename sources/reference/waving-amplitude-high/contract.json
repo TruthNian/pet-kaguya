@@ -52,21 +52,11 @@
   "canonicalRestRGBAExact": true,
   "frameHashes": [
     "D4B92531FFB5559FD99A006816D011601E83C56E2E15F2465FED768C7F0E6789",
-    "61C09D34D0A702F5AA5B472FAE38D8945BED2836E7EA61A55E63C0B1F65EF3D6",
+    "6D9F65C6A13CE81FBB9C6632D7997B77C0266361C1E734984AB4B94060917B0D",
     "D4B92531FFB5559FD99A006816D011601E83C56E2E15F2465FED768C7F0E6789",
     "E049C9010F4C3C2B2FD686620DCC1BF3FD97B4A97A5FE2913B69E4EA1924C6A8"
   ],
-  "amplitudeVisualApproval": "approved-as-development-basis",
-  "amplitudeApprovalScope": "waving-lower-amplitude-development-basis-only",
-  "amplitudeUserDecision": "sources/canonical/waving-amplitude-adoption-20261010.json",
-  "handLoweringSourcePx": 55,
-  "handLoweringNativePx": 8.708333333333332,
-  "unchangedOriginalHoldIndices": [
-    0,
-    2,
-    3
-  ],
-  "method": "original middle/rest holds; lowered original peak material with bounded new shoulder cloth; estimated original palm and cape/frontlock protected",
+  "method": "bounded authored arm/sleeve cels over common hidden backing; original cape/frontlock foreground restored",
   "sampling": "middle insert first uses a fixed crop-to-source uniform projection; all native frames then share canonical camera, 3x coverage and one terminal Lanczos downsample",
   "visualMotionApproval": "pending",
   "installableFullAtlas": false,

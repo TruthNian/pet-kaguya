@@ -1,0 +1,320 @@
+{
+  "sourceSha256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "state": "waving",
+  "nativeRow": 3,
+  "durationsMs": [
+    140,
+    140,
+    140,
+    280
+  ],
+  "repeatBeforeIdle": 3,
+  "totalDurationMs": 700,
+  "actionDurationMs": 2100,
+  "sequence": [
+    "middle",
+    "peak",
+    "middle",
+    "relaxed"
+  ],
+  "camera": {
+    "scale": 0.15833333333333333,
+    "x": 0.36666666666667425,
+    "y": 7.883333333333354,
+    "visibleBBox": [
+      142,
+      26,
+      1066,
+      1226
+    ],
+    "floor": 202,
+    "topReserve": 12,
+    "cell": [
+      192,
+      208
+    ]
+  },
+  "specification": {
+    "verticalOffsetSourcePx": 55.0,
+    "wristSourcePx": [
+      362.0,
+      617.0
+    ],
+    "attachmentX": [
+      426.0,
+      520.0
+    ],
+    "handRigidRect": [
+      295,
+      545,
+      426,
+      660
+    ],
+    "attachmentEstimated": true,
+    "userDirection": "retain gentle arm lift; lower amplitude"
+  },
+  "roi": [
+    250,
+    545,
+    527,
+    1001
+  ],
+  "peakGeneratedSha256": "0EF5AB97408BA1822AE62BF7532E04F7890D2DB51DE5E1EE5CDA229245D3886C",
+  "baselineFrameHashes": [
+    "D4B92531FFB5559FD99A006816D011601E83C56E2E15F2465FED768C7F0E6789",
+    "6D9F65C6A13CE81FBB9C6632D7997B77C0266361C1E734984AB4B94060917B0D",
+    "D4B92531FFB5559FD99A006816D011601E83C56E2E15F2465FED768C7F0E6789",
+    "E049C9010F4C3C2B2FD686620DCC1BF3FD97B4A97A5FE2913B69E4EA1924C6A8"
+  ],
+  "reference": "sources/reference/waving-amplitude-high",
+  "frameHashes": [
+    "D4B92531FFB5559FD99A006816D011601E83C56E2E15F2465FED768C7F0E6789",
+    "61C09D34D0A702F5AA5B472FAE38D8945BED2836E7EA61A55E63C0B1F65EF3D6",
+    "D4B92531FFB5559FD99A006816D011601E83C56E2E15F2465FED768C7F0E6789",
+    "E049C9010F4C3C2B2FD686620DCC1BF3FD97B4A97A5FE2913B69E4EA1924C6A8"
+  ],
+  "sameMaterialNeutralPeakRGBAExact": true,
+  "neutralMeasurement": {
+    "verticalOffsetSourcePx": 0.0,
+    "wristSourcePx": [
+      362.0,
+      617.0
+    ],
+    "minimumMaterialJacobian": 1.0,
+    "maximumMaterialJacobian": 1.0,
+    "maximumInverseErrorSourcePx": 0.0,
+    "changedSourcePixels": 66870,
+    "changedOutsidePermission": 0,
+    "poseRGBAHash": "6F09E188CA3438548973ACD1F5B1A1DD6BCEE1B308ECB8BA6D897883A6A492C8"
+  },
+  "loweredMeasurement": {
+    "verticalOffsetSourcePx": 55.0,
+    "wristSourcePx": [
+      362.0,
+      672.0
+    ],
+    "minimumMaterialJacobian": 1.0,
+    "maximumMaterialJacobian": 1.0,
+    "maximumInverseErrorSourcePx": 0.0,
+    "changedSourcePixels": 65428,
+    "changedOutsidePermission": 0,
+    "poseRGBAHash": "CA55F6CD2FA9FB56474F18A4074C3B331125E66DC6C0D35C9BF2108708836B34"
+  },
+  "canonicalRestRGBAExact": true,
+  "clothRepair": {
+    "generatedSha256": "D5AC19778E9C260ACA276F10B05417BB921563808FFE185A18A1B5FE16502113",
+    "sourceCrop": [
+      250,
+      500,
+      550,
+      950
+    ],
+    "rawCanvas": [
+      1024,
+      1536
+    ],
+    "uniformProjection": true,
+    "repairPolygon": [
+      [
+        415,
+        570
+      ],
+      [
+        453,
+        574
+      ],
+      [
+        482,
+        578
+      ],
+      [
+        490,
+        590
+      ],
+      [
+        511,
+        608
+      ],
+      [
+        513,
+        644
+      ],
+      [
+        489,
+        692
+      ],
+      [
+        468,
+        733
+      ],
+      [
+        442,
+        775
+      ],
+      [
+        421,
+        784
+      ],
+      [
+        412,
+        735
+      ],
+      [
+        405,
+        709
+      ],
+      [
+        411,
+        687
+      ],
+      [
+        428,
+        669
+      ],
+      [
+        419,
+        651
+      ],
+      [
+        404,
+        631
+      ],
+      [
+        405,
+        607
+      ]
+    ],
+    "handProtectionPolygon": [
+      [
+        327,
+        710
+      ],
+      [
+        313,
+        704
+      ],
+      [
+        300,
+        693
+      ],
+      [
+        300,
+        675
+      ],
+      [
+        311,
+        664
+      ],
+      [
+        307,
+        649
+      ],
+      [
+        311,
+        635
+      ],
+      [
+        322,
+        627
+      ],
+      [
+        339,
+        637
+      ],
+      [
+        351,
+        651
+      ],
+      [
+        354,
+        629
+      ],
+      [
+        363,
+        607
+      ],
+      [
+        377,
+        605
+      ],
+      [
+        386,
+        615
+      ],
+      [
+        396,
+        647
+      ],
+      [
+        411,
+        644
+      ],
+      [
+        424,
+        654
+      ],
+      [
+        424,
+        669
+      ],
+      [
+        414,
+        690
+      ],
+      [
+        407,
+        706
+      ]
+    ],
+    "handInkDilationSourcePx": 3,
+    "changedSourcePixels": 14035,
+    "oldBrightRedClothExcludedFromHandProtection": 556,
+    "handProtectionEstimated": true,
+    "handChangedSourcePixels": 0,
+    "protectedChangedPixels": 0,
+    "generatedHandNotUsed": true,
+    "generatedCapeNotUsed": true,
+    "newClothArtworkUsed": true
+  },
+  "handLoweringNativePx": 8.708333333333332,
+  "finalPoseRGBAHash": "0148B02489478FBD3FA372BCB4B63180F9E44BBDF80C8E7DFFCD5BD563F9D801",
+  "unchangedHoldIndices": [
+    0,
+    2,
+    3
+  ],
+  "returnedMiddleCelReused": true,
+  "newClothArtworkGenerated": true,
+  "newHandArtworkUsed": false,
+  "handScaleChanged": false,
+  "handOrientationChanged": false,
+  "palmRigidWithinEstimatedRect": true,
+  "faceGeometryChanged": false,
+  "wholeBodyRotation": false,
+  "nativeInterpolation": false,
+  "amplitudeDirectionUserApproved": true,
+  "visualMotionApproval": "pending",
+  "directionUserDecision": "sources/canonical/waving-amplitude-decision-20261010.json",
+  "amplitudeVisualApproval": "approved-as-development-basis",
+  "adoptionScope": "waving-lower-amplitude-development-basis-only",
+  "userDecision": "sources/canonical/waving-amplitude-adoption-20261010.json",
+  "currentWavingCelsRGBAExact": true,
+  "adopted": true,
+  "activeAtlasChanged": true,
+  "installableFullAtlas": false,
+  "installed": false,
+  "method": "lower existing raised-cel patch over shared backing; bounded new cloth reconnects shoulder; original translated palm/cape/front hair restored",
+  "rejectedTrials": [
+    "Rotation: real-patch minimum Jacobian .69519551 (too much sleeve compression).",
+    "Unrepaired source shear: shoulder and red band visibly disconnected; archived failed-shear-pose.png.",
+    "First cloth mask preserved a sliver of old red band beside the thumb; archived failed-first-cloth-mask.png.",
+    "Whole-ROI unpremultiplication cleared 13 invisible source RGB pixels; only actual coverage is now composed."
+  ],
+  "unresolved": [
+    "Estimated wrist/attachment, hand protection contour and sleeve shear, not recovered artist layers or physical cloth simulation.",
+    "Only the peak cel changes; new cloth edges, middle/rest art differences and shoulder/backing seams still require visual inspection.",
+    "Four held frames, 700ms repeated raise/lower and arbitrary entry/exit hard cuts remain.",
+    "The chosen 55-source-pixel lowering is a design trial, not a first-principles unique optimum; area preservation does not prove cloth naturalness.",
+    "Rendered pixels were approved only as a waving development basis; entry/exit and complete motion remain unapproved."
+  ]
+}

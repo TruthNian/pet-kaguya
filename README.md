@@ -68,46 +68,32 @@ The complete usable baseline is tagged **`baseline-phase2-complete-20261008`**. 
 
 Requires Python 3.12 and Node 22+:
 
+Daily iteration is visual-first. Build only the action being edited; aggregate
+the current strips when ready. Do not rerender historical/rejected studies or
+the unadopted float-sampling atlas after every local artwork change.
+
 ```sh
 python -m pip install -r requirements.txt
-# Historical Phase 3 regression only; never promote it as the selected source:
-python tools/build.py --historical-phase3 --out work/historical-rebuild
-python tools/identity.py
-python tools/review_jaw.py
-python tools/build_idle.py
-python tools/review_waiting.py
-python tools/review_failed.py
-python tools/build_failed.py
-python tools/review_arm_backing.py
-python tools/build_jumping.py
-python tools/build_gaze.py
-python tools/guide_wave.py
-python tools/review_wave.py
-python tools/guide_wave_middle.py
-python tools/build_waving.py
-python tools/guide_processing.py
-python tools/review_processing.py
-python tools/build_processing.py
-python tools/build_waiting.py
-python tools/guide_review.py
-python tools/review_review.py
-python tools/review_review_v2.py
-python tools/review_review_v3.py
-python tools/repair_review_hand_outline.py
-python tools/review_review_v4.py
-python tools/review_review_v5.py
-python tools/build_review.py
-python tools/review_hair_boundary.py
-python tools/guide_legs.py
-python tools/leg_material.py
-python tools/review_locomotion.py
-python tools/build_locomotion.py
-python tools/build_global_review.py
-python tools/verify_review_rebuild.py
-python -m unittest discover -s tests -v
-node --test tests/clock.test.mjs tests/review.test.mjs tests/idle-clock.test.mjs tests/candidate-clock.test.mjs tests/gaze-frame.test.mjs tests/cel-painter.test.mjs tests/comparison-reference.test.mjs tests/sampling-contract.test.mjs tests/interaction-clock.test.mjs tests/height-contract.test.mjs
+python tools/verify_fast.py
+# When changing playback/viewer logic, check the affected logic as well:
+node --test tests/clock.test.mjs tests/candidate-clock.test.mjs tests/cel-painter.test.mjs tests/interaction-clock.test.mjs tests/wave-amplitude-contract.test.mjs
 python -m http.server 8767 --bind 127.0.0.1
 ```
+
+The fast check reads the actual nine action strips, sixteen gazes, global
+pixels, selected mother source and narrow approval boundaries. It does not
+regenerate art. Local measured time: 0.900 s for assets and 0.240 s for the
+38 core Node cases (process/CI startup excluded). Default push/PR CI uses this
+path, not the 281-case Python archive, complete experiment reconstruction or
+historical Windows installer audit. Those are removed from the daily path;
+the retained regression files are optional evidence, not a task checklist.
+
+Only when a release audit or relevant regression investigation actually needs
+it, dispatch `verify.yml` with `full_audit=true`; that opt-in runs the archived
+Python/Node suites, `tools/verify_review_rebuild.py` and isolated installer
+regression. The interrupted full Python run on 2026-10-10 is **not a pass**.
+One stale old-payload encoding assertion omitted the newly adopted wave row;
+its frozen-row restoration was corrected and the affected case passed.
 
 Open `http://127.0.0.1:8767/viewer/`. The top section offers all nine candidates at actual native holds, including left/right 1.06 s cycles. For both gait rows, the left side defaults to a frozen pre-follow-through reference from `d804cd5`; both sides share the **same clock, state and cel index**, including pause/manual/reduced motion and three-cycle idle fallback. Core source/camera/root/foot/focus/timing contracts must match before comparison. The original sixteen decoded reference cels match the historical cadence receipt; they are frozen source inputs, not regenerated assets, future candidate pixel locks or inherited full visual approval. A static idle reference remains available for identity inspection only. Its ideal elapsed-time clock simulates uninterrupted row playback, not native delayed callbacks or arbitrary live host drag release. The separate interruption section models chained callbacks and selection overrides, defaults paused, and stops when collapsed; those QA controls are not native window behavior. Selected rows decode on demand; consecutive identical cels update time-slot status without redundant canvas paint. The global comparison shows representative poses at 113 px on dark/light backgrounds. The separate gaze section offers sixteen directions and an optional pointer preview. All gesture connections, sleeve folds, weak small-scale cues, transitions and motion aesthetics remain under review. Native interpolation, resolution, FPS and priority are unchanged.
 

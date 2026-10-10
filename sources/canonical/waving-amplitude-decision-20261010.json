@@ -1,0 +1,10 @@
+{
+  "question": "当前招手每 0.7 秒重复一次抬手—放手，三轮后结束。我建议保留这个动作身份，但降低抬手幅度，避免显得忙乱。你更希望哪种方向？",
+  "answer": "保留轻抬手，降低幅度（建议）",
+  "scope": "waving-lower-amplitude-direction-only",
+  "candidatePixelsApproved": false,
+  "fullMotionApproved": false,
+  "faceGeometryChangeApproved": false,
+  "hostChangeApproved": false,
+  "installationApproved": false
+}

@@ -1,0 +1,13 @@
+{
+  "question": "验收页顶部 waving 现为左现用、右降低抬手候选：第2格手掌低约8.7原生像素，肩袖连接已局部修补。关闭“减少动态”重播，建议看113px；这版是否适合作为招手的继续开发基础？本次不代表进入退出、完整动作或安装通过。",
+  "answer": "作为招手开发基础，继续打磨（建议）",
+  "scope": "waving-lower-amplitude-development-basis-only",
+  "candidatePixelsApprovedAsDevelopmentBasis": true,
+  "approvedPeakRGBAHash": "61C09D34D0A702F5AA5B472FAE38D8945BED2836E7EA61A55E63C0B1F65EF3D6",
+  "sourceOffsetPx": 55,
+  "fullMotionApproved": false,
+  "entryExitApproved": false,
+  "faceGeometryChangeApproved": false,
+  "hostChangeApproved": false,
+  "installationApproved": false
+}

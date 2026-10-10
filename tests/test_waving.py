@@ -68,7 +68,10 @@ class Wave(unittest.TestCase):
     def test_saved_art_and_frames_match_rebuild_and_lossless_row(self):
         for kind in ('middle','peak'):
             out,spec,raw=art.inputs(kind)
-            with Image.open(out/'pose.png') as saved:
+            # The original peak remains archived; production now uses the
+            # exact user-approved lowered peak with bounded cloth repair.
+            path=ROOT/'candidates/phase5/wave-amplitude-v1/pose.png' if kind=='peak' else out/'pose.png'
+            with Image.open(path) as saved:
                 self.assertEqual(saved.convert('RGBA').tobytes(),self.poses[kind].tobytes())
         with Image.open(wave.OUT/'strip.webp') as strip:
             self.assertEqual(strip.size,(1536,208))

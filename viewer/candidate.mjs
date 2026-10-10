@@ -2,7 +2,8 @@
 import {durations} from './clock.mjs';
 import {candidateRows as rows,candidateSlot,candidatePoseOffset,candidateCelKey} from './candidate-clock.mjs?v=20261010-review-overlap-1';
 import {paintCel} from './cel-painter.mjs?v=20261010-terminal-precision-v1';
-import {comparisonReference,comparisonPolicy,validateRigidReference,validateHopReference,validateMouthReference} from './comparison-reference.mjs?v=20261010-cloth-1';
+import {comparisonReference,comparisonPolicy,validateRigidReference,validateHopReference,validateMouthReference} from './comparison-reference.mjs?v=20261010-wave-adopt-1';
+import {validateWaveAmplitude,validateCurrentWave} from './wave-amplitude-contract.mjs?v=20261010-wave-adopt-1';
 import {validateClothStudy} from './cloth-follow-contract.mjs';
 import {validateReviewOverlapMetadata,validateReviewOverlapReference} from './review-overlap-contract.mjs';
 import {validateMaterialSupport} from './material-support-contract.mjs';
@@ -25,6 +26,7 @@ let samplingPromise=null;
 let mouthPromise=null;
 let heightPromise=null;
 let handsPromise=null;
+let wavePromise=null;
 let mode='idle',ready=false,timer=null,baseElapsed=0,startedAt=null,paused=false,manualIndex=null,lastKey='',paintCount=0,request=0;
 let lastReferenceKey='',referencePaintCount=0;
 const reduced=()=>el('idle-reduced').checked;
@@ -46,6 +48,7 @@ async function asset(state){
     if(!Array.isArray(metadata.frameHashes)||metadata.frameHashes.length!==durations[rows[state]].length)
       throw new Error(`${state} cel hash count mismatch`);
     metadata.frameHashes.forEach((_,index)=>candidateCelKey(metadata.frameHashes,index));
+    if(state==='waving')validateCurrentWave(metadata);
     if(state==='waving_source'&&(metadata.state!=='waving'||metadata.nativeRow!==3
         ||metadata.originalConnectedSleeveEdgeFollowed!==true||metadata.foregroundMatteStillEstimated!==true
         ||metadata.newArtworkGenerated!==false||metadata.inferredBoundaryIsNotSourceObservation!==true
@@ -152,6 +155,23 @@ function stopClock(){
   if(startedAt!==null){baseElapsed+=performance.now()-startedAt;startedAt=null;}
   if(timer!==null){clearTimeout(timer);timer=null;}
 }
+async function waveAsset(current){
+  if(wavePromise===null)wavePromise=(async()=>{
+    const root='../sources/reference/waving-amplitude-high';
+    const paths=[`${root}/manifest.json`,`${root}/contract.json`,'../candidates/phase5/wave-amplitude-v1/build.json'];
+    const [manifest,baseline,metadata]=await Promise.all(paths.map(async path=>{
+      const response=await fetch(path,{cache:'no-cache'});
+      if(!response.ok)throw new Error('Frozen wave reference unavailable');
+      return response.json();
+    }));
+    validateWaveAmplitude(metadata,current,manifest,baseline);
+    const image=new Image();image.src=`${root}/${manifest.file}?v=${manifest.fileSha256}`;
+    await image.decode();
+    if(image.naturalWidth!==1536||image.naturalHeight!==208)throw new Error('Lowered wave dimensions mismatch');
+    return {image,metadata,manifest,baseline,frameHashes:baseline.frameHashes};
+  })().catch(error=>{wavePromise=null;throw error;});
+  const result=await wavePromise;validateWaveAmplitude(result.metadata,current,result.manifest,result.baseline);return result;
+}
 async function contactAsset(current){
   if(!contactCache.has('jumping'))contactCache.set('jumping',(async()=>{
     const root='../candidates/phase5/jumping';
@@ -222,7 +242,7 @@ async function handsAsset(study){
 function comparisonMode(reset=false){
   const policy=comparisonPolicy(mode,el('idle-comparison').value,reset);
   el('idle-comparison').disabled=policy.allowed.length===1;
-  for(const choice of ['height','sampling','mouth','rigid','contact','hands','cloth'])
+  for(const choice of ['height','sampling','mouth','rigid','contact','hands','cloth','wave'])
     el(`${choice}-reference-choice`).disabled=!policy.allowed.includes(choice);
   el('idle-comparison').value=policy.choice;
 }
@@ -245,11 +265,13 @@ async function draw(){
   const {image,metadata}=await cache.get(selected.state);
   const precision=choice==='sampling';
   const cloth=choice==='cloth'&&['run_right','run_left'].includes(selected.state);
+  const wave=choice==='wave'&&selected.state==='waving';
   const reference=precision?{kind:'current',state:selected.state,index:selected.index,synchronized:true}
     :comparisonReference(choice,selected.state,selected.index);
   const precisionAsset=precision?await samplingAsset(selected.state,metadata):null;
   const sleeveAsset=cloth?await clothAsset(selected.state,metadata):null;
   const referenceAsset=precision||reference.kind==='current'?{image,metadata}:reference.kind==='rigid'?await rigidAsset(reference.state,metadata)
+    :reference.kind==='wave'?await waveAsset(metadata)
     :reference.kind==='contact'?await contactAsset(metadata)
     :reference.kind==='height'?await heightAsset(metadata)
     :reference.kind==='mouth'?await mouthAsset(metadata)
@@ -261,7 +283,8 @@ async function draw(){
     paintCel(contexts[0],referenceAsset.image,reference.index);
     lastReferenceKey=referenceKey;referencePaintCount++;
   }
-  el('reference-candidate-title').textContent=cloth?`同步现用袖角 · ${reference.state} 第 ${reference.index+1} 格`
+  el('reference-candidate-title').textContent=wave?`同步旧招手 · 第 ${reference.index+1} 格`
+    :cloth?`同步现用袖角 · ${reference.state} 第 ${reference.index+1} 格`
     :precision?`同步现用采样 · ${reference.state} 第 ${reference.index+1} 格`
     :reference.kind==='rigid'?`同步旧小步 · ${reference.state} 第 ${reference.index+1} 格`
     :reference.kind==='contact'?`同步旧轻跃（高度场） · 第 ${reference.index+1} 格`
@@ -269,7 +292,9 @@ async function draw(){
     :reference.kind==='height'?`同步旧幅度 · 8px · 第 ${reference.index+1} 格`
     :reference.kind==='hands'?`同步现用双手 · review v6 第 ${reference.index+1} 格`
     :reference.synchronized?`同步回退 · idle 第 ${reference.index+1} 格`:'同一母版 · 固定第 1 帧';
-  el('reference-status').textContent=choice==='cloth'
+  el('reference-status').textContent=choice==='wave'
+    ?`左右同钟/同格；左冻结旧招手，右现用降低抬手开发基础 · ${referencePaintCount} 次参考绘制 · ${wave?'仅第2格手掌降低约8.7原生像素；原掌按估计掩码保护，局部补画袖带连接。你已确认此版为开发基础，完整动作未通过':'三轮已结束，两侧同步同一idle'}`
+    :choice==='cloth'
     ?`左右同钟/同格；左现用，右袖角跟随试验，未采用 · ${referencePaintCount} 次参考绘制 · ${cloth?'只改下垂袖角附近源坐标，也影响附近可见底图；局部alpha如实变化，脸/手/腰饰/腿鞋与步态固定，不是真实布料模拟':'三轮已结束，两侧同步同一idle，未附加袖角变形'}`
     :precision
     ?`左右同源/同姿势/同钟/同格；右侧仅末端浮点采样试验，未采用 · ${referencePaintCount} 次参考绘制 · 数值误差不代表审美通过`
@@ -291,6 +316,7 @@ async function draw(){
   labels.review_overlap='review · 六格低位相叠手试验，未采用';
   labels.jumping='jumping · 4px轻跃开发基础';
   labels.failed='failed · 八格新嘴线开发基础';
+  labels.waving='waving · 降低抬手开发基础';
   const label=labels[selected.state];
   el('current-candidate-title').textContent=cloth?`${label} · 袖角跟随试验，未采用`:precision?`${label} · 浮点采样试验，未采用`:label;
   const status=manualIndex!==null?'单帧检查':reduced()?'减少动态':paused?'已暂停':selected.completedAction?'三轮已结束，已回 idle':'实际时长播放';

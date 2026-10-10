@@ -89,9 +89,12 @@ class OverlapMotion(unittest.TestCase):
             self.assertFalse(self.meta[key])
         self.assertEqual(self.meta['specificPoseUserApproval'],'pending')
         self.assertEqual(self.meta['visualMotionApproval'],'pending')
+        # Other accepted states can evolve independently. This unadopted
+        # hand study must leave the actual review row, including blanks, exact.
         with Image.open(ROOT/'candidates/phase5/global/spritesheet.webp') as image:
-            self.assertEqual(study.rgba_hash(image.convert('RGBA')),
-                '1E1D25A012688E96CC1D4A59AD96696145B52DB7E7C9DAEF39AF9273A2128786')
+            review_row=image.convert('RGBA').crop((0,1664,1536,1872))
+        with Image.open(ROOT/'sources/reference/review-held-v6/review.webp') as image:
+            self.assertEqual(review_row.tobytes(),image.convert('RGBA').tobytes())
         self.assertEqual(hashlib.sha256((ROOT/'sources/canonical/artwork.png').read_bytes()).hexdigest().upper(),
             study.ACCEPTED_SHA)
 

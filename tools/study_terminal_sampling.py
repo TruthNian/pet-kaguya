@@ -53,11 +53,8 @@ def jobs():
     result = {'idle': ordinary(mother, idle_motion['keyframes'])}
     image, _, _, _, _, motion = failed.inputs()
     result['failed'] = ordinary(image, motion['keyframes'])
-    wave_motion = json.loads((ROOT/'sources/canonical/waving-motion.json').read_text(encoding='utf-8'))
-    wave_sources = {'relaxed': mother}
-    for kind, folder in [('middle', 'wave-art-middle-v2'), ('peak', 'wave-art-v2')]:
-        with Image.open(ROOT/f'candidates/phase5/{folder}/pose.png') as saved:
-            wave_sources[kind] = saved.convert('RGBA')
+    from build_waving import inputs as wave_inputs
+    _,wave_motion,wave_sources,_ = wave_inputs()
     result['waving'] = [ordinary(wave_sources[kind], [zero])[0] for kind in wave_motion['sequence']]
     for state, pose_path in [('waiting', 'waiting-art-v2/pose.png'),
                              ('processing', 'processing/focused-pose.png'),
