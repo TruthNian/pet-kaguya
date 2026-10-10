@@ -100,7 +100,7 @@
     "75DC8F966C2085C9AFD326417CD83CA4E759955EC4944A03C3BF797C868940BE",
     "EC282CFF53D2C4C43E33530265ED005E7AD1161EA94AB86A5A1794AF8A5A45EF"
   ],
-  "changesFromCurrent": [
+  "changesFromFrozenOldMouth": [
     {
       "changedPixels": 60,
       "alphaChangedPixels": 0,
@@ -194,8 +194,11 @@
   "nativeInterpolation": false,
   "newArtworkGenerated": true,
   "animationBuilt": true,
-  "adopted": false,
-  "activeAtlasChanged": false,
+  "adopted": true,
+  "adoptionScope": "mouth-line-development-basis-only",
+  "mouthLineVisualApproval": "approved-as-development-basis",
+  "userDecision": "sources/canonical/failed-mouth-decision-20261010.json",
+  "currentFailedCelsRGBAExact": true,
   "visualMotionApproval": "pending",
   "installableFullAtlas": false,
   "installed": false,
@@ -203,6 +206,6 @@
     "Eight real holds, no new native state, no added interpolation or host changes.",
     "Internal mouth RGB includes nearby skin. Eyes/brows/jaw/costume and all source alpha remain exact.",
     "Line width is 46 source pixels by the recorded diagnostic, not the requested mother width of 54.",
-    "Small-size expression legibility and overall cuteness are not human-approved. Current failed row is unchanged."
+    "Mouth line accepted as development basis only. Small-size legibility, brows, full motion and transitions remain unapproved."
   ]
 }

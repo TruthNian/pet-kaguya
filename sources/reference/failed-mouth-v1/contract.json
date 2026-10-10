@@ -56,15 +56,6 @@
   "visualMotionApproval": "pending",
   "installableFullAtlas": false,
   "installed": false,
-  "mouthArt": "candidates/phase5/failed-mouth-v2",
-  "mouthGeneratedSha256": "695E3EC9867FB8A8A919E203E607A19D0E3A0AA7D469BDEA847B6E56397F3082",
-  "mouthPoseRGBAHash": "30137EB265F82710BDA3B98B437B1C21D9A2DF5BEFA78879FAEE9582B4EBD292",
-  "mouthLineVisualApproval": "approved-as-development-basis",
-  "mouthApprovalScope": "mouth-line-development-basis-only",
-  "mouthUserDecision": "sources/canonical/failed-mouth-decision-20261010.json",
-  "sourceAlphaPreservedExactly": true,
-  "nativeAlphaPreservedExactly": true,
-  "bodyEarHairPosesUnchanged": true,
   "keyframes": [
     {
       "bodyY": 0.2,
@@ -108,18 +99,18 @@
     }
   ],
   "frameHashes": [
-    "2E03F03B0DAC76E266190CDEF4806AD1CEAB967A241B76C4C0256B5B9DA83C28",
-    "1309732CCA294ECC0866AE88EF0071CC8BC215A98C02395A5F8820C96192CE94",
-    "2A97772F151A974C1388675B5E7A6A9CA62DF37C00F5F4C974291655FF397E50",
-    "83BA3EB45D82812BCC551A1F344914E78E36BD854CF4AA39B7A016D540EC4685",
-    "63FE507EF623ABE3E6AFB26EC02E85867087999A72637A3534FAC5B8B49BDE00",
-    "5B910C5C832765591C14B516161D8B3FBB087BC0C68BCDCC86C406CD8C73B814",
-    "75DC8F966C2085C9AFD326417CD83CA4E759955EC4944A03C3BF797C868940BE",
-    "EC282CFF53D2C4C43E33530265ED005E7AD1161EA94AB86A5A1794AF8A5A45EF"
+    "2D0B74400BBB3426FCD4B717E4BC73BEEEDC600C64F0B33379DA1B96B0E3F33C",
+    "D18657BA39F4277B3064AC9E862763D1097FA9A825214C35E56F5058BF47420D",
+    "C4BBF031498772CFC895343210E6EE4200EA2AB293AC02E38116C735C1C8DAF1",
+    "27BAC200BBFD7C2395BAA18E99600C493B097B924CB1773FA7C7E3C0DB7DEB47",
+    "2C3F0E11167DC449C4AD167C1F955C8EA5126381A0164F5A42E6DCC59E54B8FF",
+    "FFA57A08CF240978CB2B8897E2C4095D5E9C3B37DA378824CB4ADC46E8B6C116",
+    "03D2D45766A46F41E79B0667BF987CEEDD4C960755B83C798D1D54BF4436499A",
+    "ED153210E07106117706A2C4DD55C5922B439D8AA92356183D8726BD8543E128"
   ],
   "unresolved": [
-    "Mouth line accepted as development basis only; brows and complete motion remain unapproved.",
-    "The accepted line is 46 source pixels by the diagnostic, below mother smile 54; 80px cues remain weak.",
+    "Current mouth/brow artwork and complete motion lack human visual approval.",
+    "The current mouth line is shorter than the mother smile; 80px expression cues remain weak.",
     "Short repeating native holds and upper-body settling do not prove articulated leaning or smooth arbitrary exits.",
     "Native-host loading/performance and final release/install acceptance remain unverified."
   ]

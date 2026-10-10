@@ -38,7 +38,7 @@
   "changedOutsidePermission": 0,
   "alphaChangedPixels": 0,
   "rawChangesOutsidePermission": 4746,
-  "currentMouthLineDiagnostic": {
+  "oldMouthLineDiagnostic": {
     "thresholdDefinesEditMask": false,
     "thresholdIsBeautyScore": false,
     "count": 121,
@@ -49,7 +49,7 @@
       407
     ]
   },
-  "candidateMouthLineDiagnostic": {
+  "acceptedMouthLineDiagnostic": {
     "thresholdDefinesEditMask": false,
     "thresholdIsBeautyScore": false,
     "count": 114,
@@ -99,12 +99,14 @@
   "generatedAlphaRetainedInRaw": true,
   "alphaAdopted": false,
   "fullRedrawAccepted": false,
-  "adopted": false,
-  "animationBuilt": false,
-  "visualAcceptance": "pending",
+  "adopted": true,
+  "adoptionScope": "mouth-line-development-basis-only",
+  "userDecision": "sources/canonical/failed-mouth-decision-20261010.json",
+  "mouthLineVisualApproval": "approved-as-development-basis",
+  "visualAcceptance": "mouth-only; full-motion-pending",
   "installed": false,
   "installableFullAtlas": false,
   "generationMode": "built-in imagegen",
   "prompt": "candidates/phase5/failed-mouth-v2/prompt.txt",
-  "limitation": "Changes RGB throughout the bounded internal mouth patch, including nearby skin; not literally only brown-line pixels. Original width/stroke style are visual targets, not guaranteed by prompt or threshold diagnostics. No eight-cel failed animation or current atlas update, no human visual approval, no FPS/resolution gain."
+  "limitation": "Changes RGB throughout the bounded internal mouth patch, including nearby skin; not literally only brown-line pixels. Original width/stroke style are visual targets, not guaranteed by prompt or threshold diagnostics. Mouth approval does not approve full action, transitions, small-size legibility, installation or FPS/resolution gain."
 }

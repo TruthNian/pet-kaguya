@@ -1,0 +1,11 @@
+{
+  "question": "新嘴线是否更轻柔自然，适合作为 failed 的后续开发基础？这次只确认嘴线，不代表完整动作通过。",
+  "answer": "新嘴线更自然，采用为开发基础（建议）",
+  "scope": "mouth-line-development-basis-only",
+  "mouthArt": "candidates/phase5/failed-mouth-v2",
+  "mouthGeneratedSha256": "695E3EC9867FB8A8A919E203E607A19D0E3A0AA7D469BDEA847B6E56397F3082",
+  "fullMotionApproved": false,
+  "faceGeometryChangeApproved": false,
+  "hostChangeApproved": false,
+  "installationApproved": false
+}

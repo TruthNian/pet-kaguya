@@ -1,4 +1,4 @@
-"""Actual unchanged atlas pixels and failed-study boundary, not art acceptance."""
+"""Exact current atlas, historical encoding isolation and rejected-art boundary."""
 import hashlib
 import json
 import io
@@ -16,13 +16,20 @@ PREVIOUS_RGBA='89D096DF28D82B7F9DBC103D6A840D0A2D805E02461A308AFA2C7D7B01E4AE42'
 
 
 class EncodingAndRejectedStudy(unittest.TestCase):
-    def test_actual_global_is_the_same_prior_rgba_and_exact_current_rows(self):
+    def test_actual_global_changes_only_accepted_mouth_and_keeps_exact_current_rows(self):
         with Image.open(global_review.OUT/'spritesheet.webp') as image:actual=image.convert('RGBA')
-        self.assertEqual(hashlib.sha256(actual.tobytes()).hexdigest().upper(),PREVIOUS_RGBA)
+        # The encoding receipt is an immutable old-payload experiment, not a
+        # permanent ban on approved artwork. Restore only the exact archived
+        # old mouth row: every other decoded byte must still match its hash.
+        historical = actual.copy()
+        with Image.open(ROOT/'sources/reference/failed-mouth-v1/failed.webp') as image:
+            historical.paste(image.convert('RGBA'),(0,5*208))
+        self.assertEqual(hashlib.sha256(historical.tobytes()).hexdigest().upper(),PREVIOUS_RGBA)
+        self.assertNotEqual(actual.tobytes(),historical.tobytes())
         expected,_,_,_=global_review.assemble()
         self.assertEqual(actual.tobytes(),expected.tobytes())
         meta=json.loads((global_review.OUT/'build.json').read_text())
-        self.assertEqual(meta['atlasRGBAHash'],PREVIOUS_RGBA)
+        self.assertEqual(meta['atlasRGBAHash'],hashlib.sha256(actual.tobytes()).hexdigest().upper())
         self.assertEqual(meta['encoding']['quality'],100)
         self.assertEqual(meta['encoding']['method'],6)
         self.assertTrue(meta['encoding']['lossless'])

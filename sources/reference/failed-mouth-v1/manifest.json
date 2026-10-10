@@ -1,0 +1,11 @@
+{
+  "commit": "c0e3e2fe800424ddf1792fc63792b28248fd9cc5",
+  "referenceRole": "frozen-source-input-not-active-animation",
+  "referencePurpose": "isolate-internal-mouth-rgb-only",
+  "file": "failed.webp",
+  "contract": "contract.json",
+  "fileSha256": "1C024F7855CB3A08DF20CC769C2F0BC13F71573D2635B188AFC12533D34D3926",
+  "visualApprovalInherited": false,
+  "installableFullAtlas": false,
+  "installed": false
+}

@@ -12,11 +12,11 @@
   </header>
   <section class="idle-review" aria-labelledby="idle-heading">
     <h2 id="idle-heading">Phase 5 · 同一母版的局部动作候选</h2>
-    <p>右侧可选九个动作候选；左侧默认固定 v3。左右小步自动同步旧版比较耳发跟随；jumping自动同步旧高度场比较当前屈膝接触，空中三格相同。所有候选共用相机与脸型；新增像素仅用于局部结构修正、缺画与隐藏底图。你已确认正面轻小步方向、摆幅及起落基础，并暂保留托腮/合手的保持时序，继续优化结构；这些决定不代表手形、袖褶或整体自然度通过。九状态和16视线为开发验收图集，未安装。</p>
+    <p>右侧可选九个动作候选；左侧通常固定v3，小步/轻跃/failed则默认同节奏旧版对照。failed已采用你认可的新嘴线，旧嘴线仅作冻结参照；批准范围仅限开发基础。小步比较耳发跟随，轻跃比较屈膝接触且空中三格相同。所有候选共用相机与脸型；新增像素仅用于局部结构修正、缺画与隐藏底图。正面小步方向、摆幅及起落基础已确认，托腮/合手暂保留保持时序；这些决定不代表手形、袖褶或整体自然度通过。九状态和16视线为开发验收图集，未安装。</p>
     <p>新增“精度对照”：左侧为现用动作，右侧为同源、同姿势、同格的末端浮点采样试验，尚未采用。73个动作/视线格全部核对；相对独立64位滤波参考的平均显示颜色误差约0.358→0.128（0–255单位），不是画质评分。113px肉眼差异小，没有新增细节、帧率或分辨率；不修复手袖造型。<a href="../candidates/phase5/terminal-sampling-v1/contact-113px.png">九状态明暗前后对照</a> · <a href="../candidates/phase5/terminal-sampling-v1/build.json">逐格证据和限制</a></p>
     <div class="controls">
-      <label>候选 <select id="idle-action"><option value="idle">idle · 微呼吸</option><option value="run_right">run_right · 正面向右小步原型</option><option value="run_left">run_left · 正面向左小步原型</option><option value="failed">failed · 三轮后回 idle</option><option value="failed_mouth">failed · 局部嘴线试验（未采用）</option><option value="jumping">jumping · 五帧，三轮后回 idle</option><option value="waving">waving · 四格，三轮后回 idle</option><option value="waving_source">waving · 原像素低位试验（未采用）</option><option value="processing">processing · 六格专注，三轮后回 idle</option><option value="waiting">waiting · 六格保持托腮，待确认</option><option value="review">review · 六格低手下视，待确认</option></select></label>
-      <label>左侧参考 <select id="idle-comparison" disabled><option value="idle">固定 idle · 检查身份</option><option id="rigid-reference-choice" value="rigid" disabled>同步旧小步 · 检查耳发跟随</option><option id="contact-reference-choice" value="contact" disabled>同步旧轻跃 · 检查屈膝接触</option><option id="mouth-reference-choice" value="mouth" disabled>同步现用 failed · 只比较嘴线</option><option id="sampling-reference-choice" value="sampling">精度对照 · 左现用，右浮点试验</option></select></label>
+      <label>候选 <select id="idle-action"><option value="idle">idle · 微呼吸</option><option value="run_right">run_right · 正面向右小步原型</option><option value="run_left">run_left · 正面向左小步原型</option><option value="failed">failed · 新嘴线开发基础</option><option value="jumping">jumping · 五帧，三轮后回 idle</option><option value="waving">waving · 四格，三轮后回 idle</option><option value="waving_source">waving · 原像素低位试验（未采用）</option><option value="processing">processing · 六格专注，三轮后回 idle</option><option value="waiting">waiting · 六格保持托腮，待确认</option><option value="review">review · 六格低手下视，待确认</option></select></label>
+      <label>左侧参考 <select id="idle-comparison" disabled><option value="idle">固定 idle · 检查身份</option><option id="rigid-reference-choice" value="rigid" disabled>同步旧小步 · 检查耳发跟随</option><option id="contact-reference-choice" value="contact" disabled>同步旧轻跃 · 检查屈膝接触</option><option id="mouth-reference-choice" value="mouth" disabled>同步旧嘴线 · 检查失落表达</option><option id="sampling-reference-choice" value="sampling">精度对照 · 左现用，右浮点试验</option></select></label>
       <label>宽度 <select id="idle-size"><option>80</option><option selected>113</option><option>192</option><option>224</option></select> px</label>
       <label>背景 <select id="idle-background"><option value="dark">深色</option><option value="light">浅色</option><option value="grid">透明网格</option></select></label>
       <label><input id="idle-reduced" type="checkbox">减少动态</label>
@@ -37,11 +37,11 @@
     <p>当前从leg-material-v2原材料直接取样到原生3倍覆盖网格，再统一末端缩小，不把全尺寸腿部姿势图当输入；虹膜仍有源空间预合成，不声称全画单次采样。可见背景按覆盖率归一后，分数坐标的同材料中性合成成立；只在各姿势中消除低于1e-10的浮点叠加误差，中性原生RGBA与原取样器精确一致，不特判零位移。耳发几何也在原背景材料取样前计算，不再加工低清帧；保护脸/前衣袖/手/腿鞋，但区域仍是估计，不是干净分层。微滞后来自周期稳态参考，不会按每次真实拖拽初始化；原生仍离散，衣物柔性跟随、进入退出和完整自然度未通过。侧身不是所选方向，不把中性等式或格内支撑固定当作真实跑步完成。</p>
     <p><a href="../candidates/phase5/leg-material-v2/contact-224px.png">母版/旧中性/新中性/左右抬脚对照</a> · <a href="../candidates/phase5/run_right/native-timing.gif">向右小步真实停留GIF</a> · <a href="../candidates/phase5/leg-backing-v1/prompt.txt">无脸隐藏底图实际生成提示词</a> · <a href="../docs/PHASE5-STATES.zh-CN.md">合成修正与剩余问题</a></p>
   </section>
-  <details id="failed-mouth-study" class="idle-review"><summary>failed 嘴线局部试验 · 八格同节奏对照，尚未采用</summary>
-    <p>左为锁定母版，中为现用failed，右为局部嘴线候选。未重画眼睛、眉、下颌或衣服，也不缩放脸；仅采用1254个内部RGB像素，全身alpha及范围外RGBA保持。目标是更舒缓、略长的轻微失落口线，不通过夸张表情或道具强化状态。</p>
-    <img loading="lazy" src="../candidates/phase5/failed-mouth-v2/detail.png" width="1110" height="310" alt="锁定母版、现用failed和仅改嘴线的新候选，眼眉下颌不变的同坐标对照">
-    <img loading="lazy" src="../candidates/phase5/failed-mouth-v2/contact-113px.png" width="399" height="308" alt="母版、现用failed和局部嘴线试验，113像素浅深背景静态对照">
-    <p>阈值诊断线宽37→46源像素，母版笑线54；新输出未完全满足原宽度要求。阈值不定义选区或美感。80px辨识改善有限，曲率、口线与肤色接边仍需视觉判断。顶部“局部嘴线试验”用真实八格140×7＋240ms，与左侧现用failed共用格号/姿态；三轮3660ms后两侧同步回idle。不增加原生状态，不修改现用动作、图集或已安装文件。</p>
+  <details id="failed-mouth-study" class="idle-review"><summary>failed 新嘴线 · 已采用为开发基础，完整动作待验收</summary>
+    <p>左为锁定母版，中为旧嘴线，右为已获你认可的新嘴线开发基础。未重画眼睛、眉、下颌或衣服，也不缩放脸；仅采用1254个内部RGB像素，全身alpha及范围外RGBA保持。批准范围仅限嘴线，不代表眉眼、完整动作、小尺寸表达或安装通过。</p>
+    <img loading="lazy" src="../candidates/phase5/failed-mouth-v2/detail.png?v=adopt-20261010" width="1110" height="310" alt="锁定母版、旧嘴线与已接受新嘴线的同坐标对照，眼眉下颌不变">
+    <img loading="lazy" src="../candidates/phase5/failed-mouth-v2/contact-113px.png?v=adopt-20261010" width="399" height="308" alt="母版、旧嘴线和新嘴线开发基础，113像素浅深背景静态对照">
+    <p>阈值诊断线宽37→46源像素，母版笑线54；没有为了达到数值而继续改画。80px辨识仍有限，阈值不定义选区或美感。顶部选择failed，默认左侧冻结旧嘴线、右侧现用新嘴线；真实八格140×7＋240ms共用格号/姿态，三轮3660ms后同步回idle。仅更新failed及其全局开发图集；采样试验同步重建但仍未采用。母版、其他动作、视线、已安装文件不改。</p>
     <p><a href="../candidates/phase5/failed-mouth-v2/contact-80px.png">80px实际对照</a> · <a href="../candidates/phase5/failed-mouth-v2/contact-224px.png">224px实际对照</a> · <a href="../candidates/phase5/failed-mouth-v2/prompt.txt">实际内置图像编辑提示词</a> · <a href="../candidates/phase5/failed-mouth-v2/animation/build.json">八格范围/来源/时序证据</a>。只重建源像素，不加工低清动作帧；每格仅60–67原生RGB像素变化，alpha固定。这里也改变许可内附近皮肤RGB，不冒称只修改棕色线像素。</p>
   </details>
   <details id="hop-contact-review" class="idle-review"><summary>轻跃接触改进 · 同参数高度场 / 双节屈膝对照</summary>
@@ -122,7 +122,7 @@
   <details id="global-review" class="idle-review"><summary>Phase 5 · 九状态全局结构对照（开发验收，不可安装）</summary>
     <p>九状态代表姿势，以113 px实际采样模拟展示，依次为 idle、左右小步、wave、jump、failed、waiting、processing、review；上三排深色、下三排浅色。它用于找脸身、衣袖、姿势的退步，不是视觉通过证明。完整开发图集为1536×2288，原生格192×208，解码RGBA仍14,057,472字节。</p>
     <img loading="lazy" src="../candidates/phase5/global/contact-113px.png" width="375" height="900" alt="九状态113像素明暗全局结构对照，所有动作人工接受待确认">
-    <p>本机无损汇总编码为1,017,692字节，比上一提交1,098,260少7.34%；每个RGBA像素（含透明隐藏RGB）不变。仅离线汇总花更多编码时间，动作条设置不变；不代表视觉、纹理内存或帧率改善，其他编解码器的文件字节可能不同。</p>
+    <p>新嘴线汇总图集本机编码1,017,306字节，仅failed嘴周508像素变化，其他十行与全部alpha精确保留。此前相同旧画面编码实验1,098,260→1,017,692（7.34%）是历史记录，不混作新图与旧图同内容比较。仍是离线无损编码，解码14,057,472字节；不代表视觉、纹理内存或帧率改善。</p>
     <p><a href="../candidates/phase5/global/spritesheet.webp">完整开发验收图集</a> · <a href="../candidates/phase5/global/build.json">覆盖范围、未完成条件与逐行像素哈希</a> · <a href="../qa/lossless-encoding-20261010.json">冻结本机实测及代价</a></p>
   </details>
   <details id="gaze-review" class="idle-review"><summary>Phase 5 · 十六个视线方向候选（点开验收）</summary>
@@ -187,6 +187,6 @@
   </details>
 </main>
 <script type="module" src="app.mjs"></script>
-<script type="module" src="candidate.mjs?v=20261010-mouth-v1"></script>
+<script type="module" src="candidate.mjs?v=20261010-mouth-adopt-2"></script>
 <script type="module" src="gaze.mjs"></script>
 </html>

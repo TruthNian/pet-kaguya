@@ -1,0 +1,23 @@
+{
+  "scope": "mouth-line-development-basis-only",
+  "decision": "sources/canonical/failed-mouth-decision-20261010.json",
+  "baselineCommit": "c0e3e2fe800424ddf1792fc63792b28248fd9cc5",
+  "sourceRGBAHash": "30137EB265F82710BDA3B98B437B1C21D9A2DF5BEFA78879FAEE9582B4EBD292",
+  "sourceRGBChangedPixels": 1254,
+  "sourceAlphaChangedPixels": 0,
+  "oldAtlasRGBAHash": "89D096DF28D82B7F9DBC103D6A840D0A2D805E02461A308AFA2C7D7B01E4AE42",
+  "newAtlasRGBAHash": "3FACDFAB6B56D5D50339492B77A437DC7AD2A11EC5C7C2095D246E79EADDF598",
+  "atlasChangedPixels": 508,
+  "atlasAlphaChangedPixels": 0,
+  "atlasChangesOutsideFailedRow": 0,
+  "nativeChangedPixelsPerCel": [60,62,67,62,62,67,66,62],
+  "newNativeCelsEqualPreviouslyViewedTrialExactly": true,
+  "otherTenAtlasRowsRGBAExact": true,
+  "poseCameraScheduleUnchanged": true,
+  "localEncodedBytes": 1017306,
+  "localEncodedBytesAreCrossPlatformContract": false,
+  "decodedTextureBytes": 14057472,
+  "fullMotionApproved": false,
+  "hostChangeApproved": false,
+  "installationApproved": false
+}

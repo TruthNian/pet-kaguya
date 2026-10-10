@@ -7,6 +7,7 @@ from build_idle import specification as idle_specification, region_masks, render
 from review_failed import specification as expression_specification, load_generated, localized_pose, GENERATED_SHA
 from animation_output import write_animation
 from protocol import DURATIONS
+import review_failed_mouth as mouth
 
 OUT = ROOT/'candidates/phase5/failed'
 
@@ -20,11 +21,21 @@ def specification():
     return motion
 
 
-def inputs():
+def reference_inputs():
     mother = load_canonical()
     source, _ = localized_pose(mother, load_generated(), expression_specification())
     source, cleanup = clean_cutout(source)
     transform = camera(clean_cutout(mother)[0])  # Mother camera, NOT per-state fitting.
+    regions, _ = idle_specification()
+    return source, cleanup, transform, regions, region_masks(regions), specification()
+
+
+def inputs():
+    mouth.decision()
+    before, mapped = mouth.inputs()
+    source, _, _ = mouth.compose(before, mapped)
+    source, cleanup = clean_cutout(source)
+    transform = camera(clean_cutout(load_canonical())[0])
     regions, _ = idle_specification()
     return source, cleanup, transform, regions, region_masks(regions), specification()
 
@@ -41,10 +52,15 @@ def main():
         method='bounded mouth/brow art; authored native poses with rigid face/upper-body settling and pinned shoes',
         sampling='3x coverage integration from high-resolution source, one terminal Lanczos downsample',
         visualMotionApproval='pending', installableFullAtlas=False, installed=False,
+        mouthArt='candidates/phase5/failed-mouth-v2',mouthGeneratedSha256=mouth.GENERATED_SHA,
+        mouthPoseRGBAHash=mouth.rgba_hash(mouth.compose(*mouth.inputs())[0]),
+        mouthLineVisualApproval='approved-as-development-basis',
+        mouthApprovalScope='mouth-line-development-basis-only',mouthUserDecision=mouth.DECISION,
+        sourceAlphaPreservedExactly=True,nativeAlphaPreservedExactly=True,bodyEarHairPosesUnchanged=True,
         keyframes=motion['keyframes'],
         frameHashes=[hashlib.sha256(frame.tobytes()).hexdigest().upper() for frame in frames],
-        unresolved=['Current mouth/brow artwork and complete motion lack human visual approval.',
-                    'The current mouth line is shorter than the mother smile; 80px expression cues remain weak.',
+        unresolved=['Mouth line accepted as development basis only; brows and complete motion remain unapproved.',
+                    'The accepted line is 46 source pixels by the diagnostic, below mother smile 54; 80px cues remain weak.',
                     'Short repeating native holds and upper-body settling do not prove articulated leaning or smooth arbitrary exits.',
                     'Native-host loading/performance and final release/install acceptance remain unverified.'])
     (OUT/'build.json').write_text(json.dumps(metadata, indent=2)+'\n', encoding='utf-8')

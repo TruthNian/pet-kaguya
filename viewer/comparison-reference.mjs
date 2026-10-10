@@ -26,28 +26,47 @@ export function comparisonReference(choice,state,index){
   if(choice==='idle')return {kind:'candidate',state:'idle',index:0,synchronized:false};
   if(choice==='rigid'&&['run_right','run_left'].includes(state))return {kind:'rigid',state,index,synchronized:true};
   if(choice==='contact'&&state==='jumping')return {kind:'contact',state,index,synchronized:true};
-  if(choice==='mouth'&&state==='failed_mouth')return {kind:'candidate',state:'failed',index,synchronized:true};
+  if(choice==='mouth'&&state==='failed')return {kind:'mouth',state:'failed',index,synchronized:true};
   if(state==='idle')return {kind:'candidate',state,index,synchronized:true};
   throw new Error('Synchronized reference cannot compare a different action');
 }
 
-export function validateMouthStudy(study,current){
+export function validateMouthReference(manifest,baseline,study,current){
+  if(manifest.commit!=='c0e3e2fe800424ddf1792fc63792b28248fd9cc5'
+      ||manifest.referenceRole!=='frozen-source-input-not-active-animation'
+      ||manifest.referencePurpose!=='isolate-internal-mouth-rgb-only'
+      ||manifest.file!=='failed.webp'||manifest.contract!=='contract.json'
+      ||manifest.fileSha256!=='1C024F7855CB3A08DF20CC769C2F0BC13F71573D2635B188AFC12533D34D3926'
+      ||manifest.visualApprovalInherited!==false||manifest.installed!==false||manifest.installableFullAtlas!==false)
+    throw new Error('Invalid frozen old-mouth reference');
   if(study.state!=='failed'||study.previewVariant!=='failed_mouth'||study.nativeRow!==5
       ||study.referencePurpose!=='isolate-internal-mouth-rgb-only'
-      ||study.adopted!==false||study.activeAtlasChanged!==false||study.installed!==false
+      ||study.adopted!==true||study.adoptionScope!=='mouth-line-development-basis-only'||study.installed!==false
+      ||study.mouthLineVisualApproval!=='approved-as-development-basis'
+      ||study.currentFailedCelsRGBAExact!==true
       ||study.installableFullAtlas!==false||study.visualMotionApproval!=='pending'
       ||study.animationBuilt!==true||study.facialGeometryRepair!==false||study.newFaceGeometry!==false
       ||study.nativeInterpolation!==false||study.sourceAlphaPreservedExactly!==true
       ||study.nativeAlphaPreservedExactly!==true||study.bodyEarHairPosesUnchanged!==true
       ||study.baselineActualCelsReconstructedExactly!==true||study.frameHashes?.length!==8
       ||current.state!=='failed'||current.nativeRow!==5||current.visualMotionApproval!=='pending'
+      ||current.mouthLineVisualApproval!=='approved-as-development-basis'
+      ||current.mouthApprovalScope!=='mouth-line-development-basis-only'
+      ||current.mouthUserDecision!=='sources/canonical/failed-mouth-decision-20261010.json'
+      ||study.userDecision!==current.mouthUserDecision
+      ||study.mouthGeneratedSha256!=='695E3EC9867FB8A8A919E203E607A19D0E3A0AA7D469BDEA847B6E56397F3082'
+      ||current.mouthGeneratedSha256!==study.mouthGeneratedSha256
+      ||current.installed!==false||current.installableFullAtlas!==false
       ||['sourceSha256','camera','durationsMs','keyframes','repeatBeforeIdle'].some(key=>
-        current[key]===undefined||JSON.stringify(study[key])!==JSON.stringify(current[key]))
-      ||JSON.stringify(study.baselineFrameHashes)!==JSON.stringify(current.frameHashes))
-    throw new Error('Mouth trial source/poses/timing or unadopted boundary mismatch');
+        current[key]===undefined||JSON.stringify(study[key])!==JSON.stringify(current[key])
+          ||JSON.stringify(baseline[key])!==JSON.stringify(current[key]))
+      ||JSON.stringify(study.baselineFrameHashes)!==JSON.stringify(baseline.frameHashes)
+      ||JSON.stringify(study.frameHashes)!==JSON.stringify(current.frameHashes))
+    throw new Error('Mouth reference source/poses/timing or narrow approval boundary mismatch');
   study.frameHashes.forEach((_,index)=>candidateCelKey(study.frameHashes,index));
   current.frameHashes.forEach((_,index)=>candidateCelKey(current.frameHashes,index));
-  return study;
+  baseline.frameHashes.forEach((_,index)=>candidateCelKey(baseline.frameHashes,index));
+  return baseline;
 }
 
 export function validateHopReference(metadata,current){
