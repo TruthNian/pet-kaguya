@@ -6,15 +6,16 @@ Local Kaguya artwork, native-compatible development sprites, and reproducible to
 
 The selected full AI mother is **canonical-v3**. Its face, identity and costume are locked; rejected Phase 3/4 composites and procedural jaw edits are not production sources.
 
-- Current development atlas: [candidates/phase5/global](candidates/phase5/global/build.json), nine action rows and sixteen gaze cells.
-- Accepted as development bases only: restrained frontal steps, the new failed mouth, 4px hop and lowered waving peak.
-- Original-eye texture flow is now an accepted eye-motion development basis. Sixteen looks reuse the exact approved pixels; frontal steps, processing and review share the same quieter model. Iris texture can deform slightly; the face/eye outline stays fixed.
-- Waiting/review held timing is temporarily accepted, not their hand/sleeve anatomy.
-- The turning-palm waving middle cel is now a developer-selected continuity improvement, preserving the accepted peak and canonical rest. Its hand/clothing and full motion still lack human acceptance.
-- Review now uses developer-selected relaxed overlapping hands over its v6 base, with the same accepted eye flow, alpha and held timing. Hand/cuff anatomy and full motion still lack human acceptance.
-- Failed now holds canonical body height instead of dipping/rebounding every 1.22 seconds. Accepted mouth source and tiny ear/hair poses remain exact; rendered pixels/alpha can change with the projection. This is developer-selected, not full-motion acceptance; 80px expression remains weak.
-- Cloth lag and float sampling remain **unadopted trials**. The old-eye overlapping-hand animation is historical, not the current review.
-- This is **not an approved release**. Installed pet resources and the installed application have not been changed.
+On **2026-10-11**, the user accepted the current whole-review presentation: nine actions and sixteen gaze directions. The exact [visual receipt](sources/canonical/whole-review-acceptance-20261011.json) supersedes earlier pending visual status for this snapshot, not future artwork.
+
+- [Current reviewed delivery](deliverables/kaguya-v3-reviewed-20261011.zip), 824,361 bytes; [current delivery index](deliverables/current.json).
+- Local atlas installed after byte-verified backup; existing `pet.json` preserved exactly.
+- The original local Kaguya had already migrated to a cloud pet. Updating local files alone did not update that cloud image. With separate authorization, the **original stable cloud ID** was updated and activated; the other same-name Kaguya was untouched.
+- Downloaded stored cloud pixels match the reviewed atlas exactly. The user confirmed **“已显示新版，加载正常”** in the installed application.
+- [Deployment evidence and limits](docs/DEPLOYMENT-20261011.json) separate local writing, cloud storage, active selection and user-observed loading. No application binaries or host rules were modified.
+- Cloth lag and float sampling remain unadopted trials. No new artwork or image re-encoding was used for delivery.
+
+Build metadata and older immutable ZIP manifests retain their **construction-time** pending/uninstalled status. Current acceptance and deployment belong to the separate hash-bound receipts; do not rewrite history or infer that every host transition or performance target is solved.
 
 ### Watch the actual current version once
 
@@ -31,12 +32,12 @@ The whole review excludes all unadopted candidates, so they cannot be confused w
 
 | Area | Still incomplete |
 | --- | --- |
-| Hands and clothing | Waiting/review hand volume, wrist/cuff joins, sleeve edges and hidden-hair integration need visual judgement and refinement. |
-| Natural motion | Discrete holds, arbitrary state cuts, airborne interruptions and held-hand entry/exit remain; current prototypes are not finished motion. |
+| Visual scope | The current whole presentation is accepted. This does not prove author-original anatomy/layers, every display size or every arbitrary interruption. No further speculative redraw is required. |
+| Natural motion | Discrete holds, arbitrary state cuts, airborne interruptions and held-hand entry/exit remain within the agreed existing-host boundary. |
 | Small-size expression | Several gestures and nearby gaze directions are weak at 80px. |
-| Eye materials | Accepted original-eye texture flow reduces observed duplicate pale rims without iris extraction or generated eye-white backing. Complete naturalness, small-size direction legibility and slight iris deformation still need judgement. |
+| Eye materials | Original-eye texture flow is accepted in the current whole presentation; subtle nearby directions and slight iris deformation remain documented tradeoffs. |
 | Host capabilities | Known v2 format requires a 1536×2288 atlas with 192×208 cells. Display uses percentage sizing, not a hard 192×208 pixel crop; import/avatar generation validates exact known dimensions, and CSS requests pixelated scaling. Larger-density native compatibility is unproven. Fixed holds and pointer priority remain unchanged. |
-| Delivery and measurement | Complete aesthetic acceptance, native-host loading of the new atlas, final release and real CPU/GPU/FPS measurements are not established. |
+| Measurement | Real app loading is user-confirmed, not an instrumented long-run CPU/GPU/FPS benchmark. No measured frame-rate or resolution improvement is claimed. |
 
 The current atlas is 819,706 encoded bytes and decodes to 14,057,472 RGBA bytes.
 Changed artwork is not a same-content compression result; file size does not prove FPS or texture-memory improvement.
@@ -66,18 +67,22 @@ The detailed player loads only the selected reference. An unconditional retired-
 Three whole-scene research tests have been removed. Small filter arithmetic checks remain, but are not part of the daily visual loop.
 The default CI uses fast current-asset/core-logic checks. Full archived regressions and installer audits require explicit manual `full_audit`; they do not block daily visual iteration.
 Pushes that change only documentation, frozen downloads or their packaging tool do not rerun animation QA. Artwork, source, player, tests, dependencies and workflow changes still trigger the fast checks; pull requests retain verification.
-A green engineering check is not aesthetic approval.
+A green engineering check is not aesthetic approval. This snapshot's aesthetic approval comes from the separate explicit user receipt.
 
-## Compact frozen packages
+## Reviewed delivery and historical frozen packages
 
-- [Current v3 development candidate, snapshot f5eb77f](deliverables/kaguya-candidate-f5eb77f.zip): 823,480 bytes. Exact current nine-state/sixteen-look atlas, including the calm failed body; local-v2 `pet.json`, manifest and acceptance limits. Waving middle/review hands/failed body are developer-selected, not human-approved.
+- [Current visually accepted v3](deliverables/kaguya-v3-reviewed-20261011.zip): 824,361 bytes. Same exact atlas as f5eb77f, plus a normal Kaguya config, visual receipt and scope manifest. Its immutable manifest records loading as unverified **at packaging time**; the later [deployment receipt](docs/DEPLOYMENT-20261011.json) records successful cloud pixel readback, activation and user-confirmed application loading.
+
+- [Earlier development snapshot f5eb77f](deliverables/kaguya-candidate-f5eb77f.zip): 823,480 bytes. Preserved unchanged; its pending acceptance description was accurate when created, before the 2026-10-11 whole-review decision.
 - [Earlier v3 snapshot 0ac132c](deliverables/kaguya-candidate-0ac132c.zip): 1,007,149 bytes. Preserved unchanged for traceability; it precedes the calm failed-body change and is not the current download.
 - [Original Phase 2 archive](deliverables/kaguya-baseline-phase2.zip): 2,016,380 bytes. Both runtime files are byte-exact to frozen Git commit 97ec2ab. This is not the current installed backup or the recommended new artwork.
 - [Package hashes and frozen source commits](deliverables/index.json).
 
-These are file-layout-checked archives, **not approved releases or verified native-host installations**. No install script is included. Do not overwrite the installed pet; a separate explicit decision and a backup of the actual installation are still required.
-The index explicitly points to snapshot f5eb77f. Both earlier ZIPs remain byte-exact; no old archive is silently replaced. The package freezes resources, not the comparison viewer, and contains no installer.
-The existing installer continues to refuse unapproved development installation. No GitHub Release or application change is performed.
+Historical archives retain their original approval boundaries. No ZIP contains an installer. The historical index remains unchanged; `deliverables/current.json` points to the reviewed delivery and its later deployment evidence. No old ZIP was overwritten.
+
+The new [reviewed installer](tools/install_reviewed.ps1) requires the exact visual/installation receipt, source hash, existing target hashes and a verified backup; it preserves the existing config and atomically replaces only the atlas. The legacy installer is only for explicit historical recovery/regression. Cloud migration means local writing alone is insufficient for migrated pets; the actual cloud update used the official Pets connector and preserved the original ID. No GitHub Release or application patch was performed.
+
+Build the reviewed archive with `python tools/deliver_reviewed.py`; use `--verify` for read-only checks. This does not rebuild artwork or perform installation. Current package: SHA-256 `B6669342853F3F93CBF10D740219C16CE1C17E454598C649EDAE88A20DDD2708`.
 
 Build these frozen snapshots with `python tools/build_native_packages.py`; read-only source/archive verification uses `python tools/build_native_packages.py --verify`. Neither command rebuilds artwork or writes installed files. The source commits must exist locally; a normal full Git clone has them. The packages do not follow future art changes silently.
 The local package/source round-trip check passed for all three saved files. The index accepts only its known two-package predecessor or the exact current three-package form; unknown entries are not discarded. No complete regression, installer test or native-host activation was run for this packaging change.

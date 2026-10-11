@@ -1,0 +1,19 @@
+{
+  "currentPackage": "kaguya-v3-reviewed-20261011.zip",
+  "bytes": 824361,
+  "sha256": "B6669342853F3F93CBF10D740219C16CE1C17E454598C649EDAE88A20DDD2708",
+  "sourceCommit": "f5eb77fb5576d062916e19e2296292890ea4ab57",
+  "packageRole": "visually-accepted-native-loading-unverified",
+  "visualAcceptance": "accepted-in-whole-review",
+  "installationAuthorized": true,
+  "nativeHostLoadingVerified": true,
+  "atlasSHA256": "FEE52726F71E85BC0AAD5745287A18C0731F2567F4DD3CE8E22ACE324BD6233B",
+  "atlasRGBAHash": "7AC9394B6AB37C7D0C3D74B0E93AC1180233D5E196076D5D46DBF1D322C06A8E",
+  "acceptanceReceipt": "sources/canonical/whole-review-acceptance-20261011.json",
+  "historicalPackageIndex": "deliverables/index.json",
+  "nativeHostLoadingEvidence": "explicit-user-confirmation",
+  "localFilesInstalled": true,
+  "originalCloudPetUpdated": true,
+  "originalCloudPetActive": true,
+  "deploymentReceipt": "docs/DEPLOYMENT-20261011.json"
+}

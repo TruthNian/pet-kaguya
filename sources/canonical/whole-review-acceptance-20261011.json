@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-11",
+  "userAnswer": "我认为没问题，尽快推进",
+  "reviewPage": "viewer/whole-review.html",
+  "scope": "current-whole-review-visual-acceptance",
+  "visualAcceptance": "accepted",
+  "sourceCommit": "f5eb77fb5576d062916e19e2296292890ea4ab57",
+  "motherSHA256": "65401EFDFEF0205D0CEA30AD08A0F14911C20B1B83468DBB6B3619E7DC89430A",
+  "atlasSHA256": "FEE52726F71E85BC0AAD5745287A18C0731F2567F4DD3CE8E22ACE324BD6233B",
+  "atlasRGBAHash": "7AC9394B6AB37C7D0C3D74B0E93AC1180233D5E196076D5D46DBF1D322C06A8E",
+  "actionStates": 9,
+  "lookDirections": 16,
+  "installationUserAnswer": "允许：备份后安装当前已认可版本",
+  "installationAuthorized": true,
+  "installationScope": "back-up-actual-pet-files-and-install-exact-reviewed-atlas-only",
+  "applicationChangeAuthorized": false,
+  "independentPetHostAuthorized": false,
+  "nativeHostLoadingVerified": false,
+  "allArbitraryStateTransitionsAccepted": false,
+  "performanceImprovementClaimed": false,
+  "limitations": [
+    "Acceptance covers the current whole-review presentation, not every possible host interruption or display size.",
+    "Fixed native holds, state cuts and held-gesture entry/exit remain; the application is not modified.",
+    "Small-size cues, real host activation and CPU/GPU/FPS improvements are not established.",
+    "Historical build metadata describes approval at construction; this hash-bound receipt supersedes its pending visual status for this exact snapshot only."
+  ]
+}

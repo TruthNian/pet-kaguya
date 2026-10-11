@@ -47,9 +47,22 @@ def main():
     installed=Path.home()/'.codex/pets/kaguya/spritesheet.webp'
     installed_check='not-present-on-this-machine'
     if installed.exists():
-        if hashlib.sha256(installed.read_bytes()).hexdigest().upper()!='238C9ECEC64AB39B6F9CE04B9795E107996C1F97E06BA20B5E5A723EC940E3F1':
+        installed_hash=hashlib.sha256(installed.read_bytes()).hexdigest().upper()
+        original_hash='238C9ECEC64AB39B6F9CE04B9795E107996C1F97E06BA20B5E5A723EC940E3F1'
+        reviewed_hash=None
+        receipt=ROOT/'sources/canonical/whole-review-acceptance-20261011.json'
+        if receipt.exists():
+            decision=json.loads(receipt.read_text(encoding='utf-8'))
+            current_hash=hashlib.sha256((OUT/'spritesheet.webp').read_bytes()).hexdigest().upper()
+            if (decision['scope']=='current-whole-review-visual-acceptance'
+                    and decision['visualAcceptance']=='accepted' and decision['installationAuthorized'] is True
+                    and decision['applicationChangeAuthorized'] is False
+                    and decision['atlasRGBAHash']==digest and decision['motherSHA256']==ACCEPTED_SHA
+                    and decision['atlasSHA256']==current_hash):
+                reviewed_hash=current_hash
+        if installed_hash not in (original_hash,reviewed_hash):
             raise ValueError('Installed Kaguya changed without installation authority')
-        installed_check='unchanged'
+        installed_check='reviewed-atlas-authorized' if installed_hash==reviewed_hash else 'original-unchanged'
     print(json.dumps(dict(currentActionStates=len(states),lookDirections=16,
         actualCelsChecked=sum(row['frameCount'] for row in states)+16,
         atlasRGBAExact=True,motherSHA256=ACCEPTED_SHA,installed=installed_check,
