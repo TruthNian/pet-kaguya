@@ -2,6 +2,22 @@
   "verifiedDateLocal": "2026-10-10",
   "method": "Read-only installed Appx ASAR member inspection; independently described facts, no application source redistributed",
   "package": "OpenAI.Codex_26.1002.7124.0_x64__2p2nqsd0c76g0",
+  "revalidation": {
+    "date": "2026-10-11",
+    "method": "Read-only current Appx identity and direct ASAR member byte/hash checks",
+    "sameInstalledPackage": true,
+    "allMembersListedBelowHaveExactPreviousHashes": true,
+    "artworkOrApplicationChanged": false
+  },
+  "scheduleAnalysis": {
+    "source": "tools/protocol.py; deterministic native hold schedule, not an instrumented FPS measurement",
+    "idle": {"holdsPerCycle": 6, "cycleMs": 6600, "meanScheduledContentUpdatesPerSecond": 0.909},
+    "run_right": {"holdsPerCycle": 8, "cycleMs": 1060, "meanScheduledContentUpdatesPerSecond": 7.547},
+    "run_left": {"holdsPerCycle": 8, "cycleMs": 1060, "meanScheduledContentUpdatesPerSecond": 7.547},
+    "interpretation": "Changing encoded size or raster density alone does not change these scheduled holds. Timer delays, repeated cels, pointer overrides and reduced motion can change actual observed content updates.",
+    "measuredDisplayFPS": null,
+    "petAttributedCPUOrGPU": null
+  },
   "members": [
     {
       "path": "webview/assets/app-initial-25361a10f2bf.js",

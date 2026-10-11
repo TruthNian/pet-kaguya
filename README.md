@@ -41,6 +41,8 @@ The whole review excludes all unadopted candidates, so they cannot be confused w
 
 The current atlas is 819,706 encoded bytes and decodes to 14,057,472 RGBA bytes.
 Changed artwork is not a same-content compression result; file size does not prove FPS or texture-memory improvement.
+The actual stored cloud download is a **5,011,836-byte PNG**, not the 819,706-byte upload WebP. It is 103,010 bytes (about 2.10%) larger than the backed-up old cloud PNG; those images have different pixels, so this is not a same-content encoder comparison or a measured loading regression.
+The unchanged native schedule has six idle holds per 6.6 seconds and eight step holds per 1.06 seconds: roughly 0.91 and 7.55 scheduled content updates/second. These are **not measured display FPS**. Compressing or upscaling the atlas cannot by itself change hold timing, add interpolation or repair arbitrary state cuts.
 See the [full scope/acceptance ledger](docs/REQUIREMENTS.zh-CN.md) and [chronological work record](docs/PHASE5-STATES.zh-CN.md).
 The [read-only installed render facts](docs/HOST-RENDER-FACTS.json) distinguish accepted file geometry from display capability. Percentage rendering alone is not proof that a larger atlas will import, appear in settings, load correctly or improve real performance.
 Old long-form README notes remain in [Git history](https://github.com/TruthNian/pet-kaguya/blob/165d52c1050cef67c6cd7d01098587e972adb343/README.md), not as misleading current status.
